@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Gift, Users, PieChart, GiftIcon, Menu, User, LogIn, Settings, LogOut } from "lucide-react";
+import { Gift, Users, PieChart, GiftIcon, Menu, User, LogIn, Settings, LogOut, Calculator } from "lucide-react";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
 import { useState, useEffect } from "react";
@@ -19,6 +19,7 @@ const STORAGE_KEYS = {
 };
 
 const navLinks = [
+  { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
   { href: "/groups", label: "Groups", icon: Users },
   { href: "/gifts", label: "All Gifts", icon: Gift },
   { href: "/analytics", label: "Analytics", icon: PieChart },
@@ -57,7 +58,6 @@ export function Navigation() {
     }
   };
 
-  // Show loading state while checking setup and auth
   if (!hasCheckedSetup || authLoading) {
     return (
       <nav className="fixed top-0 w-full z-30">
@@ -82,19 +82,20 @@ export function Navigation() {
         <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
             <Link 
               href="/"
               className="flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
             >
               <GiftIcon className="w-6 h-6" />
-              <span className="text-lg">Gift List</span>
+              <span className="text-lg">POE2 Tools</span>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {user && navLinks.map(({ href, label, icon: Icon }) => {
+              {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+                const isProtected = PROTECTED_ROUTES.includes(href);
+                
+                if (isProtected && !user) return null;
 
                 return (
                   <Link
@@ -128,7 +129,6 @@ export function Navigation() {
             </div>
 
             <div className="flex items-center gap-4">
-              {/* User Profile Dropdown (Desktop) */}
               {user && (
                 <div className="hidden md:block">
                   <Dropdown
@@ -159,7 +159,6 @@ export function Navigation() {
                 </div>
               )}
 
-              {/* Menu Button */}
               <Button
                 onClick={() => setIsMenuOpen(true)}
                 variant="ghost"
@@ -174,13 +173,11 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Fullscreen Menu */}
       <FullscreenMenu 
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
       />
 
-      {/* Setup Required Toast */}
       <Toast
         message="Please complete the first-time setup to access this feature"
         type="info"
@@ -188,7 +185,6 @@ export function Navigation() {
         onClose={() => setShowSetupToast(false)}
       />
 
-      {/* Auth Error Toast */}
       {authError && (
         <Toast
           message={authError}
@@ -198,7 +194,6 @@ export function Navigation() {
         />
       )}
 
-      {/* Protected Route Content Block */}
       {(!hasCompletedSetup || !user) && PROTECTED_ROUTES.some(route => pathname?.startsWith(route)) && (
         <div className="fixed inset-0 z-20 bg-background/95 backdrop-blur-sm flex items-center justify-center">
           <div className="max-w-md mx-auto p-8 rounded-xl bg-background border border-border/50 shadow-lg text-center space-y-6">
