@@ -1,11 +1,8 @@
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Profile Settings - Gift List',
-  description: 'Manage your Gift List account settings and preferences',
-  openGraph: {
-    title: 'Profile Settings - Gift List',
-    description: 'Manage your Gift List account settings and preferences',
-    type: 'website',
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Profile Settings - POE2 Tools',
+    description: 'Manage your POE2 Tools account settings and preferences.',
+  }
 }

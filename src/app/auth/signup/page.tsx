@@ -1,26 +1,33 @@
-'use client'
-
-import { AuthForm } from '~/components/auth/AuthForm'
+import { Container } from '~/components/ui/Container'
 import { Text } from '~/components/ui/Text'
-import { useSearchParams } from 'next/navigation'
+import { AuthForm } from '~/components/auth/AuthForm'
+import Link from 'next/link'
 
 export default function SignUpPage() {
-  const searchParams = useSearchParams()
-  const error = searchParams.get('error')
-  const error_description = searchParams.get('error_description')
-
   return (
     <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-8">
-        {error && (
-          <div className="p-4 rounded-xl border-2 border-destructive/20 bg-destructive/5">
-            <Text className="text-sm text-destructive">
-              {error_description || 'An error occurred during sign up'}
+      <Container className="max-w-md py-12">
+        <div className="space-y-8">
+          <div className="text-center">
+            <Text className="text-3xl font-bold">Create Account</Text>
+            <Text className="text-foreground/60 mt-2">Join POE2 Tools to get started</Text>
+          </div>
+
+          <AuthForm type="signup" />
+
+          <div className="text-center">
+            <Text className="text-sm text-foreground/60">
+              Already have an account?{' '}
+              <Link 
+                href="/auth/login"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                Sign in
+              </Link>
             </Text>
           </div>
-        )}
-        <AuthForm mode="signup" />
-      </div>
+        </div>
+      </Container>
     </div>
   )
 }

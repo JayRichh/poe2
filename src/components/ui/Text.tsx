@@ -1,11 +1,10 @@
 "use client";
 
 import { HTMLAttributes, forwardRef } from "react";
-
 import { cn } from "~/utils/cn";
 
 type TextVariant = "h1" | "h2" | "h3" | "h4" | "body-lg" | "body" | "body-sm" | "caption";
-type TextGradient = "none" | "blue" | "purple" | "orange" | "primary";
+type TextGradient = "none" | "primary" | "accent" | "secondary" | "amber";
 
 interface TextProps extends HTMLAttributes<HTMLDivElement> {
   variant?: TextVariant;
@@ -52,10 +51,10 @@ const alignClasses = {
 
 const gradientClasses: Record<TextGradient, string> = {
   none: "",
-  blue: "bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent",
-  purple: "bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent",
-  orange: "bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent",
-  primary: "bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent",
+  primary: "bg-clip-text text-transparent bg-gradient-to-r from-[#FFB800] via-[#FF9500] to-[#00B341]",
+  accent: "bg-clip-text text-transparent bg-gradient-to-r from-[#FF9500] via-[#00B341] to-[#FFB800]",
+  secondary: "bg-clip-text text-transparent bg-gradient-to-r from-[#00B341] via-[#FFB800] to-[#FF9500]",
+  amber: "bg-clip-text text-transparent bg-gradient-to-r from-[#F59E0B] via-[#FBBF24] to-[#F97316]",
 };
 
 export const Text = forwardRef<HTMLDivElement, TextProps>(
@@ -83,22 +82,19 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
         ref={ref}
         className={cn(
           variantClasses[variant],
-          colorClasses[color],
+          gradient === "none" ? colorClasses[color] : "",
           weightClasses[finalWeight],
           alignClasses[align],
           gradientClasses[gradient],
           glass && "glass",
           balance && "text-balance",
           mono ? "font-mono" : "font-sans",
-          "relative",
+          "inline-block",
           className
         )}
         {...props}
       >
-        {glass && (
-          <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-25 blur-sm" />
-        )}
-        <span className="relative">{children}</span>
+        {children}
       </div>
     );
   }

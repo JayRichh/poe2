@@ -35,7 +35,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <AuthProvider>
         {/* Background gradient */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <GradientBackground variant="radial" />
+          <GradientBackground variant="mesh" interactive={false} />
         </div>
 
         {/* Navigation */}

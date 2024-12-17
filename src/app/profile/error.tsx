@@ -4,6 +4,7 @@ import { Container } from '~/components/ui/Container'
 import { Text } from '~/components/ui/Text'
 import { Button } from '~/components/ui/Button'
 import { AlertCircle } from 'lucide-react'
+import { useEffect } from 'react'
 
 export default function ProfileError({
   error,
@@ -12,27 +13,37 @@ export default function ProfileError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  return (
-    <Container className="max-w-2xl py-8">
-      <div className="flex flex-col items-center justify-center min-h-[400px] space-y-6 text-center">
-        <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center">
-          <AlertCircle className="w-8 h-8 text-destructive" />
-        </div>
-        
-        <div className="space-y-2">
-          <Text className="text-2xl font-bold">Something went wrong</Text>
-          <Text className="text-foreground/60">
-            {error.message || 'Failed to load profile settings'}
-          </Text>
-        </div>
+  useEffect(() => {
+    console.error('Profile error:', error)
+  }, [error])
 
-        <Button
-          variant="primary"
-          onClick={reset}
-        >
-          Try again
-        </Button>
-      </div>
-    </Container>
+  return (
+    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
+      <Container className="max-w-2xl py-12">
+        <div className="space-y-8">
+          <div className="text-center">
+            <Text className="text-3xl font-bold">Something went wrong</Text>
+            <Text className="text-foreground/60 mt-2">We encountered an error loading your profile</Text>
+          </div>
+
+          <div className="p-4 rounded-xl border-2 border-destructive/20 bg-destructive/5 flex items-start gap-3">
+            <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+            <Text className="text-sm text-destructive">
+              {error.message || 'An unexpected error occurred'}
+            </Text>
+          </div>
+
+          <div className="flex justify-center">
+            <Button
+              onClick={reset}
+              variant="primary"
+              className="min-w-[200px]"
+            >
+              Try again
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </div>
   )
 }

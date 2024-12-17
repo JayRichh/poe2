@@ -4,42 +4,42 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#4F46E5" },
-    { media: "(prefers-color-scheme: dark)", color: "#4F46E5" },
+    { media: "(prefers-color-scheme: light)", color: "#d97706" },
+    { media: "(prefers-color-scheme: dark)", color: "#fbbf24" },
   ],
 };
 
 export const metadata: Metadata = {
-  title: "Gift List - Organize Your Gift Giving",
-  description: "A modern app to manage and track gifts for your family and friends",
-  keywords: ["gift list", "gift tracking", "gift management", "gift organization"],
-  authors: [{ name: "Gift List Team" }],
+  title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+  description: "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+  keywords: ["path of exile 2", "poe2", "build planner", "dps calculator", "poe tools"],
+  authors: [{ name: "POE2 Tools Team" }],
   icons: {
     icon: [
       {
-        url: "/icon.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
         sizes: "32x32"
       }
     ],
-    shortcut: "/icon.svg",
+    shortcut: "/favicon.svg",
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Gift List - Organize Your Gift Giving",
-    description: "A modern app to manage and track gifts for your family and friends",
+    title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+    description: "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
     type: "website",
     images: [{
-      url: "/icon.svg",
+      url: "/favicon.svg",
       width: 32,
       height: 32,
-      alt: "Gift List App Icon"
+      alt: "POE2 Tools Icon"
     }],
   },
   twitter: {
     card: "summary",
-    title: "Gift List - Organize Your Gift Giving",
-    description: "A modern app to manage and track gifts for your family and friends",
-    images: ["/icon.svg"],
+    title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+    description: "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+    images: ["/favicon.svg"],
   },
 };
