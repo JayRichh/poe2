@@ -5,6 +5,8 @@ import { NewsSidebar } from "~/components/news/NewsSidebar";
 import { NewsService } from "~/services/news-service";
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic'
+
 interface PageProps {
   searchParams: Promise<{
     category?: string;
