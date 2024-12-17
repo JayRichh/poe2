@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "~/utils/cn";
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 
 const subNavLinks = [
   { href: "/build-planner", label: "Passive Tree" },
@@ -19,10 +20,14 @@ export default function BuildPlannerLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const isVisible = useHeaderScroll();
 
   return (
     <div className="min-h-screen pt-28">
-      <div className="fixed top-16 sm:top-20 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20">
+      <div className={cn(
+        "fixed top-16 sm:top-20 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
+        !isVisible ? "-translate-y-[calc(100%+37px)]" : "translate-y-0"
+      )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center space-x-8 h-full">
             {subNavLinks.map(({ href, label }) => {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout } from "lucide-react";
+import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout, Newspaper } from "lucide-react";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
 import { useState } from "react";
@@ -15,9 +15,18 @@ import { Dropdown } from "./ui/Dropdown";
 
 const PROTECTED_ROUTES = ["/profile"];
 
-const navLinks = [
+const primaryLinks = [
   { href: "/build-planner", label: "Build Planner", icon: Layout },
   { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
+];
+
+const secondaryLinks = [
+  { 
+    href: "/news", 
+    label: "Game Utils", 
+    icon: Newspaper,
+    description: "Latest updates, announcements & events"
+  },
 ];
 
 export function Navigation() {
@@ -79,29 +88,65 @@ export function Navigation() {
               </Link>
               <span className="w-px h-6 bg-foreground/20 mx-2" aria-hidden="true" />
 
-              <div className="hidden md:flex items-center space-x-5">
-                {navLinks.map(({ href, label, icon: Icon }) => {
-                  const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+              <div className="hidden md:flex items-center">
+                {/* Primary Links */}
+                <div className="flex items-center gap-8">
+                  {primaryLinks.map(({ href, label, icon: Icon }) => {
+                    const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+                    return (
+                      <Link
+                        key={href}
+                        href={href}
+                        prefetch={false}
+                        className={cn(
+                          "text-base font-medium transition-colors duration-200 relative group flex items-center gap-2",
+                          isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
+                        )}
+                      >
+                        <Icon className="w-4 h-4" />
+                        {label}
+                        {isActive && (
+                          <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
+                        )}
+                        <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+                      </Link>
+                    );
+                  })}
+                </div>
 
-                  return (
-                    <Link
-                      key={href}
-                      href={href}
-                      prefetch={false}
-                      className={cn(
-                        "text-base font-medium transition-colors duration-200 relative group flex items-center gap-2",
-                        isActive ? "text-primary" : "text-foreground hover:text-primary"
-                      )}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {label}
-                      {isActive && (
-                        <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
-                      )}
-                      <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
-                    </Link>
-                  );
-                })}
+                {/* Divider */}
+                <span className="w-px h-6 bg-foreground/20 mx-5" aria-hidden="true" />
+
+                {/* Secondary Links */}
+                <div className="flex items-center">
+                  {secondaryLinks.map(({ href, label, icon: Icon, description }) => {
+                    const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+                    return (
+                      <Link
+                        key={href}
+                        href={href}
+                        prefetch={false}
+                        className={cn(
+                          "text-sm font-medium transition-colors duration-200 relative group flex items-center gap-2",
+                          isActive ? "text-primary" : "text-foreground/70 hover:text-primary",
+                          "opacity-70"
+                        )}
+                      >
+                        <Icon className="w-4 h-4" />
+                        {label}
+                        {description && (
+                          <div className="absolute hidden group-hover:block left-0 bottom-full mb-2 p-2 bg-background/95 backdrop-blur-sm border border-border/50 rounded-md shadow-lg whitespace-nowrap z-50">
+                            <p className="text-xs text-foreground/60">{description}</p>
+                          </div>
+                        )}
+                        {isActive && (
+                          <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
+                        )}
+                        <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </span>
 
