@@ -91,9 +91,6 @@ export async function deleteBuild(id: string) {
 export async function getBuild(id: string) {
   const supabase = createClient()
 
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error('Must be logged in to view builds')
-
   const { data, error } = await supabase
     .from('builds')
     .select(`
@@ -107,8 +104,8 @@ export async function getBuild(id: string) {
 
   if (error) throw error
 
-  // Check if build is public or owned by user
-  if (data.visibility !== 'public' && data.user_id !== user.id) {
+  // Only allow access to public builds
+  if (data.visibility !== 'public') {
     throw new Error('Build not found or unauthorized')
   }
 
@@ -116,7 +113,6 @@ export async function getBuild(id: string) {
 }
 
 export async function getBuilds(options: {
-  userId?: string
   visibility?: Database['public']['Enums']['visibility_type']
   isTemplate?: boolean
   limit?: number
@@ -124,12 +120,8 @@ export async function getBuilds(options: {
 } = {}) {
   const supabase = createClient()
 
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error('Must be logged in to view builds')
-
   const {
-    userId = user.id,
-    visibility,
+    visibility = 'public',
     isTemplate,
     limit = 10,
     offset = 0
@@ -138,16 +130,9 @@ export async function getBuilds(options: {
   let query = supabase
     .from('builds')
     .select('*')
+    .eq('visibility', visibility)
     .range(offset, offset + limit - 1)
     .order('updated_at', { ascending: false })
-
-  if (userId) {
-    query = query.eq('user_id', userId)
-  }
-
-  if (visibility) {
-    query = query.eq('visibility', visibility)
-  }
 
   if (typeof isTemplate === 'boolean') {
     query = query.eq('is_template', isTemplate)

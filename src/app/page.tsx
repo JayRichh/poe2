@@ -143,7 +143,7 @@ export default function HomePage() {
             More Tools Coming Soon
           </Text>
           <Text variant="body" color="secondary" align="center">
-            We're continuously working on new tools to help you optimize your Path of Exile 2 experience.
+            We&apos;re continuously working on new tools to help you optimize your Path of Exile 2 experience.
             Stay tuned for updates.
           </Text>
         </motion.div>

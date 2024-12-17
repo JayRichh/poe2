@@ -43,8 +43,13 @@ export async function updateSession(request: NextRequest) {
   // Refresh session if expired
   const { data: { session } } = await supabase.auth.getSession()
 
-  // Protected routes
-  const protectedPaths = ['/profile', '/build-planner']
+  // Protected routes that require authentication
+  const protectedPaths = [
+    '/profile',
+    // Only protect build creation
+    '/build-planner/create'
+  ]
+
   const isProtectedPath = protectedPaths.some(path => 
     request.nextUrl.pathname.startsWith(path)
   )

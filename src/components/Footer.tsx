@@ -2,10 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Coffee } from "lucide-react";
 
 const contributors = [
-  { name: "Jay", url: "https://github.com/jayrichh", avatar: "https://github.com/jayrichh.png" },
+  { name: "Jay", url: "https://github.com/jayrichh", avatar: "https://avatars.githubusercontent.com/jayrichh" },
 ];
 
 const navLinks = [
@@ -65,10 +66,12 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="group relative"
                   >
-                    <img
+                    <Image
                       src={contributor.avatar}
                       alt={contributor.name}
-                      className="w-8 h-8 rounded-full hover:opacity-80 transition-opacity"
+                      width={32}
+                      height={32}
+                      className="rounded-full hover:opacity-80 transition-opacity"
                     />
                     <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>

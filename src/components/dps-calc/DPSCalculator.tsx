@@ -1,159 +1,130 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { DPSCalc } from "@/lib/calculations";
-import { WeaponForm, type WeaponInputs } from "./WeaponForm";
-import { GlobalSettings, type GlobalSettingsInputs } from "./GlobalSettings";
-import { Results } from "./Results";
+import { useDPSCalculator } from '~/hooks/useDPSCalculator'
+import { WeaponPanel } from './WeaponPanel'
+import { GlobalSettingsPanel } from './GlobalSettingsPanel'
+import { ResultsPanel } from './ResultsPanel'
+import { HistoryPanel } from './HistoryPanel'
+import type { WeaponInputs, GlobalSettings } from '~/hooks/useDPSCalculator'
 
-interface CalculatorInputs extends GlobalSettingsInputs {
-  weapon1: WeaponInputs;
-  weapon2: WeaponInputs;
+// Ensure numeric values are valid
+const sanitizeNumber = (value: number | undefined): number => {
+  if (typeof value !== 'number' || isNaN(value)) return 0
+  return value
 }
 
-const defaultWeapon: WeaponInputs = {
-  minBaseDmg: 0,
-  maxBaseDmg: 0,
-  physicalMin: 0,
-  physicalMax: 0,
-  lightningMin: 0,
-  lightningMax: 0,
-  fireMin: 0,
-  fireMax: 0,
-  coldMin: 0,
-  coldMax: 0,
-  chaosMin: 0,
-  chaosMax: 0,
-};
+// Type-safe sanitize functions
+const sanitizeWeaponUpdates = (updates: Partial<WeaponInputs>): Partial<WeaponInputs> => {
+  const result: Partial<WeaponInputs> = {}
+  for (const [key, value] of Object.entries(updates)) {
+    if (typeof value === 'number' && !isNaN(value)) {
+      result[key as keyof WeaponInputs] = value
+    }
+  }
+  return result
+}
+
+const sanitizeSettingsUpdates = (updates: Partial<GlobalSettings>): Partial<GlobalSettings> => {
+  const result: Partial<GlobalSettings> = {}
+  for (const [key, value] of Object.entries(updates)) {
+    if (key in updates) {
+      if (typeof value === 'boolean' || (typeof value === 'number' && !isNaN(value))) {
+        (result as any)[key] = value;
+      }
+    }
+  }
+  return result
+}
 
 export function DPSCalculator() {
-  const [inputs, setInputs] = useState<CalculatorInputs>({
-    weapon1: defaultWeapon,
-    weapon2: defaultWeapon,
-    attackSpeed: 1,
-    attackSpeedIncrease: 0,
-    totalSkillProjectiles: 1,
-    damageMultiplier: 1,
-    critChance: 5,
-    critDamage: 150,
-    resPenetration: 0,
-    shock: false,
-    electrocution: false,
-    exposure: false,
-    lightningInfusion: false,
-    primalArmament: false,
-    iceBite: false,
-  });
+  const {
+    weapon1,
+    weapon2,
+    settings,
+    results,
+    history,
+    setWeapon1,
+    setWeapon2,
+    setSettings,
+    getDamageTypePercentages
+  } = useDPSCalculator()
 
-  const [results, setResults] = useState<ReturnType<DPSCalc["getResults"]> | null>(null);
+  const handleWeapon1Change = (updates: Partial<WeaponInputs>) => {
+    const sanitizedUpdates = sanitizeWeaponUpdates(updates)
+    if (Object.keys(sanitizedUpdates).length > 0) {
+      setWeapon1({ ...weapon1, ...sanitizedUpdates })
+    }
+  }
 
-  const updateWeapon1 = (updates: Partial<WeaponInputs>) => {
-    setInputs((prev) => ({
-      ...prev,
-      weapon1: { ...prev.weapon1, ...updates },
-    }));
-  };
+  const handleWeapon2Change = (updates: Partial<WeaponInputs>) => {
+    const sanitizedUpdates = sanitizeWeaponUpdates(updates)
+    if (Object.keys(sanitizedUpdates).length > 0) {
+      setWeapon2({ ...weapon2, ...sanitizedUpdates })
+    }
+  }
 
-  const updateWeapon2 = (updates: Partial<WeaponInputs>) => {
-    setInputs((prev) => ({
-      ...prev,
-      weapon2: { ...prev.weapon2, ...updates },
-    }));
-  };
-
-  const updateGlobalSettings = (updates: Partial<GlobalSettingsInputs>) => {
-    setInputs((prev) => ({
-      ...prev,
-      ...updates,
-    }));
-  };
-
-  const calculateDPS = () => {
-    const calc = new DPSCalc({
-      weapon1MinBaseDmg: inputs.weapon1.minBaseDmg,
-      weapon1MaxBaseDmg: inputs.weapon1.maxBaseDmg,
-      weapon1PhysicalMin: inputs.weapon1.physicalMin,
-      weapon1PhysicalMax: inputs.weapon1.physicalMax,
-      weapon1LightningMin: inputs.weapon1.lightningMin,
-      weapon1LightningMax: inputs.weapon1.lightningMax,
-      weapon1FireMin: inputs.weapon1.fireMin,
-      weapon1FireMax: inputs.weapon1.fireMax,
-      weapon1ColdMin: inputs.weapon1.coldMin,
-      weapon1ColdMax: inputs.weapon1.coldMax,
-      weapon1ChaosMin: inputs.weapon1.chaosMin,
-      weapon1ChaosMax: inputs.weapon1.chaosMax,
-
-      weapon2MinBaseDmg: inputs.weapon2.minBaseDmg,
-      weapon2MaxBaseDmg: inputs.weapon2.maxBaseDmg,
-      weapon2PhysicalMin: inputs.weapon2.physicalMin,
-      weapon2PhysicalMax: inputs.weapon2.physicalMax,
-      weapon2LightningMin: inputs.weapon2.lightningMin,
-      weapon2LightningMax: inputs.weapon2.lightningMax,
-      weapon2FireMin: inputs.weapon2.fireMin,
-      weapon2FireMax: inputs.weapon2.fireMax,
-      weapon2ColdMin: inputs.weapon2.coldMin,
-      weapon2ColdMax: inputs.weapon2.coldMax,
-      weapon2ChaosMin: inputs.weapon2.chaosMin,
-      weapon2ChaosMax: inputs.weapon2.chaosMax,
-
-      attackSpeed: inputs.attackSpeed,
-      attackSpeedIncrease: inputs.attackSpeedIncrease,
-      totalSkillProjectiles: inputs.totalSkillProjectiles,
-      damageMultiplier: inputs.damageMultiplier,
-      critChance: inputs.critChance,
-      critDamage: inputs.critDamage,
-      resPenetration: inputs.resPenetration,
-
-      shockWeapon1: inputs.shock,
-      shockWeapon2: inputs.shock,
-      electrocutionWeapon1: inputs.electrocution,
-      electrocutionWeapon2: inputs.electrocution,
-      exposureWeapon1: inputs.exposure,
-      exposureWeapon2: inputs.exposure,
-      lightningInfusionWeapon1: inputs.lightningInfusion,
-      lightningInfusionWeapon2: inputs.lightningInfusion,
-      primalArmamentWeapon1: inputs.primalArmament,
-      primalArmamentWeapon2: inputs.primalArmament,
-      iceBiteWeapon1: inputs.iceBite,
-      iceBiteWeapon2: inputs.iceBite,
-    });
-
-    setResults(calc.getResults());
-  };
+  const handleSettingsChange = (updates: Partial<GlobalSettings>) => {
+    const sanitizedUpdates = sanitizeSettingsUpdates(updates)
+    if (Object.keys(sanitizedUpdates).length > 0) {
+      setSettings({ ...settings, ...sanitizedUpdates })
+    }
+  }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <WeaponForm 
-            weapon={inputs.weapon1} 
-            onChange={updateWeapon1}
+    <div className="min-h-screen">
+      <div className="max-w-[1600px] mx-auto space-y-6">
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left Panel - Weapon 1 */}
+          <WeaponPanel
+            weapon={weapon1}
+            onChange={handleWeapon1Change}
             label="Weapon 1"
+            percentages={results ? getDamageTypePercentages({
+              finalPhysicalDamage: sanitizeNumber(results.finalPhysicalDamage),
+              finalLightningDamage: sanitizeNumber(results.finalLightningDamage),
+              finalFireDamage: sanitizeNumber(results.finalFireDamage),
+              finalColdDamage: sanitizeNumber(results.finalColdDamage),
+              finalChaosDamage: sanitizeNumber(results.finalChaosDamage),
+            }) : null}
           />
-        </Card>
 
-        <Card className="p-6">
-          <WeaponForm 
-            weapon={inputs.weapon2} 
-            onChange={updateWeapon2}
+          {/* Right Panel - Weapon 2 */}
+          <WeaponPanel
+            weapon={weapon2}
+            onChange={handleWeapon2Change}
             label="Weapon 2"
+            percentages={results ? getDamageTypePercentages({
+              finalPhysicalDamage: sanitizeNumber(results.finalPhysicalDamage2),
+              finalLightningDamage: sanitizeNumber(results.finalLightningDamage2),
+              finalFireDamage: sanitizeNumber(results.finalFireDamage2),
+              finalColdDamage: sanitizeNumber(results.finalColdDamage2),
+              finalChaosDamage: sanitizeNumber(results.finalChaosDamage2),
+            }) : null}
           />
-        </Card>
-      </div>
-
-      <Card className="p-6">
-        <GlobalSettings
-          settings={inputs}
-          onChange={updateGlobalSettings}
-        />
-        <div className="flex justify-end mt-6">
-          <Button onClick={calculateDPS}>Calculate DPS</Button>
         </div>
-      </Card>
 
-      {results && <Results results={results} />}
+        {/* Global Settings */}
+        <GlobalSettingsPanel
+          settings={settings}
+          onChange={handleSettingsChange}
+        />
+
+        {/* Results Section */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+          {/* Live Results */}
+          <div className="min-w-0">
+            {results && (
+              <ResultsPanel results={results} />
+            )}
+          </div>
+
+          {/* History Panel */}
+          <div className="min-w-0">
+            <HistoryPanel history={history} />
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }

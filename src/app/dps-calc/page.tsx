@@ -1,21 +1,27 @@
-"use client";
+'use client'
 
-import { Container } from "@/components/ui/Container";
-import { DPSCalculator } from "@/components/dps-calc/DPSCalculator";
+import { Container } from '~/components/ui/Container'
+import { DPSCalculator } from '~/components/dps-calc/DPSCalculator'
+import { Text } from '~/components/ui/Text'
 
 export default function DPSCalcPage() {
   return (
-    <Container>
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold">POE2 DPS Calculator</h1>
-          <p className="text-muted-foreground">
+    <Container className="py-6 md:py-8">
+      <div className="space-y-8">
+        {/* Header */}
+        <div>
+          <Text className="text-3xl font-bold tracking-tight mb-4">
+            POE2 DPS Calculator
+          </Text>
+          <Text className="text-foreground-secondary text-balance">
             Compare weapons and calculate DPS increases with detailed breakdowns of all damage types.
             Input weapon stats and modifiers to see the total DPS and percentage increase between weapons.
-          </p>
+          </Text>
         </div>
+
+        {/* Calculator */}
         <DPSCalculator />
       </div>
     </Container>
-  );
+  )
 }

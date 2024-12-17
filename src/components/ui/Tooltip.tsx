@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { useEffect, useRef, useState } from "react";
-
 import { cn } from "~/utils/cn";
 
 type TooltipPosition = "top" | "right" | "bottom" | "left";
@@ -58,12 +56,13 @@ export function Tooltip({
   }, []);
 
   return (
-    <div className="relative inline-flex group">
+    <div className="relative block w-full">
       <div
         onMouseEnter={showTooltip}
         onMouseLeave={hideTooltip}
         onFocus={showTooltip}
         onBlur={hideTooltip}
+        className="w-full"
       >
         {children}
       </div>

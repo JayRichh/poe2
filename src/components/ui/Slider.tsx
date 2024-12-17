@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+// components/ui/Slider.tsx
 
+import { useEffect, useRef } from "react";
 import { cn } from "~/utils/cn";
 
 interface SliderProps {
@@ -25,21 +26,11 @@ export function Slider({
   label,
   className,
 }: SliderProps) {
-  const [mounted, setMounted] = useState(false);
   const isControlled = controlledValue !== undefined;
-  const [localValue, setLocalValue] = useState(defaultValue ?? min);
-  const value = isControlled ? controlledValue : localValue;
-
   const trackRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  const value = isControlled ? controlledValue : (defaultValue ?? min);
 
   const updateValue = (clientX: number) => {
     if (!trackRef.current) return;
@@ -50,9 +41,6 @@ export function Slider({
     const steppedValue = Math.round(rawValue / step) * step;
     const clampedValue = Math.min(Math.max(steppedValue, min), max);
 
-    if (!isControlled) {
-      setLocalValue(clampedValue);
-    }
     onChange?.(clampedValue);
   };
 
@@ -95,21 +83,29 @@ export function Slider({
       default:
         return;
     }
-    if (!isControlled) {
-      setLocalValue(newValue);
-    }
     onChange?.(newValue);
   };
+
+  useEffect(() => {
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, []);
 
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
-    <div className={cn("space-y-2", className)}>
+    <div className={cn("flex flex-col gap-1 w-full", className)}>
       {(label || showValue) && (
-        <div className="flex items-center justify-between">
-          {label && <span className="text-sm font-medium text-foreground">{label}</span>}
+        <div className="flex items-center justify-between gap-2 min-h-[1.5rem] w-full">
+          {label && (
+            <span className="text-sm font-medium text-foreground truncate flex-grow">
+              {label}
+            </span>
+          )}
           {showValue && (
-            <span className="text-sm font-medium text-foreground/70">
+            <span className="text-sm font-medium text-foreground/70 tabular-nums tracking-tight shrink-0">
               {value.toFixed(step < 1 ? 1 : 0)}
             </span>
           )}
@@ -120,20 +116,19 @@ export function Slider({
         ref={trackRef}
         onMouseDown={handleMouseDown}
         className={cn(
-          "relative h-6 flex items-center cursor-pointer",
+          "relative h-8 flex items-center cursor-pointer",
           "group touch-none select-none"
         )}
       >
-        {/* Track background */}
-        <div className="relative w-full h-1.5 rounded-full bg-slate-200">
-          {/* Track fill */}
-          <div
-            className="absolute h-full rounded-full bg-blue-600"
-            style={{ width: `${percentage}%` }}
-          />
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full h-2 rounded-full bg-background-secondary">
+            <div
+              className="absolute h-full rounded-full bg-primary transition-all"
+              style={{ width: `${percentage}%` }}
+            />
+          </div>
         </div>
 
-        {/* Thumb */}
         <div
           role="slider"
           tabIndex={0}
@@ -142,13 +137,13 @@ export function Slider({
           aria-valuenow={value}
           onKeyDown={handleKeyDown}
           className={cn(
-            "absolute h-4 w-4 rounded-full bg-blue-600",
-            "border-2 border-white",
-            "shadow-[0_0_0_3px_rgba(37,99,235,0.1)]",
-            "transition-shadow",
+            "absolute h-4 w-4 rounded-full bg-primary",
+            "border-2 border-background",
+            "shadow-sm shadow-black/10",
+            "transition-shadow duration-200",
             "focus-visible:outline-none focus-visible:ring-2",
-            "focus-visible:ring-blue-600 focus-visible:ring-offset-2",
-            "hover:shadow-[0_0_0_5px_rgba(37,99,235,0.1)]",
+            "focus-visible:ring-ring focus-visible:ring-offset-2",
+            "hover:shadow-md hover:shadow-black/20",
             "cursor-grab active:cursor-grabbing"
           )}
           style={{

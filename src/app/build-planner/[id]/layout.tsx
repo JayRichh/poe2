@@ -67,15 +67,6 @@ async function BuildHeader({ buildId }: { buildId: string }) {
           )}
         </div>
       </div>
-
-      <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm">
-          Clone
-        </Button>
-        <Button variant="outline" size="sm">
-          Share
-        </Button>
-      </div>
     </div>
   )
 }

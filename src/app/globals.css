@@ -55,6 +55,13 @@ code[class*="language-"] {
     --surface: 0 0% 98%;
     --surface-foreground: 0 0% 12%;
     --radius: 0.5rem;
+
+    /* Damage Type Colors */
+    --damage-physical: rgb(180, 180, 180);
+    --damage-lightning: rgb(255, 215, 0);
+    --damage-fire: rgb(255, 50, 50);
+    --damage-cold: rgb(50, 150, 255);
+    --damage-chaos: rgb(180, 90, 255);
   }
 
   .dark {
@@ -79,6 +86,13 @@ code[class*="language-"] {
     --error-foreground: 0 0% 98%;
     --surface: 0 0% 20%;
     --surface-foreground: 0 0% 96%;
+
+    /* Dark Mode Damage Type Colors - Slightly adjusted for dark theme */
+    --damage-physical: rgb(200, 200, 200);
+    --damage-lightning: rgb(255, 225, 50);
+    --damage-fire: rgb(255, 80, 80);
+    --damage-cold: rgb(80, 180, 255);
+    --damage-chaos: rgb(200, 120, 255);
   }
 }
 
@@ -193,6 +207,23 @@ code[class*="language-"] {
     animation: gradient 15s ease infinite;
     background-size: 200% 200%;
   }
+
+  /* DPS Calculator Utilities */
+  .dps-value {
+    @apply font-medium text-foreground numeric;
+  }
+
+  .dps-label {
+    @apply text-sm text-foreground-secondary font-medium;
+  }
+
+  .dps-increase {
+    @apply text-success font-bold numeric;
+  }
+
+  .dps-decrease {
+    @apply text-error font-bold numeric;
+  }
 }
 
 @keyframes shimmer {
@@ -278,6 +309,38 @@ code[class*="language-"] {
 
   .stat-description {
     @apply text-sm text-foreground-secondary;
+  }
+
+  /* DPS Calculator Components */
+  .dps-panel {
+    @apply rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm transition-smooth backdrop-blur-sm;
+  }
+
+  .dps-input-group {
+    @apply space-y-2;
+  }
+
+  .dps-slider {
+    @apply w-full h-2 bg-background-secondary rounded-full appearance-none cursor-pointer;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/25;
+  }
+
+  .dps-slider::-webkit-slider-thumb {
+    @apply w-4 h-4 rounded-full bg-primary appearance-none;
+    @apply hover:bg-primary/90 transition-colors;
+    @apply hover:scale-110 transition-transform;
+  }
+
+  .dps-slider::-moz-range-thumb {
+    @apply w-4 h-4 rounded-full bg-primary appearance-none border-0;
+    @apply hover:bg-primary/90 transition-colors;
+    @apply hover:scale-110 transition-transform;
+  }
+
+  .dps-checkbox {
+    @apply w-4 h-4 rounded border-border bg-background;
+    @apply checked:bg-primary checked:border-primary;
+    @apply focus:ring-2 focus:ring-primary/25;
   }
 }
 

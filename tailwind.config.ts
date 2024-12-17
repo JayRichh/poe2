@@ -70,6 +70,34 @@ const config: Config = {
           DEFAULT: "hsl(var(--surface))",
           foreground: "hsl(var(--surface-foreground))",
         },
+        // Damage type colors
+        damage: {
+          physical: {
+            DEFAULT: "hsl(0, 0%, 80%)",
+            light: "hsl(0, 0%, 90%)",
+            dark: "hsl(0, 0%, 70%)",
+          },
+          fire: {
+            DEFAULT: "hsl(0, 100%, 50%)",
+            light: "hsl(0, 100%, 60%)",
+            dark: "hsl(0, 100%, 40%)",
+          },
+          cold: {
+            DEFAULT: "hsl(200, 100%, 50%)",
+            light: "hsl(200, 100%, 60%)",
+            dark: "hsl(200, 100%, 40%)",
+          },
+          lightning: {
+            DEFAULT: "hsl(60, 100%, 50%)",
+            light: "hsl(60, 100%, 60%)",
+            dark: "hsl(60, 100%, 40%)",
+          },
+          chaos: {
+            DEFAULT: "hsl(270, 100%, 50%)",
+            light: "hsl(270, 100%, 60%)",
+            dark: "hsl(270, 100%, 40%)",
+          },
+        },
       },
       spacing: {
         container: "2rem",
@@ -168,6 +196,38 @@ const config: Config = {
               boxShadow: "0 0 0 2px hsl(var(--primary) / 0.25)",
             },
           },
+          // DPS Calculator specific components
+          ".dps-panel": {
+            borderRadius: "var(--radius)",
+            borderWidth: "1px",
+            borderColor: "hsl(var(--border) / 0.6)",
+            backgroundColor: "hsl(var(--background))",
+            padding: "1.5rem",
+            boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+            transition: "all 200ms",
+          },
+          ".dps-input-group": {
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            marginBottom: "1rem",
+          },
+          ".dps-slider": {
+            width: "100%",
+            height: "2rem",
+            padding: "0",
+            "&::-webkit-slider-thumb": {
+              width: "1rem",
+              height: "1rem",
+              borderRadius: "9999px",
+              backgroundColor: "hsl(var(--primary))",
+              border: "none",
+              transition: "all 200ms",
+              "&:hover": {
+                transform: "scale(1.1)",
+              },
+            },
+          },
         });
         addUtilities({
           ".text-shadow": {
@@ -188,6 +248,16 @@ const config: Config = {
             WebkitBackgroundClip: "text !important",
             WebkitTextFillColor: "transparent !important",
             display: "inline-block",
+          },
+          // DPS Calculator specific utilities
+          ".dps-value": {
+            fontFeatureSettings: '"tnum"',
+            letterSpacing: "-0.025em",
+            fontWeight: "600",
+          },
+          ".dps-label": {
+            fontSize: "0.875rem",
+            color: "hsl(var(--foreground-secondary))",
           },
         });
       },
