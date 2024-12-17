@@ -7,6 +7,7 @@ import { Footer } from "~/components/Footer";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
 import { AuthProvider } from "~/contexts/auth";
+import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
 
 function NavigationLoading() {
   return (
@@ -23,13 +24,14 @@ function MainContentLoading() {
     </div>
   );
 }
-
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  useDefaultDarkMode();
+  
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
-      enableSystem
+      defaultTheme="dark"
+      enableSystem={false}
       disableTransitionOnChange
     >
       <AuthProvider>
