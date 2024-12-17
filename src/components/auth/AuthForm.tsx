@@ -50,18 +50,31 @@ export function AuthForm({ type }: AuthFormProps) {
         router.push(next)
         router.refresh()
       } else if (type === 'signup') {
+        // Store credentials in localStorage for auto-login after confirmation
+        localStorage.setItem('pendingAuthCredentials', JSON.stringify({ email, password }))
+        
         const { error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback`,
+            emailRedirectTo: `${window.location.origin}/auth/callback?type=email_confirmation`,
+            data: {
+              email_confirm_required: true // Add metadata to track confirmation status
+            }
           },
         })
         if (error) throw error
-        setMessage('Check your email for the confirmation link')
+        
+        setMessage(
+          'Check your email for the confirmation link. You will be automatically logged in after confirming.'
+        )
+        
+        // Clear form
+        setEmail('')
+        setPassword('')
       } else if (type === 'reset') {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth/callback?next=/profile`,
+          redirectTo: `${window.location.origin}/auth/callback?type=recovery&next=/profile`,
         })
         if (error) throw error
         setMessage('Check your email for the password reset link')
@@ -69,6 +82,10 @@ export function AuthForm({ type }: AuthFormProps) {
     } catch (err) {
       console.error('Auth error:', err)
       setError(err instanceof Error ? err.message : 'An error occurred')
+      // Clear stored credentials if there was an error
+      if (type === 'signup') {
+        localStorage.removeItem('pendingAuthCredentials')
+      }
     } finally {
       setLoading(false)
     }

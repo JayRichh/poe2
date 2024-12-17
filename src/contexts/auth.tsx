@@ -48,6 +48,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           user: session.user,
           error: null 
         }))
+        startTransition(() => {
+          router.refresh()
+        })
       } else {
         setState(prev => ({ 
           ...prev, 
@@ -59,10 +62,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error('Session refresh error:', error)
       setState(prev => ({
         ...prev,
-        error: 'Failed to refresh session. Please try again.',
+        error: 'Failed to refresh session',
       }))
     }
-  }, [supabase.auth])
+  }, [supabase.auth, router])
 
   useEffect(() => {
     let isMounted = true
@@ -75,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (isMounted) {
           setState(prev => ({
             ...prev,
-            error: 'Failed to initialize authentication. Please refresh the page.',
+            error: 'Failed to initialize authentication',
           }))
         }
       } finally {
@@ -112,10 +115,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           loading: false,
           error: null 
         }))
-        // Revalidate router after auth state change
-        startTransition(() => {
-          router.refresh()
-        })
       }
     })
 

@@ -1,22 +1,18 @@
-import { Container } from '~/components/ui/Container'
-import { Text } from '~/components/ui/Text'
 import { Spinner } from '~/components/ui/Spinner'
+import { Text } from '~/components/ui/Text'
 
-export default function CallbackLoading() {
+export default function AuthCallbackLoading() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
-      <Container className="max-w-md py-12">
-        <div className="space-y-8">
-          <div className="text-center">
-            <Text className="text-3xl font-bold opacity-50">Connecting</Text>
-            <Text className="text-foreground/60 mt-2">Please wait while we complete the authentication</Text>
-          </div>
-
-          <div className="flex justify-center">
-            <Spinner size="lg" />
-          </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+      <div className="max-w-md w-full space-y-8 text-center">
+        <Spinner size="lg" variant="primary" className="mx-auto" />
+        <div className="space-y-2">
+          <Text className="text-xl font-medium">Confirming your account...</Text>
+          <Text className="text-foreground/60">
+            Please wait while we verify your email and set up your account.
+          </Text>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

@@ -23,7 +23,42 @@ export async function GET(request: NextRequest) {
   const state = requestUrl.searchParams.get('state')
   const next = requestUrl.searchParams.get('next')
   const provider = requestUrl.searchParams.get('provider')
+  const type = requestUrl.searchParams.get('type')
   
+  // Handle email confirmation callback
+  if (type === 'email_confirmation' && code) {
+    const supabase = createClient()
+    
+    try {
+      const { data, error } = await supabase.auth.exchangeCodeForSession(code)
+      if (error) throw error
+
+      // Create response with redirect
+      const response = NextResponse.redirect(
+        new URL('/profile?verified=true', requestUrl.origin)
+      )
+
+      // Set the auth cookie data
+      const cookieStore = await cookies()
+      const supabaseCookies = cookieStore.getAll()
+      supabaseCookies.forEach(cookie => {
+        response.cookies.set(cookie.name, cookie.value, {
+          ...cookie,
+          sameSite: 'lax',
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production'
+        })
+      })
+
+      return response
+    } catch (error) {
+      console.error('Email confirmation error:', error)
+      return NextResponse.redirect(
+        new URL(`/auth/login?error=${encodeURIComponent('Email confirmation failed')}`, requestUrl.origin)
+      )
+    }
+  }
+
   // Handle POE OAuth callback
   if (provider === 'poe' && code && state) {
     // Get state and verifier from cookies
@@ -83,42 +118,8 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Handle GitHub OAuth callback
-  if (provider === 'github' && code) {
-    const supabase = createClient()
-    
-    try {
-      const { data, error } = await supabase.auth.exchangeCodeForSession(code)
-      if (error) throw error
-
-      // Create response with redirect
-      const response = NextResponse.redirect(
-        new URL(next || '/profile', requestUrl.origin)
-      )
-
-      // Set the auth cookie data
-      const cookieStore = await cookies()
-      const supabaseCookies = cookieStore.getAll()
-      supabaseCookies.forEach(cookie => {
-        response.cookies.set(cookie.name, cookie.value, {
-          ...cookie,
-          sameSite: 'lax',
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production'
-        })
-      })
-
-      return response
-    } catch (error) {
-      console.error('GitHub OAuth error:', error)
-      return NextResponse.redirect(
-        new URL(`/auth/login?error=${encodeURIComponent('GitHub authentication failed')}`, requestUrl.origin)
-      )
-    }
-  }
-
-  // Handle email auth callback
-  if (code && !provider) {
+  // Handle regular auth callback
+  if (code && !provider && !type) {
     const supabase = createClient()
     
     try {
