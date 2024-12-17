@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, useCallback, useTransition } from 'react'
+import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { User } from '@supabase/supabase-js'
 import { createClient } from '~/lib/supabase/client'
 import { useRouter } from 'next/navigation'
@@ -30,7 +30,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading: true,
     error: null,
   })
-  const [isPending, startTransition] = useTransition()
   const router = useRouter()
   const supabase = createClient()
 
@@ -48,9 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           user: session.user,
           error: null 
         }))
-        startTransition(() => {
-          router.refresh()
-        })
+        router.refresh()
       } else {
         setState(prev => ({ 
           ...prev, 
@@ -104,10 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           loading: false,
           error: null 
         }))
-        // Revalidate router after auth state change
-        startTransition(() => {
-          router.refresh()
-        })
+        router.refresh()
       } else {
         setState(prev => ({ 
           ...prev, 
@@ -115,6 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           loading: false,
           error: null 
         }))
+        router.refresh()
       }
     })
 
@@ -136,11 +131,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         error: null 
       }))
 
-      // Revalidate router after sign out
-      startTransition(() => {
-        router.refresh()
-        router.push('/')
-      })
+      router.refresh()
+      router.push('/')
     } catch (error) {
       console.error('Sign out error:', error)
       setState(prev => ({
