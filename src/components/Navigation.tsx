@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout } from "lucide-react";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { FullscreenMenu } from "./ui/FullscreenMenu";
 import { Toast } from "./ui/Toast";
 import { Button } from "./ui/Button";
@@ -25,24 +25,25 @@ export function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
-  const { user, loading: authLoading, error: authError, signOut, refreshSession } = useAuth();
+  const { user, loading: authLoading, error: authError, signOut } = useAuth();
 
   const handleProfileAction = async (value: string) => {
-    startTransition(async () => {
-      switch (value) {
-        case 'profile':
-          router.push('/profile');
-          break;
-        case 'signout':
-          await signOut();
-          break;
-      }
-    });
+    switch (value) {
+      case 'profile':
+        router.push('/profile');
+        break;
+      case 'signout':
+        await signOut();
+        break;
+    }
   };
 
-  // Show loading state during auth operations or transitions
-  if (authLoading || isPending) {
+  const handleSignIn = () => {
+    router.push('/auth/login');
+  };
+
+  // Show loading state during auth operations
+  if (authLoading) {
     return (
       <nav className="fixed top-0 w-full z-30">
         <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
@@ -134,13 +135,14 @@ export function Navigation() {
                   />
                 </div>
               ) : (
-                <Link
-                  href="/auth/login"
-                  className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                <Button
+                  onClick={handleSignIn}
+                  variant="ghost"
+                  className="flex items-center gap-2 text-base font-medium"
                 >
                   <LogIn className="w-4 h-4" />
                   Sign In
-                </Link>
+                </Button>
               )}
               <Button
                 onClick={() => setIsMenuOpen(true)}
@@ -182,11 +184,7 @@ export function Navigation() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => {
-                  startTransition(() => {
-                    router.push('/auth/login');
-                  });
-                }}
+                onClick={handleSignIn}
                 className="w-full"
               >
                 Sign In

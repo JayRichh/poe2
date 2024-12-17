@@ -3,7 +3,7 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Settings, Sun, Moon, Monitor, LogOut, User, Layout, Calculator } from "lucide-react";
+import { X, Settings, Sun, Moon, Monitor, LogOut, User, Layout, Calculator, LogIn } from "lucide-react";
 import { Button } from "./Button";
 import { cn } from "../../utils/cn";
 import { useRouter, usePathname } from "next/navigation";
@@ -64,6 +64,32 @@ const animations = {
     }
   }
 };
+
+function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
+  return (
+    <motion.div
+      variants={animations.item}
+      initial="hidden"
+      animate="visible"
+      className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5"
+    >
+      <div className="flex items-start gap-3">
+        <LogIn className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+        <div className="space-y-2 w-full">
+          <Text className="font-medium">Sign in to access all features</Text>
+          <Button
+            variant="outline"
+            onClick={() => onNavigate('/auth/login')}
+            className="w-full flex items-center gap-2"
+          >
+            <LogIn className="h-4 w-4" />
+            Sign In
+          </Button>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 function UserProfile({ user, onSignOut, onNavigate }: { user: any; onSignOut: () => void; onNavigate: (path: string) => void }) {
   return (
@@ -237,7 +263,11 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
           <div className="max-w-7xl mx-auto px-6 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
               <div className="space-y-8">
-                {user && <UserProfile user={user} onSignOut={handleSignOut} onNavigate={handleNavigation} />}
+                {user ? (
+                  <UserProfile user={user} onSignOut={handleSignOut} onNavigate={handleNavigation} />
+                ) : (
+                  <SignInSection onNavigate={handleNavigation} />
+                )}
                 <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
               </div>
 
