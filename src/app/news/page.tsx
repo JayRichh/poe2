@@ -3,25 +3,29 @@ import { Text } from "~/components/ui/Text";
 import { NewsCard } from "~/components/news/NewsCard";
 import { NewsSidebar } from "~/components/news/NewsSidebar";
 import { NewsService } from "~/services/news-service";
+import { notFound } from 'next/navigation';
 
-interface NewsPageProps {
-  searchParams: {
+interface PageProps {
+  searchParams: Promise<{
     category?: string;
     source?: string;
-  };
+  }> | undefined;
 }
 
-export default async function NewsPage({ searchParams }: NewsPageProps) {
-  const news = await NewsService.getLatestNews(searchParams.category);
-  const featuredNews = news.slice(0, 2);
-  const recentNews = news.slice(2);
+export default async function NewsPage({ searchParams }: PageProps) {
+  if (!searchParams) return null;
+  
+  try {
+    const params = await searchParams;
+    const news = await NewsService.getLatestNews(params.category);
+    const featuredNews = news.slice(0, 2);
+    const recentNews = news.slice(2);
 
-  return (
-    <>
-      <NewsSidebar />
-      <main className="flex-1">
+    return (
+      <>
+        <NewsSidebar />
+        <main className="flex-1">
           <div className="space-y-6 p-6 md:p-10">
-
             {/* Header */}
             <div className="space-y-1.5">
               <Text variant="h1" className="flex items-center">Latest News</Text>
@@ -50,7 +54,11 @@ export default async function NewsPage({ searchParams }: NewsPageProps) {
               </div>
             </div>
           </div>
-      </main>
-    </>
-  );
+        </main>
+      </>
+    );
+  } catch (error) {
+    console.error('Error loading news:', error);
+    notFound();
+  }
 }
