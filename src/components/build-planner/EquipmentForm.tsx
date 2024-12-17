@@ -8,6 +8,7 @@ import type { Database } from '~/lib/supabase/types'
 type Equipment = Database['public']['Tables']['equipment']['Row']
 type EquipmentInsert = Database['public']['Tables']['equipment']['Insert']
 type EquipmentSlot = Database['public']['Enums']['equipment_slot']
+type ItemRarity = 'Normal' | 'Magic' | 'Rare' | 'Unique'
 
 interface EquipmentFormProps {
   buildId: string
@@ -17,11 +18,13 @@ interface EquipmentFormProps {
 
 export function EquipmentForm({ buildId, initialEquipment, onSubmit }: EquipmentFormProps) {
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | undefined>()
   const [name, setName] = useState(initialEquipment?.name || '')
   const [slot, setSlot] = useState<EquipmentSlot>(initialEquipment?.slot || 'mainhand')
   const [baseType, setBaseType] = useState(initialEquipment?.base_type || '')
+  const [typeLine, setTypeLine] = useState(initialEquipment?.type_line || '')
   const [itemLevel, setItemLevel] = useState(initialEquipment?.item_level?.toString() || '')
+  const [rarity, setRarity] = useState<ItemRarity | undefined>(initialEquipment?.rarity)
   const [requirements, setRequirements] = useState<Record<string, number>>(
     (initialEquipment?.requirements as Record<string, number>) || {}
   )
@@ -34,17 +37,29 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
     if (!name || !slot) return
 
     setLoading(true)
-    setError(null)
+    setError(undefined)
 
     try {
       await onSubmit({
         build_id: buildId,
         name,
         slot,
-        base_type: baseType || null,
-        item_level: itemLevel ? parseInt(itemLevel, 10) : null,
-        requirements: Object.keys(requirements).length ? requirements : null,
-        stats: Object.keys(stats).length ? stats : null
+        base_type: baseType || undefined,
+        type_line: typeLine || undefined,
+        width: 1, // Default width
+        height: 1, // Default height
+        rarity,
+        identified: true, // Default to identified
+        item_level: itemLevel ? parseInt(itemLevel, 10) : undefined,
+        requirements: Object.keys(requirements).length ? requirements : undefined,
+        stats: Object.keys(stats).length ? stats : undefined,
+        influences: {}, // Default empty influences
+        properties: [], // Default empty properties
+        sockets: [], // Default empty sockets
+        implicit_mods: [], // Default empty mods
+        explicit_mods: [], // Default empty mods
+        crafted_mods: [], // Default empty mods
+        corrupted: false // Default not corrupted
       })
     } catch (err) {
       console.error('Error saving equipment:', err)
@@ -52,6 +67,19 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
     } finally {
       setLoading(false)
     }
+  }
+
+  const updateRequirement = (stat: string, value: string) => {
+    setRequirements(prev => {
+      const newReqs = { ...prev }
+      const numValue = value ? parseInt(value, 10) : 0
+      if (numValue > 0) {
+        newReqs[stat] = numValue
+      } else {
+        delete newReqs[stat]
+      }
+      return newReqs
+    })
   }
 
   return (
@@ -117,6 +145,21 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
         </div>
 
         <div className="space-y-2">
+          <Text className="text-sm text-foreground/60">Rarity</Text>
+          <select
+            value={rarity || ''}
+            onChange={(e) => setRarity(e.target.value as ItemRarity || undefined)}
+            className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 px-4"
+          >
+            <option value="">Select Rarity</option>
+            <option value="Normal">Normal</option>
+            <option value="Magic">Magic</option>
+            <option value="Rare">Rare</option>
+            <option value="Unique">Unique</option>
+          </select>
+        </div>
+
+        <div className="space-y-2">
           <Text className="text-sm text-foreground/60">Requirements</Text>
           <div className="grid grid-cols-3 gap-4">
             {['strength', 'dexterity', 'intelligence'].map((stat) => (
@@ -127,10 +170,7 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
                 <input
                   type="number"
                   value={requirements[stat] || ''}
-                  onChange={(e) => setRequirements(prev => ({
-                    ...prev,
-                    [stat]: e.target.value ? parseInt(e.target.value, 10) : undefined
-                  }))}
+                  onChange={(e) => updateRequirement(stat, e.target.value)}
                   placeholder="0"
                   min="0"
                   className="w-full h-10 rounded-lg bg-background/95 border-2 border-border/50 px-3"

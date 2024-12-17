@@ -10,6 +10,8 @@ export type POEConnectionStatus = 'connected' | 'disconnected' | 'connecting' | 
 export type VisibilityType = 'public' | 'private' | 'unlisted'
 export type EquipmentSlot = 'mainhand' | 'offhand' | 'helm' | 'body' | 'gloves' | 'boots' | 'amulet' | 'ring1' | 'ring2' | 'belt'
 export type GemType = 'active' | 'support'
+export type SocketColor = 'R' | 'G' | 'B' | 'W' | 'A' | 'DV'
+export type ItemRarity = 'Normal' | 'Magic' | 'Rare' | 'Unique'
 
 export interface POEAccountData {
   connected: boolean
@@ -64,13 +66,13 @@ export interface Database {
           visibility: VisibilityType
           poe_class?: string
           level?: number
-          created_at: string
-          updated_at: string
           notes?: string
           is_template: boolean
           parent_build_id?: string
           version?: string
           tags?: string[]
+          created_at: string
+          updated_at: string
         }
         Insert: {
           id?: string
@@ -80,13 +82,13 @@ export interface Database {
           visibility?: VisibilityType
           poe_class?: string
           level?: number
-          created_at?: string
-          updated_at?: string
           notes?: string
           is_template?: boolean
           parent_build_id?: string
           version?: string
           tags?: string[]
+          created_at?: string
+          updated_at?: string
         }
         Update: {
           id?: string
@@ -96,13 +98,13 @@ export interface Database {
           visibility?: VisibilityType
           poe_class?: string
           level?: number
-          created_at?: string
-          updated_at?: string
           notes?: string
           is_template?: boolean
           parent_build_id?: string
           version?: string
           tags?: string[]
+          created_at?: string
+          updated_at?: string
         }
       }
       equipment: {
@@ -112,8 +114,22 @@ export interface Database {
           slot: EquipmentSlot
           name: string
           base_type?: string
+          type_line?: string
+          width: number
+          height: number
+          icon?: string
+          rarity?: ItemRarity
+          identified: boolean
           item_level?: number
           requirements?: Json
+          influences?: Json
+          properties?: Json[]
+          sockets?: Json[]
+          implicit_mods?: string[]
+          explicit_mods?: string[]
+          crafted_mods?: string[]
+          corrupted?: boolean
+          frame_type?: number
           stats?: Json
           created_at: string
           updated_at: string
@@ -124,8 +140,22 @@ export interface Database {
           slot: EquipmentSlot
           name: string
           base_type?: string
+          type_line?: string
+          width?: number
+          height?: number
+          icon?: string
+          rarity?: ItemRarity
+          identified?: boolean
           item_level?: number
           requirements?: Json
+          influences?: Json
+          properties?: Json[]
+          sockets?: Json[]
+          implicit_mods?: string[]
+          explicit_mods?: string[]
+          crafted_mods?: string[]
+          corrupted?: boolean
+          frame_type?: number
           stats?: Json
           created_at?: string
           updated_at?: string
@@ -136,8 +166,22 @@ export interface Database {
           slot?: EquipmentSlot
           name?: string
           base_type?: string
+          type_line?: string
+          width?: number
+          height?: number
+          icon?: string
+          rarity?: ItemRarity
+          identified?: boolean
           item_level?: number
           requirements?: Json
+          influences?: Json
+          properties?: Json[]
+          sockets?: Json[]
+          implicit_mods?: string[]
+          explicit_mods?: string[]
+          crafted_mods?: string[]
+          corrupted?: boolean
+          frame_type?: number
           stats?: Json
           created_at?: string
           updated_at?: string
@@ -150,10 +194,15 @@ export interface Database {
           equipment_id?: string
           name: string
           type: GemType
+          color?: SocketColor
           level: number
           quality: number
           socket_group?: number
           socket_index?: number
+          support_skill: boolean
+          properties?: Json[]
+          requirements?: Json[]
+          added_mods?: string[]
           tags?: string[]
           stats?: Json
           created_at: string
@@ -165,10 +214,15 @@ export interface Database {
           equipment_id?: string
           name: string
           type: GemType
+          color?: SocketColor
           level?: number
           quality?: number
           socket_group?: number
           socket_index?: number
+          support_skill?: boolean
+          properties?: Json[]
+          requirements?: Json[]
+          added_mods?: string[]
           tags?: string[]
           stats?: Json
           created_at?: string
@@ -180,10 +234,15 @@ export interface Database {
           equipment_id?: string
           name?: string
           type?: GemType
+          color?: SocketColor
           level?: number
           quality?: number
           socket_group?: number
           socket_index?: number
+          support_skill?: boolean
+          properties?: Json[]
+          requirements?: Json[]
+          added_mods?: string[]
           tags?: string[]
           stats?: Json
           created_at?: string
@@ -230,6 +289,7 @@ export interface Database {
       visibility_type: VisibilityType
       equipment_slot: EquipmentSlot
       gem_type: GemType
+      socket_color: SocketColor
     }
   }
 }

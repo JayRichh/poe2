@@ -1,7 +1,15 @@
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Text } from '~/components/ui/Text'
 import { Button } from '~/components/ui/Button'
 import { BuildList } from './BuildList'
+
+export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title: 'Build Planner - POE Tools',
+  description: 'Plan and manage your Path of Exile character builds'
+}
 
 export default function BuildPlannerPage() {
   return (

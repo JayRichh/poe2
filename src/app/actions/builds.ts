@@ -8,6 +8,15 @@ import type { Database } from '~/lib/supabase/types'
 type Build = Database['public']['Tables']['builds']['Row']
 type BuildInsert = Database['public']['Tables']['builds']['Insert']
 type BuildUpdate = Database['public']['Tables']['builds']['Update']
+type Equipment = Database['public']['Tables']['equipment']['Row']
+type SkillGem = Database['public']['Tables']['skill_gems']['Row']
+type BuildConfig = Database['public']['Tables']['build_configs']['Row']
+
+interface BuildWithRelations extends Build {
+  equipment: Equipment[]
+  skill_gems: SkillGem[]
+  build_configs: BuildConfig[]
+}
 
 export async function createBuild(build: BuildInsert) {
   const supabase = createClient()
@@ -88,7 +97,7 @@ export async function deleteBuild(id: string) {
   revalidatePath('/build-planner')
 }
 
-export async function getBuild(id: string) {
+export async function getBuild(id: string): Promise<BuildWithRelations> {
   const supabase = createClient()
 
   const { data, error } = await supabase
@@ -109,7 +118,7 @@ export async function getBuild(id: string) {
     throw new Error('Build not found or unauthorized')
   }
 
-  return data
+  return data as BuildWithRelations
 }
 
 export async function getBuilds(options: {
@@ -117,7 +126,7 @@ export async function getBuilds(options: {
   isTemplate?: boolean
   limit?: number
   offset?: number
-} = {}) {
+} = {}): Promise<Build[]> {
   const supabase = createClient()
 
   const {
@@ -175,7 +184,7 @@ export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {})
     const { error: equipError } = await supabase
       .from('equipment')
       .insert(
-        original.equipment.map((item: any) => ({
+        original.equipment.map((item: Equipment) => ({
           ...item,
           id: undefined,
           build_id: newBuild.id
@@ -190,7 +199,7 @@ export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {})
     const { error: gemsError } = await supabase
       .from('skill_gems')
       .insert(
-        original.skill_gems.map((gem: any) => ({
+        original.skill_gems.map((gem: SkillGem) => ({
           ...gem,
           id: undefined,
           build_id: newBuild.id
@@ -205,7 +214,7 @@ export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {})
     const { error: configError } = await supabase
       .from('build_configs')
       .insert(
-        original.build_configs.map((config: any) => ({
+        original.build_configs.map((config: BuildConfig) => ({
           ...config,
           id: undefined,
           build_id: newBuild.id

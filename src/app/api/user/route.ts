@@ -13,46 +13,33 @@ export async function DELETE() {
       )
     }
 
-    // First get all groups for this user
-    const { data: groups, error: groupsError } = await supabase
-      .from('groups')
-      .select('id')
+    // Delete builds and related data
+    const { error: buildsError } = await supabase
+      .from('builds')
+      .delete()
       .eq('user_id', user.id)
-    if (groupsError) throw groupsError
-    const groupIds = groups.map(g => g.id)
+    if (buildsError) throw buildsError
 
-    if (groupIds.length > 0) {
-      // Get all members in these groups
-      const { data: members, error: membersError } = await supabase
-        .from('members')
-        .select('id')
-        .in('group_id', groupIds)
-      if (membersError) throw membersError
-      const memberIds = members.map(m => m.id)
+    // Delete equipment
+    const { error: equipmentError } = await supabase
+      .from('equipment')
+      .delete()
+      .eq('user_id', user.id)
+    if (equipmentError) throw equipmentError
 
-      if (memberIds.length > 0) {
-        // Delete all gifts for these members
-        const { error: giftsError } = await supabase
-          .from('gifts')
-          .delete()
-          .in('member_id', memberIds)
-        if (giftsError) throw giftsError
-      }
+    // Delete skill gems
+    const { error: skillGemsError } = await supabase
+      .from('skill_gems')
+      .delete()
+      .eq('user_id', user.id)
+    if (skillGemsError) throw skillGemsError
 
-      // Delete all members in these groups
-      const { error: membersDeleteError } = await supabase
-        .from('members')
-        .delete()
-        .in('group_id', groupIds)
-      if (membersDeleteError) throw membersDeleteError
-
-      // Delete all groups
-      const { error: groupsDeleteError } = await supabase
-        .from('groups')
-        .delete()
-        .eq('user_id', user.id)
-      if (groupsDeleteError) throw groupsDeleteError
-    }
+    // Delete build configs
+    const { error: buildConfigsError } = await supabase
+      .from('build_configs')
+      .delete()
+      .eq('user_id', user.id)
+    if (buildConfigsError) throw buildConfigsError
 
     // Delete profile (which will trigger auth.users deletion via our function)
     const { error: profileError } = await supabase

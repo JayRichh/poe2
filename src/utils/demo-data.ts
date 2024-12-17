@@ -1,57 +1,94 @@
 import { createClient } from '~/lib/supabase/client'
-import { generateSlug } from './slug'
-import { useAuth } from '~/contexts/auth'
-import type { GiftStatus } from '../lib/supabase/types'
+import type { Database } from '~/lib/supabase/types'
 
-const DEMO_GROUPS = [
+type VisibilityType = Database['public']['Enums']['visibility_type']
+type EquipmentSlot = Database['public']['Enums']['equipment_slot']
+type GemType = Database['public']['Enums']['gem_type']
+
+const DEMO_BUILDS = [
   {
-    name: "Family",
-    description: "Keep track of gifts for immediate family members",
-    members: [
-      { name: "Mom", gifts: ["Cookbook", "Scarf", "Photo Album"] },
-      { name: "Dad", gifts: ["Tool Set", "Golf Clubs", "Watch"] },
-      { name: "Sister", gifts: ["Headphones", "Jewelry Box", "Art Supplies"] }
+    name: "Cyclone Slayer",
+    description: "A classic melee build using Cyclone skill",
+    poe_class: "duelist",
+    level: 90,
+    visibility: 'public' as VisibilityType,
+    equipment: [
+      {
+        slot: 'mainhand' as EquipmentSlot,
+        name: "Starforge",
+        base_type: "Infernal Sword",
+        item_level: 80,
+        requirements: { strength: 158, dexterity: 113 },
+        stats: { physical_dps: 750 }
+      },
+      {
+        slot: 'body' as EquipmentSlot,
+        name: "Belly of the Beast",
+        base_type: "Full Wyrmscale",
+        item_level: 75,
+        requirements: { strength: 90, dexterity: 60 },
+        stats: { life: 40 }
+      }
+    ],
+    skill_gems: [
+      {
+        name: "Cyclone",
+        type: 'active' as GemType,
+        level: 20,
+        quality: 20,
+        stats: { damage: 150 }
+      },
+      {
+        name: "Melee Physical Damage Support",
+        type: 'support' as GemType,
+        level: 20,
+        quality: 20,
+        stats: { multiplier: 49 }
+      }
     ]
   },
   {
-    name: "Friends",
-    description: "Gift ideas for close friends",
-    members: [
-      { name: "Alex", gifts: ["Board Game", "Coffee Maker", "Backpack"] },
-      { name: "Sarah", gifts: ["Plant Stand", "Yoga Mat", "Tea Set"] },
-      { name: "Mike", gifts: ["Video Game", "Bluetooth Speaker", "Wallet"] }
+    name: "Arc Witch",
+    description: "Lightning-based spell caster using Arc",
+    poe_class: "witch",
+    level: 85,
+    visibility: 'public' as VisibilityType,
+    equipment: [
+      {
+        slot: 'mainhand' as EquipmentSlot,
+        name: "Void Battery",
+        base_type: "Prophecy Wand",
+        item_level: 75,
+        requirements: { intelligence: 146 },
+        stats: { spell_damage: 125 }
+      },
+      {
+        slot: 'body' as EquipmentSlot,
+        name: "Tabula Rasa",
+        base_type: "Simple Robe",
+        item_level: 70,
+        requirements: {},
+        stats: {}
+      }
+    ],
+    skill_gems: [
+      {
+        name: "Arc",
+        type: 'active' as GemType,
+        level: 20,
+        quality: 20,
+        stats: { damage: 120 }
+      },
+      {
+        name: "Lightning Penetration Support",
+        type: 'support' as GemType,
+        level: 20,
+        quality: 20,
+        stats: { penetration: 37 }
+      }
     ]
   }
 ]
-
-const GIFT_COSTS = {
-  min: 20,
-  max: 200
-}
-
-const GIFT_TAGS = [
-  "Birthday", "Holiday", "Special Occasion",
-  "Practical", "Fun", "Luxury",
-  "Handmade", "Experience", "Tech"
-]
-
-const getRandomCost = () => {
-  return Math.floor(Math.random() * (GIFT_COSTS.max - GIFT_COSTS.min + 1)) + GIFT_COSTS.min
-}
-
-const getRandomTags = () => {
-  const numTags = Math.floor(Math.random() * 3) + 1
-  const shuffled = [...GIFT_TAGS].sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, numTags)
-}
-
-const getRandomPriority = () => {
-  return Math.random() > 0.5 ? Math.floor(Math.random() * 3) + 1 : undefined
-}
-
-const getRandomStatus = (): GiftStatus => {
-  return Math.random() > 0.7 ? 'purchased' : 'planned'
-}
 
 export async function generateDemoData() {
   const supabase = createClient()
@@ -61,81 +98,83 @@ export async function generateDemoData() {
   if (!user) throw new Error('User must be logged in to generate demo data')
 
   try {
-    // Check if user already has groups
-    const { data: existingGroups } = await supabase
-      .from('groups')
+    // Check if user already has builds
+    const { data: existingBuilds } = await supabase
+      .from('builds')
       .select('id')
       .eq('user_id', user.id)
       .limit(1)
 
-    if (existingGroups && existingGroups.length > 0) {
-      console.log('User already has groups, skipping demo data generation')
+    if (existingBuilds && existingBuilds.length > 0) {
+      console.log('User already has builds, skipping demo data generation')
       return true
     }
 
-    console.log('Generating demo data for new user...')
+    console.log('Generating demo builds for new user...')
 
-    // Generate demo data
-    for (const groupData of DEMO_GROUPS) {
+    // Generate demo builds
+    for (const buildData of DEMO_BUILDS) {
       try {
-        // Create group
-        const { data: group, error: groupError } = await supabase
-          .from('groups')
+        // Create build
+        const { data: build, error: buildError } = await supabase
+          .from('builds')
           .insert({
             user_id: user.id,
-            name: groupData.name,
-            description: groupData.description,
-            slug: generateSlug(groupData.name),
-            budget: 1000
+            name: buildData.name,
+            description: buildData.description,
+            poe_class: buildData.poe_class,
+            level: buildData.level,
+            visibility: buildData.visibility,
+            is_template: true
           })
           .select()
           .single()
 
-        if (groupError) throw groupError
+        if (buildError) throw buildError
 
-        // Create members and their gifts
-        for (const memberData of groupData.members) {
-          const { data: member, error: memberError } = await supabase
-            .from('members')
-            .insert({
-              group_id: group.id,
-              name: memberData.name,
-              slug: generateSlug(memberData.name)
-            })
-            .select()
-            .single()
-
-          if (memberError) throw memberError
-
-          // Create gifts for member
-          const gifts = memberData.gifts.map(giftName => ({
-            member_id: member.id,
-            name: giftName,
-            description: `A thoughtful gift for ${memberData.name}`,
-            cost: getRandomCost(),
-            status: getRandomStatus(),
-            tags: getRandomTags(),
-            priority: getRandomPriority()
+        // Create equipment
+        if (buildData.equipment?.length) {
+          const equipment = buildData.equipment.map(item => ({
+            build_id: build.id,
+            ...item,
+            width: 1,
+            height: 1,
+            identified: true
           }))
 
-          const { error: giftsError } = await supabase
-            .from('gifts')
-            .insert(gifts)
+          const { error: equipError } = await supabase
+            .from('equipment')
+            .insert(equipment)
 
-          if (giftsError) {
-            console.error(`Error creating gifts for ${memberData.name}:`, giftsError)
-            // Continue with next member even if gifts fail
-            continue
+          if (equipError) {
+            console.error(`Error creating equipment for ${buildData.name}:`, equipError)
           }
         }
-      } catch (groupError) {
-        console.error(`Error creating group ${groupData.name}:`, groupError)
-        // Continue with next group even if one fails
+
+        // Create skill gems
+        if (buildData.skill_gems?.length) {
+          const gems = buildData.skill_gems.map(gem => ({
+            build_id: build.id,
+            ...gem,
+            support_skill: gem.type === 'support'
+          }))
+
+          const { error: gemsError } = await supabase
+            .from('skill_gems')
+            .insert(gems)
+
+          if (gemsError) {
+            console.error(`Error creating skill gems for ${buildData.name}:`, gemsError)
+          }
+        }
+      } catch (buildError) {
+        console.error(`Error creating build ${buildData.name}:`, buildError)
+        // Continue with next build even if one fails
         continue
       }
     }
 
-    console.log('Demo data generation completed')
+    console.log('Demo builds generation completed')
     return true
   } catch (error) {
     console.error('Error generating demo data:', error)
