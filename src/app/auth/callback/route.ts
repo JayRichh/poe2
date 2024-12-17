@@ -23,11 +23,11 @@ export async function GET(request: NextRequest) {
   const state = requestUrl.searchParams.get('state')
   const next = requestUrl.searchParams.get('next')
   const provider = requestUrl.searchParams.get('provider')
-  const cookieStore = await cookies()
-
+  
   // Handle POE OAuth callback
   if (provider === 'poe' && code && state) {
     // Get state and verifier from cookies
+    const cookieStore = await cookies()
     const storedState = cookieStore.get('poeOAuthState')?.value
     const storedVerifier = cookieStore.get('poeOAuthVerifier')?.value
 
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
         })
         .eq('id', user.id)
 
-      // Clear OAuth cookies
+      // Clear OAuth cookies and redirect
       const response = NextResponse.redirect(
         new URL('/profile?poe=connected', requestUrl.origin)
       )
@@ -91,10 +91,24 @@ export async function GET(request: NextRequest) {
       const { data, error } = await supabase.auth.exchangeCodeForSession(code)
       if (error) throw error
 
-      // After successful GitHub auth, redirect to profile or next URL
-      return NextResponse.redirect(
+      // Create response with redirect
+      const response = NextResponse.redirect(
         new URL(next || '/profile', requestUrl.origin)
       )
+
+      // Set the auth cookie data
+      const cookieStore = await cookies()
+      const supabaseCookies = cookieStore.getAll()
+      supabaseCookies.forEach(cookie => {
+        response.cookies.set(cookie.name, cookie.value, {
+          ...cookie,
+          sameSite: 'lax',
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production'
+        })
+      })
+
+      return response
     } catch (error) {
       console.error('GitHub OAuth error:', error)
       return NextResponse.redirect(
@@ -103,12 +117,32 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Handle Supabase email auth callback
+  // Handle email auth callback
   if (code && !provider) {
     const supabase = createClient()
     
     try {
-      await supabase.auth.exchangeCodeForSession(code)
+      const { data, error } = await supabase.auth.exchangeCodeForSession(code)
+      if (error) throw error
+
+      // Create response with redirect
+      const response = NextResponse.redirect(
+        new URL(next || '/profile', requestUrl.origin)
+      )
+
+      // Set the auth cookie data
+      const cookieStore = await cookies()
+      const supabaseCookies = cookieStore.getAll()
+      supabaseCookies.forEach(cookie => {
+        response.cookies.set(cookie.name, cookie.value, {
+          ...cookie,
+          sameSite: 'lax',
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production'
+        })
+      })
+
+      return response
     } catch (error) {
       console.error('Auth callback error:', error)
       return NextResponse.redirect(
@@ -117,8 +151,8 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Redirect to the requested page or default to home
+  // Fallback redirect for any unhandled cases
   return NextResponse.redirect(
-    new URL(next || '/', requestUrl.origin)
+    new URL('/', requestUrl.origin)
   )
 }

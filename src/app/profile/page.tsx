@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import { Container } from '~/components/ui/Container'
 import { Text } from '~/components/ui/Text'
 import { Button } from '~/components/ui/Button'
@@ -9,9 +9,12 @@ import { usePOEAccount } from '~/hooks/usePOEAccount'
 import { User, Mail, Key, Link2, CheckCircle2, RefreshCw } from 'lucide-react'
 import { cn } from '~/utils/cn'
 import { updateProfile, updatePassword } from '~/app/actions/profile'
+import { useRouter } from 'next/navigation'
+import { Spinner } from '~/components/ui/Spinner'
 
 export default function ProfilePage() {
-  const { user, signOut } = useAuth()
+  const router = useRouter()
+  const { user, signOut, refreshSession } = useAuth()
   const { 
     loading: poeLoading,
     error: poeError,
@@ -25,6 +28,7 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,6 +41,8 @@ export default function ProfilePage() {
     try {
       await updateProfile(name)
       setMessage('Profile updated successfully')
+      // Refresh session to get updated user metadata
+      await refreshSession()
     } catch (err) {
       console.error('Error updating profile:', err)
       setError('Failed to update profile')
@@ -58,6 +64,8 @@ export default function ProfilePage() {
     try {
       await updatePassword(newPassword)
       setMessage('Password updated successfully')
+      // Refresh session after password change
+      await refreshSession()
     } catch (err) {
       console.error('Error updating password:', err)
       setError('Failed to update password')
@@ -67,18 +75,33 @@ export default function ProfilePage() {
   }
 
   const handleSignOut = async () => {
-    setLoading(true)
-    try {
-      await signOut()
-    } catch (err) {
-      console.error('Error signing out:', err)
-      setError('Failed to sign out')
-    } finally {
-      setLoading(false)
-    }
+    startTransition(async () => {
+      try {
+        await signOut()
+        router.push('/')
+      } catch (err) {
+        console.error('Error signing out:', err)
+        setError('Failed to sign out')
+      }
+    })
   }
 
-  if (!user) return null
+  // Show loading state during transitions
+  if (isPending) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center">
+        <Spinner size="lg" variant="primary" />
+      </div>
+    )
+  }
+
+  // Redirect if not authenticated
+  if (!user) {
+    startTransition(() => {
+      router.push('/auth/login')
+    })
+    return null
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] p-4">
@@ -149,7 +172,7 @@ export default function ProfilePage() {
             <Button
               type="submit"
               variant="primary"
-              disabled={loading}
+              disabled={loading || isPending}
             >
               {loading ? 'Saving...' : 'Save Changes'}
             </Button>
@@ -187,7 +210,7 @@ export default function ProfilePage() {
                   variant="outline"
                   size="icon"
                   onClick={refreshProfile}
-                  disabled={poeLoading}
+                  disabled={poeLoading || isPending}
                   className="p-2"
                 >
                   <RefreshCw className="h-4 w-4" />
@@ -197,7 +220,7 @@ export default function ProfilePage() {
                 type="button"
                 variant={poeAccount?.connected ? "outline" : "primary"}
                 onClick={poeAccount?.connected ? disconnectPOE : connectPOE}
-                disabled={poeLoading}
+                disabled={poeLoading || isPending}
               >
                 {poeLoading 
                   ? 'Loading...' 
@@ -231,7 +254,7 @@ export default function ProfilePage() {
               type="button"
               variant="outline"
               onClick={handleChangePassword}
-              disabled={loading}
+              disabled={loading || isPending}
             >
               Change Password
             </Button>
@@ -241,7 +264,7 @@ export default function ProfilePage() {
             type="button"
             variant="destructive"
             onClick={handleSignOut}
-            disabled={loading}
+            disabled={loading || isPending}
             className="w-full"
           >
             Sign Out
