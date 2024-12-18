@@ -2,13 +2,15 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
 const PROTECTED_ROUTES = ['/profile', '/build-planner/create']
-const AUTH_ROUTES = ['/auth/login', '/auth/signup', '/auth/reset-password']
 
 export async function middleware(request: NextRequest) {
+  // Skip middleware for static files and API routes
+  if (request.nextUrl.pathname.match(/\.(ico|png|jpg|jpeg|gif|svg)$/) || 
+      request.nextUrl.pathname.startsWith('/api/')) {
+    return NextResponse.next()
+  }
+
   const response = NextResponse.next()
-  const pathname = request.nextUrl.pathname
-  const isAuthRoute = AUTH_ROUTES.some(path => pathname.startsWith(path))
-  const isProtectedRoute = PROTECTED_ROUTES.some(path => pathname.startsWith(path))
 
   // Create Supabase client
   const supabase = createServerClient(
@@ -43,27 +45,31 @@ export async function middleware(request: NextRequest) {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession()
 
     // Clear invalid cookies
-    if (sessionError || !session) {
+    if (sessionError) {
       const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
       cookiesToClear.forEach(name => {
         response.cookies.delete(name)
       })
     }
 
-    // Handle auth routes
-    if (isAuthRoute) {
-      // If logged in, redirect to home (except for RSC requests)
-      if (session && !request.headers.get('rsc')) {
-        return NextResponse.redirect(new URL('/', request.url))
-      }
-      // Always allow access to auth routes
+    // Check if this is an RSC request
+    const isRsc = request.headers.get('rsc') === '1'
+    const isAuthRoute = request.nextUrl.pathname.startsWith('/auth/')
+
+    // For RSC requests to auth routes, always allow
+    if (isRsc && isAuthRoute) {
       return response
     }
 
-    // Handle protected routes
-    if (isProtectedRoute && !session) {
+    // For non-RSC requests to auth routes when logged in, redirect to home
+    if (!isRsc && isAuthRoute && session) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    // For protected routes without session, redirect to login
+    if (PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path)) && !session) {
       const redirectUrl = new URL('/auth/login', request.url)
-      redirectUrl.searchParams.set('next', pathname)
+      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
     }
 
@@ -77,16 +83,11 @@ export async function middleware(request: NextRequest) {
       response.cookies.delete(name)
     })
 
-    // If protected route, redirect to login
-    if (isProtectedRoute) {
+    // For protected routes, redirect to login
+    if (PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path))) {
       const redirectUrl = new URL('/auth/login', request.url)
-      redirectUrl.searchParams.set('next', pathname)
+      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
-    }
-
-    // Allow access to auth routes even on error
-    if (isAuthRoute) {
-      return response
     }
 
     return response
@@ -95,6 +96,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$|api).*)',
+    '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 }
