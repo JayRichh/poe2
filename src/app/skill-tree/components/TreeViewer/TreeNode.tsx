@@ -9,6 +9,7 @@ interface TreeNodeProps {
   isHighlighted: boolean;
   isAllocated: boolean;
   isPath: boolean;
+  imageSize: { width: number; height: number };
   onClick: (node: TreeNodeData) => void;
   onMouseEnter: (node: TreeNodeData) => void;
   onMouseLeave: (node: TreeNodeData) => void;
@@ -64,6 +65,7 @@ const TreeNode = React.memo(function TreeNode({
   isHighlighted,
   isAllocated,
   isPath,
+  imageSize,
   onClick,
   onMouseEnter,
   onMouseLeave
@@ -115,13 +117,13 @@ const TreeNode = React.memo(function TreeNode({
     };
   }, [node.type, isSelected, isHighlighted, isAllocated, isPath, size, scale]);
 
-  // Memoize position style
+  // Calculate absolute position in pixels
   const positionStyle = useMemo(() => ({
-    left: `${node.position.x * 100}%`,
-    top: `${node.position.y * 100}%`,
+    left: `${node.position.x * imageSize.width}px`,
+    top: `${node.position.y * imageSize.height}px`,
     transform: 'translate3d(-50%, -50%, 0)',
     willChange: 'transform',
-  }), [node.position.x, node.position.y]);
+  }), [node.position.x, node.position.y, imageSize.width, imageSize.height]);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();

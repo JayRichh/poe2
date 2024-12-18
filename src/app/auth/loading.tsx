@@ -4,7 +4,7 @@ import { Skeleton } from '~/components/ui/Skeleton'
 
 export default function AuthLoading() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
       <Container className="max-w-md py-12">
         <Card className="p-6 space-y-8">
           <div className="space-y-2 text-center">

@@ -4,7 +4,7 @@ import { Skeleton } from '~/components/ui/Skeleton'
 
 export default function BuildPlannerLoading() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] p-4">
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
       <Container className="max-w-7xl py-8 space-y-8">
         <div className="flex items-center justify-between gap-4">
           <div>

@@ -11,7 +11,7 @@ export default function NewsLoading() {
   return (
     <div className="flex min-h-screen">
       <NewsSidebar />
-      <main className="flex-1 min-h-[calc(100vh-4rem)]">
+      <main className="flex-1 min-h-[calc(100vh-3rem)]">
         <Container className="py-8">
           <div className="space-y-8">
             {/* Header Skeleton */}

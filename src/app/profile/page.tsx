@@ -98,7 +98,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] p-4">
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
       <Container className="max-w-2xl py-8 space-y-8">
         <div className="flex flex-col space-y-1">
           <Text className="text-3xl font-bold">Profile Settings</Text>

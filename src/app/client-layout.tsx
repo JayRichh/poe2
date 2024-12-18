@@ -24,6 +24,7 @@ function MainContentLoading() {
     </div>
   );
 }
+
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   useDefaultDarkMode();
   
@@ -46,8 +47,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         </Suspense>
 
         {/* Main content */}
-        <main className="flex-1 pt-16 sm:pt-20 relative z-10">
-          <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)]">
+        <main className="flex-1 pt-12 sm:pt-16 relative z-10">
+          <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]">
             <Suspense fallback={<MainContentLoading />}>{children}</Suspense>
           </div>
         </main>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function BuildPlannerPage() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)]">
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]">
         <div className="flex items-center justify-between gap-4">
             <Text className="text-3xl font-bold">Build Planner</Text>
             <Text className="text-foreground/60">

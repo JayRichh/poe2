@@ -97,7 +97,6 @@ export function sanitizeString(text: string): string {
   return DOMPurify.sanitize(text);
 }
 
-// Pan/zoom utility functions
 export function clampPanOffsets(
   newPanOffset: Position,
   containerDimensions: Dimensions,
@@ -107,16 +106,20 @@ export function clampPanOffsets(
   const scaledWidth = imageDimensions.width * scale;
   const scaledHeight = imageDimensions.height * scale;
 
-  const minPanX = containerDimensions.width - scaledWidth;
-  const minPanY = containerDimensions.height - scaledHeight;
+  // Allow panning beyond bounds to ensure nodes stay centered
+  const padding = Math.max(containerDimensions.width, containerDimensions.height) * 0.1;
+  const minPanX = containerDimensions.width - scaledWidth - padding;
+  const minPanY = containerDimensions.height - scaledHeight - padding;
+  const maxPanX = padding;
+  const maxPanY = padding;
 
   return {
-    x: containerDimensions.width < scaledWidth 
-      ? Math.max(minPanX, Math.min(0, newPanOffset.x))
-      : (containerDimensions.width - scaledWidth) / 2,
-    y: containerDimensions.height < scaledHeight
-      ? Math.max(minPanY, Math.min(0, newPanOffset.y))
-      : (containerDimensions.height - scaledHeight) / 2
+    x: scaledWidth <= containerDimensions.width
+      ? (containerDimensions.width - scaledWidth) / 2
+      : Math.min(maxPanX, Math.max(minPanX, newPanOffset.x)),
+    y: scaledHeight <= containerDimensions.height
+      ? (containerDimensions.height - scaledHeight) / 2
+      : Math.min(maxPanY, Math.max(minPanY, newPanOffset.y))
   };
 }
 
@@ -126,12 +129,12 @@ export function calculateZoomPanOffset(
   oldScale: number,
   newScale: number
 ): Position {
-  const nodeX = (mousePosition.x - currentPanOffset.x) / oldScale;
-  const nodeY = (mousePosition.y - currentPanOffset.y) / oldScale;
+  const worldX = (mousePosition.x - currentPanOffset.x) / oldScale;
+  const worldY = (mousePosition.y - currentPanOffset.y) / oldScale;
 
   return {
-    x: mousePosition.x - nodeX * newScale,
-    y: mousePosition.y - nodeY * newScale
+    x: mousePosition.x - (worldX * newScale),
+    y: mousePosition.y - (worldY * newScale)
   };
 }
 
@@ -140,9 +143,12 @@ export function calculateInitialPanOffset(
   imageDimensions: Dimensions,
   scale: number
 ): Position {
+  const scaledWidth = imageDimensions.width * scale;
+  const scaledHeight = imageDimensions.height * scale;
+  
   return {
-    x: (containerDimensions.width - imageDimensions.width * scale) / 2,
-    y: (containerDimensions.height - imageDimensions.height * scale) / 2
+    x: (containerDimensions.width - scaledWidth) / 2,
+    y: (containerDimensions.height - scaledHeight) / 2
   };
 }
 

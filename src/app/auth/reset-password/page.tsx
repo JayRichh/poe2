@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function ResetPasswordPage() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center p-4">
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
       <Container className="max-w-md py-12">
         <div className="space-y-8">
           <div className="text-center">

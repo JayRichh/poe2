@@ -25,8 +25,8 @@ export default function BuildPlannerLayout({
   return (
     <div className="min-h-screen pt-28">
       <div className={cn(
-        "fixed top-16 sm:top-20 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
-        !isVisible ? "-translate-y-[calc(100%+37px)]" : "translate-y-0"
+        "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
+        !isVisible ? "-translate-y-[calc(100%+20px)]" : "translate-y-0"
       )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center space-x-8 h-full">

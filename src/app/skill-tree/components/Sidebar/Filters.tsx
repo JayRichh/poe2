@@ -83,12 +83,12 @@ export function Filters({
   return (
     <div className="h-full flex flex-col">
       {/* Tab Navigation */}
-      <div className="flex border-b border-gray-700 mb-4">
+      <div className="flex border-b border-border mb-4">
         <button
           className={`flex-1 px-4 py-2 text-sm font-medium transition-colors
             ${activeTab === 'filters' 
-              ? 'text-white border-b-2 border-blue-500' 
-              : 'text-gray-400 hover:text-white'}`}
+              ? 'text-foreground border-b-2 border-primary/50' 
+              : 'text-muted-foreground hover:text-foreground'}`}
           onClick={() => setActiveTab('filters')}
         >
           Filters
@@ -96,8 +96,8 @@ export function Filters({
         <button
           className={`flex-1 px-4 py-2 text-sm font-medium transition-colors
             ${activeTab === 'search' 
-              ? 'text-white border-b-2 border-blue-500' 
-              : 'text-gray-400 hover:text-white'}`}
+              ? 'text-foreground border-b-2 border-primary/50' 
+              : 'text-muted-foreground hover:text-foreground'}`}
           onClick={() => setActiveTab('search')}
         >
           Search
@@ -114,10 +114,10 @@ export function Filters({
                 <button
                   key={ascendancy}
                   onClick={() => onAscendancyChange(ascendancy)}
-                  className={`flex flex-col items-center p-2 rounded transition-colors
+                  className={`flex flex-col items-center p-2 rounded-lg transition-colors
                     ${selectedAscendancy === ascendancy 
-                      ? 'bg-blue-600 hover:bg-blue-700' 
-                      : 'bg-gray-700 hover:bg-gray-600'}`}
+                      ? 'bg-accent-foreground/10 border border-accent-foreground/20' 
+                      : 'bg-accent hover:bg-accent/80'}`}
                 >
                   {ascendancy !== 'None' && (
                     <div className="relative w-12 h-12 mb-1">
@@ -144,7 +144,7 @@ export function Filters({
                   type="checkbox"
                   checked={highlightKeystones}
                   onChange={(e) => onHighlightKeystonesChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Keystones</span>
               </label>
@@ -153,7 +153,7 @@ export function Filters({
                   type="checkbox"
                   checked={highlightNotables}
                   onChange={(e) => onHighlightNotablesChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Notables</span>
               </label>
@@ -162,7 +162,7 @@ export function Filters({
                   type="checkbox"
                   checked={highlightNormal}
                   onChange={(e) => onHighlightNormalChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Normal Nodes</span>
               </label>
@@ -178,7 +178,7 @@ export function Filters({
                   type="checkbox"
                   checked={hideUnidentified}
                   onChange={(e) => onHideUnidentifiedChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Unidentified</span>
               </label>
@@ -187,7 +187,7 @@ export function Filters({
                   type="checkbox"
                   checked={hideUnselected}
                   onChange={(e) => onHideUnselectedChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Unselected</span>
               </label>
@@ -196,7 +196,7 @@ export function Filters({
                   type="checkbox"
                   checked={hideNormal}
                   onChange={(e) => onHideNormalChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Normal Nodes</span>
               </label>
@@ -212,7 +212,7 @@ export function Filters({
                   type="checkbox"
                   checked={showKeywordDetails}
                   onChange={(e) => onShowKeywordDetailsChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Keywords</span>
               </label>
@@ -221,7 +221,7 @@ export function Filters({
                   type="checkbox"
                   checked={showSkillDetails}
                   onChange={(e) => onShowSkillDetailsChange(e.target.checked)}
-                  className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                  className="form-checkbox bg-accent border-border rounded"
                 />
                 <span>Skills</span>
               </label>
@@ -240,7 +240,7 @@ export function Filters({
                     type="checkbox"
                     checked={isRegexSearch}
                     onChange={(e) => onRegexSearchChange(e.target.checked)}
-                    className="form-checkbox bg-gray-700 border-gray-600 rounded"
+                    className="form-checkbox bg-accent border-border rounded"
                   />
                   <span>Regex Mode</span>
                 </label>
@@ -251,12 +251,12 @@ export function Filters({
                   value={searchTerm}
                   onChange={(e) => onSearchChange(e.target.value)}
                   placeholder="Search nodes..."
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-accent border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent-foreground/20"
                 />
                 {searchTerm && (
                   <button
                     onClick={() => onSearchChange('')}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
                     ×
                   </button>

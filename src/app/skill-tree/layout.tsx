@@ -23,9 +23,9 @@ export default function SkillTreeLayout({
 
   return (
     <div 
-      className="flex flex-col w-full overflow-hidden bg-gray-900"
+      className="flex flex-col w-full overflow-hidden bg-background"
       style={{ 
-          height: 'calc((var(--vh, 1vh) * 100) - 5rem)'
+          height: 'calc((var(--vh, 0vh) * 100) - 4rem)'
       }}
     >
       <div className="flex-1 relative">

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Settings, Sun, Moon, Monitor, LogOut, User, Layout, Calculator, LogIn } from "lucide-react";
+import { X, Settings, Sun, Moon, Monitor, LogOut, User, Layout, Calculator, LogIn, GitBranch } from "lucide-react";
 import { Button } from "./Button";
 import { cn } from "../../utils/cn";
 import { useRouter, usePathname } from "next/navigation";
@@ -13,6 +13,7 @@ import { useAuth } from "~/contexts/auth";
 
 const mainLinks = [
   { label: "Build Planner", path: "/build-planner", icon: Layout },
+  { label: "Skill Tree", path: "/skill-tree", icon: GitBranch },
   { label: "DPS Calculator", path: "/dps-calc", icon: Calculator },
 ];
 

@@ -28,6 +28,7 @@ const THROTTLE_MS = 16;
 const MIN_SCALE = 0.15;
 const MAX_SCALE = 3;
 const ZOOM_STEP = 0.15;
+const BOTTOM_BAR_HEIGHT = 56;
 
 function isNodeInViewport(
   node: TreeNodeData,
@@ -43,19 +44,8 @@ function isNodeInViewport(
     nodeX >= -VIEWPORT_PADDING &&
     nodeX <= container.width + VIEWPORT_PADDING &&
     nodeY >= -VIEWPORT_PADDING &&
-    nodeY <= container.height + VIEWPORT_PADDING
+    nodeY <= container.height - BOTTOM_BAR_HEIGHT + VIEWPORT_PADDING
   );
-}
-
-function calculateFitToViewScale(
-  containerWidth: number,
-  containerHeight: number,
-  imageWidth: number,
-  imageHeight: number
-): number {
-  const scaleX = (containerWidth - VIEWPORT_PADDING * 2) / imageWidth;
-  const scaleY = (containerHeight - VIEWPORT_PADDING * 2) / imageHeight;
-  return Math.min(scaleX, scaleY);
 }
 
 export function TreeViewer({
@@ -77,11 +67,33 @@ export function TreeViewer({
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [startPan, setStartPan] = useState({ x: 0, y: 0 });
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>();
+
+  const handleImageLoad = useCallback(() => {
+    if (!containerRef.current || !imageRef.current) return;
+    const container = containerRef.current;
+    const image = imageRef.current;
+    
+    // Set image dimensions
+    setImageSize({
+      width: image.naturalWidth,
+      height: image.naturalHeight
+    });
+
+    // Calculate initial pan offset
+    setPanOffset(calculateInitialPanOffset(
+      { width: container.clientWidth, height: container.clientHeight },
+      { width: image.naturalWidth, height: image.naturalHeight },
+      scale
+    ));
+    
+    setHasLoaded(true);
+  }, [scale]);
 
   const handleZoom = useCallback((newScale: number, center?: { x: number; y: number }) => {
     if (!containerRef.current || !imageRef.current) return;
@@ -113,11 +125,9 @@ export function TreeViewer({
     if (!containerRef.current || !imageRef.current) return;
     const container = containerRef.current;
     const image = imageRef.current;
-    const newScale = calculateFitToViewScale(
-      container.clientWidth,
-      container.clientHeight,
-      image.naturalWidth,
-      image.naturalHeight
+    const newScale = Math.min(
+      (container.clientWidth - VIEWPORT_PADDING * 2) / image.naturalWidth,
+      (container.clientHeight - VIEWPORT_PADDING * 2 - BOTTOM_BAR_HEIGHT) / image.naturalHeight
     );
     handleZoom(newScale);
   }, [handleZoom]);
@@ -170,35 +180,6 @@ export function TreeViewer({
     setIsPanning(false);
   }, []);
 
-  const updateSearchResults = useMemo(() =>
-    debounce((term: string, regex: boolean, data: TreeData | null) => {
-      if (!data || !term) {
-        setSearchResults(new Set());
-        return;
-      }
-      try {
-        const searchRegex = regex 
-          ? new RegExp(term, 'i')
-          : new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-        const results = new Set<string>();
-        Object.values(data.nodes).forEach(node => {
-          if (searchRegex.test(node.name) || node.description.some(desc => searchRegex.test(desc))) {
-            results.add(node.id);
-          }
-        });
-        setSearchResults(results);
-      } catch (error) {
-        console.error('Search error:', error);
-        setSearchResults(new Set());
-      }
-    }, 150),
-    []
-  );
-
-  useEffect(() => {
-    updateSearchResults(searchTerm, isRegexSearch, treeData);
-  }, [searchTerm, isRegexSearch, treeData, updateSearchResults]);
-
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
@@ -212,21 +193,8 @@ export function TreeViewer({
       }
       handleMouseMove.cancel();
       handleWheel.cancel();
-      updateSearchResults.cancel();
     };
   }, [handleMouseMove, handleMouseUp, handleWheel]);
-
-  const handleImageLoad = useCallback(() => {
-    if (!containerRef.current || !imageRef.current) return;
-    const container = containerRef.current;
-    const image = imageRef.current;
-    setPanOffset(calculateInitialPanOffset(
-      { width: container.clientWidth, height: container.clientHeight },
-      { width: image.naturalWidth, height: image.naturalHeight },
-      scale
-    ));
-    setHasLoaded(true);
-  }, [scale]);
 
   const filteredNodes = useMemo(() => {
     if (!treeData) return [];
@@ -238,20 +206,16 @@ export function TreeViewer({
   const visibleNodes = useMemo(() => {
     if (!containerRef.current || !imageRef.current || !hasLoaded) return filteredNodes;
     const containerRect = containerRef.current.getBoundingClientRect();
-    const imageSize = {
-      width: imageRef.current.naturalWidth,
-      height: imageRef.current.naturalHeight
-    };
     return filteredNodes.filter(node =>
       isNodeInViewport(node, containerRect, imageSize, scale, panOffset)
     );
-  }, [filteredNodes, scale, panOffset, hasLoaded]);
+  }, [filteredNodes, scale, panOffset, hasLoaded, imageSize]);
 
   if (!treeData) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-[#070b0f] text-white">
+      <div className="w-full h-full flex items-center justify-center bg-background text-foreground">
         <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent" />
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-foreground border-t-transparent" />
           <div>Loading skill tree...</div>
         </div>
       </div>
@@ -261,31 +225,47 @@ export function TreeViewer({
   return (
     <div 
       ref={containerRef}
-      className="w-full h-full relative bg-[#070b0f] overflow-hidden"
+      className="w-full h-full relative bg-background overflow-hidden"
       style={{ cursor: isPanning ? 'grabbing' : 'grab' }}
       onMouseDown={handleMouseDown}
     >
+      {/* Zoom Controls */}
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-2">
-        <button onClick={zoomIn} className="bg-gray-800/90 hover:bg-gray-700/90 text-white rounded-lg p-2 backdrop-blur-sm transition-colors" title="Zoom in">
-          <ZoomIn className="w-5 h-5" />
+        <button 
+          onClick={zoomIn} 
+          className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
+          title="Zoom in"
+        >
+          <ZoomIn className="w-4 h-4" />
         </button>
-        <button onClick={zoomOut} className="bg-gray-800/90 hover:bg-gray-700/90 text-white rounded-lg p-2 backdrop-blur-sm transition-colors" title="Zoom out">
-          <ZoomOut className="w-5 h-5" />
+        <button 
+          onClick={zoomOut} 
+          className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
+          title="Zoom out"
+        >
+          <ZoomOut className="w-4 h-4" />
         </button>
-        <button onClick={fitToView} className="bg-gray-800/90 hover:bg-gray-700/90 text-white rounded-lg p-2 backdrop-blur-sm transition-colors" title="Fit to view">
-          <Maximize2 className="w-5 h-5" />
+        <button 
+          onClick={fitToView} 
+          className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
+          title="Fit to view"
+        >
+          <Maximize2 className="w-4 h-4" />
         </button>
       </div>
 
-      <div style={{
-        transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
-        transformOrigin: '0 0',
-        position: 'absolute',
-        width: imageRef.current?.naturalWidth || '100%',
-        height: imageRef.current?.naturalHeight || '100%',
-        willChange: 'transform',
-        userSelect: 'none'
-      }}>
+      {/* Tree Content */}
+      <div 
+        style={{
+          transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
+          transformOrigin: '0 0',
+          position: 'absolute',
+          width: imageSize.width || '100%',
+          height: imageSize.height || '100%',
+          willChange: 'transform',
+          userSelect: 'none'
+        }}
+      >
         <img
           ref={imageRef}
           src="/skill-tree.png"
@@ -324,6 +304,7 @@ export function TreeViewer({
             isHighlighted={hoveredNode?.id === node.id || searchResults.has(node.id)}
             isAllocated={allocatedNodes.has(node.id)}
             isPath={false}
+            imageSize={imageSize}
             onClick={() => {
               onNodeSelect(node);
               onNodeAllocate(node);
@@ -334,18 +315,18 @@ export function TreeViewer({
         ))}
       </div>
 
+      {/* Node Tooltip */}
       {hoveredNode && (
         <div
           ref={tooltipRef}
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none z-[1000]"
           style={{
             transform: `translate3d(
-              ${hoveredNode.position.x * imageRef.current!.naturalWidth * scale + panOffset.x + 20}px,
-              ${hoveredNode.position.y * imageRef.current!.naturalHeight * scale + panOffset.y - 20}px,
+              ${hoveredNode.position.x * imageSize.width * scale + panOffset.x + 20}px,
+              ${hoveredNode.position.y * imageSize.height * scale + panOffset.y - 20}px,
               0
             )`,
-            willChange: 'transform',
-            zIndex: 1000
+            willChange: 'transform'
           }}
         >
           <TreeNodeTooltip

@@ -16,15 +16,15 @@ import { Dropdown } from "./ui/Dropdown";
 const PROTECTED_ROUTES = ["/profile"];
 
 const primaryLinks = [
-  { href: "/build-planner", label: "Build Planner", icon: Layout },
   { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
+  { href: "/build-planner", label: "Build Planner", icon: Layout },
   { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
 ];
 
 const secondaryLinks = [
   { 
     href: "/news", 
-    label: "Game Utils", 
+    label: "News", 
     icon: Newspaper,
     description: "Latest updates, announcements & events"
   },
@@ -62,7 +62,8 @@ export function Navigation() {
       >
         <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+
+          <div className="flex items-center justify-between h-12 sm:h-16">
             
             <span className="flex col gap-5">
               <Link 
@@ -93,9 +94,9 @@ export function Navigation() {
                         {/* <Icon className="w-4 h-4" /> */}
                         {label}
                         {isActive && (
-                          <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
+                          <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-[2px] bg-primary" />
                         )}
-                        <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+                        <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
                       </Link>
                     );
                   })}

@@ -11,6 +11,7 @@ const contributors = [
 
 const navLinks = [
   { href: "/build-planner", label: "Build Planner" },
+  { href: "/skill-tree", label: "Skill Tree" },
   { href: "/dps-calc", label: "DPS Calculator" },
 ];
 

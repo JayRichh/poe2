@@ -3,6 +3,7 @@
 import React from 'react';
 import { TreeNodeData } from '../TreeViewer/data';
 import { highlightKeywords, highlightSkills } from '../../utils/textHighlighting';
+import { X } from 'lucide-react';
 
 interface NodeDetailsProps {
   node: TreeNodeData | null;
@@ -19,7 +20,7 @@ export function NodeDetails({
 }: NodeDetailsProps) {
   if (!node) {
     return (
-      <div className="text-gray-400 text-center p-4">
+      <div className="text-muted-foreground text-center p-4">
         Select a node to view details
       </div>
     );
@@ -31,17 +32,17 @@ export function NodeDetails({
       <div className="flex justify-between items-start">
         <div>
           <h2 className="text-xl font-bold">{node.name}</h2>
-          <div className="text-sm text-gray-400 capitalize">{node.type}</div>
+          <div className="text-sm text-muted-foreground capitalize">{node.type}</div>
           {node.ascendancy && (
-            <div className="text-sm text-blue-400">{node.ascendancy}</div>
+            <div className="text-sm text-primary">{node.ascendancy}</div>
           )}
         </div>
         <button
           onClick={onClose}
-          className="text-gray-400 hover:text-white p-1"
+          className="text-muted-foreground hover:text-foreground p-1 rounded-lg hover:bg-accent transition-colors"
           aria-label="Close details"
         >
-          ×
+          <X className="w-4 h-4" />
         </button>
       </div>
 
@@ -51,7 +52,7 @@ export function NodeDetails({
         {node.description.map((desc, i) => (
           <p 
             key={i} 
-            className="text-gray-300"
+            className="text-muted-foreground"
             dangerouslySetInnerHTML={{ 
               __html: highlightKeywords(highlightSkills(desc))
             }}
@@ -65,7 +66,7 @@ export function NodeDetails({
           <h3 className="font-semibold text-lg">Skills</h3>
           <div className="space-y-4">
             {node.skills.map((skill, i) => (
-              <div key={i} className="bg-gray-800 rounded-lg p-4">
+              <div key={i} className="bg-accent rounded-lg p-4">
                 <div className="flex items-start gap-4">
                   {skill.icon && (
                     <img
@@ -77,7 +78,7 @@ export function NodeDetails({
                   <div>
                     <h4 className="font-semibold text-cyan-200">{skill.name}</h4>
                     <p 
-                      className="text-sm text-gray-300 mt-1"
+                      className="text-sm text-muted-foreground mt-1"
                       dangerouslySetInnerHTML={{ 
                         __html: highlightKeywords(skill.description)
                       }}
@@ -100,12 +101,12 @@ export function NodeDetails({
                 key={i}
                 className="group relative"
               >
-                <span className="bg-gray-700 px-2 py-1 rounded text-sm cursor-help">
+                <span className="bg-accent px-2 py-1 rounded-lg text-sm cursor-help">
                   {keyword.name}
                 </span>
                 {/* Tooltip */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-2 bg-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <p className="text-sm text-gray-300">{keyword.description}</p>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-2 bg-popover rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                  <p className="text-sm text-popover-foreground">{keyword.description}</p>
                 </div>
               </div>
             ))}
@@ -116,7 +117,7 @@ export function NodeDetails({
       {/* Connections */}
       <div className="space-y-2">
         <h3 className="font-semibold text-lg">Connections</h3>
-        <div className="text-sm text-gray-300">
+        <div className="text-sm text-muted-foreground">
           {node.connections.length} connected {node.connections.length === 1 ? 'node' : 'nodes'}
         </div>
       </div>
