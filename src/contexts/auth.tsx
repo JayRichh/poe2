@@ -46,18 +46,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }))
     } catch (error) {
       console.error('Session refresh error:', error)
-      // Clear state on error
       setState(prev => ({
         ...prev,
         user: null,
         loading: false,
         error: null
       }))
-      // Redirect to login if on protected route
-      if (window.location.pathname.startsWith('/profile') || 
-          window.location.pathname.startsWith('/build-planner/create')) {
-        router.push('/auth/login')
-      }
     }
   }
 
@@ -65,16 +59,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       await supabase.auth.signOut()
       setState(prev => ({ ...prev, user: null, error: null }))
-      router.push('/')
+      window.location.href = '/'
     } catch (error) {
       console.error('Sign out error:', error)
-      // Clear state even if error occurs
       setState(prev => ({
         ...prev,
         user: null,
         error: null
       }))
-      router.push('/')
+      window.location.href = '/'
     }
   }
 
@@ -91,7 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           loading: false,
           error: null
         }))
-        router.push('/')
+        window.location.href = '/'
       } else if (session?.user) {
         setState(prev => ({
           ...prev,

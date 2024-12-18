@@ -2,14 +2,20 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
 const PROTECTED_ROUTES = ['/profile', '/build-planner/create']
-const AUTH_ROUTES = ['/auth/login', '/auth/signup', '/auth/reset-password']
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  })
+  // Skip middleware for auth routes completely
+  if (request.nextUrl.pathname.startsWith('/auth/')) {
+    return NextResponse.next()
+  }
+
+  // Skip middleware for non-protected routes
+  if (!PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path))) {
+    return NextResponse.next()
+  }
+
+  // Only check auth for protected routes
+  const response = NextResponse.next()
 
   try {
     const supabase = createServerClient(
@@ -40,54 +46,20 @@ export async function middleware(request: NextRequest) {
       }
     )
 
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-    const pathname = request.nextUrl.pathname
-    const isRsc = request.headers.get('rsc') === '1'
+    const { data: { session } } = await supabase.auth.getSession()
 
-    // Clear cookies if session error or expired
-    if (sessionError || !session) {
-      const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
-      cookiesToClear.forEach(name => {
-        response.cookies.delete(name)
-      })
-    }
-
-    // Handle protected routes - redirect to login if no session
-    if (PROTECTED_ROUTES.some(path => pathname.startsWith(path))) {
-      if (!session) {
-        const redirectUrl = new URL('/auth/login', request.url)
-        redirectUrl.searchParams.set('next', pathname)
-        return NextResponse.redirect(redirectUrl)
-      }
-    }
-
-    // Handle auth routes - redirect to home if already logged in
-    // Skip redirect for RSC requests to prevent infinite loops
-    if (AUTH_ROUTES.some(path => pathname.startsWith(path))) {
-      if (session && !isRsc) {
-        return NextResponse.redirect(new URL('/', request.url))
-      }
+    if (!session) {
+      const redirectUrl = new URL('/auth/login', request.url)
+      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
+      return NextResponse.redirect(redirectUrl)
     }
 
     return response
   } catch (error) {
     console.error('Middleware error:', error)
-    
-    // On error, clear cookies and allow request to continue
-    const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
-    cookiesToClear.forEach(name => {
-      response.cookies.delete(name)
-    })
-
-    // If on protected route, redirect to login
-    const pathname = request.nextUrl.pathname
-    if (PROTECTED_ROUTES.some(path => pathname.startsWith(path))) {
-      const redirectUrl = new URL('/auth/login', request.url)
-      redirectUrl.searchParams.set('next', pathname)
-      return NextResponse.redirect(redirectUrl)
-    }
-
-    return response
+    const redirectUrl = new URL('/auth/login', request.url)
+    redirectUrl.searchParams.set('next', request.nextUrl.pathname)
+    return NextResponse.redirect(redirectUrl)
   }
 }
 
