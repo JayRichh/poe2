@@ -1,8 +1,8 @@
-import { createClient } from '~/lib/supabase/server'
+import { getServerClient } from '~/lib/supabase/actions'
 import { revalidatePath } from 'next/cache'
 
 export async function updateProfile(name: string) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user }, error: userError } = await supabase.auth.getUser()
 
@@ -28,7 +28,7 @@ export async function updateProfile(name: string) {
 }
 
 export async function updatePassword(newPassword: string) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { error } = await supabase.auth.updateUser({
     password: newPassword
@@ -38,7 +38,7 @@ export async function updatePassword(newPassword: string) {
 }
 
 export async function deleteAccount() {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user }, error: userError } = await supabase.auth.getUser()
 

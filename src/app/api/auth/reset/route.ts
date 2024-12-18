@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { createClient } from '~/lib/supabase/server'
+import { getServerClient } from '~/lib/supabase/actions'
 
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json()
-    const supabase = await createClient()
+    const supabase = await getServerClient()
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${request.nextUrl.origin}/api/auth/callback?type=recovery`

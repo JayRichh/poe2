@@ -1,4 +1,4 @@
-import { createClient } from '~/lib/supabase/server'
+import { getServerClient } from '~/lib/supabase/actions'
 import { revalidatePath } from 'next/cache'
 import type { Database } from '~/lib/supabase/types'
 
@@ -13,7 +13,7 @@ interface BuildWithRelations extends Build {
 }
 
 export async function createBuild(build: BuildInsert) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Must be logged in to create builds')
@@ -31,7 +31,7 @@ export async function createBuild(build: BuildInsert) {
 }
 
 export async function updateBuild(id: string, updates: BuildUpdate) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Must be logged in to update builds')
@@ -61,7 +61,7 @@ export async function updateBuild(id: string, updates: BuildUpdate) {
 }
 
 export async function deleteBuild(id: string) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Must be logged in to delete builds')
@@ -88,7 +88,7 @@ export async function deleteBuild(id: string) {
 }
 
 export async function getBuild(id: string): Promise<BuildWithRelations> {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data, error } = await supabase
     .from('builds')
@@ -122,7 +122,7 @@ export async function getBuilds({
   userId?: string
   visibility?: 'public' | 'private' | 'unlisted'
 } = {}): Promise<Build[]> {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   let query = supabase
     .from('builds')
@@ -144,7 +144,7 @@ export async function getBuilds({
 }
 
 export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {}) {
-  const supabase = await createClient()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Must be logged in to clone builds')

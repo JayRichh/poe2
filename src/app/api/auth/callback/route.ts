@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { createClient } from '~/lib/supabase/server'
+import { getServerClient } from '~/lib/supabase/actions'
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/', requestUrl.origin))
     }
 
-    const supabase = await createClient()
+    const supabase = await getServerClient()
 
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     
@@ -32,12 +32,21 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/profile', requestUrl.origin))
     }
 
-    // Default redirect
+    // Default redirect with RSC cache busting
     const redirectTo = next 
       ? new URL(next, requestUrl.origin)
       : new URL('/profile', requestUrl.origin)
 
-    return NextResponse.redirect(redirectTo)
+    // Add timestamp to force a fresh request
+    redirectTo.searchParams.set('_t', Date.now().toString())
+
+    const response = NextResponse.redirect(redirectTo)
+    
+    // Set cache control headers to prevent stale RSC data
+    response.headers.set('Cache-Control', 'no-store, must-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    
+    return response
   } catch (error) {
     console.error('Callback error:', error)
     return NextResponse.redirect(new URL('/auth/login', request.url))
