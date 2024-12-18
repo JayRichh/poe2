@@ -151,7 +151,6 @@ code[class*="language-"] {
     @apply rounded-full bg-foreground/20;
     min-height: 12px;
     min-width: 12px;
-    transition: all 0.2s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -322,7 +321,7 @@ code[class*="language-"] {
 
   /* DPS Calculator Components */
   .dps-panel {
-    @apply rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm transition-smooth backdrop-blur-sm;
+    @apply rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm backdrop-blur-sm;
   }
 
   .dps-input-group {
