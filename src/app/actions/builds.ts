@@ -1,3 +1,5 @@
+'use server'
+
 import { getServerClient } from '~/app/_actions/supabase'
 import { revalidatePath } from 'next/cache'
 import type { Database } from '~/lib/supabase/types'

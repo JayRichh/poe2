@@ -5,70 +5,82 @@ import { createClient } from '~/lib/supabase/server'
 import { POEClient } from '~/lib/poe/client'
 import type { POEScope } from '~/types/poe-api'
 import type { POEAccountData } from '~/lib/supabase/types'
+import type { CookieOptions } from '@supabase/ssr'
 import { revalidatePath } from 'next/cache'
 
 const POE_CONFIG = {
   clientId: process.env.NEXT_PUBLIC_POE_CLIENT_ID!,
-  redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?provider=poe`,
+  clientSecret: process.env.POE_CLIENT_SECRET!,
+  redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback?provider=poe`,
   scopes: [
     'account:profile',
-    'account:characters',
-    'account:leagues'
+    'account:stashes',
+    'account:characters'
   ] as POEScope[],
-  isConfidentialClient: false
+  isConfidentialClient: true
 }
 
-export async function initiatePOEAuth() {
-  const state = crypto.randomUUID()
-  const codeVerifier = crypto.randomUUID()
+const getSupabase = async () => {
   const cookieStore = await cookies()
-
-  // Store state and verifier in cookies
-  cookieStore.set('poeOAuthState', state, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    maxAge: 60 * 5 // 5 minutes
+  return createClient({
+    get: (name: string) => cookieStore.get(name),
+    set: (opts: { name: string; value: string } & CookieOptions) => cookieStore.set(opts)
   })
-  cookieStore.set('poeOAuthVerifier', codeVerifier, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    maxAge: 60 * 5 // 5 minutes
-  })
+}
 
-  // Update account status to connecting
-  const supabase = createClient()
+function generateCodeVerifier() {
+  const array = new Uint8Array(32)
+  crypto.getRandomValues(array)
+  return btoa(String.fromCharCode(...array))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '')
+}
+
+export async function connectPOEAccount() {
+  const supabase = await getSupabase()
+
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
-    throw new Error('Must be logged in to connect POE account')
-  }
+  if (!user) throw new Error('Must be logged in to connect POE account')
 
   await supabase
     .from('profiles')
     .update({
       poe_account: {
         connected: false,
+        accountName: undefined,
         lastSync: new Date().toISOString()
-      } as POEAccountData
+      } satisfies POEAccountData
     })
     .eq('id', user.id)
 
-  revalidatePath('/profile')
-
   // Generate auth URL
   const poeClient = new POEClient(POE_CONFIG)
-  return poeClient.generateAuthUrl(state, codeVerifier)
+  const state = crypto.randomUUID()
+  const codeVerifier = generateCodeVerifier()
+  const authUrl = await poeClient.generateAuthUrl(state, codeVerifier)
+
+  // Store code verifier in cookie for callback
+  const cookieStore = await cookies()
+  cookieStore.set('poe_code_verifier', codeVerifier, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 5 // 5 minutes
+  })
+
+  revalidatePath('/profile')
+  return authUrl
 }
 
 export async function disconnectPOEAccount() {
-  const supabase = createClient()
+  const supabase = await getSupabase()
+
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
-    throw new Error('Must be logged in to disconnect POE account')
-  }
+  if (!user) throw new Error('Must be logged in to disconnect POE account')
 
   const { error } = await supabase
     .from('profiles')
@@ -81,40 +93,32 @@ export async function disconnectPOEAccount() {
   if (error) throw error
 
   revalidatePath('/profile')
-  return { success: true }
 }
 
 export async function getPOEAccountStatus() {
-  const supabase = createClient()
+  const supabase = await getSupabase()
+
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
-    return null
-  }
+  if (!user) throw new Error('Must be logged in to check POE account status')
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('poe_account, poe_refresh_token')
+    .select('poe_account')
     .eq('id', user.id)
     .single()
 
-  if (error) {
-    throw error
-  }
+  if (error) throw error
 
-  return {
-    poeAccount: data.poe_account,
-    hasRefreshToken: !!data.poe_refresh_token
-  }
+  return data?.poe_account as POEAccountData | null
 }
 
 export async function refreshPOEProfile() {
-  const supabase = createClient()
+  const supabase = await getSupabase()
+
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
-    throw new Error('Must be logged in to refresh POE profile')
-  }
+  if (!user) throw new Error('Must be logged in to refresh POE profile')
 
   const { data: profile } = await supabase
     .from('profiles')
@@ -122,23 +126,17 @@ export async function refreshPOEProfile() {
     .eq('id', user.id)
     .single()
 
-  if (!profile || !profile.poe_refresh_token) {
-    throw new Error('No POE refresh token available')
+  if (!profile?.poe_refresh_token) {
+    throw new Error('POE account not connected')
   }
 
-  const poeClient = new POEClient(POE_CONFIG)
-  const poeProfile = await poeClient.getProfile()
+  const poeClient = new POEClient({
+    ...POE_CONFIG,
+    isConfidentialClient: true
+  })
 
-  await supabase
-    .from('profiles')
-    .update({
-      poe_account: {
-        connected: true,
-        accountName: poeProfile.name,
-        lastSync: new Date().toISOString()
-      } as POEAccountData
-    })
-    .eq('id', user.id)
+  // The client will handle storing the tokens in the profile
+  const poeProfile = await poeClient.getProfile()
 
   revalidatePath('/profile')
   return poeProfile
