@@ -19,7 +19,7 @@ type AuthContextType = AuthState & {
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  loading: true,
+  loading: false, 
   error: null,
   isInitialized: false,
   signOut: async () => {},
@@ -31,7 +31,7 @@ const SESSION_REFRESH_INTERVAL = 2 * 60 * 1000 // 2 minutes
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
     user: null,
-    loading: true,
+    loading: false,
     error: null,
     isInitialized: false,
   })
@@ -68,9 +68,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [supabase.auth, router])
 
   const refreshSession = useCallback(async () => {
+    if (!state.isInitialized) {
+      // Only show loading on initial load
+      setState(prev => ({ ...prev, loading: true }))
+    }
+    
     try {
-      setState(prev => ({ ...prev, loading: true, error: null }))
-      
       const { data: { session }, error: sessionError } = await supabase.auth.getSession()
       
       if (sessionError) {
@@ -79,7 +82,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       if (!session?.user) {
-        await clearAuthState()
+        setState(prev => ({ 
+          ...prev, 
+          user: null,
+          error: null,
+          isInitialized: true,
+          loading: false
+        }))
         return
       }
 
@@ -94,25 +103,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ...prev, 
         user: session.user,
         error: null,
-        isInitialized: true
+        isInitialized: true,
+        loading: false
       }))
       
       router.refresh()
     } catch (error) {
       console.error('Session refresh error:', error)
-      await clearAuthState()
       
-      // Only set error state if we're not already redirecting to auth
-      if (!window.location.pathname.startsWith('/auth/')) {
-        setState(prev => ({
-          ...prev,
-          error: 'Session expired. Please sign in again.'
-        }))
-      }
-    } finally {
-      setState(prev => ({ ...prev, loading: false }))
+      setState(prev => ({
+        ...prev,
+        user: null,
+        error: 'Failed to refresh session',
+        isInitialized: true,
+        loading: false
+      }))
     }
-  }, [supabase.auth, router, clearAuthState])
+  }, [supabase.auth, router, clearAuthState, state.isInitialized])
 
   useEffect(() => {
     let isMounted = true
@@ -132,6 +139,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             ...prev,
             error: 'Failed to initialize authentication',
             isInitialized: true,
+            loading: false
           }))
         }
       }

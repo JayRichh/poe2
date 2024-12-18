@@ -51,20 +51,6 @@ export function Navigation() {
     router.push('/auth/login');
   };
 
-  // Show loading state during auth operations
-  if (authLoading) {
-    return (
-      <nav className="fixed top-0 w-full z-30">
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center h-16 sm:h-20">
-            <Spinner size="sm" variant="primary" />
-          </div>
-        </div>
-      </nav>
-    );
-  }
-
   return (
     <>
       <nav
@@ -155,8 +141,15 @@ export function Navigation() {
                 <div className="hidden md:block">
                   <Dropdown
                     trigger={
-                      <button className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors">
-                        <User className="w-4 h-4" />
+                      <button 
+                        className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                        disabled={authLoading}
+                      >
+                        {authLoading ? (
+                          <Spinner size="sm" className="w-4 h-4" />
+                        ) : (
+                          <User className="w-4 h-4" />
+                        )}
                         <span className="max-w-[150px] truncate">
                           {user.email?.split('@')[0]}
                         </span>
@@ -184,8 +177,13 @@ export function Navigation() {
                   onClick={handleSignIn}
                   variant="ghost"
                   className="flex items-center gap-2 text-base font-medium"
+                  disabled={authLoading}
                 >
-                  <LogIn className="w-4 h-4" />
+                  {authLoading ? (
+                    <Spinner size="sm" className="w-4 h-4" />
+                  ) : (
+                    <LogIn className="w-4 h-4" />
+                  )}
                   Sign In
                 </Button>
               )}
@@ -231,8 +229,13 @@ export function Navigation() {
                 size="lg"
                 onClick={handleSignIn}
                 className="w-full"
+                disabled={authLoading}
               >
-                Sign In
+                {authLoading ? (
+                  <Spinner size="sm" className="w-4 h-4" />
+                ) : (
+                  'Sign In'
+                )}
               </Button>
             </div>
           </div>
