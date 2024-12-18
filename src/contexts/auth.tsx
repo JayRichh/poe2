@@ -46,12 +46,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }))
     } catch (error) {
       console.error('Session refresh error:', error)
+      // Clear state on error
       setState(prev => ({
         ...prev,
         user: null,
         loading: false,
-        error: 'Failed to refresh session'
+        error: null
       }))
+      // Redirect to login if on protected route
+      if (window.location.pathname.startsWith('/profile') || 
+          window.location.pathname.startsWith('/build-planner/create')) {
+        router.push('/auth/login')
+      }
     }
   }
 
@@ -62,10 +68,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       router.push('/')
     } catch (error) {
       console.error('Sign out error:', error)
+      // Clear state even if error occurs
       setState(prev => ({
         ...prev,
-        error: 'Failed to sign out'
+        user: null,
+        error: null
       }))
+      router.push('/')
     }
   }
 
@@ -75,13 +84,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      setState(prev => ({
-        ...prev,
-        user: session?.user || null,
-        loading: false,
-        error: null
-      }))
-      router.refresh()
+      if (event === 'SIGNED_OUT') {
+        setState(prev => ({
+          ...prev,
+          user: null,
+          loading: false,
+          error: null
+        }))
+        router.push('/')
+      } else if (session?.user) {
+        setState(prev => ({
+          ...prev,
+          user: session.user,
+          loading: false,
+          error: null
+        }))
+        router.refresh()
+      }
     })
 
     return () => {
