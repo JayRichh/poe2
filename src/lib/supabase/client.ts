@@ -3,6 +3,7 @@ import type { Database } from './types'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { SupportedStorage } from '@supabase/auth-js'
 
+// Custom storage implementation that follows security best practices
 const createCustomStorage = (persistSession: boolean): SupportedStorage => {
   const isClient = typeof window !== 'undefined'
   if (!isClient) {
@@ -14,7 +15,7 @@ const createCustomStorage = (persistSession: boolean): SupportedStorage => {
     }
   }
 
-  // Use sessionStorage for everything except refresh token when persistSession is true
+  // Use sessionStorage by default for better security
   const storage = sessionStorage
   const refreshTokenKey = 'sb-refresh-token'
   const accessTokenKey = 'sb-access-token'
@@ -26,7 +27,7 @@ const createCustomStorage = (persistSession: boolean): SupportedStorage => {
         if (key === refreshTokenKey && persistSession) {
           const value = localStorage.getItem(key)
           if (value) {
-            // Also sync to sessionStorage to maintain consistency
+            // Also sync to sessionStorage for consistency
             sessionStorage.setItem(key, value)
             return value
           }
@@ -63,6 +64,7 @@ const createCustomStorage = (persistSession: boolean): SupportedStorage => {
   }
 }
 
+// Create Supabase client with secure configuration
 export const createClient = (persistSession: boolean = false) => {
   const options: SupabaseClientOptions<'public'> = {
     auth: {
@@ -86,12 +88,12 @@ export const createClient = (persistSession: boolean = false) => {
     options
   )
 
-  // Add error logging
-  client.auth.onAuthStateChange((event, session) => {
-    if (process.env.NODE_ENV === 'development') {
+  // Add auth state change handler for debugging
+  if (process.env.NODE_ENV === 'development') {
+    client.auth.onAuthStateChange((event, session) => {
       console.log('Auth state changed:', event, session?.user?.id)
-    }
-  })
+    })
+  }
 
   return client
 }

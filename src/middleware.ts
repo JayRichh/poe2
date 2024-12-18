@@ -1,14 +1,45 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
+// Route protection configuration
+const PROTECTED_ROUTES = ['/profile', '/build-planner/create']
+const GUEST_ROUTES = ['/auth/login', '/auth/signup', '/auth/reset-password']
+const VERIFIED_ROUTES = ['/profile/settings', '/build-planner/create']
+
+// CSRF exempt paths (no CSRF check needed)
+const CSRF_EXEMPT = [
+  '/auth/callback',
+  '/_next',
+  '/api/health',
+  '/favicon.ico',
+  '/static'
+]
+
 export async function middleware(request: NextRequest) {
   try {
-    let response = NextResponse.next({
+    // Create response early to handle cookies
+    const response = NextResponse.next({
       request: {
         headers: request.headers,
       },
     })
 
+    // Set security headers
+    response.headers.set('X-Frame-Options', 'DENY')
+    response.headers.set('X-Content-Type-Options', 'nosniff')
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+    response.headers.set('X-XSS-Protection', '1; mode=block')
+    response.headers.set('X-Permitted-Cross-Domain-Policies', 'none')
+    response.headers.set(
+      'Permissions-Policy',
+      'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+    )
+    response.headers.set(
+      'Strict-Transport-Security',
+      'max-age=31536000; includeSubDomains'
+    )
+
+    // Create Supabase client
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -29,7 +60,7 @@ export async function middleware(request: NextRequest) {
                 sameSite: 'lax',
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                maxAge: 60 * 60 * 24 * 7, // 1 week
+                path: '/',
               })
             })
           },
@@ -37,74 +68,94 @@ export async function middleware(request: NextRequest) {
       }
     )
 
-    // Auth routes that should redirect to home if already logged in
-    const authRoutes = ['/auth/login', '/auth/signup', '/auth/reset-password']
-    const isAuthRoute = authRoutes.some(path => 
+    // Check if route requires CSRF protection
+    const requiresCsrf = !CSRF_EXEMPT.some(path => 
       request.nextUrl.pathname.startsWith(path)
     )
 
-    // Protected routes that require authentication
-    const protectedPaths = [
-      '/profile',
-      '/build-planner/create'
-    ]
-    const isProtectedPath = protectedPaths.some(path => 
-      request.nextUrl.pathname.startsWith(path)
+    // Validate CSRF token for non-GET requests on protected routes
+    if (requiresCsrf && request.method !== 'GET') {
+      const csrfToken = request.cookies.get('csrf-token')?.value
+      const csrfHeader = request.headers.get('x-csrf-token')
+
+      if (!csrfToken || !csrfHeader || csrfToken !== csrfHeader) {
+        return new NextResponse(
+          JSON.stringify({ error: 'Invalid CSRF token' }),
+          { status: 403 }
+        )
+      }
+    }
+
+    // Get current path info
+    const pathname = request.nextUrl.pathname
+    const isProtectedRoute = PROTECTED_ROUTES.some(path => 
+      pathname.startsWith(path)
+    )
+    const isGuestRoute = GUEST_ROUTES.some(path => 
+      pathname.startsWith(path)
+    )
+    const requiresVerification = VERIFIED_ROUTES.some(path => 
+      pathname.startsWith(path)
     )
 
     // Try to get the session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession()
 
-    // Handle session errors by clearing cookies and redirecting appropriately
+    // Handle session errors by clearing cookies
     if (sessionError) {
-      // Clear all auth related cookies
       const cookiesToClear = [
         'sb-access-token',
         'sb-refresh-token',
-        'supabase-auth-token'
+        'supabase-auth-token',
+        'csrf-token'
       ]
       cookiesToClear.forEach(name => {
         response.cookies.delete(name)
       })
 
       // If on protected route, redirect to login
-      if (isProtectedPath) {
+      if (isProtectedRoute) {
         const redirectUrl = new URL('/auth/login', request.url)
-        redirectUrl.searchParams.set('next', request.nextUrl.pathname)
+        redirectUrl.searchParams.set('next', pathname)
         return NextResponse.redirect(redirectUrl)
       }
 
-      // For auth routes, allow access with cleared cookies
-      if (isAuthRoute) {
-        return response
-      }
-
-      // For other routes, continue with cleared cookies
       return response
     }
 
-    // Handle protected routes when not authenticated
-    if (isProtectedPath && !session) {
-      const redirectUrl = new URL('/auth/login', request.url)
-      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
-      return NextResponse.redirect(redirectUrl)
+    // Generate new CSRF token if needed
+    if (!request.cookies.has('csrf-token')) {
+      const newCsrfToken = crypto.getRandomValues(new Uint8Array(32))
+      const csrfTokenString = Buffer.from(newCsrfToken).toString('base64')
+      response.cookies.set('csrf-token', csrfTokenString, {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+      })
     }
 
-    // Redirect from auth routes if we have a valid session
-    if (session?.user && isAuthRoute) {
-      // Get the intended destination or default to home
+    // Handle protected routes
+    if (isProtectedRoute) {
+      if (!session) {
+        const redirectUrl = new URL('/auth/login', request.url)
+        redirectUrl.searchParams.set('next', pathname)
+        return NextResponse.redirect(redirectUrl)
+      }
+
+      // Check email verification for routes that require it
+      if (requiresVerification && !session.user.email_confirmed_at) {
+        return NextResponse.redirect(
+          new URL('/auth/verify-email', request.url)
+        )
+      }
+    }
+
+    // Handle guest routes (login, signup, etc)
+    if (isGuestRoute && session) {
       const next = request.nextUrl.searchParams.get('next') || '/'
       return NextResponse.redirect(new URL(next, request.url))
     }
-
-    // Set security headers
-    response.headers.set('X-Frame-Options', 'DENY')
-    response.headers.set('X-Content-Type-Options', 'nosniff')
-    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-    response.headers.set(
-      'Permissions-Policy',
-      'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-    )
 
     return response
   } catch (error) {
@@ -121,19 +172,15 @@ export async function middleware(request: NextRequest) {
     const cookiesToClear = [
       'sb-access-token',
       'sb-refresh-token',
-      'supabase-auth-token'
+      'supabase-auth-token',
+      'csrf-token'
     ]
     cookiesToClear.forEach(name => {
       response.cookies.delete(name)
     })
 
-    const protectedPaths = [
-      '/profile',
-      '/build-planner/create'
-    ]
-
     // If protected path, redirect to login
-    if (protectedPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
+    if (PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path))) {
       const redirectUrl = new URL('/auth/login', request.url)
       redirectUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)

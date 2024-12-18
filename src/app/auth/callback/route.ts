@@ -17,6 +17,14 @@ const POE_CONFIG = {
   isConfidentialClient: false
 }
 
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax' as const,
+  path: '/',
+  maxAge: 60 * 60 * 24 * 7 // 1 week
+}
+
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get('code')
@@ -30,6 +38,10 @@ export async function GET(request: NextRequest) {
   response.headers.set('X-Frame-Options', 'DENY')
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains'
+  )
   
   // Handle email confirmation callback
   if (type === 'email_confirmation' && code) {
@@ -44,17 +56,24 @@ export async function GET(request: NextRequest) {
         new URL('/profile?verified=true', requestUrl.origin)
       )
 
-      // Set the auth cookie data
+      // Set the auth cookie data with secure options
       const cookieStore = await cookies()
       const supabaseCookies = cookieStore.getAll()
       supabaseCookies.forEach(cookie => {
         response.cookies.set(cookie.name, cookie.value, {
-          ...cookie,
-          sameSite: 'lax',
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          maxAge: 60 * 60 * 24 * 7 // 1 week
+          ...COOKIE_OPTIONS,
+          maxAge: cookie.name.includes('refresh') 
+            ? 60 * 60 * 24 * 30 // 30 days for refresh token
+            : 60 * 60 * 24 * 7  // 1 week for other tokens
         })
+      })
+
+      // Generate new CSRF token
+      const csrfToken = crypto.getRandomValues(new Uint8Array(32))
+      const csrfTokenString = Buffer.from(csrfToken).toString('base64')
+      response.cookies.set('csrf-token', csrfTokenString, {
+        ...COOKIE_OPTIONS,
+        httpOnly: false // Needs to be accessible by JavaScript
       })
 
       return response
@@ -62,7 +81,7 @@ export async function GET(request: NextRequest) {
       console.error('Email confirmation error:', error)
       
       // Clear any existing auth cookies
-      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token']
+      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token', 'csrf-token']
       cookiesToClear.forEach(name => {
         response.cookies.delete(name)
       })
@@ -145,17 +164,24 @@ export async function GET(request: NextRequest) {
         new URL(next || '/profile', requestUrl.origin)
       )
 
-      // Set the auth cookie data
+      // Set the auth cookie data with secure options
       const cookieStore = await cookies()
       const supabaseCookies = cookieStore.getAll()
       supabaseCookies.forEach(cookie => {
         response.cookies.set(cookie.name, cookie.value, {
-          ...cookie,
-          sameSite: 'lax',
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          maxAge: 60 * 60 * 24 * 7 // 1 week
+          ...COOKIE_OPTIONS,
+          maxAge: cookie.name.includes('refresh') 
+            ? 60 * 60 * 24 * 30 // 30 days for refresh token
+            : 60 * 60 * 24 * 7  // 1 week for other tokens
         })
+      })
+
+      // Generate new CSRF token
+      const csrfToken = crypto.getRandomValues(new Uint8Array(32))
+      const csrfTokenString = Buffer.from(csrfToken).toString('base64')
+      response.cookies.set('csrf-token', csrfTokenString, {
+        ...COOKIE_OPTIONS,
+        httpOnly: false // Needs to be accessible by JavaScript
       })
 
       return response
@@ -163,7 +189,7 @@ export async function GET(request: NextRequest) {
       console.error('Auth callback error:', error)
       
       // Clear any existing auth cookies
-      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token']
+      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token', 'csrf-token']
       cookiesToClear.forEach(name => {
         response.cookies.delete(name)
       })

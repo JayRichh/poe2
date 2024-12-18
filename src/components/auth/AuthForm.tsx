@@ -48,19 +48,25 @@ export function AuthForm({ type }: AuthFormProps) {
     })
     
     if (error instanceof AuthError) {
-      console.error('Supabase Auth Error:', {
-        status: error.status,
-        name: error.name,
-        message: error.message,
-      })
-    }
-    
-    if (error.message.includes('Email not confirmed')) {
-      setError('Please confirm your email address before signing in')
-    } else if (error.message.includes('Invalid login credentials')) {
-      setError('Invalid email or password')
-    } else if (error.message.includes('Email rate limit exceeded')) {
-      setError('Too many attempts. Please try again later')
+      switch (error.status) {
+        case 400:
+          setError('Invalid credentials')
+          break
+        case 401:
+          setError('Unauthorized')
+          break
+        case 403:
+          setError('Email not verified')
+          break
+        case 422:
+          setError('Invalid email or password format')
+          break
+        case 429:
+          setError('Too many attempts. Please try again later')
+          break
+        default:
+          setError(error.message)
+      }
     } else {
       setError(error.message)
     }
@@ -102,17 +108,11 @@ export function AuthForm({ type }: AuthFormProps) {
         // Get the next URL from search params or default to home
         const next = searchParams.get('next') || '/'
         console.log('Redirecting to:', next)
-        router.push(next)
-        router.refresh()
+        
+        // Use window.location for hard navigation to ensure clean state
+        window.location.href = next
       } else if (type === 'signup') {
         console.log('Attempting sign up...')
-        
-        // Store credentials and remember me preference
-        localStorage.setItem('pendingAuthCredentials', JSON.stringify({ 
-          email, 
-          password,
-          rememberMe 
-        }))
         
         const { data, error: signUpError } = await supabase.auth.signUp({
           email,
@@ -157,10 +157,6 @@ export function AuthForm({ type }: AuthFormProps) {
       }
     } catch (err) {
       handleAuthError(err instanceof Error ? err : new Error('An unexpected error occurred'))
-      // Clear stored credentials if there was an error
-      if (type === 'signup') {
-        localStorage.removeItem('pendingAuthCredentials')
-      }
     } finally {
       setLoading(false)
     }
