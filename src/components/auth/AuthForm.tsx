@@ -1,23 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { createClient } from '~/lib/supabase/client'
 import { Button } from '~/components/ui/Button'
 import { Text } from '~/components/ui/Text'
 import { Spinner } from '~/components/ui/Spinner'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 import { cn } from '~/utils/cn'
-import { useAuth } from '~/contexts/auth'
 
 interface AuthFormProps {
   type: 'login' | 'signup' | 'reset'
 }
 
 export function AuthForm({ type }: AuthFormProps) {
-  const router = useRouter()
   const searchParams = useSearchParams()
-  const { refreshSession } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -34,15 +31,17 @@ export function AuthForm({ type }: AuthFormProps) {
       const supabase = createClient()
 
       if (type === 'login') {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
+        const { data, error: signInError } = await supabase.auth.signInWithPassword({
           email,
           password,
         })
         
         if (signInError) throw signInError
 
-        await refreshSession()
+        // Get the next URL from search params or default to home
         const next = searchParams.get('next') || '/'
+        
+        // Use window.location for hard navigation to ensure clean state
         window.location.href = next
       } else if (type === 'signup') {
         const { error: signUpError } = await supabase.auth.signUp({
