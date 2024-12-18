@@ -6,7 +6,6 @@ import type { SupportedStorage } from '@supabase/auth-js'
 const createCustomStorage = (persistSession: boolean): SupportedStorage => {
   const isClient = typeof window !== 'undefined'
   if (!isClient) {
-    // Return no-op storage when running on server
     return {
       getItem: () => null,
       setItem: () => {},
@@ -15,12 +14,34 @@ const createCustomStorage = (persistSession: boolean): SupportedStorage => {
     }
   }
 
-  // Use appropriate storage on client
-  const storage = persistSession ? localStorage : sessionStorage
+  // Always use sessionStorage for auth state to prevent stale states across tabs/sessions
+  // persistSession only affects refresh token storage
+  const storage = sessionStorage
+  const refreshTokenKey = 'sb-refresh-token'
+  
   return {
-    getItem: (key) => storage.getItem(key),
-    setItem: (key, value) => storage.setItem(key, value),
-    removeItem: (key) => storage.removeItem(key)
+    getItem: (key) => {
+      // Store refresh token in localStorage if persistSession is true
+      if (key === refreshTokenKey && persistSession) {
+        return localStorage.getItem(key)
+      }
+      return storage.getItem(key)
+    },
+    setItem: (key, value) => {
+      // Store refresh token in localStorage if persistSession is true
+      if (key === refreshTokenKey && persistSession) {
+        localStorage.setItem(key, value)
+      } else {
+        storage.setItem(key, value)
+      }
+    },
+    removeItem: (key) => {
+      // Remove from both storages to ensure cleanup
+      storage.removeItem(key)
+      if (key === refreshTokenKey) {
+        localStorage.removeItem(key)
+      }
+    }
   }
 }
 

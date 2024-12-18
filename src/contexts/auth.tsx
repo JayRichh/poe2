@@ -26,7 +26,7 @@ const AuthContext = createContext<AuthContextType>({
   refreshSession: async () => {},
 })
 
-const SESSION_REFRESH_INTERVAL = 10 * 60 * 1000 // 10 minutes
+const SESSION_REFRESH_INTERVAL = 2 * 60 * 1000 // 2 minutes
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
@@ -38,6 +38,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const supabase = createClient()
 
+  const clearAuthState = useCallback(async () => {
+    try {
+      // Clear Supabase session
+      await supabase.auth.signOut()
+      
+      // Clear all auth-related storage
+      if (typeof window !== 'undefined') {
+        // Clear session storage
+        sessionStorage.clear()
+        
+        // Clear specific localStorage items
+        const authKeys = ['sb-refresh-token', 'supabase.auth.token']
+        authKeys.forEach(key => localStorage.removeItem(key))
+      }
+
+      setState(prev => ({
+        ...prev,
+        user: null,
+        error: null,
+        isInitialized: true,
+        loading: false
+      }))
+
+      router.refresh()
+    } catch (error) {
+      console.error('Error clearing auth state:', error)
+    }
+  }, [supabase.auth, router])
+
   const refreshSession = useCallback(async () => {
     try {
       setState(prev => ({ ...prev, loading: true, error: null }))
@@ -45,62 +74,45 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { data: { session }, error: sessionError } = await supabase.auth.getSession()
       
       if (sessionError) {
-        throw new Error(`Failed to get session: ${sessionError.message}`)
+        await clearAuthState()
+        throw sessionError
       }
 
-      if (session?.user) {
-        // Check if session is about to expire (within 1 hour)
-        const expiresAt = session.expires_at ? session.expires_at * 1000 : 0
-        const oneHour = 60 * 60 * 1000
-        
-        if (Date.now() + oneHour >= expiresAt) {
-          // Refresh session if it's about to expire
-          const { data: { session: refreshedSession }, error: refreshError } = 
-            await supabase.auth.refreshSession()
-          
-          if (refreshError) throw refreshError
-          
-          setState(prev => ({ 
-            ...prev, 
-            user: refreshedSession?.user || null,
-            error: null,
-            isInitialized: true
-          }))
-        } else {
-          setState(prev => ({ 
-            ...prev, 
-            user: session.user,
-            error: null,
-            isInitialized: true
-          }))
-        }
-        
-        router.refresh()
-      } else {
-        setState(prev => ({ 
-          ...prev, 
-          user: null,
-          error: null,
-          isInitialized: true
-        }))
+      if (!session?.user) {
+        await clearAuthState()
+        return
       }
-    } catch (error) {
-      console.error('Session refresh error:', error)
-      setState(prev => ({
-        ...prev,
-        user: null,
-        error: 'Failed to refresh session',
+
+      // Check if session is expired
+      const expiresAt = session.expires_at ? session.expires_at * 1000 : 0
+      if (Date.now() >= expiresAt) {
+        await clearAuthState()
+        return
+      }
+
+      setState(prev => ({ 
+        ...prev, 
+        user: session.user,
+        error: null,
         isInitialized: true
       }))
       
-      // Redirect to login on session error
-      if (window.location.pathname !== '/auth/login') {
-        router.push('/auth/login')
+      router.refresh()
+    } catch (error) {
+      console.error('Session refresh error:', error)
+      await clearAuthState()
+      
+      // Only set error state if we're not already redirecting to auth
+      if (!window.location.pathname.startsWith('/auth/')) {
+        setState(prev => ({
+          ...prev,
+          error: 'Session expired. Please sign in again.'
+        }))
       }
     } finally {
       setState(prev => ({ ...prev, loading: false }))
     }
-  }, [supabase.auth, router])
+  }, [supabase.auth, router, clearAuthState])
 
   useEffect(() => {
     let isMounted = true
@@ -110,8 +122,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         await refreshSession()
         
-        // Set up periodic session refresh
-        refreshInterval = setInterval(refreshSession, SESSION_REFRESH_INTERVAL)
+        if (isMounted) {
+          refreshInterval = setInterval(refreshSession, SESSION_REFRESH_INTERVAL)
+        }
       } catch (error) {
         console.error('Auth initialization error:', error)
         if (isMounted) {
@@ -124,25 +137,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    // Initialize auth
     initializeAuth()
 
-    // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (!isMounted) return
 
       if (event === 'SIGNED_OUT') {
-        setState(prev => ({ 
-          ...prev, 
-          user: null,
-          loading: false,
-          error: null,
-          isInitialized: true
-        }))
-        router.refresh()
-        router.push('/')
+        await clearAuthState()
+        
+        // Only redirect if not already on an auth page
+        if (!window.location.pathname.startsWith('/auth/')) {
+          router.push('/auth/login')
+        }
       } else if (session?.user) {
         setState(prev => ({ 
           ...prev, 
@@ -160,21 +168,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       subscription.unsubscribe()
       if (refreshInterval) clearInterval(refreshInterval)
     }
-  }, [refreshSession, router, supabase.auth])
+  }, [refreshSession, router, supabase.auth, clearAuthState])
 
   const signOut = async () => {
     setState(prev => ({ ...prev, loading: true, error: null }))
     try {
-      const { error } = await supabase.auth.signOut()
-      if (error) throw error
-      
-      setState(prev => ({ 
-        ...prev, 
-        user: null,
-        error: null 
-      }))
-
-      router.refresh()
+      await clearAuthState()
       router.push('/')
     } catch (error) {
       console.error('Sign out error:', error)

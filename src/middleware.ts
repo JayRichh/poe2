@@ -9,7 +9,6 @@ export async function middleware(request: NextRequest) {
       },
     })
 
-    // Create server client with latest cookie API
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -38,43 +37,55 @@ export async function middleware(request: NextRequest) {
       }
     )
 
-    // Try to get the session
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
-
-    if (sessionError) {
-      console.error('Session error:', sessionError)
-      // Clear session cookies on error
-      const cookieNames = ['sb-access-token', 'sb-refresh-token']
-      cookieNames.forEach(name => response.cookies.delete(name))
-      return response
-    }
-
-    // Protected routes that require authentication
-    const protectedPaths = [
-      '/profile',
-      '/build-planner/create'
-    ]
-
-    const isProtectedPath = protectedPaths.some(path => 
-      request.nextUrl.pathname.startsWith(path)
-    )
-
     // Auth routes that should redirect to home if already logged in
     const authRoutes = ['/auth/login', '/auth/signup', '/auth/reset-password']
     const isAuthRoute = authRoutes.some(path => 
       request.nextUrl.pathname.startsWith(path)
     )
 
-    // Handle protected routes
+    // Protected routes that require authentication
+    const protectedPaths = [
+      '/profile',
+      '/build-planner/create'
+    ]
+    const isProtectedPath = protectedPaths.some(path => 
+      request.nextUrl.pathname.startsWith(path)
+    )
+
+    // Try to get the session
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+
+    // Handle session errors
+    if (sessionError) {
+      console.error('Session error:', sessionError)
+      
+      // Clear session cookies
+      const cookieNames = ['sb-access-token', 'sb-refresh-token']
+      cookieNames.forEach(name => response.cookies.delete(name))
+      
+      // If on protected route, redirect to login
+      if (isProtectedPath) {
+        const redirectUrl = new URL('/auth/login', request.url)
+        redirectUrl.searchParams.set('next', request.nextUrl.pathname)
+        return NextResponse.redirect(redirectUrl)
+      }
+      
+      // For auth routes or public routes, continue without redirect
+      return response
+    }
+
+    // Handle protected routes when not authenticated
     if (isProtectedPath && !session) {
       const redirectUrl = new URL('/auth/login', request.url)
       redirectUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Handle auth routes when logged in
+    // Handle auth routes when authenticated
     if (session && isAuthRoute) {
-      return NextResponse.redirect(new URL('/', request.url))
+      // Get the intended destination or default to home
+      const next = request.nextUrl.searchParams.get('next') || '/'
+      return NextResponse.redirect(new URL(next, request.url))
     }
 
     // Set security headers
@@ -89,11 +100,12 @@ export async function middleware(request: NextRequest) {
     return response
   } catch (error) {
     console.error('Middleware error:', error)
-    return NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    })
+    
+    // On critical errors, clear auth state
+    const response = NextResponse.redirect(new URL('/auth/login', request.url))
+    const cookieNames = ['sb-access-token', 'sb-refresh-token']
+    cookieNames.forEach(name => response.cookies.delete(name))
+    return response
   }
 }
 
