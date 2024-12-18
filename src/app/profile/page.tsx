@@ -1,16 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from '~/components/ui/Container'
 import { Text } from '~/components/ui/Text'
 import { Button } from '~/components/ui/Button'
 import { useAuth } from '~/contexts/auth'
 import { usePOEAccount } from '~/hooks/usePOEAccount'
-import { User, Mail, Key, Link2, CheckCircle2, RefreshCw } from 'lucide-react'
+import { User, Mail, Key, Link2, CheckCircle2, RefreshCw, X } from 'lucide-react'
 import { cn } from '~/utils/cn'
 import { updateProfile, updatePassword } from '~/app/actions/profile'
 import { useRouter } from 'next/navigation'
-import { Spinner } from '~/components/ui/Spinner'
 
 export default function ProfilePage() {
   const router = useRouter()
@@ -24,10 +23,20 @@ export default function ProfilePage() {
     disconnectPOE,
     refreshProfile
   } = usePOEAccount()
-  const [name, setName] = useState(user?.user_metadata?.name || '')
+  const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
+  const [showPasswordForm, setShowPasswordForm] = useState(false)
+  const [newPassword, setNewPassword] = useState('')
+
+  useEffect(() => {
+    if (!user) {
+      router.replace('/auth/login')
+      return
+    }
+    setName(user.user_metadata?.name || '')
+  }, [user, router])
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,7 +49,6 @@ export default function ProfilePage() {
     try {
       await updateProfile(name)
       setMessage('Profile updated successfully')
-      // Refresh session to get updated user metadata
       await refreshSession()
     } catch (err) {
       console.error('Error updating profile:', err)
@@ -50,11 +58,9 @@ export default function ProfilePage() {
     }
   }
 
-  const handleChangePassword = async () => {
-    if (!user?.email) return
-
-    const newPassword = prompt('Enter your new password')
-    if (!newPassword) return
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!user?.email || !newPassword) return
 
     setLoading(true)
     setError(null)
@@ -63,7 +69,8 @@ export default function ProfilePage() {
     try {
       await updatePassword(newPassword)
       setMessage('Password updated successfully')
-      // Refresh session after password change
+      setShowPasswordForm(false)
+      setNewPassword('')
       await refreshSession()
     } catch (err) {
       console.error('Error updating password:', err)
@@ -77,6 +84,7 @@ export default function ProfilePage() {
     setLoading(true)
     try {
       await signOut()
+      router.replace('/auth/login')
     } catch (err) {
       console.error('Error signing out:', err)
       setError('Failed to sign out')
@@ -85,9 +93,7 @@ export default function ProfilePage() {
     }
   }
 
-  // Redirect if not authenticated
   if (!user) {
-    router.push('/auth/login')
     return null
   }
 
@@ -230,22 +236,59 @@ export default function ProfilePage() {
         <div className="space-y-4 pt-6 border-t border-border/50">
           <Text className="text-lg font-medium">Security</Text>
           
-          <div className="flex items-center justify-between p-4 rounded-xl border-2 border-border/50 bg-background/95">
-            <div className="flex items-center gap-3">
-              <Key className="h-5 w-5 text-primary/60" />
-              <div>
-                <Text className="font-medium">Password</Text>
-                <Text className="text-sm text-foreground/60">Change your password</Text>
+          <div className="flex flex-col p-4 rounded-xl border-2 border-border/50 bg-background/95">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Key className="h-5 w-5 text-primary/60" />
+                <div>
+                  <Text className="font-medium">Password</Text>
+                  <Text className="text-sm text-foreground/60">Change your password</Text>
+                </div>
               </div>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowPasswordForm(!showPasswordForm)}
+                disabled={loading}
+              >
+                {showPasswordForm ? (
+                  <X className="h-4 w-4 mr-2" />
+                ) : null}
+                {showPasswordForm ? 'Cancel' : 'Change Password'}
+              </Button>
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleChangePassword}
-              disabled={loading}
-            >
-              Change Password
-            </Button>
+
+            {showPasswordForm && (
+              <form onSubmit={handleChangePassword} className="mt-4 space-y-4">
+                <div className="space-y-2">
+                  <Text className="text-sm text-foreground/60">New Password</Text>
+                  <input
+                    type="password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="Enter new password"
+                    className={cn(
+                      'w-full h-12 px-4 rounded-xl',
+                      'bg-background/95',
+                      'border-2 border-border/50',
+                      'focus:border-primary/50 focus:ring-2 focus:ring-primary/20',
+                      'placeholder:text-foreground/40'
+                    )}
+                    required
+                    minLength={6}
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    disabled={loading || !newPassword}
+                  >
+                    {loading ? 'Updating...' : 'Update Password'}
+                  </Button>
+                </div>
+              </form>
+            )}
           </div>
 
           <Button

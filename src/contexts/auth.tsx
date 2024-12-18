@@ -9,6 +9,7 @@ type AuthState = {
   user: User | null
   loading: boolean
   error: string | null
+  isInitialized: boolean
 }
 
 type AuthContextType = AuthState & {
@@ -20,21 +21,27 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
   error: null,
+  isInitialized: false,
   signOut: async () => {},
   refreshSession: async () => {},
 })
+
+const SESSION_REFRESH_INTERVAL = 10 * 60 * 1000 // 10 minutes
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
     user: null,
     loading: true,
     error: null,
+    isInitialized: false,
   })
   const router = useRouter()
   const supabase = createClient()
 
   const refreshSession = useCallback(async () => {
     try {
+      setState(prev => ({ ...prev, loading: true, error: null }))
+      
       const { data: { session }, error: sessionError } = await supabase.auth.getSession()
       
       if (sessionError) {
@@ -42,45 +49,77 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       if (session?.user) {
-        setState(prev => ({ 
-          ...prev, 
-          user: session.user,
-          error: null 
-        }))
+        // Check if session is about to expire (within 1 hour)
+        const expiresAt = session.expires_at ? session.expires_at * 1000 : 0
+        const oneHour = 60 * 60 * 1000
+        
+        if (Date.now() + oneHour >= expiresAt) {
+          // Refresh session if it's about to expire
+          const { data: { session: refreshedSession }, error: refreshError } = 
+            await supabase.auth.refreshSession()
+          
+          if (refreshError) throw refreshError
+          
+          setState(prev => ({ 
+            ...prev, 
+            user: refreshedSession?.user || null,
+            error: null,
+            isInitialized: true
+          }))
+        } else {
+          setState(prev => ({ 
+            ...prev, 
+            user: session.user,
+            error: null,
+            isInitialized: true
+          }))
+        }
+        
         router.refresh()
       } else {
         setState(prev => ({ 
           ...prev, 
           user: null,
-          error: null 
+          error: null,
+          isInitialized: true
         }))
       }
     } catch (error) {
       console.error('Session refresh error:', error)
       setState(prev => ({
         ...prev,
+        user: null,
         error: 'Failed to refresh session',
+        isInitialized: true
       }))
+      
+      // Redirect to login on session error
+      if (window.location.pathname !== '/auth/login') {
+        router.push('/auth/login')
+      }
+    } finally {
+      setState(prev => ({ ...prev, loading: false }))
     }
   }, [supabase.auth, router])
 
   useEffect(() => {
     let isMounted = true
+    let refreshInterval: NodeJS.Timeout
 
     const initializeAuth = async () => {
       try {
         await refreshSession()
+        
+        // Set up periodic session refresh
+        refreshInterval = setInterval(refreshSession, SESSION_REFRESH_INTERVAL)
       } catch (error) {
         console.error('Auth initialization error:', error)
         if (isMounted) {
           setState(prev => ({
             ...prev,
             error: 'Failed to initialize authentication',
+            isInitialized: true,
           }))
-        }
-      } finally {
-        if (isMounted) {
-          setState(prev => ({ ...prev, loading: false }))
         }
       }
     }
@@ -94,20 +133,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (!isMounted) return
 
-      if (session?.user) {
-        setState(prev => ({ 
-          ...prev, 
-          user: session.user,
-          loading: false,
-          error: null 
-        }))
-        router.refresh()
-      } else {
+      if (event === 'SIGNED_OUT') {
         setState(prev => ({ 
           ...prev, 
           user: null,
           loading: false,
-          error: null 
+          error: null,
+          isInitialized: true
+        }))
+        router.refresh()
+        router.push('/')
+      } else if (session?.user) {
+        setState(prev => ({ 
+          ...prev, 
+          user: session.user,
+          loading: false,
+          error: null,
+          isInitialized: true
         }))
         router.refresh()
       }
@@ -116,6 +158,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => {
       isMounted = false
       subscription.unsubscribe()
+      if (refreshInterval) clearInterval(refreshInterval)
     }
   }, [refreshSession, router, supabase.auth])
 

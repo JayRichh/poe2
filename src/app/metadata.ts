@@ -10,6 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://poe2.dev'),
   title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
   description: "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
   keywords: ["path of exile 2", "poe2", "build planner", "dps calculator", "poe tools"],
