@@ -7,6 +7,7 @@ export async function GET(request: NextRequest) {
     const requestUrl = new URL(request.url)
     const code = requestUrl.searchParams.get('code')
     const next = requestUrl.searchParams.get('next')
+    const type = requestUrl.searchParams.get('type')
 
     if (!code) {
       console.error('No code provided in callback')
@@ -22,7 +23,16 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth/login', requestUrl.origin))
     }
 
-    // Successful authentication
+    // Handle different callback types
+    if (type === 'recovery') {
+      return NextResponse.redirect(new URL('/auth/reset-password', requestUrl.origin))
+    }
+
+    if (type === 'email_confirmation') {
+      return NextResponse.redirect(new URL('/profile', requestUrl.origin))
+    }
+
+    // Default redirect
     const redirectTo = next 
       ? new URL(next, requestUrl.origin)
       : new URL('/profile', requestUrl.origin)

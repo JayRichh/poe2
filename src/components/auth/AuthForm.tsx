@@ -2,12 +2,12 @@
 
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { createClient } from '~/lib/supabase/client'
 import { Button } from '~/components/ui/Button'
 import { Text } from '~/components/ui/Text'
 import { Spinner } from '~/components/ui/Spinner'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 import { cn } from '~/utils/cn'
+import { useAuth } from '~/contexts/auth'
 
 interface AuthFormProps {
   type: 'login' | 'signup' | 'reset'
@@ -15,6 +15,7 @@ interface AuthFormProps {
 
 export function AuthForm({ type }: AuthFormProps) {
   const searchParams = useSearchParams()
+  const { refreshSession } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -28,15 +29,24 @@ export function AuthForm({ type }: AuthFormProps) {
     setMessage(null)
 
     try {
-      const supabase = createClient()
-
       if (type === 'login') {
-        const { data, error: signInError } = await supabase.auth.signInWithPassword({
-          email,
-          password,
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: 'include'
         })
+
+        const data = await response.json()
         
-        if (signInError) throw signInError
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to sign in')
+        }
+
+        // Refresh the session state
+        await refreshSession()
 
         // Get the next URL from search params or default to home
         const next = searchParams.get('next') || '/'
@@ -44,15 +54,20 @@ export function AuthForm({ type }: AuthFormProps) {
         // Use window.location for hard navigation to ensure clean state
         window.location.href = next
       } else if (type === 'signup') {
-        const { error: signUpError } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback?type=email_confirmation`
-          }
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: 'include'
         })
+
+        const data = await response.json()
         
-        if (signUpError) throw signUpError
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to create account')
+        }
         
         setMessage(
           'Check your email for the confirmation link. You will be automatically logged in after confirming.'
@@ -61,12 +76,23 @@ export function AuthForm({ type }: AuthFormProps) {
         setEmail('')
         setPassword('')
       } else if (type === 'reset') {
-        const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth/callback?type=recovery&next=/profile`,
+        const response = await fetch('/api/auth/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+          credentials: 'include'
         })
+
+        const data = await response.json()
         
-        if (resetError) throw resetError
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to send reset email')
+        }
+        
         setMessage('Check your email for the password reset link')
+        setEmail('')
       }
     } catch (err) {
       console.error('Auth error:', err)
