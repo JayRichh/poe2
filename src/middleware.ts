@@ -42,10 +42,11 @@ export async function middleware(request: NextRequest) {
 
     const { data: { session }, error: sessionError } = await supabase.auth.getSession()
     const pathname = request.nextUrl.pathname
+    const isRsc = request.headers.get('rsc') === '1'
 
     // Clear cookies if session error or expired
     if (sessionError || !session) {
-      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'sb-jcumrdfiiuggbwuqcrer-auth-token']
+      const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
       cookiesToClear.forEach(name => {
         response.cookies.delete(name)
       })
@@ -61,8 +62,9 @@ export async function middleware(request: NextRequest) {
     }
 
     // Handle auth routes - redirect to home if already logged in
+    // Skip redirect for RSC requests to prevent infinite loops
     if (AUTH_ROUTES.some(path => pathname.startsWith(path))) {
-      if (session) {
+      if (session && !isRsc) {
         return NextResponse.redirect(new URL('/', request.url))
       }
     }
