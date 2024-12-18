@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import type { Database } from '~/lib/supabase/types'
 
 const PROTECTED_ROUTES = ['/profile', '/build-planner/create']
 const AUTH_ROUTES = ['/auth/login', '/auth/signup', '/auth/callback', '/auth/reset-password']
@@ -23,7 +24,7 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    const supabase = createServerClient(
+    const supabase = createServerClient<Database>(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       {
@@ -31,7 +32,7 @@ export async function middleware(request: NextRequest) {
           get(name: string) {
             return request.cookies.get(name)?.value
           },
-          set(name: string, value: string, options: any) {
+          set(name: string, value: string, options: CookieOptions) {
             response.cookies.set({
               name,
               value,
@@ -41,7 +42,7 @@ export async function middleware(request: NextRequest) {
               secure: process.env.NODE_ENV === 'production',
             })
           },
-          remove(name: string, options: any) {
+          remove(name: string, options: CookieOptions) {
             response.cookies.set({
               name,
               value: '',

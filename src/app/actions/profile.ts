@@ -1,12 +1,11 @@
-'use server'
-
 import { createClient } from '~/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 
 export async function updateProfile(name: string) {
-  const supabase = createClient()
+  const supabase = await createClient()
+
   const { data: { user }, error: userError } = await supabase.auth.getUser()
-  
+
   if (userError) throw userError
   if (!user) throw new Error('Not authenticated')
 
@@ -26,15 +25,34 @@ export async function updateProfile(name: string) {
   if (profileError) throw profileError
 
   revalidatePath('/profile')
-  return { success: true }
 }
 
 export async function updatePassword(newPassword: string) {
-  const supabase = createClient()
+  const supabase = await createClient()
+
   const { error } = await supabase.auth.updateUser({
     password: newPassword
   })
 
   if (error) throw error
-  return { success: true }
+}
+
+export async function deleteAccount() {
+  const supabase = await createClient()
+
+  const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+  if (userError) throw userError
+  if (!user) throw new Error('Not authenticated')
+
+  // Delete profile (cascades to other data via DB triggers)
+  const { error: deleteError } = await supabase
+    .from('profiles')
+    .delete()
+    .eq('id', user.id)
+
+  if (deleteError) throw deleteError
+
+  // Sign out after deletion
+  await supabase.auth.signOut()
 }

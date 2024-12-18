@@ -31,11 +31,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     error: null,
   })
   const router = useRouter()
-  const supabase = createClient()
+  const client = createClient()
 
   const refreshSession = async () => {
     try {
-      const { data: { session }, error } = await supabase.auth.getSession()
+      const { data: { session }, error } = await client.auth.getSession()
       if (error) throw error
 
       setState(prev => ({
@@ -50,14 +50,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ...prev,
         user: null,
         loading: false,
-        error: null
+        error: error instanceof Error ? error.message : 'Session refresh failed'
       }))
     }
   }
 
   const signOut = async () => {
     try {
-      await supabase.auth.signOut()
+      await client.auth.signOut()
       setState(prev => ({ ...prev, user: null, error: null }))
       window.location.href = '/'
     } catch (error) {
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setState(prev => ({
         ...prev,
         user: null,
-        error: null
+        error: error instanceof Error ? error.message : 'Sign out failed'
       }))
       window.location.href = '/'
     }
@@ -76,7 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
+    } = client.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_OUT') {
         setState(prev => ({
           ...prev,
@@ -99,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => {
       subscription.unsubscribe()
     }
-  }, [supabase.auth, router])
+  }, [client.auth, router])
 
   return (
     <AuthContext.Provider value={{ ...state, signOut, refreshSession }}>
