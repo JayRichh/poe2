@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Layout, Calculator, Newspaper, ArrowRight } from "lucide-react";
+import { Layout, Calculator, Newspaper, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 import { Button } from "~/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import { NewsService } from "~/services/news-service";
 import { NewsCard } from "~/components/news/NewsCard";
@@ -243,6 +244,70 @@ export default function HomePage() {
               </motion.div>
             </Link>
           </motion.div>
+        </Container>
+      </section>
+
+      {/* Skill Tree Preview */}
+      <section className="w-full py-32 ">
+        <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 space-y-8"
+            >
+              <div className="space-y-4">
+                <Text variant="h2" className="text-4xl font-bold tracking-tight">
+                  Interactive Skill Tree
+                </Text>
+                <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
+                  Explore and plan your character&apos;s progression with our interactive skill tree. 
+                </Text>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-muted-foreground">
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  Visual node connections and pathfinding
+                </li>
+                <li className="flex items-center gap-3 text-muted-foreground">
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  Real-time stat calculations
+                </li>
+                <li className="flex items-center gap-3 text-muted-foreground">
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  Sharable build URLs
+                </li>
+              </ul>
+              <div className="pt-4">
+                <Link href="/skill-tree">
+                  <Button variant="ghost" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
+                    View Skill Tree
+                    <ArrowUpRight className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 relative"
+            >
+              <div className="relative w-full aspect-square max-w-xl mx-auto">
+                <Image
+                  src="/skill-tree.png"
+                  alt="POE2 Skill Tree Preview"
+                  fill
+                  className="object-contain rounded-lg"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent rounded-lg" />
+              </div>
+            </motion.div>
+          </div>
         </Container>
       </section>
 

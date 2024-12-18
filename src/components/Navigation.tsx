@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout, Newspaper } from "lucide-react";
+import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout, Newspaper, GitBranch } from "lucide-react";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
 import { useState } from "react";
@@ -17,6 +17,7 @@ const PROTECTED_ROUTES = ["/profile"];
 
 const primaryLinks = [
   { href: "/build-planner", label: "Build Planner", icon: Layout },
+  { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
   { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
 ];
 

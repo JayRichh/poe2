@@ -1,0 +1,115 @@
+/* Text Highlighting */
+.is-keyword {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  color: theme('colors.orange.200');
+  cursor: help;
+  transition: color 150ms ease-in-out;
+}
+
+.is-keyword:hover {
+  color: theme('colors.orange.300');
+}
+
+.is-skill {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  color: theme('colors.cyan.200');
+  cursor: help;
+  transition: color 150ms ease-in-out;
+}
+
+.is-skill:hover {
+  color: theme('colors.cyan.300');
+}
+
+/* Node Types */
+.node-keystone {
+  @apply border-2 border-purple-400;
+  box-shadow: 0 0 10px theme('colors.purple.400/40');
+}
+
+.node-notable {
+  @apply border-2 border-orange-400;
+  box-shadow: 0 0 8px theme('colors.orange.400/40');
+}
+
+.node-mastery {
+  @apply border-2 border-green-400;
+  box-shadow: 0 0 8px theme('colors.green.400/40');
+}
+
+.node-normal {
+  @apply border-2 border-gray-400;
+  box-shadow: 0 0 6px theme('colors.gray.400/40');
+}
+
+/* Node States */
+.node-allocated {
+  @apply border-blue-400;
+  box-shadow: 0 0 12px theme('colors.blue.400/60');
+}
+
+.node-highlighted {
+  @apply border-yellow-400;
+  box-shadow: 0 0 12px theme('colors.yellow.400/60');
+}
+
+.node-selected {
+  @apply scale-110;
+  box-shadow: 0 0 15px theme('colors.blue.400/80');
+}
+
+/* Animations */
+@keyframes node-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.node-pulse {
+  animation: node-pulse 1s ease-in-out infinite;
+}
+
+/* Tooltip Animations */
+.tooltip-fade {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease-in-out, visibility 150ms ease-in-out;
+}
+
+.tooltip-fade.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Connection Lines */
+.connection-line {
+  stroke-width: 2;
+  transition: stroke 150ms ease-in-out;
+}
+
+.connection-line-allocated {
+  stroke: theme('colors.blue.400');
+  filter: drop-shadow(0 0 4px theme('colors.blue.400/40'));
+}
+
+.connection-line-normal {
+  stroke: theme('colors.gray.600');
+}
+
+/* Loading States */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
