@@ -100,7 +100,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] p-4">
       <Container className="max-w-2xl py-8 space-y-8">
-        <div>
+        <div className="flex flex-col space-y-1">
           <Text className="text-3xl font-bold">Profile Settings</Text>
           <Text className="text-foreground/60">Manage your account settings and preferences</Text>
         </div>
@@ -176,7 +176,7 @@ export default function ProfilePage() {
         <div className="space-y-4 pt-6 border-t border-border/50">
           <Text className="text-lg font-medium">Connections</Text>
 
-          <div className="flex items-center justify-between p-4 rounded-xl border-2 border-border/50 bg-background/95">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border-2 border-border/50 bg-background/95 gap-4">
             <div className="flex items-center gap-3">
               {poeAccount?.connected ? (
                 <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -197,7 +197,7 @@ export default function ProfilePage() {
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 sm:flex-shrink-0">
               {poeAccount?.connected && (
                 <Button
                   type="button"
@@ -237,7 +237,7 @@ export default function ProfilePage() {
           <Text className="text-lg font-medium">Security</Text>
           
           <div className="flex flex-col p-4 rounded-xl border-2 border-border/50 bg-background/95">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Key className="h-5 w-5 text-primary/60" />
                 <div>
@@ -250,6 +250,7 @@ export default function ProfilePage() {
                 variant="outline"
                 onClick={() => setShowPasswordForm(!showPasswordForm)}
                 disabled={loading}
+                className="sm:flex-shrink-0"
               >
                 {showPasswordForm ? (
                   <X className="h-4 w-4 mr-2" />
