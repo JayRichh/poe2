@@ -302,12 +302,13 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
                     </div>
                   </div>
 
-                  {/* Additional settings sections can be added here */}
-                  <div className="p-4 rounded-xl border-2 border-border/50 bg-background/95 space-y-4">
-                    <Text className="font-medium">Features</Text>
-                    <Text className="text-sm text-foreground/60">
-                      More features coming soon...
-                    </Text>
+                  <div className="p-4 rounded-xl border-2 border-border/50 bg-background/95">
+                    <div className="flex flex-col gap-2">
+                      <Text className="font-medium">Features</Text>
+                      <Text className="text-sm text-foreground/60">
+                        More features coming soon...
+                      </Text>
+                    </div>
                   </div>
                 </div>
               </div>
