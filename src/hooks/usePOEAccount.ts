@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '~/lib/supabase/client'
 import type { POEAccountData } from '~/lib/supabase/types'
 import type { POEProfile } from '~/types/poe-api'
-import { initiatePOEAuth, disconnectPOEAccount, refreshPOEProfile } from '~/app/actions/poe'
+import { connectPOEAccount, disconnectPOEAccount, refreshPOEProfile } from '~/app/actions/poe'
 
 export function usePOEAccount() {
   const [loading, setLoading] = useState(true)
@@ -72,7 +72,7 @@ export function usePOEAccount() {
   const connectPOE = useCallback(async () => {
     try {
       setLoading(true)
-      const authUrl = await initiatePOEAuth()
+      const authUrl = await connectPOEAccount()
       window.location.href = authUrl
     } catch (err) {
       console.error('Error connecting POE account:', err)

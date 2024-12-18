@@ -1,11 +1,10 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import { createClient } from '~/lib/supabase/server'
+import { getServerClient } from '~/app/_actions/supabase'
 import { POEClient } from '~/lib/poe/client'
 import type { POEScope } from '~/types/poe-api'
 import type { POEAccountData } from '~/lib/supabase/types'
-import type { CookieOptions } from '@supabase/ssr'
 import { revalidatePath } from 'next/cache'
 
 const POE_CONFIG = {
@@ -20,25 +19,8 @@ const POE_CONFIG = {
   isConfidentialClient: true
 }
 
-const getSupabase = async () => {
-  const cookieStore = await cookies()
-  return createClient({
-    get: (name: string) => cookieStore.get(name),
-    set: (opts: { name: string; value: string } & CookieOptions) => cookieStore.set(opts)
-  })
-}
-
-function generateCodeVerifier() {
-  const array = new Uint8Array(32)
-  crypto.getRandomValues(array)
-  return btoa(String.fromCharCode(...array))
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '')
-}
-
 export async function connectPOEAccount() {
-  const supabase = await getSupabase()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -76,7 +58,7 @@ export async function connectPOEAccount() {
 }
 
 export async function disconnectPOEAccount() {
-  const supabase = await getSupabase()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -96,7 +78,7 @@ export async function disconnectPOEAccount() {
 }
 
 export async function getPOEAccountStatus() {
-  const supabase = await getSupabase()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -114,7 +96,7 @@ export async function getPOEAccountStatus() {
 }
 
 export async function refreshPOEProfile() {
-  const supabase = await getSupabase()
+  const supabase = await getServerClient()
 
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -140,4 +122,13 @@ export async function refreshPOEProfile() {
 
   revalidatePath('/profile')
   return poeProfile
+}
+
+function generateCodeVerifier() {
+  const array = new Uint8Array(32)
+  crypto.getRandomValues(array)
+  return btoa(String.fromCharCode(...array))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '')
 }
