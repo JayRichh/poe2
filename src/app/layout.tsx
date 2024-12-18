@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react"
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import Script from "next/script";
 
 import { metadata as baseMetadata, viewport as baseViewport } from "./metadata";
 import "./globals.css";
@@ -33,7 +34,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${plexSans.variable} ${plexMono.variable} h-full`}
     >
+      <head>
+        <link rel="preconnect" href="https://poe2.dev" />
+        <link rel="dns-prefetch" href="https://poe2.dev" />
+        <meta name="google-site-verification" content="REPLACE_WITH_YOUR_VERIFICATION_CODE" />
+      </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "POE2 Tools",
+              "applicationCategory": "Game Tools",
+              "operatingSystem": "Web Browser",
+              "description": "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+              "url": "https://poe2.dev",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
