@@ -2,17 +2,19 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
 const PROTECTED_ROUTES = ['/profile', '/build-planner/create']
+const PUBLIC_ROUTES = ['/auth/login', '/auth/signup', '/auth/callback', '/auth/reset-password']
 
 export async function middleware(request: NextRequest) {
-  // Skip middleware for static files and API routes
-  if (request.nextUrl.pathname.match(/\.(ico|png|jpg|jpeg|gif|svg)$/) || 
-      request.nextUrl.pathname.startsWith('/api/')) {
+  // Skip middleware for auth routes and RSC requests to auth endpoints
+  const isAuthRoute = PUBLIC_ROUTES.some(path => request.nextUrl.pathname.startsWith(path))
+  const isRSCAuthRequest = request.headers.get('rsc') === '1' && request.nextUrl.pathname.startsWith('/auth')
+  
+  if (isAuthRoute || isRSCAuthRequest) {
     return NextResponse.next()
   }
 
   const response = NextResponse.next()
 
-  // Create Supabase client
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -42,60 +44,25 @@ export async function middleware(request: NextRequest) {
   )
 
   try {
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+    const { data: { session } } = await supabase.auth.getSession()
 
-    // Clear invalid cookies
-    if (sessionError) {
-      const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
-      cookiesToClear.forEach(name => {
-        response.cookies.delete(name)
-      })
-    }
-
-    // Check if this is an RSC request
-    const isRsc = request.headers.get('rsc') === '1'
-    const isAuthRoute = request.nextUrl.pathname.startsWith('/auth/')
-
-    // For RSC requests to auth routes, always allow
-    if (isRsc && isAuthRoute) {
-      return response
-    }
-
-    // For non-RSC requests to auth routes when logged in, redirect to home
-    if (!isRsc && isAuthRoute && session) {
-      return NextResponse.redirect(new URL('/', request.url))
-    }
-
-    // For protected routes without session, redirect to login
+    // Only protect specific routes
     if (PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path)) && !session) {
       const redirectUrl = new URL('/auth/login', request.url)
       redirectUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
     }
-
-    return response
   } catch (error) {
-    console.error('Middleware error:', error)
-    
-    // Clear cookies on error
-    const cookiesToClear = ['sb-access-token', 'sb-refresh-token']
-    cookiesToClear.forEach(name => {
-      response.cookies.delete(name)
-    })
-
-    // For protected routes, redirect to login
-    if (PROTECTED_ROUTES.some(path => request.nextUrl.pathname.startsWith(path))) {
-      const redirectUrl = new URL('/auth/login', request.url)
-      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
-      return NextResponse.redirect(redirectUrl)
-    }
-
+    console.error('Auth middleware error:', error)
+    // Continue without redirecting on auth errors
     return response
   }
+
+  return response
 }
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image|favicon.ico|api).*)',
   ],
 }
