@@ -1,13 +1,9 @@
-import { cookies } from 'next/headers'
-import { createClient } from './server'
 import type { CookieOptions } from '@supabase/ssr'
+import { createClient } from './server'
 
-export const getServerClient = async () => {
-  const cookieStore = await cookies()
-  return createClient({
-    get: (name: string) => cookieStore.get(name),
-    set: (opts: { name: string; value: string } & CookieOptions) => cookieStore.set(opts)
-  })
+type CookieStore = {
+  get: (name: string) => { value: string } | undefined
+  set: (opts: { name: string; value: string } & CookieOptions) => void
 }
 
 // Helper for middleware which uses a different cookie store

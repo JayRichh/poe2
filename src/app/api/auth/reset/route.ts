@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { getServerClient } from '~/lib/supabase/actions'
+import { createMiddlewareClient } from '~/lib/supabase/actions'
 
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json()
-    const supabase = await getServerClient()
+    const response = new NextResponse()
+    const supabase = createMiddlewareClient(request, response)
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${request.nextUrl.origin}/api/auth/callback?type=recovery`
@@ -15,9 +16,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 400 })
     }
 
-    return NextResponse.json({
+    const jsonResponse = NextResponse.json({
       message: 'Password reset email sent successfully'
     })
+
+    // Copy cookies from the middleware client response to our json response
+    response.headers.forEach((value, key) => {
+      if (key.toLowerCase() === 'set-cookie') {
+        jsonResponse.headers.set(key, value)
+      }
+    })
+
+    return jsonResponse
   } catch (error) {
     console.error('Password reset error:', error)
     return NextResponse.json(

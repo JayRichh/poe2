@@ -1,4 +1,4 @@
-import { getServerClient } from '~/lib/supabase/actions'
+import { getServerClient } from '~/app/_actions/supabase'
 import { revalidatePath } from 'next/cache'
 
 export async function updateProfile(name: string) {
