@@ -83,48 +83,66 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col items-center w-full">
       {/* Hero */}
-      <section className="w-full pt-64 pb-32 flex justify-center">
-        <Container className="px-6 md:px-8 lg:px-10 flex flex-col items-center text-center gap-10 max-w-5xl">
-          <motion.div
-            style={{ opacity, scale, y }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16,1,0.3,1] }}
-            className="flex flex-col gap-8"
-          >
-            <Text variant="h1" className="text-6xl font-bold tracking-tight">
-              POE2 Tools
-            </Text>
-            <Text variant="body-lg" color="secondary" className="text-xl max-w-2xl mx-auto leading-relaxed">
-              Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize gameplay.
-            </Text>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link href="/build-planner">
-                <Button variant="primary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
-                  Build Planner
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/dps-calc">
-                <Button variant="secondary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
-                  DPS Calculator
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="flex flex-col items-center gap-2 mt-20"
-          >
-            <div className="w-1 h-8 bg-foreground/30 rounded-full" />
-            <Text color="secondary" className="text-xs uppercase tracking-widest">
-              Scroll
-            </Text>
-          </motion.div>
-        </Container>
+      <section className="w-full pt-12 flex justify-center">
+      <Container className="px-6 md:px-8 lg:px-10 flex flex-col items-center text-center max-w-5xl">
+      <motion.div
+        style={{ opacity, scale, y }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col gap-6"
+      >
+        <div className="relative mx-auto">
+        <Image
+  src="/poe2logonobg.png"
+  alt="POE2 Logo"
+  className="
+    scale-150
+    -mb-[100px]
+    filter
+    dark:invert
+    dark:brightness-125
+    dark:contrast-125
+    drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]
+    dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]
+    [mask-image:radial-gradient(circle,white_70%,transparent_100%)]
+    [mask-size:cover]
+  "
+  height="200"
+  width="400"
+  priority
+/>
+        </div>
+        <Text variant="body-lg" color="secondary" className="text-xl max-w-2xl mx-auto leading-relaxed">
+          Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize gameplay.
+        </Text>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Link href="/build-planner">
+            <Button variant="primary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
+              Build Planner
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+          </Link>
+          <Link href="/dps-calc">
+            <Button variant="secondary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
+              DPS Calculator
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="flex flex-col items-center gap-2 mt-20"
+      >
+        {/* <div className="w-1 h-8 bg-foreground/30 rounded-full" /> */}
+        <Text color="secondary" className="text-xs uppercase tracking-widest">
+          Scroll
+        </Text>
+      </motion.div>
+    </Container>
       </section>
 
       {/* Features */}

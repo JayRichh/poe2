@@ -90,7 +90,7 @@ export function Navigation() {
                           isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
                         )}
                       >
-                        <Icon className="w-4 h-4" />
+                        {/* <Icon className="w-4 h-4" /> */}
                         {label}
                         {isActive && (
                           <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
