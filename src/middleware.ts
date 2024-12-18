@@ -55,19 +55,31 @@ export async function middleware(request: NextRequest) {
     // Try to get the session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession()
 
-    // Handle session errors by allowing access to auth routes
+    // Handle session errors by clearing cookies and redirecting appropriately
     if (sessionError) {
-      console.error('Session error:', sessionError)
-      
+      // Clear all auth related cookies
+      const cookiesToClear = [
+        'sb-access-token',
+        'sb-refresh-token',
+        'supabase-auth-token'
+      ]
+      cookiesToClear.forEach(name => {
+        response.cookies.delete(name)
+      })
+
       // If on protected route, redirect to login
       if (isProtectedPath) {
         const redirectUrl = new URL('/auth/login', request.url)
         redirectUrl.searchParams.set('next', request.nextUrl.pathname)
         return NextResponse.redirect(redirectUrl)
       }
-      
-      // For auth routes or public routes, continue without redirect
-      // This allows access to login page when session is invalid
+
+      // For auth routes, allow access with cleared cookies
+      if (isAuthRoute) {
+        return response
+      }
+
+      // For other routes, continue with cleared cookies
       return response
     }
 
@@ -78,7 +90,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Only redirect from auth routes if we have a valid session
+    // Redirect from auth routes if we have a valid session
     if (session?.user && isAuthRoute) {
       // Get the intended destination or default to home
       const next = request.nextUrl.searchParams.get('next') || '/'
@@ -98,13 +110,36 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     console.error('Middleware error:', error)
     
-    // On critical errors, allow the request to continue
-    // This ensures auth routes are always accessible
-    return NextResponse.next({
+    // On critical errors, clear auth cookies and redirect appropriately
+    const response = NextResponse.next({
       request: {
         headers: request.headers,
       },
     })
+    
+    // Clear all auth related cookies
+    const cookiesToClear = [
+      'sb-access-token',
+      'sb-refresh-token',
+      'supabase-auth-token'
+    ]
+    cookiesToClear.forEach(name => {
+      response.cookies.delete(name)
+    })
+
+    const protectedPaths = [
+      '/profile',
+      '/build-planner/create'
+    ]
+
+    // If protected path, redirect to login
+    if (protectedPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
+      const redirectUrl = new URL('/auth/login', request.url)
+      redirectUrl.searchParams.set('next', request.nextUrl.pathname)
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    return response
   }
 }
 

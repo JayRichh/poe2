@@ -24,6 +24,12 @@ export async function GET(request: NextRequest) {
   const next = requestUrl.searchParams.get('next')
   const provider = requestUrl.searchParams.get('provider')
   const type = requestUrl.searchParams.get('type')
+
+  // Create response with default headers
+  const response = NextResponse.redirect(new URL('/', requestUrl.origin))
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   
   // Handle email confirmation callback
   if (type === 'email_confirmation' && code) {
@@ -46,13 +52,21 @@ export async function GET(request: NextRequest) {
           ...cookie,
           sameSite: 'lax',
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production'
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 60 * 60 * 24 * 7 // 1 week
         })
       })
 
       return response
     } catch (error) {
       console.error('Email confirmation error:', error)
+      
+      // Clear any existing auth cookies
+      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token']
+      cookiesToClear.forEach(name => {
+        response.cookies.delete(name)
+      })
+
       return NextResponse.redirect(
         new URL(`/auth/login?error=${encodeURIComponent('Email confirmation failed')}`, requestUrl.origin)
       )
@@ -139,13 +153,21 @@ export async function GET(request: NextRequest) {
           ...cookie,
           sameSite: 'lax',
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production'
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 60 * 60 * 24 * 7 // 1 week
         })
       })
 
       return response
     } catch (error) {
       console.error('Auth callback error:', error)
+      
+      // Clear any existing auth cookies
+      const cookiesToClear = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token']
+      cookiesToClear.forEach(name => {
+        response.cookies.delete(name)
+      })
+
       return NextResponse.redirect(
         new URL(`/auth/login?error=${encodeURIComponent('Authentication failed')}`, requestUrl.origin)
       )

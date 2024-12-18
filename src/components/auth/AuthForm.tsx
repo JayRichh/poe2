@@ -9,6 +9,7 @@ import { Spinner } from '~/components/ui/Spinner'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 import { cn } from '~/utils/cn'
 import { useAuth } from '~/contexts/auth'
+import { AuthError } from '@supabase/supabase-js'
 
 interface AuthFormProps {
   type: 'login' | 'signup' | 'reset'
@@ -39,8 +40,20 @@ export function AuthForm({ type }: AuthFormProps) {
     }
   }, [searchParams])
 
-  const handleAuthError = (error: Error) => {
-    console.error('Auth error:', error)
+  const handleAuthError = (error: Error | AuthError) => {
+    console.error('Auth error details:', {
+      name: error.name,
+      message: error.message,
+      cause: error.cause,
+    })
+    
+    if (error instanceof AuthError) {
+      console.error('Supabase Auth Error:', {
+        status: error.status,
+        name: error.name,
+        message: error.message,
+      })
+    }
     
     if (error.message.includes('Email not confirmed')) {
       setError('Please confirm your email address before signing in')
@@ -60,27 +73,40 @@ export function AuthForm({ type }: AuthFormProps) {
     setMessage(null)
 
     try {
+      console.log('Starting auth process:', { type, email })
+      
       // Create client with persistence setting
       const supabase = createClient(rememberMe)
 
       if (type === 'login') {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
+        console.log('Attempting sign in...')
+        const { data, error: signInError } = await supabase.auth.signInWithPassword({
           email,
           password,
         })
-        if (signInError) throw signInError
+        
+        if (signInError) {
+          console.error('Sign in error:', signInError)
+          throw signInError
+        }
+
+        console.log('Sign in successful:', { user: data.user?.id })
 
         // Store remember me preference
         localStorage.setItem('rememberMe', rememberMe.toString())
 
         // Refresh session to ensure we have latest auth state
+        console.log('Refreshing session...')
         await refreshSession()
 
         // Get the next URL from search params or default to home
         const next = searchParams.get('next') || '/'
+        console.log('Redirecting to:', next)
         router.push(next)
         router.refresh()
       } else if (type === 'signup') {
+        console.log('Attempting sign up...')
+        
         // Store credentials and remember me preference
         localStorage.setItem('pendingAuthCredentials', JSON.stringify({ 
           email, 
@@ -88,7 +114,7 @@ export function AuthForm({ type }: AuthFormProps) {
           rememberMe 
         }))
         
-        const { error: signUpError } = await supabase.auth.signUp({
+        const { data, error: signUpError } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -98,7 +124,13 @@ export function AuthForm({ type }: AuthFormProps) {
             }
           }
         })
-        if (signUpError) throw signUpError
+        
+        if (signUpError) {
+          console.error('Sign up error:', signUpError)
+          throw signUpError
+        }
+
+        console.log('Sign up successful:', { user: data.user?.id })
         
         setMessage(
           'Check your email for the confirmation link. You will be automatically logged in after confirming.'
@@ -109,10 +141,18 @@ export function AuthForm({ type }: AuthFormProps) {
         setPassword('')
         setRememberMe(false)
       } else if (type === 'reset') {
+        console.log('Attempting password reset...')
+        
         const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
           redirectTo: `${window.location.origin}/auth/callback?type=recovery&next=/profile`,
         })
-        if (resetError) throw resetError
+        
+        if (resetError) {
+          console.error('Password reset error:', resetError)
+          throw resetError
+        }
+
+        console.log('Password reset email sent')
         setMessage('Check your email for the password reset link')
       }
     } catch (err) {
