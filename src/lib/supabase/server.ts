@@ -1,7 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { Database } from './types'
-import { RequestCookie, ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
 export const createClient = () => {
   return createServerClient<Database>(
@@ -11,14 +10,14 @@ export const createClient = () => {
       cookies: {
         async getAll() {
           const cookieStore = await cookies()
-          return cookieStore.getAll().map((cookie: RequestCookie) => ({
+          return cookieStore.getAll().map(cookie => ({
             name: cookie.name,
             value: cookie.value,
           }))
         },
-        async setAll(cookieStrings: { name: string; value: string; options?: Partial<ResponseCookie> }[]) {
+        async setAll(cookieStrings) {
           const cookieStore = await cookies()
-          for (const { name, value, options = {} } of cookieStrings) {
+          cookieStrings.forEach(({ name, value, ...options }) => {
             cookieStore.set({
               name,
               value,
@@ -26,8 +25,9 @@ export const createClient = () => {
               sameSite: 'lax',
               httpOnly: true,
               secure: process.env.NODE_ENV === 'production',
-            } as ResponseCookie)
-          }
+              path: '/',
+            })
+          })
         },
       },
     }
