@@ -1,7 +1,16 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Layout, Calculator, Newspaper, ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  Layout,
+  Calculator,
+  Newspaper,
+  ArrowRight,
+  ArrowUpRight,
+  ScrollIcon,
+  ChevronsDown,
+  ArrowUp
+} from "lucide-react";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 import { Button } from "~/components/ui/Button";
@@ -66,6 +75,26 @@ export default function HomePage() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, 10]);
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY || 0;
+      setShowScrollTop(scrollPos > 300);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // const scrollToContent = () => {
+  //   const offsetTop = containerRef.current?.scrollHeight || 0;
+  //   window.scrollTo({ top: offsetTop - window.innerHeight + 50, behavior: "smooth" });
+  // };
+
   useEffect(() => {
     const loadNews = async () => {
       try {
@@ -81,69 +110,125 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex flex-col items-center w-full">
-      {/* Hero */}
+    <div ref={containerRef} className="flex flex-col items-center w-full relative">
       <section className="w-full pt-12 flex justify-center">
-      <Container className="px-6 md:px-8 lg:px-10 flex flex-col items-center text-center max-w-5xl">
+        <Container className="px-6 md:px-8 lg:px-10 flex flex-col items-center text-center max-w-5xl">
+          <motion.div
+            style={{ opacity, scale, y }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-6"
+          >
+            <div className="relative mx-auto pointer-events-none select-none">
+              <Image
+                src="/poe2logonobg.png"
+                alt="POE2 Logo"
+                className="
+                  scale-150
+                  -mb-[120px]
+                  pr-[6px]
+                  filter
+                  dark:invert
+                  dark:brightness-125
+                  dark:contrast-125
+                  drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]
+                  dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]
+                  [mask-image:radial-gradient(circle,white_70%,transparent_100%)]
+                  [mask-size:cover]
+                "
+                height="200"
+                width="400"
+                priority
+              />
+            </div>
+            <Text variant="body-lg" color="secondary" className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-2">
+              Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize gameplay.
+            </Text>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
+  <Link href="/build-planner">
+    <motion.button
+      whileHover={{ scale: 1.03, opacity: 0.95 }}
+      className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+                 bg-primary text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 
+                 focus:ring-offset-2 focus:ring-primary"
+    >
+      Build Planner
       <motion.div
-        style={{ opacity, scale, y }}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col gap-6"
+        variants={{
+          initial: { rotate: 0 },
+          hover: { rotate: -45 },
+        }}
+        initial="initial"
+        whileHover="hover"
+        className="transition-transform duration-300"
       >
-        <div className="relative mx-auto">
-        <Image
-  src="/poe2logonobg.png"
-  alt="POE2 Logo"
-  className="
-    scale-150
-    -mb-[100px]
-    filter
-    dark:invert
-    dark:brightness-125
-    dark:contrast-125
-    drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]
-    dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]
-    [mask-image:radial-gradient(circle,white_70%,transparent_100%)]
-    [mask-size:cover]
-  "
-  height="200"
-  width="400"
-  priority
-/>
-        </div>
-        <Text variant="body-lg" color="secondary" className="text-xl max-w-2xl mx-auto leading-relaxed">
-          Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize gameplay.
-        </Text>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Link href="/build-planner">
-            <Button variant="primary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
-              Build Planner
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
-          <Link href="/dps-calc">
-            <Button variant="secondary" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
-              DPS Calculator
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
+        <ArrowRight className="w-5 h-5" />
       </motion.div>
+    </motion.button>
+  </Link>
+
+  <Link href="/dps-calc">
+    <motion.button
+      whileHover={{ scale: 1.03, opacity: 0.95 }}
+      className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+                 bg-secondary text-secondary-foreground hover:bg-secondary/90 focus:outline-none focus:ring-2 
+                 focus:ring-offset-2 focus:ring-secondary"
+    >
+      DPS Calculator
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="flex flex-col items-center gap-2 mt-20"
+        variants={{
+          initial: { rotate: 0 },
+          hover: { rotate: -45 },
+        }}
+        initial="initial"
+        whileHover="hover"
+        className="transition-transform duration-300"
       >
-        {/* <div className="w-1 h-8 bg-foreground/30 rounded-full" /> */}
-        <Text color="secondary" className="text-xs uppercase tracking-widest">
-          Scroll
-        </Text>
+        <ArrowRight className="w-5 h-5" />
       </motion.div>
-    </Container>
+    </motion.button>
+  </Link>
+</div>
+
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="flex flex-col items-center gap-2 mt-20 md:mt-32"
+          >
+            {/* <Text color="secondary" className="text-xs uppercase tracking-widest">
+              Scroll
+            </Text> */}
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              <ScrollIcon className="w-6 h-6 text-secondary" />
+            </motion.div>
+            <ChevronsDown className="w-5 h-5 text-secondary mt-2" />
+          </motion.div>
+        </Container>
       </section>
+
+      {/* Scroll To Top Button */}
+      {showScrollTop && (
+        <motion.div
+        initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ delay: 1, duration: 1 }}
+        >
+        <Button
+          onClick={scrollToTop}
+          variant="secondary"
+          className="fixed bottom-10 right-10 flex items-center gap-2 opacity-50 hover:opacity-90 hover:border hover:border-primary"
+          >
+          <ArrowUp className="w-4 h-4" />
+          Top
+        </Button>
+          </motion.div>
+      )}
 
       {/* Features */}
       <section className="w-full py-32 flex justify-center">
@@ -258,6 +343,10 @@ export default function HomePage() {
                     <span className="w-2 h-2 rounded-full bg-blue-500" />
                     Event schedules
                   </li>
+                  <li className="flex gap-2 items-center">
+                    <span className="w-2 h-2 rounded-full bg-blue-500" />
+                    Marketplace pricing
+                  </li>
                 </ul>
               </motion.div>
             </Link>
@@ -265,7 +354,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Skill Tree Preview */}
       <section className="w-full py-32 ">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -281,7 +369,7 @@ export default function HomePage() {
                   Interactive Skill Tree
                 </Text>
                 <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
-                  Explore and plan your character&apos;s progression with our interactive skill tree. 
+                  Explore and plan your character&apos;s progression with our interactive skill tree.
                 </Text>
               </div>
               <ul className="space-y-4">
@@ -297,6 +385,7 @@ export default function HomePage() {
                   <span className="w-2 h-2 rounded-full bg-accent" />
                   Sharable build URLs
                 </li>
+                
               </ul>
               <div className="pt-4">
                 <Link href="/skill-tree">
@@ -329,7 +418,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Latest News */}
       <section className="w-full py-32 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl space-y-16">
           <motion.div
@@ -357,7 +445,6 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="space-y-16 pt-12"
           >
-            {/* Featured News */}
             <div className="space-y-8">
               <Text variant="h3" className="text-2xl font-semibold">
                 Featured
@@ -376,7 +463,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Recent News */}
             <div className="space-y-8">
               <Text variant="h3" className="text-2xl font-semibold">
                 Recent Updates
@@ -408,7 +494,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Coming Soon */}
       <section className="w-full py-40 mb-64">
         <Container className="px-6 md:px-8 lg:px-10 max-w-3xl space-y-6">
           <motion.div

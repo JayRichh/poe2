@@ -140,7 +140,7 @@ code[class*="language-"] {
   }
 
   ::-webkit-scrollbar {
-    @apply h-1.5 w-1.5;
+    @apply h-3 w-3;
   }
 
   ::-webkit-scrollbar-track {
@@ -148,7 +148,16 @@ code[class*="language-"] {
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-foreground/20 transition-colors hover:bg-foreground/30;
+    @apply rounded-full bg-foreground/20;
+    min-height: 12px;
+    min-width: 12px;
+    transition: all 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-foreground/40;
+    min-height: 16px;
+    min-width: 16px;
   }
 }
 
