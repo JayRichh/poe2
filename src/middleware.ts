@@ -55,13 +55,9 @@ export async function middleware(request: NextRequest) {
     // Try to get the session
     const { data: { session }, error: sessionError } = await supabase.auth.getSession()
 
-    // Handle session errors
+    // Handle session errors by allowing access to auth routes
     if (sessionError) {
       console.error('Session error:', sessionError)
-      
-      // Clear session cookies
-      const cookieNames = ['sb-access-token', 'sb-refresh-token']
-      cookieNames.forEach(name => response.cookies.delete(name))
       
       // If on protected route, redirect to login
       if (isProtectedPath) {
@@ -71,6 +67,7 @@ export async function middleware(request: NextRequest) {
       }
       
       // For auth routes or public routes, continue without redirect
+      // This allows access to login page when session is invalid
       return response
     }
 
@@ -81,8 +78,8 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Handle auth routes when authenticated
-    if (session && isAuthRoute) {
+    // Only redirect from auth routes if we have a valid session
+    if (session?.user && isAuthRoute) {
       // Get the intended destination or default to home
       const next = request.nextUrl.searchParams.get('next') || '/'
       return NextResponse.redirect(new URL(next, request.url))
@@ -101,11 +98,13 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     console.error('Middleware error:', error)
     
-    // On critical errors, clear auth state
-    const response = NextResponse.redirect(new URL('/auth/login', request.url))
-    const cookieNames = ['sb-access-token', 'sb-refresh-token']
-    cookieNames.forEach(name => response.cookies.delete(name))
-    return response
+    // On critical errors, allow the request to continue
+    // This ensures auth routes are always accessible
+    return NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    })
   }
 }
 

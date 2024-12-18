@@ -40,19 +40,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const clearAuthState = useCallback(async () => {
     try {
-      // Clear Supabase session
+      // Let Supabase handle cookie/storage cleanup
       await supabase.auth.signOut()
       
-      // Clear all auth-related storage
-      if (typeof window !== 'undefined') {
-        // Clear session storage
-        sessionStorage.clear()
-        
-        // Clear specific localStorage items
-        const authKeys = ['sb-refresh-token', 'supabase.auth.token']
-        authKeys.forEach(key => localStorage.removeItem(key))
-      }
-
       setState(prev => ({
         ...prev,
         user: null,
@@ -118,6 +108,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isInitialized: true,
         loading: false
       }))
+
+      // Only redirect if not on an auth page
+      if (!window.location.pathname.startsWith('/auth/')) {
+        router.push('/auth/login')
+      }
     }
   }, [supabase.auth, router, clearAuthState, state.isInitialized])
 
