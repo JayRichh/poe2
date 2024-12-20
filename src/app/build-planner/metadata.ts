@@ -6,21 +6,24 @@ export async function generateMetadata(): Promise<Metadata> {
     const publicBuilds = await getBuilds({ visibility: "public" });
     const buildCount = publicBuilds.length;
 
-    const title = "Build Planner | POE2 Tools";
     const description = `Plan and explore Path of Exile 2 character builds. Browse ${buildCount} community builds or create your own. Features skill tree planning, equipment management, and build sharing.`;
 
     return {
-      title,
+      title: {
+        absolute: "Build Planner | POE2 Tools"
+      },
       description,
       openGraph: {
-        title,
+        title: {
+          absolute: "Build Planner | POE2 Tools"
+        },
         description,
         type: "website",
         url: "https://poe2.dev/build-planner",
       },
       twitter: {
         card: "summary",
-        title,
+        title: "Build Planner | POE2 Tools",
         description,
       },
       alternates: {
@@ -28,9 +31,10 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     };
   } catch (error) {
-    // Fallback metadata if build count fetch fails
     return {
-      title: "Build Planner | POE2 Tools",
+      title: {
+        absolute: "Build Planner | POE2 Tools"
+      },
       description: "Plan and explore Path of Exile 2 character builds. Create, customize, and share builds with the community.",
     };
   }

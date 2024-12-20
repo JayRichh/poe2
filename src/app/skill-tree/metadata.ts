@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Skill Tree Planner | POE2 Tools",
+  title: {
+    absolute: "Skill Tree Planner | POE2 Tools"
+  },
   description:
     "Interactive Path of Exile 2 skill tree planner with advanced build optimization. Plan passive skills, calculate stat bonuses, and share your character builds. Features visual node connections and build saving.",
   keywords: [
@@ -17,7 +19,9 @@ export const metadata: Metadata = {
     "path of exile 2 build sharing"
   ],
   openGraph: {
-    title: "POE2 Skill Tree Planner",
+    title: {
+      absolute: "POE2 Skill Tree Planner"
+    },
     description:
       "Interactive Path of Exile 2 skill tree planner with advanced build optimization. Plan passive skills, calculate stat bonuses, and share your character builds. Features visual node connections and build saving.",
     type: "website",
