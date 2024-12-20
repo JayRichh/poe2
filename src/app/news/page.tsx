@@ -1,7 +1,7 @@
-import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 import { NewsCard } from "~/components/news/NewsCard";
 import { NewsSidebar } from "~/components/news/NewsSidebar";
+import { PatchNotes } from "~/components/news/PatchNotes";
 import { NewsService } from "~/services/news-service";
 import { notFound } from 'next/navigation';
 
@@ -19,7 +19,11 @@ export default async function NewsPage({ searchParams }: PageProps) {
   
   try {
     const params = await searchParams;
-    const news = await NewsService.getLatestNews(params.category);
+    const [news, patchNotes] = await Promise.all([
+      NewsService.getLatestNews(params.category),
+      NewsService.getPatchNotes()
+    ]);
+    
     const featuredNews = news.slice(0, 2);
     const recentNews = news.slice(2);
 
@@ -27,7 +31,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
       <>
         <NewsSidebar />
         <main className="flex-1">
-          <div className="space-y-6 p-6 md:p-10">
+          <div className="space-y-8 p-6 md:p-10">
             {/* Header */}
             <div className="space-y-1.5">
               <Text variant="h1" className="flex items-center">Latest News</Text>
@@ -53,6 +57,14 @@ export default async function NewsPage({ searchParams }: PageProps) {
                 {recentNews.map((item) => (
                   <NewsCard key={item.id} news={item} />
                 ))}
+              </div>
+            </div>
+
+            {/* Patch Notes */}
+            <div>
+              <Text variant="h3" className="mb-3">Patch Notes</Text>
+              <div className="bg-card rounded-lg p-6 border border-border">
+                <PatchNotes patchNotes={patchNotes} />
               </div>
             </div>
           </div>

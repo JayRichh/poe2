@@ -1,21 +1,23 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-pre[class*="language-"],
-code[class*="language-"] {
-  text-shadow: none !important;
-  background: none !important;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  font-size: 0.875rem !important;
-  line-height: 1.5 !important;
-  tab-size: 2 !important;
+pre[class*='language-'],
+code[class*='language-'] {
+  text-shadow: none!important;
+  background: none!important;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace!important;
+  font-size: 0.875rem!important;
+  line-height: 1.5!important;
+  tab-size: 2!important;
 }
 
 .water-char {
   --water-intensity: 0;
   --water-angle: 0;
-  transform: translate(0, 0);
+  transform: translate(0,0);
   transition: all 0.2s ease-out;
   display: inline-block;
 }
@@ -26,8 +28,8 @@ code[class*="language-"] {
 
 .group:hover .water-char:hover {
   transform: translate(
-    calc(var(--water-intensity) * 10px * cos(var(--water-angle))),
-    calc(var(--water-intensity) * 10px * sin(var(--water-angle)))
+    calc(var(--water-intensity)*10px*cos(var(--water-angle))),
+    calc(var(--water-intensity)*10px*sin(var(--water-angle)))
   );
 }
 
@@ -55,13 +57,11 @@ code[class*="language-"] {
     --surface: 0 0% 98%;
     --surface-foreground: 0 0% 12%;
     --radius: 0.5rem;
-
-    /* Damage Type Colors */
-    --damage-physical: rgb(180, 180, 180);
-    --damage-lightning: rgb(255, 215, 0);
-    --damage-fire: rgb(255, 50, 50);
-    --damage-cold: rgb(50, 150, 255);
-    --damage-chaos: rgb(180, 90, 255);
+    --damage-physical: rgb(180,180,180);
+    --damage-lightning: rgb(255,215,0);
+    --damage-fire: rgb(255,50,50);
+    --damage-cold: rgb(50,150,255);
+    --damage-chaos: rgb(180,90,255);
   }
 
   .dark {
@@ -86,13 +86,11 @@ code[class*="language-"] {
     --error-foreground: 0 0% 98%;
     --surface: 0 0% 20%;
     --surface-foreground: 0 0% 96%;
-
-    /* Dark Mode Damage Type Colors - Slightly adjusted for dark theme */
-    --damage-physical: rgb(200, 200, 200);
-    --damage-lightning: rgb(255, 225, 50);
-    --damage-fire: rgb(255, 80, 80);
-    --damage-cold: rgb(80, 180, 255);
-    --damage-chaos: rgb(200, 120, 255);
+    --damage-physical: rgb(200,200,200);
+    --damage-lightning: rgb(255,225,50);
+    --damage-fire: rgb(255,80,80);
+    --damage-cold: rgb(80,180,255);
+    --damage-chaos: rgb(200,120,255);
   }
 }
 
@@ -103,7 +101,7 @@ code[class*="language-"] {
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "kern", "liga" 1, "calt" 1;
+    font-feature-settings: 'kern','liga' 1,'calt' 1;
   }
 
   h1 {
@@ -131,7 +129,7 @@ code[class*="language-"] {
   }
 
   .numeric {
-    font-feature-settings: "tnum", "zero";
+    font-feature-settings: 'tnum','zero';
     letter-spacing: -0.02em;
   }
 
@@ -203,12 +201,12 @@ code[class*="language-"] {
     background-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 215, 0, 0.12) 20%,
-      rgba(255, 215, 0, 0.18) 60%,
+      rgba(255,215,0,0.12) 20%,
+      rgba(255,215,0,0.18) 60%,
       transparent 100%
     );
     animation: shimmer 2s infinite;
-    content: "";
+    content: '';
   }
 
   .animate-gradient {
@@ -216,7 +214,6 @@ code[class*="language-"] {
     background-size: 200% 200%;
   }
 
-  /* DPS Calculator Utilities */
   .dps-value {
     @apply font-medium text-foreground numeric;
   }
@@ -258,13 +255,11 @@ code[class*="language-"] {
   }
 
   .input-range::-webkit-slider-thumb {
-    @apply h-3.5 w-3.5 appearance-none rounded-full bg-primary;
-    @apply hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:ring-offset-2;
+    @apply h-3.5 w-3.5 appearance-none rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:ring-offset-2;
   }
 
   .input-range::-moz-range-thumb {
-    @apply h-3.5 w-3.5 appearance-none rounded-full border-0 bg-primary;
-    @apply hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:ring-offset-2;
+    @apply h-3.5 w-3.5 appearance-none rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary/40 focus:ring-offset-2;
   }
 
   .btn-primary {
@@ -292,14 +287,13 @@ code[class*="language-"] {
   }
 
   .form-input {
-    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm;
-    @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25 transition-smooth;
-    @apply placeholder:text-foreground-secondary/70;
+    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm placeholder:text-foreground-secondary/70 transition-smooth;
+    @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25;
   }
 
   .form-select {
-    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm;
-    @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25 transition-smooth;
+    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm transition-smooth;
+    @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25;
   }
 
   .stat {
@@ -319,7 +313,6 @@ code[class*="language-"] {
     @apply text-sm text-foreground-secondary;
   }
 
-  /* DPS Calculator Components */
   .dps-panel {
     @apply rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm backdrop-blur-sm;
   }
@@ -329,26 +322,19 @@ code[class*="language-"] {
   }
 
   .dps-slider {
-    @apply w-full h-2 bg-background-secondary rounded-full appearance-none cursor-pointer;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary/25;
+    @apply w-full h-2 bg-background-secondary rounded-full appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/25;
   }
 
   .dps-slider::-webkit-slider-thumb {
-    @apply w-4 h-4 rounded-full bg-primary appearance-none;
-    @apply hover:bg-primary/90 transition-colors;
-    @apply hover:scale-110 transition-transform;
+    @apply w-4 h-4 rounded-full bg-primary appearance-none hover:bg-primary/90 transition-colors hover:scale-110 transition-transform;
   }
 
   .dps-slider::-moz-range-thumb {
-    @apply w-4 h-4 rounded-full bg-primary appearance-none border-0;
-    @apply hover:bg-primary/90 transition-colors;
-    @apply hover:scale-110 transition-transform;
+    @apply w-4 h-4 rounded-full bg-primary appearance-none hover:bg-primary/90 transition-colors hover:scale-110 transition-transform;
   }
 
   .dps-checkbox {
-    @apply w-4 h-4 rounded border-border bg-background;
-    @apply checked:bg-primary checked:border-primary;
-    @apply focus:ring-2 focus:ring-primary/25;
+    @apply w-4 h-4 rounded border-border bg-background checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary/25;
   }
 }
 
@@ -364,11 +350,11 @@ code[class*="language-"] {
 .progress-striped {
   background-image: linear-gradient(
     45deg,
-    rgba(255, 215, 0, 0.15) 25%,
+    rgba(255,215,0,0.15) 25%,
     transparent 25%,
     transparent 50%,
-    rgba(255, 215, 0, 0.15) 50%,
-    rgba(255, 215, 0, 0.15) 75%,
+    rgba(255,215,0,0.15) 50%,
+    rgba(255,215,0,0.15) 75%,
     transparent 75%,
     transparent
   );
