@@ -19,11 +19,13 @@ export default function BuildPlannerPage() {
         <div className="flex items-center justify-between gap-4">
           <Text className="text-lg font-medium">Available Builds</Text>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
-              Templates
+            <Button variant="outline" size="sm" disabled className="relative group">
+              <span>Templates</span>
+              <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded-full">Soon</span>
             </Button>
-            <Button variant="outline" size="sm">
-              Public Builds
+            <Button variant="outline" size="sm" disabled className="relative group">
+              <span>Public Builds</span>
+              <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded-full">Soon</span>
             </Button>
           </div>
         </div>
