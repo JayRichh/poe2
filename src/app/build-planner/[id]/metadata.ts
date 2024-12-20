@@ -13,9 +13,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
     const build = await getBuild(params.id);
     if (!build) {
       return {
-        title: {
-          absolute: "Build Not Found | POE2 Tools"
-        },
+        title: "Build Not Found",
         description: "The requested Path of Exile 2 build could not be found.",
       };
     }
@@ -25,21 +23,17 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
     } build for Path of Exile 2. ${build.description || ""}`.trim();
 
     return {
-      title: {
-        absolute: `${build.name} Build | POE2 Tools`
-      },
+      title: `${build.name} Build`,
       description,
       openGraph: {
-        title: {
-          absolute: `${build.name} Build | POE2 Tools`
-        },
+        title: `${build.name} Build`,
         description,
         type: "article",
         url: `https://poe2.dev/build-planner/${params.id}`,
       },
       twitter: {
         card: "summary",
-        title: `${build.name} Build | POE2 Tools`,
+        title: `${build.name} Build`,
         description,
       },
       alternates: {
@@ -49,9 +43,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
   } catch (error) {
     console.error("Error generating build metadata:", error);
     return {
-      title: {
-        absolute: "Build Not Found | POE2 Tools"
-      },
+      title: "Build Not Found",
       description: "The requested Path of Exile 2 build could not be found.",
     };
   }

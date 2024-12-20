@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "News Feed | POE2 Tools"
-  },
+  title: "News Feed",
   description:
     "Latest Path of Exile 2 news, patch notes, developer updates, and community announcements. Stay informed about game mechanics, balance changes, and upcoming features for POE2.",
   keywords: [
@@ -17,9 +15,7 @@ export const metadata: Metadata = {
     "poe2 balance updates"
   ],
   openGraph: {
-    title: {
-      absolute: "News Feed | POE2 Tools"
-    },
+    title: "News Feed",
     description:
       "Latest Path of Exile 2 news, patch notes, developer updates, and community announcements. Stay informed about game mechanics, balance changes, and upcoming features for POE2.",
     type: "website",
@@ -28,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "News Feed | POE2 Tools",
+    title: "News Feed",
     description:
       "Latest Path of Exile 2 news, patch notes, developer updates, and community announcements. Stay informed about game mechanics, balance changes, and upcoming features for POE2.",
   },

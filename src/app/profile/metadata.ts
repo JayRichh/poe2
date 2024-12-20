@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Profile Settings | POE2 Tools"
-  },
+  title: "Profile Settings",
   description: "Manage your POE2 Tools account settings, Path of Exile connections, and preferences.",
   robots: {
     index: false,
     follow: true,
   },
   openGraph: {
-    title: {
-      absolute: "POE2 Tools Profile"
-    },
+    title: "Profile Settings",
     description: "Manage your POE2 Tools account settings and Path of Exile connections.",
     type: "profile",
     url: "https://poe2.dev/profile",

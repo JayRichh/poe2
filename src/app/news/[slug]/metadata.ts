@@ -12,23 +12,18 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
     const article = await NewsService.getNewsById(params.slug);
     if (!article) {
       return {
-        title: {
-          absolute: "Article Not Found | POE2 Tools"
-        },
+        title: "Article Not Found",
         description: "The requested news article could not be found.",
       };
     }
 
-    const title = {
-      absolute: `${article.title} | POE2 Tools News`
-    };
     const description = article.description;
 
     return {
-      title,
+      title: article.title,
       description,
       openGraph: {
-        title,
+        title: article.title,
         description,
         type: "article",
         url: `https://poe2.dev/news/${params.slug}`,
@@ -37,7 +32,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
       },
       twitter: {
         card: "summary_large_image",
-        title: title.absolute,
+        title: article.title,
         description,
       },
       alternates: {
@@ -52,9 +47,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
   } catch (error) {
     console.error("Error generating news article metadata:", error);
     return {
-      title: {
-        absolute: "Article Not Found | POE2 Tools"
-      },
+      title: "Article Not Found",
       description: "The requested news article could not be found.",
     };
   }

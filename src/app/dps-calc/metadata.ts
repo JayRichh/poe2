@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "DPS Calculator | POE2 Tools"
-  },
+  title: "DPS Calculator",
   description:
     "Advanced Path of Exile 2 DPS calculator with real-time damage simulation. Calculate skill damage, critical strikes, damage over time effects, and optimize your character's offensive capabilities.",
   keywords: [
@@ -19,9 +17,7 @@ export const metadata: Metadata = {
     "path of exile 2 build damage"
   ],
   openGraph: {
-    title: {
-      absolute: "POE2 DPS Calculator"
-    },
+    title: "DPS Calculator",
     description:
       "Advanced Path of Exile 2 DPS calculator with real-time damage simulation. Calculate skill damage, critical strikes, damage over time effects, and optimize your character's offensive capabilities.",
     type: "website",
@@ -30,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "POE2 DPS Calculator",
+    title: "DPS Calculator",
     description:
       "Advanced Path of Exile 2 DPS calculator with real-time damage simulation. Calculate skill damage, critical strikes, damage over time effects, and optimize your character's offensive capabilities.",
   },
