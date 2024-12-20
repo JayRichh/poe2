@@ -1,6 +1,24 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /auth/
+Allow: /skill-tree
+Allow: /build-planner
+Allow: /dps-calc
+Allow: /news
+Allow: /profile
 
+# Protect API routes
+Disallow: /api/
+Disallow: /api/*
+
+# Protect auth routes
+Disallow: /auth/
+Disallow: /auth/*
+
+# Protect dynamic build routes
+Disallow: /build-planner/*/edit
+
+# Rate limiting directive
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://poe2.dev/sitemap.xml

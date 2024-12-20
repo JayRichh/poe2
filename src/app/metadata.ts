@@ -11,11 +11,30 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://poe2.dev"),
-  title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+  title: {
+    template: "%s | POE2 Tools",
+    default: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+  },
   description:
-    "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
-  keywords: ["path of exile 2", "poe2", "build planner", "dps calculator", "poe tools"],
+    "Comprehensive Path of Exile 2 toolkit featuring an interactive build planner, skill tree calculator, DPS simulator, and character optimization tools. Plan, analyze, and share your POE2 builds with the community.",
+  keywords: [
+    "path of exile 2",
+    "poe2",
+    "build planner",
+    "dps calculator",
+    "skill tree planner",
+    "poe tools",
+    "character builder",
+    "poe2 builds",
+    "path of exile 2 calculator",
+    "poe2 character optimization",
+    "poe2 skill simulator",
+    "path of exile 2 guides",
+    "poe2 build guides",
+    "poe2 character planning"
+  ],
   authors: [{ name: "POE2 Tools Team" }],
+  category: "Gaming Tools",
   icons: {
     icon: [
       {
@@ -30,8 +49,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
     description:
-      "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+      "Comprehensive Path of Exile 2 toolkit featuring an interactive build planner, skill tree calculator, DPS simulator, and character optimization tools. Plan, analyze, and share your POE2 builds with the community.",
     type: "website",
+    locale: "en_US",
+    siteName: "POE2 Tools",
     images: [
       {
         url: "/favicon.svg",
@@ -45,7 +66,17 @@ export const metadata: Metadata = {
     card: "summary",
     title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
     description:
-      "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+      "Comprehensive Path of Exile 2 toolkit featuring an interactive build planner, skill tree calculator, DPS simulator, and character optimization tools. Plan, analyze, and share your POE2 builds with the community.",
     images: ["/favicon.svg"],
+    creator: "@poe2tools",
+  },
+  alternates: {
+    canonical: "https://poe2.dev",
+    types: {
+      "application/rss+xml": "https://poe2.dev/feed.xml",
+    },
+  },
+  verification: {
+    google: "google-site-verification-code", // Add your Google verification code
   },
 };
