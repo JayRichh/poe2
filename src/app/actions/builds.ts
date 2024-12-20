@@ -10,6 +10,7 @@ type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
 type BuildUpdate = Database["public"]["Tables"]["builds"]["Update"];
 
 interface BuildWithRelations extends Build {
+  author_name?: any;
   equipment?: Database["public"]["Tables"]["equipment"]["Row"][];
   skill_gems?: Database["public"]["Tables"]["skill_gems"]["Row"][];
   build_configs?: Database["public"]["Tables"]["build_configs"]["Row"][];

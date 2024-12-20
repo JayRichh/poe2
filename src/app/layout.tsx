@@ -100,13 +100,12 @@ export async function generateMetadata(
     category: "Gaming Tools",
     icons: {
       icon: [
-        {
-          url: "/favicon.svg",
-          type: "image/svg+xml",
-          sizes: "32x32",
-        },
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/icon.svg", type: "image/svg+xml" }
       ],
-      shortcut: "/favicon.svg",
+      shortcut: ["/favicon.ico"],
+      apple: [{ url: "/icon.svg" }],
     },
     manifest: "/manifest.json",
     openGraph: {
@@ -117,9 +116,9 @@ export async function generateMetadata(
       siteName: "POE2 Tools",
       images: [
         {
-          url: "/favicon.svg",
-          width: 32,
-          height: 32,
+          url: "/icon.svg",
+          width: 192,
+          height: 192,
           alt: "POE2 Tools Icon",
         },
       ],
@@ -128,7 +127,7 @@ export async function generateMetadata(
       card: "summary",
       title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
       description,
-      images: ["/favicon.svg"],
+      images: ["/icon.svg"],
       creator: "@poe2tools",
     },
     alternates: {

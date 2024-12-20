@@ -8,10 +8,20 @@
   "theme_color": "#fbbf24",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "32x32",
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
     }
   ]
 }
