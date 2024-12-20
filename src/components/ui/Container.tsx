@@ -1,6 +1,7 @@
 "use client";
 
 import { HTMLMotionProps, motion } from "framer-motion";
+
 import { ReactNode, forwardRef } from "react";
 
 interface ContainerProps extends Omit<HTMLMotionProps<"div">, "children"> {
@@ -67,14 +68,17 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
       ${className}
     `;
 
-    const glassStyles = glass || glassDark ? `
+    const glassStyles =
+      glass || glassDark
+        ? `
       rounded-xl
       backdrop-blur-sm
       ${glass ? "glass" : ""}
       ${glassDark ? "dark:glass-dark" : ""}
       ${!noPadding ? "p-6 sm:p-8" : ""}
       overflow-hidden
-    ` : "";
+    `
+        : "";
 
     return (
       <motion.div

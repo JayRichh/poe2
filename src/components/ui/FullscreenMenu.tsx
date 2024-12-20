@@ -1,15 +1,31 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Calculator,
+  GitBranch,
+  Layout,
+  LogIn,
+  LogOut,
+  Monitor,
+  Moon,
+  Settings,
+  Sun,
+  User,
+  X,
+} from "lucide-react";
+
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Settings, Sun, Moon, Monitor, LogOut, User, Layout, Calculator, LogIn, GitBranch } from "lucide-react";
-import { Button } from "./Button";
-import { cn } from "../../utils/cn";
-import { useRouter, usePathname } from "next/navigation";
+
 import { useTheme } from "next-themes";
-import { Text } from "./Text";
+import { usePathname, useRouter } from "next/navigation";
+
 import { useAuth } from "~/contexts/auth";
+
+import { cn } from "../../utils/cn";
+import { Button } from "./Button";
+import { Text } from "./Text";
 
 const mainLinks = [
   { label: "Build Planner", path: "/build-planner", icon: Layout },
@@ -42,28 +58,28 @@ const animations = {
   },
   content: {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { delay: 0.3, duration: 0.4, ease: "easeOut" }
+      transition: { delay: 0.3, duration: 0.4, ease: "easeOut" },
     },
-    exit: { 
+    exit: {
       opacity: 0,
-      transition: { duration: 0.2 }
-    }
+      transition: { duration: 0.2 },
+    },
   },
   item: {
     hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
+      transition: { duration: 0.3, ease: "easeOut" },
     },
-    exit: { 
+    exit: {
       opacity: 0,
       x: -10,
-      transition: { duration: 0.2 }
-    }
-  }
+      transition: { duration: 0.2 },
+    },
+  },
 };
 
 function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
@@ -80,7 +96,7 @@ function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
           <Text className="font-medium">Sign in to access all features</Text>
           <Button
             variant="outline"
-            onClick={() => onNavigate('/auth/login')}
+            onClick={() => onNavigate("/auth/login")}
             className="w-full flex items-center gap-2"
           >
             <LogIn className="h-4 w-4" />
@@ -92,7 +108,15 @@ function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
   );
 }
 
-function UserProfile({ user, onSignOut, onNavigate }: { user: any; onSignOut: () => void; onNavigate: (path: string) => void }) {
+function UserProfile({
+  user,
+  onSignOut,
+  onNavigate,
+}: {
+  user: any;
+  onSignOut: () => void;
+  onNavigate: (path: string) => void;
+}) {
   return (
     <motion.div
       variants={animations.item}
@@ -107,7 +131,7 @@ function UserProfile({ user, onSignOut, onNavigate }: { user: any; onSignOut: ()
           <div className="grid gap-2">
             <Button
               variant="outline"
-              onClick={() => onNavigate('/profile')}
+              onClick={() => onNavigate("/profile")}
               className="w-full flex items-center gap-2"
             >
               <Settings className="h-4 w-4" />
@@ -128,7 +152,13 @@ function UserProfile({ user, onSignOut, onNavigate }: { user: any; onSignOut: ()
   );
 }
 
-function NavigationSection({ pathname, onNavigate }: { pathname: string; onNavigate: (path: string) => void }) {
+function NavigationSection({
+  pathname,
+  onNavigate,
+}: {
+  pathname: string;
+  onNavigate: (path: string) => void;
+}) {
   return (
     <div className="space-y-6">
       <Text className="text-lg font-medium">Navigation</Text>
@@ -150,8 +180,8 @@ function NavigationSection({ pathname, onNavigate }: { pathname: string; onNavig
                 onClick={() => onNavigate(item.path)}
                 className={cn(
                   "w-full p-4 rounded-xl border-2 text-left transition-all",
-                  isActive 
-                    ? "border-primary bg-primary/5" 
+                  isActive
+                    ? "border-primary bg-primary/5"
                     : "border-border/50 bg-background/95 hover:border-primary/50"
                 )}
               >
@@ -205,7 +235,7 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
   const handleSignOut = async () => {
     await signOut();
     onClose();
-    router.push('/auth/login');
+    router.push("/auth/login");
   };
 
   if (!mounted) return null;
@@ -265,7 +295,11 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
               <div className="space-y-8">
                 {user ? (
-                  <UserProfile user={user} onSignOut={handleSignOut} onNavigate={handleNavigation} />
+                  <UserProfile
+                    user={user}
+                    onSignOut={handleSignOut}
+                    onNavigate={handleNavigation}
+                  />
                 ) : (
                   <SignInSection onNavigate={handleNavigation} />
                 )}

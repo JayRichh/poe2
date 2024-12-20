@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useCallback } from 'react';
-import { TreeNodeData } from '../components/TreeViewer/data';
+import { useCallback, useState } from "react";
+
+import { TreeNodeData } from "../components/TreeViewer/data";
 
 interface TreeState {
   allocatedNodes: Set<string>;
@@ -19,44 +20,47 @@ export function useTreeHistory({ onStateChange }: UseTreeHistoryProps) {
   const [history, setHistory] = useState<TreeState[]>([]);
   const [currentIndex, setCurrentIndex] = useState(-1);
 
-  const pushState = useCallback((nodes: Set<string>, ascendancy: string) => {
-    const newState: TreeState = {
-      allocatedNodes: new Set(nodes),
-      ascendancy,
-      timestamp: Date.now()
-    };
+  const pushState = useCallback(
+    (nodes: Set<string>, ascendancy: string) => {
+      const newState: TreeState = {
+        allocatedNodes: new Set(nodes),
+        ascendancy,
+        timestamp: Date.now(),
+      };
 
-    setHistory(prev => {
-      // Remove any future states if we're not at the end
-      const newHistory = prev.slice(0, currentIndex + 1);
-      
-      // Add new state
-      newHistory.push(newState);
-      
-      // Keep only last MAX_HISTORY states
-      if (newHistory.length > MAX_HISTORY) {
-        newHistory.shift();
-      }
-      
-      return newHistory;
-    });
-    
-    setCurrentIndex(prev => Math.min(prev + 1, MAX_HISTORY - 1));
-  }, [currentIndex]);
+      setHistory((prev) => {
+        // Remove any future states if we're not at the end
+        const newHistory = prev.slice(0, currentIndex + 1);
+
+        // Add new state
+        newHistory.push(newState);
+
+        // Keep only last MAX_HISTORY states
+        if (newHistory.length > MAX_HISTORY) {
+          newHistory.shift();
+        }
+
+        return newHistory;
+      });
+
+      setCurrentIndex((prev) => Math.min(prev + 1, MAX_HISTORY - 1));
+    },
+    [currentIndex]
+  );
 
   const undo = useCallback(() => {
     if (currentIndex <= 0) return;
-    
+
     const prevState = history[currentIndex - 1];
-    setCurrentIndex(prev => prev - 1);
+    setCurrentIndex((prev) => prev - 1);
     onStateChange(prevState.allocatedNodes, prevState.ascendancy);
   }, [currentIndex, history, onStateChange]);
 
   const redo = useCallback(() => {
     if (currentIndex >= history.length - 1) return;
-    
+
     const nextState = history[currentIndex + 1];
-    setCurrentIndex(prev => prev + 1);
+    setCurrentIndex((prev) => prev + 1);
     onStateChange(nextState.allocatedNodes, nextState.ascendancy);
   }, [currentIndex, history, onStateChange]);
 
@@ -64,10 +68,10 @@ export function useTreeHistory({ onStateChange }: UseTreeHistoryProps) {
   const canRedo = currentIndex < history.length - 1;
 
   const getHistory = useCallback(() => {
-    return history.map(state => ({
+    return history.map((state) => ({
       allocatedNodes: Array.from(state.allocatedNodes),
       ascendancy: state.ascendancy,
-      timestamp: state.timestamp
+      timestamp: state.timestamp,
     }));
   }, [history]);
 
@@ -76,13 +80,16 @@ export function useTreeHistory({ onStateChange }: UseTreeHistoryProps) {
     setCurrentIndex(-1);
   }, []);
 
-  const restoreState = useCallback((index: number) => {
-    if (index < 0 || index >= history.length) return;
-    
-    const state = history[index];
-    setCurrentIndex(index);
-    onStateChange(state.allocatedNodes, state.ascendancy);
-  }, [history, onStateChange]);
+  const restoreState = useCallback(
+    (index: number) => {
+      if (index < 0 || index >= history.length) return;
+
+      const state = history[index];
+      setCurrentIndex(index);
+      onStateChange(state.allocatedNodes, state.ascendancy);
+    },
+    [history, onStateChange]
+  );
 
   return {
     pushState,
@@ -92,6 +99,6 @@ export function useTreeHistory({ onStateChange }: UseTreeHistoryProps) {
     canRedo,
     getHistory,
     clearHistory,
-    restoreState
+    restoreState,
   };
 }

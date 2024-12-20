@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
+
 import Link from "next/link";
+
 import { Text } from "./Text";
 
 interface FeatureCardProps {
@@ -26,32 +28,40 @@ export function FeatureCard({
 }: FeatureCardProps) {
   return (
     <Link href={href}>
-      <motion.div 
+      <motion.div
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="group relative h-full"
       >
-        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-${gradientFrom}/20 via-transparent to-${gradientTo}/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+        <div
+          className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-${gradientFrom}/20 via-transparent to-${gradientTo}/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+        />
         <div className="relative space-y-6 p-8 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:bg-card/90 transition-colors duration-300">
-          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-${gradientFrom}/20 to-${gradientTo}/20 flex items-center justify-center group-hover:from-${gradientFrom}/30 group-hover:to-${gradientTo}/30 transition-colors duration-300`}>
+          <div
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br from-${gradientFrom}/20 to-${gradientTo}/20 flex items-center justify-center group-hover:from-${gradientFrom}/30 group-hover:to-${gradientTo}/30 transition-colors duration-300`}
+          >
             <Icon className={`w-6 h-6 text-${iconColor}`} />
           </div>
           <div className="space-y-4">
             <Text variant="h3">{title}</Text>
             <ul className="space-y-3">
               {features.map((feature, index) => (
-                <li 
-                  key={index} 
+                <li
+                  key={index}
                   className="flex items-center gap-3 text-muted-foreground group-hover:text-foreground transition-colors"
                 >
-                  <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-${gradientFrom} to-${gradientTo}`} />
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-${gradientFrom} to-${gradientTo}`}
+                  />
                   {feature}
                 </li>
               ))}
             </ul>
           </div>
           <div className="flex items-center text-sm font-medium">
-            <span className={`text-${iconColor} transition-colors duration-300 group-hover:font-semibold`}>
+            <span
+              className={`text-${iconColor} transition-colors duration-300 group-hover:font-semibold`}
+            >
               Learn More
             </span>
             <svg

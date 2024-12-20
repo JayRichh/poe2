@@ -1,13 +1,17 @@
 "use client";
 
 import { Suspense } from "react";
+
 import { ThemeProvider } from "next-themes";
-import { Navigation } from "~/components/Navigation";
+
 import { Footer } from "~/components/Footer";
+import { Navigation } from "~/components/Navigation";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
-import { AuthProvider } from "~/contexts/auth";
+
 import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
+
+import { AuthProvider } from "~/contexts/auth";
 
 function NavigationLoading() {
   return (
@@ -27,7 +31,7 @@ function MainContentLoading() {
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   useDefaultDarkMode();
-  
+
   return (
     <ThemeProvider
       attribute="class"

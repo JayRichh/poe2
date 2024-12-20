@@ -1,6 +1,6 @@
-export type GradientVariant = 
+export type GradientVariant =
   | "primary"
-  | "accent" 
+  | "accent"
   | "secondary"
   | "error"
   | "radial"
@@ -23,7 +23,7 @@ export const gradients: Record<GradientVariant, GradientConfig> = {
   },
   accent: {
     colors: ["#FF9500", "#00B341", "#FFB800"],
-    type: "linear", 
+    type: "linear",
     direction: "to right",
   },
   secondary: {
@@ -53,29 +53,29 @@ export const gradients: Record<GradientVariant, GradientConfig> = {
     type: "radial",
     opacity: 0.1,
     blur: 80,
-  }
+  },
 };
 
 export const getGradientStyle = (variant: GradientVariant, options?: Partial<GradientConfig>) => {
   const config = { ...gradients[variant], ...options };
-  
+
   if (config.type === "linear") {
     return `linear-gradient(${config.direction}, ${config.colors.join(", ")})`;
   }
-  
+
   if (config.type === "radial") {
     return `radial-gradient(circle at center, ${config.colors.join(", ")})`;
   }
-  
+
   return "";
 };
 
 export const getGradientClassName = (variant: GradientVariant) => {
   const config = gradients[variant];
-  
+
   if (config.type === "linear") {
     return "bg-gradient-to-r";
   }
-  
+
   return "";
 };

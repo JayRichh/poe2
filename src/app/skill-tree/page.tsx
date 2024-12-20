@@ -1,28 +1,41 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useSkillTree } from './hooks/useSkillTree';
-import { TreeViewer } from './components/TreeViewer/TreeViewer';
-import { NodeDetails } from './components/Sidebar/NodeDetails';
-import { Filters } from './components/Sidebar/Filters';
-import { StatsPanel } from './components/Sidebar/StatsPanel';
-import { ChevronLeft, ChevronRight, SlidersHorizontal, Info, Undo, Redo, RotateCcw, Download, Upload, Share2 } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Info,
+  Redo,
+  RotateCcw,
+  Share2,
+  SlidersHorizontal,
+  Undo,
+  Upload,
+} from "lucide-react";
+
+import { useEffect } from "react";
+
+import { Filters } from "./components/Sidebar/Filters";
+import { NodeDetails } from "./components/Sidebar/NodeDetails";
+import { StatsPanel } from "./components/Sidebar/StatsPanel";
+import { TreeViewer } from "./components/TreeViewer/TreeViewer";
+import { useSkillTree } from "./hooks/useSkillTree";
 
 // Pre-load data files
 const preloadData = () => {
   const files = [
-    '/data/nodes.json',
-    '/data/nodes_desc.json',
-    '/data/skills.json',
-    '/data/keywords.json'
+    "/data/nodes.json",
+    "/data/nodes_desc.json",
+    "/data/skills.json",
+    "/data/keywords.json",
   ];
 
-  files.forEach(file => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'fetch';
+  files.forEach((file) => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "fetch";
     link.href = file;
-    link.crossOrigin = 'anonymous';
+    link.crossOrigin = "anonymous";
     document.head.appendChild(link);
   });
 };
@@ -78,7 +91,7 @@ export default function SkillTreePage() {
     resetTree,
     handleExport,
     handleImport,
-    getShareLink
+    getShareLink,
   } = useSkillTree();
 
   // Preload data files
@@ -110,14 +123,15 @@ export default function SkillTreePage() {
       {/* Main Content Area */}
       <div className="flex flex-1 min-h-0">
         {/* Left Sidebar - Filters */}
-        <div className={`border-r border-border overflow-y-auto transition-all duration-300 ease-in-out
-          ${leftSidebarVisible ? 'w-80' : 'w-12'}`}
+        <div
+          className={`border-r border-border overflow-y-auto transition-all duration-300 ease-in-out
+          ${leftSidebarVisible ? "w-80" : "w-12"}`}
         >
           <div className="sticky top-0 p-2 bg-background border-b border-border z-10">
             <button
               onClick={toggleLeftSidebar}
               className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-accent transition-colors"
-              title={leftSidebarVisible ? 'Collapse Filters' : 'Expand Filters'}
+              title={leftSidebarVisible ? "Collapse Filters" : "Expand Filters"}
             >
               {leftSidebarVisible ? (
                 <>
@@ -207,7 +221,9 @@ export default function SkillTreePage() {
                       onClick={undo}
                       disabled={!canUndo}
                       className={`p-2 rounded-lg transition-colors ${
-                        canUndo ? 'hover:bg-accent text-foreground' : 'text-muted-foreground cursor-not-allowed'
+                        canUndo
+                          ? "hover:bg-accent text-foreground"
+                          : "text-muted-foreground cursor-not-allowed"
                       }`}
                       title="Undo"
                     >
@@ -217,7 +233,9 @@ export default function SkillTreePage() {
                       onClick={redo}
                       disabled={!canRedo}
                       className={`p-2 rounded-lg transition-colors ${
-                        canRedo ? 'hover:bg-accent text-foreground' : 'text-muted-foreground cursor-not-allowed'
+                        canRedo
+                          ? "hover:bg-accent text-foreground"
+                          : "text-muted-foreground cursor-not-allowed"
                       }`}
                       title="Redo"
                     >
@@ -243,7 +261,8 @@ export default function SkillTreePage() {
                     >
                       <Download className="w-4 h-4" />
                     </button>
-                    <label className="p-2 rounded-lg hover:bg-accent transition-colors cursor-pointer"
+                    <label
+                      className="p-2 rounded-lg hover:bg-accent transition-colors cursor-pointer"
                       title="Import Tree"
                     >
                       <Upload className="w-4 h-4" />
@@ -275,14 +294,15 @@ export default function SkillTreePage() {
         </div>
 
         {/* Right Sidebar - Node Details & Stats */}
-        <div className={`border-l border-border overflow-y-auto transition-all duration-300 ease-in-out
-          ${rightSidebarVisible ? 'w-96' : 'w-12'}`}
+        <div
+          className={`border-l border-border overflow-y-auto transition-all duration-300 ease-in-out
+          ${rightSidebarVisible ? "w-96" : "w-12"}`}
         >
           <div className="sticky top-0 p-2 bg-background border-b border-border z-10">
             <button
               onClick={toggleRightSidebar}
               className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-accent transition-colors"
-              title={rightSidebarVisible ? 'Collapse Details' : 'Expand Details'}
+              title={rightSidebarVisible ? "Collapse Details" : "Expand Details"}
             >
               {rightSidebarVisible ? (
                 <>
@@ -311,10 +331,7 @@ export default function SkillTreePage() {
               {treeData && (
                 <div className="border-t border-border pt-6">
                   <h2 className="text-xl font-bold mb-4">Stats Summary</h2>
-                  <StatsPanel
-                    treeData={treeData}
-                    allocatedNodes={allocatedNodes}
-                  />
+                  <StatsPanel treeData={treeData} allocatedNodes={allocatedNodes} />
                 </div>
               )}
             </div>

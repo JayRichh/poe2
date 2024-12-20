@@ -1,6 +1,6 @@
-import { Container } from '~/components/ui/Container'
-import { Card } from '~/components/ui/Card'
-import { Skeleton } from '~/components/ui/Skeleton'
+import { Card } from "~/components/ui/Card";
+import { Container } from "~/components/ui/Container";
+import { Skeleton } from "~/components/ui/Skeleton";
 
 export default function AuthLoading() {
   return (
@@ -35,5 +35,5 @@ export default function AuthLoading() {
         </Card>
       </Container>
     </div>
-  )
+  );
 }

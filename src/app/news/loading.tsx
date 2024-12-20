@@ -1,10 +1,8 @@
-import { Container } from "~/components/ui/Container";
 import { NewsSidebar } from "~/components/news/NewsSidebar";
+import { Container } from "~/components/ui/Container";
 
 function Skeleton({ className = "" }: { className?: string }) {
-  return (
-    <div className={`animate-pulse bg-accent/10 rounded-lg ${className}`} />
-  );
+  return <div className={`animate-pulse bg-accent/10 rounded-lg ${className}`} />;
 }
 
 export default function NewsLoading() {

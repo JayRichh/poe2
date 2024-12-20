@@ -10,7 +10,6 @@ A web application providing tools and utilities for Path of Exile 2.
 
 ![Screenshot 2024-12-18 195445](https://github.com/user-attachments/assets/9f8eec89-0f7c-42e6-8891-4949d1750905)
 
-
 ## Development
 
 ```bash

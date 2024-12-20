@@ -1,100 +1,106 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { Container } from '~/components/ui/Container'
-import { Text } from '~/components/ui/Text'
-import { Button } from '~/components/ui/Button'
-import { useAuth } from '~/contexts/auth'
-import { usePOEAccount } from '~/hooks/usePOEAccount'
-import { User, Mail, Key, Link2, CheckCircle2, RefreshCw, X } from 'lucide-react'
-import { cn } from '~/utils/cn'
-import { updateProfile, updatePassword } from '~/app/actions/profile'
-import { useRouter } from 'next/navigation'
+import { CheckCircle2, Key, Link2, Mail, RefreshCw, User, X } from "lucide-react";
+
+import { useEffect, useState } from "react";
+
+import { useRouter } from "next/navigation";
+
+import { Button } from "~/components/ui/Button";
+import { Container } from "~/components/ui/Container";
+import { Text } from "~/components/ui/Text";
+
+import { usePOEAccount } from "~/hooks/usePOEAccount";
+
+import { cn } from "~/utils/cn";
+
+import { updatePassword, updateProfile } from "~/app/actions/profile";
+import { useAuth } from "~/contexts/auth";
 
 export default function ProfilePage() {
-  const router = useRouter()
-  const { user, signOut, refreshSession } = useAuth()
-  const { 
+  const router = useRouter();
+  const { user, signOut, refreshSession } = useAuth();
+  const {
     loading: poeLoading,
     error: poeError,
     poeAccount,
     poeProfile,
     connectPOE,
     disconnectPOE,
-    refreshProfile
-  } = usePOEAccount()
-  const [name, setName] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [message, setMessage] = useState<string | null>(null)
-  const [showPasswordForm, setShowPasswordForm] = useState(false)
-  const [newPassword, setNewPassword] = useState('')
+    refreshProfile,
+  } = usePOEAccount();
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
 
   useEffect(() => {
     if (!user) {
-      router.replace('/auth/login')
-      return
+      router.replace("/auth/login");
+      return;
     }
-    setName(user.user_metadata?.name || '')
-  }, [user, router])
+    setName(user.user_metadata?.name || "");
+  }, [user, router]);
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!user) return
+    e.preventDefault();
+    if (!user) return;
 
-    setLoading(true)
-    setError(null)
-    setMessage(null)
+    setLoading(true);
+    setError(null);
+    setMessage(null);
 
     try {
-      await updateProfile(name)
-      setMessage('Profile updated successfully')
-      await refreshSession()
+      await updateProfile(name);
+      setMessage("Profile updated successfully");
+      await refreshSession();
     } catch (err) {
-      console.error('Error updating profile:', err)
-      setError('Failed to update profile')
+      console.error("Error updating profile:", err);
+      setError("Failed to update profile");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleChangePassword = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!user?.email || !newPassword) return
+    e.preventDefault();
+    if (!user?.email || !newPassword) return;
 
-    setLoading(true)
-    setError(null)
-    setMessage(null)
+    setLoading(true);
+    setError(null);
+    setMessage(null);
 
     try {
-      await updatePassword(newPassword)
-      setMessage('Password updated successfully')
-      setShowPasswordForm(false)
-      setNewPassword('')
-      await refreshSession()
+      await updatePassword(newPassword);
+      setMessage("Password updated successfully");
+      setShowPasswordForm(false);
+      setNewPassword("");
+      await refreshSession();
     } catch (err) {
-      console.error('Error updating password:', err)
-      setError('Failed to update password')
+      console.error("Error updating password:", err);
+      setError("Failed to update password");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleSignOut = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      await signOut()
-      router.replace('/auth/login')
+      await signOut();
+      router.replace("/auth/login");
     } catch (err) {
-      console.error('Error signing out:', err)
-      setError('Failed to sign out')
+      console.error("Error signing out:", err);
+      setError("Failed to sign out");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (!user) {
-    return null
+    return null;
   }
 
   return (
@@ -118,10 +124,10 @@ export default function ProfilePage() {
                   value={user.email}
                   disabled
                   className={cn(
-                    'pl-11 w-full h-12 rounded-xl',
-                    'bg-background/95',
-                    'border-2 border-border/50',
-                    'text-foreground/60'
+                    "pl-11 w-full h-12 rounded-xl",
+                    "bg-background/95",
+                    "border-2 border-border/50",
+                    "text-foreground/60"
                   )}
                 />
               </div>
@@ -139,11 +145,11 @@ export default function ProfilePage() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your name"
                   className={cn(
-                    'pl-11 w-full h-12 rounded-xl',
-                    'bg-background/95',
-                    'border-2 border-border/50',
-                    'focus:border-primary/50 focus:ring-2 focus:ring-primary/20',
-                    'placeholder:text-foreground/40'
+                    "pl-11 w-full h-12 rounded-xl",
+                    "bg-background/95",
+                    "border-2 border-border/50",
+                    "focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
+                    "placeholder:text-foreground/40"
                   )}
                 />
               </div>
@@ -163,12 +169,8 @@ export default function ProfilePage() {
           )}
 
           <div className="flex justify-end">
-            <Button
-              type="submit"
-              variant="primary"
-              disabled={loading}
-            >
-              {loading ? 'Saving...' : 'Save Changes'}
+            <Button type="submit" variant="primary" disabled={loading}>
+              {loading ? "Saving..." : "Save Changes"}
             </Button>
           </div>
         </form>
@@ -188,7 +190,7 @@ export default function ProfilePage() {
                 <Text className="text-sm text-foreground/60">
                   {poeAccount?.connected
                     ? `Connected as ${poeAccount.accountName}`
-                    : 'Connect your POE account to sync characters'}
+                    : "Connect your POE account to sync characters"}
                 </Text>
                 {poeAccount?.connected && poeAccount.lastSync && (
                   <Text className="text-xs text-foreground/40">
@@ -216,12 +218,7 @@ export default function ProfilePage() {
                 onClick={poeAccount?.connected ? disconnectPOE : connectPOE}
                 disabled={poeLoading}
               >
-                {poeLoading 
-                  ? 'Loading...' 
-                  : poeAccount?.connected 
-                    ? 'Disconnect' 
-                    : 'Connect'
-                }
+                {poeLoading ? "Loading..." : poeAccount?.connected ? "Disconnect" : "Connect"}
               </Button>
             </div>
           </div>
@@ -235,7 +232,7 @@ export default function ProfilePage() {
 
         <div className="space-y-4 pt-6 border-t border-border/50">
           <Text className="text-lg font-medium">Security</Text>
-          
+
           <div className="flex flex-col p-4 rounded-xl border-2 border-border/50 bg-background/95">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -252,10 +249,8 @@ export default function ProfilePage() {
                 disabled={loading}
                 className="sm:flex-shrink-0"
               >
-                {showPasswordForm ? (
-                  <X className="h-4 w-4 mr-2" />
-                ) : null}
-                {showPasswordForm ? 'Cancel' : 'Change Password'}
+                {showPasswordForm ? <X className="h-4 w-4 mr-2" /> : null}
+                {showPasswordForm ? "Cancel" : "Change Password"}
               </Button>
             </div>
 
@@ -269,23 +264,19 @@ export default function ProfilePage() {
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Enter new password"
                     className={cn(
-                      'w-full h-12 px-4 rounded-xl',
-                      'bg-background/95',
-                      'border-2 border-border/50',
-                      'focus:border-primary/50 focus:ring-2 focus:ring-primary/20',
-                      'placeholder:text-foreground/40'
+                      "w-full h-12 px-4 rounded-xl",
+                      "bg-background/95",
+                      "border-2 border-border/50",
+                      "focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
+                      "placeholder:text-foreground/40"
                     )}
                     required
                     minLength={6}
                   />
                 </div>
                 <div className="flex justify-end">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    disabled={loading || !newPassword}
-                  >
-                    {loading ? 'Updating...' : 'Update Password'}
+                  <Button type="submit" variant="primary" disabled={loading || !newPassword}>
+                    {loading ? "Updating..." : "Update Password"}
                   </Button>
                 </div>
               </form>
@@ -304,5 +295,5 @@ export default function ProfilePage() {
         </div>
       </Container>
     </div>
-  )
+  );
 }

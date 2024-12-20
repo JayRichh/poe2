@@ -1,114 +1,119 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useCallback } from 'react'
-import { createClient } from '~/lib/supabase/client'
-import type { POEAccountData } from '~/lib/supabase/types'
-import type { POEProfile } from '~/types/poe-api'
-import { connectPOEAccount, disconnectPOEAccount, refreshPOEProfile } from '~/app/actions/poe'
+import { useCallback, useEffect, useState } from "react";
+
+import { connectPOEAccount, disconnectPOEAccount, refreshPOEProfile } from "~/app/actions/poe";
+import { createClient } from "~/lib/supabase/client";
+import type { POEAccountData } from "~/lib/supabase/types";
+import type { POEProfile } from "~/types/poe-api";
 
 export function usePOEAccount() {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [poeAccount, setPoeAccount] = useState<POEAccountData | null>(null)
-  const [poeProfile, setPoeProfile] = useState<POEProfile | null>(null)
-  const [hasRefreshToken, setHasRefreshToken] = useState(false)
-  const supabase = createClient()
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [poeAccount, setPoeAccount] = useState<POEAccountData | null>(null);
+  const [poeProfile, setPoeProfile] = useState<POEProfile | null>(null);
+  const [hasRefreshToken, setHasRefreshToken] = useState(false);
+  const supabase = createClient();
 
   useEffect(() => {
     async function loadPOEAccount() {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
         if (!user) {
-          setPoeAccount(null)
-          setHasRefreshToken(false)
-          return
+          setPoeAccount(null);
+          setHasRefreshToken(false);
+          return;
         }
 
         const { data, error } = await supabase
-          .from('profiles')
-          .select('poe_account, poe_refresh_token')
-          .eq('id', user.id)
-          .single()
+          .from("profiles")
+          .select("poe_account, poe_refresh_token")
+          .eq("id", user.id)
+          .single();
 
-        if (error) throw error
+        if (error) throw error;
 
-        setPoeAccount(data.poe_account || null)
-        setHasRefreshToken(!!data.poe_refresh_token)
+        setPoeAccount(data.poe_account || null);
+        setHasRefreshToken(!!data.poe_refresh_token);
       } catch (err) {
-        console.error('Error loading POE account:', err)
-        setError(err instanceof Error ? err.message : 'Failed to load POE account')
+        console.error("Error loading POE account:", err);
+        setError(err instanceof Error ? err.message : "Failed to load POE account");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
-    loadPOEAccount()
+    loadPOEAccount();
 
     // Subscribe to profile changes
     const channel = supabase
-      .channel('profile-changes')
+      .channel("profile-changes")
       .on(
-        'postgres_changes',
+        "postgres_changes",
         {
-          event: '*',
-          schema: 'public',
-          table: 'profiles',
+          event: "*",
+          schema: "public",
+          table: "profiles",
         },
         async (payload: { new: Record<string, any> }) => {
-          const { data: { user } } = await supabase.auth.getUser()
+          const {
+            data: { user },
+          } = await supabase.auth.getUser();
           if (user && payload.new && payload.new.id === user.id) {
-            setPoeAccount(payload.new.poe_account || null)
-            setHasRefreshToken(!!payload.new.poe_refresh_token)
+            setPoeAccount(payload.new.poe_account || null);
+            setHasRefreshToken(!!payload.new.poe_refresh_token);
           }
         }
       )
-      .subscribe()
+      .subscribe();
 
     return () => {
-      channel.unsubscribe()
-    }
-  }, [supabase])
+      channel.unsubscribe();
+    };
+  }, [supabase]);
 
   const connectPOE = useCallback(async () => {
     try {
-      setLoading(true)
-      const authUrl = await connectPOEAccount()
-      window.location.href = authUrl
+      setLoading(true);
+      const authUrl = await connectPOEAccount();
+      window.location.href = authUrl;
     } catch (err) {
-      console.error('Error connecting POE account:', err)
-      setError(err instanceof Error ? err.message : 'Failed to connect POE account')
+      console.error("Error connecting POE account:", err);
+      setError(err instanceof Error ? err.message : "Failed to connect POE account");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   const disconnectPOE = useCallback(async () => {
     try {
-      setLoading(true)
-      await disconnectPOEAccount()
-      setPoeAccount(null)
-      setHasRefreshToken(false)
-      setPoeProfile(null)
+      setLoading(true);
+      await disconnectPOEAccount();
+      setPoeAccount(null);
+      setHasRefreshToken(false);
+      setPoeProfile(null);
     } catch (err) {
-      console.error('Error disconnecting POE account:', err)
-      setError(err instanceof Error ? err.message : 'Failed to disconnect POE account')
+      console.error("Error disconnecting POE account:", err);
+      setError(err instanceof Error ? err.message : "Failed to disconnect POE account");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   const refreshProfile = useCallback(async () => {
     try {
-      setLoading(true)
-      const profile = await refreshPOEProfile()
-      setPoeProfile(profile)
+      setLoading(true);
+      const profile = await refreshPOEProfile();
+      setPoeProfile(profile);
     } catch (err) {
-      console.error('Error refreshing POE profile:', err)
-      setError(err instanceof Error ? err.message : 'Failed to refresh POE profile')
+      console.error("Error refreshing POE profile:", err);
+      setError(err instanceof Error ? err.message : "Failed to refresh POE profile");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   return {
     loading,
@@ -119,5 +124,5 @@ export function usePOEAccount() {
     connectPOE,
     disconnectPOE,
     refreshProfile,
-  }
+  };
 }

@@ -1,5 +1,5 @@
-import { Text } from "@/components/ui/Text";
 import { Slider } from "@/components/ui/Slider";
+import { Text } from "@/components/ui/Text";
 
 export interface GlobalSettingsInputs {
   attackSpeed: number;
@@ -26,7 +26,7 @@ export function GlobalSettings({ settings, onChange }: GlobalSettingsProps) {
   return (
     <div className="space-y-6">
       <Text className="text-xl font-semibold mb-4">Global Settings</Text>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <Text>Attack Speed</Text>

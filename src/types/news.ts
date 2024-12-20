@@ -2,7 +2,7 @@ export interface NewsItem {
   id: string;
   title: string;
   description: string;
-  category: 'Update' | 'Announcement' | 'Event' | 'Community' | 'Patch Notes';
+  category: "Update" | "Announcement" | "Event" | "Community" | "Patch Notes";
   publishedAt: string;
   source: string;
   url: string;

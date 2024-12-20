@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { TreeNodeData } from '../../components/TreeViewer/data';
-import { NodeListItem } from './NodeListItem';
+import React, { useState } from "react";
+
+import { TreeNodeData } from "../../components/TreeViewer/data";
+import { NodeListItem } from "./NodeListItem";
 
 interface SearchResultsProps {
   results: TreeNodeData[];
@@ -13,7 +14,7 @@ interface SearchResultsProps {
   isRegexSearch: boolean;
 }
 
-type GroupBy = 'type' | 'ascendancy' | 'none';
+type GroupBy = "type" | "ascendancy" | "none";
 
 export function SearchResults({
   results,
@@ -21,36 +22,38 @@ export function SearchResults({
   onNodeClick,
   onNodeHover,
   searchTerm,
-  isRegexSearch
+  isRegexSearch,
 }: SearchResultsProps) {
-  const [groupBy, setGroupBy] = useState<GroupBy>('type');
+  const [groupBy, setGroupBy] = useState<GroupBy>("type");
 
   // Moved useMemo before conditional returns
   const groupedResults = React.useMemo(() => {
-    if (groupBy === 'none') {
-      return { 'All Results': results };
+    if (groupBy === "none") {
+      return { "All Results": results };
     }
 
-    return results.reduce((groups, node) => {
-      const key = groupBy === 'type' 
-        ? node.type.charAt(0).toUpperCase() + node.type.slice(1)
-        : node.ascendancy || 'No Ascendancy';
-      
-      if (!groups[key]) {
-        groups[key] = [];
-      }
-      groups[key].push(node);
-      return groups;
-    }, {} as Record<string, TreeNodeData[]>);
+    return results.reduce(
+      (groups, node) => {
+        const key =
+          groupBy === "type"
+            ? node.type.charAt(0).toUpperCase() + node.type.slice(1)
+            : node.ascendancy || "No Ascendancy";
+
+        if (!groups[key]) {
+          groups[key] = [];
+        }
+        groups[key].push(node);
+        return groups;
+      },
+      {} as Record<string, TreeNodeData[]>
+    );
   }, [results, groupBy]);
 
   // Main return with conditional rendering inside
   return (
     <div className="space-y-4">
       {!searchTerm ? (
-        <div className="text-gray-400 text-center p-4">
-          Enter a search term to find nodes
-        </div>
+        <div className="text-gray-400 text-center p-4">Enter a search term to find nodes</div>
       ) : results.length === 0 ? (
         <div className="text-gray-400 text-center p-4">
           No nodes found matching &quot;{searchTerm}&quot;
@@ -62,7 +65,7 @@ export function SearchResults({
           <div className="sticky top-0 bg-gray-900 p-2 border-b border-gray-700 z-10">
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-400">
-                Found {results.length} {results.length === 1 ? 'node' : 'nodes'}
+                Found {results.length} {results.length === 1 ? "node" : "nodes"}
               </span>
               <select
                 value={groupBy}

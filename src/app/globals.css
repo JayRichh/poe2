@@ -3,21 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
-pre[class*='language-'],
-code[class*='language-'] {
-  text-shadow: none!important;
-  background: none!important;
-  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace!important;
-  font-size: 0.875rem!important;
-  line-height: 1.5!important;
-  tab-size: 2!important;
+pre[class*="language-"],
+code[class*="language-"] {
+  text-shadow: none !important;
+  background: none !important;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  tab-size: 2 !important;
 }
 
 .water-char {
   --water-intensity: 0;
   --water-angle: 0;
-  transform: translate(0,0);
+  transform: translate(0, 0);
   transition: all 0.2s ease-out;
   display: inline-block;
 }
@@ -28,8 +28,8 @@ code[class*='language-'] {
 
 .group:hover .water-char:hover {
   transform: translate(
-    calc(var(--water-intensity)*10px*cos(var(--water-angle))),
-    calc(var(--water-intensity)*10px*sin(var(--water-angle)))
+    calc(var(--water-intensity) * 10px * cos(var(--water-angle))),
+    calc(var(--water-intensity) * 10px * sin(var(--water-angle)))
   );
 }
 
@@ -57,11 +57,11 @@ code[class*='language-'] {
     --surface: 0 0% 98%;
     --surface-foreground: 0 0% 12%;
     --radius: 0.5rem;
-    --damage-physical: rgb(180,180,180);
-    --damage-lightning: rgb(255,215,0);
-    --damage-fire: rgb(255,50,50);
-    --damage-cold: rgb(50,150,255);
-    --damage-chaos: rgb(180,90,255);
+    --damage-physical: rgb(180, 180, 180);
+    --damage-lightning: rgb(255, 215, 0);
+    --damage-fire: rgb(255, 50, 50);
+    --damage-cold: rgb(50, 150, 255);
+    --damage-chaos: rgb(180, 90, 255);
   }
 
   .dark {
@@ -86,11 +86,11 @@ code[class*='language-'] {
     --error-foreground: 0 0% 98%;
     --surface: 0 0% 20%;
     --surface-foreground: 0 0% 96%;
-    --damage-physical: rgb(200,200,200);
-    --damage-lightning: rgb(255,225,50);
-    --damage-fire: rgb(255,80,80);
-    --damage-cold: rgb(80,180,255);
-    --damage-chaos: rgb(200,120,255);
+    --damage-physical: rgb(200, 200, 200);
+    --damage-lightning: rgb(255, 225, 50);
+    --damage-fire: rgb(255, 80, 80);
+    --damage-cold: rgb(80, 180, 255);
+    --damage-chaos: rgb(200, 120, 255);
   }
 }
 
@@ -100,36 +100,39 @@ code[class*='language-'] {
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: 'kern','liga' 1,'calt' 1;
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings:
+      "kern",
+      "liga" 1,
+      "calt" 1;
   }
 
   h1 {
-    @apply text-4xl font-bold tracking-tight mb-6 text-shadow-sm;
+    @apply mb-6 text-4xl font-bold tracking-tight text-shadow-sm;
     letter-spacing: -0.02em;
   }
 
   h2 {
-    @apply text-2xl font-semibold tracking-tight mb-4 text-shadow-sm;
+    @apply mb-4 text-2xl font-semibold tracking-tight text-shadow-sm;
     letter-spacing: -0.015em;
   }
 
   h3 {
-    @apply text-xl font-medium tracking-tight mb-3;
+    @apply mb-3 text-xl font-medium tracking-tight;
     letter-spacing: -0.01em;
   }
 
   h4 {
-    @apply text-lg font-medium mb-2;
+    @apply mb-2 text-lg font-medium;
     letter-spacing: -0.01em;
   }
 
   p {
-    @apply leading-relaxed mb-4 text-foreground-secondary;
+    @apply mb-4 leading-relaxed text-foreground-secondary;
   }
 
   .numeric {
-    font-feature-settings: 'tnum','zero';
+    font-feature-settings: "tnum", "zero";
     letter-spacing: -0.02em;
   }
 
@@ -164,7 +167,7 @@ code[class*='language-'] {
   }
 
   .glass-hover {
-    @apply transition-all duration-200 hover:border-border/60 hover:bg-background/98 hover:shadow-md;
+    @apply hover:bg-background/98 transition-all duration-200 hover:border-border/60 hover:shadow-md;
   }
 
   .text-balance {
@@ -176,7 +179,7 @@ code[class*='language-'] {
   }
 
   .text-value {
-    @apply font-medium text-foreground numeric;
+    @apply numeric font-medium text-foreground;
   }
 
   .text-label {
@@ -201,12 +204,12 @@ code[class*='language-'] {
     background-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255,215,0,0.12) 20%,
-      rgba(255,215,0,0.18) 60%,
+      rgba(255, 215, 0, 0.12) 20%,
+      rgba(255, 215, 0, 0.18) 60%,
       transparent 100%
     );
     animation: shimmer 2s infinite;
-    content: '';
+    content: "";
   }
 
   .animate-gradient {
@@ -215,19 +218,19 @@ code[class*='language-'] {
   }
 
   .dps-value {
-    @apply font-medium text-foreground numeric;
+    @apply numeric font-medium text-foreground;
   }
 
   .dps-label {
-    @apply text-sm text-foreground-secondary font-medium;
+    @apply text-sm font-medium text-foreground-secondary;
   }
 
   .dps-increase {
-    @apply text-success font-bold numeric;
+    @apply numeric font-bold text-success;
   }
 
   .dps-decrease {
-    @apply text-error font-bold numeric;
+    @apply numeric font-bold text-error;
   }
 }
 
@@ -263,23 +266,23 @@ code[class*='language-'] {
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-medium shadow-sm hover:bg-primary/90 hover:shadow transition-smooth;
+    @apply transition-smooth bg-primary font-medium text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground font-medium shadow-sm hover:bg-secondary/90 hover:shadow transition-smooth;
+    @apply transition-smooth bg-secondary font-medium text-secondary-foreground shadow-sm hover:bg-secondary/90 hover:shadow;
   }
 
   .btn-ghost {
-    @apply text-foreground font-medium hover:bg-background-secondary/70 transition-smooth;
+    @apply transition-smooth font-medium text-foreground hover:bg-background-secondary/70;
   }
 
   .card {
-    @apply rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm transition-smooth backdrop-blur-sm;
+    @apply transition-smooth rounded-lg border border-border/60 bg-background/95 p-6 shadow-sm backdrop-blur-sm;
   }
 
   .form-group {
-    @apply space-y-2 mb-4;
+    @apply mb-4 space-y-2;
   }
 
   .form-label {
@@ -287,12 +290,12 @@ code[class*='language-'] {
   }
 
   .form-input {
-    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm placeholder:text-foreground-secondary/70 transition-smooth;
+    @apply transition-smooth w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm placeholder:text-foreground-secondary/70;
     @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25;
   }
 
   .form-select {
-    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm transition-smooth;
+    @apply transition-smooth w-full rounded-md border border-border bg-background px-3 py-2 text-sm shadow-sm;
     @apply focus:border-primary/60 focus:ring-2 focus:ring-primary/25;
   }
 
@@ -305,7 +308,7 @@ code[class*='language-'] {
   }
 
   .stat-value {
-    @apply text-2xl font-semibold tracking-tight numeric;
+    @apply numeric text-2xl font-semibold tracking-tight;
     letter-spacing: -0.02em;
   }
 
@@ -322,19 +325,19 @@ code[class*='language-'] {
   }
 
   .dps-slider {
-    @apply w-full h-2 bg-background-secondary rounded-full appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/25;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-background-secondary focus:outline-none focus:ring-2 focus:ring-primary/25;
   }
 
   .dps-slider::-webkit-slider-thumb {
-    @apply w-4 h-4 rounded-full bg-primary appearance-none hover:bg-primary/90 transition-colors hover:scale-110 transition-transform;
+    @apply h-4 w-4 appearance-none rounded-full bg-primary transition-colors transition-transform hover:scale-110 hover:bg-primary/90;
   }
 
   .dps-slider::-moz-range-thumb {
-    @apply w-4 h-4 rounded-full bg-primary appearance-none hover:bg-primary/90 transition-colors hover:scale-110 transition-transform;
+    @apply h-4 w-4 appearance-none rounded-full bg-primary transition-colors transition-transform hover:scale-110 hover:bg-primary/90;
   }
 
   .dps-checkbox {
-    @apply w-4 h-4 rounded border-border bg-background checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary/25;
+    @apply h-4 w-4 rounded border-border bg-background checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary/25;
   }
 }
 
@@ -350,11 +353,11 @@ code[class*='language-'] {
 .progress-striped {
   background-image: linear-gradient(
     45deg,
-    rgba(255,215,0,0.15) 25%,
+    rgba(255, 215, 0, 0.15) 25%,
     transparent 25%,
     transparent 50%,
-    rgba(255,215,0,0.15) 50%,
-    rgba(255,215,0,0.15) 75%,
+    rgba(255, 215, 0, 0.15) 50%,
+    rgba(255, 215, 0, 0.15) 75%,
     transparent 75%,
     transparent
   );

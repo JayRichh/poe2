@@ -1,7 +1,9 @@
 // Modal.tsx
 import { AnimatePresence, motion } from "framer-motion";
+
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+
 import { cn } from "~/utils/cn";
 
 interface ModalProps {
@@ -30,7 +32,7 @@ export function Modal({ isOpen, onClose, title, children, className }: ModalProp
   }, [isOpen, onClose]);
 
   if (typeof document === "undefined") return null;
-  
+
   return createPortal(
     <AnimatePresence>
       {isOpen && (

@@ -1,39 +1,45 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Container } from '~/components/ui/Container'
-import { Text } from '~/components/ui/Text'
-import { Button } from '~/components/ui/Button'
-import type { Database } from '~/lib/supabase/types'
+import { useState } from "react";
 
-type BuildInsert = Database['public']['Tables']['builds']['Insert']
-type VisibilityType = Database['public']['Enums']['visibility_type']
+import { Button } from "~/components/ui/Button";
+import { Container } from "~/components/ui/Container";
+import { Text } from "~/components/ui/Text";
 
-type POEClass = 'duelist' | 'marauder' | 'ranger' | 'scion' | 'shadow' | 'templar' | 'witch'
+import type { Database } from "~/lib/supabase/types";
+
+type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
+type VisibilityType = Database["public"]["Enums"]["visibility_type"];
+
+type POEClass = "duelist" | "marauder" | "ranger" | "scion" | "shadow" | "templar" | "witch";
 
 // Omit user_id since it's handled by the server
-type BuildFormData = Omit<BuildInsert, 'user_id'>
+type BuildFormData = Omit<BuildInsert, "user_id">;
 
 interface BuildFormProps {
-  initialBuild?: Partial<BuildFormData>
-  onSubmit: (build: Partial<BuildFormData>) => Promise<void>
+  initialBuild?: Partial<BuildFormData>;
+  onSubmit: (build: Partial<BuildFormData>) => Promise<void>;
 }
 
 export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | undefined>()
-  const [name, setName] = useState(initialBuild?.name || '')
-  const [description, setDescription] = useState(initialBuild?.description || '')
-  const [poeClass, setPoeClass] = useState<POEClass | ''>(initialBuild?.poe_class as POEClass || '')
-  const [level, setLevel] = useState(initialBuild?.level?.toString() || '')
-  const [visibility, setVisibility] = useState<VisibilityType>(initialBuild?.visibility || 'private')
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>();
+  const [name, setName] = useState(initialBuild?.name || "");
+  const [description, setDescription] = useState(initialBuild?.description || "");
+  const [poeClass, setPoeClass] = useState<POEClass | "">(
+    (initialBuild?.poe_class as POEClass) || ""
+  );
+  const [level, setLevel] = useState(initialBuild?.level?.toString() || "");
+  const [visibility, setVisibility] = useState<VisibilityType>(
+    initialBuild?.visibility || "private"
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!name) return
+    e.preventDefault();
+    if (!name) return;
 
-    setLoading(true)
-    setError(undefined)
+    setLoading(true);
+    setError(undefined);
 
     try {
       await onSubmit({
@@ -42,15 +48,15 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
         poe_class: poeClass || undefined,
         level: level ? parseInt(level, 10) : undefined,
         visibility,
-        is_template: false // Default value
-      })
+        is_template: false, // Default value
+      });
     } catch (err) {
-      console.error('Error saving build:', err)
-      setError('Failed to save build')
+      console.error("Error saving build:", err);
+      setError("Failed to save build");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -132,14 +138,10 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
       )}
 
       <div className="flex justify-end">
-        <Button
-          type="submit"
-          variant="primary"
-          disabled={loading}
-        >
-          {loading ? 'Saving...' : 'Save Build'}
+        <Button type="submit" variant="primary" disabled={loading}>
+          {loading ? "Saving..." : "Save Build"}
         </Button>
       </div>
     </form>
-  )
+  );
 }

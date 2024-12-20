@@ -1,4 +1,4 @@
-import { TreeData } from '../components/TreeViewer/data';
+import { TreeData } from "../components/TreeViewer/data";
 
 declare global {
   interface Window {

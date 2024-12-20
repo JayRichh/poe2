@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { TreeNodeData } from '../TreeViewer/data';
-import { SearchResults } from './SearchResults';
+import React, { useState } from "react";
+
+import Image from "next/image";
+
+import { TreeNodeData } from "../TreeViewer/data";
+import { SearchResults } from "./SearchResults";
 
 interface FiltersProps {
   selectedAscendancy: string;
@@ -35,19 +37,19 @@ interface FiltersProps {
 }
 
 const ASCENDANCIES = [
-  'None',
-  'Acolyte',
-  'Bloodmage',
-  'Chronomancer',
-  'Deadeye',
-  'Gemling',
-  'Infernalist',
-  'Invoker',
-  'Pathfinder',
-  'Stormweaver',
-  'Titan',
-  'Warbringer',
-  'Witchhunter'
+  "None",
+  "Acolyte",
+  "Bloodmage",
+  "Chronomancer",
+  "Deadeye",
+  "Gemling",
+  "Infernalist",
+  "Invoker",
+  "Pathfinder",
+  "Stormweaver",
+  "Titan",
+  "Warbringer",
+  "Witchhunter",
 ] as const;
 
 export function Filters({
@@ -76,9 +78,9 @@ export function Filters({
   searchResults,
   allocatedNodes,
   onNodeClick,
-  onNodeHover
+  onNodeHover,
 }: FiltersProps) {
-  const [activeTab, setActiveTab] = useState<'filters' | 'search'>('filters');
+  const [activeTab, setActiveTab] = useState<"filters" | "search">("filters");
 
   return (
     <div className="h-full flex flex-col">
@@ -86,25 +88,29 @@ export function Filters({
       <div className="flex border-b border-border mb-4">
         <button
           className={`flex-1 px-4 py-2 text-sm font-medium transition-colors
-            ${activeTab === 'filters' 
-              ? 'text-foreground border-b-2 border-primary/50' 
-              : 'text-muted-foreground hover:text-foreground'}`}
-          onClick={() => setActiveTab('filters')}
+            ${
+              activeTab === "filters"
+                ? "text-foreground border-b-2 border-primary/50"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          onClick={() => setActiveTab("filters")}
         >
           Filters
         </button>
         <button
           className={`flex-1 px-4 py-2 text-sm font-medium transition-colors
-            ${activeTab === 'search' 
-              ? 'text-foreground border-b-2 border-primary/50' 
-              : 'text-muted-foreground hover:text-foreground'}`}
-          onClick={() => setActiveTab('search')}
+            ${
+              activeTab === "search"
+                ? "text-foreground border-b-2 border-primary/50"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          onClick={() => setActiveTab("search")}
         >
           Search
         </button>
       </div>
 
-      {activeTab === 'filters' ? (
+      {activeTab === "filters" ? (
         <div className="space-y-6 overflow-y-auto scrollbar-custom">
           {/* Ascendancy Selection */}
           <div>
@@ -115,11 +121,13 @@ export function Filters({
                   key={ascendancy}
                   onClick={() => onAscendancyChange(ascendancy)}
                   className={`flex flex-col items-center p-2 rounded-lg transition-colors
-                    ${selectedAscendancy === ascendancy 
-                      ? 'bg-accent-foreground/10 border border-accent-foreground/20' 
-                      : 'bg-accent hover:bg-accent/80'}`}
+                    ${
+                      selectedAscendancy === ascendancy
+                        ? "bg-accent-foreground/10 border border-accent-foreground/20"
+                        : "bg-accent hover:bg-accent/80"
+                    }`}
                 >
-                  {ascendancy !== 'None' && (
+                  {ascendancy !== "None" && (
                     <div className="relative w-12 h-12 mb-1">
                       <Image
                         src={`/ascendancies/${ascendancy.toLowerCase()}.webp`}
@@ -255,7 +263,7 @@ export function Filters({
                 />
                 {searchTerm && (
                   <button
-                    onClick={() => onSearchChange('')}
+                    onClick={() => onSearchChange("")}
                     className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
                     ×

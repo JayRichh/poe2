@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState, useCallback, KeyboardEvent } from "react";
+
+import { KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface DropdownProps {
@@ -18,15 +20,15 @@ interface DropdownProps {
   maxHeight?: number;
 }
 
-export function Dropdown({ 
-  trigger, 
-  items, 
-  value, 
-  onChange, 
+export function Dropdown({
+  trigger,
+  items,
+  value,
+  onChange,
   className,
   position = "bottom-left",
   width = "trigger",
-  maxHeight = 300
+  maxHeight = 300,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -36,15 +38,13 @@ export function Dropdown({
 
   const getPositionStyles = useCallback(() => {
     if (!triggerRef.current) return {};
-    
-    const menuWidth = width === "auto" ? "auto" : 
-                     width === "trigger" ? "100%" : 
-                     width;
+
+    const menuWidth = width === "auto" ? "auto" : width === "trigger" ? "100%" : width;
 
     const styles: Record<string, any> = {
       width: menuWidth,
       maxHeight,
-      overflowY: "auto"
+      overflowY: "auto",
     };
 
     switch (position) {
@@ -85,15 +85,11 @@ export function Dropdown({
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        setActiveIndex(prev => 
-          prev < items.length - 1 ? prev + 1 : prev
-        );
+        setActiveIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
         break;
       case "ArrowUp":
         event.preventDefault();
-        setActiveIndex(prev => 
-          prev > 0 ? prev - 1 : prev
-        );
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
         break;
       case "Enter":
       case " ":
@@ -136,16 +132,12 @@ export function Dropdown({
   };
 
   return (
-    <div 
-      className={cn(
-        "relative",
-        isOpen && "z-40",
-        className
-      )} 
+    <div
+      className={cn("relative", isOpen && "z-40", className)}
       ref={dropdownRef}
       onKeyDown={handleKeyDown}
     >
-      <div 
+      <div
         ref={triggerRef}
         onClick={() => setIsOpen(!isOpen)}
         role="button"

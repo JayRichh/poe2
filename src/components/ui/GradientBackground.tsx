@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { CSSProperties } from "react";
+
 import { cn } from "~/utils/cn";
 
 export interface GradientBackgroundProps {
@@ -94,7 +96,7 @@ export const GradientBackground = ({
             }
           />
         </motion.div>
-        <div 
+        <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--secondary-color)_70%,transparent_100%)] opacity-[0.1] dark:opacity-[0.05]"
           style={
             {
@@ -115,7 +117,7 @@ export const GradientBackground = ({
         }}
         className="absolute inset-0"
       >
-        <div 
+        <div
           className="absolute top-0 -left-1/4 w-1/2 h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,var(--primary-color)_0%,transparent_60%)] opacity-[0.15] dark:opacity-[0.07] blur-[100px] rotate-45"
           style={
             {
@@ -123,7 +125,7 @@ export const GradientBackground = ({
             } as CustomCSSProperties
           }
         />
-        <div 
+        <div
           className="absolute top-0 -right-1/4 w-1/2 h-[200%] bg-[conic-gradient(from_180deg_at_50%_50%,var(--accent-color)_0%,transparent_60%)] opacity-[0.15] dark:opacity-[0.07] blur-[100px] -rotate-45"
           style={
             {

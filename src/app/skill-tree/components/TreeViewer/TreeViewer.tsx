@@ -1,13 +1,19 @@
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
-import { TreeNode } from './TreeNode';
-import { TreeNodeTooltip } from './TreeNodeTooltip';
-import { TreeData, TreeNodeData } from './data';
-import { calculateInitialPanOffset, calculateZoomPanOffset, clampPanOffsets } from '../../utils/treeUtils';
-import debounce from 'lodash/debounce';
-import throttle from 'lodash/throttle';
-import { ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import debounce from "lodash/debounce";
+import throttle from "lodash/throttle";
+import { Maximize2, ZoomIn, ZoomOut } from "lucide-react";
+
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+import {
+  calculateInitialPanOffset,
+  calculateZoomPanOffset,
+  clampPanOffsets,
+} from "../../utils/treeUtils";
+import { TreeNode } from "./TreeNode";
+import { TreeNodeTooltip } from "./TreeNodeTooltip";
+import { TreeData, TreeNodeData } from "./data";
 
 interface TreeViewerProps {
   selectedAscendancy: string;
@@ -58,7 +64,7 @@ export function TreeViewer({
   isRegexSearch,
   treeData,
   showKeywordDetails = false,
-  showSkillDetails = true
+  showSkillDetails = true,
 }: TreeViewerProps) {
   const [hoveredNode, setHoveredNode] = useState<TreeNodeData | null>(null);
   const [searchResults, setSearchResults] = useState<Set<string>>(new Set());
@@ -78,46 +84,53 @@ export function TreeViewer({
     if (!containerRef.current || !imageRef.current) return;
     const container = containerRef.current;
     const image = imageRef.current;
-    
+
     // Set image dimensions
     setImageSize({
       width: image.naturalWidth,
-      height: image.naturalHeight
+      height: image.naturalHeight,
     });
 
     // Calculate initial pan offset
-    setPanOffset(calculateInitialPanOffset(
-      { width: container.clientWidth, height: container.clientHeight },
-      { width: image.naturalWidth, height: image.naturalHeight },
-      scale
-    ));
-    
+    setPanOffset(
+      calculateInitialPanOffset(
+        { width: container.clientWidth, height: container.clientHeight },
+        { width: image.naturalWidth, height: image.naturalHeight },
+        scale
+      )
+    );
+
     setHasLoaded(true);
   }, [scale]);
 
-  const handleZoom = useCallback((newScale: number, center?: { x: number; y: number }) => {
-    if (!containerRef.current || !imageRef.current) return;
+  const handleZoom = useCallback(
+    (newScale: number, center?: { x: number; y: number }) => {
+      if (!containerRef.current || !imageRef.current) return;
 
-    const container = containerRef.current;
-    const mousePosition = center || {
-      x: container.clientWidth / 2,
-      y: container.clientHeight / 2
-    };
+      const container = containerRef.current;
+      const mousePosition = center || {
+        x: container.clientWidth / 2,
+        y: container.clientHeight / 2,
+      };
 
-    const oldScale = scale;
-    const clampedScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
-    const newPanOffset = calculateZoomPanOffset(mousePosition, panOffset, oldScale, clampedScale);
+      const oldScale = scale;
+      const clampedScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+      const newPanOffset = calculateZoomPanOffset(mousePosition, panOffset, oldScale, clampedScale);
 
-    rafRef.current = requestAnimationFrame(() => {
-      setScale(clampedScale);
-      setPanOffset(clampPanOffsets(
-        newPanOffset,
-        { width: container.clientWidth, height: container.clientHeight },
-        { width: imageRef.current!.naturalWidth, height: imageRef.current!.naturalHeight },
-        clampedScale
-      ));
-    });
-  }, [scale, panOffset]);
+      rafRef.current = requestAnimationFrame(() => {
+        setScale(clampedScale);
+        setPanOffset(
+          clampPanOffsets(
+            newPanOffset,
+            { width: container.clientWidth, height: container.clientHeight },
+            { width: imageRef.current!.naturalWidth, height: imageRef.current!.naturalHeight },
+            clampedScale
+          )
+        );
+      });
+    },
+    [scale, panOffset]
+  );
 
   const zoomIn = useCallback(() => handleZoom(scale * (1 + ZOOM_STEP)), [scale, handleZoom]);
   const zoomOut = useCallback(() => handleZoom(scale * (1 - ZOOM_STEP)), [scale, handleZoom]);
@@ -132,62 +145,72 @@ export function TreeViewer({
     handleZoom(newScale);
   }, [handleZoom]);
 
-  const handleWheel = useMemo(() =>
-    throttle((e: WheelEvent) => {
-      e.preventDefault();
-      if (!containerRef.current || !imageRef.current) return;
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
-      const mousePosition = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      };
-      const delta = e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
-      handleZoom(scale * (1 + delta), mousePosition);
-    }, THROTTLE_MS),
+  const handleWheel = useMemo(
+    () =>
+      throttle((e: WheelEvent) => {
+        e.preventDefault();
+        if (!containerRef.current || !imageRef.current) return;
+        const container = containerRef.current;
+        const rect = container.getBoundingClientRect();
+        const mousePosition = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        };
+        const delta = e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+        handleZoom(scale * (1 + delta), mousePosition);
+      }, THROTTLE_MS),
     [scale, handleZoom]
   );
 
-  const handleMouseMove = useMemo(() => 
-    throttle((e: MouseEvent) => {
-      if (!isPanning || !containerRef.current || !imageRef.current) return;
-      const newPanOffset = {
-        x: e.clientX - startPan.x,
-        y: e.clientY - startPan.y
-      };
-      rafRef.current = requestAnimationFrame(() => {
-        setPanOffset(prev => clampPanOffsets(
-          newPanOffset,
-          { width: containerRef.current!.clientWidth, height: containerRef.current!.clientHeight },
-          { width: imageRef.current!.naturalWidth, height: imageRef.current!.naturalHeight },
-          scale
-        ));
-      });
-    }, THROTTLE_MS),
+  const handleMouseMove = useMemo(
+    () =>
+      throttle((e: MouseEvent) => {
+        if (!isPanning || !containerRef.current || !imageRef.current) return;
+        const newPanOffset = {
+          x: e.clientX - startPan.x,
+          y: e.clientY - startPan.y,
+        };
+        rafRef.current = requestAnimationFrame(() => {
+          setPanOffset((prev) =>
+            clampPanOffsets(
+              newPanOffset,
+              {
+                width: containerRef.current!.clientWidth,
+                height: containerRef.current!.clientHeight,
+              },
+              { width: imageRef.current!.naturalWidth, height: imageRef.current!.naturalHeight },
+              scale
+            )
+          );
+        });
+      }, THROTTLE_MS),
     [isPanning, startPan, scale]
   );
 
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (e.button !== 0) return;
-    setIsPanning(true);
-    setStartPan({
-      x: e.clientX - panOffset.x,
-      y: e.clientY - panOffset.y
-    });
-  }, [panOffset]);
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.button !== 0) return;
+      setIsPanning(true);
+      setStartPan({
+        x: e.clientX - panOffset.x,
+        y: e.clientY - panOffset.y,
+      });
+    },
+    [panOffset]
+  );
 
   const handleMouseUp = useCallback(() => {
     setIsPanning(false);
   }, []);
 
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    containerRef.current?.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    containerRef.current?.addEventListener("wheel", handleWheel, { passive: false });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      containerRef.current?.removeEventListener('wheel', handleWheel);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      containerRef.current?.removeEventListener("wheel", handleWheel);
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
@@ -198,15 +221,15 @@ export function TreeViewer({
 
   const filteredNodes = useMemo(() => {
     if (!treeData) return [];
-    return Object.values(treeData.nodes).filter(node =>
-      !node.ascendancy || node.ascendancy === selectedAscendancy
+    return Object.values(treeData.nodes).filter(
+      (node) => !node.ascendancy || node.ascendancy === selectedAscendancy
     );
   }, [treeData, selectedAscendancy]);
 
   const visibleNodes = useMemo(() => {
     if (!containerRef.current || !imageRef.current || !hasLoaded) return filteredNodes;
     const containerRect = containerRef.current.getBoundingClientRect();
-    return filteredNodes.filter(node =>
+    return filteredNodes.filter((node) =>
       isNodeInViewport(node, containerRect, imageSize, scale, panOffset)
     );
   }, [filteredNodes, scale, panOffset, hasLoaded, imageSize]);
@@ -223,30 +246,30 @@ export function TreeViewer({
   }
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="w-full h-full relative bg-background overflow-hidden"
-      style={{ cursor: isPanning ? 'grabbing' : 'grab' }}
+      style={{ cursor: isPanning ? "grabbing" : "grab" }}
       onMouseDown={handleMouseDown}
     >
       {/* Zoom Controls */}
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-2">
-        <button 
-          onClick={zoomIn} 
+        <button
+          onClick={zoomIn}
           className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
           title="Zoom in"
         >
           <ZoomIn className="w-4 h-4" />
         </button>
-        <button 
-          onClick={zoomOut} 
+        <button
+          onClick={zoomOut}
           className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
           title="Zoom out"
         >
           <ZoomOut className="w-4 h-4" />
         </button>
-        <button 
-          onClick={fitToView} 
+        <button
+          onClick={fitToView}
           className="p-2 rounded-lg bg-accent/80 hover:bg-accent backdrop-blur-sm transition-colors"
           title="Fit to view"
         >
@@ -255,15 +278,15 @@ export function TreeViewer({
       </div>
 
       {/* Tree Content */}
-      <div 
+      <div
         style={{
           transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
-          transformOrigin: '0 0',
-          position: 'absolute',
-          width: imageSize.width || '100%',
-          height: imageSize.height || '100%',
-          willChange: 'transform',
-          userSelect: 'none'
+          transformOrigin: "0 0",
+          position: "absolute",
+          width: imageSize.width || "100%",
+          height: imageSize.height || "100%",
+          willChange: "transform",
+          userSelect: "none",
         }}
       >
         <img
@@ -277,18 +300,18 @@ export function TreeViewer({
           decoding="async"
         />
 
-        {selectedAscendancy !== 'None' && (
+        {selectedAscendancy !== "None" && (
           <img
             src={`/ascendancies/${selectedAscendancy.toLowerCase()}.webp`}
             alt={selectedAscendancy}
             className="absolute pointer-events-none"
             style={{
-              width: '320px',
-              top: '50%',
-              left: '50%',
-              transform: 'translate3d(-50%, -50%, 0)',
-              height: '320px',
-              willChange: 'transform'
+              width: "320px",
+              top: "50%",
+              left: "50%",
+              transform: "translate3d(-50%, -50%, 0)",
+              height: "320px",
+              willChange: "transform",
             }}
             draggable={false}
             loading="eager"
@@ -296,23 +319,24 @@ export function TreeViewer({
           />
         )}
 
-        {hasLoaded && visibleNodes.map((node) => (
-          <TreeNode
-            key={node.id}
-            node={node}
-            isSelected={selectedNode?.id === node.id}
-            isHighlighted={hoveredNode?.id === node.id || searchResults.has(node.id)}
-            isAllocated={allocatedNodes.has(node.id)}
-            isPath={false}
-            imageSize={imageSize}
-            onClick={() => {
-              onNodeSelect(node);
-              onNodeAllocate(node);
-            }}
-            onMouseEnter={() => setHoveredNode(node)}
-            onMouseLeave={() => setHoveredNode(null)}
-          />
-        ))}
+        {hasLoaded &&
+          visibleNodes.map((node) => (
+            <TreeNode
+              key={node.id}
+              node={node}
+              isSelected={selectedNode?.id === node.id}
+              isHighlighted={hoveredNode?.id === node.id || searchResults.has(node.id)}
+              isAllocated={allocatedNodes.has(node.id)}
+              isPath={false}
+              imageSize={imageSize}
+              onClick={() => {
+                onNodeSelect(node);
+                onNodeAllocate(node);
+              }}
+              onMouseEnter={() => setHoveredNode(node)}
+              onMouseLeave={() => setHoveredNode(null)}
+            />
+          ))}
       </div>
 
       {/* Node Tooltip */}
@@ -326,7 +350,7 @@ export function TreeViewer({
               ${hoveredNode.position.y * imageSize.height * scale + panOffset.y - 20}px,
               0
             )`,
-            willChange: 'transform'
+            willChange: "transform",
           }}
         >
           <TreeNodeTooltip

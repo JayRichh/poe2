@@ -1,5 +1,5 @@
-import { Spinner } from '~/components/ui/Spinner'
-import { Text } from '~/components/ui/Text'
+import { Spinner } from "~/components/ui/Spinner";
+import { Text } from "~/components/ui/Text";
 
 export default function AuthCallbackLoading() {
   return (
@@ -14,5 +14,5 @@ export default function AuthCallbackLoading() {
         </div>
       </div>
     </div>
-  )
+  );
 }

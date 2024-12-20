@@ -1,51 +1,56 @@
-import { Suspense } from 'react'
-import { notFound } from 'next/navigation'
-import { cn } from '~/utils/cn'
-import { getBuild } from '~/app/actions/builds'
-import { BuildOverview } from '~/components/build-planner/BuildOverview'
-import type { Metadata } from 'next'
-import type { Database } from '~/lib/supabase/types'
+import { Suspense } from "react";
 
-type Build = Database['public']['Tables']['builds']['Row']
-type Equipment = Database['public']['Tables']['equipment']['Row']
-type SkillGem = Database['public']['Tables']['skill_gems']['Row']
-type BuildConfig = Database['public']['Tables']['build_configs']['Row']
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { BuildOverview } from "~/components/build-planner/BuildOverview";
+
+import { cn } from "~/utils/cn";
+
+import { getBuild } from "~/app/actions/builds";
+import type { Database } from "~/lib/supabase/types";
+
+type Build = Database["public"]["Tables"]["builds"]["Row"];
+type Equipment = Database["public"]["Tables"]["equipment"]["Row"];
+type SkillGem = Database["public"]["Tables"]["skill_gems"]["Row"];
+type BuildConfig = Database["public"]["Tables"]["build_configs"]["Row"];
 
 interface BuildWithRelations extends Build {
-  equipment: Equipment[]
-  skill_gems: SkillGem[]
-  build_configs: BuildConfig[]
+  equipment: Equipment[];
+  skill_gems: SkillGem[];
+  build_configs: BuildConfig[];
 }
 
 interface PageProps {
-  params: Promise<{ id: string }> | undefined
+  params: Promise<{ id: string }> | undefined;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  if (!params) return { title: 'Build Not Found' }
-  
+  if (!params) return { title: "Build Not Found" };
+
   try {
-    const { id } = await params
-    const build = await getBuild(id)
-    
+    const { id } = await params;
+    const build = await getBuild(id);
+
     return {
       title: build.name,
-      description: build.description || `Level ${build.level || '?'} ${build.poe_class || 'Unknown'} Build`,
-    }
+      description:
+        build.description || `Level ${build.level || "?"} ${build.poe_class || "Unknown"} Build`,
+    };
   } catch (error) {
     return {
-      title: 'Build Not Found',
-    }
+      title: "Build Not Found",
+    };
   }
 }
 
 export default async function BuildPage({ params }: PageProps) {
-  if (!params) notFound()
-  
+  if (!params) notFound();
+
   try {
-    const { id } = await params
-    const build = await getBuild(id)
-    if (!build) notFound()
+    const { id } = await params;
+    const build = await getBuild(id);
+    if (!build) notFound();
 
     return (
       <Suspense
@@ -65,9 +70,9 @@ export default async function BuildPage({ params }: PageProps) {
       >
         <BuildOverview build={build as BuildWithRelations} />
       </Suspense>
-    )
+    );
   } catch (error) {
-    console.error('Error loading build:', error)
-    notFound()
+    console.error("Error loading build:", error);
+    notFound();
   }
 }

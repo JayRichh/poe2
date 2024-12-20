@@ -1,43 +1,45 @@
-import { useState, useEffect, useCallback } from 'react'
-import { DPSCalc } from '~/lib/calculations'
-import { useLocalStorage } from './useLocalStorage'
+import { useCallback, useEffect, useState } from "react";
+
+import { DPSCalc } from "~/lib/calculations";
+
+import { useLocalStorage } from "./useLocalStorage";
 
 export interface WeaponInputs {
-  minBaseDmg: number
-  maxBaseDmg: number
-  physicalMin: number
-  physicalMax: number
-  lightningMin: number
-  lightningMax: number
-  fireMin: number
-  fireMax: number
-  coldMin: number
-  coldMax: number
-  chaosMin: number
-  chaosMax: number
+  minBaseDmg: number;
+  maxBaseDmg: number;
+  physicalMin: number;
+  physicalMax: number;
+  lightningMin: number;
+  lightningMax: number;
+  fireMin: number;
+  fireMax: number;
+  coldMin: number;
+  coldMax: number;
+  chaosMin: number;
+  chaosMax: number;
 }
 
 export interface GlobalSettings {
-  attackSpeed: number
-  attackSpeedIncrease: number
-  totalSkillProjectiles: number
-  damageMultiplier: number
-  critChance: number
-  critDamage: number
-  resPenetration: number
-  shock: boolean
-  electrocution: boolean
-  exposure: boolean
-  lightningInfusion: boolean
-  primalArmament: boolean
-  iceBite: boolean
+  attackSpeed: number;
+  attackSpeedIncrease: number;
+  totalSkillProjectiles: number;
+  damageMultiplier: number;
+  critChance: number;
+  critDamage: number;
+  resPenetration: number;
+  shock: boolean;
+  electrocution: boolean;
+  exposure: boolean;
+  lightningInfusion: boolean;
+  primalArmament: boolean;
+  iceBite: boolean;
 }
 
 export interface DPSState {
-  weapon1: WeaponInputs
-  weapon2: WeaponInputs
-  settings: GlobalSettings
-  results?: ReturnType<DPSCalc['getResults']>
+  weapon1: WeaponInputs;
+  weapon2: WeaponInputs;
+  settings: GlobalSettings;
+  results?: ReturnType<DPSCalc["getResults"]>;
 }
 
 const defaultWeapon: WeaponInputs = {
@@ -53,7 +55,7 @@ const defaultWeapon: WeaponInputs = {
   coldMax: 0,
   chaosMin: 0,
   chaosMax: 0,
-}
+};
 
 const defaultSettings: GlobalSettings = {
   attackSpeed: 1.0,
@@ -69,14 +71,14 @@ const defaultSettings: GlobalSettings = {
   lightningInfusion: false,
   primalArmament: false,
   iceBite: false,
-}
+};
 
-const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj))
+const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
 
 const sanitizeNumber = (value: number): number => {
-  if (typeof value !== 'number' || isNaN(value)) return 0
-  return value
-}
+  if (typeof value !== "number" || isNaN(value)) return 0;
+  return value;
+};
 
 const sanitizeWeapon = (weapon: WeaponInputs): WeaponInputs => ({
   minBaseDmg: sanitizeNumber(weapon.minBaseDmg),
@@ -91,7 +93,7 @@ const sanitizeWeapon = (weapon: WeaponInputs): WeaponInputs => ({
   coldMax: sanitizeNumber(weapon.coldMax),
   chaosMin: sanitizeNumber(weapon.chaosMin),
   chaosMax: sanitizeNumber(weapon.chaosMax),
-})
+});
 
 const sanitizeSettings = (settings: GlobalSettings): GlobalSettings => ({
   ...settings,
@@ -102,19 +104,19 @@ const sanitizeSettings = (settings: GlobalSettings): GlobalSettings => ({
   critChance: Math.min(100, Math.max(0, sanitizeNumber(settings.critChance))),
   critDamage: Math.max(100, sanitizeNumber(settings.critDamage)),
   resPenetration: sanitizeNumber(settings.resPenetration),
-})
+});
 
 export function useDPSCalculator() {
-  const [history, setHistory] = useLocalStorage<DPSState[]>('dps-calculator-history', [])
-  const [weapon1, setWeapon1] = useState<WeaponInputs>(sanitizeWeapon(defaultWeapon))
-  const [weapon2, setWeapon2] = useState<WeaponInputs>(sanitizeWeapon(defaultWeapon))
-  const [settings, setSettings] = useState<GlobalSettings>(sanitizeSettings(defaultSettings))
-  const [results, setResults] = useState<ReturnType<DPSCalc['getResults']> | null>(null)
+  const [history, setHistory] = useLocalStorage<DPSState[]>("dps-calculator-history", []);
+  const [weapon1, setWeapon1] = useState<WeaponInputs>(sanitizeWeapon(defaultWeapon));
+  const [weapon2, setWeapon2] = useState<WeaponInputs>(sanitizeWeapon(defaultWeapon));
+  const [settings, setSettings] = useState<GlobalSettings>(sanitizeSettings(defaultSettings));
+  const [results, setResults] = useState<ReturnType<DPSCalc["getResults"]> | null>(null);
 
   const calculateDPS = useCallback(() => {
-    const sanitizedWeapon1 = sanitizeWeapon(weapon1)
-    const sanitizedWeapon2 = sanitizeWeapon(weapon2)
-    const sanitizedSettings = sanitizeSettings(settings)
+    const sanitizedWeapon1 = sanitizeWeapon(weapon1);
+    const sanitizedWeapon2 = sanitizeWeapon(weapon2);
+    const sanitizedSettings = sanitizeSettings(settings);
 
     const calc = new DPSCalc({
       // Weapon 1 Base Stats
@@ -156,7 +158,7 @@ export function useDPSCalculator() {
       damageMultiplier: sanitizedSettings.damageMultiplier,
       damageMultiplierWeapon1: sanitizedSettings.damageMultiplier,
       damageMultiplierWeapon2: sanitizedSettings.damageMultiplier,
-      
+
       // Critical Strike Settings
       critChance: sanitizedSettings.critChance,
       critDamage: sanitizedSettings.critDamage,
@@ -189,10 +191,10 @@ export function useDPSCalculator() {
       // Other Skill Damage
       otherSkillDmgWeapon1: 0,
       otherSkillDmgWeapon2: 0,
-    })
+    });
 
-    const newResults = calc.getResults()
-    setResults(newResults)
+    const newResults = calc.getResults();
+    setResults(newResults);
 
     if (!Number.isNaN(newResults.dpsIncrease) && Math.abs(newResults.dpsIncrease) > 0.001) {
       setHistory((prev: DPSState[]) => {
@@ -200,56 +202,62 @@ export function useDPSCalculator() {
           weapon1: deepClone(sanitizedWeapon1),
           weapon2: deepClone(sanitizedWeapon2),
           settings: deepClone(sanitizedSettings),
-          results: deepClone(newResults)
+          results: deepClone(newResults),
+        };
+
+        const lastEntry = prev[prev.length - 1];
+        if (
+          lastEntry?.results &&
+          Math.abs(lastEntry.results.dpsIncrease - newResults.dpsIncrease) < 0.001
+        ) {
+          return prev;
         }
 
-        const lastEntry = prev[prev.length - 1]
-        if (lastEntry?.results && 
-            Math.abs(lastEntry.results.dpsIncrease - newResults.dpsIncrease) < 0.001) {
-          return prev
-        }
-
-        const newHistory = [...prev, newState]
-        return newHistory.slice(-10)
-      })
+        const newHistory = [...prev, newState];
+        return newHistory.slice(-10);
+      });
     }
-  }, [weapon1, weapon2, settings, setHistory])
+  }, [weapon1, weapon2, settings, setHistory]);
 
   useEffect(() => {
-    const timer = setTimeout(calculateDPS, 100)
-    return () => clearTimeout(timer)
-  }, [calculateDPS])
+    const timer = setTimeout(calculateDPS, 100);
+    return () => clearTimeout(timer);
+  }, [calculateDPS]);
 
-  const getDamageTypePercentages = useCallback((weaponResults: {
-    finalPhysicalDamage: number
-    finalLightningDamage: number
-    finalFireDamage: number
-    finalColdDamage: number
-    finalChaosDamage: number
-  }) => {
-    const total = 
-      sanitizeNumber(weaponResults.finalPhysicalDamage) +
-      sanitizeNumber(weaponResults.finalLightningDamage) +
-      sanitizeNumber(weaponResults.finalFireDamage) +
-      sanitizeNumber(weaponResults.finalColdDamage) +
-      sanitizeNumber(weaponResults.finalChaosDamage)
+  const getDamageTypePercentages = useCallback(
+    (weaponResults: {
+      finalPhysicalDamage: number;
+      finalLightningDamage: number;
+      finalFireDamage: number;
+      finalColdDamage: number;
+      finalChaosDamage: number;
+    }) => {
+      const total =
+        sanitizeNumber(weaponResults.finalPhysicalDamage) +
+        sanitizeNumber(weaponResults.finalLightningDamage) +
+        sanitizeNumber(weaponResults.finalFireDamage) +
+        sanitizeNumber(weaponResults.finalColdDamage) +
+        sanitizeNumber(weaponResults.finalChaosDamage);
 
-    if (total === 0) return {
-      physical: 0,
-      lightning: 0,
-      fire: 0,
-      cold: 0,
-      chaos: 0,
-    }
+      if (total === 0)
+        return {
+          physical: 0,
+          lightning: 0,
+          fire: 0,
+          cold: 0,
+          chaos: 0,
+        };
 
-    return {
-      physical: (sanitizeNumber(weaponResults.finalPhysicalDamage) / total) * 100,
-      lightning: (sanitizeNumber(weaponResults.finalLightningDamage) / total) * 100,
-      fire: (sanitizeNumber(weaponResults.finalFireDamage) / total) * 100,
-      cold: (sanitizeNumber(weaponResults.finalColdDamage) / total) * 100,
-      chaos: (sanitizeNumber(weaponResults.finalChaosDamage) / total) * 100,
-    }
-  }, [])
+      return {
+        physical: (sanitizeNumber(weaponResults.finalPhysicalDamage) / total) * 100,
+        lightning: (sanitizeNumber(weaponResults.finalLightningDamage) / total) * 100,
+        fire: (sanitizeNumber(weaponResults.finalFireDamage) / total) * 100,
+        cold: (sanitizeNumber(weaponResults.finalColdDamage) / total) * 100,
+        chaos: (sanitizeNumber(weaponResults.finalChaosDamage) / total) * 100,
+      };
+    },
+    []
+  );
 
   return {
     weapon1,
@@ -261,5 +269,5 @@ export function useDPSCalculator() {
     setWeapon2: (w: WeaponInputs) => setWeapon2(sanitizeWeapon(w)),
     setSettings: (s: GlobalSettings) => setSettings(sanitizeSettings(s)),
     getDamageTypePercentages,
-  }
+  };
 }

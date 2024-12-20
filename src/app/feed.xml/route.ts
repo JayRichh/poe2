@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server'
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  const baseUrl = 'https://poe2.dev'
+  const baseUrl = "https://poe2.dev";
 
   const xml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -31,12 +31,12 @@ export async function GET() {
     <description>Calculate and optimize your DPS in Path of Exile 2.</description>
   </item>
 </channel>
-</rss>`
+</rss>`;
 
   return new NextResponse(xml, {
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, s-maxage=1200, stale-while-revalidate=600',
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, s-maxage=1200, stale-while-revalidate=600",
     },
-  })
+  });
 }

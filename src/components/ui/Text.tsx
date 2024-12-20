@@ -1,6 +1,7 @@
 "use client";
 
 import { HTMLAttributes, forwardRef } from "react";
+
 import { cn } from "~/utils/cn";
 
 type TextVariant = "h1" | "h2" | "h3" | "h4" | "body-lg" | "body" | "body-sm" | "caption";
@@ -51,9 +52,12 @@ const alignClasses = {
 
 const gradientClasses: Record<TextGradient, string> = {
   none: "",
-  primary: "bg-clip-text text-transparent bg-gradient-to-r from-[#FFB800] via-[#FF9500] to-[#00B341]",
-  accent: "bg-clip-text text-transparent bg-gradient-to-r from-[#FF9500] via-[#00B341] to-[#FFB800]",
-  secondary: "bg-clip-text text-transparent bg-gradient-to-r from-[#00B341] via-[#FFB800] to-[#FF9500]",
+  primary:
+    "bg-clip-text text-transparent bg-gradient-to-r from-[#FFB800] via-[#FF9500] to-[#00B341]",
+  accent:
+    "bg-clip-text text-transparent bg-gradient-to-r from-[#FF9500] via-[#00B341] to-[#FFB800]",
+  secondary:
+    "bg-clip-text text-transparent bg-gradient-to-r from-[#00B341] via-[#FFB800] to-[#FF9500]",
   amber: "bg-clip-text text-transparent bg-gradient-to-r from-[#F59E0B] via-[#FBBF24] to-[#F97316]",
 };
 

@@ -1,7 +1,9 @@
 # POE2 Tools Architecture
+
 ## Core Features
 
 ### Authentication & User Management
+
 - [x] Email/password authentication via Supabase
 - [x] GitHub OAuth integration
 - [x] POE account connectivity via OAuth
@@ -12,6 +14,7 @@
 - [ ] Build saving/sharing capabilities
 
 ### Navigation Structure
+
 - Main navigation
   - Build Planner
     - Equipment
@@ -30,6 +33,7 @@
   - Search (Global)
 
 ### Build Planner
+
 - Character build creation and management
 - Equipment selection and comparison
 - Skill gem configuration
@@ -39,6 +43,7 @@
 - Build templates
 
 ### DPS Calculator
+
 - [x] Weapon damage comparison
 - [x] Skill damage calculations
 - [ ] Global settings for calculations
@@ -52,14 +57,15 @@
   - [ ] Export options
   - [ ] Save configurations
 
-
 ### Tools & Calculators
+
 - Resistance calculator
 - Life/mana calculator
 - Stat comparison tools
 - Equipment comparison
 
 ### Resources
+
 - Printable guides and checklists
 - Skill gem database
   - Leveling guides
@@ -73,6 +79,7 @@
 ## Technical Architecture
 
 ### Frontend
+
 - [x] Next.js 15+ with App Router
 - [x] TailwindCSS for styling
 - [x] Framer Motion for animations
@@ -81,6 +88,7 @@
 - [x] Route handlers with async/await
 
 ### Backend & Data
+
 - Supabase for:
   - [x] User authentication
   - [x] Profile management
@@ -93,6 +101,7 @@
   - [ ] League information
 
 ### Components Structure
+
 - /components
   - [x] /ui - Reusable UI components
   - [ ] /build-planner - Build planning components
@@ -102,6 +111,7 @@
   - [ ] /auth - Authentication components
 
 ### Data Management
+
 - [x] Server-side cookie storage
 - [x] Supabase for persistent storage
 - [ ] Client-side caching for performance
@@ -110,6 +120,7 @@
 ### Planned Features
 
 #### Phase 1 (Current)
+
 - [x] Basic authentication
   - [x] Email/password
   - [x] GitHub OAuth
@@ -125,6 +136,7 @@
   - [ ] Character sync
 
 #### Phase 2 (Next)
+
 - [ ] Build Planner MVP
   - [ ] Equipment slots
   - [ ] Basic stats
@@ -136,18 +148,21 @@
 - [ ] Global search
 
 #### Phase 3
+
 - [ ] Skill gem database
 - [ ] Equipment database
 - [ ] Build templates
 - [ ] Progress tracking
 
 #### Phase 4
+
 - [ ] Maps & content guide
 - [ ] Printable resources
 - [ ] Build sharing
 - [ ] Community features
 
 ## Directory Structure
+
 ```
 src/
 ├── app/                    # Next.js app router pages
@@ -170,6 +185,7 @@ src/
 ## Data Models
 
 ### User Profile
+
 ```typescript
 interface Profile {
   id: string;
@@ -187,13 +203,14 @@ interface Profile {
 ```
 
 ### Character Build
+
 ```typescript
 interface CharacterBuild {
   id: string;
   userId: string;
   name: string;
   description?: string;
-  visibility: 'public' | 'private';
+  visibility: "public" | "private";
   equipment: Equipment[];
   skills: SkillGem[];
   stats: CharacterStats;
@@ -204,6 +221,7 @@ interface CharacterBuild {
 ```
 
 ### Equipment
+
 ```typescript
 interface Equipment {
   id: string;
@@ -221,13 +239,14 @@ interface Equipment {
 ```
 
 ### Skill Gem
+
 ```typescript
 interface SkillGem {
   id: string;
   name: string;
   level: number;
   quality: number;
-  type: 'active' | 'support';
+  type: "active" | "support";
   tags: string[];
   stats: GemStat[];
 }
@@ -236,6 +255,7 @@ interface SkillGem {
 ## API Integration
 
 ### POE OAuth Flow
+
 - [x] User initiates POE account connection
 - [x] Redirect to POE OAuth endpoint with PKCE
 - [x] Handle callback with authorization code
@@ -244,22 +264,24 @@ interface SkillGem {
 - [ ] Fetch account/character data
 
 ### Data Synchronization
+
 - [x] Manual profile sync
 - [ ] Periodic sync of character data
 - [x] Error handling and retry logic
 - [x] Rate limiting compliance
 
 ## Performance Considerations
+
 - [ ] Client-side caching of static data
 - [ ] Incremental Static Regeneration for resources
 - [ ] Optimistic UI updates
 - [ ] Progressive loading of large datasets
 - [ ] Image optimization for equipment/gems
 
-
 ## Next Steps
 
 1. DPS Calculator Completion
+
    - Add global settings panel
    - Implement skill tree effects
    - Create damage breakdown view
@@ -267,24 +289,27 @@ interface SkillGem {
    - Enable configuration saving
 
 2. Build Planner Foundation
+
    - Create basic layout
    - Set up navigation
    - Implement data models
    - Add save/load functionality
 
-2. Character Data Integration
+3. Character Data Integration
+
    - Implement character sync
    - Add character selection
    - Display character stats
    - Show equipped items
 
-3. Equipment System
+4. Equipment System
+
    - Create equipment slots
    - Add item database
    - Implement comparison
    - Show requirements
 
-4. Skill System
+5. Skill System
    - Add skill gem database
    - Create gem socket system
    - Show gem requirements

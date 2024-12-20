@@ -1,5 +1,7 @@
 import { ChevronDown } from "lucide-react";
+
 import { cn } from "~/utils/cn";
+
 import { Dropdown } from "./Dropdown";
 
 interface SelectOption {
@@ -29,9 +31,9 @@ export function Select({
   disabled,
   error,
   width = "trigger",
-  position = "bottom-left"
+  position = "bottom-left",
 }: SelectProps) {
-  const selectedOption = options.find(opt => opt.value === value);
+  const selectedOption = options.find((opt) => opt.value === value);
 
   const trigger = (
     <div
@@ -45,10 +47,7 @@ export function Select({
         className
       )}
     >
-      <span className={cn(
-        "truncate",
-        !selectedOption && "text-foreground-secondary"
-      )}>
+      <span className={cn("truncate", !selectedOption && "text-foreground-secondary")}>
         {selectedOption ? selectedOption.label : placeholder}
       </span>
       <ChevronDown className="w-4 h-4 text-foreground-secondary flex-shrink-0" />
@@ -63,10 +62,7 @@ export function Select({
       onChange={onChange}
       width={width}
       position={position}
-      className={cn(
-        "w-full relative",
-        disabled && "pointer-events-none"
-      )}
+      className={cn("w-full relative", disabled && "pointer-events-none")}
     />
   );
 }

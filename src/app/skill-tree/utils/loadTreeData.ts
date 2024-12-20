@@ -1,12 +1,12 @@
-import { 
+import {
+  Keyword,
+  NodeDataJSON,
+  NodeType,
+  NodesJSON,
+  Skill,
   TreeData,
   TreeNodeData,
-  NodeType,
-  Skill,
-  Keyword,
-  NodesJSON,
-  NodeDataJSON
-} from '../components/TreeViewer/data';
+} from "../components/TreeViewer/data";
 
 async function fetchJson<T>(path: string): Promise<T> {
   try {
@@ -45,7 +45,7 @@ interface RawKeywordData {
 function validateNodeData(data: any): data is NodesJSON {
   return (
     data &&
-    typeof data === 'object' &&
+    typeof data === "object" &&
     Array.isArray(data.keystones) &&
     Array.isArray(data.notables) &&
     Array.isArray(data.smalls) &&
@@ -57,7 +57,7 @@ interface BaseNode {
   id: string;
   x: number;
   y: number;
-  kind: 'keystone' | 'notable' | 'small';
+  kind: "keystone" | "notable" | "small";
   class?: string;
 }
 
@@ -71,7 +71,7 @@ function enrichNode(
   keywords: RawKeywordData
 ): TreeNodeData {
   const nodeDesc = descriptions[nodeId];
-  
+
   if (!nodeDesc) {
     return {
       id: nodeId,
@@ -82,7 +82,7 @@ function enrichNode(
       skills: [],
       keywords: [],
       connections: [],
-      ascendancy
+      ascendancy,
     };
   }
 
@@ -94,51 +94,51 @@ function enrichNode(
     description: nodeDesc.stats || [],
     skills: (nodeDesc.skills || []).map((skillId: string) => ({
       name: skills[skillId]?.name || skillId,
-      description: skills[skillId]?.description || '',
-      icon: skills[skillId]?.icon
+      description: skills[skillId]?.description || "",
+      icon: skills[skillId]?.icon,
     })),
     keywords: [],
     connections: [],
-    ascendancy
+    ascendancy,
   };
 }
 
 function mapNodeType(kind: string): NodeType {
   switch (kind) {
-    case 'keystone':
-      return 'keystone';
-    case 'notable':
-      return 'notable';
-    case 'small':
-      return 'normal';
+    case "keystone":
+      return "keystone";
+    case "notable":
+      return "notable";
+    case "small":
+      return "normal";
     default:
-      return 'normal';
+      return "normal";
   }
 }
 
 export async function loadTreeData(): Promise<TreeData> {
   try {
     // First try to get from window if already loaded
-    if (typeof window !== 'undefined' && (window as any).__TREE_DATA__) {
+    if (typeof window !== "undefined" && (window as any).__TREE_DATA__) {
       return (window as any).__TREE_DATA__;
     }
 
     // Load all required data files
     const [nodesData, descriptions, skills, keywords] = await Promise.all([
-      fetchJson<NodesJSON>('/data/nodes.json'),
-      fetchJson<NodeDataJSON>('/data/nodes_desc.json'),
-      fetchJson<RawSkillData>('/data/skills.json'),
-      fetchJson<RawKeywordData>('/data/keywords.json')
+      fetchJson<NodesJSON>("/data/nodes.json"),
+      fetchJson<NodeDataJSON>("/data/nodes_desc.json"),
+      fetchJson<RawSkillData>("/data/skills.json"),
+      fetchJson<RawKeywordData>("/data/keywords.json"),
     ]);
 
     // Validate node data
     if (!validateNodeData(nodesData)) {
-      throw new Error('Invalid nodes data structure');
+      throw new Error("Invalid nodes data structure");
     }
 
     // Create enriched data
     const enrichedData: TreeData = {
-      nodes: {}
+      nodes: {},
     };
 
     // Flatten and process all node types
@@ -146,11 +146,11 @@ export async function loadTreeData(): Promise<TreeData> {
       ...nodesData.keystones.map((n: BaseNode) => ({ ...n, type: mapNodeType(n.kind) })),
       ...nodesData.notables.map((n: BaseNode) => ({ ...n, type: mapNodeType(n.kind) })),
       ...nodesData.smalls.map((n: BaseNode) => ({ ...n, type: mapNodeType(n.kind) })),
-      ...nodesData.ascendancies.map((n: BaseNode) => ({ ...n, type: mapNodeType(n.kind) }))
+      ...nodesData.ascendancies.map((n: BaseNode) => ({ ...n, type: mapNodeType(n.kind) })),
     ];
 
     // Process nodes
-    allNodes.forEach(node => {
+    allNodes.forEach((node) => {
       try {
         enrichedData.nodes[node.id] = enrichNode(
           node.id,
@@ -180,28 +180,28 @@ export async function loadTreeData(): Promise<TreeData> {
 
     // Validate enriched data
     if (Object.keys(enrichedData.nodes).length === 0) {
-      throw new Error('No valid nodes after processing');
+      throw new Error("No valid nodes after processing");
     }
 
     // Store in window for future use
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       (window as any).__TREE_DATA__ = enrichedData;
     }
 
     return enrichedData;
   } catch (error) {
-    console.error('Error loading tree data:', error);
+    console.error("Error loading tree data:", error);
     throw error;
   }
 }
 
 export function getTreeData(): TreeData | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === "undefined") return null;
   return (window as any).__TREE_DATA__ || null;
 }
 
 export function setTreeData(data: TreeData): void {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     (window as any).__TREE_DATA__ = data;
   }
 }

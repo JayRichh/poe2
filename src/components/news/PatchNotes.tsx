@@ -1,4 +1,5 @@
 import { Text } from "~/components/ui/Text";
+
 import { PatchNote } from "~/types/news";
 
 interface PatchNotesProps {

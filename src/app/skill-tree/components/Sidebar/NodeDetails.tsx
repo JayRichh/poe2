@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { TreeNodeData } from '../TreeViewer/data';
-import { highlightKeywords, highlightSkills } from '../../utils/textHighlighting';
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
+
+import React from "react";
+
+import { highlightKeywords, highlightSkills } from "../../utils/textHighlighting";
+import { TreeNodeData } from "../TreeViewer/data";
 
 interface NodeDetailsProps {
   node: TreeNodeData | null;
@@ -12,17 +14,15 @@ interface NodeDetailsProps {
   showSkillDetails: boolean;
 }
 
-export function NodeDetails({ 
-  node, 
+export function NodeDetails({
+  node,
   onClose,
   showKeywordDetails,
-  showSkillDetails
+  showSkillDetails,
 }: NodeDetailsProps) {
   if (!node) {
     return (
-      <div className="text-muted-foreground text-center p-4">
-        Select a node to view details
-      </div>
+      <div className="text-muted-foreground text-center p-4">Select a node to view details</div>
     );
   }
 
@@ -33,9 +33,7 @@ export function NodeDetails({
         <div>
           <h2 className="text-xl font-bold">{node.name}</h2>
           <div className="text-sm text-muted-foreground capitalize">{node.type}</div>
-          {node.ascendancy && (
-            <div className="text-sm text-primary">{node.ascendancy}</div>
-          )}
+          {node.ascendancy && <div className="text-sm text-primary">{node.ascendancy}</div>}
         </div>
         <button
           onClick={onClose}
@@ -50,11 +48,11 @@ export function NodeDetails({
       <div className="space-y-2">
         <h3 className="font-semibold text-lg">Description</h3>
         {node.description.map((desc, i) => (
-          <p 
-            key={i} 
+          <p
+            key={i}
             className="text-muted-foreground"
-            dangerouslySetInnerHTML={{ 
-              __html: highlightKeywords(highlightSkills(desc))
+            dangerouslySetInnerHTML={{
+              __html: highlightKeywords(highlightSkills(desc)),
             }}
           />
         ))}
@@ -77,10 +75,10 @@ export function NodeDetails({
                   )}
                   <div>
                     <h4 className="font-semibold text-cyan-200">{skill.name}</h4>
-                    <p 
+                    <p
                       className="text-sm text-muted-foreground mt-1"
-                      dangerouslySetInnerHTML={{ 
-                        __html: highlightKeywords(skill.description)
+                      dangerouslySetInnerHTML={{
+                        __html: highlightKeywords(skill.description),
                       }}
                     />
                   </div>
@@ -97,10 +95,7 @@ export function NodeDetails({
           <h3 className="font-semibold text-lg">Keywords</h3>
           <div className="flex flex-wrap gap-2">
             {node.keywords.map((keyword, i) => (
-              <div 
-                key={i}
-                className="group relative"
-              >
+              <div key={i} className="group relative">
                 <span className="bg-accent px-2 py-1 rounded-lg text-sm cursor-help">
                   {keyword.name}
                 </span>
@@ -118,7 +113,7 @@ export function NodeDetails({
       <div className="space-y-2">
         <h3 className="font-semibold text-lg">Connections</h3>
         <div className="text-sm text-muted-foreground">
-          {node.connections.length} connected {node.connections.length === 1 ? 'node' : 'nodes'}
+          {node.connections.length} connected {node.connections.length === 1 ? "node" : "nodes"}
         </div>
       </div>
     </div>

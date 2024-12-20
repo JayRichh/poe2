@@ -1,17 +1,33 @@
-'use client';
+"use client";
+
+import {
+  Calculator,
+  GitBranch,
+  Layout,
+  LogIn,
+  LogOut,
+  Menu,
+  Newspaper,
+  Settings,
+  User,
+} from "lucide-react";
+
+import { useState } from "react";
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, User, LogIn, Settings, LogOut, Calculator, Layout, Newspaper, GitBranch } from "lucide-react";
+
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
-import { useState } from "react";
-import { FullscreenMenu } from "./ui/FullscreenMenu";
-import { Toast } from "./ui/Toast";
-import { Button } from "./ui/Button";
-import { Spinner } from "./ui/Spinner";
+
 import { useAuth } from "~/contexts/auth";
+
+import { Button } from "./ui/Button";
 import { Dropdown } from "./ui/Dropdown";
+import { FullscreenMenu } from "./ui/FullscreenMenu";
+import { Spinner } from "./ui/Spinner";
+import { Toast } from "./ui/Toast";
 
 const PROTECTED_ROUTES = ["/profile"];
 
@@ -22,11 +38,11 @@ const primaryLinks = [
 ];
 
 const secondaryLinks = [
-  { 
-    href: "/news", 
-    label: "News", 
+  {
+    href: "/news",
+    label: "News",
     icon: Newspaper,
-    description: "Latest updates, announcements & events"
+    description: "Latest updates, announcements & events",
   },
 ];
 
@@ -39,17 +55,17 @@ export function Navigation() {
 
   const handleProfileAction = async (value: string) => {
     switch (value) {
-      case 'profile':
-        router.push('/profile');
+      case "profile":
+        router.push("/profile");
         break;
-      case 'signout':
+      case "signout":
         await signOut();
         break;
     }
   };
 
   const handleSignIn = () => {
-    router.push('/auth/login');
+    router.push("/auth/login");
   };
 
   return (
@@ -62,14 +78,9 @@ export function Navigation() {
       >
         <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <div className="flex items-center justify-between h-12 sm:h-16">
-            
             <span className="flex col gap-5">
-              <Link 
-                href="/"
-                className="flex items-center gap-2 transition-colors"
-                >
+              <Link href="/" className="flex items-center gap-2 transition-colors">
                 <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#F59E0B] via-[#FBBF24] to-[#F97316] font-bold text-xl">
                   POE2 Tools
                 </span>
@@ -143,7 +154,7 @@ export function Navigation() {
                 <div className="hidden md:block">
                   <Dropdown
                     trigger={
-                      <button 
+                      <button
                         className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
                         disabled={authLoading}
                       >
@@ -152,9 +163,7 @@ export function Navigation() {
                         ) : (
                           <User className="w-4 h-4" />
                         )}
-                        <span className="max-w-[150px] truncate">
-                          {user.email?.split('@')[0]}
-                        </span>
+                        <span className="max-w-[150px] truncate">{user.email?.split("@")[0]}</span>
                       </button>
                     }
                     items={[
@@ -203,29 +212,19 @@ export function Navigation() {
         </div>
       </nav>
 
-      <FullscreenMenu 
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
+      <FullscreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       {authError && (
-        <Toast
-          message={authError}
-          type="error"
-          isVisible={!!authError}
-          onClose={() => {}}
-        />
+        <Toast message={authError} type="error" isVisible={!!authError} onClose={() => {}} />
       )}
 
-      {!user && PROTECTED_ROUTES.some(route => pathname?.startsWith(route)) && (
+      {!user && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
         <div className="fixed inset-0 z-20 bg-background/95 backdrop-blur-sm flex items-center justify-center">
           <div className="max-w-md mx-auto p-8 rounded-xl bg-background border border-border/50 shadow-lg text-center space-y-6">
             <User className="w-16 h-16 mx-auto text-primary" />
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Sign In Required</h2>
-              <p className="text-foreground/80">
-                Sign in to access your profile and settings.
-              </p>
+              <p className="text-foreground/80">Sign in to access your profile and settings.</p>
               <Button
                 variant="primary"
                 size="lg"
@@ -233,11 +232,7 @@ export function Navigation() {
                 className="w-full"
                 disabled={authLoading}
               >
-                {authLoading ? (
-                  <Spinner size="sm" className="w-4 h-4" />
-                ) : (
-                  'Sign In'
-                )}
+                {authLoading ? <Spinner size="sm" className="w-4 h-4" /> : "Sign In"}
               </Button>
             </div>
           </div>

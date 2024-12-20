@@ -1,20 +1,65 @@
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from "isomorphic-dompurify";
 
 // Load keywords and skills from data files
 // For now, using placeholder data - this should be updated to use actual data
 const KEYWORDS = [
-  'Damage', 'Life', 'Mana', 'Attack', 'Spell', 'Critical', 'Physical',
-  'Fire', 'Cold', 'Lightning', 'Chaos', 'Poison', 'Bleed', 'Ignite',
-  'Block', 'Dodge', 'Armor', 'Evasion', 'Energy Shield', 'Resistance',
-  'Speed', 'Area', 'Duration', 'Projectile', 'Minion', 'Totem', 'Trap',
-  'Mine', 'Curse', 'Aura', 'Channeling', 'Trigger', 'Guard', 'Brand'
+  "Damage",
+  "Life",
+  "Mana",
+  "Attack",
+  "Spell",
+  "Critical",
+  "Physical",
+  "Fire",
+  "Cold",
+  "Lightning",
+  "Chaos",
+  "Poison",
+  "Bleed",
+  "Ignite",
+  "Block",
+  "Dodge",
+  "Armor",
+  "Evasion",
+  "Energy Shield",
+  "Resistance",
+  "Speed",
+  "Area",
+  "Duration",
+  "Projectile",
+  "Minion",
+  "Totem",
+  "Trap",
+  "Mine",
+  "Curse",
+  "Aura",
+  "Channeling",
+  "Trigger",
+  "Guard",
+  "Brand",
 ];
 
 const SKILLS = [
-  'Fireball', 'Lightning Strike', 'Cleave', 'Shield Bash', 'Ice Nova',
-  'Arc', 'Cyclone', 'Blade Vortex', 'Raise Zombie', 'Summon Skeletons',
-  'Flame Dash', 'Dash', 'Blink Arrow', 'Frost Bomb', 'Storm Brand',
-  'Vortex', 'Blade Blast', 'Explosive Arrow', 'Ground Slam', 'Smite'
+  "Fireball",
+  "Lightning Strike",
+  "Cleave",
+  "Shield Bash",
+  "Ice Nova",
+  "Arc",
+  "Cyclone",
+  "Blade Vortex",
+  "Raise Zombie",
+  "Summon Skeletons",
+  "Flame Dash",
+  "Dash",
+  "Blink Arrow",
+  "Frost Bomb",
+  "Storm Brand",
+  "Vortex",
+  "Blade Blast",
+  "Explosive Arrow",
+  "Ground Slam",
+  "Smite",
 ];
 
 /**
@@ -24,18 +69,16 @@ const SKILLS = [
  */
 export function highlightKeywords(text: string): string {
   // Create a regex pattern that matches whole words only
-  const pattern = `\\b(${KEYWORDS.join('|')})\\b`;
-  const regex = new RegExp(pattern, 'gi');
-  
+  const pattern = `\\b(${KEYWORDS.join("|")})\\b`;
+  const regex = new RegExp(pattern, "gi");
+
   // Replace matches with highlighted HTML
-  const highlighted = text.replace(regex, (match) => 
-    `<span class="is-keyword">${match}</span>`
-  );
+  const highlighted = text.replace(regex, (match) => `<span class="is-keyword">${match}</span>`);
 
   // Sanitize the HTML to prevent XSS
   return DOMPurify.sanitize(highlighted, {
-    ALLOWED_TAGS: ['span'],
-    ALLOWED_ATTR: ['class']
+    ALLOWED_TAGS: ["span"],
+    ALLOWED_ATTR: ["class"],
   });
 }
 
@@ -46,18 +89,16 @@ export function highlightKeywords(text: string): string {
  */
 export function highlightSkills(text: string): string {
   // Create a regex pattern that matches whole words only
-  const pattern = `\\b(${SKILLS.join('|')})\\b`;
-  const regex = new RegExp(pattern, 'gi');
-  
+  const pattern = `\\b(${SKILLS.join("|")})\\b`;
+  const regex = new RegExp(pattern, "gi");
+
   // Replace matches with highlighted HTML
-  const highlighted = text.replace(regex, (match) => 
-    `<span class="is-skill">${match}</span>`
-  );
+  const highlighted = text.replace(regex, (match) => `<span class="is-skill">${match}</span>`);
 
   // Sanitize the HTML to prevent XSS
   return DOMPurify.sanitize(highlighted, {
-    ALLOWED_TAGS: ['span'],
-    ALLOWED_ATTR: ['class']
+    ALLOWED_TAGS: ["span"],
+    ALLOWED_ATTR: ["class"],
   });
 }
 
@@ -77,7 +118,7 @@ export function highlightText(text: string): string {
  */
 export function sanitizeHtml(html: string): string {
   return DOMPurify.sanitize(html, {
-    ALLOWED_TAGS: ['span'],
-    ALLOWED_ATTR: ['class']
+    ALLOWED_TAGS: ["span"],
+    ALLOWED_ATTR: ["class"],
   });
 }

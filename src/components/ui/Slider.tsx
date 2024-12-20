@@ -1,6 +1,6 @@
 // components/ui/Slider.tsx
-
 import { useEffect, useRef } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface SliderProps {
@@ -100,9 +100,7 @@ export function Slider({
       {(label || showValue) && (
         <div className="flex items-center justify-between gap-2 min-h-[1.5rem] w-full">
           {label && (
-            <span className="text-sm font-medium text-foreground truncate flex-grow">
-              {label}
-            </span>
+            <span className="text-sm font-medium text-foreground truncate flex-grow">{label}</span>
           )}
           {showValue && (
             <span className="text-sm font-medium text-foreground/70 tabular-nums tracking-tight shrink-0">

@@ -1,9 +1,11 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "~/utils/cn";
+import { usePathname } from "next/navigation";
+
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
+import { cn } from "~/utils/cn";
 
 const subNavLinks = [
   { href: "/build-planner", label: "Passive Tree" },
@@ -14,20 +16,18 @@ const subNavLinks = [
   { href: "/build-planner/import-export", label: "Import/Export" },
 ];
 
-export default function BuildPlannerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function BuildPlannerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isVisible = useHeaderScroll();
 
   return (
     <div className="min-h-screen pt-28">
-      <div className={cn(
-        "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
-        !isVisible ? "-translate-y-[calc(100%+20px)]" : "translate-y-0"
-      )}>
+      <div
+        className={cn(
+          "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
+          !isVisible ? "-translate-y-[calc(100%+20px)]" : "translate-y-0"
+        )}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center space-x-8 h-full">
             {subNavLinks.map(({ href, label }) => {
@@ -52,9 +52,7 @@ export default function BuildPlannerLayout({
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {children}
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import { Container } from '~/components/ui/Container'
-import { Text } from '~/components/ui/Text'
-import { AuthForm } from '~/components/auth/AuthForm'
-import Link from 'next/link'
+import Link from "next/link";
+
+import { AuthForm } from "~/components/auth/AuthForm";
+import { Container } from "~/components/ui/Container";
+import { Text } from "~/components/ui/Text";
 
 export default function SignUpPage() {
   return (
@@ -17,8 +18,8 @@ export default function SignUpPage() {
 
           <div className="text-center">
             <Text className="text-sm text-foreground/60">
-              Already have an account?{' '}
-              <Link 
+              Already have an account?{" "}
+              <Link
                 href="/auth/login"
                 className="text-primary hover:text-primary/80 transition-colors"
               >
@@ -29,5 +30,5 @@ export default function SignUpPage() {
         </div>
       </Container>
     </div>
-  )
+  );
 }

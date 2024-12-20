@@ -1,6 +1,6 @@
-import { Text } from "@/components/ui/Text";
 import { Slider } from "@/components/ui/Slider";
 import { TabGroup } from "@/components/ui/TabGroup";
+import { Text } from "@/components/ui/Text";
 
 export interface WeaponInputs {
   minBaseDmg: number;

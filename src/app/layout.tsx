@@ -1,30 +1,30 @@
+import { Analytics } from "@vercel/analytics/react";
+
 import { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/react"
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import Script from "next/script";
 
-import { metadata as baseMetadata, viewport as baseViewport } from "./metadata";
+import ClientLayout from "./client-layout";
 import "./globals.css";
+import { metadata as baseMetadata, viewport as baseViewport } from "./metadata";
 
 export const metadata: Metadata = baseMetadata;
 export const viewport: Viewport = baseViewport;
 
-import ClientLayout from "./client-layout";
-
 const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-geist-sans',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-geist-sans",
   preload: true,
-  display: 'swap',
+  display: "swap",
 });
 
 const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-geist-mono',
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-geist-mono",
   preload: true,
-  display: 'swap',
+  display: "swap",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -48,17 +48,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "POE2 Tools",
-              "applicationCategory": "Game Tools",
-              "operatingSystem": "Web Browser",
-              "description": "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
-              "url": "https://poe2.dev",
-              "offers": {
+              name: "POE2 Tools",
+              applicationCategory: "Game Tools",
+              operatingSystem: "Web Browser",
+              description:
+                "Community-driven tools for Path of Exile 2 players. Build planning, DPS calculations, and more.",
+              url: "https://poe2.dev",
+              offers: {
                 "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-              }
-            })
+                price: "0",
+                priceCurrency: "USD",
+              },
+            }),
           }}
         />
         <ClientLayout>{children}</ClientLayout>

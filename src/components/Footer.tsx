@@ -1,12 +1,17 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Coffee, Github } from "lucide-react";
+
 import Image from "next/image";
-import { Github, Coffee } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const contributors = [
-  { name: "Jay", url: "https://github.com/jayrichh", avatar: "https://avatars.githubusercontent.com/jayrichh" },
+  {
+    name: "Jay",
+    url: "https://github.com/jayrichh",
+    avatar: "https://avatars.githubusercontent.com/jayrichh",
+  },
 ];
 
 const navLinks = [
@@ -22,10 +27,11 @@ const externalResources = [
 
 export function Footer() {
   const pathname = usePathname();
-  const isVisible = pathname === "/" || 
-                   pathname === "/analytics" || 
-                   pathname === "/gifts" ||
-                   pathname.startsWith("/build-planner");
+  const isVisible =
+    pathname === "/" ||
+    pathname === "/analytics" ||
+    pathname === "/gifts" ||
+    pathname.startsWith("/build-planner");
 
   if (!isVisible) return null;
 
@@ -38,14 +44,14 @@ export function Footer() {
             <div>
               <h3 className="text-xl font-semibold text-foreground">POE2 Tools</h3>
               <p className="mt-2 text-sm text-foreground/60 leading-relaxed">
-                Community-driven tools for Path of Exile 2 players.
-                Build planning, DPS calculations, and more.
+                Community-driven tools for Path of Exile 2 players. Build planning, DPS
+                calculations, and more.
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-sm font-medium text-foreground mb-3">Follow & Contribute</h4>
-              <a 
+              <a
                 href="https://github.com/jayrichh/poe2"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -103,7 +109,7 @@ export function Footer() {
               <h4 className="text-sm font-medium text-foreground mb-3">Item Data</h4>
               <p className="text-sm text-foreground/60">
                 All item data is sourced from the official{" "}
-                <a 
+                <a
                   href="https://www.pathofexile.com/developer/docs"
                   target="_blank"
                   rel="noopener noreferrer"

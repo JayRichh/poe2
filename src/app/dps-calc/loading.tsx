@@ -1,6 +1,6 @@
-import { Container } from '~/components/ui/Container'
-import { Card } from '~/components/ui/Card'
-import { Skeleton } from '~/components/ui/Skeleton'
+import { Card } from "~/components/ui/Card";
+import { Container } from "~/components/ui/Container";
+import { Skeleton } from "~/components/ui/Skeleton";
 
 export default function DPSCalcLoading() {
   return (
@@ -18,7 +18,7 @@ export default function DPSCalcLoading() {
               <Card key={i} className="p-6">
                 <div className="space-y-6">
                   <Skeleton className="h-7 w-32" />
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     {[1, 2, 3, 4, 5, 6].map((j) => (
                       <div key={j} className="space-y-2">
@@ -36,7 +36,7 @@ export default function DPSCalcLoading() {
           <Card className="p-6">
             <div className="space-y-6">
               <Skeleton className="h-7 w-40" />
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
                   <div key={i} className="space-y-2">
@@ -54,5 +54,5 @@ export default function DPSCalcLoading() {
         </div>
       </div>
     </Container>
-  )
+  );
 }

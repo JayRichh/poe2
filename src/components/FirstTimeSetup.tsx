@@ -1,20 +1,25 @@
 "use client";
 
+import { Eye, LogIn } from "lucide-react";
+
 import { useState } from "react";
-import { LogIn, Eye } from "lucide-react";
-import { Modal } from "./ui/Modal";
-import { Button } from "./ui/Button";
-import { Text } from "./ui/Text";
-import { cn } from "~/utils/cn";
-import { useAuth } from "~/contexts/auth";
+
 import Link from "next/link";
+
+import { cn } from "~/utils/cn";
+
+import { useAuth } from "~/contexts/auth";
 import type { Database } from "~/lib/supabase/types";
 
-type VisibilityType = Database['public']['Enums']['visibility_type'];
+import { Button } from "./ui/Button";
+import { Modal } from "./ui/Modal";
+import { Text } from "./ui/Text";
+
+type VisibilityType = Database["public"]["Enums"]["visibility_type"];
 
 interface POEPreferences {
   defaultBuildVisibility: VisibilityType;
-  theme: 'light' | 'dark' | 'system';
+  theme: "light" | "dark" | "system";
 }
 
 interface FirstTimeSetupProps {
@@ -24,13 +29,13 @@ interface FirstTimeSetupProps {
 }
 
 const STORAGE_KEYS = {
-  SETUP_COMPLETED: 'hasCompletedSetup',
-  POE_PREFERENCES: 'poePreferences',
+  SETUP_COMPLETED: "hasCompletedSetup",
+  POE_PREFERENCES: "poePreferences",
 };
 
 export function FirstTimeSetup({ isOpen, onComplete, onClose }: FirstTimeSetupProps) {
-  const [defaultVisibility, setDefaultVisibility] = useState<VisibilityType>('private');
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('system');
+  const [defaultVisibility, setDefaultVisibility] = useState<VisibilityType>("private");
+  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
   const [error, setError] = useState<string | undefined>();
   const [isProcessing, setIsProcessing] = useState(false);
   const { user } = useAuth();
@@ -45,17 +50,17 @@ export function FirstTimeSetup({ isOpen, onComplete, onClose }: FirstTimeSetupPr
     try {
       const preferences: POEPreferences = {
         defaultBuildVisibility: defaultVisibility,
-        theme
+        theme,
       };
 
       // Save preferences to localStorage
-      localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETED, 'true');
+      localStorage.setItem(STORAGE_KEYS.SETUP_COMPLETED, "true");
       localStorage.setItem(STORAGE_KEYS.POE_PREFERENCES, JSON.stringify(preferences));
-      
+
       onComplete(preferences);
     } catch (err) {
-      console.error('Setup error:', err);
-      setError('Failed to complete setup. Please try again.');
+      console.error("Setup error:", err);
+      setError("Failed to complete setup. Please try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -89,9 +94,9 @@ export function FirstTimeSetup({ isOpen, onComplete, onClose }: FirstTimeSetupPr
             <Text className="text-lg font-medium">Default Build Visibility</Text>
             <div className="grid grid-cols-3 gap-4">
               {[
-                { value: 'private', label: 'Private', description: 'Only visible to you' },
-                { value: 'unlisted', label: 'Unlisted', description: 'Visible with link' },
-                { value: 'public', label: 'Public', description: 'Visible to everyone' }
+                { value: "private", label: "Private", description: "Only visible to you" },
+                { value: "unlisted", label: "Unlisted", description: "Visible with link" },
+                { value: "public", label: "Public", description: "Visible to everyone" },
               ].map((option) => (
                 <button
                   type="button"
@@ -120,14 +125,14 @@ export function FirstTimeSetup({ isOpen, onComplete, onClose }: FirstTimeSetupPr
             <Text className="text-lg font-medium">Theme Preference</Text>
             <div className="grid grid-cols-3 gap-4">
               {[
-                { value: 'light', label: 'Light', description: 'Light theme' },
-                { value: 'dark', label: 'Dark', description: 'Dark theme' },
-                { value: 'system', label: 'System', description: 'Match system' }
+                { value: "light", label: "Light", description: "Light theme" },
+                { value: "dark", label: "Dark", description: "Dark theme" },
+                { value: "system", label: "System", description: "Match system" },
               ].map((option) => (
                 <button
                   type="button"
                   key={option.value}
-                  onClick={() => setTheme(option.value as 'light' | 'dark' | 'system')}
+                  onClick={() => setTheme(option.value as "light" | "dark" | "system")}
                   className={cn(
                     "p-4 rounded-xl border-2 text-left",
                     theme === option.value
@@ -152,19 +157,10 @@ export function FirstTimeSetup({ isOpen, onComplete, onClose }: FirstTimeSetupPr
         )}
 
         <div className="flex justify-between pt-6 border-t border-border/50">
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={onClose}
-            disabled={isProcessing}
-          >
+          <Button type="button" variant="ghost" onClick={onClose} disabled={isProcessing}>
             Cancel
           </Button>
-          <Button
-            type="submit"
-            variant="primary"
-            disabled={isProcessing}
-          >
+          <Button type="submit" variant="primary" disabled={isProcessing}>
             {isProcessing ? "Setting up..." : "Complete Setup"}
           </Button>
         </div>

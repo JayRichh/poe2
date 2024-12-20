@@ -1,7 +1,7 @@
 /**
  * POE2 DPS Calculator
  * Core logic for calculating and comparing weapon DPS in Path of Exile 2
- * 
+ *
  * Key Functionality:
  * - Calculates total DPS for two weapons considering all damage types
  * - Compares weapons to show DPS percentage increase
@@ -22,7 +22,7 @@ export class DPSCalc {
    * This is the main metric used for weapon comparison
    */
   get dpsIncrease(): number {
-    return (this.totalDpsWeapon2 / this.totalDpsWeapon1) - 1;
+    return this.totalDpsWeapon2 / this.totalDpsWeapon1 - 1;
   }
 
   /**
@@ -46,7 +46,7 @@ export class DPSCalc {
   }
 
   get totalIncreaseWeapon2(): number {
-     return 0.58 + 0.12 + 0.2 + 0.12 + 4 * 0.12;
+    return 0.58 + 0.12 + 0.2 + 0.12 + 4 * 0.12;
   }
 
   /**
@@ -192,9 +192,17 @@ export class DPSCalc {
         (this.i.iceBiteWeapon1 === true ? 0.2 * this.projectileDamageIncreaseWeapon1 : 0) *
           (1 + this.attackDamageIncreaseWeapon1)) *
       (1 +
-        (this.i.shockWeapon1 === true ? this.durationPercentWeapon1 * this.magnitudePercentWeapon1 : 0)) *
-      (1 + this.otherMultiplierWeapon1 * this.otherMultiplierWeapon1 * (1 + this.otherMultiplierWeapon1)) *
-      (1 + this.otherMultiplierWeapon1 * this.otherMultiplierWeapon1 * (1 + this.otherMultiplierWeapon1))
+        (this.i.shockWeapon1 === true
+          ? this.durationPercentWeapon1 * this.magnitudePercentWeapon1
+          : 0)) *
+      (1 +
+        this.otherMultiplierWeapon1 *
+          this.otherMultiplierWeapon1 *
+          (1 + this.otherMultiplierWeapon1)) *
+      (1 +
+        this.otherMultiplierWeapon1 *
+          this.otherMultiplierWeapon1 *
+          (1 + this.otherMultiplierWeapon1))
     );
   }
 
@@ -210,9 +218,17 @@ export class DPSCalc {
         (this.i.iceBiteWeapon2 === true ? 0.2 * this.projectileDamageIncreaseWeapon2 : 0) *
           (1 + this.attackDamageIncreaseWeapon2)) *
       (1 +
-        (this.i.shockWeapon2 === true ? this.durationPercentWeapon2 * this.magnitudePercentWeapon2 : 0)) *
-      (1 + this.otherMultiplierWeapon2 * this.otherMultiplierWeapon2 * (1 + this.otherMultiplierWeapon2)) *
-      (1 + this.otherMultiplierWeapon2 * this.otherMultiplierWeapon2 * (1 + this.otherMultiplierWeapon2))
+        (this.i.shockWeapon2 === true
+          ? this.durationPercentWeapon2 * this.magnitudePercentWeapon2
+          : 0)) *
+      (1 +
+        this.otherMultiplierWeapon2 *
+          this.otherMultiplierWeapon2 *
+          (1 + this.otherMultiplierWeapon2)) *
+      (1 +
+        this.otherMultiplierWeapon2 *
+          this.otherMultiplierWeapon2 *
+          (1 + this.otherMultiplierWeapon2))
     );
   }
 
@@ -277,7 +293,7 @@ export class DPSCalc {
   }
 
   get critChanceWeapon2(): number {
-     return Number(this.i.baseCritChance2) * (1 + Number(this.i.critChanceIncrease2));
+    return Number(this.i.baseCritChance2) * (1 + Number(this.i.critChanceIncrease2));
   }
 
   get critDamageWeapon1(): number {
@@ -302,22 +318,26 @@ export class DPSCalc {
    */
   get elementalDmgPercentWeapon1(): number {
     return (
-      ((Number(this.i.newPhysicalMinWeapon1) -
+      (Number(this.i.newPhysicalMinWeapon1) -
         Number(this.i.weapon1PhysicalMin) -
         Number(this.i.weapon1ChaosMin) +
-        (Number(this.i.newPhysicalMaxWeapon1) - Number(this.i.weapon1PhysicalMax) - Number(this.i.weapon1ChaosMax))) /
-        2) /
+        (Number(this.i.newPhysicalMaxWeapon1) -
+          Number(this.i.weapon1PhysicalMax) -
+          Number(this.i.weapon1ChaosMax))) /
+      2 /
       Number(this.i.attacksPerSecond)
     );
   }
 
   get elementalDmgPercentWeapon2(): number {
     return (
-      ((Number(this.i.newPhysicalMinWeapon2) -
+      (Number(this.i.newPhysicalMinWeapon2) -
         Number(this.i.weapon2PhysicalMin) -
-         Number(this.i.weapon2ChaosMin) +
-        (Number(this.i.newPhysicalMaxWeapon2) - Number(this.i.weapon2PhysicalMax) - Number(this.i.weapon2ChaosMax))) /
-        2) /
+        Number(this.i.weapon2ChaosMin) +
+        (Number(this.i.newPhysicalMaxWeapon2) -
+          Number(this.i.weapon2PhysicalMax) -
+          Number(this.i.weapon2ChaosMax))) /
+      2 /
       Number(this.i.attacksPerSecond)
     );
   }
@@ -335,35 +355,67 @@ export class DPSCalc {
   }
 
   get lightningDmgPercentWeapon1(): number {
-    return (Number(this.i.weapon1LightningMin) + Number(this.i.weapon1LightningMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon1LightningMin) + Number(this.i.weapon1LightningMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get lightningDmgPercentWeapon2(): number {
-    return (Number(this.i.weapon2LightningMin) + Number(this.i.weapon2LightningMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon2LightningMin) + Number(this.i.weapon2LightningMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get fireDmgPercentWeapon1(): number {
-    return (Number(this.i.weapon1FireMin) + Number(this.i.weapon1FireMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon1FireMin) + Number(this.i.weapon1FireMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get fireDmgPercentWeapon2(): number {
-    return (Number(this.i.weapon2FireMin) + Number(this.i.weapon2FireMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon2FireMin) + Number(this.i.weapon2FireMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get coldDmgPercentWeapon1(): number {
-     return (Number(this.i.weapon1ColdMin) + Number(this.i.weapon1ColdMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon1ColdMin) + Number(this.i.weapon1ColdMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get coldDmgPercentWeapon2(): number {
-    return (Number(this.i.weapon2ColdMin) + Number(this.i.weapon2ColdMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon2ColdMin) + Number(this.i.weapon2ColdMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
-   get chaosDmgPercentWeapon1(): number {
-    return (Number(this.i.weapon1ChaosMin) + Number(this.i.weapon1ChaosMax)) / 2 / Number(this.i.attacksPerSecond);
+  get chaosDmgPercentWeapon1(): number {
+    return (
+      (Number(this.i.weapon1ChaosMin) + Number(this.i.weapon1ChaosMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   get chaosDmgPercentWeapon2(): number {
-    return (Number(this.i.weapon2ChaosMin) + Number(this.i.weapon2ChaosMax)) / 2 / Number(this.i.attacksPerSecond);
+    return (
+      (Number(this.i.weapon2ChaosMin) + Number(this.i.weapon2ChaosMax)) /
+      2 /
+      Number(this.i.attacksPerSecond)
+    );
   }
 
   /**
@@ -378,14 +430,14 @@ export class DPSCalc {
       this.magnitudePercentWeapon1 *
       this.durationPercentWeapon1 *
       this.critMultiplierWeapon1 *
-      (1 - 0.75 + this.physicalDmgPercentWeapon1 > 1 ? 1 : 1 - 0.75 + this.physicalDmgPercentWeapon1) *
-      (
-        this.finalPhysicalDamage +
+      (1 - 0.75 + this.physicalDmgPercentWeapon1 > 1
+        ? 1
+        : 1 - 0.75 + this.physicalDmgPercentWeapon1) *
+      (this.finalPhysicalDamage +
         this.finalLightningDamage +
         this.finalFireDamage +
         this.finalColdDamage +
-        this.finalChaosDamage
-      )
+        this.finalChaosDamage)
     );
   }
 
@@ -397,14 +449,14 @@ export class DPSCalc {
       this.magnitudePercentWeapon2 *
       this.durationPercentWeapon2 *
       this.critMultiplierWeapon2 *
-      (1 - 0.75 + this.physicalDmgPercentWeapon2 > 1 ? 1 : 1 - 0.75 + this.physicalDmgPercentWeapon2) *
-      (
-        this.finalPhysicalDamage2 +
+      (1 - 0.75 + this.physicalDmgPercentWeapon2 > 1
+        ? 1
+        : 1 - 0.75 + this.physicalDmgPercentWeapon2) *
+      (this.finalPhysicalDamage2 +
         this.finalLightningDamage2 +
         this.finalFireDamage2 +
         this.finalColdDamage2 +
-        this.finalChaosDamage2
-      )
+        this.finalChaosDamage2)
     );
   }
 
@@ -498,39 +550,39 @@ export class DPSCalc {
     return {
       // Primary Output
       dpsIncrease: this.dpsIncrease,
-      
+
       // Total DPS Values
       totalDpsWeapon1: this.totalDpsWeapon1,
       totalDpsWeapon2: this.totalDpsWeapon2,
-      
+
       // Base Damage
       averageBaseDmgWeapon1: this.averageBaseDmgWeapon1,
       averageBaseDmgWeapon2: this.averageBaseDmgWeapon2,
-      
+
       // Damage Increases
       totalIncreaseWeapon1: this.totalIncreaseWeapon1,
       totalIncreaseWeapon2: this.totalIncreaseWeapon2,
-      
+
       // Elemental Damage
       elementalDamageIncreaseWeapon1: this.elementalDamageIncreaseWeapon1,
       elementalDamageIncreaseWeapon2: this.elementalDamageIncreaseWeapon2,
-      
+
       // Physical Damage
       physicalDamageWeapon1: this.totalPhysicalDamageWeapon1,
       physicalDamageWeapon2: this.totalPhysicalDamageWeapon2,
-      
+
       // Attack and Projectile
       attackDamageIncreaseWeapon1: this.attackDamageIncreaseWeapon1,
       attackDamageIncreaseWeapon2: this.attackDamageIncreaseWeapon2,
       projectileDamageIncreaseWeapon1: this.projectileDamageIncreaseWeapon1,
       projectileDamageIncreaseWeapon2: this.projectileDamageIncreaseWeapon2,
-      
+
       // Conversion and Magnitude
       damageConversionWeapon1: this.damageConversionWeapon1,
       damageConversionWeapon2: this.damageConversionWeapon2,
       magnitudePercentWeapon1: this.magnitudePercentWeapon1,
       magnitudePercentWeapon2: this.magnitudePercentWeapon2,
-      
+
       // Duration and Multipliers
       durationPercentWeapon1: this.durationPercentWeapon1,
       durationPercentWeapon2: this.durationPercentWeapon2,
@@ -545,7 +597,7 @@ export class DPSCalc {
       critDamageWeapon2: this.critDamageWeapon2,
       critMultiplierWeapon1: this.critMultiplierWeapon1,
       critMultiplierWeapon2: this.critMultiplierWeapon2,
-      
+
       // Damage Type Percentages
       elementalDmgPercentWeapon1: this.elementalDmgPercentWeapon1,
       elementalDmgPercentWeapon2: this.elementalDmgPercentWeapon2,
@@ -559,7 +611,7 @@ export class DPSCalc {
       coldDmgPercentWeapon2: this.coldDmgPercentWeapon2,
       chaosDmgPercentWeapon1: this.chaosDmgPercentWeapon1,
       chaosDmgPercentWeapon2: this.chaosDmgPercentWeapon2,
-      
+
       // Final Damage Values
       finalPhysicalDamage: this.finalPhysicalDamage,
       finalLightningDamage: this.finalLightningDamage,

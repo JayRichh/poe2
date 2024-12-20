@@ -1,4 +1,4 @@
-import { TreeData, TreeNodeData } from '../components/TreeViewer/data';
+import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
 
 interface StatMap {
   [key: string]: number;
@@ -10,7 +10,7 @@ function extractStatValue(stat: string): { name: string; value: number } {
   if (!match) return { name: stat, value: 0 };
 
   const value = parseFloat(match[1] || match[2]);
-  const name = stat.replace(match[0], '').trim();
+  const name = stat.replace(match[0], "").trim();
 
   return { name, value };
 }
@@ -19,14 +19,14 @@ function extractStatValue(stat: string): { name: string; value: number } {
 function normalizeStatName(name: string): string {
   return name
     .toLowerCase()
-    .replace(/increased/g, 'inc')
-    .replace(/decreased/g, 'dec')
-    .replace(/maximum/g, 'max')
-    .replace(/minimum/g, 'min')
-    .replace(/additional/g, 'add')
-    .replace(/chance to/g, 'chance')
-    .replace(/multiplier/g, 'multi')
-    .replace(/\s+/g, '_');
+    .replace(/increased/g, "inc")
+    .replace(/decreased/g, "dec")
+    .replace(/maximum/g, "max")
+    .replace(/minimum/g, "min")
+    .replace(/additional/g, "add")
+    .replace(/chance to/g, "chance")
+    .replace(/multiplier/g, "multi")
+    .replace(/\s+/g, "_");
 }
 
 // Calculate total stats from allocated nodes
@@ -37,12 +37,12 @@ export function calculateNodeStats(
   const stats: StatMap = {};
 
   // Process each allocated node
-  allocatedNodes.forEach(nodeId => {
+  allocatedNodes.forEach((nodeId) => {
     const node = treeData.nodes[nodeId];
     if (!node) return;
 
     // Process node descriptions
-    node.description.forEach(desc => {
+    node.description.forEach((desc) => {
       const { name, value } = extractStatValue(desc);
       if (!name) return;
 
@@ -69,24 +69,30 @@ export function sortStats(stats: [string, number][]): [string, number][] {
 
 // Get stat category for sorting
 function getStatCategory(stat: string): string {
-  if (stat.includes('damage') || stat.includes('attack') || 
-      stat.includes('spell') || stat.includes('critical')) {
-    return 'offensive';
+  if (
+    stat.includes("damage") ||
+    stat.includes("attack") ||
+    stat.includes("spell") ||
+    stat.includes("critical")
+  ) {
+    return "offensive";
   }
-  if (stat.includes('life') || stat.includes('mana') || 
-      stat.includes('resistance') || stat.includes('defence')) {
-    return 'defensive';
+  if (
+    stat.includes("life") ||
+    stat.includes("mana") ||
+    stat.includes("resistance") ||
+    stat.includes("defence")
+  ) {
+    return "defensive";
   }
-  return 'other';
+  return "other";
 }
 
 // Format stat value for display
 export function formatStatValue(value: number, stat: string): string {
   // Handle percentage stats
-  if (stat.includes('percent') || 
-      stat.includes('chance') || 
-      stat.includes('multiplier')) {
-    return `${value > 0 ? '+' : ''}${value}%`;
+  if (stat.includes("percent") || stat.includes("chance") || stat.includes("multiplier")) {
+    return `${value > 0 ? "+" : ""}${value}%`;
   }
 
   // Handle flat values
@@ -95,19 +101,16 @@ export function formatStatValue(value: number, stat: string): string {
 
 // Get stat color based on value
 export function getStatColor(value: number): string {
-  if (value > 0) return 'text-green-400';
-  if (value < 0) return 'text-red-400';
-  return 'text-gray-400';
+  if (value > 0) return "text-green-400";
+  if (value < 0) return "text-red-400";
+  return "text-gray-400";
 }
 
 // Calculate total value for a specific stat across nodes
-export function calculateTotalStatValue(
-  statName: string,
-  nodes: TreeNodeData[]
-): number {
+export function calculateTotalStatValue(statName: string, nodes: TreeNodeData[]): number {
   return nodes.reduce((total, node) => {
     const statValue = node.description
-      .filter(desc => desc.includes(statName))
+      .filter((desc) => desc.includes(statName))
       .reduce((sum, desc) => {
         const { value } = extractStatValue(desc);
         return sum + value;
@@ -119,8 +122,8 @@ export function calculateTotalStatValue(
 // Get all unique stats from nodes
 export function getAllUniqueStats(nodes: TreeNodeData[]): Set<string> {
   const stats = new Set<string>();
-  nodes.forEach(node => {
-    node.description.forEach(desc => {
+  nodes.forEach((node) => {
+    node.description.forEach((desc) => {
       const { name } = extractStatValue(desc);
       if (name) stats.add(normalizeStatName(name));
     });
@@ -129,11 +132,16 @@ export function getAllUniqueStats(nodes: TreeNodeData[]): Set<string> {
 }
 
 // Group stats by category
-export function groupStatsByCategory(stats: [string, number][]): Record<string, [string, number][]> {
-  return stats.reduce((groups, stat) => {
-    const category = getStatCategory(stat[0]);
-    if (!groups[category]) groups[category] = [];
-    groups[category].push(stat);
-    return groups;
-  }, {} as Record<string, [string, number][]>);
+export function groupStatsByCategory(
+  stats: [string, number][]
+): Record<string, [string, number][]> {
+  return stats.reduce(
+    (groups, stat) => {
+      const category = getStatCategory(stat[0]);
+      if (!groups[category]) groups[category] = [];
+      groups[category].push(stat);
+      return groups;
+    },
+    {} as Record<string, [string, number][]>
+  );
 }

@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import LZString from 'lz-string';
+import LZString from "lz-string";
+
+import { useCallback, useEffect, useState } from "react";
+
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface UseTreeStateProps {
   onNodesLoad?: (nodes: string[]) => void;
@@ -16,8 +18,8 @@ export function useTreeState({ onNodesLoad, onAscendancyLoad }: UseTreeStateProp
 
   // Load state from URL on mount
   useEffect(() => {
-    const asc = searchParams.get('a');
-    const passivesCompressed = searchParams.get('p');
+    const asc = searchParams.get("a");
+    const passivesCompressed = searchParams.get("p");
 
     if (asc && onAscendancyLoad) {
       onAscendancyLoad(asc);
@@ -26,10 +28,10 @@ export function useTreeState({ onNodesLoad, onAscendancyLoad }: UseTreeStateProp
     if (passivesCompressed && onNodesLoad) {
       try {
         const decompressed = LZString.decompressFromEncodedURIComponent(passivesCompressed);
-        const nodes = decompressed ? decompressed.split(',') : [];
+        const nodes = decompressed ? decompressed.split(",") : [];
         onNodesLoad(nodes);
       } catch (error) {
-        console.error('Error parsing selected nodes from URL:', error);
+        console.error("Error parsing selected nodes from URL:", error);
       }
     }
 
@@ -37,46 +39,49 @@ export function useTreeState({ onNodesLoad, onAscendancyLoad }: UseTreeStateProp
   }, [searchParams, onNodesLoad, onAscendancyLoad]);
 
   // Update URL when state changes
-  const updateUrl = useCallback((nodes: string[], ascendancy: string) => {
-    if (!isInitialized) return;
+  const updateUrl = useCallback(
+    (nodes: string[], ascendancy: string) => {
+      if (!isInitialized) return;
 
-    const params = new URLSearchParams(searchParams.toString());
-    
-    // Update ascendancy
-    if (ascendancy !== 'None') {
-      params.set('a', ascendancy.toLowerCase());
-    } else {
-      params.delete('a');
-    }
+      const params = new URLSearchParams(searchParams.toString());
 
-    // Update nodes
-    if (nodes.length > 0) {
-      const nodesString = nodes.join(',');
-      const compressed = LZString.compressToEncodedURIComponent(nodesString);
-      params.set('p', compressed);
-    } else {
-      params.delete('p');
-    }
+      // Update ascendancy
+      if (ascendancy !== "None") {
+        params.set("a", ascendancy.toLowerCase());
+      } else {
+        params.delete("a");
+      }
 
-    // Update URL without reload
-    const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
-    router.replace(newUrl, { scroll: false });
-  }, [isInitialized, router, searchParams]);
+      // Update nodes
+      if (nodes.length > 0) {
+        const nodesString = nodes.join(",");
+        const compressed = LZString.compressToEncodedURIComponent(nodesString);
+        params.set("p", compressed);
+      } else {
+        params.delete("p");
+      }
+
+      // Update URL without reload
+      const newUrl = `${window.location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
+      router.replace(newUrl, { scroll: false });
+    },
+    [isInitialized, router, searchParams]
+  );
 
   // Export build to JSON
   const exportBuild = useCallback((nodes: string[], ascendancy: string) => {
     const data = {
       nodes,
       ascendancy,
-      version: '1.0.0',
-      timestamp: new Date().toISOString()
+      version: "1.0.0",
+      timestamp: new Date().toISOString(),
     };
 
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `poe2-skill-tree-${data.timestamp.split('T')[0]}.json`;
+    a.download = `poe2-skill-tree-${data.timestamp.split("T")[0]}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -84,49 +89,52 @@ export function useTreeState({ onNodesLoad, onAscendancyLoad }: UseTreeStateProp
   }, []);
 
   // Import build from JSON
-  const importBuild = useCallback(async (file: File): Promise<{ nodes: string[], ascendancy: string }> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const data = JSON.parse(e.target?.result as string);
-          if (!data.nodes || !data.ascendancy) {
-            throw new Error('Invalid build file format');
+  const importBuild = useCallback(
+    async (file: File): Promise<{ nodes: string[]; ascendancy: string }> => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const data = JSON.parse(e.target?.result as string);
+            if (!data.nodes || !data.ascendancy) {
+              throw new Error("Invalid build file format");
+            }
+            resolve({
+              nodes: data.nodes,
+              ascendancy: data.ascendancy,
+            });
+          } catch (error) {
+            reject(error);
           }
-          resolve({
-            nodes: data.nodes,
-            ascendancy: data.ascendancy
-          });
-        } catch (error) {
-          reject(error);
-        }
-      };
-      reader.onerror = () => reject(new Error('Failed to read file'));
-      reader.readAsText(file);
-    });
-  }, []);
+        };
+        reader.onerror = () => reject(new Error("Failed to read file"));
+        reader.readAsText(file);
+      });
+    },
+    []
+  );
 
   // Share build link
   const shareBuildLink = useCallback((nodes: string[], ascendancy: string): string => {
     const params = new URLSearchParams();
-    
-    if (ascendancy !== 'None') {
-      params.set('a', ascendancy.toLowerCase());
-    }
-    
-    if (nodes.length > 0) {
-      const nodesString = nodes.join(',');
-      const compressed = LZString.compressToEncodedURIComponent(nodesString);
-      params.set('p', compressed);
+
+    if (ascendancy !== "None") {
+      params.set("a", ascendancy.toLowerCase());
     }
 
-    return `${window.location.origin}${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    if (nodes.length > 0) {
+      const nodesString = nodes.join(",");
+      const compressed = LZString.compressToEncodedURIComponent(nodesString);
+      params.set("p", compressed);
+    }
+
+    return `${window.location.origin}${window.location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
   }, []);
 
   return {
     updateUrl,
     exportBuild,
     importBuild,
-    shareBuildLink
+    shareBuildLink,
   };
 }

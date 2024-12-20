@@ -33,7 +33,7 @@ export interface TreeNodeData {
   ascendancy: string | null;
 }
 
-export type NodeType = 'keystone' | 'notable' | 'normal';
+export type NodeType = "keystone" | "notable" | "normal";
 
 export interface TreeData {
   nodes: Record<string, TreeNodeData>;
@@ -70,28 +70,28 @@ export interface NodesJSON {
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   notables: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   smalls: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   ascendancies: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   connections: Array<[string, string]>;

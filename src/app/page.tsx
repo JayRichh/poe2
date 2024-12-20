@@ -2,24 +2,28 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Layout,
-  Calculator,
-  Newspaper,
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
-  ScrollIcon,
+  Calculator,
   ChevronsDown,
-  ArrowUp
+  Layout,
+  Newspaper,
+  ScrollIcon,
 } from "lucide-react";
-import { Container } from "~/components/ui/Container";
-import { Text } from "~/components/ui/Text";
-import { Button } from "~/components/ui/Button";
-import Link from "next/link";
+
+import { useEffect, useRef, useState } from "react";
+
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
-import { NewsService } from "~/services/news-service";
+import Link from "next/link";
+
 import { NewsCard } from "~/components/news/NewsCard";
+import { Button } from "~/components/ui/Button";
+import { Container } from "~/components/ui/Container";
 import { Skeleton } from "~/components/ui/Skeleton";
+import { Text } from "~/components/ui/Text";
+
+import { NewsService } from "~/services/news-service";
 import type { NewsItem } from "~/types/news";
 
 function FeaturedNewsSkeleton() {
@@ -142,55 +146,59 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <Text variant="body-lg" color="secondary" className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-2">
-              Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize gameplay.
+            <Text
+              variant="body-lg"
+              color="secondary"
+              className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-2"
+            >
+              Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and
+              optimize gameplay.
             </Text>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-  <Link href="/build-planner">
-    <motion.button
-      whileHover={{ scale: 1.03, opacity: 0.95 }}
-      className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+              <Link href="/build-planner">
+                <motion.button
+                  whileHover={{ scale: 1.03, opacity: 0.95 }}
+                  className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
                  bg-primary text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 
                  focus:ring-offset-2 focus:ring-primary"
-    >
-      Build Planner
-      <motion.div
-        variants={{
-          initial: { rotate: 0 },
-          hover: { rotate: -45 },
-        }}
-        initial="initial"
-        whileHover="hover"
-        className="transition-transform duration-300"
-      >
-        <ArrowRight className="w-5 h-5" />
-      </motion.div>
-    </motion.button>
-  </Link>
+                >
+                  Build Planner
+                  <motion.div
+                    variants={{
+                      initial: { rotate: 0 },
+                      hover: { rotate: -45 },
+                    }}
+                    initial="initial"
+                    whileHover="hover"
+                    className="transition-transform duration-300"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </motion.button>
+              </Link>
 
-  <Link href="/dps-calc">
-    <motion.button
-      whileHover={{ scale: 1.03, opacity: 0.95 }}
-      className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+              <Link href="/dps-calc">
+                <motion.button
+                  whileHover={{ scale: 1.03, opacity: 0.95 }}
+                  className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
                  bg-secondary text-secondary-foreground hover:bg-secondary/90 focus:outline-none focus:ring-2 
                  focus:ring-offset-2 focus:ring-secondary"
-    >
-      DPS Calculator
-      <motion.div
-        variants={{
-          initial: { rotate: 0 },
-          hover: { rotate: -45 },
-        }}
-        initial="initial"
-        whileHover="hover"
-        className="transition-transform duration-300"
-      >
-        <ArrowRight className="w-5 h-5" />
-      </motion.div>
-    </motion.button>
-  </Link>
-</div>
-
+                >
+                  DPS Calculator
+                  <motion.div
+                    variants={{
+                      initial: { rotate: 0 },
+                      hover: { rotate: -45 },
+                    }}
+                    initial="initial"
+                    whileHover="hover"
+                    className="transition-transform duration-300"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -201,10 +209,7 @@ export default function HomePage() {
             {/* <Text color="secondary" className="text-xs uppercase tracking-widest">
               Scroll
             </Text> */}
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
+            <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
               <ScrollIcon className="w-6 h-6 text-secondary" />
             </motion.div>
             <ChevronsDown className="w-5 h-5 text-secondary mt-2" />
@@ -215,19 +220,19 @@ export default function HomePage() {
       {/* Scroll To Top Button */}
       {showScrollTop && (
         <motion.div
-        initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9 }}
-            transition={{ delay: 1, duration: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.9 }}
+          transition={{ delay: 1, duration: 1 }}
         >
-        <Button
-          onClick={scrollToTop}
-          variant="secondary"
-          className="fixed bottom-10 right-10 flex items-center gap-2 opacity-50 hover:opacity-90 hover:border hover:border-primary"
+          <Button
+            onClick={scrollToTop}
+            variant="secondary"
+            className="fixed bottom-10 right-10 flex items-center gap-2 opacity-50 hover:opacity-90 hover:border hover:border-primary"
           >
-          <ArrowUp className="w-4 h-4" />
-          Top
-        </Button>
-          </motion.div>
+            <ArrowUp className="w-4 h-4" />
+            Top
+          </Button>
+        </motion.div>
       )}
 
       {/* Features */}
@@ -253,7 +258,10 @@ export default function HomePage() {
                 <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 mb-8">
                   <Layout className="w-10 h-10 text-primary" />
                 </div>
-                <Text variant="h3" className="text-2xl font-semibold mb-6 group-hover:text-primary transition-colors">
+                <Text
+                  variant="h3"
+                  className="text-2xl font-semibold mb-6 group-hover:text-primary transition-colors"
+                >
                   Build Planner
                 </Text>
                 <ul className="space-y-3 text-muted-foreground group-hover:text-foreground transition-colors">
@@ -290,7 +298,10 @@ export default function HomePage() {
                 <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-secondary/10 mb-8">
                   <Calculator className="w-10 h-10 text-secondary" />
                 </div>
-                <Text variant="h3" className="text-2xl font-semibold mb-6 group-hover:text-secondary transition-colors">
+                <Text
+                  variant="h3"
+                  className="text-2xl font-semibold mb-6 group-hover:text-secondary transition-colors"
+                >
                   DPS Calculator
                 </Text>
                 <ul className="space-y-3 text-muted-foreground group-hover:text-foreground transition-colors">
@@ -327,7 +338,10 @@ export default function HomePage() {
                 <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-blue-500/10 mb-8">
                   <Newspaper className="w-10 h-10 text-blue-500" />
                 </div>
-                <Text variant="h3" className="text-2xl font-semibold mb-6 group-hover:text-blue-500 transition-colors">
+                <Text
+                  variant="h3"
+                  className="text-2xl font-semibold mb-6 group-hover:text-blue-500 transition-colors"
+                >
                   Game Utils
                 </Text>
                 <ul className="space-y-3 text-muted-foreground group-hover:text-foreground transition-colors">
@@ -369,7 +383,8 @@ export default function HomePage() {
                   Interactive Skill Tree
                 </Text>
                 <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
-                  Explore and plan your character&apos;s progression with our interactive skill tree.
+                  Explore and plan your character&apos;s progression with our interactive skill
+                  tree.
                 </Text>
               </div>
               <ul className="space-y-4">
@@ -385,11 +400,14 @@ export default function HomePage() {
                   <span className="w-2 h-2 rounded-full bg-accent" />
                   Sharable build URLs
                 </li>
-                
               </ul>
               <div className="pt-4">
                 <Link href="/skill-tree">
-                  <Button variant="ghost" size="lg" className="px-8 py-4 text-lg flex items-center gap-2">
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="px-8 py-4 text-lg flex items-center gap-2"
+                  >
                     View Skill Tree
                     <ArrowUpRight className="w-5 h-5" />
                   </Button>
@@ -456,9 +474,9 @@ export default function HomePage() {
                     <FeaturedNewsSkeleton />
                   </>
                 ) : (
-                  news.slice(0, 2).map((item) => (
-                    <NewsCard key={item.id} news={item} variant="featured" />
-                  ))
+                  news
+                    .slice(0, 2)
+                    .map((item) => <NewsCard key={item.id} news={item} variant="featured" />)
                 )}
               </div>
             </div>
@@ -475,9 +493,9 @@ export default function HomePage() {
                     <CompactNewsSkeleton />
                   </>
                 ) : (
-                  news.slice(2).map((item) => (
-                    <NewsCard key={item.id} news={item} variant="compact" />
-                  ))
+                  news
+                    .slice(2)
+                    .map((item) => <NewsCard key={item.id} news={item} variant="compact" />)
                 )}
               </div>
             </div>
@@ -507,8 +525,7 @@ export default function HomePage() {
               More Coming Soon..
             </Text>
             <Text variant="body" color="secondary" className="text-lg leading-relaxed ">
-              We&apos;re continuously working on new tools.
-              Stay tuned for future updates.
+              We&apos;re continuously working on new tools. Stay tuned for future updates.
             </Text>
           </motion.div>
         </Container>

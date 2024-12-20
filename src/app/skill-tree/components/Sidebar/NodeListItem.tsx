@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { TreeNodeData } from '../TreeViewer/data';
-import { highlightText } from '../../utils/textHighlighting';
+import React from "react";
+
+import { highlightText } from "../../utils/textHighlighting";
+import { TreeNodeData } from "../TreeViewer/data";
 
 interface NodeListItemProps {
   node: TreeNodeData;
@@ -19,14 +20,14 @@ export function NodeListItem({
   isHighlighted = false,
   onClick,
   onMouseEnter,
-  onMouseLeave
+  onMouseLeave,
 }: NodeListItemProps) {
   return (
     <div
       className={`
         group relative p-3 rounded-lg transition-all duration-200 cursor-pointer
-        ${isAllocated ? 'bg-blue-900/30' : 'bg-gray-800/50'}
-        ${isHighlighted ? 'ring-2 ring-yellow-400/50' : ''}
+        ${isAllocated ? "bg-blue-900/30" : "bg-gray-800/50"}
+        ${isHighlighted ? "ring-2 ring-yellow-400/50" : ""}
         hover:bg-gray-700/50
       `}
       onClick={() => onClick?.(node)}
@@ -35,13 +36,20 @@ export function NodeListItem({
     >
       {/* Node Type Badge */}
       <div className="absolute top-2 right-2">
-        <span className={`
+        <span
+          className={`
           px-2 py-0.5 rounded text-xs font-medium
-          ${node.type === 'keystone' ? 'bg-purple-900/50 text-purple-200' :
-            node.type === 'notable' ? 'bg-orange-900/50 text-orange-200' :
-            node.type === 'mastery' ? 'bg-green-900/50 text-green-200' :
-            'bg-gray-900/50 text-gray-200'}
-        `}>
+          ${
+            node.type === "keystone"
+              ? "bg-purple-900/50 text-purple-200"
+              : node.type === "notable"
+                ? "bg-orange-900/50 text-orange-200"
+                : node.type === "mastery"
+                  ? "bg-green-900/50 text-green-200"
+                  : "bg-gray-900/50 text-gray-200"
+          }
+        `}
+        >
           {node.type}
         </span>
       </div>
@@ -51,10 +59,10 @@ export function NodeListItem({
 
       {/* Node Description */}
       {node.description[0] && (
-        <div 
+        <div
           className="text-xs text-gray-300 mb-2"
-          dangerouslySetInnerHTML={{ 
-            __html: highlightText(node.description[0])
+          dangerouslySetInnerHTML={{
+            __html: highlightText(node.description[0]),
           }}
         />
       )}
@@ -88,26 +96,24 @@ export function NodeListItem({
       )}
 
       {/* Ascendancy */}
-      {node.ascendancy && (
-        <div className="mt-2 text-xs text-blue-300">
-          {node.ascendancy}
-        </div>
-      )}
+      {node.ascendancy && <div className="mt-2 text-xs text-blue-300">{node.ascendancy}</div>}
 
       {/* Hover Preview */}
-      <div className={`
+      <div
+        className={`
         absolute left-full top-1/2 -translate-y-1/2 ml-2 z-50
         opacity-0 invisible group-hover:opacity-100 group-hover:visible
         transition-all duration-200 pointer-events-none
         bg-gray-800 rounded-lg shadow-xl p-4 min-w-[200px] max-w-[300px]
-      `}>
+      `}
+      >
         <h4 className="font-semibold mb-2">{node.name}</h4>
         {node.description.map((desc, index) => (
-          <p 
+          <p
             key={index}
             className="text-sm text-gray-300 mb-2"
-            dangerouslySetInnerHTML={{ 
-              __html: highlightText(desc)
+            dangerouslySetInnerHTML={{
+              __html: highlightText(desc),
             }}
           />
         ))}

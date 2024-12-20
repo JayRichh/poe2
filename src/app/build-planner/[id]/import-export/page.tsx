@@ -1,4 +1,4 @@
-import { Text } from '~/components/ui/Text'
+import { Text } from "~/components/ui/Text";
 
 export default function ImportExportPage() {
   return (
@@ -7,5 +7,5 @@ export default function ImportExportPage() {
         Import/Export functionality is currently unavailable
       </Text>
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import { Container } from '~/components/ui/Container'
-import { Card } from '~/components/ui/Card'
-import { Skeleton } from '~/components/ui/Skeleton'
+import { Card } from "~/components/ui/Card";
+import { Container } from "~/components/ui/Container";
+import { Skeleton } from "~/components/ui/Skeleton";
 
 export default function ProfileLoading() {
   return (
@@ -54,7 +54,7 @@ export default function ProfileLoading() {
         {/* Security */}
         <div className="space-y-4 pt-6 border-t border-border/50">
           <Skeleton className="h-6 w-24" />
-          
+
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -72,5 +72,5 @@ export default function ProfileLoading() {
         </div>
       </Container>
     </div>
-  )
+  );
 }

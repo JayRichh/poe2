@@ -26,11 +26,7 @@ declare global {
   }
 }
 
-const STORAGE_KEYS = [
-  'gift-list-groups',
-  'gift-list-members',
-  'gift-list-gifts'
-];
+const STORAGE_KEYS = ["gift-list-groups", "gift-list-members", "gift-list-gifts"];
 
 class LocalStorageProvider implements StorageProvider {
   isChromeSync(): boolean {
@@ -83,7 +79,7 @@ class StorageService {
     if (this.initPromise) return this.initPromise;
 
     this.initPromise = (async () => {
-      if (typeof window === 'undefined') {
+      if (typeof window === "undefined") {
         this.provider = new ServerStorageProvider();
         return;
       }
@@ -96,7 +92,7 @@ class StorageService {
 
   async get<T>(key: string): Promise<T | null> {
     await this.initialize();
-    
+
     try {
       const data = await this.provider!.getItem(key);
       return data ? JSON.parse(data) : null;
@@ -108,7 +104,7 @@ class StorageService {
 
   async set<T>(key: string, value: T): Promise<void> {
     await this.initialize();
-    
+
     try {
       await this.provider!.setItem(key, JSON.stringify(value));
     } catch (error) {
@@ -119,7 +115,7 @@ class StorageService {
 
   async remove(key: string): Promise<void> {
     await this.initialize();
-    
+
     try {
       await this.provider!.removeItem(key);
     } catch (error) {

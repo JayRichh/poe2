@@ -1,11 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useCallback, useEffect, useRef } from 'react';
-import { TreeNodeData, TreeData } from '../components/TreeViewer/data';
-import { loadTreeData, getTreeData } from '../utils/loadTreeData';
-import { useUrlState } from './useUrlState';
-import { useTreeHistory } from './useTreeHistory';
-import LZString from 'lz-string';
+import LZString from "lz-string";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
+import { getTreeData, loadTreeData } from "../utils/loadTreeData";
+import { useTreeHistory } from "./useTreeHistory";
+import { useUrlState } from "./useUrlState";
 
 type NodeId = string;
 
@@ -23,11 +25,11 @@ export function useSkillTree() {
 
   // Core state
   const [selectedNode, setSelectedNode] = useState<TreeNodeData | null>(null);
-  const [selectedAscendancy, setSelectedAscendancy] = useState('None');
+  const [selectedAscendancy, setSelectedAscendancy] = useState("None");
   const [allocatedNodes, setAllocatedNodes] = useState<Set<NodeId>>(new Set());
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isRegexSearch, setIsRegexSearch] = useState(false);
-  
+
   // Filter states
   const [highlightKeystones, setHighlightKeystones] = useState(false);
   const [highlightNotables, setHighlightNotables] = useState(false);
@@ -51,38 +53,36 @@ export function useSkillTree() {
     setSelectedAscendancy(ascendancy);
   }, []);
 
-  const {
-    pushState,
-    undo,
-    redo,
-    canUndo,
-    canRedo,
-    getHistory,
-    clearHistory,
-    restoreState
-  } = useTreeHistory({
-    onStateChange: handleHistoryChange
-  });
+  const { pushState, undo, redo, canUndo, canRedo, getHistory, clearHistory, restoreState } =
+    useTreeHistory({
+      onStateChange: handleHistoryChange,
+    });
 
   // URL state handling
-  const handleNodesLoad = useCallback((nodes: NodeId[]) => {
-    const nodeSet = new Set(nodes);
-    setAllocatedNodes(nodeSet);
-    if (!isInitialLoad.current) {
-      pushState(nodeSet, selectedAscendancy);
-    }
-  }, [selectedAscendancy, pushState]);
+  const handleNodesLoad = useCallback(
+    (nodes: NodeId[]) => {
+      const nodeSet = new Set(nodes);
+      setAllocatedNodes(nodeSet);
+      if (!isInitialLoad.current) {
+        pushState(nodeSet, selectedAscendancy);
+      }
+    },
+    [selectedAscendancy, pushState]
+  );
 
-  const handleAscendancyLoad = useCallback((ascendancy: string) => {
-    setSelectedAscendancy(ascendancy);
-    if (!isInitialLoad.current) {
-      pushState(allocatedNodes, ascendancy);
-    }
-  }, [allocatedNodes, pushState]);
+  const handleAscendancyLoad = useCallback(
+    (ascendancy: string) => {
+      setSelectedAscendancy(ascendancy);
+      if (!isInitialLoad.current) {
+        pushState(allocatedNodes, ascendancy);
+      }
+    },
+    [allocatedNodes, pushState]
+  );
 
   const { updateUrl } = useUrlState({
     onNodesLoad: handleNodesLoad,
-    onAscendancyLoad: handleAscendancyLoad
+    onAscendancyLoad: handleAscendancyLoad,
   });
 
   // Update URL when state changes
@@ -103,8 +103,8 @@ export function useSkillTree() {
         setTreeData(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to load tree data'));
-        console.error('Error loading tree data:', err);
+        setError(err instanceof Error ? err : new Error("Failed to load tree data"));
+        console.error("Error loading tree data:", err);
       } finally {
         setIsLoading(false);
       }
@@ -119,87 +119,117 @@ export function useSkillTree() {
   }, []);
 
   // Node filtering functions
-  const filterNormalNodes = useCallback((node: TreeNodeData): boolean => {
-    return !hideNormal || node.type !== 'normal';
-  }, [hideNormal]);
+  const filterNormalNodes = useCallback(
+    (node: TreeNodeData): boolean => {
+      return !hideNormal || node.type !== "normal";
+    },
+    [hideNormal]
+  );
 
-  const filterUnselectedNodes = useCallback((node: TreeNodeData): boolean => {
-    return !hideUnselected || allocatedNodes.has(node.id);
-  }, [hideUnselected, allocatedNodes]);
+  const filterUnselectedNodes = useCallback(
+    (node: TreeNodeData): boolean => {
+      return !hideUnselected || allocatedNodes.has(node.id);
+    },
+    [hideUnselected, allocatedNodes]
+  );
 
-  const filterUnidentifiedNodes = useCallback((node: TreeNodeData): boolean => {
-    return !hideUnidentified || node.description.length > 0;
-  }, [hideUnidentified]);
+  const filterUnidentifiedNodes = useCallback(
+    (node: TreeNodeData): boolean => {
+      return !hideUnidentified || node.description.length > 0;
+    },
+    [hideUnidentified]
+  );
 
-  const filterSelectedAscendancyNodes = useCallback((node: TreeNodeData): boolean => {
-    return !node.ascendancy || node.ascendancy === selectedAscendancy;
-  }, [selectedAscendancy]);
+  const filterSelectedAscendancyNodes = useCallback(
+    (node: TreeNodeData): boolean => {
+      return !node.ascendancy || node.ascendancy === selectedAscendancy;
+    },
+    [selectedAscendancy]
+  );
 
-  const filterNode = useCallback((node: TreeNodeData): boolean => {
-    return filterNormalNodes(node) &&
-           filterUnselectedNodes(node) &&
-           filterUnidentifiedNodes(node) &&
-           filterSelectedAscendancyNodes(node);
-  }, [filterNormalNodes, filterUnselectedNodes, filterUnidentifiedNodes, filterSelectedAscendancyNodes]);
+  const filterNode = useCallback(
+    (node: TreeNodeData): boolean => {
+      return (
+        filterNormalNodes(node) &&
+        filterUnselectedNodes(node) &&
+        filterUnidentifiedNodes(node) &&
+        filterSelectedAscendancyNodes(node)
+      );
+    },
+    [
+      filterNormalNodes,
+      filterUnselectedNodes,
+      filterUnidentifiedNodes,
+      filterSelectedAscendancyNodes,
+    ]
+  );
 
   // Handle node allocation with validation
-  const handleNodeAllocate = useCallback((node: TreeNodeData): void => {
-    if (!treeData) return;
+  const handleNodeAllocate = useCallback(
+    (node: TreeNodeData): void => {
+      if (!treeData) return;
 
-    setAllocatedNodes(prev => {
-      const newAllocated = new Set(prev);
-      
-      if (newAllocated.has(node.id)) {
-        // Check if removing this node would disconnect the tree
-        const wouldDisconnect = Array.from(newAllocated)
-          .filter(id => id !== node.id)
-          .some(id => {
-            const otherNode = treeData.nodes[id];
-            return otherNode && otherNode.connections.includes(node.id);
-          });
+      setAllocatedNodes((prev) => {
+        const newAllocated = new Set(prev);
 
-        if (!wouldDisconnect) {
-          newAllocated.delete(node.id);
+        if (newAllocated.has(node.id)) {
+          // Check if removing this node would disconnect the tree
+          const wouldDisconnect = Array.from(newAllocated)
+            .filter((id) => id !== node.id)
+            .some((id) => {
+              const otherNode = treeData.nodes[id];
+              return otherNode && otherNode.connections.includes(node.id);
+            });
+
+          if (!wouldDisconnect) {
+            newAllocated.delete(node.id);
+          }
+        } else if (canAllocateNode(node, newAllocated)) {
+          newAllocated.add(node.id);
         }
-      } else if (canAllocateNode(node, newAllocated)) {
-        newAllocated.add(node.id);
-      }
 
-      // Only push state if there was a change
-      if (newAllocated.size !== prev.size || 
-          Array.from(newAllocated).some(id => !prev.has(id))) {
-        pushState(newAllocated, selectedAscendancy);
-      }
-      return newAllocated;
-    });
-  }, [treeData, selectedAscendancy, pushState]);
+        // Only push state if there was a change
+        if (
+          newAllocated.size !== prev.size ||
+          Array.from(newAllocated).some((id) => !prev.has(id))
+        ) {
+          pushState(newAllocated, selectedAscendancy);
+        }
+        return newAllocated;
+      });
+    },
+    [treeData, selectedAscendancy, pushState]
+  );
 
   // Check if a node can be allocated
-  const canAllocateNode = useCallback((
-    node: TreeNodeData,
-    currentAllocated: Set<NodeId>
-  ): boolean => {
-    if (!treeData) return false;
+  const canAllocateNode = useCallback(
+    (node: TreeNodeData, currentAllocated: Set<NodeId>): boolean => {
+      if (!treeData) return false;
 
-    // If no nodes are allocated, only allow starting nodes
-    if (currentAllocated.size === 0) {
-      return node.type === 'notable' || node.type === 'keystone';
-    }
+      // If no nodes are allocated, only allow starting nodes
+      if (currentAllocated.size === 0) {
+        return node.type === "notable" || node.type === "keystone";
+      }
 
-    // Check if the node is connected to any allocated node
-    return node.connections.some(connectedId => currentAllocated.has(connectedId));
-  }, [treeData]);
+      // Check if the node is connected to any allocated node
+      return node.connections.some((connectedId) => currentAllocated.has(connectedId));
+    },
+    [treeData]
+  );
 
-  const handleAscendancyChange = useCallback((ascendancy: string): void => {
-    if (ascendancy === selectedAscendancy) return;
-    
-    setSelectedAscendancy(ascendancy);
-    // Reset allocated nodes when changing ascendancy
-    const newNodes = new Set<NodeId>();
-    setAllocatedNodes(newNodes);
-    // Push new state to history
-    pushState(newNodes, ascendancy);
-  }, [selectedAscendancy, pushState]);
+  const handleAscendancyChange = useCallback(
+    (ascendancy: string): void => {
+      if (ascendancy === selectedAscendancy) return;
+
+      setSelectedAscendancy(ascendancy);
+      // Reset allocated nodes when changing ascendancy
+      const newNodes = new Set<NodeId>();
+      setAllocatedNodes(newNodes);
+      // Push new state to history
+      pushState(newNodes, ascendancy);
+    },
+    [selectedAscendancy, pushState]
+  );
 
   const resetTree = useCallback((): void => {
     setAllocatedNodes(new Set());
@@ -208,11 +238,11 @@ export function useSkillTree() {
   }, [clearHistory]);
 
   const toggleLeftSidebar = useCallback((): void => {
-    setLeftSidebarVisible(prev => !prev);
+    setLeftSidebarVisible((prev) => !prev);
   }, []);
 
   const toggleRightSidebar = useCallback((): void => {
-    setRightSidebarVisible(prev => !prev);
+    setRightSidebarVisible((prev) => !prev);
   }, []);
 
   // Import/Export functionality
@@ -220,52 +250,55 @@ export function useSkillTree() {
     const data: BuildState = {
       nodes: Array.from(allocatedNodes),
       ascendancy: selectedAscendancy,
-      version: '1.0.0',
-      timestamp: new Date().toISOString()
+      version: "1.0.0",
+      timestamp: new Date().toISOString(),
     };
 
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `poe2-skill-tree-${data.timestamp.split('T')[0]}.json`;
+    a.download = `poe2-skill-tree-${data.timestamp.split("T")[0]}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }, [allocatedNodes, selectedAscendancy]);
 
-  const handleImport = useCallback(async (file: File): Promise<void> => {
-    try {
-      const text = await file.text();
-      const data = JSON.parse(text) as BuildState;
-      if (!data.nodes || !data.ascendancy) {
-        throw new Error('Invalid build file format');
+  const handleImport = useCallback(
+    async (file: File): Promise<void> => {
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text) as BuildState;
+        if (!data.nodes || !data.ascendancy) {
+          throw new Error("Invalid build file format");
+        }
+        const newNodes = new Set(data.nodes);
+        setAllocatedNodes(newNodes);
+        setSelectedAscendancy(data.ascendancy);
+        // Push imported state to history
+        pushState(newNodes, data.ascendancy);
+      } catch (error) {
+        console.error("Failed to import build:", error);
       }
-      const newNodes = new Set(data.nodes);
-      setAllocatedNodes(newNodes);
-      setSelectedAscendancy(data.ascendancy);
-      // Push imported state to history
-      pushState(newNodes, data.ascendancy);
-    } catch (error) {
-      console.error('Failed to import build:', error);
-    }
-  }, [pushState]);
+    },
+    [pushState]
+  );
 
   const getShareLink = useCallback((): string => {
     const params = new URLSearchParams();
-    
-    if (selectedAscendancy !== 'None') {
-      params.set('a', selectedAscendancy.toLowerCase());
-    }
-    
-    if (allocatedNodes.size > 0) {
-      const nodesString = Array.from(allocatedNodes).join(',');
-      const compressed = LZString.compressToEncodedURIComponent(nodesString);
-      params.set('p', compressed);
+
+    if (selectedAscendancy !== "None") {
+      params.set("a", selectedAscendancy.toLowerCase());
     }
 
-    return `${window.location.origin}${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    if (allocatedNodes.size > 0) {
+      const nodesString = Array.from(allocatedNodes).join(",");
+      const compressed = LZString.compressToEncodedURIComponent(nodesString);
+      params.set("p", compressed);
+    }
+
+    return `${window.location.origin}${window.location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
   }, [allocatedNodes, selectedAscendancy]);
 
   return {
@@ -324,6 +357,6 @@ export function useSkillTree() {
     resetTree,
     handleExport,
     handleImport,
-    getShareLink
+    getShareLink,
   };
 }

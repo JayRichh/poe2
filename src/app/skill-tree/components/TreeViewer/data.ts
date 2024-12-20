@@ -14,7 +14,7 @@ export interface Keyword {
   description: string;
 }
 
-export type NodeType = 'normal' | 'notable' | 'keystone' | 'mastery';
+export type NodeType = "normal" | "notable" | "keystone" | "mastery";
 
 // Raw JSON data structures from the API
 export interface NodeDataJSON {
@@ -30,28 +30,28 @@ export interface NodesJSON {
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   notables: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   smalls: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   ascendancies: Array<{
     id: string;
     x: number;
     y: number;
-    kind: 'keystone' | 'notable' | 'small';
+    kind: "keystone" | "notable" | "small";
     class?: string;
   }>;
   connections: Array<[string, string]>;
@@ -94,11 +94,11 @@ export interface RawTreeData {
 // Node styling utilities
 export function getNodeSize(type: NodeType): number {
   switch (type) {
-    case 'keystone':
+    case "keystone":
       return 40;
-    case 'notable':
+    case "notable":
       return 32;
-    case 'mastery':
+    case "mastery":
       return 36;
     default:
       return 24;
@@ -107,26 +107,26 @@ export function getNodeSize(type: NodeType): number {
 
 export function getNodeColor(type: NodeType): string {
   switch (type) {
-    case 'keystone':
-      return '#9f7aea'; // purple-500
-    case 'notable':
-      return '#ed8936'; // orange-500
-    case 'mastery':
-      return '#48bb78'; // green-500
+    case "keystone":
+      return "#9f7aea"; // purple-500
+    case "notable":
+      return "#ed8936"; // orange-500
+    case "mastery":
+      return "#48bb78"; // green-500
     default:
-      return '#4a5568'; // gray-600
+      return "#4a5568"; // gray-600
   }
 }
 
 export function getNodeBorderColor(type: NodeType): string {
   switch (type) {
-    case 'keystone':
-      return '#b794f4'; // purple-400
-    case 'notable':
-      return '#f6ad55'; // orange-400
-    case 'mastery':
-      return '#68d391'; // green-400
+    case "keystone":
+      return "#b794f4"; // purple-400
+    case "notable":
+      return "#f6ad55"; // orange-400
+    case "mastery":
+      return "#68d391"; // green-400
     default:
-      return '#718096'; // gray-500
+      return "#718096"; // gray-500
   }
 }

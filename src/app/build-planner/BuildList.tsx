@@ -1,20 +1,22 @@
-import Link from 'next/link'
-import { Text } from '~/components/ui/Text'
-import { Button } from '~/components/ui/Button'
-import { getBuilds } from '~/app/actions/builds'
-import type { Database } from '~/lib/supabase/types'
+import Link from "next/link";
 
-type Build = Database['public']['Tables']['builds']['Row']
+import { Button } from "~/components/ui/Button";
+import { Text } from "~/components/ui/Text";
+
+import { getBuilds } from "~/app/actions/builds";
+import type { Database } from "~/lib/supabase/types";
+
+type Build = Database["public"]["Tables"]["builds"]["Row"];
 
 export async function BuildList() {
-  const builds = await getBuilds()
+  const builds = await getBuilds();
 
   if (!builds?.length) {
     return (
       <div className="text-center py-12">
         <Text className="text-foreground/60">No builds found</Text>
       </div>
-    )
+    );
   }
 
   return (
@@ -34,16 +36,14 @@ export async function BuildList() {
               )}
             </div>
             <div className="flex-shrink-0">
-              <Text className="text-sm text-foreground/40">
-                Level {build.level || '?'}
-              </Text>
+              <Text className="text-sm text-foreground/40">Level {build.level || "?"}</Text>
             </div>
           </div>
 
           <div className="mt-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Text className="text-sm text-foreground/60 capitalize">
-                {build.poe_class || 'Any Class'}
+                {build.poe_class || "Any Class"}
               </Text>
               {build.is_template && (
                 <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs">
@@ -60,5 +60,5 @@ export async function BuildList() {
         </div>
       ))}
     </div>
-  )
+  );
 }
