@@ -65,21 +65,24 @@ async function BuildHeader({ buildId }: { buildId: string }) {
   );
 }
 
+interface BuildPlannerLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ id: string }>;
+}
+
 export default async function BuildPlannerLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: { id: string };
-}) {
+}: BuildPlannerLayoutProps) {
+  const resolvedParams = await params;
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
       <Container className="max-w-7xl py-8 space-y-8">
         <Suspense fallback={<div className="h-20 animate-pulse rounded-xl bg-foreground/5" />}>
-          <BuildHeader buildId={params.id} />
+          <BuildHeader buildId={resolvedParams.id} />
         </Suspense>
 
-        <BuildNav buildId={params.id} currentPath={`/build-planner/${params.id}`} />
+        <BuildNav buildId={resolvedParams.id} currentPath={`/build-planner/${resolvedParams.id}`} />
 
         <div className="pt-4 border-t border-border/50">{children}</div>
       </Container>
