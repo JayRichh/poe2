@@ -1,5 +1,3 @@
-import { createClient } from "~/lib/supabase/client";
-import type { POEAccountData } from "~/lib/supabase/types";
 import type {
   POEAPIResponse,
   POECharacter,
@@ -10,6 +8,9 @@ import type {
   POEScope,
   POETokenResponse,
 } from "@/types/poe-api";
+
+import { createClient } from "~/lib/supabase/client";
+import type { POEAccountData } from "~/lib/supabase/types";
 
 const POE_API_URL = "https://api.pathofexile.com";
 const POE_OAUTH_URL = "https://www.pathofexile.com/oauth";

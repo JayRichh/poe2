@@ -1,5 +1,5 @@
-import { poeDB, type DatabaseRecord } from './db-service';
-import type { POE2DataTypes, POE2DataType } from './poe2-types';
+import { type DatabaseRecord, poeDB } from "./db-service";
+import type { POE2DataType, POE2DataTypes } from "./poe2-types";
 
 /**
  * Type-safe wrapper for POE2 database access
@@ -13,12 +13,8 @@ export class POE2Database {
   public static async getData<K extends keyof POE2DataTypes>(
     filename: K
   ): Promise<POE2DataTypes[K]>;
-  public static async getData<T extends DatabaseRecord>(
-    filename: string
-  ): Promise<T[]>;
-  public static async getData<T extends DatabaseRecord>(
-    filename: string
-  ): Promise<T[]> {
+  public static async getData<T extends DatabaseRecord>(filename: string): Promise<T[]>;
+  public static async getData<T extends DatabaseRecord>(filename: string): Promise<T[]> {
     return poeDB.getData<T>(filename);
   }
 
@@ -58,19 +54,19 @@ export class POE2Database {
 
 // Helper functions for type-safe access to specific POE2 data types
 export function getSkills() {
-  return POE2Database.getData<'Skills'>('Skills');
+  return POE2Database.getData<"Skills">("Skills");
 }
 
 export function getPassiveSkills() {
-  return POE2Database.getData<'Passiveskills'>('Passiveskills');
+  return POE2Database.getData<"Passiveskills">("Passiveskills");
 }
 
 export function getCharacters() {
-  return POE2Database.getData<'Characters'>('Characters');
+  return POE2Database.getData<"Characters">("Characters");
 }
 
 export function getActiveSkills() {
-  return POE2Database.getData<'Activeskills'>('Activeskills');
+  return POE2Database.getData<"Activeskills">("Activeskills");
 }
 
 // Export the class and a default instance

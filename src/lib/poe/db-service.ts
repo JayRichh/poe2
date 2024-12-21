@@ -1,5 +1,5 @@
-import path from 'path';
-import fs from 'fs/promises';
+import fs from "fs/promises";
+import path from "path";
 
 // Type for the database records
 type DatabaseRecord = {
@@ -23,8 +23,8 @@ export class POEDatabaseService {
   private constructor() {
     this.cache = new Map();
     // Paths relative to project root
-    this.dataPath = path.join(process.cwd(), 'src/lib/poe/data/poe2-data-main/data');
-    this.metadataPath = path.join(process.cwd(), 'src/lib/poe/data/poe2-data-main/xt/metadata');
+    this.dataPath = path.join(process.cwd(), "src/lib/poe/data/poe2-data-main/data");
+    this.metadataPath = path.join(process.cwd(), "src/lib/poe/data/poe2-data-main/xt/metadata");
   }
 
   public static getInstance(): POEDatabaseService {
@@ -39,20 +39,18 @@ export class POEDatabaseService {
    * @param filename The name of the file without extension
    * @returns Promise resolving to the typed data
    */
-  public async getData<T extends DatabaseRecord>(
-    filename: string
-  ): Promise<DatabaseCollection<T>> {
+  public async getData<T extends DatabaseRecord>(filename: string): Promise<DatabaseCollection<T>> {
     const cacheKey = `data:${filename}`;
-    
+
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey) as DatabaseCollection<T>;
     }
 
     try {
       const filePath = path.join(this.dataPath, `${filename}.json`);
-      const data = await fs.readFile(filePath, 'utf-8');
+      const data = await fs.readFile(filePath, "utf-8");
       const parsed = JSON.parse(data) as DatabaseCollection<T>;
-      
+
       this.cache.set(cacheKey, parsed);
       return parsed;
     } catch (error) {
@@ -68,21 +66,21 @@ export class POEDatabaseService {
    * @returns Promise resolving to the metadata
    */
   public async getMetadata(category: string, subcategory?: string): Promise<any> {
-    const cacheKey = `metadata:${category}${subcategory ? `:${subcategory}` : ''}`;
-    
+    const cacheKey = `metadata:${category}${subcategory ? `:${subcategory}` : ""}`;
+
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey);
     }
 
     try {
       const categoryPath = path.join(this.metadataPath, category);
-      const filePath = subcategory 
-        ? path.join(categoryPath, subcategory, 'metadata.json')
-        : path.join(categoryPath, 'metadata.json');
+      const filePath = subcategory
+        ? path.join(categoryPath, subcategory, "metadata.json")
+        : path.join(categoryPath, "metadata.json");
 
-      const data = await fs.readFile(filePath, 'utf-8');
+      const data = await fs.readFile(filePath, "utf-8");
       const parsed = JSON.parse(data);
-      
+
       this.cache.set(cacheKey, parsed);
       return parsed;
     } catch (error) {
@@ -106,11 +104,11 @@ export class POEDatabaseService {
     try {
       const files = await fs.readdir(this.dataPath);
       return files
-        .filter(file => file.endsWith('.json'))
-        .map(file => file.replace('.json', ''));
+        .filter((file) => file.endsWith(".json"))
+        .map((file) => file.replace(".json", ""));
     } catch (error) {
-      console.error('Error listing data files:', error);
-      throw new Error('Failed to list data files');
+      console.error("Error listing data files:", error);
+      throw new Error("Failed to list data files");
     }
   }
 
@@ -121,13 +119,12 @@ export class POEDatabaseService {
   public async getAvailableMetadataCategories(): Promise<string[]> {
     try {
       const categories = await fs.readdir(this.metadataPath);
-      return categories.filter(category => 
-        fs.stat(path.join(this.metadataPath, category))
-          .then(stat => stat.isDirectory())
+      return categories.filter((category) =>
+        fs.stat(path.join(this.metadataPath, category)).then((stat) => stat.isDirectory())
       );
     } catch (error) {
-      console.error('Error listing metadata categories:', error);
-      throw new Error('Failed to list metadata categories');
+      console.error("Error listing metadata categories:", error);
+      throw new Error("Failed to list metadata categories");
     }
   }
 }

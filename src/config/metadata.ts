@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+
 import { NewsService } from "../services/news-service";
 
 type Props = {
@@ -26,8 +27,8 @@ export async function generateMetadata(
       potentialAction: {
         "@type": "SearchAction",
         target: "https://poe2.dev/build-planner?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@context": "https://schema.org",
@@ -59,22 +60,22 @@ export async function generateMetadata(
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://poe2.dev"
+          item: "https://poe2.dev",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Build Planner",
-          item: "https://poe2.dev/build-planner"
+          item: "https://poe2.dev/build-planner",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "DPS Calculator",
-          item: "https://poe2.dev/dps-calc"
-        }
-      ]
-    }
+          item: "https://poe2.dev/dps-calc",
+        },
+      ],
+    },
   ];
 
   return {

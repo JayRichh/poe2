@@ -1,7 +1,7 @@
-export type POEScope = 
-  | "account:profile" 
-  | "account:characters" 
-  | "account:leagues" 
+export type POEScope =
+  | "account:profile"
+  | "account:characters"
+  | "account:leagues"
   | "account:stashes";
 
 export interface POEOAuthConfig {

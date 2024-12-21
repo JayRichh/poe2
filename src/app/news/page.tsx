@@ -1,6 +1,7 @@
+import type { NewsItem, PatchNote } from "@/types/news";
+
 import { notFound } from "next/navigation";
 
-import type { NewsItem, PatchNote } from "@/types/news";
 import { NewsCard } from "~/components/news/NewsCard";
 import { NewsSidebar } from "~/components/news/NewsSidebar";
 import { PatchNotes } from "~/components/news/PatchNotes";

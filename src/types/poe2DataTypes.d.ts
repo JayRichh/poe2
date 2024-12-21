@@ -8,7 +8,7 @@ export declare namespace Poe2DataMain {
       Life?: number;
     }
     export interface Abyssbosslifescalingperlevel extends Array<AbyssbosslifescalingperlevelItem> {}
-    
+
     export interface AbyssobjectsItem {
       Id?: string;
       MinLevel?: number;
@@ -33,7 +33,7 @@ export declare namespace Poe2DataMain {
       Unk020?: boolean;
     }
     export interface Abyssobjects extends Array<AbyssobjectsItem> {}
-    
+
     export interface AchievementitemrewardsItem {
       AchievementItemsKey?: AchievementitemrewardsItem_AchievementItemsKey;
       BaseItemTypesKey?: AchievementitemrewardsItem_BaseItemTypesKey;
@@ -49,7 +49,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Achievementitemrewards extends Array<AchievementitemrewardsItem> {}
-    
+
     export interface AchievementitemsItem {
       Id?: string;
       Unk001?: number;
@@ -67,7 +67,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Achievementitems extends Array<AchievementitemsItem> {}
-    
+
     export interface AchievementsItem {
       Id?: string;
       Description?: string;
@@ -89,7 +89,7 @@ export declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface Achievements extends Array<AchievementsItem> {}
-    
+
     export interface AchievementsetrewardsItem {
       SetId?: number;
       AchievementsRequired?: number;
@@ -101,19 +101,19 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Achievementsetrewards extends Array<AchievementsetrewardsItem> {}
-    
+
     export interface AchievementsetsdisplayItem {
       Id?: number;
       Title?: string;
     }
     export interface Achievementsetsdisplay extends Array<AchievementsetsdisplayItem> {}
-    
+
     export interface ActiontypesItem {
       Id?: string;
       Unk001?: number;
     }
     export interface Actiontypes extends Array<ActiontypesItem> {}
-    
+
     export interface ActivesettingsItem {
       Unk000?: string;
       Unk001?: number;
@@ -141,9 +141,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Activesettings extends Array<ActivesettingsItem> {}
-    
+
     export type Activeskillrequirementicons = any[];
-    
+
     export interface ActiveskillrequirementsItem {
       SomeRef01?: ActiveskillrequirementsItem_SomeRef01;
       SomeRef02?: ActiveskillrequirementsItem_SomeRef02;
@@ -160,7 +160,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Activeskillrequirements extends Array<ActiveskillrequirementsItem> {}
-    
+
     export interface ActiveskillsItem {
       Id?: string;
       DisplayedName?: string;
@@ -211,7 +211,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Activeskills extends Array<ActiveskillsItem> {}
-    
+
     export interface ActiveskilltypeItem {
       Id?: string;
       FlagStat?: ActiveskilltypeItem_FlagStat;
@@ -221,7 +221,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Activeskilltype extends Array<ActiveskilltypeItem> {}
-    
+
     export interface ActsItem {
       Id?: string;
       Part?: number;
@@ -236,7 +236,7 @@ export declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface Acts extends Array<ActsItem> {}
-    
+
     export interface AddbufftotargetvarietiesItem {
       BuffDefinitions?: AddbufftotargetvarietiesItem_BuffDefinitions;
       Unk001?: any[];
@@ -252,11 +252,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Addbufftotargetvarieties extends Array<AddbufftotargetvarietiesItem> {}
-    
+
     export type Additionallifescaling = any[];
-    
+
     export type Additionallifescalingperlevel = any[];
-    
+
     export interface AdditionalmonsterpacksfromstatsItem {
       StatsKey?: AdditionalmonsterpacksfromstatsItem_StatsKey;
       Unk001?: number;
@@ -272,12 +272,13 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Additionalmonsterpacksfromstats extends Array<AdditionalmonsterpacksfromstatsItem> {}
-    
+    export interface Additionalmonsterpacksfromstats
+      extends Array<AdditionalmonsterpacksfromstatsItem> {}
+
     export type Advancedcraftingbenchcustomtags = any[];
-    
+
     export type Advancedcraftingbenchtabfiltertypes = any[];
-    
+
     export interface AdvancedskillstutorialItem {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -289,7 +290,7 @@ export declare namespace Poe2DataMain {
       CharactersKey?: any[];
     }
     export interface Advancedskillstutorial extends Array<AdvancedskillstutorialItem> {}
-    
+
     export interface AegisvariationsItem {
       Name?: string;
       DefendsAgainstPhysical?: boolean;
@@ -320,7 +321,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Aegisvariations extends Array<AegisvariationsItem> {}
-    
+
     export interface AfflictionbalanceperlevelItem {
       Unk000?: number;
       Unk001?: number;
@@ -339,7 +340,7 @@ export declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface Afflictionbalanceperlevel extends Array<AfflictionbalanceperlevelItem> {}
-    
+
     export interface AfflictionendgamewavemodsItem {
       ModsKey?: AfflictionendgamewavemodsItem_ModsKey;
       Unk001?: number;
@@ -351,7 +352,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Afflictionendgamewavemods extends Array<AfflictionendgamewavemodsItem> {}
-    
+
     export interface AfflictionfixedmodsItem {
       Rarity?: number;
       Mod?: AfflictionfixedmodsItem_Mod;
@@ -366,13 +367,14 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Afflictionfixedmods extends Array<AfflictionfixedmodsItem> {}
-    
+
     export interface AfflictionrandommodcategoriesItem {
       Id?: string;
       Unk001?: boolean;
     }
-    export interface Afflictionrandommodcategories extends Array<AfflictionrandommodcategoriesItem> {}
-    
+    export interface Afflictionrandommodcategories
+      extends Array<AfflictionrandommodcategoriesItem> {}
+
     export interface AfflictionrewardmapmodsItem {
       ModsKey?: AfflictionrewardmapmodsItem_ModsKey;
       Unk001?: boolean;
@@ -382,14 +384,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Afflictionrewardmapmods extends Array<AfflictionrewardmapmodsItem> {}
-    
+
     export interface AfflictionrewardtypevisualsItem {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
     export interface Afflictionrewardtypevisuals extends Array<AfflictionrewardtypevisualsItem> {}
-    
+
     export interface AfflictionsplitdemonsItem {
       Unk000?: number;
       MonsterVarietiesKey?: AfflictionsplitdemonsItem_MonsterVarietiesKey;
@@ -404,9 +406,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Afflictionsplitdemons extends Array<AfflictionsplitdemonsItem> {}
-    
+
     export type Afflictionstartdialogue = any[];
-    
+
     export interface AlternatepassiveadditionsItem {
       Id?: string;
       AlternateTreeVersionsKey?: AlternatepassiveadditionsItem_AlternateTreeVersionsKey;
@@ -426,7 +428,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Alternatepassiveadditions extends Array<AlternatepassiveadditionsItem> {}
-    
+
     export interface AlternatepassiveskillsItem {
       Id?: string;
       AlternateTreeVersionsKey?: AlternatepassiveskillsItem_AlternateTreeVersionsKey;
@@ -460,9 +462,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Alternatepassiveskills extends Array<AlternatepassiveskillsItem> {}
-    
+
     export type Alternatequalitytypes = any[];
-    
+
     export interface AlternateskilltargetingbehavioursItem {
       Id?: string;
       Unk001?: number;
@@ -476,8 +478,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Alternateskilltargetingbehaviours extends Array<AlternateskilltargetingbehavioursItem> {}
-    
+    export interface Alternateskilltargetingbehaviours
+      extends Array<AlternateskilltargetingbehavioursItem> {}
+
     export interface AlternatetreeartItem {
       Unk000?: AlternatetreeartItem_Unk000;
       Circle1?: string;
@@ -489,7 +492,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Alternatetreeart extends Array<AlternatetreeartItem> {}
-    
+
     export interface AlternatetreeversionsItem {
       Id?: string;
       Unk001?: boolean;
@@ -503,9 +506,9 @@ export declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface Alternatetreeversions extends Array<AlternatetreeversionsItem> {}
-    
+
     export type Ancestraltrialunits = any[];
-    
+
     export interface AnimatedobjectflagsItem {
       AOFile?: string;
       Unk001?: number;
@@ -513,9 +516,9 @@ export declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface Animatedobjectflags extends Array<AnimatedobjectflagsItem> {}
-    
+
     export type Animateweaponuniques = any[];
-    
+
     export interface AnimationItem {
       Id?: string;
       Unk001?: boolean;
@@ -531,16 +534,16 @@ export declare namespace Poe2DataMain {
       Unk011?: any[];
     }
     export interface Animation extends Array<AnimationItem> {}
-    
+
     export interface ApplydamagefunctionsItem {
       Id?: string;
       StatsKeys?: any[];
       Unk002?: boolean;
     }
     export interface Applydamagefunctions extends Array<ApplydamagefunctionsItem> {}
-    
+
     export type Archetyperewards = any[];
-    
+
     export interface ArchetypesItem {
       Id?: string;
       CharactersKey?: any;
@@ -560,13 +563,13 @@ export declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface Archetypes extends Array<ArchetypesItem> {}
-    
+
     export interface ArchitectlifescalingperlevelItem {
       Level?: number;
       MoreLife?: number;
     }
     export interface Architectlifescalingperlevel extends Array<ArchitectlifescalingperlevelItem> {}
-    
+
     export interface ArchnemesismetarewardsItem {
       Id?: string;
       RewardText?: string;
@@ -576,9 +579,9 @@ export declare namespace Poe2DataMain {
       MaxLevel?: number;
     }
     export interface Archnemesismetarewards extends Array<ArchnemesismetarewardsItem> {}
-    
+
     export type Archnemesismodcomboachievements = any[];
-    
+
     export interface ArchnemesismodsItem {
       Mod?: ArchnemesismodsItem_Mod;
       Name?: string;
@@ -592,7 +595,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Archnemesismods extends Array<ArchnemesismodsItem> {}
-    
+
     export interface ArchnemesismodvisualsItem {
       Id?: string;
       Unk001?: any;
@@ -608,11 +611,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Archnemesismodvisuals extends Array<ArchnemesismodvisualsItem> {}
-    
+
     export type Archnemesisrecipes = any[];
-    
+
     export type Areadifficultystats = any[];
-    
+
     export interface AreainfluencedoodadsItem {
       StatsKey?: AreainfluencedoodadsItem_StatsKey;
       StatValue?: number;
@@ -628,18 +631,18 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Areainfluencedoodads extends Array<AreainfluencedoodadsItem> {}
-    
+
     export type Areastatsperdifficulty = any[];
-    
+
     export type Areatransitionanimations = any[];
-    
+
     export interface AreatransitionanimationtypesItem {
       Id?: string;
     }
     export interface Areatransitionanimationtypes extends Array<AreatransitionanimationtypesItem> {}
-    
+
     export type Areatransitioninfo = any[];
-    
+
     export interface ArmourtypesItem {
       BaseItemTypesKey?: ArmourtypesItem_BaseItemTypesKey;
       Armour?: number;
@@ -654,11 +657,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Armourtypes extends Array<ArmourtypesItem> {}
-    
+
     export type Arrowspearoverride = any[];
-    
+
     export type Arrowstatreference = any[];
-    
+
     export interface AscendancyItem {
       Id?: string;
       ClassNo?: number;
@@ -676,9 +679,9 @@ export declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface Ascendancy extends Array<AscendancyItem> {}
-    
+
     export type Atlasexilebossarenas = any[];
-    
+
     export interface AtlasexileinfluenceItem {
       Conqueror?: AtlasexileinfluenceItem_Conqueror;
       Sets?: any[];
@@ -688,7 +691,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasexileinfluence extends Array<AtlasexileinfluenceItem> {}
-    
+
     export interface AtlasexilesItem {
       Id?: string;
       Unk001?: number;
@@ -701,14 +704,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasexiles extends Array<AtlasexilesItem> {}
-    
+
     export interface AtlasfavouredmapslotsItem {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
     export interface Atlasfavouredmapslots extends Array<AtlasfavouredmapslotsItem> {}
-    
+
     export interface AtlasfogItem {
       Unk000?: number;
       Unk001?: number;
@@ -716,7 +719,7 @@ export declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface Atlasfog extends Array<AtlasfogItem> {}
-    
+
     export interface AtlasinfluencedataItem {
       InfluencePack?: AtlasinfluencedataItem_InfluencePack;
       MonsterPacks?: any[];
@@ -748,20 +751,20 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Atlasinfluencedata extends Array<AtlasinfluencedataItem> {}
-    
+
     export interface AtlasinfluenceoutcomesItem {
       Id?: string;
       Unk001?: number;
       Type?: number;
     }
     export interface Atlasinfluenceoutcomes extends Array<AtlasinfluenceoutcomesItem> {}
-    
+
     export interface AtlasinfluencesetsItem {
       Id?: string;
       InfluencePacks?: any[];
     }
     export interface Atlasinfluencesets extends Array<AtlasinfluencesetsItem> {}
-    
+
     export interface AtlasmemorylineItem {
       League?: string;
       League2?: string;
@@ -771,7 +774,7 @@ export declare namespace Poe2DataMain {
       PathArt?: string;
     }
     export interface Atlasmemoryline extends Array<AtlasmemorylineItem> {}
-    
+
     export interface AtlasmodsItem {
       ModsKey?: AtlasmodsItem_ModsKey;
       AtlasModTiers?: number;
@@ -781,20 +784,21 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasmods extends Array<AtlasmodsItem> {}
-    
+
     export type Atlasnode = any[];
-    
+
     export type Atlasnodedefinition = any[];
-    
+
     export type Atlaspassiveskillsubtrees = any[];
-    
+
     export interface AtlaspassiveskilltreegrouptypeItem {
       Id?: string;
     }
-    export interface Atlaspassiveskilltreegrouptype extends Array<AtlaspassiveskilltreegrouptypeItem> {}
-    
+    export interface Atlaspassiveskilltreegrouptype
+      extends Array<AtlaspassiveskilltreegrouptypeItem> {}
+
     export type Atlaspoem = any[];
-    
+
     export interface AtlaspositionsItem {
       Unk000?: number;
       Unk001?: number;
@@ -802,9 +806,9 @@ export declare namespace Poe2DataMain {
       Y?: number;
     }
     export interface Atlaspositions extends Array<AtlaspositionsItem> {}
-    
+
     export type Atlasprimordialaltarchoices = any[];
-    
+
     export interface AtlasprimordialaltarchoicetypesItem {
       Id?: string;
       TopIconEater?: string;
@@ -813,8 +817,9 @@ export declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface Atlasprimordialaltarchoicetypes extends Array<AtlasprimordialaltarchoicetypesItem> {}
-    
+    export interface Atlasprimordialaltarchoicetypes
+      extends Array<AtlasprimordialaltarchoicetypesItem> {}
+
     export interface AtlasprimordialbossesItem {
       Id?: string;
       Unk001?: number;
@@ -868,7 +873,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasprimordialbosses extends Array<AtlasprimordialbossesItem> {}
-    
+
     export interface AtlasprimordialbossinfluenceItem {
       Boss?: AtlasprimordialbossinfluenceItem_Boss;
       Progress?: number;
@@ -884,7 +889,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasprimordialbossinfluence extends Array<AtlasprimordialbossinfluenceItem> {}
-    
+
     export interface AtlasprimordialbossoptionsItem {
       Unk000?: number;
       Unk001?: number;
@@ -908,7 +913,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Atlasprimordialbossoptions extends Array<AtlasprimordialbossoptionsItem> {}
-    
+
     export interface AtlasupgradesinventorylayoutItem {
       Id?: string;
       Unk001?: number;
@@ -931,7 +936,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Atlasupgradesinventorylayout extends Array<AtlasupgradesinventorylayoutItem> {}
-    
+
     export interface AttributerequirementsItem {
       BaseItemTypesKey?: AttributerequirementsItem_BaseItemTypesKey;
       Strength?: number;
@@ -943,19 +948,19 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Attributerequirements extends Array<AttributerequirementsItem> {}
-    
+
     export type Awarddisplay = any[];
-    
+
     export interface BackenderrorsItem {
       Id?: string;
       Text?: string;
     }
     export interface Backenderrors extends Array<BackenderrorsItem> {}
-    
+
     export type Ballisticbouncebehaviour = any[];
-    
+
     export type Ballisticbounceoverride = any[];
-    
+
     export interface BaseitemtypesItem {
       Id?: string;
       ItemClassesKey?: BaseitemtypesItem_ItemClassesKey;
@@ -1004,7 +1009,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Baseitemtypes extends Array<BaseitemtypesItem> {}
-    
+
     export interface BattlepassesItem {
       Id?: string;
       LeagueCategory?: number;
@@ -1015,7 +1020,7 @@ export declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface Battlepasses extends Array<BattlepassesItem> {}
-    
+
     export interface BattlepassrewardsItem {
       BattlePass?: BattlepassrewardsItem_BattlePass;
       RewardTier?: number;
@@ -1050,13 +1055,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Battlepassrewards extends Array<BattlepassrewardsItem> {}
-    
+
     export interface BattlepasstracksItem {
       Id?: string;
       Description?: string;
     }
     export interface Battlepasstracks extends Array<BattlepasstracksItem> {}
-    
+
     export interface BelttypesItem {
       BaseItemTypesKey?: BelttypesItem_BaseItemTypesKey;
       CharmSlots?: number;
@@ -1066,11 +1071,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Belttypes extends Array<BelttypesItem> {}
-    
+
     export type Bestiarycapturablemonsters = any[];
-    
+
     export type Bestiaryencounters = any[];
-    
+
     export interface BestiaryfamiliesItem {
       Id?: string;
       Name?: string;
@@ -1094,7 +1099,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Bestiaryfamilies extends Array<BestiaryfamiliesItem> {}
-    
+
     export interface BestiarygenusItem {
       Id?: string;
       Name?: string;
@@ -1107,7 +1112,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Bestiarygenus extends Array<BestiarygenusItem> {}
-    
+
     export interface BestiarygroupsItem {
       Id?: string;
       Description?: string;
@@ -1123,7 +1128,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Bestiarygroups extends Array<BestiarygroupsItem> {}
-    
+
     export interface BestiarynetsItem {
       BaseItemTypesKey?: BestiarynetsItem_BaseItemTypesKey;
       Unk001?: number;
@@ -1139,13 +1144,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Bestiarynets extends Array<BestiarynetsItem> {}
-    
+
     export interface BestiaryrecipecategoriesItem {
       Id?: string;
       Text?: string;
     }
     export interface Bestiaryrecipecategories extends Array<BestiaryrecipecategoriesItem> {}
-    
+
     export interface BestiaryrecipecomponentItem {
       Id?: string;
       MinLevel?: number;
@@ -1157,7 +1162,7 @@ export declare namespace Poe2DataMain {
       BestiaryGenusKey?: any;
     }
     export interface Bestiaryrecipecomponent extends Array<BestiaryrecipecomponentItem> {}
-    
+
     export interface BestiaryrecipesItem {
       Id?: string;
       Description?: string;
@@ -1177,7 +1182,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Bestiaryrecipes extends Array<BestiaryrecipesItem> {}
-    
+
     export interface BetrayalchoiceactionsItem {
       Id?: string;
       BetrayalChoicesKey?: BetrayalchoiceactionsItem_BetrayalChoicesKey;
@@ -1188,7 +1193,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Betrayalchoiceactions extends Array<BetrayalchoiceactionsItem> {}
-    
+
     export interface BetrayalchoicesItem {
       Id?: string;
       Text?: string;
@@ -1196,11 +1201,11 @@ export declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface Betrayalchoices extends Array<BetrayalchoicesItem> {}
-    
+
     export type Betrayaldialogue = any[];
-    
+
     export type Betrayalforts = any[];
-    
+
     export interface BetrayaljobsItem {
       Id?: string;
       Text?: string;
@@ -1214,7 +1219,7 @@ export declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface Betrayaljobs extends Array<BetrayaljobsItem> {}
-    
+
     export interface BetrayalranksItem {
       Id?: string;
       Text?: string;
@@ -1222,13 +1227,13 @@ export declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface Betrayalranks extends Array<BetrayalranksItem> {}
-    
+
     export interface BetrayalrelationshipstateItem {
       Id?: string;
       Text?: string;
     }
     export interface Betrayalrelationshipstate extends Array<BetrayalrelationshipstateItem> {}
-    
+
     export interface BetrayaltargetjobachievementsItem {
       BetrayalTargetsKey?: BetrayaltargetjobachievementsItem_BetrayalTargetsKey;
       BetrayalJobsKey?: BetrayaltargetjobachievementsItem_BetrayalJobsKey;
@@ -1246,14 +1251,16 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Betrayaltargetjobachievements extends Array<BetrayaltargetjobachievementsItem> {}
-    
+    export interface Betrayaltargetjobachievements
+      extends Array<BetrayaltargetjobachievementsItem> {}
+
     export interface BetrayaltargetlifescalingperlevelItem {
       Level?: number;
       MoreLife?: number;
     }
-    export interface Betrayaltargetlifescalingperlevel extends Array<BetrayaltargetlifescalingperlevelItem> {}
-    
+    export interface Betrayaltargetlifescalingperlevel
+      extends Array<BetrayaltargetlifescalingperlevelItem> {}
+
     export interface BetrayaltargetsItem {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -1275,7 +1282,7 @@ export declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface Betrayaltargets extends Array<BetrayaltargetsItem> {}
-    
+
     export interface BetrayaltraitorrewardsItem {
       BetrayalJobsKey?: BetrayaltraitorrewardsItem_BetrayalJobsKey;
       BetrayalTargetsKey?: BetrayaltraitorrewardsItem_BetrayalTargetsKey;
@@ -1296,7 +1303,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Betrayaltraitorrewards extends Array<BetrayaltraitorrewardsItem> {}
-    
+
     export interface BetrayalupgradesItem {
       Id?: string;
       Name?: string;
@@ -1312,22 +1319,23 @@ export declare namespace Poe2DataMain {
       ItemClassesKey?: any;
     }
     export interface Betrayalupgrades extends Array<BetrayalupgradesItem> {}
-    
+
     export interface BetrayalwalllifescalingperlevelItem {
       Level?: number;
       MoreLife?: number;
     }
-    export interface Betrayalwalllifescalingperlevel extends Array<BetrayalwalllifescalingperlevelItem> {}
-    
+    export interface Betrayalwalllifescalingperlevel
+      extends Array<BetrayalwalllifescalingperlevelItem> {}
+
     export type Beyondfactions = any[];
-    
+
     export interface BindablevirtualkeysItem {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
     export interface Bindablevirtualkeys extends Array<BindablevirtualkeysItem> {}
-    
+
     export interface BlightbalanceperlevelItem {
       Level?: number;
       Unk001?: number;
@@ -1340,13 +1348,14 @@ export declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface Blightbalanceperlevel extends Array<BlightbalanceperlevelItem> {}
-    
+
     export interface BlightbosslifescalingperlevelItem {
       Level?: number;
       MoreLife?: number;
     }
-    export interface Blightbosslifescalingperlevel extends Array<BlightbosslifescalingperlevelItem> {}
-    
+    export interface Blightbosslifescalingperlevel
+      extends Array<BlightbosslifescalingperlevelItem> {}
+
     export interface BlightchesttypesItem {
       ChestsKey?: BlightchesttypesItem_ChestsKey;
     }
@@ -1355,7 +1364,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blightchesttypes extends Array<BlightchesttypesItem> {}
-    
+
     export interface BlightcraftingitemsItem {
       Oil?: BlightcraftingitemsItem_Oil;
       Tier?: number;
@@ -1368,9 +1377,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blightcraftingitems extends Array<BlightcraftingitemsItem> {}
-    
+
     export type Blightcraftingrecipes = any[];
-    
+
     export interface BlightcraftingresultsItem {
       Id?: string;
       ModsKey?: any;
@@ -1381,14 +1390,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blightcraftingresults extends Array<BlightcraftingresultsItem> {}
-    
+
     export interface BlightcraftingtypesItem {
       Id?: string;
       Unk001?: number;
       Unk002?: boolean;
     }
     export interface Blightcraftingtypes extends Array<BlightcraftingtypesItem> {}
-    
+
     export interface BlightcraftinguniquesItem {
       WordsKey?: BlightcraftinguniquesItem_WordsKey;
     }
@@ -1397,7 +1406,7 @@ export declare namespace Poe2DataMain {
       Text?: string;
     }
     export interface Blightcraftinguniques extends Array<BlightcraftinguniquesItem> {}
-    
+
     export interface BlightedsporeaurasItem {
       BuffDefinitionsKey?: BlightedsporeaurasItem_BuffDefinitionsKey;
       BuffStatValues?: number[];
@@ -1410,7 +1419,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blightedsporeauras extends Array<BlightedsporeaurasItem> {}
-    
+
     export interface BlightencountertypesItem {
       Id?: string;
       Icon?: string;
@@ -1418,7 +1427,7 @@ export declare namespace Poe2DataMain {
       Weight?: number;
     }
     export interface Blightencountertypes extends Array<BlightencountertypesItem> {}
-    
+
     export interface BlightencounterwavesItem {
       MonsterSpawnerId?: string;
       EncounterType?: BlightencounterwavesItem_EncounterType;
@@ -1432,13 +1441,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blightencounterwaves extends Array<BlightencounterwavesItem> {}
-    
+
     export interface BlightrewardtypesItem {
       Id?: string;
       Icon?: string;
     }
     export interface Blightrewardtypes extends Array<BlightrewardtypesItem> {}
-    
+
     export interface BlightstashtablayoutItem {
       Id?: string;
       StoredItem?: any;
@@ -1454,7 +1463,7 @@ export declare namespace Poe2DataMain {
       Unk011?: boolean;
     }
     export interface Blightstashtablayout extends Array<BlightstashtablayoutItem> {}
-    
+
     export interface BlighttopologiesItem {
       Id?: string;
       BlightTopologyNodesKey?: BlighttopologiesItem_BlightTopologyNodesKey;
@@ -1471,7 +1480,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blighttopologies extends Array<BlighttopologiesItem> {}
-    
+
     export interface BlighttopologynodesItem {
       Id?: string;
       Unk001?: any[];
@@ -1486,7 +1495,7 @@ export declare namespace Poe2DataMain {
       Unk010?: number;
     }
     export interface Blighttopologynodes extends Array<BlighttopologynodesItem> {}
-    
+
     export interface BlighttoweraurasItem {
       Id?: number;
       BuffDefinitionsKey?: BlighttoweraurasItem_BuffDefinitionsKey;
@@ -1502,7 +1511,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blighttowerauras extends Array<BlighttoweraurasItem> {}
-    
+
     export interface BlighttowersItem {
       Id?: string;
       Name?: string;
@@ -1520,7 +1529,7 @@ export declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface Blighttowers extends Array<BlighttowersItem> {}
-    
+
     export interface BlighttowersperlevelItem {
       BlightTowersKey?: BlighttowersperlevelItem_BlightTowersKey;
       Unk001?: number;
@@ -1533,13 +1542,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Blighttowersperlevel extends Array<BlighttowersperlevelItem> {}
-    
+
     export type Bloodhiteffects = any[];
-    
+
     export type Bloodtypes = any[];
-    
+
     export type Boltstatreference = any[];
-    
+
     export interface BreachartvariationsItem {
       Id?: string;
       Unk001?: any;
@@ -1569,13 +1578,14 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Breachartvariations extends Array<BreachartvariationsItem> {}
-    
+
     export interface BreachbosslifescalingperlevelItem {
       MonsterLevel?: number;
       LifeMultiplier?: number;
     }
-    export interface Breachbosslifescalingperlevel extends Array<BreachbosslifescalingperlevelItem> {}
-    
+    export interface Breachbosslifescalingperlevel
+      extends Array<BreachbosslifescalingperlevelItem> {}
+
     export interface BreachelementItem {
       Element?: string;
       Unk001?: BreachelementItem_Unk001;
@@ -1600,9 +1610,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Breachelement extends Array<BreachelementItem> {}
-    
+
     export type Breachstones = any[];
-    
+
     export interface BuffdefinitionsItem {
       Id?: string;
       Description?: string;
@@ -1661,7 +1671,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Buffdefinitions extends Array<BuffdefinitionsItem> {}
-    
+
     export interface BufftemplatesItem {
       Id?: string;
       BuffDefinitionsKey?: BufftemplatesItem_BuffDefinitionsKey;
@@ -1683,9 +1693,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Bufftemplates extends Array<BufftemplatesItem> {}
-    
+
     export type Buffvisualorbart = any[];
-    
+
     export interface BuffvisualorbsItem {
       Id?: string;
       BuffVisualOrbTypesKey?: BuffvisualorbsItem_BuffVisualOrbTypesKey;
@@ -1698,9 +1708,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Buffvisualorbs extends Array<BuffvisualorbsItem> {}
-    
+
     export type Buffvisualorbtypes = any[];
-    
+
     export interface BuffvisualsItem {
       Id?: string;
       BuffDDSFile?: string;
@@ -1723,14 +1733,14 @@ export declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface Buffvisuals extends Array<BuffvisualsItem> {}
-    
+
     export interface BuffvisualsartvariationsItem {
       Buff?: string;
       Unk001?: number[];
       Unk002?: number;
     }
     export interface Buffvisualsartvariations extends Array<BuffvisualsartvariationsItem> {}
-    
+
     export interface BuffvisualsetentriesItem {
       Id?: string;
       Unk001?: number;
@@ -1742,11 +1752,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Buffvisualsetentries extends Array<BuffvisualsetentriesItem> {}
-    
+
     export type Buffvisualshapeshiftoverride = any[];
-    
+
     export type Caravanstops = any[];
-    
+
     export interface ChanceableitemclassesItem {
       ItemClass?: ChanceableitemclassesItem_ItemClass;
     }
@@ -1755,7 +1765,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Chanceableitemclasses extends Array<ChanceableitemclassesItem> {}
-    
+
     export interface CharacteraudioeventsItem {
       Id?: string;
       Event?: CharacteraudioeventsItem_Event;
@@ -1771,9 +1781,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Characteraudioevents extends Array<CharacteraudioeventsItem> {}
-    
+
     export type Charactercreationbutton = any[];
-    
+
     export interface CharactercreationdialogueItem {
       Character?: CharactercreationdialogueItem_Character;
       IntroDialogue?: CharactercreationdialogueItem_IntroDialogue;
@@ -1793,7 +1803,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Charactercreationdialogue extends Array<CharactercreationdialogueItem> {}
-    
+
     export interface CharactercreationiconsItem {
       Id?: string;
       Type?: string;
@@ -1802,17 +1812,18 @@ export declare namespace Poe2DataMain {
       Icon?: string;
     }
     export interface Charactercreationicons extends Array<CharactercreationiconsItem> {}
-    
+
     export type Charactermeleeskills = any[];
-    
+
     export interface CharacterpaneldescriptionmodesItem {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface Characterpaneldescriptionmodes extends Array<CharacterpaneldescriptionmodesItem> {}
-    
+    export interface Characterpaneldescriptionmodes
+      extends Array<CharacterpaneldescriptionmodesItem> {}
+
     export interface CharacterpanelstatsItem {
       Id?: string;
       Text?: string;
@@ -1834,7 +1845,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Characterpanelstats extends Array<CharacterpanelstatsItem> {}
-    
+
     export interface CharacterpaneltabsItem {
       Id?: string;
       Unk001?: number;
@@ -1842,7 +1853,7 @@ export declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface Characterpaneltabs extends Array<CharacterpaneltabsItem> {}
-    
+
     export interface CharactersItem {
       Id?: string;
       Name?: string;
@@ -1968,7 +1979,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Characters extends Array<CharactersItem> {}
-    
+
     export interface CharacterstartqueststateItem {
       Id?: string;
       QuestKeys?: any[];
@@ -1979,7 +1990,7 @@ export declare namespace Poe2DataMain {
       Unk006?: any[];
     }
     export interface Characterstartqueststate extends Array<CharacterstartqueststateItem> {}
-    
+
     export interface CharacterstartstatesItem {
       Id?: string;
       Description?: string;
@@ -2006,22 +2017,22 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Characterstartstates extends Array<CharacterstartstatesItem> {}
-    
+
     export interface CharacterstartstatesetItem {
       Id?: string;
     }
     export interface Characterstartstateset extends Array<CharacterstartstatesetItem> {}
-    
+
     export type Charactervariationgroups = any[];
-    
+
     export type Chargevariations = any[];
-    
+
     export interface ChaticonsItem {
       Icon?: string;
       Image?: string;
     }
     export interface Chaticons extends Array<ChaticonsItem> {}
-    
+
     export interface ChestclustersItem {
       Id?: string;
       ChestsKeys?: any[];
@@ -2031,7 +2042,7 @@ export declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface Chestclusters extends Array<ChestclustersItem> {}
-    
+
     export interface ChesteffectsItem {
       Id?: string;
       Normal_EPKFile?: string;
@@ -2048,7 +2059,7 @@ export declare namespace Poe2DataMain {
       Rare_Open_AOFile?: string;
     }
     export interface Chesteffects extends Array<ChesteffectsItem> {}
-    
+
     export interface ChestsItem {
       Id?: string;
       Unk001?: boolean;
@@ -2096,9 +2107,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Chests extends Array<ChestsItem> {}
-    
+
     export type Classpassiveskilloverrides = any[];
-    
+
     export interface ClientleagueactionItem {
       Id?: string;
       Unk001?: ClientleagueactionItem_Unk001;
@@ -2110,7 +2121,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Clientleagueaction extends Array<ClientleagueactionItem> {}
-    
+
     export interface ClientstringsItem {
       Id?: string;
       Text?: string;
@@ -2120,9 +2131,9 @@ export declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface Clientstrings extends Array<ClientstringsItem> {}
-    
+
     export type Clientstrings2 = any[];
-    
+
     export interface CloneshotItem {
       Id?: number;
       MonsterVarietiesKey?: any;
@@ -2131,7 +2142,7 @@ export declare namespace Poe2DataMain {
       MiscAnimated3?: any;
     }
     export interface Cloneshot extends Array<CloneshotItem> {}
-    
+
     export interface ColoursItem {
       Item?: string;
       Red?: number;
@@ -2140,9 +2151,9 @@ export declare namespace Poe2DataMain {
       RgbCode?: string;
     }
     export interface Colours extends Array<ColoursItem> {}
-    
+
     export type Combatuiprompts = any[];
-    
+
     export interface CommandsItem {
       Id?: string;
       Command?: string;
@@ -2152,9 +2163,9 @@ export declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface Commands extends Array<CommandsItem> {}
-    
+
     export type Completionnotifications = any[];
-    
+
     export interface ComponentchargesItem {
       BaseItemTypesKey?: string;
       MaxCharges?: number;
@@ -2163,7 +2174,7 @@ export declare namespace Poe2DataMain {
       PerCharge2?: number;
     }
     export interface Componentcharges extends Array<ComponentchargesItem> {}
-    
+
     export interface ConditionalachievementsItem {
       Unk000?: ConditionalachievementsItem_Unk000;
       Unk001?: number;
@@ -2174,7 +2185,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Conditionalachievements extends Array<ConditionalachievementsItem> {}
-    
+
     export interface CoreleaguesItem {
       Id?: string;
       Unk001?: boolean;
@@ -2211,9 +2222,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Coreleagues extends Array<CoreleaguesItem> {}
-    
+
     export type Corpseexplosiongibs = any[];
-    
+
     export interface CorpsesinkvariationsItem {
       Id?: string;
       AOFile?: string;
@@ -2226,13 +2237,13 @@ export declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface Corpsesinkvariations extends Array<CorpsesinkvariationsItem> {}
-    
+
     export interface CosmeticsequippanelmodeItem {
       Id?: string;
       Unk001?: number[];
     }
     export interface Cosmeticsequippanelmode extends Array<CosmeticsequippanelmodeItem> {}
-    
+
     export interface CosttypesItem {
       Id?: string;
       StatsKey?: CosttypesItem_StatsKey;
@@ -2244,13 +2255,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Costtypes extends Array<CosttypesItem> {}
-    
+
     export type Craftablemodtypes = any[];
-    
+
     export type Craftingbenchoptions = any[];
-    
+
     export type Craftingbenchsortcategories = any[];
-    
+
     export interface CraftingbenchspecificoptionidItem {
       Unk000?: string;
       Unk001?: CraftingbenchspecificoptionidItem_Unk001;
@@ -2259,8 +2270,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Craftingbenchspecificoptionid extends Array<CraftingbenchspecificoptionidItem> {}
-    
+    export interface Craftingbenchspecificoptionid
+      extends Array<CraftingbenchspecificoptionidItem> {}
+
     export interface CraftingbenchunlockcategoriesItem {
       Id?: string;
       Unk001?: number;
@@ -2269,12 +2281,13 @@ export declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface Craftingbenchunlockcategories extends Array<CraftingbenchunlockcategoriesItem> {}
-    
+    export interface Craftingbenchunlockcategories
+      extends Array<CraftingbenchunlockcategoriesItem> {}
+
     export type Craftingitemclasscategories = any[];
-    
+
     export type Crossbowskillboltoverride = any[];
-    
+
     export interface CurrencyexchangeItem {
       Item?: CurrencyexchangeItem_Item;
       Category?: CurrencyexchangeItem_Category;
@@ -2297,13 +2310,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Currencyexchange extends Array<CurrencyexchangeItem> {}
-    
+
     export interface CurrencyexchangecategoriesItem {
       Id?: string;
       Name?: string;
     }
     export interface Currencyexchangecategories extends Array<CurrencyexchangecategoriesItem> {}
-    
+
     export interface CurrencyitemsItem {
       BaseItemTypesKey?: CurrencyitemsItem_BaseItemTypesKey;
       StackSize?: number;
@@ -2337,7 +2350,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Currencyitems extends Array<CurrencyitemsItem> {}
-    
+
     export interface CurrencystashtablayoutItem {
       Id?: string;
       StoredItem?: CurrencystashtablayoutItem_StoredItem;
@@ -2354,7 +2367,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Currencystashtablayout extends Array<CurrencystashtablayoutItem> {}
-    
+
     export interface CurrencyuseeffectsItem {
       Unk000?: CurrencyuseeffectsItem_Unk000;
       Unk001?: number;
@@ -2371,11 +2384,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Currencyuseeffects extends Array<CurrencyuseeffectsItem> {}
-    
+
     export type Customleaguemonsterreplacements = any[];
-    
+
     export type Customleagueroomreplacements = any[];
-    
+
     export interface DaemonspawningdataItem {
       Id?: string;
       MonsterVarieties?: any[];
@@ -2388,9 +2401,9 @@ export declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface Daemonspawningdata extends Array<DaemonspawningdataItem> {}
-    
+
     export type Damagecalculationtypes = any[];
-    
+
     export interface DamageeffectvariationsItem {
       Id?: string;
       Unk001?: number[];
@@ -2411,7 +2424,7 @@ export declare namespace Poe2DataMain {
       Unk016?: any;
     }
     export interface Damageeffectvariations extends Array<DamageeffectvariationsItem> {}
-    
+
     export interface DamagehiteffectsItem {
       Id?: number;
       Unk001?: number;
@@ -2420,9 +2433,9 @@ export declare namespace Poe2DataMain {
       Unk004?: any[];
     }
     export interface Damagehiteffects extends Array<DamagehiteffectsItem> {}
-    
+
     export type Damageparticleeffects = any[];
-    
+
     export interface DamagewhenhiteffectsItem {
       Unk000?: DamagewhenhiteffectsItem_Unk000;
       Unk001?: DamagewhenhiteffectsItem_Unk001;
@@ -2437,11 +2450,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Damagewhenhiteffects extends Array<DamagewhenhiteffectsItem> {}
-    
+
     export type Dances = any[];
-    
+
     export type Daressopitfights = any[];
-    
+
     export interface DefaultmonsterstatsItem {
       DisplayLevel?: string;
       Damage?: number;
@@ -2461,7 +2474,7 @@ export declare namespace Poe2DataMain {
       Armour?: number;
     }
     export interface Defaultmonsterstats extends Array<DefaultmonsterstatsItem> {}
-    
+
     export interface DeliriumstashtablayoutItem {
       Id?: string;
       StoredItem?: DeliriumstashtablayoutItem_StoredItem;
@@ -2478,7 +2491,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Deliriumstashtablayout extends Array<DeliriumstashtablayoutItem> {}
-    
+
     export interface DelveazuriteshopItem {
       BaseItemTypesKey?: DelveazuriteshopItem_BaseItemTypesKey;
       SpawnWeight?: number;
@@ -2493,21 +2506,22 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Delveazuriteshop extends Array<DelveazuriteshopItem> {}
-    
+
     export type Delvebiomes = any[];
-    
+
     export interface DelvecatchupdepthsItem {
       Level?: number;
       Depth?: number;
     }
     export interface Delvecatchupdepths extends Array<DelvecatchupdepthsItem> {}
-    
+
     export interface DelvecraftingmodifierdescriptionsItem {
       Id?: string;
       Description?: string;
     }
-    export interface Delvecraftingmodifierdescriptions extends Array<DelvecraftingmodifierdescriptionsItem> {}
-    
+    export interface Delvecraftingmodifierdescriptions
+      extends Array<DelvecraftingmodifierdescriptionsItem> {}
+
     export interface DelvecraftingmodifiersItem {
       BaseItemTypesKey?: DelvecraftingmodifiersItem_BaseItemTypesKey;
       AddedModsKeys?: any[];
@@ -2536,7 +2550,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Delvecraftingmodifiers extends Array<DelvecraftingmodifiersItem> {}
-    
+
     export interface DelvecraftingtagsItem {
       TagsKey?: DelvecraftingtagsItem_TagsKey;
       ItemClass?: string;
@@ -2546,7 +2560,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Delvecraftingtags extends Array<DelvecraftingtagsItem> {}
-    
+
     export interface DelvedynamiteItem {
       Unk000?: number;
       ProjectilesKey?: DelvedynamiteItem_ProjectilesKey;
@@ -2571,7 +2585,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Delvedynamite extends Array<DelvedynamiteItem> {}
-    
+
     export interface DelvefeaturesItem {
       Id?: string;
       Name?: string;
@@ -2589,7 +2603,7 @@ export declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface Delvefeatures extends Array<DelvefeaturesItem> {}
-    
+
     export interface DelveflaresItem {
       Unk000?: number;
       Unk001?: DelveflaresItem_Unk001;
@@ -2604,7 +2618,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Delveflares extends Array<DelveflaresItem> {}
-    
+
     export interface DelvelevelscalingItem {
       Depth?: number;
       MonsterLevel?: number;
@@ -2623,15 +2637,15 @@ export declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface Delvelevelscaling extends Array<DelvelevelscalingItem> {}
-    
+
     export type Delvemonsterspawners = any[];
-    
+
     export interface DelveresourceperlevelItem {
       AreaLevel?: number;
       Sulphite?: number;
     }
     export interface Delveresourceperlevel extends Array<DelveresourceperlevelItem> {}
-    
+
     export interface DelverewardtierconstantsItem {
       Unk000?: number;
       Unk001?: number;
@@ -2640,7 +2654,7 @@ export declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface Delverewardtierconstants extends Array<DelverewardtierconstantsItem> {}
-    
+
     export interface DelverobotvariationsItem {
       Id?: string;
       AOFile?: string;
@@ -2653,9 +2667,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Delverobotvariations extends Array<DelverobotvariationsItem> {}
-    
+
     export type Delverooms = any[];
-    
+
     export interface DelvestashtablayoutItem {
       Id?: string;
       StoredItem?: DelvestashtablayoutItem_StoredItem;
@@ -2673,7 +2687,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Delvestashtablayout extends Array<DelvestashtablayoutItem> {}
-    
+
     export interface DelveupgradesItem {
       DelveUpgradeTypeKey?: number;
       UpgradeLevel?: number;
@@ -2685,29 +2699,29 @@ export declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface Delveupgrades extends Array<DelveupgradesItem> {}
-    
+
     export type Destructivedamageeffects = any[];
-    
+
     export interface DialogueeventItem {
       Id?: string;
       Timer?: number;
     }
     export interface Dialogueevent extends Array<DialogueeventItem> {}
-    
+
     export type Displayminionmonstertype = any[];
-    
+
     export type Divinationcardart = any[];
-    
+
     export type Divinationcardstashtablayout = any[];
-    
+
     export interface DoorsItem {
       Id?: string;
       Unk001?: boolean;
     }
     export interface Doors extends Array<DoorsItem> {}
-    
+
     export type Dronebasetypes = any[];
-    
+
     export interface DronetypesItem {
       Id?: string;
       Unk001?: DronetypesItem_Unk001;
@@ -2731,15 +2745,15 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Dronetypes extends Array<DronetypesItem> {}
-    
+
     export interface DropeffectsItem {
       Id?: string;
       AOFile?: string;
     }
     export interface Dropeffects extends Array<DropeffectsItem> {}
-    
+
     export type Dynamicstashslots = any[];
-    
+
     export interface EclipsemodsItem {
       Key?: string;
       SpawnWeight_TagsKeys?: any[];
@@ -2754,7 +2768,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Eclipsemods extends Array<EclipsemodsItem> {}
-    
+
     export interface EffectdrivenskillItem {
       Unk000?: number;
       Unk001?: any[];
@@ -2787,13 +2801,13 @@ export declare namespace Poe2DataMain {
       Unk028?: number;
     }
     export interface Effectdrivenskill extends Array<EffectdrivenskillItem> {}
-    
+
     export interface EffectivenesscostconstantsItem {
       Id?: string;
       Multiplier?: number;
     }
     export interface Effectivenesscostconstants extends Array<EffectivenesscostconstantsItem> {}
-    
+
     export interface EinharmissionsItem {
       Id?: string;
       Unk001?: number;
@@ -2805,7 +2819,7 @@ export declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface Einharmissions extends Array<EinharmissionsItem> {}
-    
+
     export interface EinharpackfallbackItem {
       Unk000?: EinharpackfallbackItem_Unk000;
       Unk001?: any[];
@@ -2815,35 +2829,35 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Einharpackfallback extends Array<EinharpackfallbackItem> {}
-    
+
     export type Elderbossarenas = any[];
-    
+
     export interface ElderguardiansItem {
       Id?: string;
       MapIcon?: string;
     }
     export interface Elderguardians extends Array<ElderguardiansItem> {}
-    
+
     export type Eldermapbossoverride = any[];
-    
+
     export type Endgamecorruptionmods = any[];
-    
+
     export type Endgamemapbiomes = any[];
-    
+
     export type Endgamemapcompletionquests = any[];
-    
+
     export type Endgamemapcontent = any[];
-    
+
     export type Endgamemapcontentset = any[];
-    
+
     export type Endgamemapdecorations = any[];
-    
+
     export type Endgamemappins = any[];
-    
+
     export type Endgamemaps = any[];
-    
+
     export type Environmentfootprints = any[];
-    
+
     export interface EnvironmentsItem {
       Id?: string;
       Base_ENVFile?: string;
@@ -2855,16 +2869,16 @@ export declare namespace Poe2DataMain {
       PreloadGroup?: any;
     }
     export interface Environments extends Array<EnvironmentsItem> {}
-    
+
     export interface EnvironmenttransitionsItem {
       Id?: string;
       OTFiles?: string[];
       Unk002?: string[];
     }
     export interface Environmenttransitions extends Array<EnvironmenttransitionsItem> {}
-    
+
     export type Essences = any[];
-    
+
     export interface EssencestashtablayoutItem {
       Id?: string;
       StoredItem?: EssencestashtablayoutItem_StoredItem;
@@ -2880,18 +2894,18 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Essencestashtablayout extends Array<EssencestashtablayoutItem> {}
-    
+
     export type Essencetype = any[];
-    
+
     export type Eventcoins = any[];
-    
+
     export interface EvergreenachievementsItem {
       Unk000?: number;
       Unk001?: number;
       Unk002?: any[];
     }
     export interface Evergreenachievements extends Array<EvergreenachievementsItem> {}
-    
+
     export interface ExecutegealItem {
       Unk000?: number;
       Unk001?: number;
@@ -2940,7 +2954,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Executegeal extends Array<ExecutegealItem> {}
-    
+
     export interface ExpandingpulseItem {
       IntId?: number;
       StringId?: string;
@@ -2952,7 +2966,7 @@ export declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface Expandingpulse extends Array<ExpandingpulseItem> {}
-    
+
     export interface ExpeditionareasItem {
       Area?: ExpeditionareasItem_Area;
       PosX?: number;
@@ -2972,7 +2986,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionareas extends Array<ExpeditionareasItem> {}
-    
+
     export interface ExpeditionbalanceperlevelItem {
       Level?: number;
       Unk001?: boolean;
@@ -2991,13 +3005,13 @@ export declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface Expeditionbalanceperlevel extends Array<ExpeditionbalanceperlevelItem> {}
-    
+
     export type Expeditioncurrency = any[];
-    
+
     export type Expeditiondeals = any[];
-    
+
     export type Expeditiondealsdialogue = any[];
-    
+
     export interface ExpeditionfactionsItem {
       Id?: string;
       Name?: string;
@@ -3031,13 +3045,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionfactions extends Array<ExpeditionfactionsItem> {}
-    
+
     export interface ExpeditionmarkerscommonItem {
       Id?: string;
       AOFile?: string;
     }
     export interface Expeditionmarkerscommon extends Array<ExpeditionmarkerscommonItem> {}
-    
+
     export interface ExpeditionnpcsItem {
       Id?: string;
       NPCs?: any[];
@@ -3097,7 +3111,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionnpcs extends Array<ExpeditionnpcsItem> {}
-    
+
     export interface ExpeditionrelicmodsItem {
       Mod?: ExpeditionrelicmodsItem_Mod;
       Categories?: number[];
@@ -3108,7 +3122,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionrelicmods extends Array<ExpeditionrelicmodsItem> {}
-    
+
     export interface ExpeditionrelicsItem {
       Id?: string;
       Name?: string;
@@ -3122,7 +3136,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionrelics extends Array<ExpeditionrelicsItem> {}
-    
+
     export interface ExpeditionterrainfeaturesItem {
       Id?: string;
       ExtraFeature?: ExpeditionterrainfeaturesItem_ExtraFeature;
@@ -3145,24 +3159,24 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Expeditionterrainfeatures extends Array<ExpeditionterrainfeaturesItem> {}
-    
+
     export interface ExperiencelevelsItem {
       Unk000?: string;
       Level?: number;
       Experience?: number;
     }
     export interface Experiencelevels extends Array<ExperiencelevelsItem> {}
-    
+
     export type Explodingstormbuffs = any[];
-    
+
     export type Fixedhideoutdoodadtypes = any[];
-    
+
     export type Fixedmissions = any[];
-    
+
     export type Flasks = any[];
-    
+
     export type Flaskstashbasetypeordering = any[];
-    
+
     export interface FootprintsItem {
       Id?: string;
       Active_AOFiles?: string[];
@@ -3173,13 +3187,13 @@ export declare namespace Poe2DataMain {
       Unk006?: any;
     }
     export interface Footprints extends Array<FootprintsItem> {}
-    
+
     export interface FootstepaudioItem {
       Id?: string;
       Index?: number;
     }
     export interface Footstepaudio extends Array<FootstepaudioItem> {}
-    
+
     export interface FragmentstashtablayoutItem {
       Id?: string;
       XOffset?: number;
@@ -3198,29 +3212,29 @@ export declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface Fragmentstashtablayout extends Array<FragmentstashtablayoutItem> {}
-    
+
     export type Gambleprices = any[];
-    
+
     export interface GameconstantsItem {
       Id?: string;
       Value?: number;
       Unk002?: number;
     }
     export interface Gameconstants extends Array<GameconstantsItem> {}
-    
+
     export interface GamelogosItem {
       Id?: string;
       LogoIntl?: string;
       LogoTW?: string;
     }
     export interface Gamelogos extends Array<GamelogosItem> {}
-    
+
     export interface GameobjecttasksItem {
       Id?: string;
       HASH16?: number;
     }
     export interface Gameobjecttasks extends Array<GameobjecttasksItem> {}
-    
+
     export interface GameobjecttasksfromstatsItem {
       Unk000?: GameobjecttasksfromstatsItem_Unk000;
       Unk001?: GameobjecttasksfromstatsItem_Unk001;
@@ -3239,7 +3253,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Gameobjecttasksfromstats extends Array<GameobjecttasksfromstatsItem> {}
-    
+
     export interface GamepadbuttonItem {
       Unk000?: string;
       Unk001?: string;
@@ -3248,9 +3262,9 @@ export declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface Gamepadbutton extends Array<GamepadbuttonItem> {}
-    
+
     export type Gamepadbuttonbindaction = any[];
-    
+
     export interface GamepadbuttoncombinationItem {
       Id?: string;
       Button1?: GamepadbuttoncombinationItem_Button1;
@@ -3266,28 +3280,28 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Gamepadbuttoncombination extends Array<GamepadbuttoncombinationItem> {}
-    
+
     export type Gamepaditemactiontypes = any[];
-    
+
     export interface GamepadthumbstickItem {
       Unk000?: string;
       Unk001?: string;
     }
     export interface Gamepadthumbstick extends Array<GamepadthumbstickItem> {}
-    
+
     export interface GamepadtypeItem {
       Id?: string;
       Console?: string;
       ImageFile?: string;
     }
     export interface Gamepadtype extends Array<GamepadtypeItem> {}
-    
+
     export interface GamestatsItem {
       Id?: string;
       Id2?: string;
     }
     export interface Gamestats extends Array<GamestatsItem> {}
-    
+
     export interface GemeffectsItem {
       Id?: string;
       Name?: string;
@@ -3318,21 +3332,21 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Gemeffects extends Array<GemeffectsItem> {}
-    
+
     export type Gemtags = any[];
-    
+
     export interface GenericbuffaurasItem {
       Id?: string;
     }
     export interface Genericbuffauras extends Array<GenericbuffaurasItem> {}
-    
+
     export interface GenericleaguerewardtypesItem {
       Id?: string;
       MinLevel?: number;
       MaxLevel?: number;
     }
     export interface Genericleaguerewardtypes extends Array<GenericleaguerewardtypesItem> {}
-    
+
     export interface GenericleaguerewardtypevisualsItem {
       Type?: GenericleaguerewardtypevisualsItem_Type;
       Unk001?: GenericleaguerewardtypevisualsItem_Unk001;
@@ -3353,10 +3367,11 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Genericleaguerewardtypevisuals extends Array<GenericleaguerewardtypevisualsItem> {}
-    
+    export interface Genericleaguerewardtypevisuals
+      extends Array<GenericleaguerewardtypevisualsItem> {}
+
     export type Genericskillindicator = any[];
-    
+
     export interface GeometryattackItem {
       Unk000?: number;
       Unk001?: any[];
@@ -3419,7 +3434,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Geometryattack extends Array<GeometryattackItem> {}
-    
+
     export interface GeometrychannelItem {
       Id?: string;
       Unk001?: GeometrychannelItem_Unk001;
@@ -3445,7 +3460,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Geometrychannel extends Array<GeometrychannelItem> {}
-    
+
     export interface GeometryprojectilesItem {
       Unk000?: number;
       Unk001?: GeometryprojectilesItem_Unk001;
@@ -3475,7 +3490,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Geometryprojectiles extends Array<GeometryprojectilesItem> {}
-    
+
     export interface GeometrytriggerItem {
       Unk000?: number;
       Unk001?: any;
@@ -3537,7 +3552,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Geometrytrigger extends Array<GeometrytriggerItem> {}
-    
+
     export interface GiftwrapartvariationsItem {
       Width?: number;
       Height?: number;
@@ -3549,18 +3564,18 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Giftwrapartvariations extends Array<GiftwrapartvariationsItem> {}
-    
+
     export interface GlobalaudioconfigItem {
       Id?: string;
       Value?: number;
       Unk002?: boolean;
     }
     export interface Globalaudioconfig extends Array<GlobalaudioconfigItem> {}
-    
+
     export type Goldbasetypeprices = any[];
-    
+
     export type Goldinherentskillpricesperlevel = any[];
-    
+
     export interface GoldmodpricesItem {
       Id?: GoldmodpricesItem_Id;
       Value?: number;
@@ -3581,13 +3596,13 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Goldmodprices extends Array<GoldmodpricesItem> {}
-    
+
     export type Goldrespecprices = any[];
-    
+
     export type Goldvisualidentities = any[];
-    
+
     export type Grantedeffectlabels = any[];
-    
+
     export interface GrantedeffectqualitystatsItem {
       GrantedEffectsKey?: GrantedeffectqualitystatsItem_GrantedEffectsKey;
       StatsKeys?: any[];
@@ -3600,7 +3615,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Grantedeffectqualitystats extends Array<GrantedeffectqualitystatsItem> {}
-    
+
     export interface GrantedeffectsItem {
       Id?: string;
       IsSupport?: boolean;
@@ -3648,9 +3663,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Grantedeffects extends Array<GrantedeffectsItem> {}
-    
+
     export type Grantedeffectsperlevel = any[];
-    
+
     export interface GrantedeffectstatsetsItem {
       Id?: string;
       ImplicitStats?: any;
@@ -3661,7 +3676,7 @@ export declare namespace Poe2DataMain {
       Unk006?: number;
     }
     export interface Grantedeffectstatsets extends Array<GrantedeffectstatsetsItem> {}
-    
+
     export interface GrantedeffectstatsetsperlevelItem {
       StatSet?: GrantedeffectstatsetsperlevelItem_StatSet;
       GemLevel?: number;
@@ -3684,14 +3699,15 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Grantedeffectstatsetsperlevel extends Array<GrantedeffectstatsetsperlevelItem> {}
-    
+    export interface Grantedeffectstatsetsperlevel
+      extends Array<GrantedeffectstatsetsperlevelItem> {}
+
     export type Grantedskillsocketnumbers = any[];
-    
+
     export type Graphicalitemreceptacle = any[];
-    
+
     export type Graphicalitemreceptacleslot = any[];
-    
+
     export interface GroundeffectsItem {
       GroundEffectTypesKey?: GroundeffectsItem_GroundEffectTypesKey;
       Unk001?: number;
@@ -3722,7 +3738,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Groundeffects extends Array<GroundeffectsItem> {}
-    
+
     export interface GroundeffecttypesItem {
       Id?: string;
       Unk001?: number;
@@ -3740,11 +3756,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Groundeffecttypes extends Array<GroundeffecttypesItem> {}
-    
+
     export type Hapticevents = any[];
-    
+
     export type Harbingers = any[];
-    
+
     export interface HarvestcraftcostscalingbybasetypeItem {
       Unk000?: HarvestcraftcostscalingbybasetypeItem_Unk000;
       Unk001?: HarvestcraftcostscalingbybasetypeItem_Unk001;
@@ -3758,8 +3774,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Harvestcraftcostscalingbybasetype extends Array<HarvestcraftcostscalingbybasetypeItem> {}
-    
+    export interface Harvestcraftcostscalingbybasetype
+      extends Array<HarvestcraftcostscalingbybasetypeItem> {}
+
     export interface HarvestcraftfiltersItem {
       Id?: string;
       BaseItem?: HarvestcraftfiltersItem_BaseItem;
@@ -3770,13 +3787,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Harvestcraftfilters extends Array<HarvestcraftfiltersItem> {}
-    
+
     export interface HarvestcraftoptioniconsItem {
       Id?: string;
       DDSFile?: string;
     }
     export interface Harvestcraftoptionicons extends Array<HarvestcraftoptioniconsItem> {}
-    
+
     export interface HarvestcraftoptionsItem {
       Id?: string;
       Text?: string;
@@ -3799,29 +3816,29 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Harvestcraftoptions extends Array<HarvestcraftoptionsItem> {}
-    
+
     export interface HarvestcrafttiersItem {
       Id?: string;
       FrameImage?: string;
       FrameHighlight?: string;
     }
     export interface Harvestcrafttiers extends Array<HarvestcrafttiersItem> {}
-    
+
     export interface HarvestinfrastructureItem {
       Object?: string;
       Unk001?: number;
       ClientStringsKey?: any;
     }
     export interface Harvestinfrastructure extends Array<HarvestinfrastructureItem> {}
-    
+
     export interface HarvestlifescalingperlevelItem {
       Level?: number;
       Life?: number;
     }
     export interface Harvestlifescalingperlevel extends Array<HarvestlifescalingperlevelItem> {}
-    
+
     export type Harvestperlevelvalues = any[];
-    
+
     export interface HarvestseeditemsItem {
       Id?: number;
       BaseItem?: HarvestseeditemsItem_BaseItem;
@@ -3836,13 +3853,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Harvestseeditems extends Array<HarvestseeditemsItem> {}
-    
+
     export type Harvestseeds = any[];
-    
+
     export type Heistareaformationlayout = any[];
-    
+
     export type Heistareas = any[];
-    
+
     export interface HeistbalanceperlevelItem {
       Level?: number;
       Unk001?: number;
@@ -3895,21 +3912,21 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistbalanceperlevel extends Array<HeistbalanceperlevelItem> {}
-    
+
     export type Heistchestrewardtypes = any[];
-    
+
     export type Heistchests = any[];
-    
+
     export type Heistchokepointformation = any[];
-    
+
     export interface HeistconstantsItem {
       Id?: string;
       Value?: number;
     }
     export interface Heistconstants extends Array<HeistconstantsItem> {}
-    
+
     export type Heistcontracts = any[];
-    
+
     export interface HeistdoodadnpcsItem {
       NPCsKey?: HeistdoodadnpcsItem_NPCsKey;
       Unk001?: any;
@@ -3930,7 +3947,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Heistdoodadnpcs extends Array<HeistdoodadnpcsItem> {}
-    
+
     export interface HeistdoorsItem {
       Id?: string;
       Unk001?: string;
@@ -3943,7 +3960,7 @@ export declare namespace Poe2DataMain {
       HeistAreasKey?: any;
     }
     export interface Heistdoors extends Array<HeistdoorsItem> {}
-    
+
     export interface HeistequipmentItem {
       BaseItemTypesKey?: HeistequipmentItem_BaseItemTypesKey;
       RequiredJob_HeistJobsKey?: any;
@@ -3954,7 +3971,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistequipment extends Array<HeistequipmentItem> {}
-    
+
     export interface HeistgenerationItem {
       Level?: number;
       Unk001?: number;
@@ -3979,9 +3996,9 @@ export declare namespace Poe2DataMain {
       Unk020?: number;
     }
     export interface Heistgeneration extends Array<HeistgenerationItem> {}
-    
+
     export type Heistintroareas = any[];
-    
+
     export interface HeistjobsItem {
       Id?: string;
       Name?: string;
@@ -4019,7 +4036,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistjobs extends Array<HeistjobsItem> {}
-    
+
     export interface HeistjobsexperienceperlevelItem {
       HeistJobsKey?: HeistjobsexperienceperlevelItem_HeistJobsKey;
       Tier?: number;
@@ -4032,7 +4049,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistjobsexperienceperlevel extends Array<HeistjobsexperienceperlevelItem> {}
-    
+
     export interface HeistlocktypeItem {
       Id?: string;
       HeistJobsKey?: HeistlocktypeItem_HeistJobsKey;
@@ -4043,9 +4060,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistlocktype extends Array<HeistlocktypeItem> {}
-    
+
     export type Heistnpcauras = any[];
-    
+
     export interface HeistnpcblueprinttypesItem {
       NPCsKey?: HeistnpcblueprinttypesItem_NPCsKey;
       Unk001?: number;
@@ -4055,7 +4072,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistnpcblueprinttypes extends Array<HeistnpcblueprinttypesItem> {}
-    
+
     export interface HeistnpcdialogueItem {
       DialogueEventKey?: HeistnpcdialogueItem_DialogueEventKey;
       HeistNPCsKey?: HeistnpcdialogueItem_HeistNPCsKey;
@@ -4072,7 +4089,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Heistnpcdialogue extends Array<HeistnpcdialogueItem> {}
-    
+
     export interface HeistnpcsItem {
       NPCsKey?: HeistnpcsItem_NPCsKey;
       MonsterVarietiesKey?: HeistnpcsItem_MonsterVarietiesKey;
@@ -4116,7 +4133,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Heistnpcs extends Array<HeistnpcsItem> {}
-    
+
     export interface HeistnpcstatsItem {
       StatsKey?: HeistnpcstatsItem_StatsKey;
       Unk001?: boolean;
@@ -4129,7 +4146,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistnpcstats extends Array<HeistnpcstatsItem> {}
-    
+
     export interface HeistobjectivesItem {
       BaseItemType?: HeistobjectivesItem_BaseItemType;
       Scaling?: number;
@@ -4140,18 +4157,19 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistobjectives extends Array<HeistobjectivesItem> {}
-    
+
     export interface HeistobjectivevaluedescriptionsItem {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface Heistobjectivevaluedescriptions extends Array<HeistobjectivevaluedescriptionsItem> {}
-    
+    export interface Heistobjectivevaluedescriptions
+      extends Array<HeistobjectivevaluedescriptionsItem> {}
+
     export type Heistpatrolpacks = any[];
-    
+
     export type Heistquestcontracts = any[];
-    
+
     export interface HeistrevealingnpcsItem {
       NPCsKey?: HeistrevealingnpcsItem_NPCsKey;
       PortraitFile?: string;
@@ -4163,35 +4181,35 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Heistrevealingnpcs extends Array<HeistrevealingnpcsItem> {}
-    
+
     export type Heistrooms = any[];
-    
+
     export type Heiststoragelayout = any[];
-    
+
     export interface HeistvaluescalingItem {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface Heistvaluescaling extends Array<HeistvaluescalingItem> {}
-    
+
     export interface HellscapeaoreplacementsItem {
       Original?: string;
       HASH32?: number;
       Replacement?: string;
     }
     export interface Hellscapeaoreplacements extends Array<HellscapeaoreplacementsItem> {}
-    
+
     export type Hellscapeareapacks = any[];
-    
+
     export interface HellscapeexperiencelevelsItem {
       Level?: number;
       Experience?: number;
     }
     export interface Hellscapeexperiencelevels extends Array<HellscapeexperiencelevelsItem> {}
-    
+
     export type Hellscapefactions = any[];
-    
+
     export interface HellscapeimmunemonstersItem {
       Monster?: HellscapeimmunemonstersItem_Monster;
     }
@@ -4200,21 +4218,22 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Hellscapeimmunemonsters extends Array<HellscapeimmunemonstersItem> {}
-    
+
     export interface HellscapeitemmodificationtiersItem {
       Tier?: number;
       IsMap?: boolean;
       Unk002?: number;
       MinItemLvl?: number;
     }
-    export interface Hellscapeitemmodificationtiers extends Array<HellscapeitemmodificationtiersItem> {}
-    
+    export interface Hellscapeitemmodificationtiers
+      extends Array<HellscapeitemmodificationtiersItem> {}
+
     export interface HellscapelifescalingperlevelItem {
       AreaLevel?: number;
       Scale?: number;
     }
     export interface Hellscapelifescalingperlevel extends Array<HellscapelifescalingperlevelItem> {}
-    
+
     export interface HellscapemodificationinventorylayoutItem {
       Id?: string;
       Column?: number;
@@ -4228,12 +4247,13 @@ export declare namespace Poe2DataMain {
       UnlockedWith?: any;
       Quest?: any;
     }
-    export interface Hellscapemodificationinventorylayout extends Array<HellscapemodificationinventorylayoutItem> {}
-    
+    export interface Hellscapemodificationinventorylayout
+      extends Array<HellscapemodificationinventorylayoutItem> {}
+
     export type Hellscapemods = any[];
-    
+
     export type Hellscapemonsterpacks = any[];
-    
+
     export interface HellscapepassivesItem {
       Id?: string;
       Name?: string;
@@ -4248,14 +4268,14 @@ export declare namespace Poe2DataMain {
       Quest?: any;
     }
     export interface Hellscapepassives extends Array<HellscapepassivesItem> {}
-    
+
     export interface HellscapepassivetreeItem {
       Id?: string;
       AllocationsRequired?: number;
       Passives?: any[];
     }
     export interface Hellscapepassivetree extends Array<HellscapepassivetreeItem> {}
-    
+
     export interface HideoutcraftingbenchdoodadsItem {
       Unk000?: HideoutcraftingbenchdoodadsItem_Unk000;
       Unk001?: HideoutcraftingbenchdoodadsItem_Unk001;
@@ -4269,7 +4289,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Hideoutcraftingbenchdoodads extends Array<HideoutcraftingbenchdoodadsItem> {}
-    
+
     export interface HideoutcraftingbenchinterfacevisualsItem {
       Id?: string;
       Unk001?: string;
@@ -4278,14 +4298,15 @@ export declare namespace Poe2DataMain {
       Unk004?: string;
       Unk005?: string;
     }
-    export interface Hideoutcraftingbenchinterfacevisuals extends Array<HideoutcraftingbenchinterfacevisualsItem> {}
-    
+    export interface Hideoutcraftingbenchinterfacevisuals
+      extends Array<HideoutcraftingbenchinterfacevisualsItem> {}
+
     export interface HideoutdoodadcategoryItem {
       Id?: string;
       Name?: string;
     }
     export interface Hideoutdoodadcategory extends Array<HideoutdoodadcategoryItem> {}
-    
+
     export interface HideoutdoodadsItem {
       BaseItemTypesKey?: HideoutdoodadsItem_BaseItemTypesKey;
       Variation_AOFiles?: string[];
@@ -4317,7 +4338,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Hideoutdoodads extends Array<HideoutdoodadsItem> {}
-    
+
     export interface HideoutdoodadtagsItem {
       Id?: string;
       Unk001?: number[];
@@ -4325,19 +4346,19 @@ export declare namespace Poe2DataMain {
       Name?: string;
     }
     export interface Hideoutdoodadtags extends Array<HideoutdoodadtagsItem> {}
-    
+
     export type Hideoutnpcs = any[];
-    
+
     export interface HideoutrarityItem {
       Id?: string;
       Text?: string;
     }
     export interface Hideoutrarity extends Array<HideoutrarityItem> {}
-    
+
     export type Hideoutresistpenalties = any[];
-    
+
     export type Hideouts = any[];
-    
+
     export interface HideoutstashdoodadsItem {
       Unk000?: HideoutstashdoodadsItem_Unk000;
       Unk001?: boolean;
@@ -4349,7 +4370,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Hideoutstashdoodads extends Array<HideoutstashdoodadsItem> {}
-    
+
     export interface HideoutwaypointdoodadsItem {
       Unk000?: HideoutwaypointdoodadsItem_Unk000;
       Unk001?: number[];
@@ -4359,7 +4380,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Hideoutwaypointdoodads extends Array<HideoutwaypointdoodadsItem> {}
-    
+
     export interface HudenergyshieldvisualsItem {
       Id?: string;
       Unk001?: string;
@@ -4373,7 +4394,7 @@ export declare namespace Poe2DataMain {
       Unk009?: boolean;
     }
     export interface Hudenergyshieldvisuals extends Array<HudenergyshieldvisualsItem> {}
-    
+
     export interface HudlifevisualsItem {
       Id?: string;
       Unk001?: string;
@@ -4391,9 +4412,9 @@ export declare namespace Poe2DataMain {
       Unk013?: string;
     }
     export interface Hudlifevisuals extends Array<HudlifevisualsItem> {}
-    
+
     export type Hudvisualsfromstat = any[];
-    
+
     export interface ImpactsounddataItem {
       Id?: string;
       Sound?: string;
@@ -4403,7 +4424,7 @@ export declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface Impactsounddata extends Array<ImpactsounddataItem> {}
-    
+
     export interface IncubatorsItem {
       BaseItemTypesKey?: IncubatorsItem_BaseItemTypesKey;
       Unk001?: number;
@@ -4416,7 +4437,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Incubators extends Array<IncubatorsItem> {}
-    
+
     export interface IncursionarchitectItem {
       MonsterVarietiesKey?: IncursionarchitectItem_MonsterVarietiesKey;
       MinLevel?: number;
@@ -4426,17 +4447,17 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Incursionarchitect extends Array<IncursionarchitectItem> {}
-    
+
     export type Incursionbrackets = any[];
-    
+
     export type Incursionchestrewards = any[];
-    
+
     export type Incursionchests = any[];
-    
+
     export type Incursionroombossfightevents = any[];
-    
+
     export type Incursionrooms = any[];
-    
+
     export interface IncursionuniqueupgradecomponentsItem {
       BaseUnique?: IncursionuniqueupgradecomponentsItem_BaseUnique;
       UpgradeCurrency?: IncursionuniqueupgradecomponentsItem_UpgradeCurrency;
@@ -4449,20 +4470,21 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Incursionuniqueupgradecomponents extends Array<IncursionuniqueupgradecomponentsItem> {}
-    
+    export interface Incursionuniqueupgradecomponents
+      extends Array<IncursionuniqueupgradecomponentsItem> {}
+
     export type Indexablesupportgems = any[];
-    
+
     export type Indicatorconditions = any[];
-    
+
     export interface InfluenceexaltsItem {
       Influence?: number;
       BaseItemTypesKey?: any;
     }
     export interface Influenceexalts extends Array<InfluenceexaltsItem> {}
-    
+
     export type Influencemodupgrades = any[];
-    
+
     export interface InfluencetagsItem {
       ItemClass?: InfluencetagsItem_ItemClass;
       Influence?: number;
@@ -4477,7 +4499,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Influencetags extends Array<InfluencetagsItem> {}
-    
+
     export interface InvasionmonsterrestrictionsItem {
       Id?: string;
       WorldAreasKey?: InvasionmonsterrestrictionsItem_WorldAreasKey;
@@ -4489,9 +4511,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Invasionmonsterrestrictions extends Array<InvasionmonsterrestrictionsItem> {}
-    
+
     export type Invasionmonstersperarea = any[];
-    
+
     export interface InventoriesItem {
       Id?: string;
       InventoryIdKey?: number;
@@ -4503,14 +4525,14 @@ export declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface Inventories extends Array<InventoriesItem> {}
-    
+
     export interface ItemclasscategoriesItem {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
     export interface Itemclasscategories extends Array<ItemclasscategoriesItem> {}
-    
+
     export interface ItemclassesItem {
       Id?: string;
       Name?: string;
@@ -4551,9 +4573,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemclasses extends Array<ItemclassesItem> {}
-    
+
     export type Itemdisenchantvalues = any[];
-    
+
     export interface ItemexperienceperlevelItem {
       ItemExperienceType?: ItemexperienceperlevelItem_ItemExperienceType;
       ItemCurrentLevel?: number;
@@ -4564,16 +4586,16 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemexperienceperlevel extends Array<ItemexperienceperlevelItem> {}
-    
+
     export interface ItemexperiencetypesItem {
       Id?: string;
     }
     export interface Itemexperiencetypes extends Array<ItemexperiencetypesItem> {}
-    
+
     export type Itemframetype = any[];
-    
+
     export type Iteminherentskills = any[];
-    
+
     export interface ItemisedvisualeffectItem {
       EffectBaseType?: ItemisedvisualeffectItem_EffectBaseType;
       VisualEffect?: ItemisedvisualeffectItem_VisualEffect;
@@ -4604,9 +4626,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemisedvisualeffect extends Array<ItemisedvisualeffectItem> {}
-    
+
     export type Itemisedvisualeffectexclusivetypes = any[];
-    
+
     export interface ItemnotecodeItem {
       BaseItem?: ItemnotecodeItem_BaseItem;
       Code?: string;
@@ -4619,16 +4641,16 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemnotecode extends Array<ItemnotecodeItem> {}
-    
+
     export type Itemspirit = any[];
-    
+
     export interface ItemstancesItem {
       Id?: string;
     }
     export interface Itemstances extends Array<ItemstancesItem> {}
-    
+
     export type Itemtoggleable = any[];
-    
+
     export interface ItemvisualeffectItem {
       Id?: string;
       DaggerEPKFile?: string;
@@ -4648,7 +4670,7 @@ export declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface Itemvisualeffect extends Array<ItemvisualeffectItem> {}
-    
+
     export interface ItemvisualheldbodymodelItem {
       ItemVisualIdentity?: ItemvisualheldbodymodelItem_ItemVisualIdentity;
       MarauderAnimatedObject?: string;
@@ -4671,9 +4693,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemvisualheldbodymodel extends Array<ItemvisualheldbodymodelItem> {}
-    
+
     export type Itemvisualheldbodymodeloverridebyitemaffiliatedattributes = any[];
-    
+
     export interface ItemvisualidentityItem {
       Id?: string;
       DDSFile?: string;
@@ -4687,7 +4709,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Itemvisualidentity extends Array<ItemvisualidentityItem> {}
-    
+
     export interface ItemvisualreplacementItem {
       BaseItemType?: ItemvisualreplacementItem_BaseItemType;
       Unk001?: ItemvisualreplacementItem_Unk001;
@@ -4706,7 +4728,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Itemvisualreplacement extends Array<ItemvisualreplacementItem> {}
-    
+
     export interface JobassassinationspawnergroupsItem {
       Unk000?: JobassassinationspawnergroupsItem_Unk000;
       Unk001?: JobassassinationspawnergroupsItem_Unk001;
@@ -4719,12 +4741,13 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Jobassassinationspawnergroups extends Array<JobassassinationspawnergroupsItem> {}
-    
+    export interface Jobassassinationspawnergroups
+      extends Array<JobassassinationspawnergroupsItem> {}
+
     export type Jobraidbrackets = any[];
-    
+
     export type Keywordpopups = any[];
-    
+
     export interface KillstreakthresholdsItem {
       Kills?: number;
       MonsterVarietiesKey?: any;
@@ -4735,21 +4758,21 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Killstreakthresholds extends Array<KillstreakthresholdsItem> {}
-    
+
     export type Kioskmodecharactertutorials = any[];
-    
+
     export interface KiraclevelsItem {
       AreaLevel?: number;
       Unk001?: number;
     }
     export interface Kiraclevels extends Array<KiraclevelsItem> {}
-    
+
     export interface LakebosslifescalingperlevelItem {
       Level?: number;
       Scaling?: number;
     }
     export interface Lakebosslifescalingperlevel extends Array<LakebosslifescalingperlevelItem> {}
-    
+
     export interface LeagueflagItem {
       Id?: string;
       Image?: string;
@@ -4759,14 +4782,14 @@ export declare namespace Poe2DataMain {
       IsRuthless?: boolean;
     }
     export interface Leagueflag extends Array<LeagueflagItem> {}
-    
+
     export type Leagueinfo = any[];
-    
+
     export interface LeagueinfopanelversionsItem {
       Id?: string;
     }
     export interface Leagueinfopanelversions extends Array<LeagueinfopanelversionsItem> {}
-    
+
     export interface LeagueprogressquestflagsItem {
       QuestFlag?: LeagueprogressquestflagsItem_QuestFlag;
       CompletionString?: LeagueprogressquestflagsItem_CompletionString;
@@ -4782,9 +4805,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Leagueprogressquestflags extends Array<LeagueprogressquestflagsItem> {}
-    
+
     export type Leaguestaticrewards = any[];
-    
+
     export interface LegacyatlasinfluenceoutcomesItem {
       Id?: string;
       Unk001?: number;
@@ -4795,9 +4818,9 @@ export declare namespace Poe2DataMain {
       Unk006?: number[];
     }
     export interface Legacyatlasinfluenceoutcomes extends Array<LegacyatlasinfluenceoutcomesItem> {}
-    
+
     export type Legionbalanceperlevel = any[];
-    
+
     export interface LegionchestcountsItem {
       LegionFactionsKey?: LegionchestcountsItem_LegionFactionsKey;
       LegionRanksKey?: LegionchestcountsItem_LegionRanksKey;
@@ -4817,9 +4840,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Legionchestcounts extends Array<LegionchestcountsItem> {}
-    
+
     export type Legionchesttypes = any[];
-    
+
     export interface LegionfactionsItem {
       Id?: string;
       SpawnWeight?: number;
@@ -4873,7 +4896,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Legionfactions extends Array<LegionfactionsItem> {}
-    
+
     export interface LegionmonstercountsItem {
       LegionFactionsKey?: LegionmonstercountsItem_LegionFactionsKey;
       LegionRanksKey?: LegionmonstercountsItem_LegionRanksKey;
@@ -4893,11 +4916,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Legionmonstercounts extends Array<LegionmonstercountsItem> {}
-    
+
     export type Legionmonstervarieties = any[];
-    
+
     export type Legionranks = any[];
-    
+
     export interface LegionrewardtypevisualsItem {
       IntId?: number;
       MinimapIconsKey?: LegionrewardtypevisualsItem_MinimapIconsKey;
@@ -4915,7 +4938,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Legionrewardtypevisuals extends Array<LegionrewardtypevisualsItem> {}
-    
+
     export interface LevelrelativeplayerscalingItem {
       PlayerLevel?: number;
       MonsterLevel?: number;
@@ -4927,9 +4950,9 @@ export declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface Levelrelativeplayerscaling extends Array<LevelrelativeplayerscalingItem> {}
-    
+
     export type Loginareas = any[];
-    
+
     export interface MapcompletionachievementsItem {
       Id?: string;
       MapStatConditionsKeys?: any[];
@@ -4941,15 +4964,15 @@ export declare namespace Poe2DataMain {
       Unk007?: any[];
     }
     export interface Mapcompletionachievements extends Array<MapcompletionachievementsItem> {}
-    
+
     export type Mapconnections = any[];
-    
+
     export type Mapcreationinformation = any[];
-    
+
     export type Mapcurrencyinventorylayout = any[];
-    
+
     export type Mapdevicerecipes = any[];
-    
+
     export interface MapdevicesItem {
       Id?: string;
       MiscObject?: any;
@@ -4972,11 +4995,11 @@ export declare namespace Poe2DataMain {
       Unk018?: boolean;
     }
     export interface Mapdevices extends Array<MapdevicesItem> {}
-    
+
     export type Mapfragmentmods = any[];
-    
+
     export type Mapinhabitants = any[];
-    
+
     export interface MappinsItem {
       Id?: string;
       Unk001?: number;
@@ -4997,7 +5020,7 @@ export declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface Mappins extends Array<MappinsItem> {}
-    
+
     export interface MapsItem {
       MapKeyTier?: MapsItem_MapKeyTier;
       SomeRef02?: any;
@@ -5015,15 +5038,15 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Maps extends Array<MapsItem> {}
-    
+
     export type Mapseries = any[];
-    
+
     export type Mapseriestiers = any[];
-    
+
     export type Mapstashspecialtypeentries = any[];
-    
+
     export type Mapstashuniquemapinfo = any[];
-    
+
     export interface MapstatconditionsItem {
       Id?: string;
       StatsKey?: MapstatconditionsItem_StatsKey;
@@ -5037,21 +5060,21 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Mapstatconditions extends Array<MapstatconditionsItem> {}
-    
+
     export interface MaptierachievementsItem {
       Id?: string;
       AchievementItemsKey?: any[];
       MapTiers?: number[];
     }
     export interface Maptierachievements extends Array<MaptierachievementsItem> {}
-    
+
     export interface MaptiersItem {
       Tier?: number;
       Level?: number;
       Level2?: number;
     }
     export interface Maptiers extends Array<MaptiersItem> {}
-    
+
     export interface MavendialogItem {
       Id?: string;
       TextAudioT1?: MavendialogItem_TextAudioT1;
@@ -5083,9 +5106,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Mavendialog extends Array<MavendialogItem> {}
-    
+
     export type Mavenfights = any[];
-    
+
     export interface MavenjewelradiuskeystonesItem {
       Keystone?: MavenjewelradiuskeystonesItem_Keystone;
     }
@@ -5094,7 +5117,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Mavenjewelradiuskeystones extends Array<MavenjewelradiuskeystonesItem> {}
-    
+
     export interface MeleeItem {
       ActiveSkill?: MeleeItem_ActiveSkill;
       Unk001?: number;
@@ -5116,7 +5139,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Melee extends Array<MeleeItem> {}
-    
+
     export interface MeleetrailsItem {
       EPKFile1?: string;
       Unk001?: number;
@@ -5130,7 +5153,7 @@ export declare namespace Poe2DataMain {
       Unk009?: string;
     }
     export interface Meleetrails extends Array<MeleetrailsItem> {}
-    
+
     export interface MemorylinetypeItem {
       Id?: string;
       Unk001?: MemorylinetypeItem_Unk001;
@@ -5157,7 +5180,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Memorylinetype extends Array<MemorylinetypeItem> {}
-    
+
     export interface MetamorphosisstashtablayoutItem {
       Id?: string;
       StoredItem?: MetamorphosisstashtablayoutItem_StoredItem;
@@ -5173,7 +5196,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Metamorphosisstashtablayout extends Array<MetamorphosisstashtablayoutItem> {}
-    
+
     export interface MicromigrationdataItem {
       BaseItemTypesKey?: MicromigrationdataItem_BaseItemTypesKey;
       Unk001?: number;
@@ -5193,7 +5216,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Micromigrationdata extends Array<MicromigrationdataItem> {}
-    
+
     export interface MicrotransactionappliedinventoryitemartvariationsItem {
       Unk000?: MicrotransactionappliedinventoryitemartvariationsItem_Unk000;
       DDSFiles?: string[];
@@ -5205,14 +5228,15 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionappliedinventoryitemartvariations extends Array<MicrotransactionappliedinventoryitemartvariationsItem> {}
-    
+    export interface Microtransactionappliedinventoryitemartvariations
+      extends Array<MicrotransactionappliedinventoryitemartvariationsItem> {}
+
     export interface MicrotransactioncategoryItem {
       Id?: number;
       Name?: string;
     }
     export interface Microtransactioncategory extends Array<MicrotransactioncategoryItem> {}
-    
+
     export interface MicrotransactioncharacterportraitvariationsItem {
       BaseItemType?: MicrotransactioncharacterportraitvariationsItem_BaseItemType;
     }
@@ -5220,8 +5244,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Microtransactioncharacterportraitvariations extends Array<MicrotransactioncharacterportraitvariationsItem> {}
-    
+    export interface Microtransactioncharacterportraitvariations
+      extends Array<MicrotransactioncharacterportraitvariationsItem> {}
+
     export interface MicrotransactionchargevariationsItem {
       Unk000?: MicrotransactionchargevariationsItem_Unk000;
       Unk001?: MicrotransactionchargevariationsItem_Unk001;
@@ -5244,8 +5269,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionchargevariations extends Array<MicrotransactionchargevariationsItem> {}
-    
+    export interface Microtransactionchargevariations
+      extends Array<MicrotransactionchargevariationsItem> {}
+
     export interface MicrotransactioncombineformulaItem {
       Id?: string;
       Result_BaseItemTypesKey?: MicrotransactioncombineformulaItem_Result_BaseItemTypesKey;
@@ -5259,8 +5285,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Microtransactioncombineformula extends Array<MicrotransactioncombineformulaItem> {}
-    
+    export interface Microtransactioncombineformula
+      extends Array<MicrotransactioncombineformulaItem> {}
+
     export interface MicrotransactionconditionalapparitioneventsItem {
       Unk000?: MicrotransactionconditionalapparitioneventsItem_Unk000;
       Unk001?: number;
@@ -5282,8 +5309,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionconditionalapparitionevents extends Array<MicrotransactionconditionalapparitioneventsItem> {}
-    
+    export interface Microtransactionconditionalapparitionevents
+      extends Array<MicrotransactionconditionalapparitioneventsItem> {}
+
     export interface MicrotransactionconditionalapparitionsItem {
       Id?: string;
       Unk001?: number[];
@@ -5303,12 +5331,13 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionconditionalapparitions extends Array<MicrotransactionconditionalapparitionsItem> {}
-    
+    export interface Microtransactionconditionalapparitions
+      extends Array<MicrotransactionconditionalapparitionsItem> {}
+
     export type Microtransactioncounters = any[];
-    
+
     export type Microtransactioncursorvariations = any[];
-    
+
     export interface MicrotransactionequippediconvariationsItem {
       Unk000?: MicrotransactionequippediconvariationsItem_Unk000;
       DDSFiles?: string[];
@@ -5318,8 +5347,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionequippediconvariations extends Array<MicrotransactionequippediconvariationsItem> {}
-    
+    export interface Microtransactionequippediconvariations
+      extends Array<MicrotransactionequippediconvariationsItem> {}
+
     export interface MicrotransactionfireworksvariationsItem {
       BaseItemTypesKey?: MicrotransactionfireworksvariationsItem_BaseItemTypesKey;
       AOFile?: string;
@@ -5329,8 +5359,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Microtransactionfireworksvariations extends Array<MicrotransactionfireworksvariationsItem> {}
-    
+    export interface Microtransactionfireworksvariations
+      extends Array<MicrotransactionfireworksvariationsItem> {}
+
     export interface MicrotransactionjewelvariationsItem {
       Unk000?: MicrotransactionjewelvariationsItem_Unk000;
       Unk001?: number;
@@ -5358,10 +5389,11 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionjewelvariations extends Array<MicrotransactionjewelvariationsItem> {}
-    
+    export interface Microtransactionjewelvariations
+      extends Array<MicrotransactionjewelvariationsItem> {}
+
     export type Microtransactionlevelupeffects = any[];
-    
+
     export interface MicrotransactionobjecteffectsItem {
       Id?: string;
       Unk001?: number[];
@@ -5385,8 +5417,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionobjecteffects extends Array<MicrotransactionobjecteffectsItem> {}
-    
+    export interface Microtransactionobjecteffects
+      extends Array<MicrotransactionobjecteffectsItem> {}
+
     export interface MicrotransactiononkillbeamsItem {
       Id?: string;
       Unk001?: MicrotransactiononkillbeamsItem_Unk001;
@@ -5405,7 +5438,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Microtransactiononkillbeams extends Array<MicrotransactiononkillbeamsItem> {}
-    
+
     export interface MicrotransactiononkillconditionsItem {
       Id?: string;
       Unk001?: number[];
@@ -5421,8 +5454,9 @@ export declare namespace Poe2DataMain {
       Unk011?: string;
       Unk012?: any[];
     }
-    export interface Microtransactiononkillconditions extends Array<MicrotransactiononkillconditionsItem> {}
-    
+    export interface Microtransactiononkillconditions
+      extends Array<MicrotransactiononkillconditionsItem> {}
+
     export interface MicrotransactiononkilleffectsItem {
       Id?: string;
       Unk001?: any;
@@ -5441,20 +5475,22 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactiononkilleffects extends Array<MicrotransactiononkilleffectsItem> {}
-    
+    export interface Microtransactiononkilleffects
+      extends Array<MicrotransactiononkilleffectsItem> {}
+
     export type Microtransactiononopenchesteffects = any[];
-    
+
     export interface MicrotransactionperiodiccharactereffectvariationsItem {
       Id?: string;
       AOFile?: string;
       MiscObject?: any;
       Unk003?: number;
     }
-    export interface Microtransactionperiodiccharactereffectvariations extends Array<MicrotransactionperiodiccharactereffectvariationsItem> {}
-    
+    export interface Microtransactionperiodiccharactereffectvariations
+      extends Array<MicrotransactionperiodiccharactereffectvariationsItem> {}
+
     export type Microtransactionportalvariations = any[];
-    
+
     export interface MicrotransactionraritydisplayItem {
       Rarity?: string;
       Unk001?: MicrotransactionraritydisplayItem_Unk001;
@@ -5465,8 +5501,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionraritydisplay extends Array<MicrotransactionraritydisplayItem> {}
-    
+    export interface Microtransactionraritydisplay
+      extends Array<MicrotransactionraritydisplayItem> {}
+
     export interface MicrotransactionrecycleoutcomesItem {
       Unk000?: MicrotransactionrecycleoutcomesItem_Unk000;
       Unk001?: number;
@@ -5475,8 +5512,9 @@ export declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface Microtransactionrecycleoutcomes extends Array<MicrotransactionrecycleoutcomesItem> {}
-    
+    export interface Microtransactionrecycleoutcomes
+      extends Array<MicrotransactionrecycleoutcomesItem> {}
+
     export interface MicrotransactionrecyclesalvagevaluesItem {
       BaseItemType?: MicrotransactionrecyclesalvagevaluesItem_BaseItemType;
       Unk001?: number;
@@ -5486,15 +5524,17 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface Microtransactionrecyclesalvagevalues extends Array<MicrotransactionrecyclesalvagevaluesItem> {}
-    
+    export interface Microtransactionrecyclesalvagevalues
+      extends Array<MicrotransactionrecyclesalvagevaluesItem> {}
+
     export interface MicrotransactionskillgemeffectslottypesItem {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface Microtransactionskillgemeffectslottypes extends Array<MicrotransactionskillgemeffectslottypesItem> {}
-    
+    export interface Microtransactionskillgemeffectslottypes
+      extends Array<MicrotransactionskillgemeffectslottypesItem> {}
+
     export interface MicrotransactionslotItem {
       Id?: number;
       Unk001?: MicrotransactionslotItem_Unk001;
@@ -5515,17 +5555,18 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Microtransactionslot extends Array<MicrotransactionslotItem> {}
-    
+
     export interface MicrotransactionslotadditionaldefaultoptionsItem {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface Microtransactionslotadditionaldefaultoptions extends Array<MicrotransactionslotadditionaldefaultoptionsItem> {}
-    
+    export interface Microtransactionslotadditionaldefaultoptions
+      extends Array<MicrotransactionslotadditionaldefaultoptionsItem> {}
+
     export type Microtransactionsocialframevariations = any[];
-    
+
     export interface MinimapiconsItem {
       Id?: string;
       MinimapIconRadius?: number;
@@ -5537,13 +5578,13 @@ export declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface Minimapicons extends Array<MinimapiconsItem> {}
-    
+
     export type Minioncommands = any[];
-    
+
     export type Miniongemlevelscaling = any[];
-    
+
     export type Minionstats = any[];
-    
+
     export interface MiniontypeItem {
       Id?: string;
       Unk001?: any;
@@ -5563,7 +5604,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Miniontype extends Array<MiniontypeItem> {}
-    
+
     export interface MiniqueststatesItem {
       Unk000?: number;
       Unk001?: any[];
@@ -5571,7 +5612,7 @@ export declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface Miniqueststates extends Array<MiniqueststatesItem> {}
-    
+
     export interface MiscanimatedItem {
       Id?: string;
       AOFile?: string;
@@ -5581,7 +5622,7 @@ export declare namespace Poe2DataMain {
       HASH32?: number;
     }
     export interface Miscanimated extends Array<MiscanimatedItem> {}
-    
+
     export interface MiscanimatedartvariationsItem {
       Id?: string;
       Unk001?: number[];
@@ -5590,7 +5631,7 @@ export declare namespace Poe2DataMain {
       Unk004?: any;
     }
     export interface Miscanimatedartvariations extends Array<MiscanimatedartvariationsItem> {}
-    
+
     export interface MiscbeamsItem {
       Id?: string;
       MiscAnimated?: MiscbeamsItem_MiscAnimated;
@@ -5603,7 +5644,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Miscbeams extends Array<MiscbeamsItem> {}
-    
+
     export interface MiscbeamsartvariationsItem {
       Id?: string;
       Unk001?: number[];
@@ -5612,9 +5653,9 @@ export declare namespace Poe2DataMain {
       Unk004?: any;
     }
     export interface Miscbeamsartvariations extends Array<MiscbeamsartvariationsItem> {}
-    
+
     export type Misccooldowns = any[];
-    
+
     export interface MisceffectpacksItem {
       Id?: string;
       EPKFile?: string;
@@ -5627,14 +5668,14 @@ export declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface Misceffectpacks extends Array<MisceffectpacksItem> {}
-    
+
     export interface MisceffectpacksartvariationsItem {
       Unk000?: string;
       Unk001?: number[];
       Unk002?: number;
     }
     export interface Misceffectpacksartvariations extends Array<MisceffectpacksartvariationsItem> {}
-    
+
     export interface MiscobjectsItem {
       Id?: string;
       EffectVirtualPath?: string;
@@ -5644,7 +5685,7 @@ export declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface Miscobjects extends Array<MiscobjectsItem> {}
-    
+
     export interface MiscobjectsartvariationsItem {
       Unk000?: string;
       Unk001?: number[];
@@ -5653,13 +5694,13 @@ export declare namespace Poe2DataMain {
       Unk004?: any;
     }
     export interface Miscobjectsartvariations extends Array<MiscobjectsartvariationsItem> {}
-    
+
     export type Miscprojectilemod = any[];
-    
+
     export type Miscprojectilemodartvariations = any[];
-    
+
     export type Missiontilemap = any[];
-    
+
     export interface MissiontimertypesItem {
       Id?: string;
       Image?: string;
@@ -5670,31 +5711,31 @@ export declare namespace Poe2DataMain {
       Unk006?: any;
     }
     export interface Missiontimertypes extends Array<MissiontimertypesItem> {}
-    
+
     export type Missiontransitiontiles = any[];
-    
+
     export type Mobileactoneatlasquestprogression = any[];
-    
+
     export type Mobileascendancythresholds = any[];
-    
+
     export type Mobileatlaseldermemories = any[];
-    
+
     export type Mobileatlasinventorylayout = any[];
-    
+
     export type Mobilecharactercreation = any[];
-    
+
     export type Mobilequestaudio = any[];
-    
+
     export type Mobileskillgemlayout = any[];
-    
+
     export type Mobileskillgemlayoutpages = any[];
-    
+
     export type Mobiletutorial = any[];
-    
+
     export type Mobiletutorialgroup = any[];
-    
+
     export type Modeffectstats = any[];
-    
+
     export interface ModequivalenciesItem {
       Id?: string;
       ModsKey0?: ModequivalenciesItem_ModsKey0;
@@ -5715,14 +5756,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Modequivalencies extends Array<ModequivalenciesItem> {}
-    
+
     export interface ModfamilyItem {
       Id?: string;
     }
     export interface Modfamily extends Array<ModfamilyItem> {}
-    
+
     export type Modgrantedskills = any[];
-    
+
     export interface ModsItem {
       Id?: string;
       HASH16?: number;
@@ -5811,27 +5852,27 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Mods extends Array<ModsItem> {}
-    
+
     export interface ModsellpricetypesItem {
       Id?: string;
     }
     export interface Modsellpricetypes extends Array<ModsellpricetypesItem> {}
-    
+
     export interface ModtypeItem {
       Name?: string;
       ModSellPriceTypesKeys?: any[];
       Unk002?: boolean;
     }
     export interface Modtype extends Array<ModtypeItem> {}
-    
+
     export interface MonsterarmoursItem {
       Id?: string;
       ArtString_SMFile?: string;
     }
     export interface Monsterarmours extends Array<MonsterarmoursItem> {}
-    
+
     export type Monsterbonuses = any[];
-    
+
     export interface MonsterconditionaleffectpacksItem {
       Id?: string;
       MiscEffectPack1?: any[];
@@ -5840,8 +5881,9 @@ export declare namespace Poe2DataMain {
       MiscEffectPack4?: any[];
       Unk005?: number;
     }
-    export interface Monsterconditionaleffectpacks extends Array<MonsterconditionaleffectpacksItem> {}
-    
+    export interface Monsterconditionaleffectpacks
+      extends Array<MonsterconditionaleffectpacksItem> {}
+
     export interface MonsterconditionsItem {
       Id?: string;
       Unk001?: MonsterconditionsItem_Unk001;
@@ -5862,9 +5904,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Monsterconditions extends Array<MonsterconditionsItem> {}
-    
+
     export type Monsterdeathachievements = any[];
-    
+
     export interface MonsterdeathconditionsItem {
       Unk000?: string;
       Unk001?: any[];
@@ -5890,9 +5932,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Monsterdeathconditions extends Array<MonsterdeathconditionsItem> {}
-    
+
     export type Monsterencounterskillgroups = any[];
-    
+
     export interface MonstergroupentriesItem {
       Id?: string;
       MonsterVarietiesKey?: MonstergroupentriesItem_MonsterVarietiesKey;
@@ -5903,7 +5945,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monstergroupentries extends Array<MonstergroupentriesItem> {}
-    
+
     export interface MonsterheightbracketsItem {
       Id?: string;
       Unk001?: number;
@@ -5930,7 +5972,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monsterheightbrackets extends Array<MonsterheightbracketsItem> {}
-    
+
     export interface MonsterheightsItem {
       MonsterVariety?: MonsterheightsItem_MonsterVariety;
       Unk001?: number;
@@ -5947,7 +5989,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monsterheights extends Array<MonsterheightsItem> {}
-    
+
     export interface MonstermapbossdifficultyItem {
       MapLevel?: number;
       Stat1Value?: number;
@@ -5982,7 +6024,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monstermapbossdifficulty extends Array<MonstermapbossdifficultyItem> {}
-    
+
     export interface MonstermapdifficultyItem {
       MapLevel?: number;
       Stat1Value?: number;
@@ -6003,7 +6045,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monstermapdifficulty extends Array<MonstermapdifficultyItem> {}
-    
+
     export interface MonstermortarItem {
       Id?: number;
       Unk001?: MonstermortarItem_Unk001;
@@ -6043,11 +6085,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Monstermortar extends Array<MonstermortarItem> {}
-    
+
     export type Monsterpackcounts = any[];
-    
+
     export type Monsterpackentries = any[];
-    
+
     export interface MonsterpacksItem {
       Id?: string;
       Unk001?: number;
@@ -6081,7 +6123,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Monsterpacks extends Array<MonsterpacksItem> {}
-    
+
     export interface MonsterprojectileattackItem {
       Id?: number;
       Projectile?: MonsterprojectileattackItem_Projectile;
@@ -6095,7 +6137,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monsterprojectileattack extends Array<MonsterprojectileattackItem> {}
-    
+
     export interface MonsterprojectilespellItem {
       Id?: number;
       Projectile?: MonsterprojectilespellItem_Projectile;
@@ -6114,7 +6156,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monsterprojectilespell extends Array<MonsterprojectilespellItem> {}
-    
+
     export interface MonsterresistancesItem {
       Id?: string;
       FireNormal?: number;
@@ -6131,20 +6173,20 @@ export declare namespace Poe2DataMain {
       ChaosMerciless?: number;
     }
     export interface Monsterresistances extends Array<MonsterresistancesItem> {}
-    
+
     export interface MonstersegmentsItem {
       Id?: string;
       Shapes?: string;
     }
     export interface Monstersegments extends Array<MonstersegmentsItem> {}
-    
+
     export type Monstershapeshift = any[];
-    
+
     export interface MonsterspawnergroupsItem {
       Id?: string;
     }
     export interface Monsterspawnergroups extends Array<MonsterspawnergroupsItem> {}
-    
+
     export interface MonsterspawnergroupsperlevelItem {
       MonsterSpawnerGroupsKey?: MonsterspawnergroupsperlevelItem_MonsterSpawnerGroupsKey;
       MinLevel?: number;
@@ -6157,9 +6199,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monsterspawnergroupsperlevel extends Array<MonsterspawnergroupsperlevelItem> {}
-    
+
     export type Monsterspawneroverrides = any[];
-    
+
     export interface MonstertypesItem {
       Id?: string;
       Unk001?: number;
@@ -6178,7 +6220,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Monstertypes extends Array<MonstertypesItem> {}
-    
+
     export interface MonstervarietiesItem {
       Id?: string;
       MonsterTypesKey?: MonstervarietiesItem_MonsterTypesKey;
@@ -6314,21 +6356,22 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Monstervarieties extends Array<MonstervarietiesItem> {}
-    
+
     export interface MonstervarietiesartvariationsItem {
       Id?: string;
       Unk001?: number;
       Unk002?: number[];
     }
-    export interface Monstervarietiesartvariations extends Array<MonstervarietiesartvariationsItem> {}
-    
+    export interface Monstervarietiesartvariations
+      extends Array<MonstervarietiesartvariationsItem> {}
+
     export interface MousecursorsizesettingsItem {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
     export interface Mousecursorsizesettings extends Array<MousecursorsizesettingsItem> {}
-    
+
     export interface MovedaemonItem {
       Unk000?: number;
       Unk001?: number;
@@ -6369,7 +6412,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Movedaemon extends Array<MovedaemonItem> {}
-    
+
     export interface MtxsetbonusItem {
       Id?: string;
       Unk001?: MtxsetbonusItem_Unk001;
@@ -6383,7 +6426,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Mtxsetbonus extends Array<MtxsetbonusItem> {}
-    
+
     export interface MultipartachievementareasItem {
       Unk000?: MultipartachievementareasItem_Unk000;
       Unk001?: any[];
@@ -6394,7 +6437,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Multipartachievementareas extends Array<MultipartachievementareasItem> {}
-    
+
     export interface MultipartachievementconditionsItem {
       Id?: string;
       MultiPartAchievementsKey1?: any;
@@ -6406,8 +6449,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Multipartachievementconditions extends Array<MultipartachievementconditionsItem> {}
-    
+    export interface Multipartachievementconditions
+      extends Array<MultipartachievementconditionsItem> {}
+
     export interface MultipartachievementsItem {
       Id?: string;
       Unk001?: number;
@@ -6422,7 +6466,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Multipartachievements extends Array<MultipartachievementsItem> {}
-    
+
     export interface MusicItem {
       Id?: string;
       SoundFile?: string;
@@ -6436,7 +6480,7 @@ export declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface Music extends Array<MusicItem> {}
-    
+
     export interface MusiccategoriesItem {
       Id?: string;
       Name?: string;
@@ -6444,7 +6488,7 @@ export declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface Musiccategories extends Array<MusiccategoriesItem> {}
-    
+
     export interface MysteryboxesItem {
       BaseItemTypesKey?: MysteryboxesItem_BaseItemTypesKey;
       BK2File?: string;
@@ -6457,7 +6501,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Mysteryboxes extends Array<MysteryboxesItem> {}
-    
+
     export interface NearbymonsterconditionsItem {
       Id?: string;
       MonsterVarietiesKeys?: any[];
@@ -6470,7 +6514,7 @@ export declare namespace Poe2DataMain {
       MinimumHealthPercentage?: number;
     }
     export interface Nearbymonsterconditions extends Array<NearbymonsterconditionsItem> {}
-    
+
     export interface NettiersItem {
       BaseItemTypesKey?: NettiersItem_BaseItemTypesKey;
       Tier?: number;
@@ -6480,7 +6524,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Nettiers extends Array<NettiersItem> {}
-    
+
     export interface NotificationsItem {
       Id?: string;
       Unk001?: boolean;
@@ -6492,7 +6536,7 @@ export declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface Notifications extends Array<NotificationsItem> {}
-    
+
     export interface NpcaudioItem {
       Id?: string;
       Unk001?: number[];
@@ -6511,7 +6555,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Npcaudio extends Array<NpcaudioItem> {}
-    
+
     export interface NpcconversationsItem {
       Id?: string;
       DialogueEvent?: NpcconversationsItem_DialogueEvent;
@@ -6524,11 +6568,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Npcconversations extends Array<NpcconversationsItem> {}
-    
+
     export type Npcdialoguecutscene = any[];
-    
+
     export type Npcdialoguecutscenesequences = any[];
-    
+
     export interface NpcdialoguestylesItem {
       Id?: string;
       HeaderBaseFile?: string;
@@ -6558,7 +6602,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Npcdialoguestyles extends Array<NpcdialoguestylesItem> {}
-    
+
     export interface NpcfollowervariationsItem {
       MonsterVarietiesKey?: NpcfollowervariationsItem_MonsterVarietiesKey;
       MiscAnimatedKey0?: NpcfollowervariationsItem_MiscAnimatedKey0;
@@ -6591,11 +6635,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Npcfollowervariations extends Array<NpcfollowervariationsItem> {}
-    
+
     export type Npcmaster = any[];
-    
+
     export type Npcportraitaooverrides = any[];
-    
+
     export interface NpcportraitsItem {
       Name?: string;
       PortraitFile?: string;
@@ -6603,7 +6647,7 @@ export declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface Npcportraits extends Array<NpcportraitsItem> {}
-    
+
     export interface NpcsItem {
       Id?: string;
       Name?: string;
@@ -6624,18 +6668,18 @@ export declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface Npcs extends Array<NpcsItem> {}
-    
+
     export interface NpcshopItem {
       Id?: string;
       Unk001?: number;
       Unk002?: any[];
     }
     export interface Npcshop extends Array<NpcshopItem> {}
-    
+
     export type Npcshopgamblervisualidentity = any[];
-    
+
     export type Npcshops = any[];
-    
+
     export interface NpctalkItem {
       NPCKey?: NpctalkItem_NPCKey;
       Unk001?: number;
@@ -6705,34 +6749,34 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Npctalk extends Array<NpctalkItem> {}
-    
+
     export interface NpctalkcategoryItem {
       Id?: string;
       Unk001?: boolean;
     }
     export interface Npctalkcategory extends Array<NpctalkcategoryItem> {}
-    
+
     export interface NpctalkconsolequickactionsItem {
       Id?: string;
       Controller?: string;
       Unk002?: string;
     }
     export interface Npctalkconsolequickactions extends Array<NpctalkconsolequickactionsItem> {}
-    
+
     export type Npctalkmobilegroup = any[];
-    
+
     export type Npctype = any[];
-    
+
     export type Npcvendordialogue = any[];
-    
+
     export type Npcvendordialogueconditions = any[];
-    
+
     export type Ongoingbuffvariations = any[];
-    
+
     export type Ongoingtriggervariations = any[];
-    
+
     export type Onkillachievements = any[];
-    
+
     export interface PackformationItem {
       Id?: string;
       Unk001?: number;
@@ -6742,11 +6786,11 @@ export declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface Packformation extends Array<PackformationItem> {}
-    
+
     export type Pantheonpanellayout = any[];
-    
+
     export type Pantheonsouls = any[];
-    
+
     export interface PassivejewelartItem {
       Unk000?: PassivejewelartItem_Unk000;
       Unk001?: string;
@@ -6758,7 +6802,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Passivejewelart extends Array<PassivejewelartItem> {}
-    
+
     export interface PassivejewelnodemodifyingstatsItem {
       JwelStat?: PassivejewelnodemodifyingstatsItem_JwelStat;
       Stat?: PassivejewelnodemodifyingstatsItem_Stat;
@@ -6775,8 +6819,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Passivejewelnodemodifyingstats extends Array<PassivejewelnodemodifyingstatsItem> {}
-    
+    export interface Passivejewelnodemodifyingstats
+      extends Array<PassivejewelnodemodifyingstatsItem> {}
+
     export interface PassivejewelradiiItem {
       ID?: string;
       RingOuterRadius?: number;
@@ -6784,21 +6829,21 @@ export declare namespace Poe2DataMain {
       Radius?: number;
     }
     export interface Passivejewelradii extends Array<PassivejewelradiiItem> {}
-    
+
     export type Passivejewelslots = any[];
-    
+
     export type Passivejeweluniqueart = any[];
-    
+
     export interface PassiveoverridelimitsItem {
       Id?: string;
       Description?: string;
     }
     export interface Passiveoverridelimits extends Array<PassiveoverridelimitsItem> {}
-    
+
     export type Passiveskillfilteroptions = any[];
-    
+
     export type Passiveskillmasteryeffects = any[];
-    
+
     export interface PassiveskillmasterygroupsItem {
       Id?: string;
       MasteryEffects?: any[];
@@ -6818,16 +6863,16 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Passiveskillmasterygroups extends Array<PassiveskillmasterygroupsItem> {}
-    
+
     export type Passiveskilloverrides = any[];
-    
+
     export interface PassiveskilloverridetypesItem {
       Id?: string;
       CounterStat?: any;
       Unk002?: boolean;
     }
     export interface Passiveskilloverridetypes extends Array<PassiveskilloverridetypesItem> {}
-    
+
     export interface PassiveskillsItem {
       Id?: string;
       Icon_DDSFile?: string;
@@ -6885,17 +6930,17 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Passiveskills extends Array<PassiveskillsItem> {}
-    
+
     export interface PassiveskillstatcategoriesItem {
       Id?: string;
       Name?: string;
     }
     export interface Passiveskillstatcategories extends Array<PassiveskillstatcategoriesItem> {}
-    
+
     export type Passiveskilltrees = any[];
-    
+
     export type Passiveskilltreetutorial = any[];
-    
+
     export interface PassiveskilltreeuiartItem {
       Id?: string;
       GroupBackgroundSmall?: string;
@@ -6917,18 +6962,19 @@ export declare namespace Poe2DataMain {
       GroupBackgroundLargeBlank?: string;
     }
     export interface Passiveskilltreeuiart extends Array<PassiveskilltreeuiartItem> {}
-    
+
     export type Passivetreeexpansionjewels = any[];
-    
+
     export interface PassivetreeexpansionjewelsizesItem {
       Name?: string;
     }
-    export interface Passivetreeexpansionjewelsizes extends Array<PassivetreeexpansionjewelsizesItem> {}
-    
+    export interface Passivetreeexpansionjewelsizes
+      extends Array<PassivetreeexpansionjewelsizesItem> {}
+
     export type Passivetreeexpansionskills = any[];
-    
+
     export type Passivetreeexpansionspecialskills = any[];
-    
+
     export interface PcbangrewardmicrosItem {
       Unk000?: PcbangrewardmicrosItem_Unk000;
       Unk001?: number;
@@ -6938,9 +6984,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Pcbangrewardmicros extends Array<PcbangrewardmicrosItem> {}
-    
+
     export type Pet = any[];
-    
+
     export interface PlayerconditionsItem {
       Id?: string;
       BuffDefinitionsKeys?: any[];
@@ -6954,7 +7000,7 @@ export declare namespace Poe2DataMain {
       Unk009?: boolean;
     }
     export interface Playerconditions extends Array<PlayerconditionsItem> {}
-    
+
     export interface PlayertradewhisperformatsItem {
       Id?: string;
       Whisper?: string;
@@ -6962,7 +7008,7 @@ export declare namespace Poe2DataMain {
       IsPriced?: boolean;
     }
     export interface Playertradewhisperformats extends Array<PlayertradewhisperformatsItem> {}
-    
+
     export interface PortalaudioItem {
       Unk000?: PortalaudioItem_Unk000;
       Unk001?: PortalaudioItem_Unk001;
@@ -6982,13 +7028,13 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Portalaudio extends Array<PortalaudioItem> {}
-    
+
     export interface PortalaudioeventsItem {
       Id?: string;
       Unk001?: number;
     }
     export interface Portalaudioevents extends Array<PortalaudioeventsItem> {}
-    
+
     export interface PreloadfromstatsItem {
       Unk000?: PreloadfromstatsItem_Unk000;
       Unk001?: any[];
@@ -7002,20 +7048,21 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Preloadfromstats extends Array<PreloadfromstatsItem> {}
-    
+
     export interface PreloadgroupsItem {
       Id?: string;
     }
     export interface Preloadgroups extends Array<PreloadgroupsItem> {}
-    
+
     export interface PrimordialbosslifescalingperlevelItem {
       AreaLevel?: number;
       Scale?: number;
     }
-    export interface Primordialbosslifescalingperlevel extends Array<PrimordialbosslifescalingperlevelItem> {}
-    
+    export interface Primordialbosslifescalingperlevel
+      extends Array<PrimordialbosslifescalingperlevelItem> {}
+
     export type Projectileoverrides = any[];
-    
+
     export interface ProjectilesItem {
       Id?: string;
       AOFiles?: string[];
@@ -7055,7 +7102,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Projectiles extends Array<ProjectilesItem> {}
-    
+
     export interface ProjectilesartvariationsItem {
       Projectile?: string;
       Variant?: number;
@@ -7064,13 +7111,13 @@ export declare namespace Poe2DataMain {
       Unk004?: any;
     }
     export interface Projectilesartvariations extends Array<ProjectilesartvariationsItem> {}
-    
+
     export interface PvptypesItem {
       Id?: string;
       Unk001?: any;
     }
     export interface Pvptypes extends Array<PvptypesItem> {}
-    
+
     export interface QuestItem {
       Id?: string;
       Act?: number;
@@ -7094,7 +7141,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Quest extends Array<QuestItem> {}
-    
+
     export interface QuestachievementsItem {
       Id?: string;
       QuestStates?: number[];
@@ -7104,15 +7151,15 @@ export declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface Questachievements extends Array<QuestachievementsItem> {}
-    
+
     export interface QuestflagsItem {
       Id?: string;
       HASH32?: number;
     }
     export interface Questflags extends Array<QuestflagsItem> {}
-    
+
     export type Questitemnpcaudio = any[];
-    
+
     export interface QuestitemsItem {
       Item?: QuestitemsItem_Item;
       HaveItemQuestFlag?: QuestitemsItem_HaveItemQuestFlag;
@@ -7145,7 +7192,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Questitems extends Array<QuestitemsItem> {}
-    
+
     export interface QuestrewardoffersItem {
       Id?: string;
       QuestKey?: QuestrewardoffersItem_QuestKey;
@@ -7170,7 +7217,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Questrewardoffers extends Array<QuestrewardoffersItem> {}
-    
+
     export interface QuestrewardsItem {
       RewardOffer?: QuestrewardsItem_RewardOffer;
       UnkLong001?: number;
@@ -7206,7 +7253,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Questrewards extends Array<QuestrewardsItem> {}
-    
+
     export interface QuestrewardtypeItem {
       Id?: string;
       Icon?: string;
@@ -7219,7 +7266,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Questrewardtype extends Array<QuestrewardtypeItem> {}
-    
+
     export interface QueststatesItem {
       Quest?: QueststatesItem_Quest;
       Order?: number;
@@ -7235,7 +7282,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Queststates extends Array<QueststatesItem> {}
-    
+
     export interface QueststaticrewardsItem {
       QuestFlag?: QueststaticrewardsItem_QuestFlag;
       Unk001?: number;
@@ -7252,7 +7299,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Queststaticrewards extends Array<QueststaticrewardsItem> {}
-    
+
     export interface QuesttrackergroupItem {
       Id?: string;
       Name?: string;
@@ -7263,17 +7310,17 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Questtrackergroup extends Array<QuesttrackergroupItem> {}
-    
+
     export interface QuesttypeItem {
       Id?: string;
       Unk001?: any[];
     }
     export interface Questtype extends Array<QuesttypeItem> {}
-    
+
     export type Racerewardtomicro = any[];
-    
+
     export type Races = any[];
-    
+
     export interface RacetimesItem {
       RacesKey?: RacetimesItem_RacesKey;
       Index?: number;
@@ -7285,7 +7332,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Racetimes extends Array<RacetimesItem> {}
-    
+
     export interface RarityItem {
       Id?: string;
       MinMods?: number;
@@ -7297,7 +7344,7 @@ export declare namespace Poe2DataMain {
       Color?: string;
     }
     export interface Rarity extends Array<RarityItem> {}
-    
+
     export interface RealmsItem {
       Id?: string;
       Name?: string;
@@ -7316,7 +7363,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Realms extends Array<RealmsItem> {}
-    
+
     export interface RecipeunlockdisplayItem {
       RecipeId?: number;
       Description?: string;
@@ -7326,9 +7373,9 @@ export declare namespace Poe2DataMain {
       UnlockArea?: any;
     }
     export interface Recipeunlockdisplay extends Array<RecipeunlockdisplayItem> {}
-    
+
     export type Recipeunlockobjects = any[];
-    
+
     export interface RelicinventorylayoutItem {
       Unk000?: number;
       Unk001?: number;
@@ -7336,13 +7383,13 @@ export declare namespace Poe2DataMain {
       Requirement?: string;
     }
     export interface Relicinventorylayout extends Array<RelicinventorylayoutItem> {}
-    
+
     export type Relicitemeffectvariations = any[];
-    
+
     export type Reservationskillsaudio = any[];
-    
+
     export type Resistancepenaltyperarealevel = any[];
-    
+
     export interface RitualbalanceperlevelItem {
       MinLevel?: number;
       Unk001?: number;
@@ -7360,13 +7407,13 @@ export declare namespace Poe2DataMain {
       Unk013?: number;
     }
     export interface Ritualbalanceperlevel extends Array<RitualbalanceperlevelItem> {}
-    
+
     export interface RitualconstantsItem {
       Id?: string;
       Value?: number;
     }
     export interface Ritualconstants extends Array<RitualconstantsItem> {}
-    
+
     export interface RitualrunetypesItem {
       Id?: string;
       MiscAnimatedKey1?: RitualrunetypesItem_MiscAnimatedKey1;
@@ -7409,7 +7456,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Ritualrunetypes extends Array<RitualrunetypesItem> {}
-    
+
     export interface RitualsetkillachievementsItem {
       Achievement?: RitualsetkillachievementsItem_Achievement;
       KillBosses?: any[];
@@ -7419,7 +7466,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Ritualsetkillachievements extends Array<RitualsetkillachievementsItem> {}
-    
+
     export interface RitualspawnpatternsItem {
       Id?: string;
       Unk001?: number;
@@ -7427,21 +7474,22 @@ export declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface Ritualspawnpatterns extends Array<RitualspawnpatternsItem> {}
-    
+
     export interface RogueexilelifescalingperlevelItem {
       Level?: number;
       AdditionalLife?: number;
     }
-    export interface Rogueexilelifescalingperlevel extends Array<RogueexilelifescalingperlevelItem> {}
-    
+    export interface Rogueexilelifescalingperlevel
+      extends Array<RogueexilelifescalingperlevelItem> {}
+
     export type Rogueexiles = any[];
-    
+
     export interface RulesetsItem {
       Id?: string;
       Unk001?: any[];
     }
     export interface Rulesets extends Array<RulesetsItem> {}
-    
+
     export interface RuniccirclesItem {
       Unk000?: string;
       Unk001?: number;
@@ -7449,7 +7497,7 @@ export declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface Runiccircles extends Array<RuniccirclesItem> {}
-    
+
     export interface SafehousebyocraftingItem {
       BetrayalJobsKey?: SafehousebyocraftingItem_BetrayalJobsKey;
       BetrayalTargetsKey?: SafehousebyocraftingItem_BetrayalTargetsKey;
@@ -7469,7 +7517,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Safehousebyocrafting extends Array<SafehousebyocraftingItem> {}
-    
+
     export interface SafehousecraftingspreecurrenciesItem {
       Id?: string;
       BaseItemTypesKey?: SafehousecraftingspreecurrenciesItem_BaseItemTypesKey;
@@ -7479,8 +7527,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Safehousecraftingspreecurrencies extends Array<SafehousecraftingspreecurrenciesItem> {}
-    
+    export interface Safehousecraftingspreecurrencies
+      extends Array<SafehousecraftingspreecurrenciesItem> {}
+
     export interface SafehousecraftingspreetypeItem {
       Id?: string;
       Currencies?: any[];
@@ -7491,7 +7540,7 @@ export declare namespace Poe2DataMain {
       Unk006?: number;
     }
     export interface Safehousecraftingspreetype extends Array<SafehousecraftingspreetypeItem> {}
-    
+
     export interface SalvageboxesItem {
       BaseItemType?: SalvageboxesItem_BaseItemType;
       Id?: string;
@@ -7502,7 +7551,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Salvageboxes extends Array<SalvageboxesItem> {}
-    
+
     export interface SanctumairlocksItem {
       Floor?: SanctumairlocksItem_Floor;
       Unk001?: number;
@@ -7523,9 +7572,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sanctumairlocks extends Array<SanctumairlocksItem> {}
-    
+
     export type Sanctumbalanceperlevel = any[];
-    
+
     export interface SanctumdefenceiconsItem {
       Id?: string;
       Stat?: SanctumdefenceiconsItem_Stat;
@@ -7539,7 +7588,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sanctumdefenceicons extends Array<SanctumdefenceiconsItem> {}
-    
+
     export interface SanctumfloorsItem {
       Id?: string;
       Area?: SanctumfloorsItem_Area;
@@ -7567,19 +7616,20 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sanctumfloors extends Array<SanctumfloorsItem> {}
-    
+
     export interface SanctumfodderlifescalingperlevelItem {
       Level?: number;
       Unk001?: number;
     }
-    export interface Sanctumfodderlifescalingperlevel extends Array<SanctumfodderlifescalingperlevelItem> {}
-    
+    export interface Sanctumfodderlifescalingperlevel
+      extends Array<SanctumfodderlifescalingperlevelItem> {}
+
     export interface SanctumlifescalingperlevelItem {
       Level?: number;
       Unk001?: number;
     }
     export interface Sanctumlifescalingperlevel extends Array<SanctumlifescalingperlevelItem> {}
-    
+
     export interface SanctumpersistenteffectcategoriesItem {
       Id?: string;
       Frame?: string;
@@ -7591,8 +7641,9 @@ export declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface Sanctumpersistenteffectcategories extends Array<SanctumpersistenteffectcategoriesItem> {}
-    
+    export interface Sanctumpersistenteffectcategories
+      extends Array<SanctumpersistenteffectcategoriesItem> {}
+
     export interface SanctumpersistenteffectsItem {
       Id?: string;
       Stats?: any[];
@@ -7623,9 +7674,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sanctumpersistenteffects extends Array<SanctumpersistenteffectsItem> {}
-    
+
     export type Sanctumrewardobjects = any[];
-    
+
     export interface SanctumroomsItem {
       Id?: string;
       ArmFile?: string;
@@ -7643,7 +7694,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sanctumrooms extends Array<SanctumroomsItem> {}
-    
+
     export interface SanctumroomtypesItem {
       Id?: string;
       Unk001?: boolean;
@@ -7668,11 +7719,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Sanctumroomtypes extends Array<SanctumroomtypesItem> {}
-    
+
     export type Sanctumselectiondisplayoverride = any[];
-    
+
     export type Scarabs = any[];
-    
+
     export interface ScoutingreportsItem {
       Id?: string;
       BaseItemType?: ScoutingreportsItem_BaseItemType;
@@ -7683,7 +7734,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Scoutingreports extends Array<ScoutingreportsItem> {}
-    
+
     export interface SentinelcraftingcurrencyItem {
       Currency?: SentinelcraftingcurrencyItem_Currency;
       Type?: number;
@@ -7693,9 +7744,9 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sentinelcraftingcurrency extends Array<SentinelcraftingcurrencyItem> {}
-    
+
     export type Sentineldroneinventorylayout = any[];
-    
+
     export interface SentinelpassivesItem {
       Id?: string;
       HASH16?: number;
@@ -7714,7 +7765,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Sentinelpassives extends Array<SentinelpassivesItem> {}
-    
+
     export interface SentinelpassivestatsItem {
       Unk000?: SentinelpassivestatsItem_Unk000;
       Unk001?: SentinelpassivestatsItem_Unk001;
@@ -7729,7 +7780,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sentinelpassivestats extends Array<SentinelpassivestatsItem> {}
-    
+
     export interface SentinelpassivetypesItem {
       Id?: string;
       DefaultIcon?: string;
@@ -7738,13 +7789,13 @@ export declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface Sentinelpassivetypes extends Array<SentinelpassivetypesItem> {}
-    
+
     export interface SentinelpowerexplevelsItem {
       Unk000?: number;
       Unk001?: number;
     }
     export interface Sentinelpowerexplevels extends Array<SentinelpowerexplevelsItem> {}
-    
+
     export interface SentinelstoragelayoutItem {
       Id?: string;
       StoredItem?: SentinelstoragelayoutItem_StoredItem;
@@ -7765,7 +7816,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sentinelstoragelayout extends Array<SentinelstoragelayoutItem> {}
-    
+
     export interface SentineltaggedmonsterstatsItem {
       TaggedStat?: SentineltaggedmonsterstatsItem_TaggedStat;
       Unk001?: SentineltaggedmonsterstatsItem_Unk001;
@@ -7782,7 +7833,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sentineltaggedmonsterstats extends Array<SentineltaggedmonsterstatsItem> {}
-    
+
     export interface SessionquestflagsItem {
       QuestFlag?: SessionquestflagsItem_QuestFlag;
     }
@@ -7791,15 +7842,15 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sessionquestflags extends Array<SessionquestflagsItem> {}
-    
+
     export type Shaperguardians = any[];
-    
+
     export type Shapeshiftformclones = any[];
-    
+
     export type Shapeshiftforms = any[];
-    
+
     export type Shapeshifttransformdata = any[];
-    
+
     export interface ShieldtypesItem {
       BaseItemTypesKey?: ShieldtypesItem_BaseItemTypesKey;
       Block?: number;
@@ -7809,7 +7860,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Shieldtypes extends Array<ShieldtypesItem> {}
-    
+
     export interface ShoptagItem {
       Id?: string;
       Name?: string;
@@ -7818,7 +7869,7 @@ export declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface Shoptag extends Array<ShoptagItem> {}
-    
+
     export interface ShrinesItem {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -7864,14 +7915,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Shrines extends Array<ShrinesItem> {}
-    
+
     export interface ShrinesoundsItem {
       Id?: string;
       StereoSoundFile?: string;
       MonoSoundFile?: string;
     }
     export interface Shrinesounds extends Array<ShrinesoundsItem> {}
-    
+
     export interface ShrinevisualartvariationsItem {
       Unk000?: ShrinevisualartvariationsItem_Unk000;
       Unk001?: boolean;
@@ -7889,7 +7940,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Shrinevisualartvariations extends Array<ShrinevisualartvariationsItem> {}
-    
+
     export interface SigildisplayItem {
       Id?: string;
       Active_StatsKey?: SigildisplayItem_Active_StatsKey;
@@ -7908,7 +7959,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Sigildisplay extends Array<SigildisplayItem> {}
-    
+
     export interface SinglegroundlaserItem {
       Id?: number;
       Unk001?: SinglegroundlaserItem_Unk001;
@@ -7936,7 +7987,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Singlegroundlaser extends Array<SinglegroundlaserItem> {}
-    
+
     export interface SkillartvariationsItem {
       Id?: string;
       Unk001?: any[];
@@ -7957,11 +8008,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Skillartvariations extends Array<SkillartvariationsItem> {}
-    
+
     export type Skillcraftingdata = any[];
-    
+
     export type Skillevents = any[];
-    
+
     export interface SkillgeminfoItem {
       Id?: string;
       Description?: string;
@@ -7975,7 +8026,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Skillgeminfo extends Array<SkillgeminfoItem> {}
-    
+
     export interface SkillgemlevelupeffectsItem {
       Id?: string;
       Unk001?: SkillgemlevelupeffectsItem_Unk001;
@@ -8000,7 +8051,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Skillgemlevelupeffects extends Array<SkillgemlevelupeffectsItem> {}
-    
+
     export interface SkillgemsItem {
       BaseItemTypesKey?: SkillgemsItem_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -8031,18 +8082,18 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Skillgems extends Array<SkillgemsItem> {}
-    
+
     export type Skillgemsforuniquestat = any[];
-    
+
     export type Skillgemsupports = any[];
-    
+
     export interface SkillminevariationsItem {
       SkillMinesKey?: number;
       Unk001?: number;
       MiscObject?: any;
     }
     export interface Skillminevariations extends Array<SkillminevariationsItem> {}
-    
+
     export interface SkillmorphdisplayItem {
       Unk000?: SkillmorphdisplayItem_Unk000;
       Unk001?: any[];
@@ -8059,7 +8110,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Skillmorphdisplay extends Array<SkillmorphdisplayItem> {}
-    
+
     export interface SkillsurgeeffectsItem {
       GrantedEffectsKey?: SkillsurgeeffectsItem_GrantedEffectsKey;
       Unk001?: any;
@@ -8084,7 +8135,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Skillsurgeeffects extends Array<SkillsurgeeffectsItem> {}
-    
+
     export interface SkilltotemvariationsItem {
       SkillTotemsKey?: number;
       TotemSkinId?: number;
@@ -8095,14 +8146,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Skilltotemvariations extends Array<SkilltotemvariationsItem> {}
-    
+
     export interface SkilltrapvariationsItem {
       Id?: number;
       Metadata?: string;
       MiscAnimated?: any;
     }
     export interface Skilltrapvariations extends Array<SkilltrapvariationsItem> {}
-    
+
     export interface SkillweaponeffectsItem {
       Unk000?: string;
       Unk001?: SkillweaponeffectsItem_Unk001;
@@ -8115,9 +8166,9 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Skillweaponeffects extends Array<SkillweaponeffectsItem> {}
-    
+
     export type Socketaudioevents = any[];
-    
+
     export interface SocketnotchesItem {
       Id?: string;
       Description?: string;
@@ -8126,9 +8177,9 @@ export declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface Socketnotches extends Array<SocketnotchesItem> {}
-    
+
     export type Soulcores = any[];
-    
+
     export interface SoundeffectsItem {
       Id?: string;
       SoundFile?: string;
@@ -8137,7 +8188,7 @@ export declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface Soundeffects extends Array<SoundeffectsItem> {}
-    
+
     export interface SpawnadditionalchestsorclustersItem {
       StatsKey?: SpawnadditionalchestsorclustersItem_StatsKey;
       ChestsKey?: any;
@@ -8151,8 +8202,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Spawnadditionalchestsorclusters extends Array<SpawnadditionalchestsorclustersItem> {}
-    
+    export interface Spawnadditionalchestsorclusters
+      extends Array<SpawnadditionalchestsorclustersItem> {}
+
     export interface SpawnobjectItem {
       Unk000?: number;
       Unk001?: any[];
@@ -8172,19 +8224,19 @@ export declare namespace Poe2DataMain {
       Unk015?: number;
     }
     export interface Spawnobject extends Array<SpawnobjectItem> {}
-    
+
     export interface SpecialroomsItem {
       Id?: string;
       ARMFile?: string;
     }
     export interface Specialrooms extends Array<SpecialroomsItem> {}
-    
+
     export interface SpecialtilesItem {
       Id?: string;
       TDTFile?: string;
     }
     export interface Specialtiles extends Array<SpecialtilesItem> {}
-    
+
     export interface SpectreoverridesItem {
       Monster?: SpectreoverridesItem_Monster;
       Spectre?: any;
@@ -8195,20 +8247,20 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Spectreoverrides extends Array<SpectreoverridesItem> {}
-    
+
     export interface StartingpassiveskillsItem {
       Id?: string;
       PassiveSkills?: any[];
     }
     export interface Startingpassiveskills extends Array<StartingpassiveskillsItem> {}
-    
+
     export interface StashtabaffinitiesItem {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
     export interface Stashtabaffinities extends Array<StashtabaffinitiesItem> {}
-    
+
     export interface StashtypeItem {
       Id?: string;
       StashId?: number;
@@ -8219,19 +8271,19 @@ export declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface Stashtype extends Array<StashtypeItem> {}
-    
+
     export type Statconvertaltattackcontainer = any[];
-    
+
     export interface StatdescriptionfunctionsItem {
       Id?: string;
       TranslationId?: string;
     }
     export interface Statdescriptionfunctions extends Array<StatdescriptionfunctionsItem> {}
-    
+
     export type Statistictrackingmicrotransactions = any[];
-    
+
     export type Statistictrackingmicrotransactionsstatistics = any[];
-    
+
     export interface StatsItem {
       Id?: string;
       Unk001?: boolean;
@@ -8258,7 +8310,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Stats extends Array<StatsItem> {}
-    
+
     export interface StatsaffectinggenerationItem {
       Stat?: StatsaffectinggenerationItem_Stat;
       StatValue?: number;
@@ -8268,7 +8320,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Statsaffectinggeneration extends Array<StatsaffectinggenerationItem> {}
-    
+
     export interface StatsfromskillstatsItem {
       Unk000?: StatsfromskillstatsItem_Unk000;
       Unk001?: StatsfromskillstatsItem_Unk001;
@@ -8282,7 +8334,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Statsfromskillstats extends Array<StatsfromskillstatsItem> {}
-    
+
     export interface StatvisualsItem {
       Unk000?: StatvisualsItem_Unk000;
       EPKFiles?: string[];
@@ -8293,7 +8345,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Statvisuals extends Array<StatvisualsItem> {}
-    
+
     export interface StrongboxesItem {
       ChestsKey?: StrongboxesItem_ChestsKey;
       SpawnWeight?: number;
@@ -8308,7 +8360,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Strongboxes extends Array<StrongboxesItem> {}
-    
+
     export interface SuicideexplosionItem {
       Id?: number;
       Unk001?: any;
@@ -8325,7 +8377,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Suicideexplosion extends Array<SuicideexplosionItem> {}
-    
+
     export interface SummonedspecificbarrelsItem {
       Id?: string;
       Chest?: SummonedspecificbarrelsItem_Chest;
@@ -8347,7 +8399,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Summonedspecificbarrels extends Array<SummonedspecificbarrelsItem> {}
-    
+
     export interface SummonedspecificmonstersItem {
       Id?: number;
       MonsterVarietiesKey?: SummonedspecificmonstersItem_MonsterVarietiesKey;
@@ -8373,13 +8425,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Summonedspecificmonsters extends Array<SummonedspecificmonstersItem> {}
-    
+
     export type Summonedspecificmonstersondeath = any[];
-    
+
     export type Supportgems = any[];
-    
+
     export type Surgeeffectpackartvariations = any[];
-    
+
     export interface SurgeeffectsItem {
       Id?: string;
       Unk001?: SurgeeffectsItem_Unk001;
@@ -8392,14 +8444,14 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Surgeeffects extends Array<SurgeeffectsItem> {}
-    
+
     export interface SurgetypesItem {
       Id?: string;
       SurgeEffects?: any[];
       IntId?: number;
     }
     export interface Surgetypes extends Array<SurgetypesItem> {}
-    
+
     export interface TablechargeItem {
       Unk000?: number;
       Unk001?: number;
@@ -8439,7 +8491,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Tablecharge extends Array<TablechargeItem> {}
-    
+
     export interface TablemonsterspawnersItem {
       Metadata?: string;
       AreaLevel?: number;
@@ -8480,14 +8532,14 @@ export declare namespace Poe2DataMain {
       Unk036?: number;
     }
     export interface Tablemonsterspawners extends Array<TablemonsterspawnersItem> {}
-    
+
     export interface TagsItem {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface Tags extends Array<TagsItem> {}
-    
+
     export interface TalismanmonstermodsItem {
       ModTypeKey?: TalismanmonstermodsItem_ModTypeKey;
       ModsKey?: TalismanmonstermodsItem_ModsKey;
@@ -8501,11 +8553,11 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Talismanmonstermods extends Array<TalismanmonstermodsItem> {}
-    
+
     export type Talismanpacks = any[];
-    
+
     export type Talismans = any[];
-    
+
     export interface TalkingpetaudioeventsItem {
       Event?: string;
       Unk001?: number;
@@ -8516,9 +8568,9 @@ export declare namespace Poe2DataMain {
       Unk006?: number;
     }
     export interface Talkingpetaudioevents extends Array<TalkingpetaudioeventsItem> {}
-    
+
     export type Talkingpetnpcaudio = any[];
-    
+
     export interface TalkingpetsItem {
       Unk000?: TalkingpetsItem_Unk000;
       Unk001?: any[];
@@ -8528,7 +8580,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Talkingpets extends Array<TalkingpetsItem> {}
-    
+
     export interface TencentautolootpetcurrenciesItem {
       BaseItemTypesKey?: TencentautolootpetcurrenciesItem_BaseItemTypesKey;
       Unk001?: boolean;
@@ -8539,7 +8591,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Tencentautolootpetcurrencies extends Array<TencentautolootpetcurrenciesItem> {}
-    
+
     export interface TencentautolootpetcurrenciesexcludableItem {
       BaseItemTypesKey?: TencentautolootpetcurrenciesexcludableItem_BaseItemTypesKey;
     }
@@ -8547,8 +8599,9 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Tencentautolootpetcurrenciesexcludable extends Array<TencentautolootpetcurrenciesexcludableItem> {}
-    
+    export interface Tencentautolootpetcurrenciesexcludable
+      extends Array<TencentautolootpetcurrenciesexcludableItem> {}
+
     export interface TerrainpluginsItem {
       Id?: string;
       Unk001?: number;
@@ -8556,9 +8609,9 @@ export declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface Terrainplugins extends Array<TerrainpluginsItem> {}
-    
+
     export type Threetoonerecipes = any[];
-    
+
     export interface TieredmicrotransactionsItem {
       MTX?: TieredmicrotransactionsItem_MTX;
       TierThresholds?: number[];
@@ -8583,16 +8636,16 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Tieredmicrotransactions extends Array<TieredmicrotransactionsItem> {}
-    
+
     export type Tieredmicrotransactionsvisuals = any[];
-    
+
     export interface TipsItem {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface Tips extends Array<TipsItem> {}
-    
+
     export interface TopologiesItem {
       Id?: string;
       DGRFile?: string;
@@ -8601,13 +8654,13 @@ export declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface Topologies extends Array<TopologiesItem> {}
-    
+
     export type Tormentspirits = any[];
-    
+
     export type Totemdefendervarieties = any[];
-    
+
     export type Touchinteractiontype = any[];
-    
+
     export interface TrademarketcategoryItem {
       Id?: string;
       Name?: string;
@@ -8622,13 +8675,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Trademarketcategory extends Array<TrademarketcategoryItem> {}
-    
+
     export interface TrademarketcategorygroupsItem {
       Id?: string;
       Name?: string;
     }
     export interface Trademarketcategorygroups extends Array<TrademarketcategorygroupsItem> {}
-    
+
     export interface TrademarketcategorylistallclassItem {
       TradeCategory?: TrademarketcategorylistallclassItem_TradeCategory;
       ItemClass?: TrademarketcategorylistallclassItem_ItemClass;
@@ -8641,10 +8694,11 @@ export declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface Trademarketcategorylistallclass extends Array<TrademarketcategorylistallclassItem> {}
-    
+    export interface Trademarketcategorylistallclass
+      extends Array<TrademarketcategorylistallclassItem> {}
+
     export type Trademarketimplicitmoddisplay = any[];
-    
+
     export interface TrademarketindexitemasItem {
       Item?: TrademarketindexitemasItem_Item;
       IndexAs?: TrademarketindexitemasItem_IndexAs;
@@ -8658,11 +8712,11 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Trademarketindexitemas extends Array<TrademarketindexitemasItem> {}
-    
+
     export type Traptools = any[];
-    
+
     export type Treasurehuntermissions = any[];
-    
+
     export interface TriggerbeamItem {
       Unk000?: number;
       Unk001?: any[];
@@ -8680,17 +8734,17 @@ export declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface Triggerbeam extends Array<TriggerbeamItem> {}
-    
+
     export type Triggeredaudioeventvolumeoverrides = any[];
-    
+
     export type Triggerspawners = any[];
-    
+
     export interface TrythenewleagueversionsItem {
       League?: string;
       Logo?: string;
     }
     export interface Trythenewleagueversions extends Array<TrythenewleagueversionsItem> {}
-    
+
     export interface TutorialItem {
       Id?: string;
       UIFile?: string;
@@ -8714,25 +8768,25 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Tutorial extends Array<TutorialItem> {}
-    
+
     export type Ultimatumencountertypes = any[];
-    
+
     export type Ultimatumencountertypesserver = any[];
-    
+
     export type Ultimatummodifiers = any[];
-    
+
     export interface UltimatummodifiertypesItem {
       Id?: string;
       Unk001?: boolean;
     }
     export interface Ultimatummodifiertypes extends Array<UltimatummodifiertypesItem> {}
-    
+
     export type Ultimatummonsterpackfamily = any[];
-    
+
     export type Ultimatumrooms = any[];
-    
+
     export type Ultimatumtriallength = any[];
-    
+
     export interface UltimatumtrialmasteraudioItem {
       Id?: string;
       Variant?: number;
@@ -8747,13 +8801,13 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Ultimatumtrialmasteraudio extends Array<UltimatumtrialmasteraudioItem> {}
-    
+
     export type Ultimatumwagertypes = any[];
-    
+
     export type Uncutgemadditionaltiers = any[];
-    
+
     export type Uncutgemtiers = any[];
-    
+
     export interface UniquechestsItem {
       Id?: string;
       WordsKey?: UniquechestsItem_WordsKey;
@@ -8782,7 +8836,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Uniquechests extends Array<UniquechestsItem> {}
-    
+
     export interface UniquejewellimitsItem {
       JewelName?: UniquejewellimitsItem_JewelName;
       Limit?: number;
@@ -8792,9 +8846,9 @@ export declare namespace Poe2DataMain {
       Text?: string;
     }
     export interface Uniquejewellimits extends Array<UniquejewellimitsItem> {}
-    
+
     export type Uniquemaps = any[];
-    
+
     export interface UniquestashlayoutItem {
       WordsKey?: UniquestashlayoutItem_WordsKey;
       ItemVisualIdentityKey?: UniquestashlayoutItem_ItemVisualIdentityKey;
@@ -8822,7 +8876,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Uniquestashlayout extends Array<UniquestashlayoutItem> {}
-    
+
     export interface UniquestashtypesItem {
       Id?: string;
       Order?: number;
@@ -8837,17 +8891,17 @@ export declare namespace Poe2DataMain {
       IsDisabled?: boolean;
     }
     export interface Uniquestashtypes extends Array<UniquestashtypesItem> {}
-    
+
     export type Utilityflaskbuffs = any[];
-    
+
     export type Visualpinproperties = any[];
-    
+
     export type Warbandsgraph = any[];
-    
+
     export type Warbandsmapgraph = any[];
-    
+
     export type Warbandspackmonsters = any[];
-    
+
     export interface WarbandspacknumbersItem {
       Id?: string;
       SpawnChance?: number;
@@ -8862,7 +8916,7 @@ export declare namespace Poe2DataMain {
       Tier1Number?: number;
     }
     export interface Warbandspacknumbers extends Array<WarbandspacknumbersItem> {}
-    
+
     export interface WeaponclassesItem {
       ItemClass?: WeaponclassesItem_ItemClass;
       Unk001?: number;
@@ -8872,7 +8926,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Weaponclasses extends Array<WeaponclassesItem> {}
-    
+
     export interface WeaponimpactsounddataItem {
       Id?: string;
       Unk001?: number;
@@ -8882,9 +8936,9 @@ export declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface Weaponimpactsounddata extends Array<WeaponimpactsounddataItem> {}
-    
+
     export type Weaponsoundtypes = any[];
-    
+
     export interface WeapontypesItem {
       BaseItemTypesKey?: WeapontypesItem_BaseItemTypesKey;
       Critical?: number;
@@ -8903,7 +8957,7 @@ export declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface Weapontypes extends Array<WeapontypesItem> {}
-    
+
     export interface WieldableclassesItem {
       Unk01?: WieldableclassesItem_Unk01;
       Unk02?: boolean;
@@ -8959,7 +9013,7 @@ export declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface Wieldableclasses extends Array<WieldableclassesItem> {}
-    
+
     export interface WindowcursorsItem {
       Id?: string;
       CursorDefault?: string;
@@ -8972,7 +9026,7 @@ export declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface Windowcursors extends Array<WindowcursorsItem> {}
-    
+
     export interface WordsItem {
       Wordlist?: number;
       Text?: string;
@@ -8983,9 +9037,9 @@ export declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface Words extends Array<WordsItem> {}
-    
+
     export type Worldarealeaguechances = any[];
-    
+
     export interface WorldareasItem {
       Id?: string;
       Name?: string;
@@ -9002,9 +9056,9 @@ export declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface Worldareas extends Array<WorldareasItem> {}
-    
+
     export type Worldmaplegends = any[];
-    
+
     export interface WorldpopupicontypesItem {
       Id?: string;
       Unk001?: string;
@@ -9017,9 +9071,7 @@ export declare namespace Poe2DataMain {
       Unk008?: string;
     }
     export interface Worldpopupicontypes extends Array<WorldpopupicontypesItem> {}
-    
-    export type Worldscreenmappindialogue = any[];
-    
-  }
 
+    export type Worldscreenmappindialogue = any[];
+  }
 }

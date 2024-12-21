@@ -9,19 +9,19 @@ A type-safe database service for accessing POE2 game data.
 The simplest way to access POE2 data with full type safety:
 
 ```typescript
-import { getSkills, getPassiveSkills, getCharacters, getActiveSkills } from '@/lib/poe/poe2-db';
+import { getActiveSkills, getCharacters, getPassiveSkills, getSkills } from "@/lib/poe/poe2-db";
 
 // Get skills data
-const skills = await getSkills();  // Type: SkillItem[]
+const skills = await getSkills(); // Type: SkillItem[]
 
 // Get passive skills
-const passives = await getPassiveSkills();  // Type: PassiveSkillItem[]
+const passives = await getPassiveSkills(); // Type: PassiveSkillItem[]
 
 // Get characters
-const characters = await getCharacters();  // Type: CharacterItem[]
+const characters = await getCharacters(); // Type: CharacterItem[]
 
 // Get active skills
-const activeSkills = await getActiveSkills();  // Type: ActiveSkillItem[]
+const activeSkills = await getActiveSkills(); // Type: ActiveSkillItem[]
 ```
 
 ### Using POE2Database Class
@@ -29,13 +29,13 @@ const activeSkills = await getActiveSkills();  // Type: ActiveSkillItem[]
 For accessing POE2 data types directly:
 
 ```typescript
-import { poe2DB } from '@/lib/poe/poe2-db';
+import { poe2DB } from "@/lib/poe/poe2-db";
 
 // Get skills with type safety
-const skills = await poe2DB.getData('Skills');  // Type: SkillItem[]
+const skills = await poe2DB.getData("Skills"); // Type: SkillItem[]
 
 // Get passive skills
-const passives = await poe2DB.getData('Passiveskills');  // Type: PassiveSkillItem[]
+const passives = await poe2DB.getData("Passiveskills"); // Type: PassiveSkillItem[]
 ```
 
 ### Using Generic Database Service
@@ -43,7 +43,7 @@ const passives = await poe2DB.getData('Passiveskills');  // Type: PassiveSkillIt
 For working with custom data types:
 
 ```typescript
-import { poeDB, type DatabaseRecord } from '@/lib/poe/db-service';
+import { type DatabaseRecord, poeDB } from "@/lib/poe/db-service";
 
 // Define your custom type
 interface CustomType extends DatabaseRecord {
@@ -52,25 +52,25 @@ interface CustomType extends DatabaseRecord {
 }
 
 // Get data with custom type
-const data = await poeDB.getData<CustomType>('customfile');  // Type: CustomType[]
+const data = await poeDB.getData<CustomType>("customfile"); // Type: CustomType[]
 ```
 
 ### Working with Metadata
 
 ```typescript
-import { poe2DB } from '@/lib/poe/poe2-db';
+import { poe2DB } from "@/lib/poe/poe2-db";
 
 // Get metadata for a category
-const metadata = await poe2DB.getMetadata('items');
+const metadata = await poe2DB.getMetadata("items");
 
 // Get metadata with subcategory
-const subMetadata = await poe2DB.getMetadata('items', 'weapons');
+const subMetadata = await poe2DB.getMetadata("items", "weapons");
 ```
 
 ### Utility Functions
 
 ```typescript
-import { poe2DB } from '@/lib/poe/poe2-db';
+import { poe2DB } from "@/lib/poe/poe2-db";
 
 // Get list of available data files
 const files = await poe2DB.getAvailableDataFiles();
@@ -127,17 +127,18 @@ The examples use the `@/` path alias which should be configured in your tsconfig
 Here's a complete example of using the database service:
 
 ```typescript
-import { poe2DB } from '@/lib/poe/poe2-db';
-import type { SkillItem } from '@/lib/poe/poe2-types';
+import { poe2DB } from "@/lib/poe/poe2-db";
+import type { SkillItem } from "@/lib/poe/poe2-types";
 
 async function getSkillByName(name: string): Promise<SkillItem | undefined> {
-  const skills = await poe2DB.getData('Skills');
-  return skills.find(skill => skill.DisplayedName === name);
+  const skills = await poe2DB.getData("Skills");
+  return skills.find((skill) => skill.DisplayedName === name);
 }
 
 // Usage
-const skill = await getSkillByName('Fireball');
+const skill = await getSkillByName("Fireball");
 if (skill) {
   console.log(`Found skill: ${skill.DisplayedName}`);
   console.log(`Description: ${skill.Description}`);
 }
+```

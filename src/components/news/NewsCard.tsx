@@ -1,8 +1,7 @@
+import { NewsItem } from "@/types/news";
 import { ArrowRight, Clock } from "lucide-react";
 
 import Link from "next/link";
-
-import { NewsItem } from "@/types/news";
 
 import { Text } from "../ui/Text";
 

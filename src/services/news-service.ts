@@ -1,4 +1,5 @@
 import { NewsItem, PatchNote } from "@/types/news";
+
 import { MOCK_NEWS, MOCK_PATCH_NOTES } from "~/data/mock-news";
 
 export class NewsService {

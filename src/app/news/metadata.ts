@@ -1,6 +1,7 @@
+import type { NewsItem } from "@/types/news";
+
 import type { Metadata, ResolvingMetadata } from "next";
 
-import type { NewsItem } from "@/types/news";
 import { NewsService } from "~/services/news-service";
 
 type Props = {

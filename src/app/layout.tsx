@@ -1,10 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
+
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+
+import { generateMetadata } from "../config/metadata";
+import { viewport } from "../config/viewport";
 import ClientLayout from "./client-layout";
 import "./globals.css";
-
-import { viewport } from "../config/viewport";
-import { generateMetadata } from "../config/metadata";
 
 export { viewport, generateMetadata };
 

@@ -1,11 +1,12 @@
 "use client";
 
+import type { POEProfile } from "@/types/poe-api";
+
 import { useCallback, useEffect, useState } from "react";
 
 import { connectPOEAccount, disconnectPOEAccount, refreshPOEProfile } from "~/app/actions/poe";
 import { createClient } from "~/lib/supabase/client";
 import type { POEAccountData } from "~/lib/supabase/types";
-import type { POEProfile } from "@/types/poe-api";
 
 export function usePOEAccount() {
   const [loading, setLoading] = useState(true);

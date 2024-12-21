@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Profile - POE2 Tools",
-  description: "Manage your POE2 Tools profile, builds, and settings. View your saved builds, track build history, and customize your preferences.",
+  description:
+    "Manage your POE2 Tools profile, builds, and settings. View your saved builds, track build history, and customize your preferences.",
   openGraph: {
     title: "POE2 Tools Profile - Manage Your Builds & Settings",
-    description: "Manage your POE2 Tools profile, builds, and settings. View your saved builds, track build history, and customize your preferences.",
+    description:
+      "Manage your POE2 Tools profile, builds, and settings. View your saved builds, track build history, and customize your preferences.",
     images: [
       {
         url: "/android-chrome-512x512.png",
@@ -30,22 +32,22 @@ export const metadata: Metadata = {
           target: {
             "@type": "EntryPoint",
             urlTemplate: "https://poe2.dev/profile/settings",
-            description: "Profile settings page"
-          }
-        }
+            description: "Profile settings page",
+          },
+        },
       },
       significantLink: [
         {
           "@type": "LinkRole",
           url: "https://poe2.dev/build-planner",
-          linkRelationship: "builds"
+          linkRelationship: "builds",
         },
         {
           "@type": "LinkRole",
           url: "https://poe2.dev/dps-calc",
-          linkRelationship: "calculations"
-        }
-      ]
+          linkRelationship: "calculations",
+        },
+      ],
     }),
     "schema:ItemList": JSON.stringify({
       "@context": "https://schema.org",
@@ -58,21 +60,21 @@ export const metadata: Metadata = {
           "@type": "ListItem",
           position: 1,
           name: "Saved Builds",
-          description: "Access and manage your saved character builds"
+          description: "Access and manage your saved character builds",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Build History",
-          description: "View and restore previous versions of your builds"
+          description: "View and restore previous versions of your builds",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Profile Settings",
-          description: "Customize your POE2 Tools experience"
-        }
-      ]
-    })
-  }
+          description: "Customize your POE2 Tools experience",
+        },
+      ],
+    }),
+  },
 };

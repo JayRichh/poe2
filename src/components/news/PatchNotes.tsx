@@ -1,6 +1,6 @@
-import { Text } from "~/components/ui/Text";
-
 import { PatchNote } from "@/types/news";
+
+import { Text } from "~/components/ui/Text";
 
 interface PatchNotesProps {
   patchNotes: PatchNote[];

@@ -1,4 +1,4 @@
-import { DatabaseRecord } from './db-service';
+import { DatabaseRecord } from "./db-service";
 
 // Define the interfaces directly based on the data structure
 export interface SkillItem extends DatabaseRecord {

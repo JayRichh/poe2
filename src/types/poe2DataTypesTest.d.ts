@@ -2,1450 +2,1688 @@
 // Contains all TypeScript interfaces/types for poe2-data-main.
 
 declare namespace Poe2DataMain {
-  export namespace Root {
-  }
+  export namespace Root {}
 
   export namespace Csd {
     interface csd_metadata_statdescriptions_active_skill_gem_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_active_skill_gem_stat_descriptionsType = csd_metadata_statdescriptions_active_skill_gem_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_active_skill_gem_stat_descriptionsType =
+      csd_metadata_statdescriptions_active_skill_gem_stat_descriptions;
+
     interface csd_metadata_statdescriptions_advanced_mod_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_advanced_mod_stat_descriptionsType = csd_metadata_statdescriptions_advanced_mod_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_advanced_mod_stat_descriptionsType =
+      csd_metadata_statdescriptions_advanced_mod_stat_descriptions;
+
     interface csd_metadata_statdescriptions_atlas_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_atlas_stat_descriptionsType = csd_metadata_statdescriptions_atlas_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_atlas_stat_descriptionsType =
+      csd_metadata_statdescriptions_atlas_stat_descriptions;
+
     interface csd_metadata_statdescriptions_character_panel_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_character_panel_stat_descriptionsType = csd_metadata_statdescriptions_character_panel_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_character_panel_stat_descriptionsType =
+      csd_metadata_statdescriptions_character_panel_stat_descriptions;
+
     interface csd_metadata_statdescriptions_chest_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_chest_stat_descriptionsType = csd_metadata_statdescriptions_chest_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_chest_stat_descriptionsType =
+      csd_metadata_statdescriptions_chest_stat_descriptions;
+
     interface csd_metadata_statdescriptions_expedition_relic_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_expedition_relic_stat_descriptionsType = csd_metadata_statdescriptions_expedition_relic_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_expedition_relic_stat_descriptionsType =
+      csd_metadata_statdescriptions_expedition_relic_stat_descriptions;
+
     interface csd_metadata_statdescriptions_gem_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_gem_stat_descriptionsType = csd_metadata_statdescriptions_gem_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_gem_stat_descriptionsType =
+      csd_metadata_statdescriptions_gem_stat_descriptions;
+
     interface csd_metadata_statdescriptions_heist_equipment_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_heist_equipment_stat_descriptionsType = csd_metadata_statdescriptions_heist_equipment_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_heist_equipment_stat_descriptionsType =
+      csd_metadata_statdescriptions_heist_equipment_stat_descriptions;
+
     interface csd_metadata_statdescriptions_leaguestone_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_leaguestone_stat_descriptionsType = csd_metadata_statdescriptions_leaguestone_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_leaguestone_stat_descriptionsType =
+      csd_metadata_statdescriptions_leaguestone_stat_descriptions;
+
     interface csd_metadata_statdescriptions_map_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_map_stat_descriptionsType = csd_metadata_statdescriptions_map_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_map_stat_descriptionsType =
+      csd_metadata_statdescriptions_map_stat_descriptions;
+
     interface csd_metadata_statdescriptions_meta_gem_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_meta_gem_stat_descriptionsType = csd_metadata_statdescriptions_meta_gem_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_meta_gem_stat_descriptionsType =
+      csd_metadata_statdescriptions_meta_gem_stat_descriptions;
+
     interface csd_metadata_statdescriptions_monster_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_monster_stat_descriptionsType = csd_metadata_statdescriptions_monster_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_monster_stat_descriptionsType =
+      csd_metadata_statdescriptions_monster_stat_descriptions;
+
     interface csd_metadata_statdescriptions_passive_skill_aura_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_passive_skill_aura_stat_descriptionsType = csd_metadata_statdescriptions_passive_skill_aura_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_passive_skill_aura_stat_descriptionsType =
+      csd_metadata_statdescriptions_passive_skill_aura_stat_descriptions;
+
     interface csd_metadata_statdescriptions_passive_skill_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_passive_skill_stat_descriptionsType = csd_metadata_statdescriptions_passive_skill_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_passive_skill_stat_descriptionsType =
+      csd_metadata_statdescriptions_passive_skill_stat_descriptions;
+
     interface csd_metadata_statdescriptions_primordial_altar_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_primordial_altar_stat_descriptionsType = csd_metadata_statdescriptions_primordial_altar_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_primordial_altar_stat_descriptionsType =
+      csd_metadata_statdescriptions_primordial_altar_stat_descriptions;
+
     interface csd_metadata_statdescriptions_sanctum_relic_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_sanctum_relic_stat_descriptionsType = csd_metadata_statdescriptions_sanctum_relic_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_sanctum_relic_stat_descriptionsType =
+      csd_metadata_statdescriptions_sanctum_relic_stat_descriptions;
+
     interface csd_metadata_statdescriptions_sentinel_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_sentinel_stat_descriptionsType = csd_metadata_statdescriptions_sentinel_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_sentinel_stat_descriptionsType =
+      csd_metadata_statdescriptions_sentinel_stat_descriptions;
+
     interface csd_metadata_statdescriptions_skill_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_skill_stat_descriptionsType = csd_metadata_statdescriptions_skill_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_skill_stat_descriptionsType =
+      csd_metadata_statdescriptions_skill_stat_descriptions;
+
     interface csd_metadata_statdescriptions_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_stat_descriptionsType = csd_metadata_statdescriptions_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_stat_descriptionsType =
+      csd_metadata_statdescriptions_stat_descriptions;
+
     interface csd_metadata_statdescriptions_utility_flask_buff_stat_descriptions {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_utility_flask_buff_stat_descriptionsType = csd_metadata_statdescriptions_utility_flask_buff_stat_descriptions;
-    
+    export type csd_metadata_statdescriptions_utility_flask_buff_stat_descriptionsType =
+      csd_metadata_statdescriptions_utility_flask_buff_stat_descriptions;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_add_buff_to_target {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_add_buff_to_targetType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_add_buff_to_target;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_add_buff_to_targetType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_add_buff_to_target;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ailment_bearer {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ailment_bearerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ailment_bearer;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ailment_bearerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ailment_bearer;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_alchemist_boon {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_alchemist_boonType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_alchemist_boon;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_alchemist_boonType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_alchemist_boon;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_archmage {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_archmageType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_archmage;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_archmageType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_archmage;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_armour_explosion {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_armour_explosionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_armour_explosion;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_armour_explosionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_armour_explosion;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_artillery_ballista_projectile {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_artillery_ballista_projectileType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_artillery_ballista_projectile;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_artillery_ballista_projectileType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_artillery_ballista_projectile;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_attrition {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_attritionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_attrition;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_attritionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_attrition;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_aura_crit_against_enemy {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_aura_crit_against_enemyType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_aura_crit_against_enemy;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_aura_crit_against_enemyType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_aura_crit_against_enemy;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ball_lightning {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ball_lightningType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ball_lightning;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ball_lightningType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ball_lightning;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_berserk {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_berserkType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_berserk;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_berserkType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_berserk;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bombadier_destructive_link {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bombadier_destructive_linkType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bombadier_destructive_link;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bombadier_destructive_linkType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bombadier_destructive_link;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_boneshatter {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_boneshatterType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_boneshatter;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_boneshatterType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_boneshatter;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_blast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_blastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_blast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_blastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_blast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_cone {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_coneType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_cone;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_coneType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_cone;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_offering {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_offeringType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_offering;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_offeringType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_offering;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_incendiary {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_incendiaryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_incendiary;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_incendiaryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_incendiary;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_permafrost {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_permafrostType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_permafrost;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_permafrostType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_permafrost;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_piercing {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_piercingType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_piercing;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_piercingType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_piercing;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_stormblast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_stormblastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_stormblast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_stormblastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_burst_shot_stormblast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_snipe {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_snipeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_snipe;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_snipeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_snipe;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_shield_charge {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_shield_chargeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_shield_charge;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_shield_chargeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_shield_charge;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staffType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staffType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff_shockwave {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff_shockwaveType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff_shockwave;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff_shockwaveType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_staff_shockwave;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_strike {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_strikeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_strike;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_strikeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_charged_strike;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_charge_mastery {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charge_masteryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_charge_mastery;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_charge_masteryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_charge_mastery;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_circle_of_power {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_circle_of_powerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_circle_of_power;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_circle_of_powerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_circle_of_power;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade_mini {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade_miniType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade_mini;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade_miniType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_cluster_grenade_mini;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_resist_aura {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_resist_auraType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_resist_aura;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_resist_auraType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_resist_aura;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_weakness {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_weaknessType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_weakness;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_weaknessType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_cold_weakness;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_combat_frenzy {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_combat_frenzyType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_combat_frenzy;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_combat_frenzyType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_combat_frenzy;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_consecrate {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_consecrateType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_consecrate;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_consecrateType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_consecrate;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_contagion {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_contagionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_contagion;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_contagionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_contagion;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_create_illusion {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_create_illusionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_create_illusion;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_create_illusionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_create_illusion;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_dark_effigy_projectile {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_dark_effigy_projectileType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_dark_effigy_projectile;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_dark_effigy_projectileType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_dark_effigy_projectile;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_death_storm {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_death_stormType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_death_storm;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_death_stormType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_death_storm;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_defiance_banner {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_defiance_bannerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_defiance_banner;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_defiance_bannerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_defiance_banner;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_demon_transformation {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_demon_transformationType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_demon_transformation;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_demon_transformationType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_demon_transformation;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_despair {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_despairType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_despair;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_despairType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_despair;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonate_dead {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonate_deadType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonate_dead;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonate_deadType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonate_dead;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonating_arrow {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonating_arrowType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonating_arrow;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonating_arrowType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_detonating_arrow;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_discipline {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_disciplineType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_discipline;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_disciplineType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_discipline;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_double_slam {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_double_slamType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_double_slam;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_double_slamType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_double_slam;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_dread_banner {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_dread_bannerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_dread_banner;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_dread_bannerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_dread_banner;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_electrocuting_arrow {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_electrocuting_arrowType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_electrocuting_arrow;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_electrocuting_arrowType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_electrocuting_arrow;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_elemental_conflux {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_elemental_confluxType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_elemental_conflux;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_elemental_confluxType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_elemental_conflux;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_emergency_reload {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_emergency_reloadType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_emergency_reload;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_emergency_reloadType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_emergency_reload;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_empower_barrage {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_empower_barrageType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_empower_barrage;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_empower_barrageType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_empower_barrage;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_encase_in_jade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_encase_in_jadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_encase_in_jade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_encase_in_jadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_encase_in_jade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_enfeeble {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_enfeebleType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_enfeeble;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_enfeebleType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_enfeeble;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_escape_shot {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_escape_shotType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_escape_shot;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_escape_shotType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_escape_shot;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_essence_drain {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_essence_drainType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_essence_drain;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_essence_drainType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_essence_drain;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_explosive_grenade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_explosive_grenadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_explosive_grenade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_explosive_grenadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_explosive_grenade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_exsanguinate {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_exsanguinateType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_exsanguinate;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_exsanguinateType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_exsanguinate;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_eye_of_winter_new {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_eye_of_winter_newType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_eye_of_winter_new;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_eye_of_winter_newType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_eye_of_winter_new;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_fireball {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fireballType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_fireball;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fireballType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_fireball;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_firewall {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_firewallType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_firewall;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_firewallType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_firewall;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_mortar {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_mortarType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_mortar;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_mortarType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_mortar;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_resist_aura {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_resist_auraType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_resist_aura;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_resist_auraType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_resist_aura;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_storm {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_stormType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_storm;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_stormType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_storm;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_weakness {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_weaknessType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_weakness;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_weaknessType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_fire_weakness;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_flash_grenade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_flash_grenadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_flash_grenade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_flash_grenadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_flash_grenade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_markType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_markType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark_nova {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark_novaType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark_nova;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark_novaType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_mark_nova;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_salvo {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_salvoType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_salvo;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_salvoType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_salvo;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_word {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_wordType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_word;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_wordType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_freezing_word;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bolt {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_boltType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bolt;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_boltType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bolt;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bomb {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bombType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bomb;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bombType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_bomb;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_wall_new {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_wall_newType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_wall_new;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_wall_newType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_frost_wall_new;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gale_strike {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gale_strikeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gale_strike;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gale_strikeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gale_strike;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_geometry_spell {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_geometry_spellType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_geometry_spell;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_geometry_spellType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_geometry_spell;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ghost_dance {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ghost_danceType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ghost_dance;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ghost_danceType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ghost_dance;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_glacial_cascade_attack {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_glacial_cascade_attackType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_glacial_cascade_attack;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_glacial_cascade_attackType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_glacial_cascade_attack;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_greater_fireball {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_greater_fireballType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_greater_fireball;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_greater_fireballType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_greater_fireball;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_grim_feast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_grim_feastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_grim_feast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_grim_feastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_grim_feast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_hammer_of_the_gods {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hammer_of_the_godsType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_hammer_of_the_gods;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hammer_of_the_godsType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_hammer_of_the_gods;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_hand_of_chayula {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hand_of_chayulaType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_hand_of_chayula;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hand_of_chayulaType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_hand_of_chayula;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_harvester {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_harvesterType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_harvester;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_harvesterType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_harvester;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_heavy_strike {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_heavy_strikeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_heavy_strike;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_heavy_strikeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_heavy_strike;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_agony {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_agonyType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_agony;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_agonyType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_agony;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ash {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ashType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ash;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ashType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ash;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ice {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_iceType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ice;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_iceType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_ice;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_hexblast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hexblastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_hexblast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_hexblastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_hexblast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_explode {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_explodeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_explode;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_explodeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_explode;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_bomb {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_bombType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_bomb;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_bombType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_bomb;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_nova {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_novaType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_nova;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_novaType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_nova;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_shot {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_shotType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_shot;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_shotType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_shot;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry_corpse_explosion {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry_corpse_explosionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry_corpse_explosion;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry_corpse_explosionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_infernal_cry_corpse_explosion;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_leap_slam {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_leap_slamType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_leap_slam;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_leap_slamType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_leap_slam;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_life_remnants {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_life_remnantsType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_life_remnants;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_life_remnantsType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_life_remnants;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_bolt {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_boltType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_bolt;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_boltType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_bolt;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_conduit {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_conduitType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_conduit;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_conduitType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_conduit;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_resist_aura {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_resist_auraType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_resist_aura;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_resist_auraType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_resist_aura;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_rod_rain {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_rod_rainType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_rod_rain;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_rod_rainType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_rod_rain;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_weakness {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_weaknessType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_weakness;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_weaknessType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_weakness;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_living_bomb_player {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_living_bomb_playerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_living_bomb_player;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_living_bomb_playerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_living_bomb_player;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_drain {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_drainType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_drain;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_drainType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_drain;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_remnants {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_remnantsType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_remnants;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_remnantsType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_remnants;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_tempest {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_tempestType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_tempest;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_tempestType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_mana_tempest;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_mantra_of_destruction {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mantra_of_destructionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_mantra_of_destruction;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_mantra_of_destructionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_mantra_of_destruction;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_new_lightning_strike {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_new_lightning_strikeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_new_lightning_strike;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_new_lightning_strikeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_new_lightning_strike;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_oil_grenade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_oil_grenadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_oil_grenade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_oil_grenadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_oil_grenade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_orb_of_storms {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_orb_of_stormsType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_orb_of_storms;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_orb_of_stormsType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_orb_of_storms;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_overwhelming_pressure {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_overwhelming_pressureType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_overwhelming_pressure;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_overwhelming_pressureType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_overwhelming_pressure;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_pain_offering {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_pain_offeringType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_pain_offering;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_pain_offeringType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_pain_offering;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_poisonbloom_arrow {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poisonbloom_arrowType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_poisonbloom_arrow;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poisonbloom_arrowType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_poisonbloom_arrow;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_burst_arrow {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_burst_arrowType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_burst_arrow;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_burst_arrowType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_burst_arrow;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_offering {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_offeringType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_offering;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_offeringType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_offering;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_incendiary {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_incendiaryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_incendiary;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_incendiaryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_incendiary;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_permafrost {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_permafrostType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_permafrost;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_permafrostType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_permafrost;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_piercing {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_piercingType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_piercing;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_piercingType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_piercing;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_stormblast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_stormblastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_stormblast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_stormblastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_shot_stormblast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_siphon {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_siphonType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_siphon;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_siphonType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_power_siphon;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_quarterstaff_frost_burst {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_quarterstaff_frost_burstType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_quarterstaff_frost_burst;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_quarterstaff_frost_burstType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_quarterstaff_frost_burst;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_rain_of_arrows_new {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rain_of_arrows_newType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_rain_of_arrows_new;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rain_of_arrows_newType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_rain_of_arrows_new;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_raise_zombie {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_raise_zombieType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_raise_zombie;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_raise_zombieType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_raise_zombie;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_incendiary {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_incendiaryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_incendiary;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_incendiaryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_incendiary;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_permafrost {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_permafrostType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_permafrost;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_permafrostType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_permafrost;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_piercing {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_piercingType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_piercing;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_piercingType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_piercing;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_stormblast {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_stormblastType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_stormblast;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_stormblastType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_rapid_shot_stormblast;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_reap {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_reapType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_reap;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_reapType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_reap;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ring_of_bone {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ring_of_boneType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ring_of_bone;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ring_of_boneType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ring_of_bone;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ritual_of_power {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ritual_of_powerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ritual_of_power;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ritual_of_powerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ritual_of_power;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_scavenged_plating {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_scavenged_platingType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_scavenged_plating;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_scavenged_platingType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_scavenged_plating;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_seismic_cry {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_seismic_cryType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_seismic_cry;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_seismic_cryType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_seismic_cry;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shard_despoiler {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shard_despoilerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shard_despoiler;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shard_despoilerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shard_despoiler;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shatter {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shatterType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shatter;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shatterType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shatter;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shattering_palm {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shattering_palmType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shattering_palm;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shattering_palmType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shattering_palm;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_barricade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_barricadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_barricade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_barricadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_barricade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_drum {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_drumType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_drum;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_drumType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shield_drum;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shocking_arrow {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shocking_arrowType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shocking_arrow;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shocking_arrowType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shocking_arrow;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_shock_grenade {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shock_grenadeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_shock_grenade;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_shock_grenadeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_shock_grenade;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrostType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrostType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost_ammo {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost_ammoType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost_ammo;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost_ammoType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_permafrost_ammo;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_piercing {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_piercingType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_piercing;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_piercingType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_piercing;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_snipers_mark {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_snipers_markType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_snipers_mark;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_snipers_markType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_snipers_mark;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_sorcery_ward {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sorcery_wardType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_sorcery_ward;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sorcery_wardType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_sorcery_ward;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_soulrend {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_soulrendType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_soulrend;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_soulrendType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_soulrend;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_spark {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sparkType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_spark;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sparkType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_spark;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_spiral_volley {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spiral_volleyType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_spiral_volley;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spiral_volleyType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_spiral_volley;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_stomping_ground_shockwave {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_stomping_ground_shockwaveType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_stomping_ground_shockwave;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_stomping_ground_shockwaveType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_stomping_ground_shockwave;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_storm_wave {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_storm_waveType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_storm_wave;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_storm_waveType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_storm_wave;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_summon_infernal_familiar {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_summon_infernal_familiarType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_summon_infernal_familiar;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_summon_infernal_familiarType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_summon_infernal_familiar;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_teleport_ball {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_teleport_ballType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_teleport_ball;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_teleport_ballType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_teleport_ball;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_chains {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_chainsType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_chains;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_chainsType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_chains;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_rift {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_riftType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_rift;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_riftType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_temporal_rift;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_markType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_markType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark_nova {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark_novaType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark_nova;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark_novaType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_thaumaturgist_mark_nova;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_bleed {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_bleedType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_bleed;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_bleedType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_bleed;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_cold {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_coldType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_cold;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_coldType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_cold;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_fire {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_fireType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_fire;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_fireType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_fire;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_lightning {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_lightningType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_lightning;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_lightningType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_lightning;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_poison {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_poisonType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_poison;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_poisonType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_throw_flask_poison;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_of_need {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_of_needType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_of_need;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_of_needType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_of_need;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_stop {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_stopType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_stop;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_stopType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_time_stop;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_triggered {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_triggeredType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_triggered;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_triggeredType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_triggered;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_totem_shockwave_quake {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_totem_shockwave_quakeType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_totem_shockwave_quake;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_totem_shockwave_quakeType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_totem_shockwave_quake;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_trick_shot {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_trick_shotType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_trick_shot;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_trick_shotType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_trick_shot;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_triggered_freezing_word_explosion {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_triggered_freezing_word_explosionType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_triggered_freezing_word_explosion;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_triggered_freezing_word_explosionType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_triggered_freezing_word_explosion;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_vaulting_impact {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_vaulting_impactType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_vaulting_impact;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_vaulting_impactType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_vaulting_impact;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_volatile_dead {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_volatile_deadType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_volatile_dead;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_volatile_deadType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_volatile_dead;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_volcanic_fissure {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_volcanic_fissureType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_volcanic_fissure;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_volcanic_fissureType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_volcanic_fissure;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_vulnerability {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_vulnerabilityType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_vulnerability;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_vulnerabilityType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_vulnerability;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_war_banner {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_war_bannerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_war_banner;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_war_bannerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_war_banner;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_dancer {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_dancerType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_dancer;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_dancerType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_dancer;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_palm {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_palmType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_palm;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_palmType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_wind_palm;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_withering_presence {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_withering_presenceType = csd_metadata_statdescriptions_specific_skill_stat_descriptions_withering_presence;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_withering_presenceType =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_withering_presence;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_blazing_cluster_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_bone_spike_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channelled_slam_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_channel_stampede_statset_2;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_corpse_cloud_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_earthquake_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gas_cloud_arrow_statset_2;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_gathering_storm_statset_2;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_herald_of_thunder_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_ice_ambush_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_incinerate_player_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_lightning_arrow_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_magnetic_salvo_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_molten_blast_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_new_sunder_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_poison_vine_arrow_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_siege_cascade_stormblast_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_sniper_gas_shot_statset_2;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_solar_orb_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_spike_slam_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tempest_bell_statset_2;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_tornado_shot_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_0 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_0Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_0;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_0Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_0;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_1 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_1Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_1;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_1Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_1;
+
     interface csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_2 {
       Path?: string;
       Entries?: any[];
     }
-    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_2Type = csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_2;
-    
+    export type csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_2Type =
+      csd_metadata_statdescriptions_specific_skill_stat_descriptions_toxic_grenade_statset_2;
   }
 
   export namespace Data {
@@ -1453,8 +1691,9 @@ declare namespace Poe2DataMain {
       Level?: number;
       Life?: number;
     }
-    export interface data_abyssbosslifescalingperlevel extends Array<data_abyssbosslifescalingperlevel_Item> {}
-    
+    export interface data_abyssbosslifescalingperlevel
+      extends Array<data_abyssbosslifescalingperlevel_Item> {}
+
     interface data_abyssobjects_Item {
       Id?: string;
       MinLevel?: number;
@@ -1479,7 +1718,7 @@ declare namespace Poe2DataMain {
       Unk020?: boolean;
     }
     export interface data_abyssobjects extends Array<data_abyssobjects_Item> {}
-    
+
     interface data_achievementitemrewards_Item {
       AchievementItemsKey?: data_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_achievementitemrewards_Item_BaseItemTypesKey;
@@ -1495,7 +1734,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_achievementitemrewards extends Array<data_achievementitemrewards_Item> {}
-    
+
     interface data_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -1513,7 +1752,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_achievementitems extends Array<data_achievementitems_Item> {}
-    
+
     interface data_achievements_Item {
       Id?: string;
       Description?: string;
@@ -1535,7 +1774,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_achievements extends Array<data_achievements_Item> {}
-    
+
     interface data_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -1547,19 +1786,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_achievementsetrewards extends Array<data_achievementsetrewards_Item> {}
-    
+
     interface data_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
     export interface data_achievementsetsdisplay extends Array<data_achievementsetsdisplay_Item> {}
-    
+
     interface data_actiontypes_Item {
       Id?: string;
       Unk001?: number;
     }
     export interface data_actiontypes extends Array<data_actiontypes_Item> {}
-    
+
     interface data_activesettings_Item {
       Unk000?: string;
       Unk001?: number;
@@ -1587,9 +1826,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_activesettings extends Array<data_activesettings_Item> {}
-    
+
     export type data_activeskillrequirementicons = any[];
-    
+
     interface data_activeskillrequirements_Item {
       SomeRef01?: data_activeskillrequirements_Item_SomeRef01;
       SomeRef02?: data_activeskillrequirements_Item_SomeRef02;
@@ -1605,8 +1844,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_activeskillrequirements extends Array<data_activeskillrequirements_Item> {}
-    
+    export interface data_activeskillrequirements
+      extends Array<data_activeskillrequirements_Item> {}
+
     interface data_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -1657,7 +1897,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_activeskills extends Array<data_activeskills_Item> {}
-    
+
     interface data_activeskilltype_Item {
       Id?: string;
       FlagStat?: data_activeskilltype_Item_FlagStat;
@@ -1667,7 +1907,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_activeskilltype extends Array<data_activeskilltype_Item> {}
-    
+
     interface data_acts_Item {
       Id?: string;
       Part?: number;
@@ -1682,7 +1922,7 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_acts extends Array<data_acts_Item> {}
-    
+
     interface data_addbufftotargetvarieties_Item {
       BuffDefinitions?: data_addbufftotargetvarieties_Item_BuffDefinitions;
       Unk001?: any[];
@@ -1697,12 +1937,13 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_addbufftotargetvarieties extends Array<data_addbufftotargetvarieties_Item> {}
-    
+    export interface data_addbufftotargetvarieties
+      extends Array<data_addbufftotargetvarieties_Item> {}
+
     export type data_additionallifescaling = any[];
-    
+
     export type data_additionallifescalingperlevel = any[];
-    
+
     interface data_additionalmonsterpacksfromstats_Item {
       StatsKey?: data_additionalmonsterpacksfromstats_Item_StatsKey;
       Unk001?: number;
@@ -1718,12 +1959,13 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_additionalmonsterpacksfromstats extends Array<data_additionalmonsterpacksfromstats_Item> {}
-    
+    export interface data_additionalmonsterpacksfromstats
+      extends Array<data_additionalmonsterpacksfromstats_Item> {}
+
     export type data_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -1735,7 +1977,7 @@ declare namespace Poe2DataMain {
       CharactersKey?: any[];
     }
     export interface data_advancedskillstutorial extends Array<data_advancedskillstutorial_Item> {}
-    
+
     interface data_aegisvariations_Item {
       Name?: string;
       DefendsAgainstPhysical?: boolean;
@@ -1766,7 +2008,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_aegisvariations extends Array<data_aegisvariations_Item> {}
-    
+
     interface data_afflictionbalanceperlevel_Item {
       Unk000?: number;
       Unk001?: number;
@@ -1784,8 +2026,9 @@ declare namespace Poe2DataMain {
       Unk013?: number;
       Unk014?: number;
     }
-    export interface data_afflictionbalanceperlevel extends Array<data_afflictionbalanceperlevel_Item> {}
-    
+    export interface data_afflictionbalanceperlevel
+      extends Array<data_afflictionbalanceperlevel_Item> {}
+
     interface data_afflictionendgamewavemods_Item {
       ModsKey?: data_afflictionendgamewavemods_Item_ModsKey;
       Unk001?: number;
@@ -1796,8 +2039,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_afflictionendgamewavemods extends Array<data_afflictionendgamewavemods_Item> {}
-    
+    export interface data_afflictionendgamewavemods
+      extends Array<data_afflictionendgamewavemods_Item> {}
+
     interface data_afflictionfixedmods_Item {
       Rarity?: number;
       Mod?: data_afflictionfixedmods_Item_Mod;
@@ -1812,13 +2056,14 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_afflictionfixedmods extends Array<data_afflictionfixedmods_Item> {}
-    
+
     interface data_afflictionrandommodcategories_Item {
       Id?: string;
       Unk001?: boolean;
     }
-    export interface data_afflictionrandommodcategories extends Array<data_afflictionrandommodcategories_Item> {}
-    
+    export interface data_afflictionrandommodcategories
+      extends Array<data_afflictionrandommodcategories_Item> {}
+
     interface data_afflictionrewardmapmods_Item {
       ModsKey?: data_afflictionrewardmapmods_Item_ModsKey;
       Unk001?: boolean;
@@ -1827,15 +2072,17 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_afflictionrewardmapmods extends Array<data_afflictionrewardmapmods_Item> {}
-    
+    export interface data_afflictionrewardmapmods
+      extends Array<data_afflictionrewardmapmods_Item> {}
+
     interface data_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_afflictionrewardtypevisuals extends Array<data_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_afflictionrewardtypevisuals
+      extends Array<data_afflictionrewardtypevisuals_Item> {}
+
     interface data_afflictionsplitdemons_Item {
       Unk000?: number;
       MonsterVarietiesKey?: data_afflictionsplitdemons_Item_MonsterVarietiesKey;
@@ -1850,9 +2097,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_afflictionsplitdemons extends Array<data_afflictionsplitdemons_Item> {}
-    
+
     export type data_afflictionstartdialogue = any[];
-    
+
     interface data_alternatepassiveadditions_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_alternatepassiveadditions_Item_AlternateTreeVersionsKey;
@@ -1871,8 +2118,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_alternatepassiveadditions extends Array<data_alternatepassiveadditions_Item> {}
-    
+    export interface data_alternatepassiveadditions
+      extends Array<data_alternatepassiveadditions_Item> {}
+
     interface data_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -1906,9 +2154,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_alternatepassiveskills extends Array<data_alternatepassiveskills_Item> {}
-    
+
     export type data_alternatequalitytypes = any[];
-    
+
     interface data_alternateskilltargetingbehaviours_Item {
       Id?: string;
       Unk001?: number;
@@ -1922,8 +2170,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_alternateskilltargetingbehaviours extends Array<data_alternateskilltargetingbehaviours_Item> {}
-    
+    export interface data_alternateskilltargetingbehaviours
+      extends Array<data_alternateskilltargetingbehaviours_Item> {}
+
     interface data_alternatetreeart_Item {
       Unk000?: data_alternatetreeart_Item_Unk000;
       Circle1?: string;
@@ -1935,7 +2184,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_alternatetreeart extends Array<data_alternatetreeart_Item> {}
-    
+
     interface data_alternatetreeversions_Item {
       Id?: string;
       Unk001?: boolean;
@@ -1949,9 +2198,9 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_alternatetreeversions extends Array<data_alternatetreeversions_Item> {}
-    
+
     export type data_ancestraltrialunits = any[];
-    
+
     interface data_animatedobjectflags_Item {
       AOFile?: string;
       Unk001?: number;
@@ -1959,9 +2208,9 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_animatedobjectflags extends Array<data_animatedobjectflags_Item> {}
-    
+
     export type data_animateweaponuniques = any[];
-    
+
     interface data_animation_Item {
       Id?: string;
       Unk001?: boolean;
@@ -1977,16 +2226,16 @@ declare namespace Poe2DataMain {
       Unk011?: any[];
     }
     export interface data_animation extends Array<data_animation_Item> {}
-    
+
     interface data_applydamagefunctions_Item {
       Id?: string;
       StatsKeys?: any[];
       Unk002?: boolean;
     }
     export interface data_applydamagefunctions extends Array<data_applydamagefunctions_Item> {}
-    
+
     export type data_archetyperewards = any[];
-    
+
     interface data_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -2006,13 +2255,14 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_archetypes extends Array<data_archetypes_Item> {}
-    
+
     interface data_architectlifescalingperlevel_Item {
       Level?: number;
       MoreLife?: number;
     }
-    export interface data_architectlifescalingperlevel extends Array<data_architectlifescalingperlevel_Item> {}
-    
+    export interface data_architectlifescalingperlevel
+      extends Array<data_architectlifescalingperlevel_Item> {}
+
     interface data_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -2022,9 +2272,9 @@ declare namespace Poe2DataMain {
       MaxLevel?: number;
     }
     export interface data_archnemesismetarewards extends Array<data_archnemesismetarewards_Item> {}
-    
+
     export type data_archnemesismodcomboachievements = any[];
-    
+
     interface data_archnemesismods_Item {
       Mod?: data_archnemesismods_Item_Mod;
       Name?: string;
@@ -2038,7 +2288,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_archnemesismods extends Array<data_archnemesismods_Item> {}
-    
+
     interface data_archnemesismodvisuals_Item {
       Id?: string;
       Unk001?: any;
@@ -2054,11 +2304,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_archnemesismodvisuals extends Array<data_archnemesismodvisuals_Item> {}
-    
+
     export type data_archnemesisrecipes = any[];
-    
+
     export type data_areadifficultystats = any[];
-    
+
     interface data_areainfluencedoodads_Item {
       StatsKey?: data_areainfluencedoodads_Item_StatsKey;
       StatValue?: number;
@@ -2074,18 +2324,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_areainfluencedoodads extends Array<data_areainfluencedoodads_Item> {}
-    
+
     export type data_areastatsperdifficulty = any[];
-    
+
     export type data_areatransitionanimations = any[];
-    
+
     interface data_areatransitionanimationtypes_Item {
       Id?: string;
     }
-    export interface data_areatransitionanimationtypes extends Array<data_areatransitionanimationtypes_Item> {}
-    
+    export interface data_areatransitionanimationtypes
+      extends Array<data_areatransitionanimationtypes_Item> {}
+
     export type data_areatransitioninfo = any[];
-    
+
     interface data_armourtypes_Item {
       BaseItemTypesKey?: data_armourtypes_Item_BaseItemTypesKey;
       Armour?: number;
@@ -2100,11 +2351,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_armourtypes extends Array<data_armourtypes_Item> {}
-    
+
     export type data_arrowspearoverride = any[];
-    
+
     export type data_arrowstatreference = any[];
-    
+
     interface data_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -2122,9 +2373,9 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_ascendancy extends Array<data_ascendancy_Item> {}
-    
+
     export type data_atlasexilebossarenas = any[];
-    
+
     interface data_atlasexileinfluence_Item {
       Conqueror?: data_atlasexileinfluence_Item_Conqueror;
       Sets?: any[];
@@ -2134,7 +2385,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_atlasexileinfluence extends Array<data_atlasexileinfluence_Item> {}
-    
+
     interface data_atlasexiles_Item {
       Id?: string;
       Unk001?: number;
@@ -2147,14 +2398,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_atlasexiles extends Array<data_atlasexiles_Item> {}
-    
+
     interface data_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
     export interface data_atlasfavouredmapslots extends Array<data_atlasfavouredmapslots_Item> {}
-    
+
     interface data_atlasfog_Item {
       Unk000?: number;
       Unk001?: number;
@@ -2162,7 +2413,7 @@ declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface data_atlasfog extends Array<data_atlasfog_Item> {}
-    
+
     interface data_atlasinfluencedata_Item {
       InfluencePack?: data_atlasinfluencedata_Item_InfluencePack;
       MonsterPacks?: any[];
@@ -2194,20 +2445,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_atlasinfluencedata extends Array<data_atlasinfluencedata_Item> {}
-    
+
     interface data_atlasinfluenceoutcomes_Item {
       Id?: string;
       Unk001?: number;
       Type?: number;
     }
     export interface data_atlasinfluenceoutcomes extends Array<data_atlasinfluenceoutcomes_Item> {}
-    
+
     interface data_atlasinfluencesets_Item {
       Id?: string;
       InfluencePacks?: any[];
     }
     export interface data_atlasinfluencesets extends Array<data_atlasinfluencesets_Item> {}
-    
+
     interface data_atlasmemoryline_Item {
       League?: string;
       League2?: string;
@@ -2217,7 +2468,7 @@ declare namespace Poe2DataMain {
       PathArt?: string;
     }
     export interface data_atlasmemoryline extends Array<data_atlasmemoryline_Item> {}
-    
+
     interface data_atlasmods_Item {
       ModsKey?: data_atlasmods_Item_ModsKey;
       AtlasModTiers?: number;
@@ -2227,20 +2478,21 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_atlasmods extends Array<data_atlasmods_Item> {}
-    
+
     export type data_atlasnode = any[];
-    
+
     export type data_atlasnodedefinition = any[];
-    
+
     export type data_atlaspassiveskillsubtrees = any[];
-    
+
     interface data_atlaspassiveskilltreegrouptype_Item {
       Id?: string;
     }
-    export interface data_atlaspassiveskilltreegrouptype extends Array<data_atlaspassiveskilltreegrouptype_Item> {}
-    
+    export interface data_atlaspassiveskilltreegrouptype
+      extends Array<data_atlaspassiveskilltreegrouptype_Item> {}
+
     export type data_atlaspoem = any[];
-    
+
     interface data_atlaspositions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -2248,9 +2500,9 @@ declare namespace Poe2DataMain {
       Y?: number;
     }
     export interface data_atlaspositions extends Array<data_atlaspositions_Item> {}
-    
+
     export type data_atlasprimordialaltarchoices = any[];
-    
+
     interface data_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -2259,8 +2511,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_atlasprimordialaltarchoicetypes extends Array<data_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_atlasprimordialaltarchoicetypes
+      extends Array<data_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_atlasprimordialbosses_Item {
       Id?: string;
       Unk001?: number;
@@ -2314,7 +2567,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_atlasprimordialbosses extends Array<data_atlasprimordialbosses_Item> {}
-    
+
     interface data_atlasprimordialbossinfluence_Item {
       Boss?: data_atlasprimordialbossinfluence_Item_Boss;
       Progress?: number;
@@ -2329,8 +2582,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_atlasprimordialbossinfluence extends Array<data_atlasprimordialbossinfluence_Item> {}
-    
+    export interface data_atlasprimordialbossinfluence
+      extends Array<data_atlasprimordialbossinfluence_Item> {}
+
     interface data_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -2353,8 +2607,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_atlasprimordialbossoptions extends Array<data_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_atlasprimordialbossoptions
+      extends Array<data_atlasprimordialbossoptions_Item> {}
+
     interface data_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -2376,8 +2631,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_atlasupgradesinventorylayout extends Array<data_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_atlasupgradesinventorylayout
+      extends Array<data_atlasupgradesinventorylayout_Item> {}
+
     interface data_attributerequirements_Item {
       BaseItemTypesKey?: data_attributerequirements_Item_BaseItemTypesKey;
       Strength?: number;
@@ -2389,19 +2645,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_attributerequirements extends Array<data_attributerequirements_Item> {}
-    
+
     export type data_awarddisplay = any[];
-    
+
     interface data_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_backenderrors extends Array<data_backenderrors_Item> {}
-    
+
     export type data_ballisticbouncebehaviour = any[];
-    
+
     export type data_ballisticbounceoverride = any[];
-    
+
     interface data_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_baseitemtypes_Item_ItemClassesKey;
@@ -2450,7 +2706,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_baseitemtypes extends Array<data_baseitemtypes_Item> {}
-    
+
     interface data_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -2461,7 +2717,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_battlepasses extends Array<data_battlepasses_Item> {}
-    
+
     interface data_battlepassrewards_Item {
       BattlePass?: data_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -2496,13 +2752,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_battlepassrewards extends Array<data_battlepassrewards_Item> {}
-    
+
     interface data_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
     export interface data_battlepasstracks extends Array<data_battlepasstracks_Item> {}
-    
+
     interface data_belttypes_Item {
       BaseItemTypesKey?: data_belttypes_Item_BaseItemTypesKey;
       CharmSlots?: number;
@@ -2512,11 +2768,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_belttypes extends Array<data_belttypes_Item> {}
-    
+
     export type data_bestiarycapturablemonsters = any[];
-    
+
     export type data_bestiaryencounters = any[];
-    
+
     interface data_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -2540,7 +2796,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_bestiaryfamilies extends Array<data_bestiaryfamilies_Item> {}
-    
+
     interface data_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -2553,7 +2809,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_bestiarygenus extends Array<data_bestiarygenus_Item> {}
-    
+
     interface data_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -2569,7 +2825,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_bestiarygroups extends Array<data_bestiarygroups_Item> {}
-    
+
     interface data_bestiarynets_Item {
       BaseItemTypesKey?: data_bestiarynets_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -2585,13 +2841,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_bestiarynets extends Array<data_bestiarynets_Item> {}
-    
+
     interface data_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_bestiaryrecipecategories extends Array<data_bestiaryrecipecategories_Item> {}
-    
+    export interface data_bestiaryrecipecategories
+      extends Array<data_bestiaryrecipecategories_Item> {}
+
     interface data_bestiaryrecipecomponent_Item {
       Id?: string;
       MinLevel?: number;
@@ -2602,8 +2859,9 @@ declare namespace Poe2DataMain {
       BeastRarity?: any;
       BestiaryGenusKey?: any;
     }
-    export interface data_bestiaryrecipecomponent extends Array<data_bestiaryrecipecomponent_Item> {}
-    
+    export interface data_bestiaryrecipecomponent
+      extends Array<data_bestiaryrecipecomponent_Item> {}
+
     interface data_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -2623,7 +2881,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_bestiaryrecipes extends Array<data_bestiaryrecipes_Item> {}
-    
+
     interface data_betrayalchoiceactions_Item {
       Id?: string;
       BetrayalChoicesKey?: data_betrayalchoiceactions_Item_BetrayalChoicesKey;
@@ -2634,7 +2892,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_betrayalchoiceactions extends Array<data_betrayalchoiceactions_Item> {}
-    
+
     interface data_betrayalchoices_Item {
       Id?: string;
       Text?: string;
@@ -2642,11 +2900,11 @@ declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface data_betrayalchoices extends Array<data_betrayalchoices_Item> {}
-    
+
     export type data_betrayaldialogue = any[];
-    
+
     export type data_betrayalforts = any[];
-    
+
     interface data_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -2660,7 +2918,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_betrayaljobs extends Array<data_betrayaljobs_Item> {}
-    
+
     interface data_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -2668,13 +2926,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_betrayalranks extends Array<data_betrayalranks_Item> {}
-    
+
     interface data_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_betrayalrelationshipstate extends Array<data_betrayalrelationshipstate_Item> {}
-    
+    export interface data_betrayalrelationshipstate
+      extends Array<data_betrayalrelationshipstate_Item> {}
+
     interface data_betrayaltargetjobachievements_Item {
       BetrayalTargetsKey?: data_betrayaltargetjobachievements_Item_BetrayalTargetsKey;
       BetrayalJobsKey?: data_betrayaltargetjobachievements_Item_BetrayalJobsKey;
@@ -2692,14 +2951,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_betrayaltargetjobachievements extends Array<data_betrayaltargetjobachievements_Item> {}
-    
+    export interface data_betrayaltargetjobachievements
+      extends Array<data_betrayaltargetjobachievements_Item> {}
+
     interface data_betrayaltargetlifescalingperlevel_Item {
       Level?: number;
       MoreLife?: number;
     }
-    export interface data_betrayaltargetlifescalingperlevel extends Array<data_betrayaltargetlifescalingperlevel_Item> {}
-    
+    export interface data_betrayaltargetlifescalingperlevel
+      extends Array<data_betrayaltargetlifescalingperlevel_Item> {}
+
     interface data_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -2721,7 +2982,7 @@ declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface data_betrayaltargets extends Array<data_betrayaltargets_Item> {}
-    
+
     interface data_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -2742,7 +3003,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_betrayaltraitorrewards extends Array<data_betrayaltraitorrewards_Item> {}
-    
+
     interface data_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -2758,22 +3019,23 @@ declare namespace Poe2DataMain {
       ItemClassesKey?: any;
     }
     export interface data_betrayalupgrades extends Array<data_betrayalupgrades_Item> {}
-    
+
     interface data_betrayalwalllifescalingperlevel_Item {
       Level?: number;
       MoreLife?: number;
     }
-    export interface data_betrayalwalllifescalingperlevel extends Array<data_betrayalwalllifescalingperlevel_Item> {}
-    
+    export interface data_betrayalwalllifescalingperlevel
+      extends Array<data_betrayalwalllifescalingperlevel_Item> {}
+
     export type data_beyondfactions = any[];
-    
+
     interface data_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
     export interface data_bindablevirtualkeys extends Array<data_bindablevirtualkeys_Item> {}
-    
+
     interface data_blightbalanceperlevel_Item {
       Level?: number;
       Unk001?: number;
@@ -2786,13 +3048,14 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_blightbalanceperlevel extends Array<data_blightbalanceperlevel_Item> {}
-    
+
     interface data_blightbosslifescalingperlevel_Item {
       Level?: number;
       MoreLife?: number;
     }
-    export interface data_blightbosslifescalingperlevel extends Array<data_blightbosslifescalingperlevel_Item> {}
-    
+    export interface data_blightbosslifescalingperlevel
+      extends Array<data_blightbosslifescalingperlevel_Item> {}
+
     interface data_blightchesttypes_Item {
       ChestsKey?: data_blightchesttypes_Item_ChestsKey;
     }
@@ -2801,7 +3064,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blightchesttypes extends Array<data_blightchesttypes_Item> {}
-    
+
     interface data_blightcraftingitems_Item {
       Oil?: data_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -2814,9 +3077,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blightcraftingitems extends Array<data_blightcraftingitems_Item> {}
-    
+
     export type data_blightcraftingrecipes = any[];
-    
+
     interface data_blightcraftingresults_Item {
       Id?: string;
       ModsKey?: any;
@@ -2827,14 +3090,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blightcraftingresults extends Array<data_blightcraftingresults_Item> {}
-    
+
     interface data_blightcraftingtypes_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: boolean;
     }
     export interface data_blightcraftingtypes extends Array<data_blightcraftingtypes_Item> {}
-    
+
     interface data_blightcraftinguniques_Item {
       WordsKey?: data_blightcraftinguniques_Item_WordsKey;
     }
@@ -2843,7 +3106,7 @@ declare namespace Poe2DataMain {
       Text?: string;
     }
     export interface data_blightcraftinguniques extends Array<data_blightcraftinguniques_Item> {}
-    
+
     interface data_blightedsporeauras_Item {
       BuffDefinitionsKey?: data_blightedsporeauras_Item_BuffDefinitionsKey;
       BuffStatValues?: number[];
@@ -2856,7 +3119,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blightedsporeauras extends Array<data_blightedsporeauras_Item> {}
-    
+
     interface data_blightencountertypes_Item {
       Id?: string;
       Icon?: string;
@@ -2864,7 +3127,7 @@ declare namespace Poe2DataMain {
       Weight?: number;
     }
     export interface data_blightencountertypes extends Array<data_blightencountertypes_Item> {}
-    
+
     interface data_blightencounterwaves_Item {
       MonsterSpawnerId?: string;
       EncounterType?: data_blightencounterwaves_Item_EncounterType;
@@ -2878,13 +3141,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blightencounterwaves extends Array<data_blightencounterwaves_Item> {}
-    
+
     interface data_blightrewardtypes_Item {
       Id?: string;
       Icon?: string;
     }
     export interface data_blightrewardtypes extends Array<data_blightrewardtypes_Item> {}
-    
+
     interface data_blightstashtablayout_Item {
       Id?: string;
       StoredItem?: any;
@@ -2900,7 +3163,7 @@ declare namespace Poe2DataMain {
       Unk011?: boolean;
     }
     export interface data_blightstashtablayout extends Array<data_blightstashtablayout_Item> {}
-    
+
     interface data_blighttopologies_Item {
       Id?: string;
       BlightTopologyNodesKey?: data_blighttopologies_Item_BlightTopologyNodesKey;
@@ -2917,7 +3180,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blighttopologies extends Array<data_blighttopologies_Item> {}
-    
+
     interface data_blighttopologynodes_Item {
       Id?: string;
       Unk001?: any[];
@@ -2932,7 +3195,7 @@ declare namespace Poe2DataMain {
       Unk010?: number;
     }
     export interface data_blighttopologynodes extends Array<data_blighttopologynodes_Item> {}
-    
+
     interface data_blighttowerauras_Item {
       Id?: number;
       BuffDefinitionsKey?: data_blighttowerauras_Item_BuffDefinitionsKey;
@@ -2948,7 +3211,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blighttowerauras extends Array<data_blighttowerauras_Item> {}
-    
+
     interface data_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -2966,7 +3229,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_blighttowers extends Array<data_blighttowers_Item> {}
-    
+
     interface data_blighttowersperlevel_Item {
       BlightTowersKey?: data_blighttowersperlevel_Item_BlightTowersKey;
       Unk001?: number;
@@ -2979,13 +3242,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_blighttowersperlevel extends Array<data_blighttowersperlevel_Item> {}
-    
+
     export type data_bloodhiteffects = any[];
-    
+
     export type data_bloodtypes = any[];
-    
+
     export type data_boltstatreference = any[];
-    
+
     interface data_breachartvariations_Item {
       Id?: string;
       Unk001?: any;
@@ -3015,13 +3278,14 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_breachartvariations extends Array<data_breachartvariations_Item> {}
-    
+
     interface data_breachbosslifescalingperlevel_Item {
       MonsterLevel?: number;
       LifeMultiplier?: number;
     }
-    export interface data_breachbosslifescalingperlevel extends Array<data_breachbosslifescalingperlevel_Item> {}
-    
+    export interface data_breachbosslifescalingperlevel
+      extends Array<data_breachbosslifescalingperlevel_Item> {}
+
     interface data_breachelement_Item {
       Element?: string;
       Unk001?: data_breachelement_Item_Unk001;
@@ -3046,9 +3310,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_breachelement extends Array<data_breachelement_Item> {}
-    
+
     export type data_breachstones = any[];
-    
+
     interface data_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -3107,7 +3371,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_buffdefinitions extends Array<data_buffdefinitions_Item> {}
-    
+
     interface data_bufftemplates_Item {
       Id?: string;
       BuffDefinitionsKey?: data_bufftemplates_Item_BuffDefinitionsKey;
@@ -3129,9 +3393,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_bufftemplates extends Array<data_bufftemplates_Item> {}
-    
+
     export type data_buffvisualorbart = any[];
-    
+
     interface data_buffvisualorbs_Item {
       Id?: string;
       BuffVisualOrbTypesKey?: data_buffvisualorbs_Item_BuffVisualOrbTypesKey;
@@ -3144,9 +3408,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_buffvisualorbs extends Array<data_buffvisualorbs_Item> {}
-    
+
     export type data_buffvisualorbtypes = any[];
-    
+
     interface data_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -3169,14 +3433,15 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_buffvisuals extends Array<data_buffvisuals_Item> {}
-    
+
     interface data_buffvisualsartvariations_Item {
       Buff?: string;
       Unk001?: number[];
       Unk002?: number;
     }
-    export interface data_buffvisualsartvariations extends Array<data_buffvisualsartvariations_Item> {}
-    
+    export interface data_buffvisualsartvariations
+      extends Array<data_buffvisualsartvariations_Item> {}
+
     interface data_buffvisualsetentries_Item {
       Id?: string;
       Unk001?: number;
@@ -3188,11 +3453,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_buffvisualsetentries extends Array<data_buffvisualsetentries_Item> {}
-    
+
     export type data_buffvisualshapeshiftoverride = any[];
-    
+
     export type data_caravanstops = any[];
-    
+
     interface data_chanceableitemclasses_Item {
       ItemClass?: data_chanceableitemclasses_Item_ItemClass;
     }
@@ -3201,7 +3466,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_chanceableitemclasses extends Array<data_chanceableitemclasses_Item> {}
-    
+
     interface data_characteraudioevents_Item {
       Id?: string;
       Event?: data_characteraudioevents_Item_Event;
@@ -3217,9 +3482,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_characteraudioevents extends Array<data_characteraudioevents_Item> {}
-    
+
     export type data_charactercreationbutton = any[];
-    
+
     interface data_charactercreationdialogue_Item {
       Character?: data_charactercreationdialogue_Item_Character;
       IntroDialogue?: data_charactercreationdialogue_Item_IntroDialogue;
@@ -3238,8 +3503,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_charactercreationdialogue extends Array<data_charactercreationdialogue_Item> {}
-    
+    export interface data_charactercreationdialogue
+      extends Array<data_charactercreationdialogue_Item> {}
+
     interface data_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -3248,7 +3514,7 @@ declare namespace Poe2DataMain {
       Icon?: string;
     }
     export interface data_charactercreationicons extends Array<data_charactercreationicons_Item> {}
-    
+
     interface data_charactereventtextaudio_Item {
       Event?: data_charactereventtextaudio_Item_Event;
       Character?: data_charactereventtextaudio_Item_Character;
@@ -3262,18 +3528,20 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_charactereventtextaudio extends Array<data_charactereventtextaudio_Item> {}
-    
+    export interface data_charactereventtextaudio
+      extends Array<data_charactereventtextaudio_Item> {}
+
     export type data_charactermeleeskills = any[];
-    
+
     interface data_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_characterpaneldescriptionmodes extends Array<data_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_characterpaneldescriptionmodes
+      extends Array<data_characterpaneldescriptionmodes_Item> {}
+
     interface data_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -3295,7 +3563,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_characterpanelstats extends Array<data_characterpanelstats_Item> {}
-    
+
     interface data_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
@@ -3303,7 +3571,7 @@ declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface data_characterpaneltabs extends Array<data_characterpaneltabs_Item> {}
-    
+
     interface data_characters_Item {
       Id?: string;
       Name?: string;
@@ -3429,7 +3697,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_characters extends Array<data_characters_Item> {}
-    
+
     interface data_characterstartqueststate_Item {
       Id?: string;
       QuestKeys?: any[];
@@ -3439,8 +3707,9 @@ declare namespace Poe2DataMain {
       Unk005?: any[];
       Unk006?: any[];
     }
-    export interface data_characterstartqueststate extends Array<data_characterstartqueststate_Item> {}
-    
+    export interface data_characterstartqueststate
+      extends Array<data_characterstartqueststate_Item> {}
+
     interface data_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -3467,12 +3736,12 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_characterstartstates extends Array<data_characterstartstates_Item> {}
-    
+
     interface data_characterstartstateset_Item {
       Id?: string;
     }
     export interface data_characterstartstateset extends Array<data_characterstartstateset_Item> {}
-    
+
     interface data_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -3481,17 +3750,17 @@ declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface data_charactertextaudio extends Array<data_charactertextaudio_Item> {}
-    
+
     export type data_charactervariationgroups = any[];
-    
+
     export type data_chargevariations = any[];
-    
+
     interface data_chaticons_Item {
       Icon?: string;
       Image?: string;
     }
     export interface data_chaticons extends Array<data_chaticons_Item> {}
-    
+
     interface data_chestclusters_Item {
       Id?: string;
       ChestsKeys?: any[];
@@ -3501,7 +3770,7 @@ declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface data_chestclusters extends Array<data_chestclusters_Item> {}
-    
+
     interface data_chesteffects_Item {
       Id?: string;
       Normal_EPKFile?: string;
@@ -3518,7 +3787,7 @@ declare namespace Poe2DataMain {
       Rare_Open_AOFile?: string;
     }
     export interface data_chesteffects extends Array<data_chesteffects_Item> {}
-    
+
     interface data_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -3566,9 +3835,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_chests extends Array<data_chests_Item> {}
-    
+
     export type data_classpassiveskilloverrides = any[];
-    
+
     interface data_clientleagueaction_Item {
       Id?: string;
       Unk001?: data_clientleagueaction_Item_Unk001;
@@ -3580,7 +3849,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_clientleagueaction extends Array<data_clientleagueaction_Item> {}
-    
+
     interface data_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -3590,9 +3859,9 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_clientstrings extends Array<data_clientstrings_Item> {}
-    
+
     export type data_clientstrings2 = any[];
-    
+
     interface data_cloneshot_Item {
       Id?: number;
       MonsterVarietiesKey?: any;
@@ -3601,7 +3870,7 @@ declare namespace Poe2DataMain {
       MiscAnimated3?: any;
     }
     export interface data_cloneshot extends Array<data_cloneshot_Item> {}
-    
+
     interface data_colours_Item {
       Item?: string;
       Red?: number;
@@ -3610,9 +3879,9 @@ declare namespace Poe2DataMain {
       RgbCode?: string;
     }
     export interface data_colours extends Array<data_colours_Item> {}
-    
+
     export type data_combatuiprompts = any[];
-    
+
     interface data_commands_Item {
       Id?: string;
       Command?: string;
@@ -3622,9 +3891,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_commands extends Array<data_commands_Item> {}
-    
+
     export type data_completionnotifications = any[];
-    
+
     interface data_componentcharges_Item {
       BaseItemTypesKey?: string;
       MaxCharges?: number;
@@ -3633,7 +3902,7 @@ declare namespace Poe2DataMain {
       PerCharge2?: number;
     }
     export interface data_componentcharges extends Array<data_componentcharges_Item> {}
-    
+
     interface data_conditionalachievements_Item {
       Unk000?: data_conditionalachievements_Item_Unk000;
       Unk001?: number;
@@ -3643,8 +3912,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_conditionalachievements extends Array<data_conditionalachievements_Item> {}
-    
+    export interface data_conditionalachievements
+      extends Array<data_conditionalachievements_Item> {}
+
     interface data_coreleagues_Item {
       Id?: string;
       Unk001?: boolean;
@@ -3681,9 +3951,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_coreleagues extends Array<data_coreleagues_Item> {}
-    
+
     export type data_corpseexplosiongibs = any[];
-    
+
     interface data_corpsesinkvariations_Item {
       Id?: string;
       AOFile?: string;
@@ -3696,13 +3966,14 @@ declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface data_corpsesinkvariations extends Array<data_corpsesinkvariations_Item> {}
-    
+
     interface data_cosmeticsequippanelmode_Item {
       Id?: string;
       Unk001?: number[];
     }
-    export interface data_cosmeticsequippanelmode extends Array<data_cosmeticsequippanelmode_Item> {}
-    
+    export interface data_cosmeticsequippanelmode
+      extends Array<data_cosmeticsequippanelmode_Item> {}
+
     interface data_costtypes_Item {
       Id?: string;
       StatsKey?: data_costtypes_Item_StatsKey;
@@ -3714,13 +3985,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_costtypes extends Array<data_costtypes_Item> {}
-    
+
     export type data_craftablemodtypes = any[];
-    
+
     export type data_craftingbenchoptions = any[];
-    
+
     export type data_craftingbenchsortcategories = any[];
-    
+
     interface data_craftingbenchspecificoptionid_Item {
       Unk000?: string;
       Unk001?: data_craftingbenchspecificoptionid_Item_Unk001;
@@ -3729,8 +4000,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_craftingbenchspecificoptionid extends Array<data_craftingbenchspecificoptionid_Item> {}
-    
+    export interface data_craftingbenchspecificoptionid
+      extends Array<data_craftingbenchspecificoptionid_Item> {}
+
     interface data_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -3739,12 +4011,13 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_craftingbenchunlockcategories extends Array<data_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_craftingbenchunlockcategories
+      extends Array<data_craftingbenchunlockcategories_Item> {}
+
     export type data_craftingitemclasscategories = any[];
-    
+
     export type data_crossbowskillboltoverride = any[];
-    
+
     interface data_currencyexchange_Item {
       Item?: data_currencyexchange_Item_Item;
       Category?: data_currencyexchange_Item_Category;
@@ -3767,13 +4040,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_currencyexchange extends Array<data_currencyexchange_Item> {}
-    
+
     interface data_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_currencyexchangecategories extends Array<data_currencyexchangecategories_Item> {}
-    
+    export interface data_currencyexchangecategories
+      extends Array<data_currencyexchangecategories_Item> {}
+
     interface data_currencyitems_Item {
       BaseItemTypesKey?: data_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -3807,7 +4081,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_currencyitems extends Array<data_currencyitems_Item> {}
-    
+
     interface data_currencystashtablayout_Item {
       Id?: string;
       StoredItem?: data_currencystashtablayout_Item_StoredItem;
@@ -3824,7 +4098,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_currencystashtablayout extends Array<data_currencystashtablayout_Item> {}
-    
+
     interface data_currencyuseeffects_Item {
       Unk000?: data_currencyuseeffects_Item_Unk000;
       Unk001?: number;
@@ -3841,11 +4115,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_currencyuseeffects extends Array<data_currencyuseeffects_Item> {}
-    
+
     export type data_customleaguemonsterreplacements = any[];
-    
+
     export type data_customleagueroomreplacements = any[];
-    
+
     interface data_daemonspawningdata_Item {
       Id?: string;
       MonsterVarieties?: any[];
@@ -3858,9 +4132,9 @@ declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface data_daemonspawningdata extends Array<data_daemonspawningdata_Item> {}
-    
+
     export type data_damagecalculationtypes = any[];
-    
+
     interface data_damageeffectvariations_Item {
       Id?: string;
       Unk001?: number[];
@@ -3881,7 +4155,7 @@ declare namespace Poe2DataMain {
       Unk016?: any;
     }
     export interface data_damageeffectvariations extends Array<data_damageeffectvariations_Item> {}
-    
+
     interface data_damagehiteffects_Item {
       Id?: number;
       Unk001?: number;
@@ -3890,9 +4164,9 @@ declare namespace Poe2DataMain {
       Unk004?: any[];
     }
     export interface data_damagehiteffects extends Array<data_damagehiteffects_Item> {}
-    
+
     export type data_damageparticleeffects = any[];
-    
+
     interface data_damagewhenhiteffects_Item {
       Unk000?: data_damagewhenhiteffects_Item_Unk000;
       Unk001?: data_damagewhenhiteffects_Item_Unk001;
@@ -3907,11 +4181,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_damagewhenhiteffects extends Array<data_damagewhenhiteffects_Item> {}
-    
+
     export type data_dances = any[];
-    
+
     export type data_daressopitfights = any[];
-    
+
     interface data_defaultmonsterstats_Item {
       DisplayLevel?: string;
       Damage?: number;
@@ -3931,7 +4205,7 @@ declare namespace Poe2DataMain {
       Armour?: number;
     }
     export interface data_defaultmonsterstats extends Array<data_defaultmonsterstats_Item> {}
-    
+
     interface data_deliriumstashtablayout_Item {
       Id?: string;
       StoredItem?: data_deliriumstashtablayout_Item_StoredItem;
@@ -3948,7 +4222,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_deliriumstashtablayout extends Array<data_deliriumstashtablayout_Item> {}
-    
+
     interface data_delveazuriteshop_Item {
       BaseItemTypesKey?: data_delveazuriteshop_Item_BaseItemTypesKey;
       SpawnWeight?: number;
@@ -3963,21 +4237,22 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_delveazuriteshop extends Array<data_delveazuriteshop_Item> {}
-    
+
     export type data_delvebiomes = any[];
-    
+
     interface data_delvecatchupdepths_Item {
       Level?: number;
       Depth?: number;
     }
     export interface data_delvecatchupdepths extends Array<data_delvecatchupdepths_Item> {}
-    
+
     interface data_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_delvecraftingmodifierdescriptions extends Array<data_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_delvecraftingmodifierdescriptions
+      extends Array<data_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_delvecraftingmodifiers_Item {
       BaseItemTypesKey?: data_delvecraftingmodifiers_Item_BaseItemTypesKey;
       AddedModsKeys?: any[];
@@ -4006,7 +4281,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_delvecraftingmodifiers extends Array<data_delvecraftingmodifiers_Item> {}
-    
+
     interface data_delvecraftingtags_Item {
       TagsKey?: data_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -4016,7 +4291,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_delvecraftingtags extends Array<data_delvecraftingtags_Item> {}
-    
+
     interface data_delvedynamite_Item {
       Unk000?: number;
       ProjectilesKey?: data_delvedynamite_Item_ProjectilesKey;
@@ -4041,7 +4316,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_delvedynamite extends Array<data_delvedynamite_Item> {}
-    
+
     interface data_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -4059,7 +4334,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_delvefeatures extends Array<data_delvefeatures_Item> {}
-    
+
     interface data_delveflares_Item {
       Unk000?: number;
       Unk001?: data_delveflares_Item_Unk001;
@@ -4074,7 +4349,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_delveflares extends Array<data_delveflares_Item> {}
-    
+
     interface data_delvelevelscaling_Item {
       Depth?: number;
       MonsterLevel?: number;
@@ -4093,15 +4368,15 @@ declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface data_delvelevelscaling extends Array<data_delvelevelscaling_Item> {}
-    
+
     export type data_delvemonsterspawners = any[];
-    
+
     interface data_delveresourceperlevel_Item {
       AreaLevel?: number;
       Sulphite?: number;
     }
     export interface data_delveresourceperlevel extends Array<data_delveresourceperlevel_Item> {}
-    
+
     interface data_delverewardtierconstants_Item {
       Unk000?: number;
       Unk001?: number;
@@ -4109,8 +4384,9 @@ declare namespace Poe2DataMain {
       Unk003?: number;
       Unk004?: number;
     }
-    export interface data_delverewardtierconstants extends Array<data_delverewardtierconstants_Item> {}
-    
+    export interface data_delverewardtierconstants
+      extends Array<data_delverewardtierconstants_Item> {}
+
     interface data_delverobotvariations_Item {
       Id?: string;
       AOFile?: string;
@@ -4123,9 +4399,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_delverobotvariations extends Array<data_delverobotvariations_Item> {}
-    
+
     export type data_delverooms = any[];
-    
+
     interface data_delvestashtablayout_Item {
       Id?: string;
       StoredItem?: data_delvestashtablayout_Item_StoredItem;
@@ -4143,7 +4419,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_delvestashtablayout extends Array<data_delvestashtablayout_Item> {}
-    
+
     interface data_delveupgrades_Item {
       DelveUpgradeTypeKey?: number;
       UpgradeLevel?: number;
@@ -4155,29 +4431,29 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_delveupgrades extends Array<data_delveupgrades_Item> {}
-    
+
     export type data_destructivedamageeffects = any[];
-    
+
     interface data_dialogueevent_Item {
       Id?: string;
       Timer?: number;
     }
     export interface data_dialogueevent extends Array<data_dialogueevent_Item> {}
-    
+
     export type data_displayminionmonstertype = any[];
-    
+
     export type data_divinationcardart = any[];
-    
+
     export type data_divinationcardstashtablayout = any[];
-    
+
     interface data_doors_Item {
       Id?: string;
       Unk001?: boolean;
     }
     export interface data_doors extends Array<data_doors_Item> {}
-    
+
     export type data_dronebasetypes = any[];
-    
+
     interface data_dronetypes_Item {
       Id?: string;
       Unk001?: data_dronetypes_Item_Unk001;
@@ -4201,15 +4477,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_dronetypes extends Array<data_dronetypes_Item> {}
-    
+
     interface data_dropeffects_Item {
       Id?: string;
       AOFile?: string;
     }
     export interface data_dropeffects extends Array<data_dropeffects_Item> {}
-    
+
     export type data_dynamicstashslots = any[];
-    
+
     interface data_eclipsemods_Item {
       Key?: string;
       SpawnWeight_TagsKeys?: any[];
@@ -4224,7 +4500,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_eclipsemods extends Array<data_eclipsemods_Item> {}
-    
+
     interface data_effectdrivenskill_Item {
       Unk000?: number;
       Unk001?: any[];
@@ -4257,13 +4533,14 @@ declare namespace Poe2DataMain {
       Unk028?: number;
     }
     export interface data_effectdrivenskill extends Array<data_effectdrivenskill_Item> {}
-    
+
     interface data_effectivenesscostconstants_Item {
       Id?: string;
       Multiplier?: number;
     }
-    export interface data_effectivenesscostconstants extends Array<data_effectivenesscostconstants_Item> {}
-    
+    export interface data_effectivenesscostconstants
+      extends Array<data_effectivenesscostconstants_Item> {}
+
     interface data_einharmissions_Item {
       Id?: string;
       Unk001?: number;
@@ -4275,7 +4552,7 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_einharmissions extends Array<data_einharmissions_Item> {}
-    
+
     interface data_einharpackfallback_Item {
       Unk000?: data_einharpackfallback_Item_Unk000;
       Unk001?: any[];
@@ -4285,35 +4562,35 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_einharpackfallback extends Array<data_einharpackfallback_Item> {}
-    
+
     export type data_elderbossarenas = any[];
-    
+
     interface data_elderguardians_Item {
       Id?: string;
       MapIcon?: string;
     }
     export interface data_elderguardians extends Array<data_elderguardians_Item> {}
-    
+
     export type data_eldermapbossoverride = any[];
-    
+
     export type data_endgamecorruptionmods = any[];
-    
+
     export type data_endgamemapbiomes = any[];
-    
+
     export type data_endgamemapcompletionquests = any[];
-    
+
     export type data_endgamemapcontent = any[];
-    
+
     export type data_endgamemapcontentset = any[];
-    
+
     export type data_endgamemapdecorations = any[];
-    
+
     export type data_endgamemappins = any[];
-    
+
     export type data_endgamemaps = any[];
-    
+
     export type data_environmentfootprints = any[];
-    
+
     interface data_environments_Item {
       Id?: string;
       Base_ENVFile?: string;
@@ -4325,16 +4602,16 @@ declare namespace Poe2DataMain {
       PreloadGroup?: any;
     }
     export interface data_environments extends Array<data_environments_Item> {}
-    
+
     interface data_environmenttransitions_Item {
       Id?: string;
       OTFiles?: string[];
       Unk002?: string[];
     }
     export interface data_environmenttransitions extends Array<data_environmenttransitions_Item> {}
-    
+
     export type data_essences = any[];
-    
+
     interface data_essencestashtablayout_Item {
       Id?: string;
       StoredItem?: data_essencestashtablayout_Item_StoredItem;
@@ -4350,18 +4627,18 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_essencestashtablayout extends Array<data_essencestashtablayout_Item> {}
-    
+
     export type data_essencetype = any[];
-    
+
     export type data_eventcoins = any[];
-    
+
     interface data_evergreenachievements_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: any[];
     }
     export interface data_evergreenachievements extends Array<data_evergreenachievements_Item> {}
-    
+
     interface data_executegeal_Item {
       Unk000?: number;
       Unk001?: number;
@@ -4410,7 +4687,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_executegeal extends Array<data_executegeal_Item> {}
-    
+
     interface data_expandingpulse_Item {
       IntId?: number;
       StringId?: string;
@@ -4422,7 +4699,7 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_expandingpulse extends Array<data_expandingpulse_Item> {}
-    
+
     interface data_expeditionareas_Item {
       Area?: data_expeditionareas_Item_Area;
       PosX?: number;
@@ -4442,7 +4719,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_expeditionareas extends Array<data_expeditionareas_Item> {}
-    
+
     interface data_expeditionbalanceperlevel_Item {
       Level?: number;
       Unk001?: boolean;
@@ -4460,14 +4737,15 @@ declare namespace Poe2DataMain {
       Unk013?: number;
       Unk014?: number;
     }
-    export interface data_expeditionbalanceperlevel extends Array<data_expeditionbalanceperlevel_Item> {}
-    
+    export interface data_expeditionbalanceperlevel
+      extends Array<data_expeditionbalanceperlevel_Item> {}
+
     export type data_expeditioncurrency = any[];
-    
+
     export type data_expeditiondeals = any[];
-    
+
     export type data_expeditiondealsdialogue = any[];
-    
+
     interface data_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -4501,13 +4779,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_expeditionfactions extends Array<data_expeditionfactions_Item> {}
-    
+
     interface data_expeditionmarkerscommon_Item {
       Id?: string;
       AOFile?: string;
     }
-    export interface data_expeditionmarkerscommon extends Array<data_expeditionmarkerscommon_Item> {}
-    
+    export interface data_expeditionmarkerscommon
+      extends Array<data_expeditionmarkerscommon_Item> {}
+
     interface data_expeditionnpcs_Item {
       Id?: string;
       NPCs?: any[];
@@ -4567,7 +4846,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_expeditionnpcs extends Array<data_expeditionnpcs_Item> {}
-    
+
     interface data_expeditionrelicmods_Item {
       Mod?: data_expeditionrelicmods_Item_Mod;
       Categories?: number[];
@@ -4578,7 +4857,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_expeditionrelicmods extends Array<data_expeditionrelicmods_Item> {}
-    
+
     interface data_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -4592,7 +4871,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_expeditionrelics extends Array<data_expeditionrelics_Item> {}
-    
+
     interface data_expeditionterrainfeatures_Item {
       Id?: string;
       ExtraFeature?: data_expeditionterrainfeatures_Item_ExtraFeature;
@@ -4614,17 +4893,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_expeditionterrainfeatures extends Array<data_expeditionterrainfeatures_Item> {}
-    
+    export interface data_expeditionterrainfeatures
+      extends Array<data_expeditionterrainfeatures_Item> {}
+
     interface data_experiencelevels_Item {
       Unk000?: string;
       Level?: number;
       Experience?: number;
     }
     export interface data_experiencelevels extends Array<data_experiencelevels_Item> {}
-    
+
     export type data_explodingstormbuffs = any[];
-    
+
     interface data_extraterrainfeatures_Item {
       Id?: string;
       ArmFiles?: string[];
@@ -4638,22 +4918,22 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_extraterrainfeatures extends Array<data_extraterrainfeatures_Item> {}
-    
+
     export type data_fixedhideoutdoodadtypes = any[];
-    
+
     export type data_fixedmissions = any[];
-    
+
     export type data_flasks = any[];
-    
+
     export type data_flaskstashbasetypeordering = any[];
-    
+
     interface data_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_flavourtext extends Array<data_flavourtext_Item> {}
-    
+
     interface data_footprints_Item {
       Id?: string;
       Active_AOFiles?: string[];
@@ -4664,13 +4944,13 @@ declare namespace Poe2DataMain {
       Unk006?: any;
     }
     export interface data_footprints extends Array<data_footprints_Item> {}
-    
+
     interface data_footstepaudio_Item {
       Id?: string;
       Index?: number;
     }
     export interface data_footstepaudio extends Array<data_footstepaudio_Item> {}
-    
+
     interface data_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -4689,29 +4969,29 @@ declare namespace Poe2DataMain {
       Unk014?: number;
     }
     export interface data_fragmentstashtablayout extends Array<data_fragmentstashtablayout_Item> {}
-    
+
     export type data_gambleprices = any[];
-    
+
     interface data_gameconstants_Item {
       Id?: string;
       Value?: number;
       Unk002?: number;
     }
     export interface data_gameconstants extends Array<data_gameconstants_Item> {}
-    
+
     interface data_gamelogos_Item {
       Id?: string;
       LogoIntl?: string;
       LogoTW?: string;
     }
     export interface data_gamelogos extends Array<data_gamelogos_Item> {}
-    
+
     interface data_gameobjecttasks_Item {
       Id?: string;
       HASH16?: number;
     }
     export interface data_gameobjecttasks extends Array<data_gameobjecttasks_Item> {}
-    
+
     interface data_gameobjecttasksfromstats_Item {
       Unk000?: data_gameobjecttasksfromstats_Item_Unk000;
       Unk001?: data_gameobjecttasksfromstats_Item_Unk001;
@@ -4729,8 +5009,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_gameobjecttasksfromstats extends Array<data_gameobjecttasksfromstats_Item> {}
-    
+    export interface data_gameobjecttasksfromstats
+      extends Array<data_gameobjecttasksfromstats_Item> {}
+
     interface data_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -4739,9 +5020,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_gamepadbutton extends Array<data_gamepadbutton_Item> {}
-    
+
     export type data_gamepadbuttonbindaction = any[];
-    
+
     interface data_gamepadbuttoncombination_Item {
       Id?: string;
       Button1?: data_gamepadbuttoncombination_Item_Button1;
@@ -4756,29 +5037,30 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_gamepadbuttoncombination extends Array<data_gamepadbuttoncombination_Item> {}
-    
+    export interface data_gamepadbuttoncombination
+      extends Array<data_gamepadbuttoncombination_Item> {}
+
     export type data_gamepaditemactiontypes = any[];
-    
+
     interface data_gamepadthumbstick_Item {
       Unk000?: string;
       Unk001?: string;
     }
     export interface data_gamepadthumbstick extends Array<data_gamepadthumbstick_Item> {}
-    
+
     interface data_gamepadtype_Item {
       Id?: string;
       Console?: string;
       ImageFile?: string;
     }
     export interface data_gamepadtype extends Array<data_gamepadtype_Item> {}
-    
+
     interface data_gamestats_Item {
       Id?: string;
       Id2?: string;
     }
     export interface data_gamestats extends Array<data_gamestats_Item> {}
-    
+
     interface data_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -4809,21 +5091,22 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_gemeffects extends Array<data_gemeffects_Item> {}
-    
+
     export type data_gemtags = any[];
-    
+
     interface data_genericbuffauras_Item {
       Id?: string;
     }
     export interface data_genericbuffauras extends Array<data_genericbuffauras_Item> {}
-    
+
     interface data_genericleaguerewardtypes_Item {
       Id?: string;
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_genericleaguerewardtypes extends Array<data_genericleaguerewardtypes_Item> {}
-    
+    export interface data_genericleaguerewardtypes
+      extends Array<data_genericleaguerewardtypes_Item> {}
+
     interface data_genericleaguerewardtypevisuals_Item {
       Type?: data_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_genericleaguerewardtypevisuals_Item_Unk001;
@@ -4844,10 +5127,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_genericleaguerewardtypevisuals extends Array<data_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_genericleaguerewardtypevisuals
+      extends Array<data_genericleaguerewardtypevisuals_Item> {}
+
     export type data_genericskillindicator = any[];
-    
+
     interface data_geometryattack_Item {
       Unk000?: number;
       Unk001?: any[];
@@ -4910,7 +5194,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_geometryattack extends Array<data_geometryattack_Item> {}
-    
+
     interface data_geometrychannel_Item {
       Id?: string;
       Unk001?: data_geometrychannel_Item_Unk001;
@@ -4936,7 +5220,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_geometrychannel extends Array<data_geometrychannel_Item> {}
-    
+
     interface data_geometryprojectiles_Item {
       Unk000?: number;
       Unk001?: data_geometryprojectiles_Item_Unk001;
@@ -4966,7 +5250,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_geometryprojectiles extends Array<data_geometryprojectiles_Item> {}
-    
+
     interface data_geometrytrigger_Item {
       Unk000?: number;
       Unk001?: any;
@@ -5028,7 +5312,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_geometrytrigger extends Array<data_geometrytrigger_Item> {}
-    
+
     interface data_giftwrapartvariations_Item {
       Width?: number;
       Height?: number;
@@ -5040,18 +5324,18 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_giftwrapartvariations extends Array<data_giftwrapartvariations_Item> {}
-    
+
     interface data_globalaudioconfig_Item {
       Id?: string;
       Value?: number;
       Unk002?: boolean;
     }
     export interface data_globalaudioconfig extends Array<data_globalaudioconfig_Item> {}
-    
+
     export type data_goldbasetypeprices = any[];
-    
+
     export type data_goldinherentskillpricesperlevel = any[];
-    
+
     interface data_goldmodprices_Item {
       Id?: data_goldmodprices_Item_Id;
       Value?: number;
@@ -5072,13 +5356,13 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_goldmodprices extends Array<data_goldmodprices_Item> {}
-    
+
     export type data_goldrespecprices = any[];
-    
+
     export type data_goldvisualidentities = any[];
-    
+
     export type data_grantedeffectlabels = any[];
-    
+
     interface data_grantedeffectqualitystats_Item {
       GrantedEffectsKey?: data_grantedeffectqualitystats_Item_GrantedEffectsKey;
       StatsKeys?: any[];
@@ -5090,8 +5374,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_grantedeffectqualitystats extends Array<data_grantedeffectqualitystats_Item> {}
-    
+    export interface data_grantedeffectqualitystats
+      extends Array<data_grantedeffectqualitystats_Item> {}
+
     interface data_grantedeffects_Item {
       Id?: string;
       IsSupport?: boolean;
@@ -5139,9 +5424,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_grantedeffects extends Array<data_grantedeffects_Item> {}
-    
+
     export type data_grantedeffectsperlevel = any[];
-    
+
     interface data_grantedeffectstatsets_Item {
       Id?: string;
       ImplicitStats?: any;
@@ -5152,7 +5437,7 @@ declare namespace Poe2DataMain {
       Unk006?: number;
     }
     export interface data_grantedeffectstatsets extends Array<data_grantedeffectstatsets_Item> {}
-    
+
     interface data_grantedeffectstatsetsperlevel_Item {
       StatSet?: data_grantedeffectstatsetsperlevel_Item_StatSet;
       GemLevel?: number;
@@ -5175,14 +5460,15 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_grantedeffectstatsetsperlevel extends Array<data_grantedeffectstatsetsperlevel_Item> {}
-    
+    export interface data_grantedeffectstatsetsperlevel
+      extends Array<data_grantedeffectstatsetsperlevel_Item> {}
+
     export type data_grantedskillsocketnumbers = any[];
-    
+
     export type data_graphicalitemreceptacle = any[];
-    
+
     export type data_graphicalitemreceptacleslot = any[];
-    
+
     interface data_groundeffects_Item {
       GroundEffectTypesKey?: data_groundeffects_Item_GroundEffectTypesKey;
       Unk001?: number;
@@ -5213,7 +5499,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_groundeffects extends Array<data_groundeffects_Item> {}
-    
+
     interface data_groundeffecttypes_Item {
       Id?: string;
       Unk001?: number;
@@ -5231,13 +5517,13 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_groundeffecttypes extends Array<data_groundeffecttypes_Item> {}
-    
+
     export type data_hapticevents = any[];
-    
+
     export type data_harbingers = any[];
-    
+
     export type data_hardmodeextracontentchances = any[];
-    
+
     interface data_harvestcraftcostscalingbybasetype_Item {
       Unk000?: data_harvestcraftcostscalingbybasetype_Item_Unk000;
       Unk001?: data_harvestcraftcostscalingbybasetype_Item_Unk001;
@@ -5251,8 +5537,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_harvestcraftcostscalingbybasetype extends Array<data_harvestcraftcostscalingbybasetype_Item> {}
-    
+    export interface data_harvestcraftcostscalingbybasetype
+      extends Array<data_harvestcraftcostscalingbybasetype_Item> {}
+
     interface data_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_harvestcraftfilters_Item_BaseItem;
@@ -5263,13 +5550,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_harvestcraftfilters extends Array<data_harvestcraftfilters_Item> {}
-    
+
     interface data_harvestcraftoptionicons_Item {
       Id?: string;
       DDSFile?: string;
     }
-    export interface data_harvestcraftoptionicons extends Array<data_harvestcraftoptionicons_Item> {}
-    
+    export interface data_harvestcraftoptionicons
+      extends Array<data_harvestcraftoptionicons_Item> {}
+
     interface data_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -5292,29 +5580,30 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_harvestcraftoptions extends Array<data_harvestcraftoptions_Item> {}
-    
+
     interface data_harvestcrafttiers_Item {
       Id?: string;
       FrameImage?: string;
       FrameHighlight?: string;
     }
     export interface data_harvestcrafttiers extends Array<data_harvestcrafttiers_Item> {}
-    
+
     interface data_harvestinfrastructure_Item {
       Object?: string;
       Unk001?: number;
       ClientStringsKey?: any;
     }
     export interface data_harvestinfrastructure extends Array<data_harvestinfrastructure_Item> {}
-    
+
     interface data_harvestlifescalingperlevel_Item {
       Level?: number;
       Life?: number;
     }
-    export interface data_harvestlifescalingperlevel extends Array<data_harvestlifescalingperlevel_Item> {}
-    
+    export interface data_harvestlifescalingperlevel
+      extends Array<data_harvestlifescalingperlevel_Item> {}
+
     export type data_harvestperlevelvalues = any[];
-    
+
     interface data_harvestseeditems_Item {
       Id?: number;
       BaseItem?: data_harvestseeditems_Item_BaseItem;
@@ -5329,13 +5618,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_harvestseeditems extends Array<data_harvestseeditems_Item> {}
-    
+
     export type data_harvestseeds = any[];
-    
+
     export type data_heistareaformationlayout = any[];
-    
+
     export type data_heistareas = any[];
-    
+
     interface data_heistbalanceperlevel_Item {
       Level?: number;
       Unk001?: number;
@@ -5388,21 +5677,21 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistbalanceperlevel extends Array<data_heistbalanceperlevel_Item> {}
-    
+
     export type data_heistchestrewardtypes = any[];
-    
+
     export type data_heistchests = any[];
-    
+
     export type data_heistchokepointformation = any[];
-    
+
     interface data_heistconstants_Item {
       Id?: string;
       Value?: number;
     }
     export interface data_heistconstants extends Array<data_heistconstants_Item> {}
-    
+
     export type data_heistcontracts = any[];
-    
+
     interface data_heistdoodadnpcs_Item {
       NPCsKey?: data_heistdoodadnpcs_Item_NPCsKey;
       Unk001?: any;
@@ -5423,7 +5712,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_heistdoodadnpcs extends Array<data_heistdoodadnpcs_Item> {}
-    
+
     interface data_heistdoors_Item {
       Id?: string;
       Unk001?: string;
@@ -5436,7 +5725,7 @@ declare namespace Poe2DataMain {
       HeistAreasKey?: any;
     }
     export interface data_heistdoors extends Array<data_heistdoors_Item> {}
-    
+
     interface data_heistequipment_Item {
       BaseItemTypesKey?: data_heistequipment_Item_BaseItemTypesKey;
       RequiredJob_HeistJobsKey?: any;
@@ -5447,7 +5736,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistequipment extends Array<data_heistequipment_Item> {}
-    
+
     interface data_heistgeneration_Item {
       Level?: number;
       Unk001?: number;
@@ -5472,9 +5761,9 @@ declare namespace Poe2DataMain {
       Unk020?: number;
     }
     export interface data_heistgeneration extends Array<data_heistgeneration_Item> {}
-    
+
     export type data_heistintroareas = any[];
-    
+
     interface data_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -5512,7 +5801,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistjobs extends Array<data_heistjobs_Item> {}
-    
+
     interface data_heistjobsexperienceperlevel_Item {
       HeistJobsKey?: data_heistjobsexperienceperlevel_Item_HeistJobsKey;
       Tier?: number;
@@ -5524,8 +5813,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_heistjobsexperienceperlevel extends Array<data_heistjobsexperienceperlevel_Item> {}
-    
+    export interface data_heistjobsexperienceperlevel
+      extends Array<data_heistjobsexperienceperlevel_Item> {}
+
     interface data_heistlocktype_Item {
       Id?: string;
       HeistJobsKey?: data_heistlocktype_Item_HeistJobsKey;
@@ -5536,9 +5826,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistlocktype extends Array<data_heistlocktype_Item> {}
-    
+
     export type data_heistnpcauras = any[];
-    
+
     interface data_heistnpcblueprinttypes_Item {
       NPCsKey?: data_heistnpcblueprinttypes_Item_NPCsKey;
       Unk001?: number;
@@ -5548,7 +5838,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistnpcblueprinttypes extends Array<data_heistnpcblueprinttypes_Item> {}
-    
+
     interface data_heistnpcdialogue_Item {
       DialogueEventKey?: data_heistnpcdialogue_Item_DialogueEventKey;
       HeistNPCsKey?: data_heistnpcdialogue_Item_HeistNPCsKey;
@@ -5565,7 +5855,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_heistnpcdialogue extends Array<data_heistnpcdialogue_Item> {}
-    
+
     interface data_heistnpcs_Item {
       NPCsKey?: data_heistnpcs_Item_NPCsKey;
       MonsterVarietiesKey?: data_heistnpcs_Item_MonsterVarietiesKey;
@@ -5609,7 +5899,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_heistnpcs extends Array<data_heistnpcs_Item> {}
-    
+
     interface data_heistnpcstats_Item {
       StatsKey?: data_heistnpcstats_Item_StatsKey;
       Unk001?: boolean;
@@ -5622,7 +5912,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistnpcstats extends Array<data_heistnpcstats_Item> {}
-    
+
     interface data_heistobjectives_Item {
       BaseItemType?: data_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -5633,18 +5923,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistobjectives extends Array<data_heistobjectives_Item> {}
-    
+
     interface data_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_heistobjectivevaluedescriptions extends Array<data_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_heistobjectivevaluedescriptions
+      extends Array<data_heistobjectivevaluedescriptions_Item> {}
+
     export type data_heistpatrolpacks = any[];
-    
+
     export type data_heistquestcontracts = any[];
-    
+
     interface data_heistrevealingnpcs_Item {
       NPCsKey?: data_heistrevealingnpcs_Item_NPCsKey;
       PortraitFile?: string;
@@ -5656,35 +5947,37 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_heistrevealingnpcs extends Array<data_heistrevealingnpcs_Item> {}
-    
+
     export type data_heistrooms = any[];
-    
+
     export type data_heiststoragelayout = any[];
-    
+
     interface data_heistvaluescaling_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_heistvaluescaling extends Array<data_heistvaluescaling_Item> {}
-    
+
     interface data_hellscapeaoreplacements_Item {
       Original?: string;
       HASH32?: number;
       Replacement?: string;
     }
-    export interface data_hellscapeaoreplacements extends Array<data_hellscapeaoreplacements_Item> {}
-    
+    export interface data_hellscapeaoreplacements
+      extends Array<data_hellscapeaoreplacements_Item> {}
+
     export type data_hellscapeareapacks = any[];
-    
+
     interface data_hellscapeexperiencelevels_Item {
       Level?: number;
       Experience?: number;
     }
-    export interface data_hellscapeexperiencelevels extends Array<data_hellscapeexperiencelevels_Item> {}
-    
+    export interface data_hellscapeexperiencelevels
+      extends Array<data_hellscapeexperiencelevels_Item> {}
+
     export type data_hellscapefactions = any[];
-    
+
     interface data_hellscapeimmunemonsters_Item {
       Monster?: data_hellscapeimmunemonsters_Item_Monster;
     }
@@ -5692,22 +5985,25 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_hellscapeimmunemonsters extends Array<data_hellscapeimmunemonsters_Item> {}
-    
+    export interface data_hellscapeimmunemonsters
+      extends Array<data_hellscapeimmunemonsters_Item> {}
+
     interface data_hellscapeitemmodificationtiers_Item {
       Tier?: number;
       IsMap?: boolean;
       Unk002?: number;
       MinItemLvl?: number;
     }
-    export interface data_hellscapeitemmodificationtiers extends Array<data_hellscapeitemmodificationtiers_Item> {}
-    
+    export interface data_hellscapeitemmodificationtiers
+      extends Array<data_hellscapeitemmodificationtiers_Item> {}
+
     interface data_hellscapelifescalingperlevel_Item {
       AreaLevel?: number;
       Scale?: number;
     }
-    export interface data_hellscapelifescalingperlevel extends Array<data_hellscapelifescalingperlevel_Item> {}
-    
+    export interface data_hellscapelifescalingperlevel
+      extends Array<data_hellscapelifescalingperlevel_Item> {}
+
     interface data_hellscapemodificationinventorylayout_Item {
       Id?: string;
       Column?: number;
@@ -5721,12 +6017,13 @@ declare namespace Poe2DataMain {
       UnlockedWith?: any;
       Quest?: any;
     }
-    export interface data_hellscapemodificationinventorylayout extends Array<data_hellscapemodificationinventorylayout_Item> {}
-    
+    export interface data_hellscapemodificationinventorylayout
+      extends Array<data_hellscapemodificationinventorylayout_Item> {}
+
     export type data_hellscapemods = any[];
-    
+
     export type data_hellscapemonsterpacks = any[];
-    
+
     interface data_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -5741,14 +6038,14 @@ declare namespace Poe2DataMain {
       Quest?: any;
     }
     export interface data_hellscapepassives extends Array<data_hellscapepassives_Item> {}
-    
+
     interface data_hellscapepassivetree_Item {
       Id?: string;
       AllocationsRequired?: number;
       Passives?: any[];
     }
     export interface data_hellscapepassivetree extends Array<data_hellscapepassivetree_Item> {}
-    
+
     interface data_hideoutcraftingbenchdoodads_Item {
       Unk000?: data_hideoutcraftingbenchdoodads_Item_Unk000;
       Unk001?: data_hideoutcraftingbenchdoodads_Item_Unk001;
@@ -5761,8 +6058,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_hideoutcraftingbenchdoodads extends Array<data_hideoutcraftingbenchdoodads_Item> {}
-    
+    export interface data_hideoutcraftingbenchdoodads
+      extends Array<data_hideoutcraftingbenchdoodads_Item> {}
+
     interface data_hideoutcraftingbenchinterfacevisuals_Item {
       Id?: string;
       Unk001?: string;
@@ -5771,14 +6069,15 @@ declare namespace Poe2DataMain {
       Unk004?: string;
       Unk005?: string;
     }
-    export interface data_hideoutcraftingbenchinterfacevisuals extends Array<data_hideoutcraftingbenchinterfacevisuals_Item> {}
-    
+    export interface data_hideoutcraftingbenchinterfacevisuals
+      extends Array<data_hideoutcraftingbenchinterfacevisuals_Item> {}
+
     interface data_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
     export interface data_hideoutdoodadcategory extends Array<data_hideoutdoodadcategory_Item> {}
-    
+
     interface data_hideoutdoodads_Item {
       BaseItemTypesKey?: data_hideoutdoodads_Item_BaseItemTypesKey;
       Variation_AOFiles?: string[];
@@ -5810,7 +6109,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_hideoutdoodads extends Array<data_hideoutdoodads_Item> {}
-    
+
     interface data_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
@@ -5818,19 +6117,19 @@ declare namespace Poe2DataMain {
       Name?: string;
     }
     export interface data_hideoutdoodadtags extends Array<data_hideoutdoodadtags_Item> {}
-    
+
     export type data_hideoutnpcs = any[];
-    
+
     interface data_hideoutrarity_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_hideoutrarity extends Array<data_hideoutrarity_Item> {}
-    
+
     export type data_hideoutresistpenalties = any[];
-    
+
     export type data_hideouts = any[];
-    
+
     interface data_hideoutstashdoodads_Item {
       Unk000?: data_hideoutstashdoodads_Item_Unk000;
       Unk001?: boolean;
@@ -5842,7 +6141,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_hideoutstashdoodads extends Array<data_hideoutstashdoodads_Item> {}
-    
+
     interface data_hideoutwaypointdoodads_Item {
       Unk000?: data_hideoutwaypointdoodads_Item_Unk000;
       Unk001?: number[];
@@ -5852,7 +6151,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_hideoutwaypointdoodads extends Array<data_hideoutwaypointdoodads_Item> {}
-    
+
     interface data_hudenergyshieldvisuals_Item {
       Id?: string;
       Unk001?: string;
@@ -5866,7 +6165,7 @@ declare namespace Poe2DataMain {
       Unk009?: boolean;
     }
     export interface data_hudenergyshieldvisuals extends Array<data_hudenergyshieldvisuals_Item> {}
-    
+
     interface data_hudlifevisuals_Item {
       Id?: string;
       Unk001?: string;
@@ -5884,9 +6183,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
     }
     export interface data_hudlifevisuals extends Array<data_hudlifevisuals_Item> {}
-    
+
     export type data_hudvisualsfromstat = any[];
-    
+
     interface data_impactsounddata_Item {
       Id?: string;
       Sound?: string;
@@ -5896,7 +6195,7 @@ declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface data_impactsounddata extends Array<data_impactsounddata_Item> {}
-    
+
     interface data_incubators_Item {
       BaseItemTypesKey?: data_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -5909,7 +6208,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_incubators extends Array<data_incubators_Item> {}
-    
+
     interface data_incursionarchitect_Item {
       MonsterVarietiesKey?: data_incursionarchitect_Item_MonsterVarietiesKey;
       MinLevel?: number;
@@ -5919,17 +6218,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_incursionarchitect extends Array<data_incursionarchitect_Item> {}
-    
+
     export type data_incursionbrackets = any[];
-    
+
     export type data_incursionchestrewards = any[];
-    
+
     export type data_incursionchests = any[];
-    
+
     export type data_incursionroombossfightevents = any[];
-    
+
     export type data_incursionrooms = any[];
-    
+
     interface data_incursionuniqueupgradecomponents_Item {
       BaseUnique?: data_incursionuniqueupgradecomponents_Item_BaseUnique;
       UpgradeCurrency?: data_incursionuniqueupgradecomponents_Item_UpgradeCurrency;
@@ -5942,20 +6241,21 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_incursionuniqueupgradecomponents extends Array<data_incursionuniqueupgradecomponents_Item> {}
-    
+    export interface data_incursionuniqueupgradecomponents
+      extends Array<data_incursionuniqueupgradecomponents_Item> {}
+
     export type data_indexablesupportgems = any[];
-    
+
     export type data_indicatorconditions = any[];
-    
+
     interface data_influenceexalts_Item {
       Influence?: number;
       BaseItemTypesKey?: any;
     }
     export interface data_influenceexalts extends Array<data_influenceexalts_Item> {}
-    
+
     export type data_influencemodupgrades = any[];
-    
+
     interface data_influencetags_Item {
       ItemClass?: data_influencetags_Item_ItemClass;
       Influence?: number;
@@ -5970,7 +6270,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_influencetags extends Array<data_influencetags_Item> {}
-    
+
     interface data_invasionmonsterrestrictions_Item {
       Id?: string;
       WorldAreasKey?: data_invasionmonsterrestrictions_Item_WorldAreasKey;
@@ -5981,10 +6281,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_invasionmonsterrestrictions extends Array<data_invasionmonsterrestrictions_Item> {}
-    
+    export interface data_invasionmonsterrestrictions
+      extends Array<data_invasionmonsterrestrictions_Item> {}
+
     export type data_invasionmonstersperarea = any[];
-    
+
     interface data_inventories_Item {
       Id?: string;
       InventoryIdKey?: number;
@@ -5996,14 +6297,14 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_inventories extends Array<data_inventories_Item> {}
-    
+
     interface data_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
     export interface data_itemclasscategories extends Array<data_itemclasscategories_Item> {}
-    
+
     interface data_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -6044,9 +6345,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_itemclasses extends Array<data_itemclasses_Item> {}
-    
+
     export type data_itemdisenchantvalues = any[];
-    
+
     interface data_itemexperienceperlevel_Item {
       ItemExperienceType?: data_itemexperienceperlevel_Item_ItemExperienceType;
       ItemCurrentLevel?: number;
@@ -6057,16 +6358,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_itemexperienceperlevel extends Array<data_itemexperienceperlevel_Item> {}
-    
+
     interface data_itemexperiencetypes_Item {
       Id?: string;
     }
     export interface data_itemexperiencetypes extends Array<data_itemexperiencetypes_Item> {}
-    
+
     export type data_itemframetype = any[];
-    
+
     export type data_iteminherentskills = any[];
-    
+
     interface data_itemisedvisualeffect_Item {
       EffectBaseType?: data_itemisedvisualeffect_Item_EffectBaseType;
       VisualEffect?: data_itemisedvisualeffect_Item_VisualEffect;
@@ -6097,9 +6398,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_itemisedvisualeffect extends Array<data_itemisedvisualeffect_Item> {}
-    
+
     export type data_itemisedvisualeffectexclusivetypes = any[];
-    
+
     interface data_itemnotecode_Item {
       BaseItem?: data_itemnotecode_Item_BaseItem;
       Code?: string;
@@ -6112,16 +6413,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_itemnotecode extends Array<data_itemnotecode_Item> {}
-    
+
     export type data_itemspirit = any[];
-    
+
     interface data_itemstances_Item {
       Id?: string;
     }
     export interface data_itemstances extends Array<data_itemstances_Item> {}
-    
+
     export type data_itemtoggleable = any[];
-    
+
     interface data_itemvisualeffect_Item {
       Id?: string;
       DaggerEPKFile?: string;
@@ -6141,7 +6442,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_itemvisualeffect extends Array<data_itemvisualeffect_Item> {}
-    
+
     interface data_itemvisualheldbodymodel_Item {
       ItemVisualIdentity?: data_itemvisualheldbodymodel_Item_ItemVisualIdentity;
       MarauderAnimatedObject?: string;
@@ -6163,10 +6464,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_itemvisualheldbodymodel extends Array<data_itemvisualheldbodymodel_Item> {}
-    
+    export interface data_itemvisualheldbodymodel
+      extends Array<data_itemvisualheldbodymodel_Item> {}
+
     export type data_itemvisualheldbodymodeloverridebyitemaffiliatedattributes = any[];
-    
+
     interface data_itemvisualidentity_Item {
       Id?: string;
       DDSFile?: string;
@@ -6180,7 +6482,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_itemvisualidentity extends Array<data_itemvisualidentity_Item> {}
-    
+
     interface data_itemvisualreplacement_Item {
       BaseItemType?: data_itemvisualreplacement_Item_BaseItemType;
       Unk001?: data_itemvisualreplacement_Item_Unk001;
@@ -6199,7 +6501,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_itemvisualreplacement extends Array<data_itemvisualreplacement_Item> {}
-    
+
     interface data_jobassassinationspawnergroups_Item {
       Unk000?: data_jobassassinationspawnergroups_Item_Unk000;
       Unk001?: data_jobassassinationspawnergroups_Item_Unk001;
@@ -6212,12 +6514,13 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_jobassassinationspawnergroups extends Array<data_jobassassinationspawnergroups_Item> {}
-    
+    export interface data_jobassassinationspawnergroups
+      extends Array<data_jobassassinationspawnergroups_Item> {}
+
     export type data_jobraidbrackets = any[];
-    
+
     export type data_keywordpopups = any[];
-    
+
     interface data_killstreakthresholds_Item {
       Kills?: number;
       MonsterVarietiesKey?: any;
@@ -6228,21 +6531,22 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_killstreakthresholds extends Array<data_killstreakthresholds_Item> {}
-    
+
     export type data_kioskmodecharactertutorials = any[];
-    
+
     interface data_kiraclevels_Item {
       AreaLevel?: number;
       Unk001?: number;
     }
     export interface data_kiraclevels extends Array<data_kiraclevels_Item> {}
-    
+
     interface data_lakebosslifescalingperlevel_Item {
       Level?: number;
       Scaling?: number;
     }
-    export interface data_lakebosslifescalingperlevel extends Array<data_lakebosslifescalingperlevel_Item> {}
-    
+    export interface data_lakebosslifescalingperlevel
+      extends Array<data_lakebosslifescalingperlevel_Item> {}
+
     interface data_leagueflag_Item {
       Id?: string;
       Image?: string;
@@ -6252,14 +6556,15 @@ declare namespace Poe2DataMain {
       IsRuthless?: boolean;
     }
     export interface data_leagueflag extends Array<data_leagueflag_Item> {}
-    
+
     export type data_leagueinfo = any[];
-    
+
     interface data_leagueinfopanelversions_Item {
       Id?: string;
     }
-    export interface data_leagueinfopanelversions extends Array<data_leagueinfopanelversions_Item> {}
-    
+    export interface data_leagueinfopanelversions
+      extends Array<data_leagueinfopanelversions_Item> {}
+
     interface data_leagueprogressquestflags_Item {
       QuestFlag?: data_leagueprogressquestflags_Item_QuestFlag;
       CompletionString?: data_leagueprogressquestflags_Item_CompletionString;
@@ -6274,10 +6579,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_leagueprogressquestflags extends Array<data_leagueprogressquestflags_Item> {}
-    
+    export interface data_leagueprogressquestflags
+      extends Array<data_leagueprogressquestflags_Item> {}
+
     export type data_leaguestaticrewards = any[];
-    
+
     interface data_legacyatlasinfluenceoutcomes_Item {
       Id?: string;
       Unk001?: number;
@@ -6287,10 +6593,11 @@ declare namespace Poe2DataMain {
       Unk005?: any;
       Unk006?: number[];
     }
-    export interface data_legacyatlasinfluenceoutcomes extends Array<data_legacyatlasinfluenceoutcomes_Item> {}
-    
+    export interface data_legacyatlasinfluenceoutcomes
+      extends Array<data_legacyatlasinfluenceoutcomes_Item> {}
+
     export type data_legionbalanceperlevel = any[];
-    
+
     interface data_legionchestcounts_Item {
       LegionFactionsKey?: data_legionchestcounts_Item_LegionFactionsKey;
       LegionRanksKey?: data_legionchestcounts_Item_LegionRanksKey;
@@ -6310,9 +6617,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_legionchestcounts extends Array<data_legionchestcounts_Item> {}
-    
+
     export type data_legionchesttypes = any[];
-    
+
     interface data_legionfactions_Item {
       Id?: string;
       SpawnWeight?: number;
@@ -6366,7 +6673,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_legionfactions extends Array<data_legionfactions_Item> {}
-    
+
     interface data_legionmonstercounts_Item {
       LegionFactionsKey?: data_legionmonstercounts_Item_LegionFactionsKey;
       LegionRanksKey?: data_legionmonstercounts_Item_LegionRanksKey;
@@ -6386,11 +6693,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_legionmonstercounts extends Array<data_legionmonstercounts_Item> {}
-    
+
     export type data_legionmonstervarieties = any[];
-    
+
     export type data_legionranks = any[];
-    
+
     interface data_legionrewardtypevisuals_Item {
       IntId?: number;
       MinimapIconsKey?: data_legionrewardtypevisuals_Item_MinimapIconsKey;
@@ -6407,8 +6714,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_legionrewardtypevisuals extends Array<data_legionrewardtypevisuals_Item> {}
-    
+    export interface data_legionrewardtypevisuals
+      extends Array<data_legionrewardtypevisuals_Item> {}
+
     interface data_levelrelativeplayerscaling_Item {
       PlayerLevel?: number;
       MonsterLevel?: number;
@@ -6419,10 +6727,11 @@ declare namespace Poe2DataMain {
       Unk006?: number;
       Unk007?: number;
     }
-    export interface data_levelrelativeplayerscaling extends Array<data_levelrelativeplayerscaling_Item> {}
-    
+    export interface data_levelrelativeplayerscaling
+      extends Array<data_levelrelativeplayerscaling_Item> {}
+
     export type data_loginareas = any[];
-    
+
     interface data_mapcompletionachievements_Item {
       Id?: string;
       MapStatConditionsKeys?: any[];
@@ -6433,16 +6742,17 @@ declare namespace Poe2DataMain {
       WorldAreasKeys?: any[];
       Unk007?: any[];
     }
-    export interface data_mapcompletionachievements extends Array<data_mapcompletionachievements_Item> {}
-    
+    export interface data_mapcompletionachievements
+      extends Array<data_mapcompletionachievements_Item> {}
+
     export type data_mapconnections = any[];
-    
+
     export type data_mapcreationinformation = any[];
-    
+
     export type data_mapcurrencyinventorylayout = any[];
-    
+
     export type data_mapdevicerecipes = any[];
-    
+
     interface data_mapdevices_Item {
       Id?: string;
       MiscObject?: any;
@@ -6465,11 +6775,11 @@ declare namespace Poe2DataMain {
       Unk018?: boolean;
     }
     export interface data_mapdevices extends Array<data_mapdevices_Item> {}
-    
+
     export type data_mapfragmentmods = any[];
-    
+
     export type data_mapinhabitants = any[];
-    
+
     interface data_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -6490,7 +6800,7 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_mappins extends Array<data_mappins_Item> {}
-    
+
     interface data_maps_Item {
       MapKeyTier?: data_maps_Item_MapKeyTier;
       SomeRef02?: any;
@@ -6508,15 +6818,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_maps extends Array<data_maps_Item> {}
-    
+
     export type data_mapseries = any[];
-    
+
     export type data_mapseriestiers = any[];
-    
+
     export type data_mapstashspecialtypeentries = any[];
-    
+
     export type data_mapstashuniquemapinfo = any[];
-    
+
     interface data_mapstatconditions_Item {
       Id?: string;
       StatsKey?: data_mapstatconditions_Item_StatsKey;
@@ -6530,21 +6840,21 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_mapstatconditions extends Array<data_mapstatconditions_Item> {}
-    
+
     interface data_maptierachievements_Item {
       Id?: string;
       AchievementItemsKey?: any[];
       MapTiers?: number[];
     }
     export interface data_maptierachievements extends Array<data_maptierachievements_Item> {}
-    
+
     interface data_maptiers_Item {
       Tier?: number;
       Level?: number;
       Level2?: number;
     }
     export interface data_maptiers extends Array<data_maptiers_Item> {}
-    
+
     interface data_mavendialog_Item {
       Id?: string;
       TextAudioT1?: data_mavendialog_Item_TextAudioT1;
@@ -6576,9 +6886,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_mavendialog extends Array<data_mavendialog_Item> {}
-    
+
     export type data_mavenfights = any[];
-    
+
     interface data_mavenjewelradiuskeystones_Item {
       Keystone?: data_mavenjewelradiuskeystones_Item_Keystone;
     }
@@ -6586,8 +6896,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_mavenjewelradiuskeystones extends Array<data_mavenjewelradiuskeystones_Item> {}
-    
+    export interface data_mavenjewelradiuskeystones
+      extends Array<data_mavenjewelradiuskeystones_Item> {}
+
     interface data_melee_Item {
       ActiveSkill?: data_melee_Item_ActiveSkill;
       Unk001?: number;
@@ -6609,7 +6920,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_melee extends Array<data_melee_Item> {}
-    
+
     interface data_meleetrails_Item {
       EPKFile1?: string;
       Unk001?: number;
@@ -6623,7 +6934,7 @@ declare namespace Poe2DataMain {
       Unk009?: string;
     }
     export interface data_meleetrails extends Array<data_meleetrails_Item> {}
-    
+
     interface data_memorylinetype_Item {
       Id?: string;
       Unk001?: data_memorylinetype_Item_Unk001;
@@ -6650,7 +6961,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_memorylinetype extends Array<data_memorylinetype_Item> {}
-    
+
     interface data_metamorphosisstashtablayout_Item {
       Id?: string;
       StoredItem?: data_metamorphosisstashtablayout_Item_StoredItem;
@@ -6665,8 +6976,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_metamorphosisstashtablayout extends Array<data_metamorphosisstashtablayout_Item> {}
-    
+    export interface data_metamorphosisstashtablayout
+      extends Array<data_metamorphosisstashtablayout_Item> {}
+
     interface data_micromigrationdata_Item {
       BaseItemTypesKey?: data_micromigrationdata_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -6686,7 +6998,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_micromigrationdata extends Array<data_micromigrationdata_Item> {}
-    
+
     interface data_microtransactionappliedinventoryitemartvariations_Item {
       Unk000?: data_microtransactionappliedinventoryitemartvariations_Item_Unk000;
       DDSFiles?: string[];
@@ -6698,14 +7010,16 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionappliedinventoryitemartvariations extends Array<data_microtransactionappliedinventoryitemartvariations_Item> {}
-    
+    export interface data_microtransactionappliedinventoryitemartvariations
+      extends Array<data_microtransactionappliedinventoryitemartvariations_Item> {}
+
     interface data_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_microtransactioncategory extends Array<data_microtransactioncategory_Item> {}
-    
+    export interface data_microtransactioncategory
+      extends Array<data_microtransactioncategory_Item> {}
+
     interface data_microtransactioncharacterportraitvariations_Item {
       BaseItemType?: data_microtransactioncharacterportraitvariations_Item_BaseItemType;
     }
@@ -6713,8 +7027,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_microtransactioncharacterportraitvariations extends Array<data_microtransactioncharacterportraitvariations_Item> {}
-    
+    export interface data_microtransactioncharacterportraitvariations
+      extends Array<data_microtransactioncharacterportraitvariations_Item> {}
+
     interface data_microtransactionchargevariations_Item {
       Unk000?: data_microtransactionchargevariations_Item_Unk000;
       Unk001?: data_microtransactionchargevariations_Item_Unk001;
@@ -6737,8 +7052,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionchargevariations extends Array<data_microtransactionchargevariations_Item> {}
-    
+    export interface data_microtransactionchargevariations
+      extends Array<data_microtransactionchargevariations_Item> {}
+
     interface data_microtransactioncombineformula_Item {
       Id?: string;
       Result_BaseItemTypesKey?: data_microtransactioncombineformula_Item_Result_BaseItemTypesKey;
@@ -6752,8 +7068,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_microtransactioncombineformula extends Array<data_microtransactioncombineformula_Item> {}
-    
+    export interface data_microtransactioncombineformula
+      extends Array<data_microtransactioncombineformula_Item> {}
+
     interface data_microtransactionconditionalapparitionevents_Item {
       Unk000?: data_microtransactionconditionalapparitionevents_Item_Unk000;
       Unk001?: number;
@@ -6775,8 +7092,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionconditionalapparitionevents extends Array<data_microtransactionconditionalapparitionevents_Item> {}
-    
+    export interface data_microtransactionconditionalapparitionevents
+      extends Array<data_microtransactionconditionalapparitionevents_Item> {}
+
     interface data_microtransactionconditionalapparitions_Item {
       Id?: string;
       Unk001?: number[];
@@ -6796,12 +7114,13 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionconditionalapparitions extends Array<data_microtransactionconditionalapparitions_Item> {}
-    
+    export interface data_microtransactionconditionalapparitions
+      extends Array<data_microtransactionconditionalapparitions_Item> {}
+
     export type data_microtransactioncounters = any[];
-    
+
     export type data_microtransactioncursorvariations = any[];
-    
+
     interface data_microtransactionequippediconvariations_Item {
       Unk000?: data_microtransactionequippediconvariations_Item_Unk000;
       DDSFiles?: string[];
@@ -6811,8 +7130,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionequippediconvariations extends Array<data_microtransactionequippediconvariations_Item> {}
-    
+    export interface data_microtransactionequippediconvariations
+      extends Array<data_microtransactionequippediconvariations_Item> {}
+
     interface data_microtransactionfireworksvariations_Item {
       BaseItemTypesKey?: data_microtransactionfireworksvariations_Item_BaseItemTypesKey;
       AOFile?: string;
@@ -6822,8 +7142,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_microtransactionfireworksvariations extends Array<data_microtransactionfireworksvariations_Item> {}
-    
+    export interface data_microtransactionfireworksvariations
+      extends Array<data_microtransactionfireworksvariations_Item> {}
+
     interface data_microtransactionjewelvariations_Item {
       Unk000?: data_microtransactionjewelvariations_Item_Unk000;
       Unk001?: number;
@@ -6851,10 +7172,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionjewelvariations extends Array<data_microtransactionjewelvariations_Item> {}
-    
+    export interface data_microtransactionjewelvariations
+      extends Array<data_microtransactionjewelvariations_Item> {}
+
     export type data_microtransactionlevelupeffects = any[];
-    
+
     interface data_microtransactionobjecteffects_Item {
       Id?: string;
       Unk001?: number[];
@@ -6878,8 +7200,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionobjecteffects extends Array<data_microtransactionobjecteffects_Item> {}
-    
+    export interface data_microtransactionobjecteffects
+      extends Array<data_microtransactionobjecteffects_Item> {}
+
     interface data_microtransactiononkillbeams_Item {
       Id?: string;
       Unk001?: data_microtransactiononkillbeams_Item_Unk001;
@@ -6897,8 +7220,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactiononkillbeams extends Array<data_microtransactiononkillbeams_Item> {}
-    
+    export interface data_microtransactiononkillbeams
+      extends Array<data_microtransactiononkillbeams_Item> {}
+
     interface data_microtransactiononkillconditions_Item {
       Id?: string;
       Unk001?: number[];
@@ -6914,8 +7238,9 @@ declare namespace Poe2DataMain {
       Unk011?: string;
       Unk012?: any[];
     }
-    export interface data_microtransactiononkillconditions extends Array<data_microtransactiononkillconditions_Item> {}
-    
+    export interface data_microtransactiononkillconditions
+      extends Array<data_microtransactiononkillconditions_Item> {}
+
     interface data_microtransactiononkilleffects_Item {
       Id?: string;
       Unk001?: any;
@@ -6934,20 +7259,22 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactiononkilleffects extends Array<data_microtransactiononkilleffects_Item> {}
-    
+    export interface data_microtransactiononkilleffects
+      extends Array<data_microtransactiononkilleffects_Item> {}
+
     export type data_microtransactiononopenchesteffects = any[];
-    
+
     interface data_microtransactionperiodiccharactereffectvariations_Item {
       Id?: string;
       AOFile?: string;
       MiscObject?: any;
       Unk003?: number;
     }
-    export interface data_microtransactionperiodiccharactereffectvariations extends Array<data_microtransactionperiodiccharactereffectvariations_Item> {}
-    
+    export interface data_microtransactionperiodiccharactereffectvariations
+      extends Array<data_microtransactionperiodiccharactereffectvariations_Item> {}
+
     export type data_microtransactionportalvariations = any[];
-    
+
     interface data_microtransactionraritydisplay_Item {
       Rarity?: string;
       Unk001?: data_microtransactionraritydisplay_Item_Unk001;
@@ -6958,8 +7285,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionraritydisplay extends Array<data_microtransactionraritydisplay_Item> {}
-    
+    export interface data_microtransactionraritydisplay
+      extends Array<data_microtransactionraritydisplay_Item> {}
+
     interface data_microtransactionrecycleoutcomes_Item {
       Unk000?: data_microtransactionrecycleoutcomes_Item_Unk000;
       Unk001?: number;
@@ -6968,8 +7296,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_microtransactionrecycleoutcomes extends Array<data_microtransactionrecycleoutcomes_Item> {}
-    
+    export interface data_microtransactionrecycleoutcomes
+      extends Array<data_microtransactionrecycleoutcomes_Item> {}
+
     interface data_microtransactionrecyclesalvagevalues_Item {
       BaseItemType?: data_microtransactionrecyclesalvagevalues_Item_BaseItemType;
       Unk001?: number;
@@ -6979,15 +7308,17 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_microtransactionrecyclesalvagevalues extends Array<data_microtransactionrecyclesalvagevalues_Item> {}
-    
+    export interface data_microtransactionrecyclesalvagevalues
+      extends Array<data_microtransactionrecyclesalvagevalues_Item> {}
+
     interface data_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_microtransactionskillgemeffectslottypes extends Array<data_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_microtransactionskillgemeffectslottypes
+      extends Array<data_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_microtransactionslot_Item_Unk001;
@@ -7008,17 +7339,18 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_microtransactionslot extends Array<data_microtransactionslot_Item> {}
-    
+
     interface data_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_microtransactionslotadditionaldefaultoptions extends Array<data_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_microtransactionslotadditionaldefaultoptions
+      extends Array<data_microtransactionslotadditionaldefaultoptions_Item> {}
+
     export type data_microtransactionsocialframevariations = any[];
-    
+
     interface data_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -7030,13 +7362,13 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_minimapicons extends Array<data_minimapicons_Item> {}
-    
+
     export type data_minioncommands = any[];
-    
+
     export type data_miniongemlevelscaling = any[];
-    
+
     export type data_minionstats = any[];
-    
+
     interface data_miniontype_Item {
       Id?: string;
       Unk001?: any;
@@ -7056,7 +7388,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_miniontype extends Array<data_miniontype_Item> {}
-    
+
     interface data_miniqueststates_Item {
       Unk000?: number;
       Unk001?: any[];
@@ -7064,7 +7396,7 @@ declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface data_miniqueststates extends Array<data_miniqueststates_Item> {}
-    
+
     interface data_miscanimated_Item {
       Id?: string;
       AOFile?: string;
@@ -7074,7 +7406,7 @@ declare namespace Poe2DataMain {
       HASH32?: number;
     }
     export interface data_miscanimated extends Array<data_miscanimated_Item> {}
-    
+
     interface data_miscanimatedartvariations_Item {
       Id?: string;
       Unk001?: number[];
@@ -7082,8 +7414,9 @@ declare namespace Poe2DataMain {
       Unk003?: number;
       Unk004?: any;
     }
-    export interface data_miscanimatedartvariations extends Array<data_miscanimatedartvariations_Item> {}
-    
+    export interface data_miscanimatedartvariations
+      extends Array<data_miscanimatedartvariations_Item> {}
+
     interface data_miscbeams_Item {
       Id?: string;
       MiscAnimated?: data_miscbeams_Item_MiscAnimated;
@@ -7096,7 +7429,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_miscbeams extends Array<data_miscbeams_Item> {}
-    
+
     interface data_miscbeamsartvariations_Item {
       Id?: string;
       Unk001?: number[];
@@ -7105,9 +7438,9 @@ declare namespace Poe2DataMain {
       Unk004?: any;
     }
     export interface data_miscbeamsartvariations extends Array<data_miscbeamsartvariations_Item> {}
-    
+
     export type data_misccooldowns = any[];
-    
+
     interface data_misceffectpacks_Item {
       Id?: string;
       EPKFile?: string;
@@ -7120,14 +7453,15 @@ declare namespace Poe2DataMain {
       Unk008?: boolean;
     }
     export interface data_misceffectpacks extends Array<data_misceffectpacks_Item> {}
-    
+
     interface data_misceffectpacksartvariations_Item {
       Unk000?: string;
       Unk001?: number[];
       Unk002?: number;
     }
-    export interface data_misceffectpacksartvariations extends Array<data_misceffectpacksartvariations_Item> {}
-    
+    export interface data_misceffectpacksartvariations
+      extends Array<data_misceffectpacksartvariations_Item> {}
+
     interface data_miscobjects_Item {
       Id?: string;
       EffectVirtualPath?: string;
@@ -7137,7 +7471,7 @@ declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface data_miscobjects extends Array<data_miscobjects_Item> {}
-    
+
     interface data_miscobjectsartvariations_Item {
       Unk000?: string;
       Unk001?: number[];
@@ -7145,14 +7479,15 @@ declare namespace Poe2DataMain {
       Unk003?: number;
       Unk004?: any;
     }
-    export interface data_miscobjectsartvariations extends Array<data_miscobjectsartvariations_Item> {}
-    
+    export interface data_miscobjectsartvariations
+      extends Array<data_miscobjectsartvariations_Item> {}
+
     export type data_miscprojectilemod = any[];
-    
+
     export type data_miscprojectilemodartvariations = any[];
-    
+
     export type data_missiontilemap = any[];
-    
+
     interface data_missiontimertypes_Item {
       Id?: string;
       Image?: string;
@@ -7163,31 +7498,31 @@ declare namespace Poe2DataMain {
       Unk006?: any;
     }
     export interface data_missiontimertypes extends Array<data_missiontimertypes_Item> {}
-    
+
     export type data_missiontransitiontiles = any[];
-    
+
     export type data_mobileactoneatlasquestprogression = any[];
-    
+
     export type data_mobileascendancythresholds = any[];
-    
+
     export type data_mobileatlaseldermemories = any[];
-    
+
     export type data_mobileatlasinventorylayout = any[];
-    
+
     export type data_mobilecharactercreation = any[];
-    
+
     export type data_mobilequestaudio = any[];
-    
+
     export type data_mobileskillgemlayout = any[];
-    
+
     export type data_mobileskillgemlayoutpages = any[];
-    
+
     export type data_mobiletutorial = any[];
-    
+
     export type data_mobiletutorialgroup = any[];
-    
+
     export type data_modeffectstats = any[];
-    
+
     interface data_modequivalencies_Item {
       Id?: string;
       ModsKey0?: data_modequivalencies_Item_ModsKey0;
@@ -7208,14 +7543,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_modequivalencies extends Array<data_modequivalencies_Item> {}
-    
+
     interface data_modfamily_Item {
       Id?: string;
     }
     export interface data_modfamily extends Array<data_modfamily_Item> {}
-    
+
     export type data_modgrantedskills = any[];
-    
+
     interface data_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -7304,27 +7639,27 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_mods extends Array<data_mods_Item> {}
-    
+
     interface data_modsellpricetypes_Item {
       Id?: string;
     }
     export interface data_modsellpricetypes extends Array<data_modsellpricetypes_Item> {}
-    
+
     interface data_modtype_Item {
       Name?: string;
       ModSellPriceTypesKeys?: any[];
       Unk002?: boolean;
     }
     export interface data_modtype extends Array<data_modtype_Item> {}
-    
+
     interface data_monsterarmours_Item {
       Id?: string;
       ArtString_SMFile?: string;
     }
     export interface data_monsterarmours extends Array<data_monsterarmours_Item> {}
-    
+
     export type data_monsterbonuses = any[];
-    
+
     interface data_monsterconditionaleffectpacks_Item {
       Id?: string;
       MiscEffectPack1?: any[];
@@ -7333,8 +7668,9 @@ declare namespace Poe2DataMain {
       MiscEffectPack4?: any[];
       Unk005?: number;
     }
-    export interface data_monsterconditionaleffectpacks extends Array<data_monsterconditionaleffectpacks_Item> {}
-    
+    export interface data_monsterconditionaleffectpacks
+      extends Array<data_monsterconditionaleffectpacks_Item> {}
+
     interface data_monsterconditions_Item {
       Id?: string;
       Unk001?: data_monsterconditions_Item_Unk001;
@@ -7355,9 +7691,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_monsterconditions extends Array<data_monsterconditions_Item> {}
-    
+
     export type data_monsterdeathachievements = any[];
-    
+
     interface data_monsterdeathconditions_Item {
       Unk000?: string;
       Unk001?: any[];
@@ -7383,9 +7719,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_monsterdeathconditions extends Array<data_monsterdeathconditions_Item> {}
-    
+
     export type data_monsterencounterskillgroups = any[];
-    
+
     interface data_monstergroupentries_Item {
       Id?: string;
       MonsterVarietiesKey?: data_monstergroupentries_Item_MonsterVarietiesKey;
@@ -7396,7 +7732,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monstergroupentries extends Array<data_monstergroupentries_Item> {}
-    
+
     interface data_monsterheightbrackets_Item {
       Id?: string;
       Unk001?: number;
@@ -7423,7 +7759,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monsterheightbrackets extends Array<data_monsterheightbrackets_Item> {}
-    
+
     interface data_monsterheights_Item {
       MonsterVariety?: data_monsterheights_Item_MonsterVariety;
       Unk001?: number;
@@ -7440,7 +7776,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monsterheights extends Array<data_monsterheights_Item> {}
-    
+
     interface data_monstermapbossdifficulty_Item {
       MapLevel?: number;
       Stat1Value?: number;
@@ -7474,8 +7810,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_monstermapbossdifficulty extends Array<data_monstermapbossdifficulty_Item> {}
-    
+    export interface data_monstermapbossdifficulty
+      extends Array<data_monstermapbossdifficulty_Item> {}
+
     interface data_monstermapdifficulty_Item {
       MapLevel?: number;
       Stat1Value?: number;
@@ -7496,7 +7833,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monstermapdifficulty extends Array<data_monstermapdifficulty_Item> {}
-    
+
     interface data_monstermortar_Item {
       Id?: number;
       Unk001?: data_monstermortar_Item_Unk001;
@@ -7536,11 +7873,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_monstermortar extends Array<data_monstermortar_Item> {}
-    
+
     export type data_monsterpackcounts = any[];
-    
+
     export type data_monsterpackentries = any[];
-    
+
     interface data_monsterpacks_Item {
       Id?: string;
       Unk001?: number;
@@ -7574,7 +7911,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_monsterpacks extends Array<data_monsterpacks_Item> {}
-    
+
     interface data_monsterprojectileattack_Item {
       Id?: number;
       Projectile?: data_monsterprojectileattack_Item_Projectile;
@@ -7587,8 +7924,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_monsterprojectileattack extends Array<data_monsterprojectileattack_Item> {}
-    
+    export interface data_monsterprojectileattack
+      extends Array<data_monsterprojectileattack_Item> {}
+
     interface data_monsterprojectilespell_Item {
       Id?: number;
       Projectile?: data_monsterprojectilespell_Item_Projectile;
@@ -7607,7 +7945,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monsterprojectilespell extends Array<data_monsterprojectilespell_Item> {}
-    
+
     interface data_monsterresistances_Item {
       Id?: string;
       FireNormal?: number;
@@ -7624,20 +7962,20 @@ declare namespace Poe2DataMain {
       ChaosMerciless?: number;
     }
     export interface data_monsterresistances extends Array<data_monsterresistances_Item> {}
-    
+
     interface data_monstersegments_Item {
       Id?: string;
       Shapes?: string;
     }
     export interface data_monstersegments extends Array<data_monstersegments_Item> {}
-    
+
     export type data_monstershapeshift = any[];
-    
+
     interface data_monsterspawnergroups_Item {
       Id?: string;
     }
     export interface data_monsterspawnergroups extends Array<data_monsterspawnergroups_Item> {}
-    
+
     interface data_monsterspawnergroupsperlevel_Item {
       MonsterSpawnerGroupsKey?: data_monsterspawnergroupsperlevel_Item_MonsterSpawnerGroupsKey;
       MinLevel?: number;
@@ -7649,10 +7987,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_monsterspawnergroupsperlevel extends Array<data_monsterspawnergroupsperlevel_Item> {}
-    
+    export interface data_monsterspawnergroupsperlevel
+      extends Array<data_monsterspawnergroupsperlevel_Item> {}
+
     export type data_monsterspawneroverrides = any[];
-    
+
     interface data_monstertypes_Item {
       Id?: string;
       Unk001?: number;
@@ -7671,7 +8010,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_monstertypes extends Array<data_monstertypes_Item> {}
-    
+
     interface data_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_monstervarieties_Item_MonsterTypesKey;
@@ -7807,21 +8146,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_monstervarieties extends Array<data_monstervarieties_Item> {}
-    
+
     interface data_monstervarietiesartvariations_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number[];
     }
-    export interface data_monstervarietiesartvariations extends Array<data_monstervarietiesartvariations_Item> {}
-    
+    export interface data_monstervarietiesartvariations
+      extends Array<data_monstervarietiesartvariations_Item> {}
+
     interface data_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_mousecursorsizesettings extends Array<data_mousecursorsizesettings_Item> {}
-    
+    export interface data_mousecursorsizesettings
+      extends Array<data_mousecursorsizesettings_Item> {}
+
     interface data_movedaemon_Item {
       Unk000?: number;
       Unk001?: number;
@@ -7862,7 +8203,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_movedaemon extends Array<data_movedaemon_Item> {}
-    
+
     interface data_mtxsetbonus_Item {
       Id?: string;
       Unk001?: data_mtxsetbonus_Item_Unk001;
@@ -7876,11 +8217,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_mtxsetbonus extends Array<data_mtxsetbonus_Item> {}
-    
+
     export type data_mtxtypegamespecific = any[];
-    
+
     export type data_mtxtypes = any[];
-    
+
     interface data_multipartachievementareas_Item {
       Unk000?: data_multipartachievementareas_Item_Unk000;
       Unk001?: any[];
@@ -7890,8 +8231,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_multipartachievementareas extends Array<data_multipartachievementareas_Item> {}
-    
+    export interface data_multipartachievementareas
+      extends Array<data_multipartachievementareas_Item> {}
+
     interface data_multipartachievementconditions_Item {
       Id?: string;
       MultiPartAchievementsKey1?: any;
@@ -7903,8 +8245,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_multipartachievementconditions extends Array<data_multipartachievementconditions_Item> {}
-    
+    export interface data_multipartachievementconditions
+      extends Array<data_multipartachievementconditions_Item> {}
+
     interface data_multipartachievements_Item {
       Id?: string;
       Unk001?: number;
@@ -7919,7 +8262,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_multipartachievements extends Array<data_multipartachievements_Item> {}
-    
+
     interface data_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -7933,7 +8276,7 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_music extends Array<data_music_Item> {}
-    
+
     interface data_musiccategories_Item {
       Id?: string;
       Name?: string;
@@ -7941,7 +8284,7 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_musiccategories extends Array<data_musiccategories_Item> {}
-    
+
     interface data_mysteryboxes_Item {
       BaseItemTypesKey?: data_mysteryboxes_Item_BaseItemTypesKey;
       BK2File?: string;
@@ -7954,7 +8297,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_mysteryboxes extends Array<data_mysteryboxes_Item> {}
-    
+
     interface data_nearbymonsterconditions_Item {
       Id?: string;
       MonsterVarietiesKeys?: any[];
@@ -7966,8 +8309,9 @@ declare namespace Poe2DataMain {
       IsLessThen?: boolean;
       MinimumHealthPercentage?: number;
     }
-    export interface data_nearbymonsterconditions extends Array<data_nearbymonsterconditions_Item> {}
-    
+    export interface data_nearbymonsterconditions
+      extends Array<data_nearbymonsterconditions_Item> {}
+
     interface data_nettiers_Item {
       BaseItemTypesKey?: data_nettiers_Item_BaseItemTypesKey;
       Tier?: number;
@@ -7977,7 +8321,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_nettiers extends Array<data_nettiers_Item> {}
-    
+
     interface data_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -7989,7 +8333,7 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_notifications extends Array<data_notifications_Item> {}
-    
+
     interface data_npcaudio_Item {
       Id?: string;
       Unk001?: number[];
@@ -8008,7 +8352,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_npcaudio extends Array<data_npcaudio_Item> {}
-    
+
     interface data_npcconversations_Item {
       Id?: string;
       DialogueEvent?: data_npcconversations_Item_DialogueEvent;
@@ -8021,11 +8365,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_npcconversations extends Array<data_npcconversations_Item> {}
-    
+
     export type data_npcdialoguecutscene = any[];
-    
+
     export type data_npcdialoguecutscenesequences = any[];
-    
+
     interface data_npcdialoguestyles_Item {
       Id?: string;
       HeaderBaseFile?: string;
@@ -8055,7 +8399,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_npcdialoguestyles extends Array<data_npcdialoguestyles_Item> {}
-    
+
     interface data_npcfollowervariations_Item {
       MonsterVarietiesKey?: data_npcfollowervariations_Item_MonsterVarietiesKey;
       MiscAnimatedKey0?: data_npcfollowervariations_Item_MiscAnimatedKey0;
@@ -8088,11 +8432,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_npcfollowervariations extends Array<data_npcfollowervariations_Item> {}
-    
+
     export type data_npcmaster = any[];
-    
+
     export type data_npcportraitaooverrides = any[];
-    
+
     interface data_npcportraits_Item {
       Name?: string;
       PortraitFile?: string;
@@ -8100,7 +8444,7 @@ declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface data_npcportraits extends Array<data_npcportraits_Item> {}
-    
+
     interface data_npcs_Item {
       Id?: string;
       Name?: string;
@@ -8121,18 +8465,18 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_npcs extends Array<data_npcs_Item> {}
-    
+
     interface data_npcshop_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: any[];
     }
     export interface data_npcshop extends Array<data_npcshop_Item> {}
-    
+
     export type data_npcshopgamblervisualidentity = any[];
-    
+
     export type data_npcshops = any[];
-    
+
     interface data_npctalk_Item {
       NPCKey?: data_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -8202,22 +8546,23 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_npctalk extends Array<data_npctalk_Item> {}
-    
+
     interface data_npctalkcategory_Item {
       Id?: string;
       Unk001?: boolean;
     }
     export interface data_npctalkcategory extends Array<data_npctalkcategory_Item> {}
-    
+
     interface data_npctalkconsolequickactions_Item {
       Id?: string;
       Controller?: string;
       Unk002?: string;
     }
-    export interface data_npctalkconsolequickactions extends Array<data_npctalkconsolequickactions_Item> {}
-    
+    export interface data_npctalkconsolequickactions
+      extends Array<data_npctalkconsolequickactions_Item> {}
+
     export type data_npctalkmobilegroup = any[];
-    
+
     interface data_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -8238,19 +8583,19 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_npctextaudio extends Array<data_npctextaudio_Item> {}
-    
+
     export type data_npctype = any[];
-    
+
     export type data_npcvendordialogue = any[];
-    
+
     export type data_npcvendordialogueconditions = any[];
-    
+
     export type data_ongoingbuffvariations = any[];
-    
+
     export type data_ongoingtriggervariations = any[];
-    
+
     export type data_onkillachievements = any[];
-    
+
     interface data_packformation_Item {
       Id?: string;
       Unk001?: number;
@@ -8260,11 +8605,11 @@ declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface data_packformation extends Array<data_packformation_Item> {}
-    
+
     export type data_pantheonpanellayout = any[];
-    
+
     export type data_pantheonsouls = any[];
-    
+
     interface data_passivejewelart_Item {
       Unk000?: data_passivejewelart_Item_Unk000;
       Unk001?: string;
@@ -8276,7 +8621,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_passivejewelart extends Array<data_passivejewelart_Item> {}
-    
+
     interface data_passivejewelnodemodifyingstats_Item {
       JwelStat?: data_passivejewelnodemodifyingstats_Item_JwelStat;
       Stat?: data_passivejewelnodemodifyingstats_Item_Stat;
@@ -8293,8 +8638,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_passivejewelnodemodifyingstats extends Array<data_passivejewelnodemodifyingstats_Item> {}
-    
+    export interface data_passivejewelnodemodifyingstats
+      extends Array<data_passivejewelnodemodifyingstats_Item> {}
+
     interface data_passivejewelradii_Item {
       ID?: string;
       RingOuterRadius?: number;
@@ -8302,21 +8648,21 @@ declare namespace Poe2DataMain {
       Radius?: number;
     }
     export interface data_passivejewelradii extends Array<data_passivejewelradii_Item> {}
-    
+
     export type data_passivejewelslots = any[];
-    
+
     export type data_passivejeweluniqueart = any[];
-    
+
     interface data_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
     export interface data_passiveoverridelimits extends Array<data_passiveoverridelimits_Item> {}
-    
+
     export type data_passiveskillfilteroptions = any[];
-    
+
     export type data_passiveskillmasteryeffects = any[];
-    
+
     interface data_passiveskillmasterygroups_Item {
       Id?: string;
       MasteryEffects?: any[];
@@ -8335,17 +8681,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_passiveskillmasterygroups extends Array<data_passiveskillmasterygroups_Item> {}
-    
+    export interface data_passiveskillmasterygroups
+      extends Array<data_passiveskillmasterygroups_Item> {}
+
     export type data_passiveskilloverrides = any[];
-    
+
     interface data_passiveskilloverridetypes_Item {
       Id?: string;
       CounterStat?: any;
       Unk002?: boolean;
     }
-    export interface data_passiveskilloverridetypes extends Array<data_passiveskilloverridetypes_Item> {}
-    
+    export interface data_passiveskilloverridetypes
+      extends Array<data_passiveskilloverridetypes_Item> {}
+
     interface data_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -8403,17 +8751,18 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_passiveskills extends Array<data_passiveskills_Item> {}
-    
+
     interface data_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_passiveskillstatcategories extends Array<data_passiveskillstatcategories_Item> {}
-    
+    export interface data_passiveskillstatcategories
+      extends Array<data_passiveskillstatcategories_Item> {}
+
     export type data_passiveskilltrees = any[];
-    
+
     export type data_passiveskilltreetutorial = any[];
-    
+
     interface data_passiveskilltreeuiart_Item {
       Id?: string;
       GroupBackgroundSmall?: string;
@@ -8435,18 +8784,19 @@ declare namespace Poe2DataMain {
       GroupBackgroundLargeBlank?: string;
     }
     export interface data_passiveskilltreeuiart extends Array<data_passiveskilltreeuiart_Item> {}
-    
+
     export type data_passivetreeexpansionjewels = any[];
-    
+
     interface data_passivetreeexpansionjewelsizes_Item {
       Name?: string;
     }
-    export interface data_passivetreeexpansionjewelsizes extends Array<data_passivetreeexpansionjewelsizes_Item> {}
-    
+    export interface data_passivetreeexpansionjewelsizes
+      extends Array<data_passivetreeexpansionjewelsizes_Item> {}
+
     export type data_passivetreeexpansionskills = any[];
-    
+
     export type data_passivetreeexpansionspecialskills = any[];
-    
+
     interface data_pcbangrewardmicros_Item {
       Unk000?: data_pcbangrewardmicros_Item_Unk000;
       Unk001?: number;
@@ -8456,9 +8806,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_pcbangrewardmicros extends Array<data_pcbangrewardmicros_Item> {}
-    
+
     export type data_pet = any[];
-    
+
     interface data_playerconditions_Item {
       Id?: string;
       BuffDefinitionsKeys?: any[];
@@ -8472,15 +8822,16 @@ declare namespace Poe2DataMain {
       Unk009?: boolean;
     }
     export interface data_playerconditions extends Array<data_playerconditions_Item> {}
-    
+
     interface data_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_playertradewhisperformats extends Array<data_playertradewhisperformats_Item> {}
-    
+    export interface data_playertradewhisperformats
+      extends Array<data_playertradewhisperformats_Item> {}
+
     interface data_portalaudio_Item {
       Unk000?: data_portalaudio_Item_Unk000;
       Unk001?: data_portalaudio_Item_Unk001;
@@ -8500,13 +8851,13 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portalaudio extends Array<data_portalaudio_Item> {}
-    
+
     interface data_portalaudioevents_Item {
       Id?: string;
       Unk001?: number;
     }
     export interface data_portalaudioevents extends Array<data_portalaudioevents_Item> {}
-    
+
     interface data_preloadfromstats_Item {
       Unk000?: data_preloadfromstats_Item_Unk000;
       Unk001?: any[];
@@ -8520,20 +8871,21 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_preloadfromstats extends Array<data_preloadfromstats_Item> {}
-    
+
     interface data_preloadgroups_Item {
       Id?: string;
     }
     export interface data_preloadgroups extends Array<data_preloadgroups_Item> {}
-    
+
     interface data_primordialbosslifescalingperlevel_Item {
       AreaLevel?: number;
       Scale?: number;
     }
-    export interface data_primordialbosslifescalingperlevel extends Array<data_primordialbosslifescalingperlevel_Item> {}
-    
+    export interface data_primordialbosslifescalingperlevel
+      extends Array<data_primordialbosslifescalingperlevel_Item> {}
+
     export type data_projectileoverrides = any[];
-    
+
     interface data_projectiles_Item {
       Id?: string;
       AOFiles?: string[];
@@ -8573,7 +8925,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_projectiles extends Array<data_projectiles_Item> {}
-    
+
     interface data_projectilesartvariations_Item {
       Projectile?: string;
       Variant?: number;
@@ -8581,14 +8933,15 @@ declare namespace Poe2DataMain {
       Unk003?: number;
       Unk004?: any;
     }
-    export interface data_projectilesartvariations extends Array<data_projectilesartvariations_Item> {}
-    
+    export interface data_projectilesartvariations
+      extends Array<data_projectilesartvariations_Item> {}
+
     interface data_pvptypes_Item {
       Id?: string;
       Unk001?: any;
     }
     export interface data_pvptypes extends Array<data_pvptypes_Item> {}
-    
+
     interface data_quest_Item {
       Id?: string;
       Act?: number;
@@ -8612,7 +8965,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_quest extends Array<data_quest_Item> {}
-    
+
     interface data_questachievements_Item {
       Id?: string;
       QuestStates?: number[];
@@ -8622,15 +8975,15 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_questachievements extends Array<data_questachievements_Item> {}
-    
+
     interface data_questflags_Item {
       Id?: string;
       HASH32?: number;
     }
     export interface data_questflags extends Array<data_questflags_Item> {}
-    
+
     export type data_questitemnpcaudio = any[];
-    
+
     interface data_questitems_Item {
       Item?: data_questitems_Item_Item;
       HaveItemQuestFlag?: data_questitems_Item_HaveItemQuestFlag;
@@ -8663,7 +9016,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_questitems extends Array<data_questitems_Item> {}
-    
+
     interface data_questrewardoffers_Item {
       Id?: string;
       QuestKey?: data_questrewardoffers_Item_QuestKey;
@@ -8688,7 +9041,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_questrewardoffers extends Array<data_questrewardoffers_Item> {}
-    
+
     interface data_questrewards_Item {
       RewardOffer?: data_questrewards_Item_RewardOffer;
       UnkLong001?: number;
@@ -8724,7 +9077,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_questrewards extends Array<data_questrewards_Item> {}
-    
+
     interface data_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -8737,7 +9090,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_questrewardtype extends Array<data_questrewardtype_Item> {}
-    
+
     interface data_queststates_Item {
       Quest?: data_queststates_Item_Quest;
       Order?: number;
@@ -8753,7 +9106,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_queststates extends Array<data_queststates_Item> {}
-    
+
     interface data_queststaticrewards_Item {
       QuestFlag?: data_queststaticrewards_Item_QuestFlag;
       Unk001?: number;
@@ -8770,7 +9123,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_queststaticrewards extends Array<data_queststaticrewards_Item> {}
-    
+
     interface data_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -8781,17 +9134,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_questtrackergroup extends Array<data_questtrackergroup_Item> {}
-    
+
     interface data_questtype_Item {
       Id?: string;
       Unk001?: any[];
     }
     export interface data_questtype extends Array<data_questtype_Item> {}
-    
+
     export type data_racerewardtomicro = any[];
-    
+
     export type data_races = any[];
-    
+
     interface data_racetimes_Item {
       RacesKey?: data_racetimes_Item_RacesKey;
       Index?: number;
@@ -8803,7 +9156,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_racetimes extends Array<data_racetimes_Item> {}
-    
+
     interface data_rarity_Item {
       Id?: string;
       MinMods?: number;
@@ -8815,7 +9168,7 @@ declare namespace Poe2DataMain {
       Color?: string;
     }
     export interface data_rarity extends Array<data_rarity_Item> {}
-    
+
     interface data_realms_Item {
       Id?: string;
       Name?: string;
@@ -8834,7 +9187,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_realms extends Array<data_realms_Item> {}
-    
+
     interface data_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -8844,9 +9197,9 @@ declare namespace Poe2DataMain {
       UnlockArea?: any;
     }
     export interface data_recipeunlockdisplay extends Array<data_recipeunlockdisplay_Item> {}
-    
+
     export type data_recipeunlockobjects = any[];
-    
+
     interface data_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
@@ -8854,20 +9207,20 @@ declare namespace Poe2DataMain {
       Requirement?: string;
     }
     export interface data_relicinventorylayout extends Array<data_relicinventorylayout_Item> {}
-    
+
     export type data_relicitemeffectvariations = any[];
-    
+
     interface data_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_remindertext extends Array<data_remindertext_Item> {}
-    
+
     export type data_reservationskillsaudio = any[];
-    
+
     export type data_resistancepenaltyperarealevel = any[];
-    
+
     interface data_ritualbalanceperlevel_Item {
       MinLevel?: number;
       Unk001?: number;
@@ -8885,13 +9238,13 @@ declare namespace Poe2DataMain {
       Unk013?: number;
     }
     export interface data_ritualbalanceperlevel extends Array<data_ritualbalanceperlevel_Item> {}
-    
+
     interface data_ritualconstants_Item {
       Id?: string;
       Value?: number;
     }
     export interface data_ritualconstants extends Array<data_ritualconstants_Item> {}
-    
+
     interface data_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -8934,7 +9287,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_ritualrunetypes extends Array<data_ritualrunetypes_Item> {}
-    
+
     interface data_ritualsetkillachievements_Item {
       Achievement?: data_ritualsetkillachievements_Item_Achievement;
       KillBosses?: any[];
@@ -8943,8 +9296,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_ritualsetkillachievements extends Array<data_ritualsetkillachievements_Item> {}
-    
+    export interface data_ritualsetkillachievements
+      extends Array<data_ritualsetkillachievements_Item> {}
+
     interface data_ritualspawnpatterns_Item {
       Id?: string;
       Unk001?: number;
@@ -8952,21 +9306,22 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_ritualspawnpatterns extends Array<data_ritualspawnpatterns_Item> {}
-    
+
     interface data_rogueexilelifescalingperlevel_Item {
       Level?: number;
       AdditionalLife?: number;
     }
-    export interface data_rogueexilelifescalingperlevel extends Array<data_rogueexilelifescalingperlevel_Item> {}
-    
+    export interface data_rogueexilelifescalingperlevel
+      extends Array<data_rogueexilelifescalingperlevel_Item> {}
+
     export type data_rogueexiles = any[];
-    
+
     interface data_rulesets_Item {
       Id?: string;
       Unk001?: any[];
     }
     export interface data_rulesets extends Array<data_rulesets_Item> {}
-    
+
     interface data_runiccircles_Item {
       Unk000?: string;
       Unk001?: number;
@@ -8974,7 +9329,7 @@ declare namespace Poe2DataMain {
       Unk003?: number;
     }
     export interface data_runiccircles extends Array<data_runiccircles_Item> {}
-    
+
     interface data_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -8994,7 +9349,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_safehousebyocrafting extends Array<data_safehousebyocrafting_Item> {}
-    
+
     interface data_safehousecraftingspreecurrencies_Item {
       Id?: string;
       BaseItemTypesKey?: data_safehousecraftingspreecurrencies_Item_BaseItemTypesKey;
@@ -9004,8 +9359,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_safehousecraftingspreecurrencies extends Array<data_safehousecraftingspreecurrencies_Item> {}
-    
+    export interface data_safehousecraftingspreecurrencies
+      extends Array<data_safehousecraftingspreecurrencies_Item> {}
+
     interface data_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -9015,8 +9371,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_safehousecraftingspreetype extends Array<data_safehousecraftingspreetype_Item> {}
-    
+    export interface data_safehousecraftingspreetype
+      extends Array<data_safehousecraftingspreetype_Item> {}
+
     interface data_salvageboxes_Item {
       BaseItemType?: data_salvageboxes_Item_BaseItemType;
       Id?: string;
@@ -9027,7 +9384,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_salvageboxes extends Array<data_salvageboxes_Item> {}
-    
+
     interface data_sanctumairlocks_Item {
       Floor?: data_sanctumairlocks_Item_Floor;
       Unk001?: number;
@@ -9048,9 +9405,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sanctumairlocks extends Array<data_sanctumairlocks_Item> {}
-    
+
     export type data_sanctumbalanceperlevel = any[];
-    
+
     interface data_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_sanctumdefenceicons_Item_Stat;
@@ -9064,7 +9421,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sanctumdefenceicons extends Array<data_sanctumdefenceicons_Item> {}
-    
+
     interface data_sanctumfloors_Item {
       Id?: string;
       Area?: data_sanctumfloors_Item_Area;
@@ -9092,19 +9449,21 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sanctumfloors extends Array<data_sanctumfloors_Item> {}
-    
+
     interface data_sanctumfodderlifescalingperlevel_Item {
       Level?: number;
       Unk001?: number;
     }
-    export interface data_sanctumfodderlifescalingperlevel extends Array<data_sanctumfodderlifescalingperlevel_Item> {}
-    
+    export interface data_sanctumfodderlifescalingperlevel
+      extends Array<data_sanctumfodderlifescalingperlevel_Item> {}
+
     interface data_sanctumlifescalingperlevel_Item {
       Level?: number;
       Unk001?: number;
     }
-    export interface data_sanctumlifescalingperlevel extends Array<data_sanctumlifescalingperlevel_Item> {}
-    
+    export interface data_sanctumlifescalingperlevel
+      extends Array<data_sanctumlifescalingperlevel_Item> {}
+
     interface data_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -9116,8 +9475,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_sanctumpersistenteffectcategories extends Array<data_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_sanctumpersistenteffectcategories
+      extends Array<data_sanctumpersistenteffectcategories_Item> {}
+
     interface data_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -9147,10 +9507,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_sanctumpersistenteffects extends Array<data_sanctumpersistenteffects_Item> {}
-    
+    export interface data_sanctumpersistenteffects
+      extends Array<data_sanctumpersistenteffects_Item> {}
+
     export type data_sanctumrewardobjects = any[];
-    
+
     interface data_sanctumrooms_Item {
       Id?: string;
       ArmFile?: string;
@@ -9168,7 +9529,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sanctumrooms extends Array<data_sanctumrooms_Item> {}
-    
+
     interface data_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -9193,11 +9554,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_sanctumroomtypes extends Array<data_sanctumroomtypes_Item> {}
-    
+
     export type data_sanctumselectiondisplayoverride = any[];
-    
+
     export type data_scarabs = any[];
-    
+
     interface data_scoutingreports_Item {
       Id?: string;
       BaseItemType?: data_scoutingreports_Item_BaseItemType;
@@ -9208,7 +9569,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_scoutingreports extends Array<data_scoutingreports_Item> {}
-    
+
     interface data_sentinelcraftingcurrency_Item {
       Currency?: data_sentinelcraftingcurrency_Item_Currency;
       Type?: number;
@@ -9217,10 +9578,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_sentinelcraftingcurrency extends Array<data_sentinelcraftingcurrency_Item> {}
-    
+    export interface data_sentinelcraftingcurrency
+      extends Array<data_sentinelcraftingcurrency_Item> {}
+
     export type data_sentineldroneinventorylayout = any[];
-    
+
     interface data_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -9239,7 +9601,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_sentinelpassives extends Array<data_sentinelpassives_Item> {}
-    
+
     interface data_sentinelpassivestats_Item {
       Unk000?: data_sentinelpassivestats_Item_Unk000;
       Unk001?: data_sentinelpassivestats_Item_Unk001;
@@ -9254,7 +9616,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sentinelpassivestats extends Array<data_sentinelpassivestats_Item> {}
-    
+
     interface data_sentinelpassivetypes_Item {
       Id?: string;
       DefaultIcon?: string;
@@ -9263,13 +9625,13 @@ declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface data_sentinelpassivetypes extends Array<data_sentinelpassivetypes_Item> {}
-    
+
     interface data_sentinelpowerexplevels_Item {
       Unk000?: number;
       Unk001?: number;
     }
     export interface data_sentinelpowerexplevels extends Array<data_sentinelpowerexplevels_Item> {}
-    
+
     interface data_sentinelstoragelayout_Item {
       Id?: string;
       StoredItem?: data_sentinelstoragelayout_Item_StoredItem;
@@ -9290,7 +9652,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sentinelstoragelayout extends Array<data_sentinelstoragelayout_Item> {}
-    
+
     interface data_sentineltaggedmonsterstats_Item {
       TaggedStat?: data_sentineltaggedmonsterstats_Item_TaggedStat;
       Unk001?: data_sentineltaggedmonsterstats_Item_Unk001;
@@ -9306,8 +9668,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_sentineltaggedmonsterstats extends Array<data_sentineltaggedmonsterstats_Item> {}
-    
+    export interface data_sentineltaggedmonsterstats
+      extends Array<data_sentineltaggedmonsterstats_Item> {}
+
     interface data_sessionquestflags_Item {
       QuestFlag?: data_sessionquestflags_Item_QuestFlag;
     }
@@ -9316,15 +9679,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sessionquestflags extends Array<data_sessionquestflags_Item> {}
-    
+
     export type data_shaperguardians = any[];
-    
+
     export type data_shapeshiftformclones = any[];
-    
+
     export type data_shapeshiftforms = any[];
-    
+
     export type data_shapeshifttransformdata = any[];
-    
+
     interface data_shieldtypes_Item {
       BaseItemTypesKey?: data_shieldtypes_Item_BaseItemTypesKey;
       Block?: number;
@@ -9334,7 +9697,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_shieldtypes extends Array<data_shieldtypes_Item> {}
-    
+
     interface data_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -9343,7 +9706,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_shoptag extends Array<data_shoptag_Item> {}
-    
+
     interface data_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -9389,14 +9752,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_shrines extends Array<data_shrines_Item> {}
-    
+
     interface data_shrinesounds_Item {
       Id?: string;
       StereoSoundFile?: string;
       MonoSoundFile?: string;
     }
     export interface data_shrinesounds extends Array<data_shrinesounds_Item> {}
-    
+
     interface data_shrinevisualartvariations_Item {
       Unk000?: data_shrinevisualartvariations_Item_Unk000;
       Unk001?: boolean;
@@ -9413,8 +9776,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_shrinevisualartvariations extends Array<data_shrinevisualartvariations_Item> {}
-    
+    export interface data_shrinevisualartvariations
+      extends Array<data_shrinevisualartvariations_Item> {}
+
     interface data_sigildisplay_Item {
       Id?: string;
       Active_StatsKey?: data_sigildisplay_Item_Active_StatsKey;
@@ -9433,7 +9797,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_sigildisplay extends Array<data_sigildisplay_Item> {}
-    
+
     interface data_singlegroundlaser_Item {
       Id?: number;
       Unk001?: data_singlegroundlaser_Item_Unk001;
@@ -9461,7 +9825,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_singlegroundlaser extends Array<data_singlegroundlaser_Item> {}
-    
+
     interface data_skillartvariations_Item {
       Id?: string;
       Unk001?: any[];
@@ -9482,11 +9846,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_skillartvariations extends Array<data_skillartvariations_Item> {}
-    
+
     export type data_skillcraftingdata = any[];
-    
+
     export type data_skillevents = any[];
-    
+
     interface data_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -9500,7 +9864,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_skillgeminfo extends Array<data_skillgeminfo_Item> {}
-    
+
     interface data_skillgemlevelupeffects_Item {
       Id?: string;
       Unk001?: data_skillgemlevelupeffects_Item_Unk001;
@@ -9525,7 +9889,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_skillgemlevelupeffects extends Array<data_skillgemlevelupeffects_Item> {}
-    
+
     interface data_skillgems_Item {
       BaseItemTypesKey?: data_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -9556,18 +9920,18 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_skillgems extends Array<data_skillgems_Item> {}
-    
+
     export type data_skillgemsforuniquestat = any[];
-    
+
     export type data_skillgemsupports = any[];
-    
+
     interface data_skillminevariations_Item {
       SkillMinesKey?: number;
       Unk001?: number;
       MiscObject?: any;
     }
     export interface data_skillminevariations extends Array<data_skillminevariations_Item> {}
-    
+
     interface data_skillmorphdisplay_Item {
       Unk000?: data_skillmorphdisplay_Item_Unk000;
       Unk001?: any[];
@@ -9584,7 +9948,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_skillmorphdisplay extends Array<data_skillmorphdisplay_Item> {}
-    
+
     interface data_skillsurgeeffects_Item {
       GrantedEffectsKey?: data_skillsurgeeffects_Item_GrantedEffectsKey;
       Unk001?: any;
@@ -9609,7 +9973,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_skillsurgeeffects extends Array<data_skillsurgeeffects_Item> {}
-    
+
     interface data_skilltotemvariations_Item {
       SkillTotemsKey?: number;
       TotemSkinId?: number;
@@ -9620,14 +9984,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_skilltotemvariations extends Array<data_skilltotemvariations_Item> {}
-    
+
     interface data_skilltrapvariations_Item {
       Id?: number;
       Metadata?: string;
       MiscAnimated?: any;
     }
     export interface data_skilltrapvariations extends Array<data_skilltrapvariations_Item> {}
-    
+
     interface data_skillweaponeffects_Item {
       Unk000?: string;
       Unk001?: data_skillweaponeffects_Item_Unk001;
@@ -9640,9 +10004,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_skillweaponeffects extends Array<data_skillweaponeffects_Item> {}
-    
+
     export type data_socketaudioevents = any[];
-    
+
     interface data_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -9651,9 +10015,9 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_socketnotches extends Array<data_socketnotches_Item> {}
-    
+
     export type data_soulcores = any[];
-    
+
     interface data_soundeffects_Item {
       Id?: string;
       SoundFile?: string;
@@ -9662,7 +10026,7 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_soundeffects extends Array<data_soundeffects_Item> {}
-    
+
     interface data_spawnadditionalchestsorclusters_Item {
       StatsKey?: data_spawnadditionalchestsorclusters_Item_StatsKey;
       ChestsKey?: any;
@@ -9676,8 +10040,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spawnadditionalchestsorclusters extends Array<data_spawnadditionalchestsorclusters_Item> {}
-    
+    export interface data_spawnadditionalchestsorclusters
+      extends Array<data_spawnadditionalchestsorclusters_Item> {}
+
     interface data_spawnobject_Item {
       Unk000?: number;
       Unk001?: any[];
@@ -9697,19 +10062,19 @@ declare namespace Poe2DataMain {
       Unk015?: number;
     }
     export interface data_spawnobject extends Array<data_spawnobject_Item> {}
-    
+
     interface data_specialrooms_Item {
       Id?: string;
       ARMFile?: string;
     }
     export interface data_specialrooms extends Array<data_specialrooms_Item> {}
-    
+
     interface data_specialtiles_Item {
       Id?: string;
       TDTFile?: string;
     }
     export interface data_specialtiles extends Array<data_specialtiles_Item> {}
-    
+
     interface data_spectreoverrides_Item {
       Monster?: data_spectreoverrides_Item_Monster;
       Spectre?: any;
@@ -9720,20 +10085,20 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spectreoverrides extends Array<data_spectreoverrides_Item> {}
-    
+
     interface data_startingpassiveskills_Item {
       Id?: string;
       PassiveSkills?: any[];
     }
     export interface data_startingpassiveskills extends Array<data_startingpassiveskills_Item> {}
-    
+
     interface data_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
     export interface data_stashtabaffinities extends Array<data_stashtabaffinities_Item> {}
-    
+
     interface data_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -9744,19 +10109,20 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_stashtype extends Array<data_stashtype_Item> {}
-    
+
     export type data_statconvertaltattackcontainer = any[];
-    
+
     interface data_statdescriptionfunctions_Item {
       Id?: string;
       TranslationId?: string;
     }
-    export interface data_statdescriptionfunctions extends Array<data_statdescriptionfunctions_Item> {}
-    
+    export interface data_statdescriptionfunctions
+      extends Array<data_statdescriptionfunctions_Item> {}
+
     export type data_statistictrackingmicrotransactions = any[];
-    
+
     export type data_statistictrackingmicrotransactionsstatistics = any[];
-    
+
     interface data_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -9783,7 +10149,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_stats extends Array<data_stats_Item> {}
-    
+
     interface data_statsaffectinggeneration_Item {
       Stat?: data_statsaffectinggeneration_Item_Stat;
       StatValue?: number;
@@ -9792,8 +10158,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_statsaffectinggeneration extends Array<data_statsaffectinggeneration_Item> {}
-    
+    export interface data_statsaffectinggeneration
+      extends Array<data_statsaffectinggeneration_Item> {}
+
     interface data_statsfromskillstats_Item {
       Unk000?: data_statsfromskillstats_Item_Unk000;
       Unk001?: data_statsfromskillstats_Item_Unk001;
@@ -9807,7 +10174,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_statsfromskillstats extends Array<data_statsfromskillstats_Item> {}
-    
+
     interface data_statvisuals_Item {
       Unk000?: data_statvisuals_Item_Unk000;
       EPKFiles?: string[];
@@ -9818,7 +10185,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_statvisuals extends Array<data_statvisuals_Item> {}
-    
+
     interface data_strongboxes_Item {
       ChestsKey?: data_strongboxes_Item_ChestsKey;
       SpawnWeight?: number;
@@ -9833,7 +10200,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_strongboxes extends Array<data_strongboxes_Item> {}
-    
+
     interface data_suicideexplosion_Item {
       Id?: number;
       Unk001?: any;
@@ -9850,7 +10217,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_suicideexplosion extends Array<data_suicideexplosion_Item> {}
-    
+
     interface data_summonedspecificbarrels_Item {
       Id?: string;
       Chest?: data_summonedspecificbarrels_Item_Chest;
@@ -9871,8 +10238,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_summonedspecificbarrels extends Array<data_summonedspecificbarrels_Item> {}
-    
+    export interface data_summonedspecificbarrels
+      extends Array<data_summonedspecificbarrels_Item> {}
+
     interface data_summonedspecificmonsters_Item {
       Id?: number;
       MonsterVarietiesKey?: data_summonedspecificmonsters_Item_MonsterVarietiesKey;
@@ -9897,14 +10265,15 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_summonedspecificmonsters extends Array<data_summonedspecificmonsters_Item> {}
-    
+    export interface data_summonedspecificmonsters
+      extends Array<data_summonedspecificmonsters_Item> {}
+
     export type data_summonedspecificmonstersondeath = any[];
-    
+
     export type data_supportgems = any[];
-    
+
     export type data_surgeeffectpackartvariations = any[];
-    
+
     interface data_surgeeffects_Item {
       Id?: string;
       Unk001?: data_surgeeffects_Item_Unk001;
@@ -9917,14 +10286,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_surgeeffects extends Array<data_surgeeffects_Item> {}
-    
+
     interface data_surgetypes_Item {
       Id?: string;
       SurgeEffects?: any[];
       IntId?: number;
     }
     export interface data_surgetypes extends Array<data_surgetypes_Item> {}
-    
+
     interface data_tablecharge_Item {
       Unk000?: number;
       Unk001?: number;
@@ -9964,7 +10333,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_tablecharge extends Array<data_tablecharge_Item> {}
-    
+
     interface data_tablemonsterspawners_Item {
       Metadata?: string;
       AreaLevel?: number;
@@ -10005,14 +10374,14 @@ declare namespace Poe2DataMain {
       Unk036?: number;
     }
     export interface data_tablemonsterspawners extends Array<data_tablemonsterspawners_Item> {}
-    
+
     interface data_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_tags extends Array<data_tags_Item> {}
-    
+
     interface data_talismanmonstermods_Item {
       ModTypeKey?: data_talismanmonstermods_Item_ModTypeKey;
       ModsKey?: data_talismanmonstermods_Item_ModsKey;
@@ -10026,11 +10395,11 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_talismanmonstermods extends Array<data_talismanmonstermods_Item> {}
-    
+
     export type data_talismanpacks = any[];
-    
+
     export type data_talismans = any[];
-    
+
     interface data_talkingpetaudioevents_Item {
       Event?: string;
       Unk001?: number;
@@ -10041,9 +10410,9 @@ declare namespace Poe2DataMain {
       Unk006?: number;
     }
     export interface data_talkingpetaudioevents extends Array<data_talkingpetaudioevents_Item> {}
-    
+
     export type data_talkingpetnpcaudio = any[];
-    
+
     interface data_talkingpets_Item {
       Unk000?: data_talkingpets_Item_Unk000;
       Unk001?: any[];
@@ -10053,7 +10422,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_talkingpets extends Array<data_talkingpets_Item> {}
-    
+
     interface data_tencentautolootpetcurrencies_Item {
       BaseItemTypesKey?: data_tencentautolootpetcurrencies_Item_BaseItemTypesKey;
       Unk001?: boolean;
@@ -10063,8 +10432,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_tencentautolootpetcurrencies extends Array<data_tencentautolootpetcurrencies_Item> {}
-    
+    export interface data_tencentautolootpetcurrencies
+      extends Array<data_tencentautolootpetcurrencies_Item> {}
+
     interface data_tencentautolootpetcurrenciesexcludable_Item {
       BaseItemTypesKey?: data_tencentautolootpetcurrenciesexcludable_Item_BaseItemTypesKey;
     }
@@ -10072,8 +10442,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_tencentautolootpetcurrenciesexcludable extends Array<data_tencentautolootpetcurrenciesexcludable_Item> {}
-    
+    export interface data_tencentautolootpetcurrenciesexcludable
+      extends Array<data_tencentautolootpetcurrenciesexcludable_Item> {}
+
     interface data_terrainplugins_Item {
       Id?: string;
       Unk001?: number;
@@ -10081,9 +10452,9 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_terrainplugins extends Array<data_terrainplugins_Item> {}
-    
+
     export type data_threetoonerecipes = any[];
-    
+
     interface data_tieredmicrotransactions_Item {
       MTX?: data_tieredmicrotransactions_Item_MTX;
       TierThresholds?: number[];
@@ -10107,17 +10478,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_tieredmicrotransactions extends Array<data_tieredmicrotransactions_Item> {}
-    
+    export interface data_tieredmicrotransactions
+      extends Array<data_tieredmicrotransactions_Item> {}
+
     export type data_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_tips extends Array<data_tips_Item> {}
-    
+
     interface data_topologies_Item {
       Id?: string;
       DGRFile?: string;
@@ -10126,13 +10498,13 @@ declare namespace Poe2DataMain {
       Unk004?: number;
     }
     export interface data_topologies extends Array<data_topologies_Item> {}
-    
+
     export type data_tormentspirits = any[];
-    
+
     export type data_totemdefendervarieties = any[];
-    
+
     export type data_touchinteractiontype = any[];
-    
+
     interface data_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -10147,13 +10519,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_trademarketcategory extends Array<data_trademarketcategory_Item> {}
-    
+
     interface data_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_trademarketcategorygroups extends Array<data_trademarketcategorygroups_Item> {}
-    
+    export interface data_trademarketcategorygroups
+      extends Array<data_trademarketcategorygroups_Item> {}
+
     interface data_trademarketcategorylistallclass_Item {
       TradeCategory?: data_trademarketcategorylistallclass_Item_TradeCategory;
       ItemClass?: data_trademarketcategorylistallclass_Item_ItemClass;
@@ -10166,10 +10539,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_trademarketcategorylistallclass extends Array<data_trademarketcategorylistallclass_Item> {}
-    
+    export interface data_trademarketcategorylistallclass
+      extends Array<data_trademarketcategorylistallclass_Item> {}
+
     export type data_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_trademarketindexitemas_Item {
       Item?: data_trademarketindexitemas_Item_Item;
       IndexAs?: data_trademarketindexitemas_Item_IndexAs;
@@ -10183,11 +10557,11 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_trademarketindexitemas extends Array<data_trademarketindexitemas_Item> {}
-    
+
     export type data_traptools = any[];
-    
+
     export type data_treasurehuntermissions = any[];
-    
+
     interface data_triggerbeam_Item {
       Unk000?: number;
       Unk001?: any[];
@@ -10205,17 +10579,18 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_triggerbeam extends Array<data_triggerbeam_Item> {}
-    
+
     export type data_triggeredaudioeventvolumeoverrides = any[];
-    
+
     export type data_triggerspawners = any[];
-    
+
     interface data_trythenewleagueversions_Item {
       League?: string;
       Logo?: string;
     }
-    export interface data_trythenewleagueversions extends Array<data_trythenewleagueversions_Item> {}
-    
+    export interface data_trythenewleagueversions
+      extends Array<data_trythenewleagueversions_Item> {}
+
     interface data_tutorial_Item {
       Id?: string;
       UIFile?: string;
@@ -10239,7 +10614,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_tutorial extends Array<data_tutorial_Item> {}
-    
+
     interface data_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -10249,25 +10624,25 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_uitalktext extends Array<data_uitalktext_Item> {}
-    
+
     export type data_ultimatumencountertypes = any[];
-    
+
     export type data_ultimatumencountertypesserver = any[];
-    
+
     export type data_ultimatummodifiers = any[];
-    
+
     interface data_ultimatummodifiertypes_Item {
       Id?: string;
       Unk001?: boolean;
     }
     export interface data_ultimatummodifiertypes extends Array<data_ultimatummodifiertypes_Item> {}
-    
+
     export type data_ultimatummonsterpackfamily = any[];
-    
+
     export type data_ultimatumrooms = any[];
-    
+
     export type data_ultimatumtriallength = any[];
-    
+
     interface data_ultimatumtrialmasteraudio_Item {
       Id?: string;
       Variant?: number;
@@ -10281,14 +10656,15 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_ultimatumtrialmasteraudio extends Array<data_ultimatumtrialmasteraudio_Item> {}
-    
+    export interface data_ultimatumtrialmasteraudio
+      extends Array<data_ultimatumtrialmasteraudio_Item> {}
+
     export type data_ultimatumwagertypes = any[];
-    
+
     export type data_uncutgemadditionaltiers = any[];
-    
+
     export type data_uncutgemtiers = any[];
-    
+
     interface data_uniquechests_Item {
       Id?: string;
       WordsKey?: data_uniquechests_Item_WordsKey;
@@ -10317,7 +10693,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_uniquechests extends Array<data_uniquechests_Item> {}
-    
+
     interface data_uniquejewellimits_Item {
       JewelName?: data_uniquejewellimits_Item_JewelName;
       Limit?: number;
@@ -10327,9 +10703,9 @@ declare namespace Poe2DataMain {
       Text?: string;
     }
     export interface data_uniquejewellimits extends Array<data_uniquejewellimits_Item> {}
-    
+
     export type data_uniquemaps = any[];
-    
+
     interface data_uniquestashlayout_Item {
       WordsKey?: data_uniquestashlayout_Item_WordsKey;
       ItemVisualIdentityKey?: data_uniquestashlayout_Item_ItemVisualIdentityKey;
@@ -10357,7 +10733,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_uniquestashlayout extends Array<data_uniquestashlayout_Item> {}
-    
+
     interface data_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -10372,23 +10748,24 @@ declare namespace Poe2DataMain {
       IsDisabled?: boolean;
     }
     export interface data_uniquestashtypes extends Array<data_uniquestashtypes_Item> {}
-    
+
     export type data_utilityflaskbuffs = any[];
-    
+
     interface data_virtualstatcontextflags_Item {
       Id?: string;
       Unk001?: number;
     }
-    export interface data_virtualstatcontextflags extends Array<data_virtualstatcontextflags_Item> {}
-    
+    export interface data_virtualstatcontextflags
+      extends Array<data_virtualstatcontextflags_Item> {}
+
     export type data_visualpinproperties = any[];
-    
+
     export type data_warbandsgraph = any[];
-    
+
     export type data_warbandsmapgraph = any[];
-    
+
     export type data_warbandspackmonsters = any[];
-    
+
     interface data_warbandspacknumbers_Item {
       Id?: string;
       SpawnChance?: number;
@@ -10403,7 +10780,7 @@ declare namespace Poe2DataMain {
       Tier1Number?: number;
     }
     export interface data_warbandspacknumbers extends Array<data_warbandspacknumbers_Item> {}
-    
+
     interface data_weaponclasses_Item {
       ItemClass?: data_weaponclasses_Item_ItemClass;
       Unk001?: number;
@@ -10413,7 +10790,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_weaponclasses extends Array<data_weaponclasses_Item> {}
-    
+
     interface data_weaponimpactsounddata_Item {
       Id?: string;
       Unk001?: number;
@@ -10423,9 +10800,9 @@ declare namespace Poe2DataMain {
       Unk005?: number;
     }
     export interface data_weaponimpactsounddata extends Array<data_weaponimpactsounddata_Item> {}
-    
+
     export type data_weaponsoundtypes = any[];
-    
+
     interface data_weapontypes_Item {
       BaseItemTypesKey?: data_weapontypes_Item_BaseItemTypesKey;
       Critical?: number;
@@ -10444,7 +10821,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_weapontypes extends Array<data_weapontypes_Item> {}
-    
+
     interface data_wieldableclasses_Item {
       Unk01?: data_wieldableclasses_Item_Unk01;
       Unk02?: boolean;
@@ -10500,7 +10877,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_wieldableclasses extends Array<data_wieldableclasses_Item> {}
-    
+
     interface data_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -10513,7 +10890,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_windowcursors extends Array<data_windowcursors_Item> {}
-    
+
     interface data_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -10524,9 +10901,9 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_words extends Array<data_words_Item> {}
-    
+
     export type data_worldarealeaguechances = any[];
-    
+
     interface data_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -10543,9 +10920,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_worldareas extends Array<data_worldareas_Item> {}
-    
+
     export type data_worldmaplegends = any[];
-    
+
     interface data_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -10558,9 +10935,9 @@ declare namespace Poe2DataMain {
       Unk008?: string;
     }
     export interface data_worldpopupicontypes extends Array<data_worldpopupicontypes_Item> {}
-    
+
     export type data_worldscreenmappindialogue = any[];
-    
+
     interface data_french_achievementitemrewards_Item {
       AchievementItemsKey?: data_french_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_french_achievementitemrewards_Item_BaseItemTypesKey;
@@ -10575,8 +10952,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_achievementitemrewards extends Array<data_french_achievementitemrewards_Item> {}
-    
+    export interface data_french_achievementitemrewards
+      extends Array<data_french_achievementitemrewards_Item> {}
+
     interface data_french_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -10593,8 +10971,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_achievementitems extends Array<data_french_achievementitems_Item> {}
-    
+    export interface data_french_achievementitems
+      extends Array<data_french_achievementitems_Item> {}
+
     interface data_french_achievements_Item {
       Id?: string;
       Description?: string;
@@ -10616,7 +10995,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_french_achievements extends Array<data_french_achievements_Item> {}
-    
+
     interface data_french_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -10627,14 +11006,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_french_achievementsetrewards extends Array<data_french_achievementsetrewards_Item> {}
-    
+    export interface data_french_achievementsetrewards
+      extends Array<data_french_achievementsetrewards_Item> {}
+
     interface data_french_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_french_achievementsetsdisplay extends Array<data_french_achievementsetsdisplay_Item> {}
-    
+    export interface data_french_achievementsetsdisplay
+      extends Array<data_french_achievementsetsdisplay_Item> {}
+
     interface data_french_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -10685,7 +11066,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_activeskills extends Array<data_french_activeskills_Item> {}
-    
+
     interface data_french_acts_Item {
       Id?: string;
       Part?: number;
@@ -10700,11 +11081,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_french_acts extends Array<data_french_acts_Item> {}
-    
+
     export type data_french_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_french_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_french_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -10715,15 +11096,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_french_advancedskillstutorial extends Array<data_french_advancedskillstutorial_Item> {}
-    
+    export interface data_french_advancedskillstutorial
+      extends Array<data_french_advancedskillstutorial_Item> {}
+
     interface data_french_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_french_afflictionrewardtypevisuals extends Array<data_french_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_french_afflictionrewardtypevisuals
+      extends Array<data_french_afflictionrewardtypevisuals_Item> {}
+
     interface data_french_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_french_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -10756,10 +11139,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_french_alternatepassiveskills extends Array<data_french_alternatepassiveskills_Item> {}
-    
+    export interface data_french_alternatepassiveskills
+      extends Array<data_french_alternatepassiveskills_Item> {}
+
     export type data_french_alternatequalitytypes = any[];
-    
+
     interface data_french_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -10779,7 +11163,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_french_archetypes extends Array<data_french_archetypes_Item> {}
-    
+
     interface data_french_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -10788,8 +11172,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_french_archnemesismetarewards extends Array<data_french_archnemesismetarewards_Item> {}
-    
+    export interface data_french_archnemesismetarewards
+      extends Array<data_french_archnemesismetarewards_Item> {}
+
     interface data_french_archnemesismods_Item {
       Mod?: data_french_archnemesismods_Item_Mod;
       Name?: string;
@@ -10803,7 +11188,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_archnemesismods extends Array<data_french_archnemesismods_Item> {}
-    
+
     interface data_french_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -10821,14 +11206,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_french_ascendancy extends Array<data_french_ascendancy_Item> {}
-    
+
     interface data_french_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_french_atlasfavouredmapslots extends Array<data_french_atlasfavouredmapslots_Item> {}
-    
+    export interface data_french_atlasfavouredmapslots
+      extends Array<data_french_atlasfavouredmapslots_Item> {}
+
     interface data_french_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -10837,8 +11223,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_french_atlasprimordialaltarchoicetypes extends Array<data_french_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_french_atlasprimordialaltarchoicetypes
+      extends Array<data_french_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_french_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -10861,8 +11248,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_atlasprimordialbossoptions extends Array<data_french_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_french_atlasprimordialbossoptions
+      extends Array<data_french_atlasprimordialbossoptions_Item> {}
+
     interface data_french_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -10884,16 +11272,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_atlasupgradesinventorylayout extends Array<data_french_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_french_atlasupgradesinventorylayout
+      extends Array<data_french_atlasupgradesinventorylayout_Item> {}
+
     export type data_french_awarddisplay = any[];
-    
+
     interface data_french_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_french_backenderrors extends Array<data_french_backenderrors_Item> {}
-    
+
     interface data_french_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_french_baseitemtypes_Item_ItemClassesKey;
@@ -10942,7 +11331,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_baseitemtypes extends Array<data_french_baseitemtypes_Item> {}
-    
+
     interface data_french_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -10953,7 +11342,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_french_battlepasses extends Array<data_french_battlepasses_Item> {}
-    
+
     interface data_french_battlepassrewards_Item {
       BattlePass?: data_french_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -10987,14 +11376,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_battlepassrewards extends Array<data_french_battlepassrewards_Item> {}
-    
+    export interface data_french_battlepassrewards
+      extends Array<data_french_battlepassrewards_Item> {}
+
     interface data_french_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_french_battlepasstracks extends Array<data_french_battlepasstracks_Item> {}
-    
+    export interface data_french_battlepasstracks
+      extends Array<data_french_battlepasstracks_Item> {}
+
     interface data_french_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -11017,8 +11408,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_french_bestiaryfamilies extends Array<data_french_bestiaryfamilies_Item> {}
-    
+    export interface data_french_bestiaryfamilies
+      extends Array<data_french_bestiaryfamilies_Item> {}
+
     interface data_french_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -11031,7 +11423,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_bestiarygenus extends Array<data_french_bestiarygenus_Item> {}
-    
+
     interface data_french_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -11047,13 +11439,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_bestiarygroups extends Array<data_french_bestiarygroups_Item> {}
-    
+
     interface data_french_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_french_bestiaryrecipecategories extends Array<data_french_bestiaryrecipecategories_Item> {}
-    
+    export interface data_french_bestiaryrecipecategories
+      extends Array<data_french_bestiaryrecipecategories_Item> {}
+
     interface data_french_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -11073,7 +11466,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_bestiaryrecipes extends Array<data_french_bestiaryrecipes_Item> {}
-    
+
     interface data_french_betrayalchoices_Item {
       Id?: string;
       Text?: string;
@@ -11081,7 +11474,7 @@ declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface data_french_betrayalchoices extends Array<data_french_betrayalchoices_Item> {}
-    
+
     interface data_french_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -11095,7 +11488,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_french_betrayaljobs extends Array<data_french_betrayaljobs_Item> {}
-    
+
     interface data_french_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -11103,13 +11496,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_french_betrayalranks extends Array<data_french_betrayalranks_Item> {}
-    
+
     interface data_french_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_french_betrayalrelationshipstate extends Array<data_french_betrayalrelationshipstate_Item> {}
-    
+    export interface data_french_betrayalrelationshipstate
+      extends Array<data_french_betrayalrelationshipstate_Item> {}
+
     interface data_french_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -11131,7 +11525,7 @@ declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface data_french_betrayaltargets extends Array<data_french_betrayaltargets_Item> {}
-    
+
     interface data_french_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_french_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_french_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -11151,8 +11545,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_betrayaltraitorrewards extends Array<data_french_betrayaltraitorrewards_Item> {}
-    
+    export interface data_french_betrayaltraitorrewards
+      extends Array<data_french_betrayaltraitorrewards_Item> {}
+
     interface data_french_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -11167,15 +11562,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_french_betrayalupgrades extends Array<data_french_betrayalupgrades_Item> {}
-    
+    export interface data_french_betrayalupgrades
+      extends Array<data_french_betrayalupgrades_Item> {}
+
     interface data_french_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_french_bindablevirtualkeys extends Array<data_french_bindablevirtualkeys_Item> {}
-    
+    export interface data_french_bindablevirtualkeys
+      extends Array<data_french_bindablevirtualkeys_Item> {}
+
     interface data_french_blightcraftingitems_Item {
       Oil?: data_french_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -11187,8 +11584,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_blightcraftingitems extends Array<data_french_blightcraftingitems_Item> {}
-    
+    export interface data_french_blightcraftingitems
+      extends Array<data_french_blightcraftingitems_Item> {}
+
     interface data_french_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -11206,7 +11604,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_french_blighttowers extends Array<data_french_blighttowers_Item> {}
-    
+
     interface data_french_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -11265,7 +11663,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_buffdefinitions extends Array<data_french_buffdefinitions_Item> {}
-    
+
     interface data_french_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -11288,7 +11686,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_french_buffvisuals extends Array<data_french_buffvisuals_Item> {}
-    
+
     interface data_french_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -11296,16 +11694,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_french_charactercreationicons extends Array<data_french_charactercreationicons_Item> {}
-    
+    export interface data_french_charactercreationicons
+      extends Array<data_french_charactercreationicons_Item> {}
+
     interface data_french_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_french_characterpaneldescriptionmodes extends Array<data_french_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_french_characterpaneldescriptionmodes
+      extends Array<data_french_characterpaneldescriptionmodes_Item> {}
+
     interface data_french_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -11326,16 +11726,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_characterpanelstats extends Array<data_french_characterpanelstats_Item> {}
-    
+    export interface data_french_characterpanelstats
+      extends Array<data_french_characterpanelstats_Item> {}
+
     interface data_french_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_french_characterpaneltabs extends Array<data_french_characterpaneltabs_Item> {}
-    
+    export interface data_french_characterpaneltabs
+      extends Array<data_french_characterpaneltabs_Item> {}
+
     interface data_french_characters_Item {
       Id?: string;
       Name?: string;
@@ -11461,7 +11863,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_characters extends Array<data_french_characters_Item> {}
-    
+
     interface data_french_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -11487,8 +11889,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_characterstartstates extends Array<data_french_characterstartstates_Item> {}
-    
+    export interface data_french_characterstartstates
+      extends Array<data_french_characterstartstates_Item> {}
+
     interface data_french_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -11496,8 +11899,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_french_charactertextaudio extends Array<data_french_charactertextaudio_Item> {}
-    
+    export interface data_french_charactertextaudio
+      extends Array<data_french_charactertextaudio_Item> {}
+
     interface data_french_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -11545,7 +11949,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_chests extends Array<data_french_chests_Item> {}
-    
+
     interface data_french_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -11555,11 +11959,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_french_clientstrings extends Array<data_french_clientstrings_Item> {}
-    
+
     export type data_french_clientstrings2 = any[];
-    
+
     export type data_french_combatuiprompts = any[];
-    
+
     interface data_french_commands_Item {
       Id?: string;
       Command?: string;
@@ -11569,9 +11973,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_french_commands extends Array<data_french_commands_Item> {}
-    
+
     export type data_french_completionnotifications = any[];
-    
+
     interface data_french_costtypes_Item {
       Id?: string;
       StatsKey?: data_french_costtypes_Item_StatsKey;
@@ -11583,9 +11987,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_costtypes extends Array<data_french_costtypes_Item> {}
-    
+
     export type data_french_craftingbenchoptions = any[];
-    
+
     interface data_french_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -11594,16 +11998,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_french_craftingbenchunlockcategories extends Array<data_french_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_french_craftingbenchunlockcategories
+      extends Array<data_french_craftingbenchunlockcategories_Item> {}
+
     export type data_french_craftingitemclasscategories = any[];
-    
+
     interface data_french_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_french_currencyexchangecategories extends Array<data_french_currencyexchangecategories_Item> {}
-    
+    export interface data_french_currencyexchangecategories
+      extends Array<data_french_currencyexchangecategories_Item> {}
+
     interface data_french_currencyitems_Item {
       BaseItemTypesKey?: data_french_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -11637,15 +12043,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_currencyitems extends Array<data_french_currencyitems_Item> {}
-    
+
     export type data_french_delvebiomes = any[];
-    
+
     interface data_french_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_french_delvecraftingmodifierdescriptions extends Array<data_french_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_french_delvecraftingmodifierdescriptions
+      extends Array<data_french_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_french_delvecraftingtags_Item {
       TagsKey?: data_french_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -11654,8 +12061,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_delvecraftingtags extends Array<data_french_delvecraftingtags_Item> {}
-    
+    export interface data_french_delvecraftingtags
+      extends Array<data_french_delvecraftingtags_Item> {}
+
     interface data_french_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -11673,7 +12081,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_french_delvefeatures extends Array<data_french_delvefeatures_Item> {}
-    
+
     interface data_french_dronetypes_Item {
       Id?: string;
       Unk001?: data_french_dronetypes_Item_Unk001;
@@ -11697,13 +12105,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_dronetypes extends Array<data_french_dronetypes_Item> {}
-    
+
     export type data_french_endgamemapcontent = any[];
-    
+
     export type data_french_endgamemaps = any[];
-    
+
     export type data_french_expeditiondeals = any[];
-    
+
     interface data_french_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -11736,8 +12144,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_expeditionfactions extends Array<data_french_expeditionfactions_Item> {}
-    
+    export interface data_french_expeditionfactions
+      extends Array<data_french_expeditionfactions_Item> {}
+
     interface data_french_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -11750,15 +12159,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_expeditionrelics extends Array<data_french_expeditionrelics_Item> {}
-    
+    export interface data_french_expeditionrelics
+      extends Array<data_french_expeditionrelics_Item> {}
+
     interface data_french_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_french_flavourtext extends Array<data_french_flavourtext_Item> {}
-    
+
     interface data_french_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -11776,8 +12186,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_french_fragmentstashtablayout extends Array<data_french_fragmentstashtablayout_Item> {}
-    
+    export interface data_french_fragmentstashtablayout
+      extends Array<data_french_fragmentstashtablayout_Item> {}
+
     interface data_french_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -11786,9 +12197,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_french_gamepadbutton extends Array<data_french_gamepadbutton_Item> {}
-    
+
     export type data_french_gamepadbuttonbindaction = any[];
-    
+
     interface data_french_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -11819,9 +12230,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_gemeffects extends Array<data_french_gemeffects_Item> {}
-    
+
     export type data_french_gemtags = any[];
-    
+
     interface data_french_genericleaguerewardtypevisuals_Item {
       Type?: data_french_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_french_genericleaguerewardtypevisuals_Item_Unk001;
@@ -11842,10 +12253,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_genericleaguerewardtypevisuals extends Array<data_french_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_french_genericleaguerewardtypevisuals
+      extends Array<data_french_genericleaguerewardtypevisuals_Item> {}
+
     export type data_french_grantedeffectlabels = any[];
-    
+
     interface data_french_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_french_harvestcraftfilters_Item_BaseItem;
@@ -11855,8 +12267,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_harvestcraftfilters extends Array<data_french_harvestcraftfilters_Item> {}
-    
+    export interface data_french_harvestcraftfilters
+      extends Array<data_french_harvestcraftfilters_Item> {}
+
     interface data_french_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -11878,10 +12291,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_french_harvestcraftoptions extends Array<data_french_harvestcraftoptions_Item> {}
-    
+    export interface data_french_harvestcraftoptions
+      extends Array<data_french_harvestcraftoptions_Item> {}
+
     export type data_french_heistchestrewardtypes = any[];
-    
+
     interface data_french_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -11919,7 +12333,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_heistjobs extends Array<data_french_heistjobs_Item> {}
-    
+
     interface data_french_heistobjectives_Item {
       BaseItemType?: data_french_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -11930,16 +12344,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_heistobjectives extends Array<data_french_heistobjectives_Item> {}
-    
+
     interface data_french_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_french_heistobjectivevaluedescriptions extends Array<data_french_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_french_heistobjectivevaluedescriptions
+      extends Array<data_french_heistobjectivevaluedescriptions_Item> {}
+
     export type data_french_heistquestcontracts = any[];
-    
+
     interface data_french_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -11953,24 +12368,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_french_hellscapepassives extends Array<data_french_hellscapepassives_Item> {}
-    
+    export interface data_french_hellscapepassives
+      extends Array<data_french_hellscapepassives_Item> {}
+
     interface data_french_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_french_hideoutdoodadcategory extends Array<data_french_hideoutdoodadcategory_Item> {}
-    
+    export interface data_french_hideoutdoodadcategory
+      extends Array<data_french_hideoutdoodadcategory_Item> {}
+
     interface data_french_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_french_hideoutdoodadtags extends Array<data_french_hideoutdoodadtags_Item> {}
-    
+    export interface data_french_hideoutdoodadtags
+      extends Array<data_french_hideoutdoodadtags_Item> {}
+
     export type data_french_hideouts = any[];
-    
+
     interface data_french_incubators_Item {
       BaseItemTypesKey?: data_french_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -11983,18 +12401,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_incubators extends Array<data_french_incubators_Item> {}
-    
+
     export type data_french_incursionrooms = any[];
-    
+
     export type data_french_indexablesupportgems = any[];
-    
+
     interface data_french_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_french_itemclasscategories extends Array<data_french_itemclasscategories_Item> {}
-    
+    export interface data_french_itemclasscategories
+      extends Array<data_french_itemclasscategories_Item> {}
+
     interface data_french_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -12035,15 +12454,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_itemclasses extends Array<data_french_itemclasses_Item> {}
-    
+
     export type data_french_keywordpopups = any[];
-    
+
     export type data_french_kioskmodecharactertutorials = any[];
-    
+
     export type data_french_leagueinfo = any[];
-    
+
     export type data_french_mapconnections = any[];
-    
+
     interface data_french_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -12064,11 +12483,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_french_mappins extends Array<data_french_mappins_Item> {}
-    
+
     export type data_french_mapseries = any[];
-    
+
     export type data_french_mapstashspecialtypeentries = any[];
-    
+
     interface data_french_memorylinetype_Item {
       Id?: string;
       Unk001?: data_french_memorylinetype_Item_Unk001;
@@ -12095,20 +12514,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_memorylinetype extends Array<data_french_memorylinetype_Item> {}
-    
+
     interface data_french_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_french_microtransactioncategory extends Array<data_french_microtransactioncategory_Item> {}
-    
+    export interface data_french_microtransactioncategory
+      extends Array<data_french_microtransactioncategory_Item> {}
+
     interface data_french_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_french_microtransactionskillgemeffectslottypes extends Array<data_french_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_french_microtransactionskillgemeffectslottypes
+      extends Array<data_french_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_french_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_french_microtransactionslot_Item_Unk001;
@@ -12128,16 +12549,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_microtransactionslot extends Array<data_french_microtransactionslot_Item> {}
-    
+    export interface data_french_microtransactionslot
+      extends Array<data_french_microtransactionslot_Item> {}
+
     interface data_french_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_french_microtransactionslotadditionaldefaultoptions extends Array<data_french_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_french_microtransactionslotadditionaldefaultoptions
+      extends Array<data_french_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_french_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -12149,15 +12572,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_french_minimapicons extends Array<data_french_minimapicons_Item> {}
-    
+
     export type data_french_mobilecharactercreation = any[];
-    
+
     export type data_french_mobileskillgemlayout = any[];
-    
+
     export type data_french_mobileskillgemlayoutpages = any[];
-    
+
     export type data_french_mobiletutorial = any[];
-    
+
     interface data_french_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -12246,7 +12669,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_mods extends Array<data_french_mods_Item> {}
-    
+
     interface data_french_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_french_monstervarieties_Item_MonsterTypesKey;
@@ -12381,17 +12804,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_french_monstervarieties extends Array<data_french_monstervarieties_Item> {}
-    
+    export interface data_french_monstervarieties
+      extends Array<data_french_monstervarieties_Item> {}
+
     interface data_french_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_french_mousecursorsizesettings extends Array<data_french_mousecursorsizesettings_Item> {}
-    
+    export interface data_french_mousecursorsizesettings
+      extends Array<data_french_mousecursorsizesettings_Item> {}
+
     export type data_french_mtxtypes = any[];
-    
+
     interface data_french_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -12405,7 +12830,7 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_french_music extends Array<data_french_music_Item> {}
-    
+
     interface data_french_musiccategories_Item {
       Id?: string;
       Name?: string;
@@ -12413,7 +12838,7 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_french_musiccategories extends Array<data_french_musiccategories_Item> {}
-    
+
     interface data_french_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -12425,9 +12850,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_french_notifications extends Array<data_french_notifications_Item> {}
-    
+
     export type data_french_npcmaster = any[];
-    
+
     interface data_french_npcs_Item {
       Id?: string;
       Name?: string;
@@ -12448,7 +12873,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_french_npcs extends Array<data_french_npcs_Item> {}
-    
+
     interface data_french_npctalk_Item {
       NPCKey?: data_french_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -12518,7 +12943,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_npctalk extends Array<data_french_npctalk_Item> {}
-    
+
     interface data_french_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -12539,19 +12964,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_npctextaudio extends Array<data_french_npctextaudio_Item> {}
-    
+
     export type data_french_pantheonpanellayout = any[];
-    
+
     export type data_french_pantheonsouls = any[];
-    
+
     interface data_french_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_french_passiveoverridelimits extends Array<data_french_passiveoverridelimits_Item> {}
-    
+    export interface data_french_passiveoverridelimits
+      extends Array<data_french_passiveoverridelimits_Item> {}
+
     export type data_french_passiveskilloverrides = any[];
-    
+
     interface data_french_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -12609,23 +13035,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_passiveskills extends Array<data_french_passiveskills_Item> {}
-    
+
     interface data_french_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_french_passiveskillstatcategories extends Array<data_french_passiveskillstatcategories_Item> {}
-    
+    export interface data_french_passiveskillstatcategories
+      extends Array<data_french_passiveskillstatcategories_Item> {}
+
     export type data_french_passiveskilltreetutorial = any[];
-    
+
     interface data_french_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_french_playertradewhisperformats extends Array<data_french_playertradewhisperformats_Item> {}
-    
+    export interface data_french_playertradewhisperformats
+      extends Array<data_french_playertradewhisperformats_Item> {}
+
     interface data_french_quest_Item {
       Id?: string;
       Act?: number;
@@ -12649,7 +13077,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_quest extends Array<data_french_quest_Item> {}
-    
+
     interface data_french_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -12662,7 +13090,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_questrewardtype extends Array<data_french_questrewardtype_Item> {}
-    
+
     interface data_french_queststates_Item {
       Quest?: data_french_queststates_Item_Quest;
       Order?: number;
@@ -12678,7 +13106,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_queststates extends Array<data_french_queststates_Item> {}
-    
+
     interface data_french_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -12688,10 +13116,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_french_questtrackergroup extends Array<data_french_questtrackergroup_Item> {}
-    
+    export interface data_french_questtrackergroup
+      extends Array<data_french_questtrackergroup_Item> {}
+
     export type data_french_races = any[];
-    
+
     interface data_french_realms_Item {
       Id?: string;
       Name?: string;
@@ -12710,7 +13139,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_realms extends Array<data_french_realms_Item> {}
-    
+
     interface data_french_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -12719,25 +13148,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_french_recipeunlockdisplay extends Array<data_french_recipeunlockdisplay_Item> {}
-    
+    export interface data_french_recipeunlockdisplay
+      extends Array<data_french_recipeunlockdisplay_Item> {}
+
     interface data_french_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_french_relicinventorylayout extends Array<data_french_relicinventorylayout_Item> {}
-    
+    export interface data_french_relicinventorylayout
+      extends Array<data_french_relicinventorylayout_Item> {}
+
     export type data_french_relicitemeffectvariations = any[];
-    
+
     interface data_french_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_french_remindertext extends Array<data_french_remindertext_Item> {}
-    
+
     interface data_french_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_french_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -12780,7 +13211,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_ritualrunetypes extends Array<data_french_ritualrunetypes_Item> {}
-    
+
     interface data_french_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_french_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_french_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -12799,8 +13230,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_safehousebyocrafting extends Array<data_french_safehousebyocrafting_Item> {}
-    
+    export interface data_french_safehousebyocrafting
+      extends Array<data_french_safehousebyocrafting_Item> {}
+
     interface data_french_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -12810,8 +13242,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_french_safehousecraftingspreetype extends Array<data_french_safehousecraftingspreetype_Item> {}
-    
+    export interface data_french_safehousecraftingspreetype
+      extends Array<data_french_safehousecraftingspreetype_Item> {}
+
     interface data_french_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_french_sanctumdefenceicons_Item_Stat;
@@ -12824,8 +13257,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_sanctumdefenceicons extends Array<data_french_sanctumdefenceicons_Item> {}
-    
+    export interface data_french_sanctumdefenceicons
+      extends Array<data_french_sanctumdefenceicons_Item> {}
+
     interface data_french_sanctumfloors_Item {
       Id?: string;
       Area?: data_french_sanctumfloors_Item_Area;
@@ -12853,7 +13287,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_sanctumfloors extends Array<data_french_sanctumfloors_Item> {}
-    
+
     interface data_french_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -12865,8 +13299,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_french_sanctumpersistenteffectcategories extends Array<data_french_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_french_sanctumpersistenteffectcategories
+      extends Array<data_french_sanctumpersistenteffectcategories_Item> {}
+
     interface data_french_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -12896,8 +13331,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_sanctumpersistenteffects extends Array<data_french_sanctumpersistenteffects_Item> {}
-    
+    export interface data_french_sanctumpersistenteffects
+      extends Array<data_french_sanctumpersistenteffects_Item> {}
+
     interface data_french_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -12921,10 +13357,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_sanctumroomtypes extends Array<data_french_sanctumroomtypes_Item> {}
-    
+    export interface data_french_sanctumroomtypes
+      extends Array<data_french_sanctumroomtypes_Item> {}
+
     export type data_french_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_french_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -12942,8 +13379,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_french_sentinelpassives extends Array<data_french_sentinelpassives_Item> {}
-    
+    export interface data_french_sentinelpassives
+      extends Array<data_french_sentinelpassives_Item> {}
+
     interface data_french_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -12952,7 +13390,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_french_shoptag extends Array<data_french_shoptag_Item> {}
-    
+
     interface data_french_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -12998,9 +13436,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_shrines extends Array<data_french_shrines_Item> {}
-    
+
     export type data_french_skillcraftingdata = any[];
-    
+
     interface data_french_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -13014,7 +13452,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_skillgeminfo extends Array<data_french_skillgeminfo_Item> {}
-    
+
     interface data_french_skillgems_Item {
       BaseItemTypesKey?: data_french_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -13045,7 +13483,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_french_skillgems extends Array<data_french_skillgems_Item> {}
-    
+
     interface data_french_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -13054,14 +13492,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_french_socketnotches extends Array<data_french_socketnotches_Item> {}
-    
+
     interface data_french_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_french_stashtabaffinities extends Array<data_french_stashtabaffinities_Item> {}
-    
+    export interface data_french_stashtabaffinities
+      extends Array<data_french_stashtabaffinities_Item> {}
+
     interface data_french_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -13072,7 +13511,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_french_stashtype extends Array<data_french_stashtype_Item> {}
-    
+
     interface data_french_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -13099,23 +13538,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_french_stats extends Array<data_french_stats_Item> {}
-    
+
     interface data_french_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_french_tags extends Array<data_french_tags_Item> {}
-    
+
     export type data_french_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_french_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_french_tips extends Array<data_french_tips_Item> {}
-    
+
     interface data_french_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -13129,16 +13568,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_french_trademarketcategory extends Array<data_french_trademarketcategory_Item> {}
-    
+    export interface data_french_trademarketcategory
+      extends Array<data_french_trademarketcategory_Item> {}
+
     interface data_french_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_french_trademarketcategorygroups extends Array<data_french_trademarketcategorygroups_Item> {}
-    
+    export interface data_french_trademarketcategorygroups
+      extends Array<data_french_trademarketcategorygroups_Item> {}
+
     export type data_french_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_french_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -13148,15 +13589,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_french_uitalktext extends Array<data_french_uitalktext_Item> {}
-    
+
     export type data_french_ultimatumencountertypes = any[];
-    
+
     export type data_french_ultimatummodifiers = any[];
-    
+
     export type data_french_ultimatumwagertypes = any[];
-    
+
     export type data_french_uniquemaps = any[];
-    
+
     interface data_french_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -13170,10 +13611,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_french_uniquestashtypes extends Array<data_french_uniquestashtypes_Item> {}
-    
+    export interface data_french_uniquestashtypes
+      extends Array<data_french_uniquestashtypes_Item> {}
+
     export type data_french_warbandspackmonsters = any[];
-    
+
     interface data_french_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -13186,7 +13628,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_french_windowcursors extends Array<data_french_windowcursors_Item> {}
-    
+
     interface data_french_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -13197,7 +13639,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_french_words extends Array<data_french_words_Item> {}
-    
+
     interface data_french_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -13214,9 +13656,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_french_worldareas extends Array<data_french_worldareas_Item> {}
-    
+
     export type data_french_worldmaplegends = any[];
-    
+
     interface data_french_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -13228,8 +13670,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_french_worldpopupicontypes extends Array<data_french_worldpopupicontypes_Item> {}
-    
+    export interface data_french_worldpopupicontypes
+      extends Array<data_french_worldpopupicontypes_Item> {}
+
     interface data_german_achievementitemrewards_Item {
       AchievementItemsKey?: data_german_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_german_achievementitemrewards_Item_BaseItemTypesKey;
@@ -13244,8 +13687,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_achievementitemrewards extends Array<data_german_achievementitemrewards_Item> {}
-    
+    export interface data_german_achievementitemrewards
+      extends Array<data_german_achievementitemrewards_Item> {}
+
     interface data_german_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -13262,8 +13706,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_achievementitems extends Array<data_german_achievementitems_Item> {}
-    
+    export interface data_german_achievementitems
+      extends Array<data_german_achievementitems_Item> {}
+
     interface data_german_achievements_Item {
       Id?: string;
       Description?: string;
@@ -13285,7 +13730,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_german_achievements extends Array<data_german_achievements_Item> {}
-    
+
     interface data_german_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -13296,14 +13741,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_german_achievementsetrewards extends Array<data_german_achievementsetrewards_Item> {}
-    
+    export interface data_german_achievementsetrewards
+      extends Array<data_german_achievementsetrewards_Item> {}
+
     interface data_german_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_german_achievementsetsdisplay extends Array<data_german_achievementsetsdisplay_Item> {}
-    
+    export interface data_german_achievementsetsdisplay
+      extends Array<data_german_achievementsetsdisplay_Item> {}
+
     interface data_german_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -13354,7 +13801,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_activeskills extends Array<data_german_activeskills_Item> {}
-    
+
     interface data_german_acts_Item {
       Id?: string;
       Part?: number;
@@ -13369,11 +13816,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_german_acts extends Array<data_german_acts_Item> {}
-    
+
     export type data_german_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_german_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_german_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -13384,15 +13831,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_german_advancedskillstutorial extends Array<data_german_advancedskillstutorial_Item> {}
-    
+    export interface data_german_advancedskillstutorial
+      extends Array<data_german_advancedskillstutorial_Item> {}
+
     interface data_german_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_german_afflictionrewardtypevisuals extends Array<data_german_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_german_afflictionrewardtypevisuals
+      extends Array<data_german_afflictionrewardtypevisuals_Item> {}
+
     interface data_german_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_german_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -13425,10 +13874,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_german_alternatepassiveskills extends Array<data_german_alternatepassiveskills_Item> {}
-    
+    export interface data_german_alternatepassiveskills
+      extends Array<data_german_alternatepassiveskills_Item> {}
+
     export type data_german_alternatequalitytypes = any[];
-    
+
     interface data_german_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -13448,7 +13898,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_german_archetypes extends Array<data_german_archetypes_Item> {}
-    
+
     interface data_german_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -13457,8 +13907,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_german_archnemesismetarewards extends Array<data_german_archnemesismetarewards_Item> {}
-    
+    export interface data_german_archnemesismetarewards
+      extends Array<data_german_archnemesismetarewards_Item> {}
+
     interface data_german_archnemesismods_Item {
       Mod?: data_german_archnemesismods_Item_Mod;
       Name?: string;
@@ -13472,7 +13923,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_archnemesismods extends Array<data_german_archnemesismods_Item> {}
-    
+
     interface data_german_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -13490,14 +13941,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_german_ascendancy extends Array<data_german_ascendancy_Item> {}
-    
+
     interface data_german_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_german_atlasfavouredmapslots extends Array<data_german_atlasfavouredmapslots_Item> {}
-    
+    export interface data_german_atlasfavouredmapslots
+      extends Array<data_german_atlasfavouredmapslots_Item> {}
+
     interface data_german_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -13506,8 +13958,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_german_atlasprimordialaltarchoicetypes extends Array<data_german_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_german_atlasprimordialaltarchoicetypes
+      extends Array<data_german_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_german_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -13530,8 +13983,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_atlasprimordialbossoptions extends Array<data_german_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_german_atlasprimordialbossoptions
+      extends Array<data_german_atlasprimordialbossoptions_Item> {}
+
     interface data_german_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -13553,16 +14007,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_atlasupgradesinventorylayout extends Array<data_german_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_german_atlasupgradesinventorylayout
+      extends Array<data_german_atlasupgradesinventorylayout_Item> {}
+
     export type data_german_awarddisplay = any[];
-    
+
     interface data_german_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_german_backenderrors extends Array<data_german_backenderrors_Item> {}
-    
+
     interface data_german_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_german_baseitemtypes_Item_ItemClassesKey;
@@ -13611,7 +14066,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_baseitemtypes extends Array<data_german_baseitemtypes_Item> {}
-    
+
     interface data_german_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -13622,7 +14077,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_german_battlepasses extends Array<data_german_battlepasses_Item> {}
-    
+
     interface data_german_battlepassrewards_Item {
       BattlePass?: data_german_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -13656,14 +14111,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_battlepassrewards extends Array<data_german_battlepassrewards_Item> {}
-    
+    export interface data_german_battlepassrewards
+      extends Array<data_german_battlepassrewards_Item> {}
+
     interface data_german_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_german_battlepasstracks extends Array<data_german_battlepasstracks_Item> {}
-    
+    export interface data_german_battlepasstracks
+      extends Array<data_german_battlepasstracks_Item> {}
+
     interface data_german_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -13686,8 +14143,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_german_bestiaryfamilies extends Array<data_german_bestiaryfamilies_Item> {}
-    
+    export interface data_german_bestiaryfamilies
+      extends Array<data_german_bestiaryfamilies_Item> {}
+
     interface data_german_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -13700,7 +14158,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_bestiarygenus extends Array<data_german_bestiarygenus_Item> {}
-    
+
     interface data_german_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -13716,13 +14174,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_bestiarygroups extends Array<data_german_bestiarygroups_Item> {}
-    
+
     interface data_german_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_german_bestiaryrecipecategories extends Array<data_german_bestiaryrecipecategories_Item> {}
-    
+    export interface data_german_bestiaryrecipecategories
+      extends Array<data_german_bestiaryrecipecategories_Item> {}
+
     interface data_german_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -13742,7 +14201,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_bestiaryrecipes extends Array<data_german_bestiaryrecipes_Item> {}
-    
+
     interface data_german_betrayalchoices_Item {
       Id?: string;
       Text?: string;
@@ -13750,7 +14209,7 @@ declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface data_german_betrayalchoices extends Array<data_german_betrayalchoices_Item> {}
-    
+
     interface data_german_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -13764,7 +14223,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_german_betrayaljobs extends Array<data_german_betrayaljobs_Item> {}
-    
+
     interface data_german_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -13772,13 +14231,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_german_betrayalranks extends Array<data_german_betrayalranks_Item> {}
-    
+
     interface data_german_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_german_betrayalrelationshipstate extends Array<data_german_betrayalrelationshipstate_Item> {}
-    
+    export interface data_german_betrayalrelationshipstate
+      extends Array<data_german_betrayalrelationshipstate_Item> {}
+
     interface data_german_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -13800,7 +14260,7 @@ declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface data_german_betrayaltargets extends Array<data_german_betrayaltargets_Item> {}
-    
+
     interface data_german_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_german_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_german_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -13820,8 +14280,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_betrayaltraitorrewards extends Array<data_german_betrayaltraitorrewards_Item> {}
-    
+    export interface data_german_betrayaltraitorrewards
+      extends Array<data_german_betrayaltraitorrewards_Item> {}
+
     interface data_german_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -13836,15 +14297,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_german_betrayalupgrades extends Array<data_german_betrayalupgrades_Item> {}
-    
+    export interface data_german_betrayalupgrades
+      extends Array<data_german_betrayalupgrades_Item> {}
+
     interface data_german_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_german_bindablevirtualkeys extends Array<data_german_bindablevirtualkeys_Item> {}
-    
+    export interface data_german_bindablevirtualkeys
+      extends Array<data_german_bindablevirtualkeys_Item> {}
+
     interface data_german_blightcraftingitems_Item {
       Oil?: data_german_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -13856,8 +14319,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_blightcraftingitems extends Array<data_german_blightcraftingitems_Item> {}
-    
+    export interface data_german_blightcraftingitems
+      extends Array<data_german_blightcraftingitems_Item> {}
+
     interface data_german_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -13875,7 +14339,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_german_blighttowers extends Array<data_german_blighttowers_Item> {}
-    
+
     interface data_german_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -13934,7 +14398,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_buffdefinitions extends Array<data_german_buffdefinitions_Item> {}
-    
+
     interface data_german_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -13957,7 +14421,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_german_buffvisuals extends Array<data_german_buffvisuals_Item> {}
-    
+
     interface data_german_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -13965,16 +14429,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_german_charactercreationicons extends Array<data_german_charactercreationicons_Item> {}
-    
+    export interface data_german_charactercreationicons
+      extends Array<data_german_charactercreationicons_Item> {}
+
     interface data_german_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_german_characterpaneldescriptionmodes extends Array<data_german_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_german_characterpaneldescriptionmodes
+      extends Array<data_german_characterpaneldescriptionmodes_Item> {}
+
     interface data_german_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -13995,16 +14461,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_characterpanelstats extends Array<data_german_characterpanelstats_Item> {}
-    
+    export interface data_german_characterpanelstats
+      extends Array<data_german_characterpanelstats_Item> {}
+
     interface data_german_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_german_characterpaneltabs extends Array<data_german_characterpaneltabs_Item> {}
-    
+    export interface data_german_characterpaneltabs
+      extends Array<data_german_characterpaneltabs_Item> {}
+
     interface data_german_characters_Item {
       Id?: string;
       Name?: string;
@@ -14130,7 +14598,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_characters extends Array<data_german_characters_Item> {}
-    
+
     interface data_german_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -14156,8 +14624,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_characterstartstates extends Array<data_german_characterstartstates_Item> {}
-    
+    export interface data_german_characterstartstates
+      extends Array<data_german_characterstartstates_Item> {}
+
     interface data_german_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -14165,8 +14634,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_german_charactertextaudio extends Array<data_german_charactertextaudio_Item> {}
-    
+    export interface data_german_charactertextaudio
+      extends Array<data_german_charactertextaudio_Item> {}
+
     interface data_german_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -14214,7 +14684,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_chests extends Array<data_german_chests_Item> {}
-    
+
     interface data_german_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -14224,11 +14694,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_german_clientstrings extends Array<data_german_clientstrings_Item> {}
-    
+
     export type data_german_clientstrings2 = any[];
-    
+
     export type data_german_combatuiprompts = any[];
-    
+
     interface data_german_commands_Item {
       Id?: string;
       Command?: string;
@@ -14238,9 +14708,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_german_commands extends Array<data_german_commands_Item> {}
-    
+
     export type data_german_completionnotifications = any[];
-    
+
     interface data_german_costtypes_Item {
       Id?: string;
       StatsKey?: data_german_costtypes_Item_StatsKey;
@@ -14252,9 +14722,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_costtypes extends Array<data_german_costtypes_Item> {}
-    
+
     export type data_german_craftingbenchoptions = any[];
-    
+
     interface data_german_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -14263,16 +14733,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_german_craftingbenchunlockcategories extends Array<data_german_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_german_craftingbenchunlockcategories
+      extends Array<data_german_craftingbenchunlockcategories_Item> {}
+
     export type data_german_craftingitemclasscategories = any[];
-    
+
     interface data_german_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_german_currencyexchangecategories extends Array<data_german_currencyexchangecategories_Item> {}
-    
+    export interface data_german_currencyexchangecategories
+      extends Array<data_german_currencyexchangecategories_Item> {}
+
     interface data_german_currencyitems_Item {
       BaseItemTypesKey?: data_german_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -14306,15 +14778,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_currencyitems extends Array<data_german_currencyitems_Item> {}
-    
+
     export type data_german_delvebiomes = any[];
-    
+
     interface data_german_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_german_delvecraftingmodifierdescriptions extends Array<data_german_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_german_delvecraftingmodifierdescriptions
+      extends Array<data_german_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_german_delvecraftingtags_Item {
       TagsKey?: data_german_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -14323,8 +14796,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_delvecraftingtags extends Array<data_german_delvecraftingtags_Item> {}
-    
+    export interface data_german_delvecraftingtags
+      extends Array<data_german_delvecraftingtags_Item> {}
+
     interface data_german_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -14342,7 +14816,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_german_delvefeatures extends Array<data_german_delvefeatures_Item> {}
-    
+
     interface data_german_dronetypes_Item {
       Id?: string;
       Unk001?: data_german_dronetypes_Item_Unk001;
@@ -14366,13 +14840,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_dronetypes extends Array<data_german_dronetypes_Item> {}
-    
+
     export type data_german_endgamemapcontent = any[];
-    
+
     export type data_german_endgamemaps = any[];
-    
+
     export type data_german_expeditiondeals = any[];
-    
+
     interface data_german_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -14405,8 +14879,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_expeditionfactions extends Array<data_german_expeditionfactions_Item> {}
-    
+    export interface data_german_expeditionfactions
+      extends Array<data_german_expeditionfactions_Item> {}
+
     interface data_german_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -14419,15 +14894,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_expeditionrelics extends Array<data_german_expeditionrelics_Item> {}
-    
+    export interface data_german_expeditionrelics
+      extends Array<data_german_expeditionrelics_Item> {}
+
     interface data_german_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_german_flavourtext extends Array<data_german_flavourtext_Item> {}
-    
+
     interface data_german_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -14445,8 +14921,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_german_fragmentstashtablayout extends Array<data_german_fragmentstashtablayout_Item> {}
-    
+    export interface data_german_fragmentstashtablayout
+      extends Array<data_german_fragmentstashtablayout_Item> {}
+
     interface data_german_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -14455,9 +14932,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_german_gamepadbutton extends Array<data_german_gamepadbutton_Item> {}
-    
+
     export type data_german_gamepadbuttonbindaction = any[];
-    
+
     interface data_german_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -14488,9 +14965,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_gemeffects extends Array<data_german_gemeffects_Item> {}
-    
+
     export type data_german_gemtags = any[];
-    
+
     interface data_german_genericleaguerewardtypevisuals_Item {
       Type?: data_german_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_german_genericleaguerewardtypevisuals_Item_Unk001;
@@ -14511,10 +14988,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_genericleaguerewardtypevisuals extends Array<data_german_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_german_genericleaguerewardtypevisuals
+      extends Array<data_german_genericleaguerewardtypevisuals_Item> {}
+
     export type data_german_grantedeffectlabels = any[];
-    
+
     interface data_german_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_german_harvestcraftfilters_Item_BaseItem;
@@ -14524,8 +15002,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_harvestcraftfilters extends Array<data_german_harvestcraftfilters_Item> {}
-    
+    export interface data_german_harvestcraftfilters
+      extends Array<data_german_harvestcraftfilters_Item> {}
+
     interface data_german_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -14547,10 +15026,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_german_harvestcraftoptions extends Array<data_german_harvestcraftoptions_Item> {}
-    
+    export interface data_german_harvestcraftoptions
+      extends Array<data_german_harvestcraftoptions_Item> {}
+
     export type data_german_heistchestrewardtypes = any[];
-    
+
     interface data_german_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -14588,7 +15068,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_heistjobs extends Array<data_german_heistjobs_Item> {}
-    
+
     interface data_german_heistobjectives_Item {
       BaseItemType?: data_german_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -14599,16 +15079,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_heistobjectives extends Array<data_german_heistobjectives_Item> {}
-    
+
     interface data_german_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_german_heistobjectivevaluedescriptions extends Array<data_german_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_german_heistobjectivevaluedescriptions
+      extends Array<data_german_heistobjectivevaluedescriptions_Item> {}
+
     export type data_german_heistquestcontracts = any[];
-    
+
     interface data_german_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -14622,24 +15103,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_german_hellscapepassives extends Array<data_german_hellscapepassives_Item> {}
-    
+    export interface data_german_hellscapepassives
+      extends Array<data_german_hellscapepassives_Item> {}
+
     interface data_german_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_german_hideoutdoodadcategory extends Array<data_german_hideoutdoodadcategory_Item> {}
-    
+    export interface data_german_hideoutdoodadcategory
+      extends Array<data_german_hideoutdoodadcategory_Item> {}
+
     interface data_german_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_german_hideoutdoodadtags extends Array<data_german_hideoutdoodadtags_Item> {}
-    
+    export interface data_german_hideoutdoodadtags
+      extends Array<data_german_hideoutdoodadtags_Item> {}
+
     export type data_german_hideouts = any[];
-    
+
     interface data_german_incubators_Item {
       BaseItemTypesKey?: data_german_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -14652,18 +15136,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_incubators extends Array<data_german_incubators_Item> {}
-    
+
     export type data_german_incursionrooms = any[];
-    
+
     export type data_german_indexablesupportgems = any[];
-    
+
     interface data_german_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_german_itemclasscategories extends Array<data_german_itemclasscategories_Item> {}
-    
+    export interface data_german_itemclasscategories
+      extends Array<data_german_itemclasscategories_Item> {}
+
     interface data_german_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -14704,15 +15189,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_itemclasses extends Array<data_german_itemclasses_Item> {}
-    
+
     export type data_german_keywordpopups = any[];
-    
+
     export type data_german_kioskmodecharactertutorials = any[];
-    
+
     export type data_german_leagueinfo = any[];
-    
+
     export type data_german_mapconnections = any[];
-    
+
     interface data_german_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -14733,11 +15218,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_german_mappins extends Array<data_german_mappins_Item> {}
-    
+
     export type data_german_mapseries = any[];
-    
+
     export type data_german_mapstashspecialtypeentries = any[];
-    
+
     interface data_german_memorylinetype_Item {
       Id?: string;
       Unk001?: data_german_memorylinetype_Item_Unk001;
@@ -14764,20 +15249,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_memorylinetype extends Array<data_german_memorylinetype_Item> {}
-    
+
     interface data_german_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_german_microtransactioncategory extends Array<data_german_microtransactioncategory_Item> {}
-    
+    export interface data_german_microtransactioncategory
+      extends Array<data_german_microtransactioncategory_Item> {}
+
     interface data_german_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_german_microtransactionskillgemeffectslottypes extends Array<data_german_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_german_microtransactionskillgemeffectslottypes
+      extends Array<data_german_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_german_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_german_microtransactionslot_Item_Unk001;
@@ -14797,16 +15284,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_microtransactionslot extends Array<data_german_microtransactionslot_Item> {}
-    
+    export interface data_german_microtransactionslot
+      extends Array<data_german_microtransactionslot_Item> {}
+
     interface data_german_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_german_microtransactionslotadditionaldefaultoptions extends Array<data_german_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_german_microtransactionslotadditionaldefaultoptions
+      extends Array<data_german_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_german_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -14818,15 +15307,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_german_minimapicons extends Array<data_german_minimapicons_Item> {}
-    
+
     export type data_german_mobilecharactercreation = any[];
-    
+
     export type data_german_mobileskillgemlayout = any[];
-    
+
     export type data_german_mobileskillgemlayoutpages = any[];
-    
+
     export type data_german_mobiletutorial = any[];
-    
+
     interface data_german_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -14915,7 +15404,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_mods extends Array<data_german_mods_Item> {}
-    
+
     interface data_german_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_german_monstervarieties_Item_MonsterTypesKey;
@@ -15050,17 +15539,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_german_monstervarieties extends Array<data_german_monstervarieties_Item> {}
-    
+    export interface data_german_monstervarieties
+      extends Array<data_german_monstervarieties_Item> {}
+
     interface data_german_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_german_mousecursorsizesettings extends Array<data_german_mousecursorsizesettings_Item> {}
-    
+    export interface data_german_mousecursorsizesettings
+      extends Array<data_german_mousecursorsizesettings_Item> {}
+
     export type data_german_mtxtypes = any[];
-    
+
     interface data_german_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -15074,7 +15565,7 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_german_music extends Array<data_german_music_Item> {}
-    
+
     interface data_german_musiccategories_Item {
       Id?: string;
       Name?: string;
@@ -15082,7 +15573,7 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_german_musiccategories extends Array<data_german_musiccategories_Item> {}
-    
+
     interface data_german_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -15094,9 +15585,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_german_notifications extends Array<data_german_notifications_Item> {}
-    
+
     export type data_german_npcmaster = any[];
-    
+
     interface data_german_npcs_Item {
       Id?: string;
       Name?: string;
@@ -15117,7 +15608,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_german_npcs extends Array<data_german_npcs_Item> {}
-    
+
     interface data_german_npctalk_Item {
       NPCKey?: data_german_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -15187,7 +15678,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_npctalk extends Array<data_german_npctalk_Item> {}
-    
+
     interface data_german_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -15208,19 +15699,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_npctextaudio extends Array<data_german_npctextaudio_Item> {}
-    
+
     export type data_german_pantheonpanellayout = any[];
-    
+
     export type data_german_pantheonsouls = any[];
-    
+
     interface data_german_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_german_passiveoverridelimits extends Array<data_german_passiveoverridelimits_Item> {}
-    
+    export interface data_german_passiveoverridelimits
+      extends Array<data_german_passiveoverridelimits_Item> {}
+
     export type data_german_passiveskilloverrides = any[];
-    
+
     interface data_german_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -15278,23 +15770,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_passiveskills extends Array<data_german_passiveskills_Item> {}
-    
+
     interface data_german_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_german_passiveskillstatcategories extends Array<data_german_passiveskillstatcategories_Item> {}
-    
+    export interface data_german_passiveskillstatcategories
+      extends Array<data_german_passiveskillstatcategories_Item> {}
+
     export type data_german_passiveskilltreetutorial = any[];
-    
+
     interface data_german_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_german_playertradewhisperformats extends Array<data_german_playertradewhisperformats_Item> {}
-    
+    export interface data_german_playertradewhisperformats
+      extends Array<data_german_playertradewhisperformats_Item> {}
+
     interface data_german_quest_Item {
       Id?: string;
       Act?: number;
@@ -15318,7 +15812,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_quest extends Array<data_german_quest_Item> {}
-    
+
     interface data_german_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -15331,7 +15825,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_questrewardtype extends Array<data_german_questrewardtype_Item> {}
-    
+
     interface data_german_queststates_Item {
       Quest?: data_german_queststates_Item_Quest;
       Order?: number;
@@ -15347,7 +15841,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_queststates extends Array<data_german_queststates_Item> {}
-    
+
     interface data_german_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -15357,10 +15851,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_german_questtrackergroup extends Array<data_german_questtrackergroup_Item> {}
-    
+    export interface data_german_questtrackergroup
+      extends Array<data_german_questtrackergroup_Item> {}
+
     export type data_german_races = any[];
-    
+
     interface data_german_realms_Item {
       Id?: string;
       Name?: string;
@@ -15379,7 +15874,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_realms extends Array<data_german_realms_Item> {}
-    
+
     interface data_german_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -15388,25 +15883,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_german_recipeunlockdisplay extends Array<data_german_recipeunlockdisplay_Item> {}
-    
+    export interface data_german_recipeunlockdisplay
+      extends Array<data_german_recipeunlockdisplay_Item> {}
+
     interface data_german_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_german_relicinventorylayout extends Array<data_german_relicinventorylayout_Item> {}
-    
+    export interface data_german_relicinventorylayout
+      extends Array<data_german_relicinventorylayout_Item> {}
+
     export type data_german_relicitemeffectvariations = any[];
-    
+
     interface data_german_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_german_remindertext extends Array<data_german_remindertext_Item> {}
-    
+
     interface data_german_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_german_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -15449,7 +15946,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_ritualrunetypes extends Array<data_german_ritualrunetypes_Item> {}
-    
+
     interface data_german_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_german_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_german_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -15468,8 +15965,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_safehousebyocrafting extends Array<data_german_safehousebyocrafting_Item> {}
-    
+    export interface data_german_safehousebyocrafting
+      extends Array<data_german_safehousebyocrafting_Item> {}
+
     interface data_german_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -15479,8 +15977,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_german_safehousecraftingspreetype extends Array<data_german_safehousecraftingspreetype_Item> {}
-    
+    export interface data_german_safehousecraftingspreetype
+      extends Array<data_german_safehousecraftingspreetype_Item> {}
+
     interface data_german_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_german_sanctumdefenceicons_Item_Stat;
@@ -15493,8 +15992,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_sanctumdefenceicons extends Array<data_german_sanctumdefenceicons_Item> {}
-    
+    export interface data_german_sanctumdefenceicons
+      extends Array<data_german_sanctumdefenceicons_Item> {}
+
     interface data_german_sanctumfloors_Item {
       Id?: string;
       Area?: data_german_sanctumfloors_Item_Area;
@@ -15522,7 +16022,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_sanctumfloors extends Array<data_german_sanctumfloors_Item> {}
-    
+
     interface data_german_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -15534,8 +16034,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_german_sanctumpersistenteffectcategories extends Array<data_german_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_german_sanctumpersistenteffectcategories
+      extends Array<data_german_sanctumpersistenteffectcategories_Item> {}
+
     interface data_german_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -15565,8 +16066,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_sanctumpersistenteffects extends Array<data_german_sanctumpersistenteffects_Item> {}
-    
+    export interface data_german_sanctumpersistenteffects
+      extends Array<data_german_sanctumpersistenteffects_Item> {}
+
     interface data_german_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -15590,10 +16092,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_sanctumroomtypes extends Array<data_german_sanctumroomtypes_Item> {}
-    
+    export interface data_german_sanctumroomtypes
+      extends Array<data_german_sanctumroomtypes_Item> {}
+
     export type data_german_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_german_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -15611,8 +16114,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_german_sentinelpassives extends Array<data_german_sentinelpassives_Item> {}
-    
+    export interface data_german_sentinelpassives
+      extends Array<data_german_sentinelpassives_Item> {}
+
     interface data_german_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -15621,7 +16125,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_german_shoptag extends Array<data_german_shoptag_Item> {}
-    
+
     interface data_german_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -15667,9 +16171,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_shrines extends Array<data_german_shrines_Item> {}
-    
+
     export type data_german_skillcraftingdata = any[];
-    
+
     interface data_german_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -15683,7 +16187,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_skillgeminfo extends Array<data_german_skillgeminfo_Item> {}
-    
+
     interface data_german_skillgems_Item {
       BaseItemTypesKey?: data_german_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -15714,7 +16218,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_german_skillgems extends Array<data_german_skillgems_Item> {}
-    
+
     interface data_german_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -15723,14 +16227,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_german_socketnotches extends Array<data_german_socketnotches_Item> {}
-    
+
     interface data_german_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_german_stashtabaffinities extends Array<data_german_stashtabaffinities_Item> {}
-    
+    export interface data_german_stashtabaffinities
+      extends Array<data_german_stashtabaffinities_Item> {}
+
     interface data_german_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -15741,7 +16246,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_german_stashtype extends Array<data_german_stashtype_Item> {}
-    
+
     interface data_german_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -15768,23 +16273,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_german_stats extends Array<data_german_stats_Item> {}
-    
+
     interface data_german_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_german_tags extends Array<data_german_tags_Item> {}
-    
+
     export type data_german_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_german_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_german_tips extends Array<data_german_tips_Item> {}
-    
+
     interface data_german_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -15798,16 +16303,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_german_trademarketcategory extends Array<data_german_trademarketcategory_Item> {}
-    
+    export interface data_german_trademarketcategory
+      extends Array<data_german_trademarketcategory_Item> {}
+
     interface data_german_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_german_trademarketcategorygroups extends Array<data_german_trademarketcategorygroups_Item> {}
-    
+    export interface data_german_trademarketcategorygroups
+      extends Array<data_german_trademarketcategorygroups_Item> {}
+
     export type data_german_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_german_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -15817,15 +16324,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_german_uitalktext extends Array<data_german_uitalktext_Item> {}
-    
+
     export type data_german_ultimatumencountertypes = any[];
-    
+
     export type data_german_ultimatummodifiers = any[];
-    
+
     export type data_german_ultimatumwagertypes = any[];
-    
+
     export type data_german_uniquemaps = any[];
-    
+
     interface data_german_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -15839,10 +16346,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_german_uniquestashtypes extends Array<data_german_uniquestashtypes_Item> {}
-    
+    export interface data_german_uniquestashtypes
+      extends Array<data_german_uniquestashtypes_Item> {}
+
     export type data_german_warbandspackmonsters = any[];
-    
+
     interface data_german_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -15855,7 +16363,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_german_windowcursors extends Array<data_german_windowcursors_Item> {}
-    
+
     interface data_german_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -15866,7 +16374,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_german_words extends Array<data_german_words_Item> {}
-    
+
     interface data_german_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -15883,9 +16391,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_german_worldareas extends Array<data_german_worldareas_Item> {}
-    
+
     export type data_german_worldmaplegends = any[];
-    
+
     interface data_german_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -15897,8 +16405,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_german_worldpopupicontypes extends Array<data_german_worldpopupicontypes_Item> {}
-    
+    export interface data_german_worldpopupicontypes
+      extends Array<data_german_worldpopupicontypes_Item> {}
+
     interface data_japanese_achievementitemrewards_Item {
       AchievementItemsKey?: data_japanese_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_japanese_achievementitemrewards_Item_BaseItemTypesKey;
@@ -15913,8 +16422,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_achievementitemrewards extends Array<data_japanese_achievementitemrewards_Item> {}
-    
+    export interface data_japanese_achievementitemrewards
+      extends Array<data_japanese_achievementitemrewards_Item> {}
+
     interface data_japanese_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -15931,8 +16441,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_achievementitems extends Array<data_japanese_achievementitems_Item> {}
-    
+    export interface data_japanese_achievementitems
+      extends Array<data_japanese_achievementitems_Item> {}
+
     interface data_japanese_achievements_Item {
       Id?: string;
       Description?: string;
@@ -15954,7 +16465,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_japanese_achievements extends Array<data_japanese_achievements_Item> {}
-    
+
     interface data_japanese_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -15965,14 +16476,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_japanese_achievementsetrewards extends Array<data_japanese_achievementsetrewards_Item> {}
-    
+    export interface data_japanese_achievementsetrewards
+      extends Array<data_japanese_achievementsetrewards_Item> {}
+
     interface data_japanese_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_japanese_achievementsetsdisplay extends Array<data_japanese_achievementsetsdisplay_Item> {}
-    
+    export interface data_japanese_achievementsetsdisplay
+      extends Array<data_japanese_achievementsetsdisplay_Item> {}
+
     interface data_japanese_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -16023,7 +16536,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_activeskills extends Array<data_japanese_activeskills_Item> {}
-    
+
     interface data_japanese_acts_Item {
       Id?: string;
       Part?: number;
@@ -16038,11 +16551,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_japanese_acts extends Array<data_japanese_acts_Item> {}
-    
+
     export type data_japanese_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_japanese_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_japanese_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -16053,15 +16566,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_japanese_advancedskillstutorial extends Array<data_japanese_advancedskillstutorial_Item> {}
-    
+    export interface data_japanese_advancedskillstutorial
+      extends Array<data_japanese_advancedskillstutorial_Item> {}
+
     interface data_japanese_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_japanese_afflictionrewardtypevisuals extends Array<data_japanese_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_japanese_afflictionrewardtypevisuals
+      extends Array<data_japanese_afflictionrewardtypevisuals_Item> {}
+
     interface data_japanese_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_japanese_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -16094,10 +16609,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_alternatepassiveskills extends Array<data_japanese_alternatepassiveskills_Item> {}
-    
+    export interface data_japanese_alternatepassiveskills
+      extends Array<data_japanese_alternatepassiveskills_Item> {}
+
     export type data_japanese_alternatequalitytypes = any[];
-    
+
     interface data_japanese_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -16117,7 +16633,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_japanese_archetypes extends Array<data_japanese_archetypes_Item> {}
-    
+
     interface data_japanese_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -16126,8 +16642,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_japanese_archnemesismetarewards extends Array<data_japanese_archnemesismetarewards_Item> {}
-    
+    export interface data_japanese_archnemesismetarewards
+      extends Array<data_japanese_archnemesismetarewards_Item> {}
+
     interface data_japanese_archnemesismods_Item {
       Mod?: data_japanese_archnemesismods_Item_Mod;
       Name?: string;
@@ -16140,8 +16657,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_archnemesismods extends Array<data_japanese_archnemesismods_Item> {}
-    
+    export interface data_japanese_archnemesismods
+      extends Array<data_japanese_archnemesismods_Item> {}
+
     interface data_japanese_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -16159,14 +16677,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_japanese_ascendancy extends Array<data_japanese_ascendancy_Item> {}
-    
+
     interface data_japanese_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_japanese_atlasfavouredmapslots extends Array<data_japanese_atlasfavouredmapslots_Item> {}
-    
+    export interface data_japanese_atlasfavouredmapslots
+      extends Array<data_japanese_atlasfavouredmapslots_Item> {}
+
     interface data_japanese_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -16175,8 +16694,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_japanese_atlasprimordialaltarchoicetypes extends Array<data_japanese_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_japanese_atlasprimordialaltarchoicetypes
+      extends Array<data_japanese_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_japanese_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -16199,8 +16719,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_atlasprimordialbossoptions extends Array<data_japanese_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_japanese_atlasprimordialbossoptions
+      extends Array<data_japanese_atlasprimordialbossoptions_Item> {}
+
     interface data_japanese_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -16222,16 +16743,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_atlasupgradesinventorylayout extends Array<data_japanese_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_japanese_atlasupgradesinventorylayout
+      extends Array<data_japanese_atlasupgradesinventorylayout_Item> {}
+
     export type data_japanese_awarddisplay = any[];
-    
+
     interface data_japanese_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_japanese_backenderrors extends Array<data_japanese_backenderrors_Item> {}
-    
+
     interface data_japanese_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_japanese_baseitemtypes_Item_ItemClassesKey;
@@ -16280,7 +16802,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_baseitemtypes extends Array<data_japanese_baseitemtypes_Item> {}
-    
+
     interface data_japanese_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -16291,7 +16813,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_japanese_battlepasses extends Array<data_japanese_battlepasses_Item> {}
-    
+
     interface data_japanese_battlepassrewards_Item {
       BattlePass?: data_japanese_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -16325,14 +16847,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_battlepassrewards extends Array<data_japanese_battlepassrewards_Item> {}
-    
+    export interface data_japanese_battlepassrewards
+      extends Array<data_japanese_battlepassrewards_Item> {}
+
     interface data_japanese_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_japanese_battlepasstracks extends Array<data_japanese_battlepasstracks_Item> {}
-    
+    export interface data_japanese_battlepasstracks
+      extends Array<data_japanese_battlepasstracks_Item> {}
+
     interface data_japanese_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -16355,8 +16879,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_bestiaryfamilies extends Array<data_japanese_bestiaryfamilies_Item> {}
-    
+    export interface data_japanese_bestiaryfamilies
+      extends Array<data_japanese_bestiaryfamilies_Item> {}
+
     interface data_japanese_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -16369,7 +16894,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_bestiarygenus extends Array<data_japanese_bestiarygenus_Item> {}
-    
+
     interface data_japanese_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -16384,14 +16909,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_bestiarygroups extends Array<data_japanese_bestiarygroups_Item> {}
-    
+    export interface data_japanese_bestiarygroups
+      extends Array<data_japanese_bestiarygroups_Item> {}
+
     interface data_japanese_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_japanese_bestiaryrecipecategories extends Array<data_japanese_bestiaryrecipecategories_Item> {}
-    
+    export interface data_japanese_bestiaryrecipecategories
+      extends Array<data_japanese_bestiaryrecipecategories_Item> {}
+
     interface data_japanese_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -16410,16 +16937,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_bestiaryrecipes extends Array<data_japanese_bestiaryrecipes_Item> {}
-    
+    export interface data_japanese_bestiaryrecipes
+      extends Array<data_japanese_bestiaryrecipes_Item> {}
+
     interface data_japanese_betrayalchoices_Item {
       Id?: string;
       Text?: string;
       Unk002?: number;
       Achievements?: any[];
     }
-    export interface data_japanese_betrayalchoices extends Array<data_japanese_betrayalchoices_Item> {}
-    
+    export interface data_japanese_betrayalchoices
+      extends Array<data_japanese_betrayalchoices_Item> {}
+
     interface data_japanese_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -16433,7 +16962,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_japanese_betrayaljobs extends Array<data_japanese_betrayaljobs_Item> {}
-    
+
     interface data_japanese_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -16441,13 +16970,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_japanese_betrayalranks extends Array<data_japanese_betrayalranks_Item> {}
-    
+
     interface data_japanese_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_japanese_betrayalrelationshipstate extends Array<data_japanese_betrayalrelationshipstate_Item> {}
-    
+    export interface data_japanese_betrayalrelationshipstate
+      extends Array<data_japanese_betrayalrelationshipstate_Item> {}
+
     interface data_japanese_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -16468,8 +16998,9 @@ declare namespace Poe2DataMain {
       Unk016?: any;
       ScriptArgument?: string;
     }
-    export interface data_japanese_betrayaltargets extends Array<data_japanese_betrayaltargets_Item> {}
-    
+    export interface data_japanese_betrayaltargets
+      extends Array<data_japanese_betrayaltargets_Item> {}
+
     interface data_japanese_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_japanese_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_japanese_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -16489,8 +17020,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_betrayaltraitorrewards extends Array<data_japanese_betrayaltraitorrewards_Item> {}
-    
+    export interface data_japanese_betrayaltraitorrewards
+      extends Array<data_japanese_betrayaltraitorrewards_Item> {}
+
     interface data_japanese_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -16505,15 +17037,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_japanese_betrayalupgrades extends Array<data_japanese_betrayalupgrades_Item> {}
-    
+    export interface data_japanese_betrayalupgrades
+      extends Array<data_japanese_betrayalupgrades_Item> {}
+
     interface data_japanese_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_japanese_bindablevirtualkeys extends Array<data_japanese_bindablevirtualkeys_Item> {}
-    
+    export interface data_japanese_bindablevirtualkeys
+      extends Array<data_japanese_bindablevirtualkeys_Item> {}
+
     interface data_japanese_blightcraftingitems_Item {
       Oil?: data_japanese_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -16525,8 +17059,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_blightcraftingitems extends Array<data_japanese_blightcraftingitems_Item> {}
-    
+    export interface data_japanese_blightcraftingitems
+      extends Array<data_japanese_blightcraftingitems_Item> {}
+
     interface data_japanese_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -16544,7 +17079,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_japanese_blighttowers extends Array<data_japanese_blighttowers_Item> {}
-    
+
     interface data_japanese_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -16602,8 +17137,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_buffdefinitions extends Array<data_japanese_buffdefinitions_Item> {}
-    
+    export interface data_japanese_buffdefinitions
+      extends Array<data_japanese_buffdefinitions_Item> {}
+
     interface data_japanese_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -16626,7 +17162,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_japanese_buffvisuals extends Array<data_japanese_buffvisuals_Item> {}
-    
+
     interface data_japanese_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -16634,16 +17170,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_japanese_charactercreationicons extends Array<data_japanese_charactercreationicons_Item> {}
-    
+    export interface data_japanese_charactercreationicons
+      extends Array<data_japanese_charactercreationicons_Item> {}
+
     interface data_japanese_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_japanese_characterpaneldescriptionmodes extends Array<data_japanese_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_japanese_characterpaneldescriptionmodes
+      extends Array<data_japanese_characterpaneldescriptionmodes_Item> {}
+
     interface data_japanese_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -16664,16 +17202,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_characterpanelstats extends Array<data_japanese_characterpanelstats_Item> {}
-    
+    export interface data_japanese_characterpanelstats
+      extends Array<data_japanese_characterpanelstats_Item> {}
+
     interface data_japanese_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_japanese_characterpaneltabs extends Array<data_japanese_characterpaneltabs_Item> {}
-    
+    export interface data_japanese_characterpaneltabs
+      extends Array<data_japanese_characterpaneltabs_Item> {}
+
     interface data_japanese_characters_Item {
       Id?: string;
       Name?: string;
@@ -16799,7 +17339,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_characters extends Array<data_japanese_characters_Item> {}
-    
+
     interface data_japanese_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -16825,8 +17365,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_characterstartstates extends Array<data_japanese_characterstartstates_Item> {}
-    
+    export interface data_japanese_characterstartstates
+      extends Array<data_japanese_characterstartstates_Item> {}
+
     interface data_japanese_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -16834,8 +17375,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_japanese_charactertextaudio extends Array<data_japanese_charactertextaudio_Item> {}
-    
+    export interface data_japanese_charactertextaudio
+      extends Array<data_japanese_charactertextaudio_Item> {}
+
     interface data_japanese_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -16883,7 +17425,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_chests extends Array<data_japanese_chests_Item> {}
-    
+
     interface data_japanese_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -16893,11 +17435,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_japanese_clientstrings extends Array<data_japanese_clientstrings_Item> {}
-    
+
     export type data_japanese_clientstrings2 = any[];
-    
+
     export type data_japanese_combatuiprompts = any[];
-    
+
     interface data_japanese_commands_Item {
       Id?: string;
       Command?: string;
@@ -16907,9 +17449,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_japanese_commands extends Array<data_japanese_commands_Item> {}
-    
+
     export type data_japanese_completionnotifications = any[];
-    
+
     interface data_japanese_costtypes_Item {
       Id?: string;
       StatsKey?: data_japanese_costtypes_Item_StatsKey;
@@ -16921,9 +17463,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_costtypes extends Array<data_japanese_costtypes_Item> {}
-    
+
     export type data_japanese_craftingbenchoptions = any[];
-    
+
     interface data_japanese_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -16932,16 +17474,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_japanese_craftingbenchunlockcategories extends Array<data_japanese_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_japanese_craftingbenchunlockcategories
+      extends Array<data_japanese_craftingbenchunlockcategories_Item> {}
+
     export type data_japanese_craftingitemclasscategories = any[];
-    
+
     interface data_japanese_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_japanese_currencyexchangecategories extends Array<data_japanese_currencyexchangecategories_Item> {}
-    
+    export interface data_japanese_currencyexchangecategories
+      extends Array<data_japanese_currencyexchangecategories_Item> {}
+
     interface data_japanese_currencyitems_Item {
       BaseItemTypesKey?: data_japanese_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -16975,15 +17519,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_currencyitems extends Array<data_japanese_currencyitems_Item> {}
-    
+
     export type data_japanese_delvebiomes = any[];
-    
+
     interface data_japanese_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_japanese_delvecraftingmodifierdescriptions extends Array<data_japanese_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_japanese_delvecraftingmodifierdescriptions
+      extends Array<data_japanese_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_japanese_delvecraftingtags_Item {
       TagsKey?: data_japanese_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -16992,8 +17537,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_delvecraftingtags extends Array<data_japanese_delvecraftingtags_Item> {}
-    
+    export interface data_japanese_delvecraftingtags
+      extends Array<data_japanese_delvecraftingtags_Item> {}
+
     interface data_japanese_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -17011,7 +17557,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_japanese_delvefeatures extends Array<data_japanese_delvefeatures_Item> {}
-    
+
     interface data_japanese_dronetypes_Item {
       Id?: string;
       Unk001?: data_japanese_dronetypes_Item_Unk001;
@@ -17035,13 +17581,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_dronetypes extends Array<data_japanese_dronetypes_Item> {}
-    
+
     export type data_japanese_endgamemapcontent = any[];
-    
+
     export type data_japanese_endgamemaps = any[];
-    
+
     export type data_japanese_expeditiondeals = any[];
-    
+
     interface data_japanese_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -17074,8 +17620,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_expeditionfactions extends Array<data_japanese_expeditionfactions_Item> {}
-    
+    export interface data_japanese_expeditionfactions
+      extends Array<data_japanese_expeditionfactions_Item> {}
+
     interface data_japanese_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -17088,15 +17635,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_expeditionrelics extends Array<data_japanese_expeditionrelics_Item> {}
-    
+    export interface data_japanese_expeditionrelics
+      extends Array<data_japanese_expeditionrelics_Item> {}
+
     interface data_japanese_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_japanese_flavourtext extends Array<data_japanese_flavourtext_Item> {}
-    
+
     interface data_japanese_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -17114,8 +17662,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_japanese_fragmentstashtablayout extends Array<data_japanese_fragmentstashtablayout_Item> {}
-    
+    export interface data_japanese_fragmentstashtablayout
+      extends Array<data_japanese_fragmentstashtablayout_Item> {}
+
     interface data_japanese_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -17124,9 +17673,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_japanese_gamepadbutton extends Array<data_japanese_gamepadbutton_Item> {}
-    
+
     export type data_japanese_gamepadbuttonbindaction = any[];
-    
+
     interface data_japanese_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -17157,9 +17706,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_gemeffects extends Array<data_japanese_gemeffects_Item> {}
-    
+
     export type data_japanese_gemtags = any[];
-    
+
     interface data_japanese_genericleaguerewardtypevisuals_Item {
       Type?: data_japanese_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_japanese_genericleaguerewardtypevisuals_Item_Unk001;
@@ -17180,10 +17729,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_genericleaguerewardtypevisuals extends Array<data_japanese_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_japanese_genericleaguerewardtypevisuals
+      extends Array<data_japanese_genericleaguerewardtypevisuals_Item> {}
+
     export type data_japanese_grantedeffectlabels = any[];
-    
+
     interface data_japanese_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_japanese_harvestcraftfilters_Item_BaseItem;
@@ -17193,8 +17743,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_harvestcraftfilters extends Array<data_japanese_harvestcraftfilters_Item> {}
-    
+    export interface data_japanese_harvestcraftfilters
+      extends Array<data_japanese_harvestcraftfilters_Item> {}
+
     interface data_japanese_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -17216,10 +17767,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_harvestcraftoptions extends Array<data_japanese_harvestcraftoptions_Item> {}
-    
+    export interface data_japanese_harvestcraftoptions
+      extends Array<data_japanese_harvestcraftoptions_Item> {}
+
     export type data_japanese_heistchestrewardtypes = any[];
-    
+
     interface data_japanese_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -17257,7 +17809,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_heistjobs extends Array<data_japanese_heistjobs_Item> {}
-    
+
     interface data_japanese_heistobjectives_Item {
       BaseItemType?: data_japanese_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -17267,17 +17819,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_heistobjectives extends Array<data_japanese_heistobjectives_Item> {}
-    
+    export interface data_japanese_heistobjectives
+      extends Array<data_japanese_heistobjectives_Item> {}
+
     interface data_japanese_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_japanese_heistobjectivevaluedescriptions extends Array<data_japanese_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_japanese_heistobjectivevaluedescriptions
+      extends Array<data_japanese_heistobjectivevaluedescriptions_Item> {}
+
     export type data_japanese_heistquestcontracts = any[];
-    
+
     interface data_japanese_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -17291,24 +17845,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_japanese_hellscapepassives extends Array<data_japanese_hellscapepassives_Item> {}
-    
+    export interface data_japanese_hellscapepassives
+      extends Array<data_japanese_hellscapepassives_Item> {}
+
     interface data_japanese_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_japanese_hideoutdoodadcategory extends Array<data_japanese_hideoutdoodadcategory_Item> {}
-    
+    export interface data_japanese_hideoutdoodadcategory
+      extends Array<data_japanese_hideoutdoodadcategory_Item> {}
+
     interface data_japanese_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_japanese_hideoutdoodadtags extends Array<data_japanese_hideoutdoodadtags_Item> {}
-    
+    export interface data_japanese_hideoutdoodadtags
+      extends Array<data_japanese_hideoutdoodadtags_Item> {}
+
     export type data_japanese_hideouts = any[];
-    
+
     interface data_japanese_incubators_Item {
       BaseItemTypesKey?: data_japanese_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -17321,18 +17878,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_incubators extends Array<data_japanese_incubators_Item> {}
-    
+
     export type data_japanese_incursionrooms = any[];
-    
+
     export type data_japanese_indexablesupportgems = any[];
-    
+
     interface data_japanese_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_japanese_itemclasscategories extends Array<data_japanese_itemclasscategories_Item> {}
-    
+    export interface data_japanese_itemclasscategories
+      extends Array<data_japanese_itemclasscategories_Item> {}
+
     interface data_japanese_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -17373,15 +17931,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_itemclasses extends Array<data_japanese_itemclasses_Item> {}
-    
+
     export type data_japanese_keywordpopups = any[];
-    
+
     export type data_japanese_kioskmodecharactertutorials = any[];
-    
+
     export type data_japanese_leagueinfo = any[];
-    
+
     export type data_japanese_mapconnections = any[];
-    
+
     interface data_japanese_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -17402,11 +17960,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_japanese_mappins extends Array<data_japanese_mappins_Item> {}
-    
+
     export type data_japanese_mapseries = any[];
-    
+
     export type data_japanese_mapstashspecialtypeentries = any[];
-    
+
     interface data_japanese_memorylinetype_Item {
       Id?: string;
       Unk001?: data_japanese_memorylinetype_Item_Unk001;
@@ -17432,21 +17990,24 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_memorylinetype extends Array<data_japanese_memorylinetype_Item> {}
-    
+    export interface data_japanese_memorylinetype
+      extends Array<data_japanese_memorylinetype_Item> {}
+
     interface data_japanese_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_japanese_microtransactioncategory extends Array<data_japanese_microtransactioncategory_Item> {}
-    
+    export interface data_japanese_microtransactioncategory
+      extends Array<data_japanese_microtransactioncategory_Item> {}
+
     interface data_japanese_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_japanese_microtransactionskillgemeffectslottypes extends Array<data_japanese_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_japanese_microtransactionskillgemeffectslottypes
+      extends Array<data_japanese_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_japanese_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_japanese_microtransactionslot_Item_Unk001;
@@ -17466,16 +18027,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_microtransactionslot extends Array<data_japanese_microtransactionslot_Item> {}
-    
+    export interface data_japanese_microtransactionslot
+      extends Array<data_japanese_microtransactionslot_Item> {}
+
     interface data_japanese_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_japanese_microtransactionslotadditionaldefaultoptions extends Array<data_japanese_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_japanese_microtransactionslotadditionaldefaultoptions
+      extends Array<data_japanese_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_japanese_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -17487,15 +18050,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_japanese_minimapicons extends Array<data_japanese_minimapicons_Item> {}
-    
+
     export type data_japanese_mobilecharactercreation = any[];
-    
+
     export type data_japanese_mobileskillgemlayout = any[];
-    
+
     export type data_japanese_mobileskillgemlayoutpages = any[];
-    
+
     export type data_japanese_mobiletutorial = any[];
-    
+
     interface data_japanese_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -17584,7 +18147,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_mods extends Array<data_japanese_mods_Item> {}
-    
+
     interface data_japanese_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_japanese_monstervarieties_Item_MonsterTypesKey;
@@ -17719,17 +18282,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_monstervarieties extends Array<data_japanese_monstervarieties_Item> {}
-    
+    export interface data_japanese_monstervarieties
+      extends Array<data_japanese_monstervarieties_Item> {}
+
     interface data_japanese_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_japanese_mousecursorsizesettings extends Array<data_japanese_mousecursorsizesettings_Item> {}
-    
+    export interface data_japanese_mousecursorsizesettings
+      extends Array<data_japanese_mousecursorsizesettings_Item> {}
+
     export type data_japanese_mtxtypes = any[];
-    
+
     interface data_japanese_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -17743,15 +18308,16 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_japanese_music extends Array<data_japanese_music_Item> {}
-    
+
     interface data_japanese_musiccategories_Item {
       Id?: string;
       Name?: string;
       Order?: number;
       Unk003?: boolean;
     }
-    export interface data_japanese_musiccategories extends Array<data_japanese_musiccategories_Item> {}
-    
+    export interface data_japanese_musiccategories
+      extends Array<data_japanese_musiccategories_Item> {}
+
     interface data_japanese_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -17763,9 +18329,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_japanese_notifications extends Array<data_japanese_notifications_Item> {}
-    
+
     export type data_japanese_npcmaster = any[];
-    
+
     interface data_japanese_npcs_Item {
       Id?: string;
       Name?: string;
@@ -17786,7 +18352,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_japanese_npcs extends Array<data_japanese_npcs_Item> {}
-    
+
     interface data_japanese_npctalk_Item {
       NPCKey?: data_japanese_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -17856,7 +18422,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_npctalk extends Array<data_japanese_npctalk_Item> {}
-    
+
     interface data_japanese_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -17877,19 +18443,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_npctextaudio extends Array<data_japanese_npctextaudio_Item> {}
-    
+
     export type data_japanese_pantheonpanellayout = any[];
-    
+
     export type data_japanese_pantheonsouls = any[];
-    
+
     interface data_japanese_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_japanese_passiveoverridelimits extends Array<data_japanese_passiveoverridelimits_Item> {}
-    
+    export interface data_japanese_passiveoverridelimits
+      extends Array<data_japanese_passiveoverridelimits_Item> {}
+
     export type data_japanese_passiveskilloverrides = any[];
-    
+
     interface data_japanese_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -17947,23 +18514,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_passiveskills extends Array<data_japanese_passiveskills_Item> {}
-    
+
     interface data_japanese_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_japanese_passiveskillstatcategories extends Array<data_japanese_passiveskillstatcategories_Item> {}
-    
+    export interface data_japanese_passiveskillstatcategories
+      extends Array<data_japanese_passiveskillstatcategories_Item> {}
+
     export type data_japanese_passiveskilltreetutorial = any[];
-    
+
     interface data_japanese_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_japanese_playertradewhisperformats extends Array<data_japanese_playertradewhisperformats_Item> {}
-    
+    export interface data_japanese_playertradewhisperformats
+      extends Array<data_japanese_playertradewhisperformats_Item> {}
+
     interface data_japanese_quest_Item {
       Id?: string;
       Act?: number;
@@ -17987,7 +18556,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_quest extends Array<data_japanese_quest_Item> {}
-    
+
     interface data_japanese_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -17999,8 +18568,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_questrewardtype extends Array<data_japanese_questrewardtype_Item> {}
-    
+    export interface data_japanese_questrewardtype
+      extends Array<data_japanese_questrewardtype_Item> {}
+
     interface data_japanese_queststates_Item {
       Quest?: data_japanese_queststates_Item_Quest;
       Order?: number;
@@ -18016,7 +18586,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_queststates extends Array<data_japanese_queststates_Item> {}
-    
+
     interface data_japanese_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -18026,10 +18596,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_questtrackergroup extends Array<data_japanese_questtrackergroup_Item> {}
-    
+    export interface data_japanese_questtrackergroup
+      extends Array<data_japanese_questtrackergroup_Item> {}
+
     export type data_japanese_races = any[];
-    
+
     interface data_japanese_realms_Item {
       Id?: string;
       Name?: string;
@@ -18048,7 +18619,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_realms extends Array<data_japanese_realms_Item> {}
-    
+
     interface data_japanese_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -18057,25 +18628,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_japanese_recipeunlockdisplay extends Array<data_japanese_recipeunlockdisplay_Item> {}
-    
+    export interface data_japanese_recipeunlockdisplay
+      extends Array<data_japanese_recipeunlockdisplay_Item> {}
+
     interface data_japanese_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_japanese_relicinventorylayout extends Array<data_japanese_relicinventorylayout_Item> {}
-    
+    export interface data_japanese_relicinventorylayout
+      extends Array<data_japanese_relicinventorylayout_Item> {}
+
     export type data_japanese_relicitemeffectvariations = any[];
-    
+
     interface data_japanese_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_japanese_remindertext extends Array<data_japanese_remindertext_Item> {}
-    
+
     interface data_japanese_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_japanese_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -18117,8 +18690,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_japanese_ritualrunetypes extends Array<data_japanese_ritualrunetypes_Item> {}
-    
+    export interface data_japanese_ritualrunetypes
+      extends Array<data_japanese_ritualrunetypes_Item> {}
+
     interface data_japanese_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_japanese_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_japanese_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -18137,8 +18711,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_safehousebyocrafting extends Array<data_japanese_safehousebyocrafting_Item> {}
-    
+    export interface data_japanese_safehousebyocrafting
+      extends Array<data_japanese_safehousebyocrafting_Item> {}
+
     interface data_japanese_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -18148,8 +18723,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_japanese_safehousecraftingspreetype extends Array<data_japanese_safehousecraftingspreetype_Item> {}
-    
+    export interface data_japanese_safehousecraftingspreetype
+      extends Array<data_japanese_safehousecraftingspreetype_Item> {}
+
     interface data_japanese_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_japanese_sanctumdefenceicons_Item_Stat;
@@ -18162,8 +18738,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_sanctumdefenceicons extends Array<data_japanese_sanctumdefenceicons_Item> {}
-    
+    export interface data_japanese_sanctumdefenceicons
+      extends Array<data_japanese_sanctumdefenceicons_Item> {}
+
     interface data_japanese_sanctumfloors_Item {
       Id?: string;
       Area?: data_japanese_sanctumfloors_Item_Area;
@@ -18191,7 +18768,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_sanctumfloors extends Array<data_japanese_sanctumfloors_Item> {}
-    
+
     interface data_japanese_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -18203,8 +18780,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_japanese_sanctumpersistenteffectcategories extends Array<data_japanese_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_japanese_sanctumpersistenteffectcategories
+      extends Array<data_japanese_sanctumpersistenteffectcategories_Item> {}
+
     interface data_japanese_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -18234,8 +18812,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_sanctumpersistenteffects extends Array<data_japanese_sanctumpersistenteffects_Item> {}
-    
+    export interface data_japanese_sanctumpersistenteffects
+      extends Array<data_japanese_sanctumpersistenteffects_Item> {}
+
     interface data_japanese_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -18259,10 +18838,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_sanctumroomtypes extends Array<data_japanese_sanctumroomtypes_Item> {}
-    
+    export interface data_japanese_sanctumroomtypes
+      extends Array<data_japanese_sanctumroomtypes_Item> {}
+
     export type data_japanese_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_japanese_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -18280,8 +18860,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_japanese_sentinelpassives extends Array<data_japanese_sentinelpassives_Item> {}
-    
+    export interface data_japanese_sentinelpassives
+      extends Array<data_japanese_sentinelpassives_Item> {}
+
     interface data_japanese_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -18290,7 +18871,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_japanese_shoptag extends Array<data_japanese_shoptag_Item> {}
-    
+
     interface data_japanese_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -18336,9 +18917,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_shrines extends Array<data_japanese_shrines_Item> {}
-    
+
     export type data_japanese_skillcraftingdata = any[];
-    
+
     interface data_japanese_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -18352,7 +18933,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_skillgeminfo extends Array<data_japanese_skillgeminfo_Item> {}
-    
+
     interface data_japanese_skillgems_Item {
       BaseItemTypesKey?: data_japanese_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -18383,7 +18964,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_japanese_skillgems extends Array<data_japanese_skillgems_Item> {}
-    
+
     interface data_japanese_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -18392,14 +18973,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_japanese_socketnotches extends Array<data_japanese_socketnotches_Item> {}
-    
+
     interface data_japanese_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_japanese_stashtabaffinities extends Array<data_japanese_stashtabaffinities_Item> {}
-    
+    export interface data_japanese_stashtabaffinities
+      extends Array<data_japanese_stashtabaffinities_Item> {}
+
     interface data_japanese_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -18410,7 +18992,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_japanese_stashtype extends Array<data_japanese_stashtype_Item> {}
-    
+
     interface data_japanese_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -18437,23 +19019,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_japanese_stats extends Array<data_japanese_stats_Item> {}
-    
+
     interface data_japanese_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_japanese_tags extends Array<data_japanese_tags_Item> {}
-    
+
     export type data_japanese_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_japanese_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_japanese_tips extends Array<data_japanese_tips_Item> {}
-    
+
     interface data_japanese_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -18467,16 +19049,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_japanese_trademarketcategory extends Array<data_japanese_trademarketcategory_Item> {}
-    
+    export interface data_japanese_trademarketcategory
+      extends Array<data_japanese_trademarketcategory_Item> {}
+
     interface data_japanese_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_japanese_trademarketcategorygroups extends Array<data_japanese_trademarketcategorygroups_Item> {}
-    
+    export interface data_japanese_trademarketcategorygroups
+      extends Array<data_japanese_trademarketcategorygroups_Item> {}
+
     export type data_japanese_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_japanese_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -18486,15 +19070,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_japanese_uitalktext extends Array<data_japanese_uitalktext_Item> {}
-    
+
     export type data_japanese_ultimatumencountertypes = any[];
-    
+
     export type data_japanese_ultimatummodifiers = any[];
-    
+
     export type data_japanese_ultimatumwagertypes = any[];
-    
+
     export type data_japanese_uniquemaps = any[];
-    
+
     interface data_japanese_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -18508,10 +19092,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_japanese_uniquestashtypes extends Array<data_japanese_uniquestashtypes_Item> {}
-    
+    export interface data_japanese_uniquestashtypes
+      extends Array<data_japanese_uniquestashtypes_Item> {}
+
     export type data_japanese_warbandspackmonsters = any[];
-    
+
     interface data_japanese_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -18524,7 +19109,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_japanese_windowcursors extends Array<data_japanese_windowcursors_Item> {}
-    
+
     interface data_japanese_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -18535,7 +19120,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_japanese_words extends Array<data_japanese_words_Item> {}
-    
+
     interface data_japanese_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -18552,9 +19137,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_japanese_worldareas extends Array<data_japanese_worldareas_Item> {}
-    
+
     export type data_japanese_worldmaplegends = any[];
-    
+
     interface data_japanese_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -18566,8 +19151,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_japanese_worldpopupicontypes extends Array<data_japanese_worldpopupicontypes_Item> {}
-    
+    export interface data_japanese_worldpopupicontypes
+      extends Array<data_japanese_worldpopupicontypes_Item> {}
+
     interface data_korean_achievementitemrewards_Item {
       AchievementItemsKey?: data_korean_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_korean_achievementitemrewards_Item_BaseItemTypesKey;
@@ -18582,8 +19168,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_achievementitemrewards extends Array<data_korean_achievementitemrewards_Item> {}
-    
+    export interface data_korean_achievementitemrewards
+      extends Array<data_korean_achievementitemrewards_Item> {}
+
     interface data_korean_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -18600,8 +19187,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_achievementitems extends Array<data_korean_achievementitems_Item> {}
-    
+    export interface data_korean_achievementitems
+      extends Array<data_korean_achievementitems_Item> {}
+
     interface data_korean_achievements_Item {
       Id?: string;
       Description?: string;
@@ -18623,7 +19211,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_korean_achievements extends Array<data_korean_achievements_Item> {}
-    
+
     interface data_korean_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -18634,14 +19222,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_korean_achievementsetrewards extends Array<data_korean_achievementsetrewards_Item> {}
-    
+    export interface data_korean_achievementsetrewards
+      extends Array<data_korean_achievementsetrewards_Item> {}
+
     interface data_korean_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_korean_achievementsetsdisplay extends Array<data_korean_achievementsetsdisplay_Item> {}
-    
+    export interface data_korean_achievementsetsdisplay
+      extends Array<data_korean_achievementsetsdisplay_Item> {}
+
     interface data_korean_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -18692,7 +19282,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_activeskills extends Array<data_korean_activeskills_Item> {}
-    
+
     interface data_korean_acts_Item {
       Id?: string;
       Part?: number;
@@ -18707,11 +19297,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_korean_acts extends Array<data_korean_acts_Item> {}
-    
+
     export type data_korean_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_korean_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_korean_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -18722,15 +19312,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_korean_advancedskillstutorial extends Array<data_korean_advancedskillstutorial_Item> {}
-    
+    export interface data_korean_advancedskillstutorial
+      extends Array<data_korean_advancedskillstutorial_Item> {}
+
     interface data_korean_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_korean_afflictionrewardtypevisuals extends Array<data_korean_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_korean_afflictionrewardtypevisuals
+      extends Array<data_korean_afflictionrewardtypevisuals_Item> {}
+
     interface data_korean_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_korean_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -18763,10 +19355,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_korean_alternatepassiveskills extends Array<data_korean_alternatepassiveskills_Item> {}
-    
+    export interface data_korean_alternatepassiveskills
+      extends Array<data_korean_alternatepassiveskills_Item> {}
+
     export type data_korean_alternatequalitytypes = any[];
-    
+
     interface data_korean_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -18786,7 +19379,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_korean_archetypes extends Array<data_korean_archetypes_Item> {}
-    
+
     interface data_korean_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -18795,8 +19388,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_korean_archnemesismetarewards extends Array<data_korean_archnemesismetarewards_Item> {}
-    
+    export interface data_korean_archnemesismetarewards
+      extends Array<data_korean_archnemesismetarewards_Item> {}
+
     interface data_korean_archnemesismods_Item {
       Mod?: data_korean_archnemesismods_Item_Mod;
       Name?: string;
@@ -18810,7 +19404,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_archnemesismods extends Array<data_korean_archnemesismods_Item> {}
-    
+
     interface data_korean_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -18828,14 +19422,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_korean_ascendancy extends Array<data_korean_ascendancy_Item> {}
-    
+
     interface data_korean_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_korean_atlasfavouredmapslots extends Array<data_korean_atlasfavouredmapslots_Item> {}
-    
+    export interface data_korean_atlasfavouredmapslots
+      extends Array<data_korean_atlasfavouredmapslots_Item> {}
+
     interface data_korean_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -18844,8 +19439,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_korean_atlasprimordialaltarchoicetypes extends Array<data_korean_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_korean_atlasprimordialaltarchoicetypes
+      extends Array<data_korean_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_korean_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -18868,8 +19464,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_atlasprimordialbossoptions extends Array<data_korean_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_korean_atlasprimordialbossoptions
+      extends Array<data_korean_atlasprimordialbossoptions_Item> {}
+
     interface data_korean_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -18891,16 +19488,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_atlasupgradesinventorylayout extends Array<data_korean_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_korean_atlasupgradesinventorylayout
+      extends Array<data_korean_atlasupgradesinventorylayout_Item> {}
+
     export type data_korean_awarddisplay = any[];
-    
+
     interface data_korean_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_korean_backenderrors extends Array<data_korean_backenderrors_Item> {}
-    
+
     interface data_korean_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_korean_baseitemtypes_Item_ItemClassesKey;
@@ -18949,7 +19547,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_baseitemtypes extends Array<data_korean_baseitemtypes_Item> {}
-    
+
     interface data_korean_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -18960,7 +19558,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_korean_battlepasses extends Array<data_korean_battlepasses_Item> {}
-    
+
     interface data_korean_battlepassrewards_Item {
       BattlePass?: data_korean_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -18994,14 +19592,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_battlepassrewards extends Array<data_korean_battlepassrewards_Item> {}
-    
+    export interface data_korean_battlepassrewards
+      extends Array<data_korean_battlepassrewards_Item> {}
+
     interface data_korean_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_korean_battlepasstracks extends Array<data_korean_battlepasstracks_Item> {}
-    
+    export interface data_korean_battlepasstracks
+      extends Array<data_korean_battlepasstracks_Item> {}
+
     interface data_korean_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -19024,8 +19624,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_korean_bestiaryfamilies extends Array<data_korean_bestiaryfamilies_Item> {}
-    
+    export interface data_korean_bestiaryfamilies
+      extends Array<data_korean_bestiaryfamilies_Item> {}
+
     interface data_korean_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -19038,7 +19639,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_bestiarygenus extends Array<data_korean_bestiarygenus_Item> {}
-    
+
     interface data_korean_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -19054,13 +19655,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_bestiarygroups extends Array<data_korean_bestiarygroups_Item> {}
-    
+
     interface data_korean_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_korean_bestiaryrecipecategories extends Array<data_korean_bestiaryrecipecategories_Item> {}
-    
+    export interface data_korean_bestiaryrecipecategories
+      extends Array<data_korean_bestiaryrecipecategories_Item> {}
+
     interface data_korean_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -19080,7 +19682,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_bestiaryrecipes extends Array<data_korean_bestiaryrecipes_Item> {}
-    
+
     interface data_korean_betrayalchoices_Item {
       Id?: string;
       Text?: string;
@@ -19088,7 +19690,7 @@ declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface data_korean_betrayalchoices extends Array<data_korean_betrayalchoices_Item> {}
-    
+
     interface data_korean_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -19102,7 +19704,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_korean_betrayaljobs extends Array<data_korean_betrayaljobs_Item> {}
-    
+
     interface data_korean_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -19110,13 +19712,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_korean_betrayalranks extends Array<data_korean_betrayalranks_Item> {}
-    
+
     interface data_korean_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_korean_betrayalrelationshipstate extends Array<data_korean_betrayalrelationshipstate_Item> {}
-    
+    export interface data_korean_betrayalrelationshipstate
+      extends Array<data_korean_betrayalrelationshipstate_Item> {}
+
     interface data_korean_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -19138,7 +19741,7 @@ declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface data_korean_betrayaltargets extends Array<data_korean_betrayaltargets_Item> {}
-    
+
     interface data_korean_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_korean_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_korean_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -19158,8 +19761,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_betrayaltraitorrewards extends Array<data_korean_betrayaltraitorrewards_Item> {}
-    
+    export interface data_korean_betrayaltraitorrewards
+      extends Array<data_korean_betrayaltraitorrewards_Item> {}
+
     interface data_korean_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -19174,15 +19778,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_korean_betrayalupgrades extends Array<data_korean_betrayalupgrades_Item> {}
-    
+    export interface data_korean_betrayalupgrades
+      extends Array<data_korean_betrayalupgrades_Item> {}
+
     interface data_korean_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_korean_bindablevirtualkeys extends Array<data_korean_bindablevirtualkeys_Item> {}
-    
+    export interface data_korean_bindablevirtualkeys
+      extends Array<data_korean_bindablevirtualkeys_Item> {}
+
     interface data_korean_blightcraftingitems_Item {
       Oil?: data_korean_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -19194,8 +19800,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_blightcraftingitems extends Array<data_korean_blightcraftingitems_Item> {}
-    
+    export interface data_korean_blightcraftingitems
+      extends Array<data_korean_blightcraftingitems_Item> {}
+
     interface data_korean_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -19213,7 +19820,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_korean_blighttowers extends Array<data_korean_blighttowers_Item> {}
-    
+
     interface data_korean_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -19272,7 +19879,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_buffdefinitions extends Array<data_korean_buffdefinitions_Item> {}
-    
+
     interface data_korean_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -19295,7 +19902,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_korean_buffvisuals extends Array<data_korean_buffvisuals_Item> {}
-    
+
     interface data_korean_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -19303,16 +19910,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_korean_charactercreationicons extends Array<data_korean_charactercreationicons_Item> {}
-    
+    export interface data_korean_charactercreationicons
+      extends Array<data_korean_charactercreationicons_Item> {}
+
     interface data_korean_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_korean_characterpaneldescriptionmodes extends Array<data_korean_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_korean_characterpaneldescriptionmodes
+      extends Array<data_korean_characterpaneldescriptionmodes_Item> {}
+
     interface data_korean_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -19333,16 +19942,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_characterpanelstats extends Array<data_korean_characterpanelstats_Item> {}
-    
+    export interface data_korean_characterpanelstats
+      extends Array<data_korean_characterpanelstats_Item> {}
+
     interface data_korean_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_korean_characterpaneltabs extends Array<data_korean_characterpaneltabs_Item> {}
-    
+    export interface data_korean_characterpaneltabs
+      extends Array<data_korean_characterpaneltabs_Item> {}
+
     interface data_korean_characters_Item {
       Id?: string;
       Name?: string;
@@ -19468,7 +20079,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_characters extends Array<data_korean_characters_Item> {}
-    
+
     interface data_korean_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -19494,8 +20105,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_characterstartstates extends Array<data_korean_characterstartstates_Item> {}
-    
+    export interface data_korean_characterstartstates
+      extends Array<data_korean_characterstartstates_Item> {}
+
     interface data_korean_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -19503,8 +20115,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_korean_charactertextaudio extends Array<data_korean_charactertextaudio_Item> {}
-    
+    export interface data_korean_charactertextaudio
+      extends Array<data_korean_charactertextaudio_Item> {}
+
     interface data_korean_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -19552,7 +20165,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_chests extends Array<data_korean_chests_Item> {}
-    
+
     interface data_korean_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -19562,11 +20175,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_korean_clientstrings extends Array<data_korean_clientstrings_Item> {}
-    
+
     export type data_korean_clientstrings2 = any[];
-    
+
     export type data_korean_combatuiprompts = any[];
-    
+
     interface data_korean_commands_Item {
       Id?: string;
       Command?: string;
@@ -19576,9 +20189,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_korean_commands extends Array<data_korean_commands_Item> {}
-    
+
     export type data_korean_completionnotifications = any[];
-    
+
     interface data_korean_costtypes_Item {
       Id?: string;
       StatsKey?: data_korean_costtypes_Item_StatsKey;
@@ -19590,9 +20203,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_costtypes extends Array<data_korean_costtypes_Item> {}
-    
+
     export type data_korean_craftingbenchoptions = any[];
-    
+
     interface data_korean_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -19601,16 +20214,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_korean_craftingbenchunlockcategories extends Array<data_korean_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_korean_craftingbenchunlockcategories
+      extends Array<data_korean_craftingbenchunlockcategories_Item> {}
+
     export type data_korean_craftingitemclasscategories = any[];
-    
+
     interface data_korean_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_korean_currencyexchangecategories extends Array<data_korean_currencyexchangecategories_Item> {}
-    
+    export interface data_korean_currencyexchangecategories
+      extends Array<data_korean_currencyexchangecategories_Item> {}
+
     interface data_korean_currencyitems_Item {
       BaseItemTypesKey?: data_korean_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -19644,15 +20259,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_currencyitems extends Array<data_korean_currencyitems_Item> {}
-    
+
     export type data_korean_delvebiomes = any[];
-    
+
     interface data_korean_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_korean_delvecraftingmodifierdescriptions extends Array<data_korean_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_korean_delvecraftingmodifierdescriptions
+      extends Array<data_korean_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_korean_delvecraftingtags_Item {
       TagsKey?: data_korean_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -19661,8 +20277,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_delvecraftingtags extends Array<data_korean_delvecraftingtags_Item> {}
-    
+    export interface data_korean_delvecraftingtags
+      extends Array<data_korean_delvecraftingtags_Item> {}
+
     interface data_korean_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -19680,7 +20297,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_korean_delvefeatures extends Array<data_korean_delvefeatures_Item> {}
-    
+
     interface data_korean_dronetypes_Item {
       Id?: string;
       Unk001?: data_korean_dronetypes_Item_Unk001;
@@ -19704,13 +20321,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_dronetypes extends Array<data_korean_dronetypes_Item> {}
-    
+
     export type data_korean_endgamemapcontent = any[];
-    
+
     export type data_korean_endgamemaps = any[];
-    
+
     export type data_korean_expeditiondeals = any[];
-    
+
     interface data_korean_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -19743,8 +20360,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_expeditionfactions extends Array<data_korean_expeditionfactions_Item> {}
-    
+    export interface data_korean_expeditionfactions
+      extends Array<data_korean_expeditionfactions_Item> {}
+
     interface data_korean_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -19757,15 +20375,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_expeditionrelics extends Array<data_korean_expeditionrelics_Item> {}
-    
+    export interface data_korean_expeditionrelics
+      extends Array<data_korean_expeditionrelics_Item> {}
+
     interface data_korean_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_korean_flavourtext extends Array<data_korean_flavourtext_Item> {}
-    
+
     interface data_korean_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -19783,8 +20402,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_korean_fragmentstashtablayout extends Array<data_korean_fragmentstashtablayout_Item> {}
-    
+    export interface data_korean_fragmentstashtablayout
+      extends Array<data_korean_fragmentstashtablayout_Item> {}
+
     interface data_korean_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -19793,9 +20413,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_korean_gamepadbutton extends Array<data_korean_gamepadbutton_Item> {}
-    
+
     export type data_korean_gamepadbuttonbindaction = any[];
-    
+
     interface data_korean_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -19826,9 +20446,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_gemeffects extends Array<data_korean_gemeffects_Item> {}
-    
+
     export type data_korean_gemtags = any[];
-    
+
     interface data_korean_genericleaguerewardtypevisuals_Item {
       Type?: data_korean_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_korean_genericleaguerewardtypevisuals_Item_Unk001;
@@ -19849,10 +20469,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_genericleaguerewardtypevisuals extends Array<data_korean_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_korean_genericleaguerewardtypevisuals
+      extends Array<data_korean_genericleaguerewardtypevisuals_Item> {}
+
     export type data_korean_grantedeffectlabels = any[];
-    
+
     interface data_korean_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_korean_harvestcraftfilters_Item_BaseItem;
@@ -19862,8 +20483,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_harvestcraftfilters extends Array<data_korean_harvestcraftfilters_Item> {}
-    
+    export interface data_korean_harvestcraftfilters
+      extends Array<data_korean_harvestcraftfilters_Item> {}
+
     interface data_korean_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -19885,10 +20507,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_korean_harvestcraftoptions extends Array<data_korean_harvestcraftoptions_Item> {}
-    
+    export interface data_korean_harvestcraftoptions
+      extends Array<data_korean_harvestcraftoptions_Item> {}
+
     export type data_korean_heistchestrewardtypes = any[];
-    
+
     interface data_korean_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -19926,7 +20549,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_heistjobs extends Array<data_korean_heistjobs_Item> {}
-    
+
     interface data_korean_heistobjectives_Item {
       BaseItemType?: data_korean_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -19937,16 +20560,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_heistobjectives extends Array<data_korean_heistobjectives_Item> {}
-    
+
     interface data_korean_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_korean_heistobjectivevaluedescriptions extends Array<data_korean_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_korean_heistobjectivevaluedescriptions
+      extends Array<data_korean_heistobjectivevaluedescriptions_Item> {}
+
     export type data_korean_heistquestcontracts = any[];
-    
+
     interface data_korean_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -19960,24 +20584,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_korean_hellscapepassives extends Array<data_korean_hellscapepassives_Item> {}
-    
+    export interface data_korean_hellscapepassives
+      extends Array<data_korean_hellscapepassives_Item> {}
+
     interface data_korean_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_korean_hideoutdoodadcategory extends Array<data_korean_hideoutdoodadcategory_Item> {}
-    
+    export interface data_korean_hideoutdoodadcategory
+      extends Array<data_korean_hideoutdoodadcategory_Item> {}
+
     interface data_korean_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_korean_hideoutdoodadtags extends Array<data_korean_hideoutdoodadtags_Item> {}
-    
+    export interface data_korean_hideoutdoodadtags
+      extends Array<data_korean_hideoutdoodadtags_Item> {}
+
     export type data_korean_hideouts = any[];
-    
+
     interface data_korean_incubators_Item {
       BaseItemTypesKey?: data_korean_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -19990,18 +20617,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_incubators extends Array<data_korean_incubators_Item> {}
-    
+
     export type data_korean_incursionrooms = any[];
-    
+
     export type data_korean_indexablesupportgems = any[];
-    
+
     interface data_korean_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_korean_itemclasscategories extends Array<data_korean_itemclasscategories_Item> {}
-    
+    export interface data_korean_itemclasscategories
+      extends Array<data_korean_itemclasscategories_Item> {}
+
     interface data_korean_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -20042,15 +20670,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_itemclasses extends Array<data_korean_itemclasses_Item> {}
-    
+
     export type data_korean_keywordpopups = any[];
-    
+
     export type data_korean_kioskmodecharactertutorials = any[];
-    
+
     export type data_korean_leagueinfo = any[];
-    
+
     export type data_korean_mapconnections = any[];
-    
+
     interface data_korean_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -20071,11 +20699,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_korean_mappins extends Array<data_korean_mappins_Item> {}
-    
+
     export type data_korean_mapseries = any[];
-    
+
     export type data_korean_mapstashspecialtypeentries = any[];
-    
+
     interface data_korean_memorylinetype_Item {
       Id?: string;
       Unk001?: data_korean_memorylinetype_Item_Unk001;
@@ -20102,20 +20730,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_memorylinetype extends Array<data_korean_memorylinetype_Item> {}
-    
+
     interface data_korean_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_korean_microtransactioncategory extends Array<data_korean_microtransactioncategory_Item> {}
-    
+    export interface data_korean_microtransactioncategory
+      extends Array<data_korean_microtransactioncategory_Item> {}
+
     interface data_korean_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_korean_microtransactionskillgemeffectslottypes extends Array<data_korean_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_korean_microtransactionskillgemeffectslottypes
+      extends Array<data_korean_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_korean_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_korean_microtransactionslot_Item_Unk001;
@@ -20135,16 +20765,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_microtransactionslot extends Array<data_korean_microtransactionslot_Item> {}
-    
+    export interface data_korean_microtransactionslot
+      extends Array<data_korean_microtransactionslot_Item> {}
+
     interface data_korean_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_korean_microtransactionslotadditionaldefaultoptions extends Array<data_korean_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_korean_microtransactionslotadditionaldefaultoptions
+      extends Array<data_korean_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_korean_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -20156,15 +20788,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_korean_minimapicons extends Array<data_korean_minimapicons_Item> {}
-    
+
     export type data_korean_mobilecharactercreation = any[];
-    
+
     export type data_korean_mobileskillgemlayout = any[];
-    
+
     export type data_korean_mobileskillgemlayoutpages = any[];
-    
+
     export type data_korean_mobiletutorial = any[];
-    
+
     interface data_korean_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -20253,7 +20885,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_mods extends Array<data_korean_mods_Item> {}
-    
+
     interface data_korean_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_korean_monstervarieties_Item_MonsterTypesKey;
@@ -20388,17 +21020,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_korean_monstervarieties extends Array<data_korean_monstervarieties_Item> {}
-    
+    export interface data_korean_monstervarieties
+      extends Array<data_korean_monstervarieties_Item> {}
+
     interface data_korean_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_korean_mousecursorsizesettings extends Array<data_korean_mousecursorsizesettings_Item> {}
-    
+    export interface data_korean_mousecursorsizesettings
+      extends Array<data_korean_mousecursorsizesettings_Item> {}
+
     export type data_korean_mtxtypes = any[];
-    
+
     interface data_korean_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -20412,7 +21046,7 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_korean_music extends Array<data_korean_music_Item> {}
-    
+
     interface data_korean_musiccategories_Item {
       Id?: string;
       Name?: string;
@@ -20420,7 +21054,7 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_korean_musiccategories extends Array<data_korean_musiccategories_Item> {}
-    
+
     interface data_korean_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -20432,9 +21066,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_korean_notifications extends Array<data_korean_notifications_Item> {}
-    
+
     export type data_korean_npcmaster = any[];
-    
+
     interface data_korean_npcs_Item {
       Id?: string;
       Name?: string;
@@ -20455,7 +21089,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_korean_npcs extends Array<data_korean_npcs_Item> {}
-    
+
     interface data_korean_npctalk_Item {
       NPCKey?: data_korean_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -20525,7 +21159,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_npctalk extends Array<data_korean_npctalk_Item> {}
-    
+
     interface data_korean_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -20546,19 +21180,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_npctextaudio extends Array<data_korean_npctextaudio_Item> {}
-    
+
     export type data_korean_pantheonpanellayout = any[];
-    
+
     export type data_korean_pantheonsouls = any[];
-    
+
     interface data_korean_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_korean_passiveoverridelimits extends Array<data_korean_passiveoverridelimits_Item> {}
-    
+    export interface data_korean_passiveoverridelimits
+      extends Array<data_korean_passiveoverridelimits_Item> {}
+
     export type data_korean_passiveskilloverrides = any[];
-    
+
     interface data_korean_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -20616,23 +21251,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_passiveskills extends Array<data_korean_passiveskills_Item> {}
-    
+
     interface data_korean_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_korean_passiveskillstatcategories extends Array<data_korean_passiveskillstatcategories_Item> {}
-    
+    export interface data_korean_passiveskillstatcategories
+      extends Array<data_korean_passiveskillstatcategories_Item> {}
+
     export type data_korean_passiveskilltreetutorial = any[];
-    
+
     interface data_korean_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_korean_playertradewhisperformats extends Array<data_korean_playertradewhisperformats_Item> {}
-    
+    export interface data_korean_playertradewhisperformats
+      extends Array<data_korean_playertradewhisperformats_Item> {}
+
     interface data_korean_quest_Item {
       Id?: string;
       Act?: number;
@@ -20656,7 +21293,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_quest extends Array<data_korean_quest_Item> {}
-    
+
     interface data_korean_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -20669,7 +21306,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_questrewardtype extends Array<data_korean_questrewardtype_Item> {}
-    
+
     interface data_korean_queststates_Item {
       Quest?: data_korean_queststates_Item_Quest;
       Order?: number;
@@ -20685,7 +21322,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_queststates extends Array<data_korean_queststates_Item> {}
-    
+
     interface data_korean_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -20695,10 +21332,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_korean_questtrackergroup extends Array<data_korean_questtrackergroup_Item> {}
-    
+    export interface data_korean_questtrackergroup
+      extends Array<data_korean_questtrackergroup_Item> {}
+
     export type data_korean_races = any[];
-    
+
     interface data_korean_realms_Item {
       Id?: string;
       Name?: string;
@@ -20717,7 +21355,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_realms extends Array<data_korean_realms_Item> {}
-    
+
     interface data_korean_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -20726,25 +21364,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_korean_recipeunlockdisplay extends Array<data_korean_recipeunlockdisplay_Item> {}
-    
+    export interface data_korean_recipeunlockdisplay
+      extends Array<data_korean_recipeunlockdisplay_Item> {}
+
     interface data_korean_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_korean_relicinventorylayout extends Array<data_korean_relicinventorylayout_Item> {}
-    
+    export interface data_korean_relicinventorylayout
+      extends Array<data_korean_relicinventorylayout_Item> {}
+
     export type data_korean_relicitemeffectvariations = any[];
-    
+
     interface data_korean_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_korean_remindertext extends Array<data_korean_remindertext_Item> {}
-    
+
     interface data_korean_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_korean_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -20787,7 +21427,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_ritualrunetypes extends Array<data_korean_ritualrunetypes_Item> {}
-    
+
     interface data_korean_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_korean_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_korean_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -20806,8 +21446,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_safehousebyocrafting extends Array<data_korean_safehousebyocrafting_Item> {}
-    
+    export interface data_korean_safehousebyocrafting
+      extends Array<data_korean_safehousebyocrafting_Item> {}
+
     interface data_korean_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -20817,8 +21458,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_korean_safehousecraftingspreetype extends Array<data_korean_safehousecraftingspreetype_Item> {}
-    
+    export interface data_korean_safehousecraftingspreetype
+      extends Array<data_korean_safehousecraftingspreetype_Item> {}
+
     interface data_korean_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_korean_sanctumdefenceicons_Item_Stat;
@@ -20831,8 +21473,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_sanctumdefenceicons extends Array<data_korean_sanctumdefenceicons_Item> {}
-    
+    export interface data_korean_sanctumdefenceicons
+      extends Array<data_korean_sanctumdefenceicons_Item> {}
+
     interface data_korean_sanctumfloors_Item {
       Id?: string;
       Area?: data_korean_sanctumfloors_Item_Area;
@@ -20860,7 +21503,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_sanctumfloors extends Array<data_korean_sanctumfloors_Item> {}
-    
+
     interface data_korean_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -20872,8 +21515,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_korean_sanctumpersistenteffectcategories extends Array<data_korean_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_korean_sanctumpersistenteffectcategories
+      extends Array<data_korean_sanctumpersistenteffectcategories_Item> {}
+
     interface data_korean_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -20903,8 +21547,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_sanctumpersistenteffects extends Array<data_korean_sanctumpersistenteffects_Item> {}
-    
+    export interface data_korean_sanctumpersistenteffects
+      extends Array<data_korean_sanctumpersistenteffects_Item> {}
+
     interface data_korean_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -20928,10 +21573,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_sanctumroomtypes extends Array<data_korean_sanctumroomtypes_Item> {}
-    
+    export interface data_korean_sanctumroomtypes
+      extends Array<data_korean_sanctumroomtypes_Item> {}
+
     export type data_korean_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_korean_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -20949,8 +21595,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_korean_sentinelpassives extends Array<data_korean_sentinelpassives_Item> {}
-    
+    export interface data_korean_sentinelpassives
+      extends Array<data_korean_sentinelpassives_Item> {}
+
     interface data_korean_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -20959,7 +21606,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_korean_shoptag extends Array<data_korean_shoptag_Item> {}
-    
+
     interface data_korean_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -21005,9 +21652,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_shrines extends Array<data_korean_shrines_Item> {}
-    
+
     export type data_korean_skillcraftingdata = any[];
-    
+
     interface data_korean_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -21021,7 +21668,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_skillgeminfo extends Array<data_korean_skillgeminfo_Item> {}
-    
+
     interface data_korean_skillgems_Item {
       BaseItemTypesKey?: data_korean_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -21052,7 +21699,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_korean_skillgems extends Array<data_korean_skillgems_Item> {}
-    
+
     interface data_korean_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -21061,14 +21708,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_korean_socketnotches extends Array<data_korean_socketnotches_Item> {}
-    
+
     interface data_korean_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_korean_stashtabaffinities extends Array<data_korean_stashtabaffinities_Item> {}
-    
+    export interface data_korean_stashtabaffinities
+      extends Array<data_korean_stashtabaffinities_Item> {}
+
     interface data_korean_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -21079,7 +21727,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_korean_stashtype extends Array<data_korean_stashtype_Item> {}
-    
+
     interface data_korean_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -21106,23 +21754,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_korean_stats extends Array<data_korean_stats_Item> {}
-    
+
     interface data_korean_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_korean_tags extends Array<data_korean_tags_Item> {}
-    
+
     export type data_korean_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_korean_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_korean_tips extends Array<data_korean_tips_Item> {}
-    
+
     interface data_korean_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -21136,16 +21784,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_korean_trademarketcategory extends Array<data_korean_trademarketcategory_Item> {}
-    
+    export interface data_korean_trademarketcategory
+      extends Array<data_korean_trademarketcategory_Item> {}
+
     interface data_korean_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_korean_trademarketcategorygroups extends Array<data_korean_trademarketcategorygroups_Item> {}
-    
+    export interface data_korean_trademarketcategorygroups
+      extends Array<data_korean_trademarketcategorygroups_Item> {}
+
     export type data_korean_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_korean_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -21155,15 +21805,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_korean_uitalktext extends Array<data_korean_uitalktext_Item> {}
-    
+
     export type data_korean_ultimatumencountertypes = any[];
-    
+
     export type data_korean_ultimatummodifiers = any[];
-    
+
     export type data_korean_ultimatumwagertypes = any[];
-    
+
     export type data_korean_uniquemaps = any[];
-    
+
     interface data_korean_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -21177,10 +21827,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_korean_uniquestashtypes extends Array<data_korean_uniquestashtypes_Item> {}
-    
+    export interface data_korean_uniquestashtypes
+      extends Array<data_korean_uniquestashtypes_Item> {}
+
     export type data_korean_warbandspackmonsters = any[];
-    
+
     interface data_korean_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -21193,7 +21844,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_korean_windowcursors extends Array<data_korean_windowcursors_Item> {}
-    
+
     interface data_korean_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -21204,7 +21855,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_korean_words extends Array<data_korean_words_Item> {}
-    
+
     interface data_korean_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -21221,9 +21872,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_korean_worldareas extends Array<data_korean_worldareas_Item> {}
-    
+
     export type data_korean_worldmaplegends = any[];
-    
+
     interface data_korean_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -21235,8 +21886,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_korean_worldpopupicontypes extends Array<data_korean_worldpopupicontypes_Item> {}
-    
+    export interface data_korean_worldpopupicontypes
+      extends Array<data_korean_worldpopupicontypes_Item> {}
+
     interface data_portuguese_achievementitemrewards_Item {
       AchievementItemsKey?: data_portuguese_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_portuguese_achievementitemrewards_Item_BaseItemTypesKey;
@@ -21251,8 +21903,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_achievementitemrewards extends Array<data_portuguese_achievementitemrewards_Item> {}
-    
+    export interface data_portuguese_achievementitemrewards
+      extends Array<data_portuguese_achievementitemrewards_Item> {}
+
     interface data_portuguese_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -21269,8 +21922,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_achievementitems extends Array<data_portuguese_achievementitems_Item> {}
-    
+    export interface data_portuguese_achievementitems
+      extends Array<data_portuguese_achievementitems_Item> {}
+
     interface data_portuguese_achievements_Item {
       Id?: string;
       Description?: string;
@@ -21291,8 +21945,9 @@ declare namespace Poe2DataMain {
       Unk016?: string;
       Unk017?: string;
     }
-    export interface data_portuguese_achievements extends Array<data_portuguese_achievements_Item> {}
-    
+    export interface data_portuguese_achievements
+      extends Array<data_portuguese_achievements_Item> {}
+
     interface data_portuguese_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -21303,14 +21958,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_portuguese_achievementsetrewards extends Array<data_portuguese_achievementsetrewards_Item> {}
-    
+    export interface data_portuguese_achievementsetrewards
+      extends Array<data_portuguese_achievementsetrewards_Item> {}
+
     interface data_portuguese_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_portuguese_achievementsetsdisplay extends Array<data_portuguese_achievementsetsdisplay_Item> {}
-    
+    export interface data_portuguese_achievementsetsdisplay
+      extends Array<data_portuguese_achievementsetsdisplay_Item> {}
+
     interface data_portuguese_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -21360,8 +22017,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_activeskills extends Array<data_portuguese_activeskills_Item> {}
-    
+    export interface data_portuguese_activeskills
+      extends Array<data_portuguese_activeskills_Item> {}
+
     interface data_portuguese_acts_Item {
       Id?: string;
       Part?: number;
@@ -21376,11 +22034,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_portuguese_acts extends Array<data_portuguese_acts_Item> {}
-    
+
     export type data_portuguese_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_portuguese_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_portuguese_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -21391,15 +22049,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_portuguese_advancedskillstutorial extends Array<data_portuguese_advancedskillstutorial_Item> {}
-    
+    export interface data_portuguese_advancedskillstutorial
+      extends Array<data_portuguese_advancedskillstutorial_Item> {}
+
     interface data_portuguese_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_portuguese_afflictionrewardtypevisuals extends Array<data_portuguese_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_portuguese_afflictionrewardtypevisuals
+      extends Array<data_portuguese_afflictionrewardtypevisuals_Item> {}
+
     interface data_portuguese_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_portuguese_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -21432,10 +22092,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_alternatepassiveskills extends Array<data_portuguese_alternatepassiveskills_Item> {}
-    
+    export interface data_portuguese_alternatepassiveskills
+      extends Array<data_portuguese_alternatepassiveskills_Item> {}
+
     export type data_portuguese_alternatequalitytypes = any[];
-    
+
     interface data_portuguese_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -21455,7 +22116,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_portuguese_archetypes extends Array<data_portuguese_archetypes_Item> {}
-    
+
     interface data_portuguese_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -21464,8 +22125,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_portuguese_archnemesismetarewards extends Array<data_portuguese_archnemesismetarewards_Item> {}
-    
+    export interface data_portuguese_archnemesismetarewards
+      extends Array<data_portuguese_archnemesismetarewards_Item> {}
+
     interface data_portuguese_archnemesismods_Item {
       Mod?: data_portuguese_archnemesismods_Item_Mod;
       Name?: string;
@@ -21478,8 +22140,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_archnemesismods extends Array<data_portuguese_archnemesismods_Item> {}
-    
+    export interface data_portuguese_archnemesismods
+      extends Array<data_portuguese_archnemesismods_Item> {}
+
     interface data_portuguese_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -21497,14 +22160,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_portuguese_ascendancy extends Array<data_portuguese_ascendancy_Item> {}
-    
+
     interface data_portuguese_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_portuguese_atlasfavouredmapslots extends Array<data_portuguese_atlasfavouredmapslots_Item> {}
-    
+    export interface data_portuguese_atlasfavouredmapslots
+      extends Array<data_portuguese_atlasfavouredmapslots_Item> {}
+
     interface data_portuguese_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -21513,8 +22177,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_portuguese_atlasprimordialaltarchoicetypes extends Array<data_portuguese_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_portuguese_atlasprimordialaltarchoicetypes
+      extends Array<data_portuguese_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_portuguese_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -21537,8 +22202,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_atlasprimordialbossoptions extends Array<data_portuguese_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_portuguese_atlasprimordialbossoptions
+      extends Array<data_portuguese_atlasprimordialbossoptions_Item> {}
+
     interface data_portuguese_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -21560,16 +22226,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_atlasupgradesinventorylayout extends Array<data_portuguese_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_portuguese_atlasupgradesinventorylayout
+      extends Array<data_portuguese_atlasupgradesinventorylayout_Item> {}
+
     export type data_portuguese_awarddisplay = any[];
-    
+
     interface data_portuguese_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_portuguese_backenderrors extends Array<data_portuguese_backenderrors_Item> {}
-    
+    export interface data_portuguese_backenderrors
+      extends Array<data_portuguese_backenderrors_Item> {}
+
     interface data_portuguese_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_portuguese_baseitemtypes_Item_ItemClassesKey;
@@ -21617,8 +22285,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_baseitemtypes extends Array<data_portuguese_baseitemtypes_Item> {}
-    
+    export interface data_portuguese_baseitemtypes
+      extends Array<data_portuguese_baseitemtypes_Item> {}
+
     interface data_portuguese_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -21628,8 +22297,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
       Id2?: string;
     }
-    export interface data_portuguese_battlepasses extends Array<data_portuguese_battlepasses_Item> {}
-    
+    export interface data_portuguese_battlepasses
+      extends Array<data_portuguese_battlepasses_Item> {}
+
     interface data_portuguese_battlepassrewards_Item {
       BattlePass?: data_portuguese_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -21663,14 +22333,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_battlepassrewards extends Array<data_portuguese_battlepassrewards_Item> {}
-    
+    export interface data_portuguese_battlepassrewards
+      extends Array<data_portuguese_battlepassrewards_Item> {}
+
     interface data_portuguese_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_portuguese_battlepasstracks extends Array<data_portuguese_battlepasstracks_Item> {}
-    
+    export interface data_portuguese_battlepasstracks
+      extends Array<data_portuguese_battlepasstracks_Item> {}
+
     interface data_portuguese_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -21693,8 +22365,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_bestiaryfamilies extends Array<data_portuguese_bestiaryfamilies_Item> {}
-    
+    export interface data_portuguese_bestiaryfamilies
+      extends Array<data_portuguese_bestiaryfamilies_Item> {}
+
     interface data_portuguese_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -21706,8 +22379,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_bestiarygenus extends Array<data_portuguese_bestiarygenus_Item> {}
-    
+    export interface data_portuguese_bestiarygenus
+      extends Array<data_portuguese_bestiarygenus_Item> {}
+
     interface data_portuguese_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -21722,14 +22396,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_bestiarygroups extends Array<data_portuguese_bestiarygroups_Item> {}
-    
+    export interface data_portuguese_bestiarygroups
+      extends Array<data_portuguese_bestiarygroups_Item> {}
+
     interface data_portuguese_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_portuguese_bestiaryrecipecategories extends Array<data_portuguese_bestiaryrecipecategories_Item> {}
-    
+    export interface data_portuguese_bestiaryrecipecategories
+      extends Array<data_portuguese_bestiaryrecipecategories_Item> {}
+
     interface data_portuguese_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -21748,16 +22424,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_bestiaryrecipes extends Array<data_portuguese_bestiaryrecipes_Item> {}
-    
+    export interface data_portuguese_bestiaryrecipes
+      extends Array<data_portuguese_bestiaryrecipes_Item> {}
+
     interface data_portuguese_betrayalchoices_Item {
       Id?: string;
       Text?: string;
       Unk002?: number;
       Achievements?: any[];
     }
-    export interface data_portuguese_betrayalchoices extends Array<data_portuguese_betrayalchoices_Item> {}
-    
+    export interface data_portuguese_betrayalchoices
+      extends Array<data_portuguese_betrayalchoices_Item> {}
+
     interface data_portuguese_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -21770,22 +22448,25 @@ declare namespace Poe2DataMain {
       OpenChests_AchievementItemsKey?: any[];
       MissionCompletion_AcheivementItemsKey?: any[];
     }
-    export interface data_portuguese_betrayaljobs extends Array<data_portuguese_betrayaljobs_Item> {}
-    
+    export interface data_portuguese_betrayaljobs
+      extends Array<data_portuguese_betrayaljobs_Item> {}
+
     interface data_portuguese_betrayalranks_Item {
       Id?: string;
       Text?: string;
       Level?: number;
       RankImage?: string;
     }
-    export interface data_portuguese_betrayalranks extends Array<data_portuguese_betrayalranks_Item> {}
-    
+    export interface data_portuguese_betrayalranks
+      extends Array<data_portuguese_betrayalranks_Item> {}
+
     interface data_portuguese_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_portuguese_betrayalrelationshipstate extends Array<data_portuguese_betrayalrelationshipstate_Item> {}
-    
+    export interface data_portuguese_betrayalrelationshipstate
+      extends Array<data_portuguese_betrayalrelationshipstate_Item> {}
+
     interface data_portuguese_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -21806,8 +22487,9 @@ declare namespace Poe2DataMain {
       Unk016?: any;
       ScriptArgument?: string;
     }
-    export interface data_portuguese_betrayaltargets extends Array<data_portuguese_betrayaltargets_Item> {}
-    
+    export interface data_portuguese_betrayaltargets
+      extends Array<data_portuguese_betrayaltargets_Item> {}
+
     interface data_portuguese_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_portuguese_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_portuguese_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -21827,8 +22509,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_betrayaltraitorrewards extends Array<data_portuguese_betrayaltraitorrewards_Item> {}
-    
+    export interface data_portuguese_betrayaltraitorrewards
+      extends Array<data_portuguese_betrayaltraitorrewards_Item> {}
+
     interface data_portuguese_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -21843,15 +22526,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_portuguese_betrayalupgrades extends Array<data_portuguese_betrayalupgrades_Item> {}
-    
+    export interface data_portuguese_betrayalupgrades
+      extends Array<data_portuguese_betrayalupgrades_Item> {}
+
     interface data_portuguese_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_portuguese_bindablevirtualkeys extends Array<data_portuguese_bindablevirtualkeys_Item> {}
-    
+    export interface data_portuguese_bindablevirtualkeys
+      extends Array<data_portuguese_bindablevirtualkeys_Item> {}
+
     interface data_portuguese_blightcraftingitems_Item {
       Oil?: data_portuguese_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -21863,8 +22548,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_blightcraftingitems extends Array<data_portuguese_blightcraftingitems_Item> {}
-    
+    export interface data_portuguese_blightcraftingitems
+      extends Array<data_portuguese_blightcraftingitems_Item> {}
+
     interface data_portuguese_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -21881,8 +22567,9 @@ declare namespace Poe2DataMain {
       StatsKeys2?: any[];
       Unk013?: boolean;
     }
-    export interface data_portuguese_blighttowers extends Array<data_portuguese_blighttowers_Item> {}
-    
+    export interface data_portuguese_blighttowers
+      extends Array<data_portuguese_blighttowers_Item> {}
+
     interface data_portuguese_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -21940,8 +22627,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_buffdefinitions extends Array<data_portuguese_buffdefinitions_Item> {}
-    
+    export interface data_portuguese_buffdefinitions
+      extends Array<data_portuguese_buffdefinitions_Item> {}
+
     interface data_portuguese_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -21964,7 +22652,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_portuguese_buffvisuals extends Array<data_portuguese_buffvisuals_Item> {}
-    
+
     interface data_portuguese_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -21972,16 +22660,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_portuguese_charactercreationicons extends Array<data_portuguese_charactercreationicons_Item> {}
-    
+    export interface data_portuguese_charactercreationicons
+      extends Array<data_portuguese_charactercreationicons_Item> {}
+
     interface data_portuguese_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_portuguese_characterpaneldescriptionmodes extends Array<data_portuguese_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_portuguese_characterpaneldescriptionmodes
+      extends Array<data_portuguese_characterpaneldescriptionmodes_Item> {}
+
     interface data_portuguese_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -22002,16 +22692,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_characterpanelstats extends Array<data_portuguese_characterpanelstats_Item> {}
-    
+    export interface data_portuguese_characterpanelstats
+      extends Array<data_portuguese_characterpanelstats_Item> {}
+
     interface data_portuguese_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_portuguese_characterpaneltabs extends Array<data_portuguese_characterpaneltabs_Item> {}
-    
+    export interface data_portuguese_characterpaneltabs
+      extends Array<data_portuguese_characterpaneltabs_Item> {}
+
     interface data_portuguese_characters_Item {
       Id?: string;
       Name?: string;
@@ -22137,7 +22829,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portuguese_characters extends Array<data_portuguese_characters_Item> {}
-    
+
     interface data_portuguese_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -22163,8 +22855,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_characterstartstates extends Array<data_portuguese_characterstartstates_Item> {}
-    
+    export interface data_portuguese_characterstartstates
+      extends Array<data_portuguese_characterstartstates_Item> {}
+
     interface data_portuguese_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -22172,8 +22865,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_portuguese_charactertextaudio extends Array<data_portuguese_charactertextaudio_Item> {}
-    
+    export interface data_portuguese_charactertextaudio
+      extends Array<data_portuguese_charactertextaudio_Item> {}
+
     interface data_portuguese_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -22221,7 +22915,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portuguese_chests extends Array<data_portuguese_chests_Item> {}
-    
+
     interface data_portuguese_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -22230,12 +22924,13 @@ declare namespace Poe2DataMain {
       HASH32?: number;
       PlaystationText?: string;
     }
-    export interface data_portuguese_clientstrings extends Array<data_portuguese_clientstrings_Item> {}
-    
+    export interface data_portuguese_clientstrings
+      extends Array<data_portuguese_clientstrings_Item> {}
+
     export type data_portuguese_clientstrings2 = any[];
-    
+
     export type data_portuguese_combatuiprompts = any[];
-    
+
     interface data_portuguese_commands_Item {
       Id?: string;
       Command?: string;
@@ -22245,9 +22940,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_portuguese_commands extends Array<data_portuguese_commands_Item> {}
-    
+
     export type data_portuguese_completionnotifications = any[];
-    
+
     interface data_portuguese_costtypes_Item {
       Id?: string;
       StatsKey?: data_portuguese_costtypes_Item_StatsKey;
@@ -22259,9 +22954,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_costtypes extends Array<data_portuguese_costtypes_Item> {}
-    
+
     export type data_portuguese_craftingbenchoptions = any[];
-    
+
     interface data_portuguese_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -22270,16 +22965,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_portuguese_craftingbenchunlockcategories extends Array<data_portuguese_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_portuguese_craftingbenchunlockcategories
+      extends Array<data_portuguese_craftingbenchunlockcategories_Item> {}
+
     export type data_portuguese_craftingitemclasscategories = any[];
-    
+
     interface data_portuguese_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_portuguese_currencyexchangecategories extends Array<data_portuguese_currencyexchangecategories_Item> {}
-    
+    export interface data_portuguese_currencyexchangecategories
+      extends Array<data_portuguese_currencyexchangecategories_Item> {}
+
     interface data_portuguese_currencyitems_Item {
       BaseItemTypesKey?: data_portuguese_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -22312,16 +23009,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_currencyitems extends Array<data_portuguese_currencyitems_Item> {}
-    
+    export interface data_portuguese_currencyitems
+      extends Array<data_portuguese_currencyitems_Item> {}
+
     export type data_portuguese_delvebiomes = any[];
-    
+
     interface data_portuguese_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_portuguese_delvecraftingmodifierdescriptions extends Array<data_portuguese_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_portuguese_delvecraftingmodifierdescriptions
+      extends Array<data_portuguese_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_portuguese_delvecraftingtags_Item {
       TagsKey?: data_portuguese_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -22330,8 +23029,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_delvecraftingtags extends Array<data_portuguese_delvecraftingtags_Item> {}
-    
+    export interface data_portuguese_delvecraftingtags
+      extends Array<data_portuguese_delvecraftingtags_Item> {}
+
     interface data_portuguese_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -22348,8 +23048,9 @@ declare namespace Poe2DataMain {
       Unk012?: any[];
       Unk013?: number[];
     }
-    export interface data_portuguese_delvefeatures extends Array<data_portuguese_delvefeatures_Item> {}
-    
+    export interface data_portuguese_delvefeatures
+      extends Array<data_portuguese_delvefeatures_Item> {}
+
     interface data_portuguese_dronetypes_Item {
       Id?: string;
       Unk001?: data_portuguese_dronetypes_Item_Unk001;
@@ -22373,13 +23074,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_dronetypes extends Array<data_portuguese_dronetypes_Item> {}
-    
+
     export type data_portuguese_endgamemapcontent = any[];
-    
+
     export type data_portuguese_endgamemaps = any[];
-    
+
     export type data_portuguese_expeditiondeals = any[];
-    
+
     interface data_portuguese_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -22412,8 +23113,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_expeditionfactions extends Array<data_portuguese_expeditionfactions_Item> {}
-    
+    export interface data_portuguese_expeditionfactions
+      extends Array<data_portuguese_expeditionfactions_Item> {}
+
     interface data_portuguese_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -22426,15 +23128,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_expeditionrelics extends Array<data_portuguese_expeditionrelics_Item> {}
-    
+    export interface data_portuguese_expeditionrelics
+      extends Array<data_portuguese_expeditionrelics_Item> {}
+
     interface data_portuguese_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_portuguese_flavourtext extends Array<data_portuguese_flavourtext_Item> {}
-    
+
     interface data_portuguese_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -22452,8 +23155,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_portuguese_fragmentstashtablayout extends Array<data_portuguese_fragmentstashtablayout_Item> {}
-    
+    export interface data_portuguese_fragmentstashtablayout
+      extends Array<data_portuguese_fragmentstashtablayout_Item> {}
+
     interface data_portuguese_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -22461,10 +23165,11 @@ declare namespace Poe2DataMain {
       Unk003?: string;
       Unk004?: string;
     }
-    export interface data_portuguese_gamepadbutton extends Array<data_portuguese_gamepadbutton_Item> {}
-    
+    export interface data_portuguese_gamepadbutton
+      extends Array<data_portuguese_gamepadbutton_Item> {}
+
     export type data_portuguese_gamepadbuttonbindaction = any[];
-    
+
     interface data_portuguese_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -22495,9 +23200,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_gemeffects extends Array<data_portuguese_gemeffects_Item> {}
-    
+
     export type data_portuguese_gemtags = any[];
-    
+
     interface data_portuguese_genericleaguerewardtypevisuals_Item {
       Type?: data_portuguese_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_portuguese_genericleaguerewardtypevisuals_Item_Unk001;
@@ -22518,10 +23223,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_genericleaguerewardtypevisuals extends Array<data_portuguese_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_portuguese_genericleaguerewardtypevisuals
+      extends Array<data_portuguese_genericleaguerewardtypevisuals_Item> {}
+
     export type data_portuguese_grantedeffectlabels = any[];
-    
+
     interface data_portuguese_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_portuguese_harvestcraftfilters_Item_BaseItem;
@@ -22531,8 +23237,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_harvestcraftfilters extends Array<data_portuguese_harvestcraftfilters_Item> {}
-    
+    export interface data_portuguese_harvestcraftfilters
+      extends Array<data_portuguese_harvestcraftfilters_Item> {}
+
     interface data_portuguese_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -22554,10 +23261,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_harvestcraftoptions extends Array<data_portuguese_harvestcraftoptions_Item> {}
-    
+    export interface data_portuguese_harvestcraftoptions
+      extends Array<data_portuguese_harvestcraftoptions_Item> {}
+
     export type data_portuguese_heistchestrewardtypes = any[];
-    
+
     interface data_portuguese_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -22595,7 +23303,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_heistjobs extends Array<data_portuguese_heistjobs_Item> {}
-    
+
     interface data_portuguese_heistobjectives_Item {
       BaseItemType?: data_portuguese_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -22605,17 +23313,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_heistobjectives extends Array<data_portuguese_heistobjectives_Item> {}
-    
+    export interface data_portuguese_heistobjectives
+      extends Array<data_portuguese_heistobjectives_Item> {}
+
     interface data_portuguese_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_portuguese_heistobjectivevaluedescriptions extends Array<data_portuguese_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_portuguese_heistobjectivevaluedescriptions
+      extends Array<data_portuguese_heistobjectivevaluedescriptions_Item> {}
+
     export type data_portuguese_heistquestcontracts = any[];
-    
+
     interface data_portuguese_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -22629,24 +23339,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_portuguese_hellscapepassives extends Array<data_portuguese_hellscapepassives_Item> {}
-    
+    export interface data_portuguese_hellscapepassives
+      extends Array<data_portuguese_hellscapepassives_Item> {}
+
     interface data_portuguese_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_portuguese_hideoutdoodadcategory extends Array<data_portuguese_hideoutdoodadcategory_Item> {}
-    
+    export interface data_portuguese_hideoutdoodadcategory
+      extends Array<data_portuguese_hideoutdoodadcategory_Item> {}
+
     interface data_portuguese_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_portuguese_hideoutdoodadtags extends Array<data_portuguese_hideoutdoodadtags_Item> {}
-    
+    export interface data_portuguese_hideoutdoodadtags
+      extends Array<data_portuguese_hideoutdoodadtags_Item> {}
+
     export type data_portuguese_hideouts = any[];
-    
+
     interface data_portuguese_incubators_Item {
       BaseItemTypesKey?: data_portuguese_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -22659,18 +23372,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_incubators extends Array<data_portuguese_incubators_Item> {}
-    
+
     export type data_portuguese_incursionrooms = any[];
-    
+
     export type data_portuguese_indexablesupportgems = any[];
-    
+
     interface data_portuguese_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_portuguese_itemclasscategories extends Array<data_portuguese_itemclasscategories_Item> {}
-    
+    export interface data_portuguese_itemclasscategories
+      extends Array<data_portuguese_itemclasscategories_Item> {}
+
     interface data_portuguese_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -22711,15 +23425,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_itemclasses extends Array<data_portuguese_itemclasses_Item> {}
-    
+
     export type data_portuguese_keywordpopups = any[];
-    
+
     export type data_portuguese_kioskmodecharactertutorials = any[];
-    
+
     export type data_portuguese_leagueinfo = any[];
-    
+
     export type data_portuguese_mapconnections = any[];
-    
+
     interface data_portuguese_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -22740,11 +23454,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_portuguese_mappins extends Array<data_portuguese_mappins_Item> {}
-    
+
     export type data_portuguese_mapseries = any[];
-    
+
     export type data_portuguese_mapstashspecialtypeentries = any[];
-    
+
     interface data_portuguese_memorylinetype_Item {
       Id?: string;
       Unk001?: data_portuguese_memorylinetype_Item_Unk001;
@@ -22770,21 +23484,24 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_memorylinetype extends Array<data_portuguese_memorylinetype_Item> {}
-    
+    export interface data_portuguese_memorylinetype
+      extends Array<data_portuguese_memorylinetype_Item> {}
+
     interface data_portuguese_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_portuguese_microtransactioncategory extends Array<data_portuguese_microtransactioncategory_Item> {}
-    
+    export interface data_portuguese_microtransactioncategory
+      extends Array<data_portuguese_microtransactioncategory_Item> {}
+
     interface data_portuguese_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_portuguese_microtransactionskillgemeffectslottypes extends Array<data_portuguese_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_portuguese_microtransactionskillgemeffectslottypes
+      extends Array<data_portuguese_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_portuguese_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_portuguese_microtransactionslot_Item_Unk001;
@@ -22804,16 +23521,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_microtransactionslot extends Array<data_portuguese_microtransactionslot_Item> {}
-    
+    export interface data_portuguese_microtransactionslot
+      extends Array<data_portuguese_microtransactionslot_Item> {}
+
     interface data_portuguese_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_portuguese_microtransactionslotadditionaldefaultoptions extends Array<data_portuguese_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_portuguese_microtransactionslotadditionaldefaultoptions
+      extends Array<data_portuguese_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_portuguese_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -22824,16 +23543,17 @@ declare namespace Poe2DataMain {
       MinimapIconPointerMaxDistance?: number;
       Unk007?: number;
     }
-    export interface data_portuguese_minimapicons extends Array<data_portuguese_minimapicons_Item> {}
-    
+    export interface data_portuguese_minimapicons
+      extends Array<data_portuguese_minimapicons_Item> {}
+
     export type data_portuguese_mobilecharactercreation = any[];
-    
+
     export type data_portuguese_mobileskillgemlayout = any[];
-    
+
     export type data_portuguese_mobileskillgemlayoutpages = any[];
-    
+
     export type data_portuguese_mobiletutorial = any[];
-    
+
     interface data_portuguese_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -22922,7 +23642,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_mods extends Array<data_portuguese_mods_Item> {}
-    
+
     interface data_portuguese_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_portuguese_monstervarieties_Item_MonsterTypesKey;
@@ -23057,17 +23777,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_monstervarieties extends Array<data_portuguese_monstervarieties_Item> {}
-    
+    export interface data_portuguese_monstervarieties
+      extends Array<data_portuguese_monstervarieties_Item> {}
+
     interface data_portuguese_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_portuguese_mousecursorsizesettings extends Array<data_portuguese_mousecursorsizesettings_Item> {}
-    
+    export interface data_portuguese_mousecursorsizesettings
+      extends Array<data_portuguese_mousecursorsizesettings_Item> {}
+
     export type data_portuguese_mtxtypes = any[];
-    
+
     interface data_portuguese_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -23081,15 +23803,16 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_portuguese_music extends Array<data_portuguese_music_Item> {}
-    
+
     interface data_portuguese_musiccategories_Item {
       Id?: string;
       Name?: string;
       Order?: number;
       Unk003?: boolean;
     }
-    export interface data_portuguese_musiccategories extends Array<data_portuguese_musiccategories_Item> {}
-    
+    export interface data_portuguese_musiccategories
+      extends Array<data_portuguese_musiccategories_Item> {}
+
     interface data_portuguese_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -23100,10 +23823,11 @@ declare namespace Poe2DataMain {
       Unk006?: boolean;
       Unk007?: boolean;
     }
-    export interface data_portuguese_notifications extends Array<data_portuguese_notifications_Item> {}
-    
+    export interface data_portuguese_notifications
+      extends Array<data_portuguese_notifications_Item> {}
+
     export type data_portuguese_npcmaster = any[];
-    
+
     interface data_portuguese_npcs_Item {
       Id?: string;
       Name?: string;
@@ -23124,7 +23848,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_portuguese_npcs extends Array<data_portuguese_npcs_Item> {}
-    
+
     interface data_portuguese_npctalk_Item {
       NPCKey?: data_portuguese_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -23194,7 +23918,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portuguese_npctalk extends Array<data_portuguese_npctalk_Item> {}
-    
+
     interface data_portuguese_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -23214,20 +23938,22 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_npctextaudio extends Array<data_portuguese_npctextaudio_Item> {}
-    
+    export interface data_portuguese_npctextaudio
+      extends Array<data_portuguese_npctextaudio_Item> {}
+
     export type data_portuguese_pantheonpanellayout = any[];
-    
+
     export type data_portuguese_pantheonsouls = any[];
-    
+
     interface data_portuguese_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_portuguese_passiveoverridelimits extends Array<data_portuguese_passiveoverridelimits_Item> {}
-    
+    export interface data_portuguese_passiveoverridelimits
+      extends Array<data_portuguese_passiveoverridelimits_Item> {}
+
     export type data_portuguese_passiveskilloverrides = any[];
-    
+
     interface data_portuguese_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -23284,24 +24010,27 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_passiveskills extends Array<data_portuguese_passiveskills_Item> {}
-    
+    export interface data_portuguese_passiveskills
+      extends Array<data_portuguese_passiveskills_Item> {}
+
     interface data_portuguese_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_portuguese_passiveskillstatcategories extends Array<data_portuguese_passiveskillstatcategories_Item> {}
-    
+    export interface data_portuguese_passiveskillstatcategories
+      extends Array<data_portuguese_passiveskillstatcategories_Item> {}
+
     export type data_portuguese_passiveskilltreetutorial = any[];
-    
+
     interface data_portuguese_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_portuguese_playertradewhisperformats extends Array<data_portuguese_playertradewhisperformats_Item> {}
-    
+    export interface data_portuguese_playertradewhisperformats
+      extends Array<data_portuguese_playertradewhisperformats_Item> {}
+
     interface data_portuguese_quest_Item {
       Id?: string;
       Act?: number;
@@ -23325,7 +24054,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portuguese_quest extends Array<data_portuguese_quest_Item> {}
-    
+
     interface data_portuguese_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -23337,8 +24066,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_questrewardtype extends Array<data_portuguese_questrewardtype_Item> {}
-    
+    export interface data_portuguese_questrewardtype
+      extends Array<data_portuguese_questrewardtype_Item> {}
+
     interface data_portuguese_queststates_Item {
       Quest?: data_portuguese_queststates_Item_Quest;
       Order?: number;
@@ -23354,7 +24084,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_queststates extends Array<data_portuguese_queststates_Item> {}
-    
+
     interface data_portuguese_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -23364,10 +24094,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_questtrackergroup extends Array<data_portuguese_questtrackergroup_Item> {}
-    
+    export interface data_portuguese_questtrackergroup
+      extends Array<data_portuguese_questtrackergroup_Item> {}
+
     export type data_portuguese_races = any[];
-    
+
     interface data_portuguese_realms_Item {
       Id?: string;
       Name?: string;
@@ -23386,7 +24117,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_realms extends Array<data_portuguese_realms_Item> {}
-    
+
     interface data_portuguese_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -23395,25 +24126,28 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_portuguese_recipeunlockdisplay extends Array<data_portuguese_recipeunlockdisplay_Item> {}
-    
+    export interface data_portuguese_recipeunlockdisplay
+      extends Array<data_portuguese_recipeunlockdisplay_Item> {}
+
     interface data_portuguese_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_portuguese_relicinventorylayout extends Array<data_portuguese_relicinventorylayout_Item> {}
-    
+    export interface data_portuguese_relicinventorylayout
+      extends Array<data_portuguese_relicinventorylayout_Item> {}
+
     export type data_portuguese_relicitemeffectvariations = any[];
-    
+
     interface data_portuguese_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
-    export interface data_portuguese_remindertext extends Array<data_portuguese_remindertext_Item> {}
-    
+    export interface data_portuguese_remindertext
+      extends Array<data_portuguese_remindertext_Item> {}
+
     interface data_portuguese_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_portuguese_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -23455,8 +24189,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_ritualrunetypes extends Array<data_portuguese_ritualrunetypes_Item> {}
-    
+    export interface data_portuguese_ritualrunetypes
+      extends Array<data_portuguese_ritualrunetypes_Item> {}
+
     interface data_portuguese_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_portuguese_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_portuguese_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -23475,8 +24210,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_safehousebyocrafting extends Array<data_portuguese_safehousebyocrafting_Item> {}
-    
+    export interface data_portuguese_safehousebyocrafting
+      extends Array<data_portuguese_safehousebyocrafting_Item> {}
+
     interface data_portuguese_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -23486,8 +24222,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_portuguese_safehousecraftingspreetype extends Array<data_portuguese_safehousecraftingspreetype_Item> {}
-    
+    export interface data_portuguese_safehousecraftingspreetype
+      extends Array<data_portuguese_safehousecraftingspreetype_Item> {}
+
     interface data_portuguese_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_portuguese_sanctumdefenceicons_Item_Stat;
@@ -23500,8 +24237,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_sanctumdefenceicons extends Array<data_portuguese_sanctumdefenceicons_Item> {}
-    
+    export interface data_portuguese_sanctumdefenceicons
+      extends Array<data_portuguese_sanctumdefenceicons_Item> {}
+
     interface data_portuguese_sanctumfloors_Item {
       Id?: string;
       Area?: data_portuguese_sanctumfloors_Item_Area;
@@ -23528,8 +24266,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_sanctumfloors extends Array<data_portuguese_sanctumfloors_Item> {}
-    
+    export interface data_portuguese_sanctumfloors
+      extends Array<data_portuguese_sanctumfloors_Item> {}
+
     interface data_portuguese_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -23541,8 +24280,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_portuguese_sanctumpersistenteffectcategories extends Array<data_portuguese_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_portuguese_sanctumpersistenteffectcategories
+      extends Array<data_portuguese_sanctumpersistenteffectcategories_Item> {}
+
     interface data_portuguese_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -23572,8 +24312,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_sanctumpersistenteffects extends Array<data_portuguese_sanctumpersistenteffects_Item> {}
-    
+    export interface data_portuguese_sanctumpersistenteffects
+      extends Array<data_portuguese_sanctumpersistenteffects_Item> {}
+
     interface data_portuguese_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -23597,10 +24338,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_sanctumroomtypes extends Array<data_portuguese_sanctumroomtypes_Item> {}
-    
+    export interface data_portuguese_sanctumroomtypes
+      extends Array<data_portuguese_sanctumroomtypes_Item> {}
+
     export type data_portuguese_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_portuguese_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -23618,8 +24360,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_portuguese_sentinelpassives extends Array<data_portuguese_sentinelpassives_Item> {}
-    
+    export interface data_portuguese_sentinelpassives
+      extends Array<data_portuguese_sentinelpassives_Item> {}
+
     interface data_portuguese_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -23628,7 +24371,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_portuguese_shoptag extends Array<data_portuguese_shoptag_Item> {}
-    
+
     interface data_portuguese_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -23674,9 +24417,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_shrines extends Array<data_portuguese_shrines_Item> {}
-    
+
     export type data_portuguese_skillcraftingdata = any[];
-    
+
     interface data_portuguese_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -23689,8 +24432,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_portuguese_skillgeminfo extends Array<data_portuguese_skillgeminfo_Item> {}
-    
+    export interface data_portuguese_skillgeminfo
+      extends Array<data_portuguese_skillgeminfo_Item> {}
+
     interface data_portuguese_skillgems_Item {
       BaseItemTypesKey?: data_portuguese_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -23721,7 +24465,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_portuguese_skillgems extends Array<data_portuguese_skillgems_Item> {}
-    
+
     interface data_portuguese_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -23729,15 +24473,17 @@ declare namespace Poe2DataMain {
       BlueSocketImage?: string;
       GreenSocketImage?: string;
     }
-    export interface data_portuguese_socketnotches extends Array<data_portuguese_socketnotches_Item> {}
-    
+    export interface data_portuguese_socketnotches
+      extends Array<data_portuguese_socketnotches_Item> {}
+
     interface data_portuguese_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_portuguese_stashtabaffinities extends Array<data_portuguese_stashtabaffinities_Item> {}
-    
+    export interface data_portuguese_stashtabaffinities
+      extends Array<data_portuguese_stashtabaffinities_Item> {}
+
     interface data_portuguese_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -23748,7 +24494,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_portuguese_stashtype extends Array<data_portuguese_stashtype_Item> {}
-    
+
     interface data_portuguese_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -23775,23 +24521,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_portuguese_stats extends Array<data_portuguese_stats_Item> {}
-    
+
     interface data_portuguese_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_portuguese_tags extends Array<data_portuguese_tags_Item> {}
-    
+
     export type data_portuguese_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_portuguese_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_portuguese_tips extends Array<data_portuguese_tips_Item> {}
-    
+
     interface data_portuguese_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -23805,16 +24551,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_portuguese_trademarketcategory extends Array<data_portuguese_trademarketcategory_Item> {}
-    
+    export interface data_portuguese_trademarketcategory
+      extends Array<data_portuguese_trademarketcategory_Item> {}
+
     interface data_portuguese_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_portuguese_trademarketcategorygroups extends Array<data_portuguese_trademarketcategorygroups_Item> {}
-    
+    export interface data_portuguese_trademarketcategorygroups
+      extends Array<data_portuguese_trademarketcategorygroups_Item> {}
+
     export type data_portuguese_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_portuguese_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -23824,15 +24572,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_portuguese_uitalktext extends Array<data_portuguese_uitalktext_Item> {}
-    
+
     export type data_portuguese_ultimatumencountertypes = any[];
-    
+
     export type data_portuguese_ultimatummodifiers = any[];
-    
+
     export type data_portuguese_ultimatumwagertypes = any[];
-    
+
     export type data_portuguese_uniquemaps = any[];
-    
+
     interface data_portuguese_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -23846,10 +24594,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_portuguese_uniquestashtypes extends Array<data_portuguese_uniquestashtypes_Item> {}
-    
+    export interface data_portuguese_uniquestashtypes
+      extends Array<data_portuguese_uniquestashtypes_Item> {}
+
     export type data_portuguese_warbandspackmonsters = any[];
-    
+
     interface data_portuguese_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -23861,8 +24610,9 @@ declare namespace Poe2DataMain {
       IsEnabled?: boolean;
       Unk008?: number;
     }
-    export interface data_portuguese_windowcursors extends Array<data_portuguese_windowcursors_Item> {}
-    
+    export interface data_portuguese_windowcursors
+      extends Array<data_portuguese_windowcursors_Item> {}
+
     interface data_portuguese_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -23873,7 +24623,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_portuguese_words extends Array<data_portuguese_words_Item> {}
-    
+
     interface data_portuguese_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -23890,9 +24640,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_portuguese_worldareas extends Array<data_portuguese_worldareas_Item> {}
-    
+
     export type data_portuguese_worldmaplegends = any[];
-    
+
     interface data_portuguese_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -23904,8 +24654,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_portuguese_worldpopupicontypes extends Array<data_portuguese_worldpopupicontypes_Item> {}
-    
+    export interface data_portuguese_worldpopupicontypes
+      extends Array<data_portuguese_worldpopupicontypes_Item> {}
+
     interface data_russian_achievementitemrewards_Item {
       AchievementItemsKey?: data_russian_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_russian_achievementitemrewards_Item_BaseItemTypesKey;
@@ -23920,8 +24671,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_achievementitemrewards extends Array<data_russian_achievementitemrewards_Item> {}
-    
+    export interface data_russian_achievementitemrewards
+      extends Array<data_russian_achievementitemrewards_Item> {}
+
     interface data_russian_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -23938,8 +24690,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_achievementitems extends Array<data_russian_achievementitems_Item> {}
-    
+    export interface data_russian_achievementitems
+      extends Array<data_russian_achievementitems_Item> {}
+
     interface data_russian_achievements_Item {
       Id?: string;
       Description?: string;
@@ -23961,7 +24714,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_russian_achievements extends Array<data_russian_achievements_Item> {}
-    
+
     interface data_russian_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -23972,14 +24725,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_russian_achievementsetrewards extends Array<data_russian_achievementsetrewards_Item> {}
-    
+    export interface data_russian_achievementsetrewards
+      extends Array<data_russian_achievementsetrewards_Item> {}
+
     interface data_russian_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_russian_achievementsetsdisplay extends Array<data_russian_achievementsetsdisplay_Item> {}
-    
+    export interface data_russian_achievementsetsdisplay
+      extends Array<data_russian_achievementsetsdisplay_Item> {}
+
     interface data_russian_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -24030,7 +24785,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_activeskills extends Array<data_russian_activeskills_Item> {}
-    
+
     interface data_russian_acts_Item {
       Id?: string;
       Part?: number;
@@ -24045,11 +24800,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_russian_acts extends Array<data_russian_acts_Item> {}
-    
+
     export type data_russian_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_russian_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_russian_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -24060,15 +24815,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_russian_advancedskillstutorial extends Array<data_russian_advancedskillstutorial_Item> {}
-    
+    export interface data_russian_advancedskillstutorial
+      extends Array<data_russian_advancedskillstutorial_Item> {}
+
     interface data_russian_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_russian_afflictionrewardtypevisuals extends Array<data_russian_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_russian_afflictionrewardtypevisuals
+      extends Array<data_russian_afflictionrewardtypevisuals_Item> {}
+
     interface data_russian_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_russian_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -24101,10 +24858,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_alternatepassiveskills extends Array<data_russian_alternatepassiveskills_Item> {}
-    
+    export interface data_russian_alternatepassiveskills
+      extends Array<data_russian_alternatepassiveskills_Item> {}
+
     export type data_russian_alternatequalitytypes = any[];
-    
+
     interface data_russian_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -24124,7 +24882,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_russian_archetypes extends Array<data_russian_archetypes_Item> {}
-    
+
     interface data_russian_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -24133,8 +24891,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_russian_archnemesismetarewards extends Array<data_russian_archnemesismetarewards_Item> {}
-    
+    export interface data_russian_archnemesismetarewards
+      extends Array<data_russian_archnemesismetarewards_Item> {}
+
     interface data_russian_archnemesismods_Item {
       Mod?: data_russian_archnemesismods_Item_Mod;
       Name?: string;
@@ -24147,8 +24906,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_archnemesismods extends Array<data_russian_archnemesismods_Item> {}
-    
+    export interface data_russian_archnemesismods
+      extends Array<data_russian_archnemesismods_Item> {}
+
     interface data_russian_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -24166,14 +24926,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_russian_ascendancy extends Array<data_russian_ascendancy_Item> {}
-    
+
     interface data_russian_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_russian_atlasfavouredmapslots extends Array<data_russian_atlasfavouredmapslots_Item> {}
-    
+    export interface data_russian_atlasfavouredmapslots
+      extends Array<data_russian_atlasfavouredmapslots_Item> {}
+
     interface data_russian_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -24182,8 +24943,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_russian_atlasprimordialaltarchoicetypes extends Array<data_russian_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_russian_atlasprimordialaltarchoicetypes
+      extends Array<data_russian_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_russian_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -24206,8 +24968,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_atlasprimordialbossoptions extends Array<data_russian_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_russian_atlasprimordialbossoptions
+      extends Array<data_russian_atlasprimordialbossoptions_Item> {}
+
     interface data_russian_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -24229,16 +24992,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_atlasupgradesinventorylayout extends Array<data_russian_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_russian_atlasupgradesinventorylayout
+      extends Array<data_russian_atlasupgradesinventorylayout_Item> {}
+
     export type data_russian_awarddisplay = any[];
-    
+
     interface data_russian_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_russian_backenderrors extends Array<data_russian_backenderrors_Item> {}
-    
+
     interface data_russian_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_russian_baseitemtypes_Item_ItemClassesKey;
@@ -24287,7 +25051,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_baseitemtypes extends Array<data_russian_baseitemtypes_Item> {}
-    
+
     interface data_russian_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -24298,7 +25062,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_russian_battlepasses extends Array<data_russian_battlepasses_Item> {}
-    
+
     interface data_russian_battlepassrewards_Item {
       BattlePass?: data_russian_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -24332,14 +25096,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_battlepassrewards extends Array<data_russian_battlepassrewards_Item> {}
-    
+    export interface data_russian_battlepassrewards
+      extends Array<data_russian_battlepassrewards_Item> {}
+
     interface data_russian_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_russian_battlepasstracks extends Array<data_russian_battlepasstracks_Item> {}
-    
+    export interface data_russian_battlepasstracks
+      extends Array<data_russian_battlepasstracks_Item> {}
+
     interface data_russian_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -24362,8 +25128,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_bestiaryfamilies extends Array<data_russian_bestiaryfamilies_Item> {}
-    
+    export interface data_russian_bestiaryfamilies
+      extends Array<data_russian_bestiaryfamilies_Item> {}
+
     interface data_russian_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -24376,7 +25143,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_bestiarygenus extends Array<data_russian_bestiarygenus_Item> {}
-    
+
     interface data_russian_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -24392,13 +25159,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_bestiarygroups extends Array<data_russian_bestiarygroups_Item> {}
-    
+
     interface data_russian_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_russian_bestiaryrecipecategories extends Array<data_russian_bestiaryrecipecategories_Item> {}
-    
+    export interface data_russian_bestiaryrecipecategories
+      extends Array<data_russian_bestiaryrecipecategories_Item> {}
+
     interface data_russian_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -24417,16 +25185,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_bestiaryrecipes extends Array<data_russian_bestiaryrecipes_Item> {}
-    
+    export interface data_russian_bestiaryrecipes
+      extends Array<data_russian_bestiaryrecipes_Item> {}
+
     interface data_russian_betrayalchoices_Item {
       Id?: string;
       Text?: string;
       Unk002?: number;
       Achievements?: any[];
     }
-    export interface data_russian_betrayalchoices extends Array<data_russian_betrayalchoices_Item> {}
-    
+    export interface data_russian_betrayalchoices
+      extends Array<data_russian_betrayalchoices_Item> {}
+
     interface data_russian_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -24440,7 +25210,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_russian_betrayaljobs extends Array<data_russian_betrayaljobs_Item> {}
-    
+
     interface data_russian_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -24448,13 +25218,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_russian_betrayalranks extends Array<data_russian_betrayalranks_Item> {}
-    
+
     interface data_russian_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_russian_betrayalrelationshipstate extends Array<data_russian_betrayalrelationshipstate_Item> {}
-    
+    export interface data_russian_betrayalrelationshipstate
+      extends Array<data_russian_betrayalrelationshipstate_Item> {}
+
     interface data_russian_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -24475,8 +25246,9 @@ declare namespace Poe2DataMain {
       Unk016?: any;
       ScriptArgument?: string;
     }
-    export interface data_russian_betrayaltargets extends Array<data_russian_betrayaltargets_Item> {}
-    
+    export interface data_russian_betrayaltargets
+      extends Array<data_russian_betrayaltargets_Item> {}
+
     interface data_russian_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_russian_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_russian_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -24496,8 +25268,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_betrayaltraitorrewards extends Array<data_russian_betrayaltraitorrewards_Item> {}
-    
+    export interface data_russian_betrayaltraitorrewards
+      extends Array<data_russian_betrayaltraitorrewards_Item> {}
+
     interface data_russian_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -24512,15 +25285,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_russian_betrayalupgrades extends Array<data_russian_betrayalupgrades_Item> {}
-    
+    export interface data_russian_betrayalupgrades
+      extends Array<data_russian_betrayalupgrades_Item> {}
+
     interface data_russian_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_russian_bindablevirtualkeys extends Array<data_russian_bindablevirtualkeys_Item> {}
-    
+    export interface data_russian_bindablevirtualkeys
+      extends Array<data_russian_bindablevirtualkeys_Item> {}
+
     interface data_russian_blightcraftingitems_Item {
       Oil?: data_russian_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -24532,8 +25307,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_blightcraftingitems extends Array<data_russian_blightcraftingitems_Item> {}
-    
+    export interface data_russian_blightcraftingitems
+      extends Array<data_russian_blightcraftingitems_Item> {}
+
     interface data_russian_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -24551,7 +25327,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_russian_blighttowers extends Array<data_russian_blighttowers_Item> {}
-    
+
     interface data_russian_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -24609,8 +25385,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_buffdefinitions extends Array<data_russian_buffdefinitions_Item> {}
-    
+    export interface data_russian_buffdefinitions
+      extends Array<data_russian_buffdefinitions_Item> {}
+
     interface data_russian_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -24633,7 +25410,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_russian_buffvisuals extends Array<data_russian_buffvisuals_Item> {}
-    
+
     interface data_russian_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -24641,16 +25418,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_russian_charactercreationicons extends Array<data_russian_charactercreationicons_Item> {}
-    
+    export interface data_russian_charactercreationicons
+      extends Array<data_russian_charactercreationicons_Item> {}
+
     interface data_russian_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_russian_characterpaneldescriptionmodes extends Array<data_russian_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_russian_characterpaneldescriptionmodes
+      extends Array<data_russian_characterpaneldescriptionmodes_Item> {}
+
     interface data_russian_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -24671,16 +25450,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_characterpanelstats extends Array<data_russian_characterpanelstats_Item> {}
-    
+    export interface data_russian_characterpanelstats
+      extends Array<data_russian_characterpanelstats_Item> {}
+
     interface data_russian_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_russian_characterpaneltabs extends Array<data_russian_characterpaneltabs_Item> {}
-    
+    export interface data_russian_characterpaneltabs
+      extends Array<data_russian_characterpaneltabs_Item> {}
+
     interface data_russian_characters_Item {
       Id?: string;
       Name?: string;
@@ -24806,7 +25587,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_characters extends Array<data_russian_characters_Item> {}
-    
+
     interface data_russian_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -24832,8 +25613,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_characterstartstates extends Array<data_russian_characterstartstates_Item> {}
-    
+    export interface data_russian_characterstartstates
+      extends Array<data_russian_characterstartstates_Item> {}
+
     interface data_russian_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -24841,8 +25623,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_russian_charactertextaudio extends Array<data_russian_charactertextaudio_Item> {}
-    
+    export interface data_russian_charactertextaudio
+      extends Array<data_russian_charactertextaudio_Item> {}
+
     interface data_russian_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -24890,7 +25673,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_chests extends Array<data_russian_chests_Item> {}
-    
+
     interface data_russian_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -24900,11 +25683,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_russian_clientstrings extends Array<data_russian_clientstrings_Item> {}
-    
+
     export type data_russian_clientstrings2 = any[];
-    
+
     export type data_russian_combatuiprompts = any[];
-    
+
     interface data_russian_commands_Item {
       Id?: string;
       Command?: string;
@@ -24914,9 +25697,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_russian_commands extends Array<data_russian_commands_Item> {}
-    
+
     export type data_russian_completionnotifications = any[];
-    
+
     interface data_russian_costtypes_Item {
       Id?: string;
       StatsKey?: data_russian_costtypes_Item_StatsKey;
@@ -24928,9 +25711,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_costtypes extends Array<data_russian_costtypes_Item> {}
-    
+
     export type data_russian_craftingbenchoptions = any[];
-    
+
     interface data_russian_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -24939,16 +25722,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_russian_craftingbenchunlockcategories extends Array<data_russian_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_russian_craftingbenchunlockcategories
+      extends Array<data_russian_craftingbenchunlockcategories_Item> {}
+
     export type data_russian_craftingitemclasscategories = any[];
-    
+
     interface data_russian_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_russian_currencyexchangecategories extends Array<data_russian_currencyexchangecategories_Item> {}
-    
+    export interface data_russian_currencyexchangecategories
+      extends Array<data_russian_currencyexchangecategories_Item> {}
+
     interface data_russian_currencyitems_Item {
       BaseItemTypesKey?: data_russian_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -24982,15 +25767,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_currencyitems extends Array<data_russian_currencyitems_Item> {}
-    
+
     export type data_russian_delvebiomes = any[];
-    
+
     interface data_russian_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_russian_delvecraftingmodifierdescriptions extends Array<data_russian_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_russian_delvecraftingmodifierdescriptions
+      extends Array<data_russian_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_russian_delvecraftingtags_Item {
       TagsKey?: data_russian_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -24999,8 +25785,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_delvecraftingtags extends Array<data_russian_delvecraftingtags_Item> {}
-    
+    export interface data_russian_delvecraftingtags
+      extends Array<data_russian_delvecraftingtags_Item> {}
+
     interface data_russian_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -25018,7 +25805,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_russian_delvefeatures extends Array<data_russian_delvefeatures_Item> {}
-    
+
     interface data_russian_dronetypes_Item {
       Id?: string;
       Unk001?: data_russian_dronetypes_Item_Unk001;
@@ -25042,13 +25829,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_dronetypes extends Array<data_russian_dronetypes_Item> {}
-    
+
     export type data_russian_endgamemapcontent = any[];
-    
+
     export type data_russian_endgamemaps = any[];
-    
+
     export type data_russian_expeditiondeals = any[];
-    
+
     interface data_russian_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -25081,8 +25868,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_expeditionfactions extends Array<data_russian_expeditionfactions_Item> {}
-    
+    export interface data_russian_expeditionfactions
+      extends Array<data_russian_expeditionfactions_Item> {}
+
     interface data_russian_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -25095,15 +25883,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_expeditionrelics extends Array<data_russian_expeditionrelics_Item> {}
-    
+    export interface data_russian_expeditionrelics
+      extends Array<data_russian_expeditionrelics_Item> {}
+
     interface data_russian_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_russian_flavourtext extends Array<data_russian_flavourtext_Item> {}
-    
+
     interface data_russian_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -25121,8 +25910,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_russian_fragmentstashtablayout extends Array<data_russian_fragmentstashtablayout_Item> {}
-    
+    export interface data_russian_fragmentstashtablayout
+      extends Array<data_russian_fragmentstashtablayout_Item> {}
+
     interface data_russian_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -25131,9 +25921,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_russian_gamepadbutton extends Array<data_russian_gamepadbutton_Item> {}
-    
+
     export type data_russian_gamepadbuttonbindaction = any[];
-    
+
     interface data_russian_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -25164,9 +25954,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_gemeffects extends Array<data_russian_gemeffects_Item> {}
-    
+
     export type data_russian_gemtags = any[];
-    
+
     interface data_russian_genericleaguerewardtypevisuals_Item {
       Type?: data_russian_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_russian_genericleaguerewardtypevisuals_Item_Unk001;
@@ -25187,10 +25977,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_genericleaguerewardtypevisuals extends Array<data_russian_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_russian_genericleaguerewardtypevisuals
+      extends Array<data_russian_genericleaguerewardtypevisuals_Item> {}
+
     export type data_russian_grantedeffectlabels = any[];
-    
+
     interface data_russian_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_russian_harvestcraftfilters_Item_BaseItem;
@@ -25200,8 +25991,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_harvestcraftfilters extends Array<data_russian_harvestcraftfilters_Item> {}
-    
+    export interface data_russian_harvestcraftfilters
+      extends Array<data_russian_harvestcraftfilters_Item> {}
+
     interface data_russian_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -25223,10 +26015,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_harvestcraftoptions extends Array<data_russian_harvestcraftoptions_Item> {}
-    
+    export interface data_russian_harvestcraftoptions
+      extends Array<data_russian_harvestcraftoptions_Item> {}
+
     export type data_russian_heistchestrewardtypes = any[];
-    
+
     interface data_russian_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -25264,7 +26057,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_heistjobs extends Array<data_russian_heistjobs_Item> {}
-    
+
     interface data_russian_heistobjectives_Item {
       BaseItemType?: data_russian_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -25274,17 +26067,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_heistobjectives extends Array<data_russian_heistobjectives_Item> {}
-    
+    export interface data_russian_heistobjectives
+      extends Array<data_russian_heistobjectives_Item> {}
+
     interface data_russian_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_russian_heistobjectivevaluedescriptions extends Array<data_russian_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_russian_heistobjectivevaluedescriptions
+      extends Array<data_russian_heistobjectivevaluedescriptions_Item> {}
+
     export type data_russian_heistquestcontracts = any[];
-    
+
     interface data_russian_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -25298,24 +26093,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_russian_hellscapepassives extends Array<data_russian_hellscapepassives_Item> {}
-    
+    export interface data_russian_hellscapepassives
+      extends Array<data_russian_hellscapepassives_Item> {}
+
     interface data_russian_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_russian_hideoutdoodadcategory extends Array<data_russian_hideoutdoodadcategory_Item> {}
-    
+    export interface data_russian_hideoutdoodadcategory
+      extends Array<data_russian_hideoutdoodadcategory_Item> {}
+
     interface data_russian_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_russian_hideoutdoodadtags extends Array<data_russian_hideoutdoodadtags_Item> {}
-    
+    export interface data_russian_hideoutdoodadtags
+      extends Array<data_russian_hideoutdoodadtags_Item> {}
+
     export type data_russian_hideouts = any[];
-    
+
     interface data_russian_incubators_Item {
       BaseItemTypesKey?: data_russian_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -25328,18 +26126,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_incubators extends Array<data_russian_incubators_Item> {}
-    
+
     export type data_russian_incursionrooms = any[];
-    
+
     export type data_russian_indexablesupportgems = any[];
-    
+
     interface data_russian_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_russian_itemclasscategories extends Array<data_russian_itemclasscategories_Item> {}
-    
+    export interface data_russian_itemclasscategories
+      extends Array<data_russian_itemclasscategories_Item> {}
+
     interface data_russian_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -25380,15 +26179,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_itemclasses extends Array<data_russian_itemclasses_Item> {}
-    
+
     export type data_russian_keywordpopups = any[];
-    
+
     export type data_russian_kioskmodecharactertutorials = any[];
-    
+
     export type data_russian_leagueinfo = any[];
-    
+
     export type data_russian_mapconnections = any[];
-    
+
     interface data_russian_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -25409,11 +26208,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_russian_mappins extends Array<data_russian_mappins_Item> {}
-    
+
     export type data_russian_mapseries = any[];
-    
+
     export type data_russian_mapstashspecialtypeentries = any[];
-    
+
     interface data_russian_memorylinetype_Item {
       Id?: string;
       Unk001?: data_russian_memorylinetype_Item_Unk001;
@@ -25440,20 +26239,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_memorylinetype extends Array<data_russian_memorylinetype_Item> {}
-    
+
     interface data_russian_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_russian_microtransactioncategory extends Array<data_russian_microtransactioncategory_Item> {}
-    
+    export interface data_russian_microtransactioncategory
+      extends Array<data_russian_microtransactioncategory_Item> {}
+
     interface data_russian_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_russian_microtransactionskillgemeffectslottypes extends Array<data_russian_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_russian_microtransactionskillgemeffectslottypes
+      extends Array<data_russian_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_russian_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_russian_microtransactionslot_Item_Unk001;
@@ -25473,16 +26274,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_microtransactionslot extends Array<data_russian_microtransactionslot_Item> {}
-    
+    export interface data_russian_microtransactionslot
+      extends Array<data_russian_microtransactionslot_Item> {}
+
     interface data_russian_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_russian_microtransactionslotadditionaldefaultoptions extends Array<data_russian_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_russian_microtransactionslotadditionaldefaultoptions
+      extends Array<data_russian_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_russian_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -25494,15 +26297,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_russian_minimapicons extends Array<data_russian_minimapicons_Item> {}
-    
+
     export type data_russian_mobilecharactercreation = any[];
-    
+
     export type data_russian_mobileskillgemlayout = any[];
-    
+
     export type data_russian_mobileskillgemlayoutpages = any[];
-    
+
     export type data_russian_mobiletutorial = any[];
-    
+
     interface data_russian_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -25591,7 +26394,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_mods extends Array<data_russian_mods_Item> {}
-    
+
     interface data_russian_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_russian_monstervarieties_Item_MonsterTypesKey;
@@ -25726,17 +26529,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_monstervarieties extends Array<data_russian_monstervarieties_Item> {}
-    
+    export interface data_russian_monstervarieties
+      extends Array<data_russian_monstervarieties_Item> {}
+
     interface data_russian_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_russian_mousecursorsizesettings extends Array<data_russian_mousecursorsizesettings_Item> {}
-    
+    export interface data_russian_mousecursorsizesettings
+      extends Array<data_russian_mousecursorsizesettings_Item> {}
+
     export type data_russian_mtxtypes = any[];
-    
+
     interface data_russian_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -25750,15 +26555,16 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_russian_music extends Array<data_russian_music_Item> {}
-    
+
     interface data_russian_musiccategories_Item {
       Id?: string;
       Name?: string;
       Order?: number;
       Unk003?: boolean;
     }
-    export interface data_russian_musiccategories extends Array<data_russian_musiccategories_Item> {}
-    
+    export interface data_russian_musiccategories
+      extends Array<data_russian_musiccategories_Item> {}
+
     interface data_russian_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -25770,9 +26576,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_russian_notifications extends Array<data_russian_notifications_Item> {}
-    
+
     export type data_russian_npcmaster = any[];
-    
+
     interface data_russian_npcs_Item {
       Id?: string;
       Name?: string;
@@ -25793,7 +26599,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_russian_npcs extends Array<data_russian_npcs_Item> {}
-    
+
     interface data_russian_npctalk_Item {
       NPCKey?: data_russian_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -25863,7 +26669,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_npctalk extends Array<data_russian_npctalk_Item> {}
-    
+
     interface data_russian_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -25884,19 +26690,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_npctextaudio extends Array<data_russian_npctextaudio_Item> {}
-    
+
     export type data_russian_pantheonpanellayout = any[];
-    
+
     export type data_russian_pantheonsouls = any[];
-    
+
     interface data_russian_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_russian_passiveoverridelimits extends Array<data_russian_passiveoverridelimits_Item> {}
-    
+    export interface data_russian_passiveoverridelimits
+      extends Array<data_russian_passiveoverridelimits_Item> {}
+
     export type data_russian_passiveskilloverrides = any[];
-    
+
     interface data_russian_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -25954,23 +26761,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_passiveskills extends Array<data_russian_passiveskills_Item> {}
-    
+
     interface data_russian_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_russian_passiveskillstatcategories extends Array<data_russian_passiveskillstatcategories_Item> {}
-    
+    export interface data_russian_passiveskillstatcategories
+      extends Array<data_russian_passiveskillstatcategories_Item> {}
+
     export type data_russian_passiveskilltreetutorial = any[];
-    
+
     interface data_russian_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_russian_playertradewhisperformats extends Array<data_russian_playertradewhisperformats_Item> {}
-    
+    export interface data_russian_playertradewhisperformats
+      extends Array<data_russian_playertradewhisperformats_Item> {}
+
     interface data_russian_quest_Item {
       Id?: string;
       Act?: number;
@@ -25994,7 +26803,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_quest extends Array<data_russian_quest_Item> {}
-    
+
     interface data_russian_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -26006,8 +26815,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_questrewardtype extends Array<data_russian_questrewardtype_Item> {}
-    
+    export interface data_russian_questrewardtype
+      extends Array<data_russian_questrewardtype_Item> {}
+
     interface data_russian_queststates_Item {
       Quest?: data_russian_queststates_Item_Quest;
       Order?: number;
@@ -26023,7 +26833,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_queststates extends Array<data_russian_queststates_Item> {}
-    
+
     interface data_russian_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -26033,10 +26843,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_questtrackergroup extends Array<data_russian_questtrackergroup_Item> {}
-    
+    export interface data_russian_questtrackergroup
+      extends Array<data_russian_questtrackergroup_Item> {}
+
     export type data_russian_races = any[];
-    
+
     interface data_russian_realms_Item {
       Id?: string;
       Name?: string;
@@ -26055,7 +26866,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_realms extends Array<data_russian_realms_Item> {}
-    
+
     interface data_russian_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -26064,25 +26875,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_russian_recipeunlockdisplay extends Array<data_russian_recipeunlockdisplay_Item> {}
-    
+    export interface data_russian_recipeunlockdisplay
+      extends Array<data_russian_recipeunlockdisplay_Item> {}
+
     interface data_russian_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_russian_relicinventorylayout extends Array<data_russian_relicinventorylayout_Item> {}
-    
+    export interface data_russian_relicinventorylayout
+      extends Array<data_russian_relicinventorylayout_Item> {}
+
     export type data_russian_relicitemeffectvariations = any[];
-    
+
     interface data_russian_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_russian_remindertext extends Array<data_russian_remindertext_Item> {}
-    
+
     interface data_russian_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_russian_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -26124,8 +26937,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_russian_ritualrunetypes extends Array<data_russian_ritualrunetypes_Item> {}
-    
+    export interface data_russian_ritualrunetypes
+      extends Array<data_russian_ritualrunetypes_Item> {}
+
     interface data_russian_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_russian_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_russian_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -26144,8 +26958,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_safehousebyocrafting extends Array<data_russian_safehousebyocrafting_Item> {}
-    
+    export interface data_russian_safehousebyocrafting
+      extends Array<data_russian_safehousebyocrafting_Item> {}
+
     interface data_russian_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -26155,8 +26970,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_russian_safehousecraftingspreetype extends Array<data_russian_safehousecraftingspreetype_Item> {}
-    
+    export interface data_russian_safehousecraftingspreetype
+      extends Array<data_russian_safehousecraftingspreetype_Item> {}
+
     interface data_russian_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_russian_sanctumdefenceicons_Item_Stat;
@@ -26169,8 +26985,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_sanctumdefenceicons extends Array<data_russian_sanctumdefenceicons_Item> {}
-    
+    export interface data_russian_sanctumdefenceicons
+      extends Array<data_russian_sanctumdefenceicons_Item> {}
+
     interface data_russian_sanctumfloors_Item {
       Id?: string;
       Area?: data_russian_sanctumfloors_Item_Area;
@@ -26198,7 +27015,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_sanctumfloors extends Array<data_russian_sanctumfloors_Item> {}
-    
+
     interface data_russian_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -26210,8 +27027,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_russian_sanctumpersistenteffectcategories extends Array<data_russian_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_russian_sanctumpersistenteffectcategories
+      extends Array<data_russian_sanctumpersistenteffectcategories_Item> {}
+
     interface data_russian_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -26241,8 +27059,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_sanctumpersistenteffects extends Array<data_russian_sanctumpersistenteffects_Item> {}
-    
+    export interface data_russian_sanctumpersistenteffects
+      extends Array<data_russian_sanctumpersistenteffects_Item> {}
+
     interface data_russian_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -26266,10 +27085,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_sanctumroomtypes extends Array<data_russian_sanctumroomtypes_Item> {}
-    
+    export interface data_russian_sanctumroomtypes
+      extends Array<data_russian_sanctumroomtypes_Item> {}
+
     export type data_russian_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_russian_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -26287,8 +27107,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_russian_sentinelpassives extends Array<data_russian_sentinelpassives_Item> {}
-    
+    export interface data_russian_sentinelpassives
+      extends Array<data_russian_sentinelpassives_Item> {}
+
     interface data_russian_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -26297,7 +27118,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_russian_shoptag extends Array<data_russian_shoptag_Item> {}
-    
+
     interface data_russian_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -26343,9 +27164,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_shrines extends Array<data_russian_shrines_Item> {}
-    
+
     export type data_russian_skillcraftingdata = any[];
-    
+
     interface data_russian_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -26359,7 +27180,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_skillgeminfo extends Array<data_russian_skillgeminfo_Item> {}
-    
+
     interface data_russian_skillgems_Item {
       BaseItemTypesKey?: data_russian_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -26390,7 +27211,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_russian_skillgems extends Array<data_russian_skillgems_Item> {}
-    
+
     interface data_russian_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -26399,14 +27220,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_russian_socketnotches extends Array<data_russian_socketnotches_Item> {}
-    
+
     interface data_russian_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_russian_stashtabaffinities extends Array<data_russian_stashtabaffinities_Item> {}
-    
+    export interface data_russian_stashtabaffinities
+      extends Array<data_russian_stashtabaffinities_Item> {}
+
     interface data_russian_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -26417,7 +27239,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_russian_stashtype extends Array<data_russian_stashtype_Item> {}
-    
+
     interface data_russian_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -26444,23 +27266,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_russian_stats extends Array<data_russian_stats_Item> {}
-    
+
     interface data_russian_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_russian_tags extends Array<data_russian_tags_Item> {}
-    
+
     export type data_russian_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_russian_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_russian_tips extends Array<data_russian_tips_Item> {}
-    
+
     interface data_russian_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -26474,16 +27296,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_russian_trademarketcategory extends Array<data_russian_trademarketcategory_Item> {}
-    
+    export interface data_russian_trademarketcategory
+      extends Array<data_russian_trademarketcategory_Item> {}
+
     interface data_russian_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_russian_trademarketcategorygroups extends Array<data_russian_trademarketcategorygroups_Item> {}
-    
+    export interface data_russian_trademarketcategorygroups
+      extends Array<data_russian_trademarketcategorygroups_Item> {}
+
     export type data_russian_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_russian_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -26493,15 +27317,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_russian_uitalktext extends Array<data_russian_uitalktext_Item> {}
-    
+
     export type data_russian_ultimatumencountertypes = any[];
-    
+
     export type data_russian_ultimatummodifiers = any[];
-    
+
     export type data_russian_ultimatumwagertypes = any[];
-    
+
     export type data_russian_uniquemaps = any[];
-    
+
     interface data_russian_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -26515,10 +27339,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_russian_uniquestashtypes extends Array<data_russian_uniquestashtypes_Item> {}
-    
+    export interface data_russian_uniquestashtypes
+      extends Array<data_russian_uniquestashtypes_Item> {}
+
     export type data_russian_warbandspackmonsters = any[];
-    
+
     interface data_russian_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -26531,7 +27356,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_russian_windowcursors extends Array<data_russian_windowcursors_Item> {}
-    
+
     interface data_russian_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -26542,7 +27367,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_russian_words extends Array<data_russian_words_Item> {}
-    
+
     interface data_russian_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -26559,9 +27384,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_russian_worldareas extends Array<data_russian_worldareas_Item> {}
-    
+
     export type data_russian_worldmaplegends = any[];
-    
+
     interface data_russian_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -26573,8 +27398,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_russian_worldpopupicontypes extends Array<data_russian_worldpopupicontypes_Item> {}
-    
+    export interface data_russian_worldpopupicontypes
+      extends Array<data_russian_worldpopupicontypes_Item> {}
+
     interface data_spanish_achievementitemrewards_Item {
       AchievementItemsKey?: data_spanish_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_spanish_achievementitemrewards_Item_BaseItemTypesKey;
@@ -26589,8 +27415,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_achievementitemrewards extends Array<data_spanish_achievementitemrewards_Item> {}
-    
+    export interface data_spanish_achievementitemrewards
+      extends Array<data_spanish_achievementitemrewards_Item> {}
+
     interface data_spanish_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -26607,8 +27434,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_achievementitems extends Array<data_spanish_achievementitems_Item> {}
-    
+    export interface data_spanish_achievementitems
+      extends Array<data_spanish_achievementitems_Item> {}
+
     interface data_spanish_achievements_Item {
       Id?: string;
       Description?: string;
@@ -26630,7 +27458,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_spanish_achievements extends Array<data_spanish_achievements_Item> {}
-    
+
     interface data_spanish_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -26641,14 +27469,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_spanish_achievementsetrewards extends Array<data_spanish_achievementsetrewards_Item> {}
-    
+    export interface data_spanish_achievementsetrewards
+      extends Array<data_spanish_achievementsetrewards_Item> {}
+
     interface data_spanish_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_spanish_achievementsetsdisplay extends Array<data_spanish_achievementsetsdisplay_Item> {}
-    
+    export interface data_spanish_achievementsetsdisplay
+      extends Array<data_spanish_achievementsetsdisplay_Item> {}
+
     interface data_spanish_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -26699,7 +27529,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_activeskills extends Array<data_spanish_activeskills_Item> {}
-    
+
     interface data_spanish_acts_Item {
       Id?: string;
       Part?: number;
@@ -26714,11 +27544,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_spanish_acts extends Array<data_spanish_acts_Item> {}
-    
+
     export type data_spanish_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_spanish_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_spanish_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -26729,15 +27559,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_spanish_advancedskillstutorial extends Array<data_spanish_advancedskillstutorial_Item> {}
-    
+    export interface data_spanish_advancedskillstutorial
+      extends Array<data_spanish_advancedskillstutorial_Item> {}
+
     interface data_spanish_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_spanish_afflictionrewardtypevisuals extends Array<data_spanish_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_spanish_afflictionrewardtypevisuals
+      extends Array<data_spanish_afflictionrewardtypevisuals_Item> {}
+
     interface data_spanish_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_spanish_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -26770,10 +27602,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_alternatepassiveskills extends Array<data_spanish_alternatepassiveskills_Item> {}
-    
+    export interface data_spanish_alternatepassiveskills
+      extends Array<data_spanish_alternatepassiveskills_Item> {}
+
     export type data_spanish_alternatequalitytypes = any[];
-    
+
     interface data_spanish_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -26793,7 +27626,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_spanish_archetypes extends Array<data_spanish_archetypes_Item> {}
-    
+
     interface data_spanish_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -26802,8 +27635,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_spanish_archnemesismetarewards extends Array<data_spanish_archnemesismetarewards_Item> {}
-    
+    export interface data_spanish_archnemesismetarewards
+      extends Array<data_spanish_archnemesismetarewards_Item> {}
+
     interface data_spanish_archnemesismods_Item {
       Mod?: data_spanish_archnemesismods_Item_Mod;
       Name?: string;
@@ -26816,8 +27650,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_archnemesismods extends Array<data_spanish_archnemesismods_Item> {}
-    
+    export interface data_spanish_archnemesismods
+      extends Array<data_spanish_archnemesismods_Item> {}
+
     interface data_spanish_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -26835,14 +27670,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_spanish_ascendancy extends Array<data_spanish_ascendancy_Item> {}
-    
+
     interface data_spanish_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_spanish_atlasfavouredmapslots extends Array<data_spanish_atlasfavouredmapslots_Item> {}
-    
+    export interface data_spanish_atlasfavouredmapslots
+      extends Array<data_spanish_atlasfavouredmapslots_Item> {}
+
     interface data_spanish_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -26851,8 +27687,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_spanish_atlasprimordialaltarchoicetypes extends Array<data_spanish_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_spanish_atlasprimordialaltarchoicetypes
+      extends Array<data_spanish_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_spanish_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -26875,8 +27712,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_atlasprimordialbossoptions extends Array<data_spanish_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_spanish_atlasprimordialbossoptions
+      extends Array<data_spanish_atlasprimordialbossoptions_Item> {}
+
     interface data_spanish_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -26898,16 +27736,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_atlasupgradesinventorylayout extends Array<data_spanish_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_spanish_atlasupgradesinventorylayout
+      extends Array<data_spanish_atlasupgradesinventorylayout_Item> {}
+
     export type data_spanish_awarddisplay = any[];
-    
+
     interface data_spanish_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_spanish_backenderrors extends Array<data_spanish_backenderrors_Item> {}
-    
+
     interface data_spanish_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_spanish_baseitemtypes_Item_ItemClassesKey;
@@ -26956,7 +27795,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_baseitemtypes extends Array<data_spanish_baseitemtypes_Item> {}
-    
+
     interface data_spanish_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -26967,7 +27806,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_spanish_battlepasses extends Array<data_spanish_battlepasses_Item> {}
-    
+
     interface data_spanish_battlepassrewards_Item {
       BattlePass?: data_spanish_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -27001,14 +27840,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_battlepassrewards extends Array<data_spanish_battlepassrewards_Item> {}
-    
+    export interface data_spanish_battlepassrewards
+      extends Array<data_spanish_battlepassrewards_Item> {}
+
     interface data_spanish_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_spanish_battlepasstracks extends Array<data_spanish_battlepasstracks_Item> {}
-    
+    export interface data_spanish_battlepasstracks
+      extends Array<data_spanish_battlepasstracks_Item> {}
+
     interface data_spanish_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -27031,8 +27872,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_bestiaryfamilies extends Array<data_spanish_bestiaryfamilies_Item> {}
-    
+    export interface data_spanish_bestiaryfamilies
+      extends Array<data_spanish_bestiaryfamilies_Item> {}
+
     interface data_spanish_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -27045,7 +27887,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_bestiarygenus extends Array<data_spanish_bestiarygenus_Item> {}
-    
+
     interface data_spanish_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -27061,13 +27903,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_bestiarygroups extends Array<data_spanish_bestiarygroups_Item> {}
-    
+
     interface data_spanish_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_spanish_bestiaryrecipecategories extends Array<data_spanish_bestiaryrecipecategories_Item> {}
-    
+    export interface data_spanish_bestiaryrecipecategories
+      extends Array<data_spanish_bestiaryrecipecategories_Item> {}
+
     interface data_spanish_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -27086,16 +27929,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_bestiaryrecipes extends Array<data_spanish_bestiaryrecipes_Item> {}
-    
+    export interface data_spanish_bestiaryrecipes
+      extends Array<data_spanish_bestiaryrecipes_Item> {}
+
     interface data_spanish_betrayalchoices_Item {
       Id?: string;
       Text?: string;
       Unk002?: number;
       Achievements?: any[];
     }
-    export interface data_spanish_betrayalchoices extends Array<data_spanish_betrayalchoices_Item> {}
-    
+    export interface data_spanish_betrayalchoices
+      extends Array<data_spanish_betrayalchoices_Item> {}
+
     interface data_spanish_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -27109,7 +27954,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_spanish_betrayaljobs extends Array<data_spanish_betrayaljobs_Item> {}
-    
+
     interface data_spanish_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -27117,13 +27962,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_spanish_betrayalranks extends Array<data_spanish_betrayalranks_Item> {}
-    
+
     interface data_spanish_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_spanish_betrayalrelationshipstate extends Array<data_spanish_betrayalrelationshipstate_Item> {}
-    
+    export interface data_spanish_betrayalrelationshipstate
+      extends Array<data_spanish_betrayalrelationshipstate_Item> {}
+
     interface data_spanish_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -27144,8 +27990,9 @@ declare namespace Poe2DataMain {
       Unk016?: any;
       ScriptArgument?: string;
     }
-    export interface data_spanish_betrayaltargets extends Array<data_spanish_betrayaltargets_Item> {}
-    
+    export interface data_spanish_betrayaltargets
+      extends Array<data_spanish_betrayaltargets_Item> {}
+
     interface data_spanish_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_spanish_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_spanish_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -27165,8 +28012,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_betrayaltraitorrewards extends Array<data_spanish_betrayaltraitorrewards_Item> {}
-    
+    export interface data_spanish_betrayaltraitorrewards
+      extends Array<data_spanish_betrayaltraitorrewards_Item> {}
+
     interface data_spanish_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -27181,15 +28029,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_spanish_betrayalupgrades extends Array<data_spanish_betrayalupgrades_Item> {}
-    
+    export interface data_spanish_betrayalupgrades
+      extends Array<data_spanish_betrayalupgrades_Item> {}
+
     interface data_spanish_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_spanish_bindablevirtualkeys extends Array<data_spanish_bindablevirtualkeys_Item> {}
-    
+    export interface data_spanish_bindablevirtualkeys
+      extends Array<data_spanish_bindablevirtualkeys_Item> {}
+
     interface data_spanish_blightcraftingitems_Item {
       Oil?: data_spanish_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -27201,8 +28051,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_blightcraftingitems extends Array<data_spanish_blightcraftingitems_Item> {}
-    
+    export interface data_spanish_blightcraftingitems
+      extends Array<data_spanish_blightcraftingitems_Item> {}
+
     interface data_spanish_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -27220,7 +28071,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_spanish_blighttowers extends Array<data_spanish_blighttowers_Item> {}
-    
+
     interface data_spanish_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -27278,8 +28129,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_buffdefinitions extends Array<data_spanish_buffdefinitions_Item> {}
-    
+    export interface data_spanish_buffdefinitions
+      extends Array<data_spanish_buffdefinitions_Item> {}
+
     interface data_spanish_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -27302,7 +28154,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_spanish_buffvisuals extends Array<data_spanish_buffvisuals_Item> {}
-    
+
     interface data_spanish_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -27310,16 +28162,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_spanish_charactercreationicons extends Array<data_spanish_charactercreationicons_Item> {}
-    
+    export interface data_spanish_charactercreationicons
+      extends Array<data_spanish_charactercreationicons_Item> {}
+
     interface data_spanish_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_spanish_characterpaneldescriptionmodes extends Array<data_spanish_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_spanish_characterpaneldescriptionmodes
+      extends Array<data_spanish_characterpaneldescriptionmodes_Item> {}
+
     interface data_spanish_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -27340,16 +28194,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_characterpanelstats extends Array<data_spanish_characterpanelstats_Item> {}
-    
+    export interface data_spanish_characterpanelstats
+      extends Array<data_spanish_characterpanelstats_Item> {}
+
     interface data_spanish_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_spanish_characterpaneltabs extends Array<data_spanish_characterpaneltabs_Item> {}
-    
+    export interface data_spanish_characterpaneltabs
+      extends Array<data_spanish_characterpaneltabs_Item> {}
+
     interface data_spanish_characters_Item {
       Id?: string;
       Name?: string;
@@ -27475,7 +28331,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_characters extends Array<data_spanish_characters_Item> {}
-    
+
     interface data_spanish_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -27501,8 +28357,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_characterstartstates extends Array<data_spanish_characterstartstates_Item> {}
-    
+    export interface data_spanish_characterstartstates
+      extends Array<data_spanish_characterstartstates_Item> {}
+
     interface data_spanish_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -27510,8 +28367,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_spanish_charactertextaudio extends Array<data_spanish_charactertextaudio_Item> {}
-    
+    export interface data_spanish_charactertextaudio
+      extends Array<data_spanish_charactertextaudio_Item> {}
+
     interface data_spanish_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -27559,7 +28417,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_chests extends Array<data_spanish_chests_Item> {}
-    
+
     interface data_spanish_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -27569,11 +28427,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_spanish_clientstrings extends Array<data_spanish_clientstrings_Item> {}
-    
+
     export type data_spanish_clientstrings2 = any[];
-    
+
     export type data_spanish_combatuiprompts = any[];
-    
+
     interface data_spanish_commands_Item {
       Id?: string;
       Command?: string;
@@ -27583,9 +28441,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_spanish_commands extends Array<data_spanish_commands_Item> {}
-    
+
     export type data_spanish_completionnotifications = any[];
-    
+
     interface data_spanish_costtypes_Item {
       Id?: string;
       StatsKey?: data_spanish_costtypes_Item_StatsKey;
@@ -27597,9 +28455,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_costtypes extends Array<data_spanish_costtypes_Item> {}
-    
+
     export type data_spanish_craftingbenchoptions = any[];
-    
+
     interface data_spanish_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -27608,16 +28466,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_spanish_craftingbenchunlockcategories extends Array<data_spanish_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_spanish_craftingbenchunlockcategories
+      extends Array<data_spanish_craftingbenchunlockcategories_Item> {}
+
     export type data_spanish_craftingitemclasscategories = any[];
-    
+
     interface data_spanish_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_spanish_currencyexchangecategories extends Array<data_spanish_currencyexchangecategories_Item> {}
-    
+    export interface data_spanish_currencyexchangecategories
+      extends Array<data_spanish_currencyexchangecategories_Item> {}
+
     interface data_spanish_currencyitems_Item {
       BaseItemTypesKey?: data_spanish_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -27651,15 +28511,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_currencyitems extends Array<data_spanish_currencyitems_Item> {}
-    
+
     export type data_spanish_delvebiomes = any[];
-    
+
     interface data_spanish_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_spanish_delvecraftingmodifierdescriptions extends Array<data_spanish_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_spanish_delvecraftingmodifierdescriptions
+      extends Array<data_spanish_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_spanish_delvecraftingtags_Item {
       TagsKey?: data_spanish_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -27668,8 +28529,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_delvecraftingtags extends Array<data_spanish_delvecraftingtags_Item> {}
-    
+    export interface data_spanish_delvecraftingtags
+      extends Array<data_spanish_delvecraftingtags_Item> {}
+
     interface data_spanish_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -27687,7 +28549,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_spanish_delvefeatures extends Array<data_spanish_delvefeatures_Item> {}
-    
+
     interface data_spanish_dronetypes_Item {
       Id?: string;
       Unk001?: data_spanish_dronetypes_Item_Unk001;
@@ -27711,13 +28573,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_dronetypes extends Array<data_spanish_dronetypes_Item> {}
-    
+
     export type data_spanish_endgamemapcontent = any[];
-    
+
     export type data_spanish_endgamemaps = any[];
-    
+
     export type data_spanish_expeditiondeals = any[];
-    
+
     interface data_spanish_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -27750,8 +28612,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_expeditionfactions extends Array<data_spanish_expeditionfactions_Item> {}
-    
+    export interface data_spanish_expeditionfactions
+      extends Array<data_spanish_expeditionfactions_Item> {}
+
     interface data_spanish_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -27764,15 +28627,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_expeditionrelics extends Array<data_spanish_expeditionrelics_Item> {}
-    
+    export interface data_spanish_expeditionrelics
+      extends Array<data_spanish_expeditionrelics_Item> {}
+
     interface data_spanish_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_spanish_flavourtext extends Array<data_spanish_flavourtext_Item> {}
-    
+
     interface data_spanish_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -27790,8 +28654,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_spanish_fragmentstashtablayout extends Array<data_spanish_fragmentstashtablayout_Item> {}
-    
+    export interface data_spanish_fragmentstashtablayout
+      extends Array<data_spanish_fragmentstashtablayout_Item> {}
+
     interface data_spanish_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -27800,9 +28665,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_spanish_gamepadbutton extends Array<data_spanish_gamepadbutton_Item> {}
-    
+
     export type data_spanish_gamepadbuttonbindaction = any[];
-    
+
     interface data_spanish_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -27833,9 +28698,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_gemeffects extends Array<data_spanish_gemeffects_Item> {}
-    
+
     export type data_spanish_gemtags = any[];
-    
+
     interface data_spanish_genericleaguerewardtypevisuals_Item {
       Type?: data_spanish_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_spanish_genericleaguerewardtypevisuals_Item_Unk001;
@@ -27856,10 +28721,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_genericleaguerewardtypevisuals extends Array<data_spanish_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_spanish_genericleaguerewardtypevisuals
+      extends Array<data_spanish_genericleaguerewardtypevisuals_Item> {}
+
     export type data_spanish_grantedeffectlabels = any[];
-    
+
     interface data_spanish_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_spanish_harvestcraftfilters_Item_BaseItem;
@@ -27869,8 +28735,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_harvestcraftfilters extends Array<data_spanish_harvestcraftfilters_Item> {}
-    
+    export interface data_spanish_harvestcraftfilters
+      extends Array<data_spanish_harvestcraftfilters_Item> {}
+
     interface data_spanish_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -27892,10 +28759,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_harvestcraftoptions extends Array<data_spanish_harvestcraftoptions_Item> {}
-    
+    export interface data_spanish_harvestcraftoptions
+      extends Array<data_spanish_harvestcraftoptions_Item> {}
+
     export type data_spanish_heistchestrewardtypes = any[];
-    
+
     interface data_spanish_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -27933,7 +28801,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_heistjobs extends Array<data_spanish_heistjobs_Item> {}
-    
+
     interface data_spanish_heistobjectives_Item {
       BaseItemType?: data_spanish_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -27943,17 +28811,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_heistobjectives extends Array<data_spanish_heistobjectives_Item> {}
-    
+    export interface data_spanish_heistobjectives
+      extends Array<data_spanish_heistobjectives_Item> {}
+
     interface data_spanish_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_spanish_heistobjectivevaluedescriptions extends Array<data_spanish_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_spanish_heistobjectivevaluedescriptions
+      extends Array<data_spanish_heistobjectivevaluedescriptions_Item> {}
+
     export type data_spanish_heistquestcontracts = any[];
-    
+
     interface data_spanish_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -27967,24 +28837,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_spanish_hellscapepassives extends Array<data_spanish_hellscapepassives_Item> {}
-    
+    export interface data_spanish_hellscapepassives
+      extends Array<data_spanish_hellscapepassives_Item> {}
+
     interface data_spanish_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_spanish_hideoutdoodadcategory extends Array<data_spanish_hideoutdoodadcategory_Item> {}
-    
+    export interface data_spanish_hideoutdoodadcategory
+      extends Array<data_spanish_hideoutdoodadcategory_Item> {}
+
     interface data_spanish_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_spanish_hideoutdoodadtags extends Array<data_spanish_hideoutdoodadtags_Item> {}
-    
+    export interface data_spanish_hideoutdoodadtags
+      extends Array<data_spanish_hideoutdoodadtags_Item> {}
+
     export type data_spanish_hideouts = any[];
-    
+
     interface data_spanish_incubators_Item {
       BaseItemTypesKey?: data_spanish_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -27997,18 +28870,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_incubators extends Array<data_spanish_incubators_Item> {}
-    
+
     export type data_spanish_incursionrooms = any[];
-    
+
     export type data_spanish_indexablesupportgems = any[];
-    
+
     interface data_spanish_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_spanish_itemclasscategories extends Array<data_spanish_itemclasscategories_Item> {}
-    
+    export interface data_spanish_itemclasscategories
+      extends Array<data_spanish_itemclasscategories_Item> {}
+
     interface data_spanish_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -28049,15 +28923,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_itemclasses extends Array<data_spanish_itemclasses_Item> {}
-    
+
     export type data_spanish_keywordpopups = any[];
-    
+
     export type data_spanish_kioskmodecharactertutorials = any[];
-    
+
     export type data_spanish_leagueinfo = any[];
-    
+
     export type data_spanish_mapconnections = any[];
-    
+
     interface data_spanish_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -28078,11 +28952,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_spanish_mappins extends Array<data_spanish_mappins_Item> {}
-    
+
     export type data_spanish_mapseries = any[];
-    
+
     export type data_spanish_mapstashspecialtypeentries = any[];
-    
+
     interface data_spanish_memorylinetype_Item {
       Id?: string;
       Unk001?: data_spanish_memorylinetype_Item_Unk001;
@@ -28109,20 +28983,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_memorylinetype extends Array<data_spanish_memorylinetype_Item> {}
-    
+
     interface data_spanish_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_spanish_microtransactioncategory extends Array<data_spanish_microtransactioncategory_Item> {}
-    
+    export interface data_spanish_microtransactioncategory
+      extends Array<data_spanish_microtransactioncategory_Item> {}
+
     interface data_spanish_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_spanish_microtransactionskillgemeffectslottypes extends Array<data_spanish_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_spanish_microtransactionskillgemeffectslottypes
+      extends Array<data_spanish_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_spanish_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_spanish_microtransactionslot_Item_Unk001;
@@ -28142,16 +29018,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_microtransactionslot extends Array<data_spanish_microtransactionslot_Item> {}
-    
+    export interface data_spanish_microtransactionslot
+      extends Array<data_spanish_microtransactionslot_Item> {}
+
     interface data_spanish_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_spanish_microtransactionslotadditionaldefaultoptions extends Array<data_spanish_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_spanish_microtransactionslotadditionaldefaultoptions
+      extends Array<data_spanish_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_spanish_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -28163,15 +29041,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_spanish_minimapicons extends Array<data_spanish_minimapicons_Item> {}
-    
+
     export type data_spanish_mobilecharactercreation = any[];
-    
+
     export type data_spanish_mobileskillgemlayout = any[];
-    
+
     export type data_spanish_mobileskillgemlayoutpages = any[];
-    
+
     export type data_spanish_mobiletutorial = any[];
-    
+
     interface data_spanish_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -28260,7 +29138,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_mods extends Array<data_spanish_mods_Item> {}
-    
+
     interface data_spanish_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_spanish_monstervarieties_Item_MonsterTypesKey;
@@ -28395,17 +29273,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_monstervarieties extends Array<data_spanish_monstervarieties_Item> {}
-    
+    export interface data_spanish_monstervarieties
+      extends Array<data_spanish_monstervarieties_Item> {}
+
     interface data_spanish_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_spanish_mousecursorsizesettings extends Array<data_spanish_mousecursorsizesettings_Item> {}
-    
+    export interface data_spanish_mousecursorsizesettings
+      extends Array<data_spanish_mousecursorsizesettings_Item> {}
+
     export type data_spanish_mtxtypes = any[];
-    
+
     interface data_spanish_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -28419,15 +29299,16 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_spanish_music extends Array<data_spanish_music_Item> {}
-    
+
     interface data_spanish_musiccategories_Item {
       Id?: string;
       Name?: string;
       Order?: number;
       Unk003?: boolean;
     }
-    export interface data_spanish_musiccategories extends Array<data_spanish_musiccategories_Item> {}
-    
+    export interface data_spanish_musiccategories
+      extends Array<data_spanish_musiccategories_Item> {}
+
     interface data_spanish_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -28439,9 +29320,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_spanish_notifications extends Array<data_spanish_notifications_Item> {}
-    
+
     export type data_spanish_npcmaster = any[];
-    
+
     interface data_spanish_npcs_Item {
       Id?: string;
       Name?: string;
@@ -28462,7 +29343,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_spanish_npcs extends Array<data_spanish_npcs_Item> {}
-    
+
     interface data_spanish_npctalk_Item {
       NPCKey?: data_spanish_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -28532,7 +29413,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_npctalk extends Array<data_spanish_npctalk_Item> {}
-    
+
     interface data_spanish_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -28553,19 +29434,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_npctextaudio extends Array<data_spanish_npctextaudio_Item> {}
-    
+
     export type data_spanish_pantheonpanellayout = any[];
-    
+
     export type data_spanish_pantheonsouls = any[];
-    
+
     interface data_spanish_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_spanish_passiveoverridelimits extends Array<data_spanish_passiveoverridelimits_Item> {}
-    
+    export interface data_spanish_passiveoverridelimits
+      extends Array<data_spanish_passiveoverridelimits_Item> {}
+
     export type data_spanish_passiveskilloverrides = any[];
-    
+
     interface data_spanish_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -28623,23 +29505,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_passiveskills extends Array<data_spanish_passiveskills_Item> {}
-    
+
     interface data_spanish_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_spanish_passiveskillstatcategories extends Array<data_spanish_passiveskillstatcategories_Item> {}
-    
+    export interface data_spanish_passiveskillstatcategories
+      extends Array<data_spanish_passiveskillstatcategories_Item> {}
+
     export type data_spanish_passiveskilltreetutorial = any[];
-    
+
     interface data_spanish_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_spanish_playertradewhisperformats extends Array<data_spanish_playertradewhisperformats_Item> {}
-    
+    export interface data_spanish_playertradewhisperformats
+      extends Array<data_spanish_playertradewhisperformats_Item> {}
+
     interface data_spanish_quest_Item {
       Id?: string;
       Act?: number;
@@ -28663,7 +29547,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_quest extends Array<data_spanish_quest_Item> {}
-    
+
     interface data_spanish_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -28675,8 +29559,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_questrewardtype extends Array<data_spanish_questrewardtype_Item> {}
-    
+    export interface data_spanish_questrewardtype
+      extends Array<data_spanish_questrewardtype_Item> {}
+
     interface data_spanish_queststates_Item {
       Quest?: data_spanish_queststates_Item_Quest;
       Order?: number;
@@ -28692,7 +29577,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_queststates extends Array<data_spanish_queststates_Item> {}
-    
+
     interface data_spanish_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -28702,10 +29587,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_questtrackergroup extends Array<data_spanish_questtrackergroup_Item> {}
-    
+    export interface data_spanish_questtrackergroup
+      extends Array<data_spanish_questtrackergroup_Item> {}
+
     export type data_spanish_races = any[];
-    
+
     interface data_spanish_realms_Item {
       Id?: string;
       Name?: string;
@@ -28724,7 +29610,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_realms extends Array<data_spanish_realms_Item> {}
-    
+
     interface data_spanish_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -28733,25 +29619,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_spanish_recipeunlockdisplay extends Array<data_spanish_recipeunlockdisplay_Item> {}
-    
+    export interface data_spanish_recipeunlockdisplay
+      extends Array<data_spanish_recipeunlockdisplay_Item> {}
+
     interface data_spanish_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_spanish_relicinventorylayout extends Array<data_spanish_relicinventorylayout_Item> {}
-    
+    export interface data_spanish_relicinventorylayout
+      extends Array<data_spanish_relicinventorylayout_Item> {}
+
     export type data_spanish_relicitemeffectvariations = any[];
-    
+
     interface data_spanish_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_spanish_remindertext extends Array<data_spanish_remindertext_Item> {}
-    
+
     interface data_spanish_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_spanish_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -28793,8 +29681,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_spanish_ritualrunetypes extends Array<data_spanish_ritualrunetypes_Item> {}
-    
+    export interface data_spanish_ritualrunetypes
+      extends Array<data_spanish_ritualrunetypes_Item> {}
+
     interface data_spanish_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_spanish_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_spanish_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -28813,8 +29702,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_safehousebyocrafting extends Array<data_spanish_safehousebyocrafting_Item> {}
-    
+    export interface data_spanish_safehousebyocrafting
+      extends Array<data_spanish_safehousebyocrafting_Item> {}
+
     interface data_spanish_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -28824,8 +29714,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_spanish_safehousecraftingspreetype extends Array<data_spanish_safehousecraftingspreetype_Item> {}
-    
+    export interface data_spanish_safehousecraftingspreetype
+      extends Array<data_spanish_safehousecraftingspreetype_Item> {}
+
     interface data_spanish_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_spanish_sanctumdefenceicons_Item_Stat;
@@ -28838,8 +29729,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_sanctumdefenceicons extends Array<data_spanish_sanctumdefenceicons_Item> {}
-    
+    export interface data_spanish_sanctumdefenceicons
+      extends Array<data_spanish_sanctumdefenceicons_Item> {}
+
     interface data_spanish_sanctumfloors_Item {
       Id?: string;
       Area?: data_spanish_sanctumfloors_Item_Area;
@@ -28867,7 +29759,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_sanctumfloors extends Array<data_spanish_sanctumfloors_Item> {}
-    
+
     interface data_spanish_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -28879,8 +29771,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_spanish_sanctumpersistenteffectcategories extends Array<data_spanish_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_spanish_sanctumpersistenteffectcategories
+      extends Array<data_spanish_sanctumpersistenteffectcategories_Item> {}
+
     interface data_spanish_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -28910,8 +29803,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_sanctumpersistenteffects extends Array<data_spanish_sanctumpersistenteffects_Item> {}
-    
+    export interface data_spanish_sanctumpersistenteffects
+      extends Array<data_spanish_sanctumpersistenteffects_Item> {}
+
     interface data_spanish_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -28935,10 +29829,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_sanctumroomtypes extends Array<data_spanish_sanctumroomtypes_Item> {}
-    
+    export interface data_spanish_sanctumroomtypes
+      extends Array<data_spanish_sanctumroomtypes_Item> {}
+
     export type data_spanish_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_spanish_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -28956,8 +29851,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_spanish_sentinelpassives extends Array<data_spanish_sentinelpassives_Item> {}
-    
+    export interface data_spanish_sentinelpassives
+      extends Array<data_spanish_sentinelpassives_Item> {}
+
     interface data_spanish_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -28966,7 +29862,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_spanish_shoptag extends Array<data_spanish_shoptag_Item> {}
-    
+
     interface data_spanish_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -29012,9 +29908,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_shrines extends Array<data_spanish_shrines_Item> {}
-    
+
     export type data_spanish_skillcraftingdata = any[];
-    
+
     interface data_spanish_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -29028,7 +29924,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_skillgeminfo extends Array<data_spanish_skillgeminfo_Item> {}
-    
+
     interface data_spanish_skillgems_Item {
       BaseItemTypesKey?: data_spanish_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -29059,7 +29955,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_spanish_skillgems extends Array<data_spanish_skillgems_Item> {}
-    
+
     interface data_spanish_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -29068,14 +29964,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_spanish_socketnotches extends Array<data_spanish_socketnotches_Item> {}
-    
+
     interface data_spanish_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_spanish_stashtabaffinities extends Array<data_spanish_stashtabaffinities_Item> {}
-    
+    export interface data_spanish_stashtabaffinities
+      extends Array<data_spanish_stashtabaffinities_Item> {}
+
     interface data_spanish_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -29086,7 +29983,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_spanish_stashtype extends Array<data_spanish_stashtype_Item> {}
-    
+
     interface data_spanish_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -29113,23 +30010,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_spanish_stats extends Array<data_spanish_stats_Item> {}
-    
+
     interface data_spanish_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_spanish_tags extends Array<data_spanish_tags_Item> {}
-    
+
     export type data_spanish_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_spanish_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_spanish_tips extends Array<data_spanish_tips_Item> {}
-    
+
     interface data_spanish_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -29143,16 +30040,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_spanish_trademarketcategory extends Array<data_spanish_trademarketcategory_Item> {}
-    
+    export interface data_spanish_trademarketcategory
+      extends Array<data_spanish_trademarketcategory_Item> {}
+
     interface data_spanish_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_spanish_trademarketcategorygroups extends Array<data_spanish_trademarketcategorygroups_Item> {}
-    
+    export interface data_spanish_trademarketcategorygroups
+      extends Array<data_spanish_trademarketcategorygroups_Item> {}
+
     export type data_spanish_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_spanish_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -29162,15 +30061,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_spanish_uitalktext extends Array<data_spanish_uitalktext_Item> {}
-    
+
     export type data_spanish_ultimatumencountertypes = any[];
-    
+
     export type data_spanish_ultimatummodifiers = any[];
-    
+
     export type data_spanish_ultimatumwagertypes = any[];
-    
+
     export type data_spanish_uniquemaps = any[];
-    
+
     interface data_spanish_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -29184,10 +30083,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_spanish_uniquestashtypes extends Array<data_spanish_uniquestashtypes_Item> {}
-    
+    export interface data_spanish_uniquestashtypes
+      extends Array<data_spanish_uniquestashtypes_Item> {}
+
     export type data_spanish_warbandspackmonsters = any[];
-    
+
     interface data_spanish_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -29200,7 +30100,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_spanish_windowcursors extends Array<data_spanish_windowcursors_Item> {}
-    
+
     interface data_spanish_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -29211,7 +30111,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_spanish_words extends Array<data_spanish_words_Item> {}
-    
+
     interface data_spanish_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -29228,9 +30128,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_spanish_worldareas extends Array<data_spanish_worldareas_Item> {}
-    
+
     export type data_spanish_worldmaplegends = any[];
-    
+
     interface data_spanish_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -29242,8 +30142,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_spanish_worldpopupicontypes extends Array<data_spanish_worldpopupicontypes_Item> {}
-    
+    export interface data_spanish_worldpopupicontypes
+      extends Array<data_spanish_worldpopupicontypes_Item> {}
+
     interface data_thai_achievementitemrewards_Item {
       AchievementItemsKey?: data_thai_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_thai_achievementitemrewards_Item_BaseItemTypesKey;
@@ -29258,8 +30159,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_achievementitemrewards extends Array<data_thai_achievementitemrewards_Item> {}
-    
+    export interface data_thai_achievementitemrewards
+      extends Array<data_thai_achievementitemrewards_Item> {}
+
     interface data_thai_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -29277,7 +30179,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_achievementitems extends Array<data_thai_achievementitems_Item> {}
-    
+
     interface data_thai_achievements_Item {
       Id?: string;
       Description?: string;
@@ -29299,7 +30201,7 @@ declare namespace Poe2DataMain {
       Unk017?: string;
     }
     export interface data_thai_achievements extends Array<data_thai_achievements_Item> {}
-    
+
     interface data_thai_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -29310,14 +30212,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_thai_achievementsetrewards extends Array<data_thai_achievementsetrewards_Item> {}
-    
+    export interface data_thai_achievementsetrewards
+      extends Array<data_thai_achievementsetrewards_Item> {}
+
     interface data_thai_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_thai_achievementsetsdisplay extends Array<data_thai_achievementsetsdisplay_Item> {}
-    
+    export interface data_thai_achievementsetsdisplay
+      extends Array<data_thai_achievementsetsdisplay_Item> {}
+
     interface data_thai_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -29368,7 +30272,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_activeskills extends Array<data_thai_activeskills_Item> {}
-    
+
     interface data_thai_acts_Item {
       Id?: string;
       Part?: number;
@@ -29383,11 +30287,11 @@ declare namespace Poe2DataMain {
       Unk010?: any[];
     }
     export interface data_thai_acts extends Array<data_thai_acts_Item> {}
-    
+
     export type data_thai_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_thai_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_thai_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -29398,15 +30302,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_thai_advancedskillstutorial extends Array<data_thai_advancedskillstutorial_Item> {}
-    
+    export interface data_thai_advancedskillstutorial
+      extends Array<data_thai_advancedskillstutorial_Item> {}
+
     interface data_thai_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_thai_afflictionrewardtypevisuals extends Array<data_thai_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_thai_afflictionrewardtypevisuals
+      extends Array<data_thai_afflictionrewardtypevisuals_Item> {}
+
     interface data_thai_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_thai_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -29439,10 +30345,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_thai_alternatepassiveskills extends Array<data_thai_alternatepassiveskills_Item> {}
-    
+    export interface data_thai_alternatepassiveskills
+      extends Array<data_thai_alternatepassiveskills_Item> {}
+
     export type data_thai_alternatequalitytypes = any[];
-    
+
     interface data_thai_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -29462,7 +30369,7 @@ declare namespace Poe2DataMain {
       Unk015?: boolean;
     }
     export interface data_thai_archetypes extends Array<data_thai_archetypes_Item> {}
-    
+
     interface data_thai_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -29471,8 +30378,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_thai_archnemesismetarewards extends Array<data_thai_archnemesismetarewards_Item> {}
-    
+    export interface data_thai_archnemesismetarewards
+      extends Array<data_thai_archnemesismetarewards_Item> {}
+
     interface data_thai_archnemesismods_Item {
       Mod?: data_thai_archnemesismods_Item_Mod;
       Name?: string;
@@ -29486,7 +30394,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_archnemesismods extends Array<data_thai_archnemesismods_Item> {}
-    
+
     interface data_thai_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -29504,14 +30412,15 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_thai_ascendancy extends Array<data_thai_ascendancy_Item> {}
-    
+
     interface data_thai_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_thai_atlasfavouredmapslots extends Array<data_thai_atlasfavouredmapslots_Item> {}
-    
+    export interface data_thai_atlasfavouredmapslots
+      extends Array<data_thai_atlasfavouredmapslots_Item> {}
+
     interface data_thai_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -29520,8 +30429,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_thai_atlasprimordialaltarchoicetypes extends Array<data_thai_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_thai_atlasprimordialaltarchoicetypes
+      extends Array<data_thai_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_thai_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -29544,8 +30454,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_atlasprimordialbossoptions extends Array<data_thai_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_thai_atlasprimordialbossoptions
+      extends Array<data_thai_atlasprimordialbossoptions_Item> {}
+
     interface data_thai_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -29567,16 +30478,17 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_thai_atlasupgradesinventorylayout extends Array<data_thai_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_thai_atlasupgradesinventorylayout
+      extends Array<data_thai_atlasupgradesinventorylayout_Item> {}
+
     export type data_thai_awarddisplay = any[];
-    
+
     interface data_thai_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
     export interface data_thai_backenderrors extends Array<data_thai_backenderrors_Item> {}
-    
+
     interface data_thai_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_thai_baseitemtypes_Item_ItemClassesKey;
@@ -29625,7 +30537,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_baseitemtypes extends Array<data_thai_baseitemtypes_Item> {}
-    
+
     interface data_thai_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -29636,7 +30548,7 @@ declare namespace Poe2DataMain {
       Id2?: string;
     }
     export interface data_thai_battlepasses extends Array<data_thai_battlepasses_Item> {}
-    
+
     interface data_thai_battlepassrewards_Item {
       BattlePass?: data_thai_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -29671,13 +30583,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_battlepassrewards extends Array<data_thai_battlepassrewards_Item> {}
-    
+
     interface data_thai_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
     export interface data_thai_battlepasstracks extends Array<data_thai_battlepasstracks_Item> {}
-    
+
     interface data_thai_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -29701,7 +30613,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_bestiaryfamilies extends Array<data_thai_bestiaryfamilies_Item> {}
-    
+
     interface data_thai_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -29714,7 +30626,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_bestiarygenus extends Array<data_thai_bestiarygenus_Item> {}
-    
+
     interface data_thai_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -29730,13 +30642,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_bestiarygroups extends Array<data_thai_bestiarygroups_Item> {}
-    
+
     interface data_thai_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_thai_bestiaryrecipecategories extends Array<data_thai_bestiaryrecipecategories_Item> {}
-    
+    export interface data_thai_bestiaryrecipecategories
+      extends Array<data_thai_bestiaryrecipecategories_Item> {}
+
     interface data_thai_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -29756,7 +30669,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_bestiaryrecipes extends Array<data_thai_bestiaryrecipes_Item> {}
-    
+
     interface data_thai_betrayalchoices_Item {
       Id?: string;
       Text?: string;
@@ -29764,7 +30677,7 @@ declare namespace Poe2DataMain {
       Achievements?: any[];
     }
     export interface data_thai_betrayalchoices extends Array<data_thai_betrayalchoices_Item> {}
-    
+
     interface data_thai_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -29778,7 +30691,7 @@ declare namespace Poe2DataMain {
       MissionCompletion_AcheivementItemsKey?: any[];
     }
     export interface data_thai_betrayaljobs extends Array<data_thai_betrayaljobs_Item> {}
-    
+
     interface data_thai_betrayalranks_Item {
       Id?: string;
       Text?: string;
@@ -29786,13 +30699,14 @@ declare namespace Poe2DataMain {
       RankImage?: string;
     }
     export interface data_thai_betrayalranks extends Array<data_thai_betrayalranks_Item> {}
-    
+
     interface data_thai_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_thai_betrayalrelationshipstate extends Array<data_thai_betrayalrelationshipstate_Item> {}
-    
+    export interface data_thai_betrayalrelationshipstate
+      extends Array<data_thai_betrayalrelationshipstate_Item> {}
+
     interface data_thai_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -29814,7 +30728,7 @@ declare namespace Poe2DataMain {
       ScriptArgument?: string;
     }
     export interface data_thai_betrayaltargets extends Array<data_thai_betrayaltargets_Item> {}
-    
+
     interface data_thai_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_thai_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_thai_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -29834,8 +30748,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_betrayaltraitorrewards extends Array<data_thai_betrayaltraitorrewards_Item> {}
-    
+    export interface data_thai_betrayaltraitorrewards
+      extends Array<data_thai_betrayaltraitorrewards_Item> {}
+
     interface data_thai_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -29851,14 +30766,15 @@ declare namespace Poe2DataMain {
       ItemClassesKey?: any;
     }
     export interface data_thai_betrayalupgrades extends Array<data_thai_betrayalupgrades_Item> {}
-    
+
     interface data_thai_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_thai_bindablevirtualkeys extends Array<data_thai_bindablevirtualkeys_Item> {}
-    
+    export interface data_thai_bindablevirtualkeys
+      extends Array<data_thai_bindablevirtualkeys_Item> {}
+
     interface data_thai_blightcraftingitems_Item {
       Oil?: data_thai_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -29870,8 +30786,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_blightcraftingitems extends Array<data_thai_blightcraftingitems_Item> {}
-    
+    export interface data_thai_blightcraftingitems
+      extends Array<data_thai_blightcraftingitems_Item> {}
+
     interface data_thai_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -29889,7 +30806,7 @@ declare namespace Poe2DataMain {
       Unk013?: boolean;
     }
     export interface data_thai_blighttowers extends Array<data_thai_blighttowers_Item> {}
-    
+
     interface data_thai_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -29948,7 +30865,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_buffdefinitions extends Array<data_thai_buffdefinitions_Item> {}
-    
+
     interface data_thai_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -29971,7 +30888,7 @@ declare namespace Poe2DataMain {
       Unk018?: any;
     }
     export interface data_thai_buffvisuals extends Array<data_thai_buffvisuals_Item> {}
-    
+
     interface data_thai_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -29979,16 +30896,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_thai_charactercreationicons extends Array<data_thai_charactercreationicons_Item> {}
-    
+    export interface data_thai_charactercreationicons
+      extends Array<data_thai_charactercreationicons_Item> {}
+
     interface data_thai_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_thai_characterpaneldescriptionmodes extends Array<data_thai_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_thai_characterpaneldescriptionmodes
+      extends Array<data_thai_characterpaneldescriptionmodes_Item> {}
+
     interface data_thai_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -30009,16 +30928,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_characterpanelstats extends Array<data_thai_characterpanelstats_Item> {}
-    
+    export interface data_thai_characterpanelstats
+      extends Array<data_thai_characterpanelstats_Item> {}
+
     interface data_thai_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_thai_characterpaneltabs extends Array<data_thai_characterpaneltabs_Item> {}
-    
+    export interface data_thai_characterpaneltabs
+      extends Array<data_thai_characterpaneltabs_Item> {}
+
     interface data_thai_characters_Item {
       Id?: string;
       Name?: string;
@@ -30144,7 +31065,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_characters extends Array<data_thai_characters_Item> {}
-    
+
     interface data_thai_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -30170,8 +31091,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_thai_characterstartstates extends Array<data_thai_characterstartstates_Item> {}
-    
+    export interface data_thai_characterstartstates
+      extends Array<data_thai_characterstartstates_Item> {}
+
     interface data_thai_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -30179,8 +31101,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_thai_charactertextaudio extends Array<data_thai_charactertextaudio_Item> {}
-    
+    export interface data_thai_charactertextaudio
+      extends Array<data_thai_charactertextaudio_Item> {}
+
     interface data_thai_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -30228,7 +31151,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_chests extends Array<data_thai_chests_Item> {}
-    
+
     interface data_thai_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -30238,11 +31161,11 @@ declare namespace Poe2DataMain {
       PlaystationText?: string;
     }
     export interface data_thai_clientstrings extends Array<data_thai_clientstrings_Item> {}
-    
+
     export type data_thai_clientstrings2 = any[];
-    
+
     export type data_thai_combatuiprompts = any[];
-    
+
     interface data_thai_commands_Item {
       Id?: string;
       Command?: string;
@@ -30252,9 +31175,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
     }
     export interface data_thai_commands extends Array<data_thai_commands_Item> {}
-    
+
     export type data_thai_completionnotifications = any[];
-    
+
     interface data_thai_costtypes_Item {
       Id?: string;
       StatsKey?: data_thai_costtypes_Item_StatsKey;
@@ -30266,9 +31189,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_costtypes extends Array<data_thai_costtypes_Item> {}
-    
+
     export type data_thai_craftingbenchoptions = any[];
-    
+
     interface data_thai_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -30277,16 +31200,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_thai_craftingbenchunlockcategories extends Array<data_thai_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_thai_craftingbenchunlockcategories
+      extends Array<data_thai_craftingbenchunlockcategories_Item> {}
+
     export type data_thai_craftingitemclasscategories = any[];
-    
+
     interface data_thai_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_thai_currencyexchangecategories extends Array<data_thai_currencyexchangecategories_Item> {}
-    
+    export interface data_thai_currencyexchangecategories
+      extends Array<data_thai_currencyexchangecategories_Item> {}
+
     interface data_thai_currencyitems_Item {
       BaseItemTypesKey?: data_thai_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -30320,15 +31245,16 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_currencyitems extends Array<data_thai_currencyitems_Item> {}
-    
+
     export type data_thai_delvebiomes = any[];
-    
+
     interface data_thai_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_thai_delvecraftingmodifierdescriptions extends Array<data_thai_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_thai_delvecraftingmodifierdescriptions
+      extends Array<data_thai_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_thai_delvecraftingtags_Item {
       TagsKey?: data_thai_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -30338,7 +31264,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_delvecraftingtags extends Array<data_thai_delvecraftingtags_Item> {}
-    
+
     interface data_thai_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -30356,7 +31282,7 @@ declare namespace Poe2DataMain {
       Unk013?: number[];
     }
     export interface data_thai_delvefeatures extends Array<data_thai_delvefeatures_Item> {}
-    
+
     interface data_thai_dronetypes_Item {
       Id?: string;
       Unk001?: data_thai_dronetypes_Item_Unk001;
@@ -30380,13 +31306,13 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_dronetypes extends Array<data_thai_dronetypes_Item> {}
-    
+
     export type data_thai_endgamemapcontent = any[];
-    
+
     export type data_thai_endgamemaps = any[];
-    
+
     export type data_thai_expeditiondeals = any[];
-    
+
     interface data_thai_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -30419,8 +31345,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_expeditionfactions extends Array<data_thai_expeditionfactions_Item> {}
-    
+    export interface data_thai_expeditionfactions
+      extends Array<data_thai_expeditionfactions_Item> {}
+
     interface data_thai_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -30434,14 +31361,14 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_expeditionrelics extends Array<data_thai_expeditionrelics_Item> {}
-    
+
     interface data_thai_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
     export interface data_thai_flavourtext extends Array<data_thai_flavourtext_Item> {}
-    
+
     interface data_thai_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -30459,8 +31386,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_thai_fragmentstashtablayout extends Array<data_thai_fragmentstashtablayout_Item> {}
-    
+    export interface data_thai_fragmentstashtablayout
+      extends Array<data_thai_fragmentstashtablayout_Item> {}
+
     interface data_thai_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -30469,9 +31397,9 @@ declare namespace Poe2DataMain {
       Unk004?: string;
     }
     export interface data_thai_gamepadbutton extends Array<data_thai_gamepadbutton_Item> {}
-    
+
     export type data_thai_gamepadbuttonbindaction = any[];
-    
+
     interface data_thai_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -30502,9 +31430,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_gemeffects extends Array<data_thai_gemeffects_Item> {}
-    
+
     export type data_thai_gemtags = any[];
-    
+
     interface data_thai_genericleaguerewardtypevisuals_Item {
       Type?: data_thai_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_thai_genericleaguerewardtypevisuals_Item_Unk001;
@@ -30525,10 +31453,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_thai_genericleaguerewardtypevisuals extends Array<data_thai_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_thai_genericleaguerewardtypevisuals
+      extends Array<data_thai_genericleaguerewardtypevisuals_Item> {}
+
     export type data_thai_grantedeffectlabels = any[];
-    
+
     interface data_thai_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_thai_harvestcraftfilters_Item_BaseItem;
@@ -30538,8 +31467,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_harvestcraftfilters extends Array<data_thai_harvestcraftfilters_Item> {}
-    
+    export interface data_thai_harvestcraftfilters
+      extends Array<data_thai_harvestcraftfilters_Item> {}
+
     interface data_thai_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -30561,10 +31491,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_thai_harvestcraftoptions extends Array<data_thai_harvestcraftoptions_Item> {}
-    
+    export interface data_thai_harvestcraftoptions
+      extends Array<data_thai_harvestcraftoptions_Item> {}
+
     export type data_thai_heistchestrewardtypes = any[];
-    
+
     interface data_thai_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -30602,7 +31533,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_heistjobs extends Array<data_thai_heistjobs_Item> {}
-    
+
     interface data_thai_heistobjectives_Item {
       BaseItemType?: data_thai_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -30613,16 +31544,17 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_heistobjectives extends Array<data_thai_heistobjectives_Item> {}
-    
+
     interface data_thai_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_thai_heistobjectivevaluedescriptions extends Array<data_thai_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_thai_heistobjectivevaluedescriptions
+      extends Array<data_thai_heistobjectivevaluedescriptions_Item> {}
+
     export type data_thai_heistquestcontracts = any[];
-    
+
     interface data_thai_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -30637,13 +31569,14 @@ declare namespace Poe2DataMain {
       Quest?: any;
     }
     export interface data_thai_hellscapepassives extends Array<data_thai_hellscapepassives_Item> {}
-    
+
     interface data_thai_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_thai_hideoutdoodadcategory extends Array<data_thai_hideoutdoodadcategory_Item> {}
-    
+    export interface data_thai_hideoutdoodadcategory
+      extends Array<data_thai_hideoutdoodadcategory_Item> {}
+
     interface data_thai_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
@@ -30651,9 +31584,9 @@ declare namespace Poe2DataMain {
       Name?: string;
     }
     export interface data_thai_hideoutdoodadtags extends Array<data_thai_hideoutdoodadtags_Item> {}
-    
+
     export type data_thai_hideouts = any[];
-    
+
     interface data_thai_incubators_Item {
       BaseItemTypesKey?: data_thai_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -30666,18 +31599,19 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_incubators extends Array<data_thai_incubators_Item> {}
-    
+
     export type data_thai_incursionrooms = any[];
-    
+
     export type data_thai_indexablesupportgems = any[];
-    
+
     interface data_thai_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_thai_itemclasscategories extends Array<data_thai_itemclasscategories_Item> {}
-    
+    export interface data_thai_itemclasscategories
+      extends Array<data_thai_itemclasscategories_Item> {}
+
     interface data_thai_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -30718,15 +31652,15 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_itemclasses extends Array<data_thai_itemclasses_Item> {}
-    
+
     export type data_thai_keywordpopups = any[];
-    
+
     export type data_thai_kioskmodecharactertutorials = any[];
-    
+
     export type data_thai_leagueinfo = any[];
-    
+
     export type data_thai_mapconnections = any[];
-    
+
     interface data_thai_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -30747,11 +31681,11 @@ declare namespace Poe2DataMain {
       Unk016?: string;
     }
     export interface data_thai_mappins extends Array<data_thai_mappins_Item> {}
-    
+
     export type data_thai_mapseries = any[];
-    
+
     export type data_thai_mapstashspecialtypeentries = any[];
-    
+
     interface data_thai_memorylinetype_Item {
       Id?: string;
       Unk001?: data_thai_memorylinetype_Item_Unk001;
@@ -30778,20 +31712,22 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_memorylinetype extends Array<data_thai_memorylinetype_Item> {}
-    
+
     interface data_thai_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_thai_microtransactioncategory extends Array<data_thai_microtransactioncategory_Item> {}
-    
+    export interface data_thai_microtransactioncategory
+      extends Array<data_thai_microtransactioncategory_Item> {}
+
     interface data_thai_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_thai_microtransactionskillgemeffectslottypes extends Array<data_thai_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_thai_microtransactionskillgemeffectslottypes
+      extends Array<data_thai_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_thai_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_thai_microtransactionslot_Item_Unk001;
@@ -30811,16 +31747,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_thai_microtransactionslot extends Array<data_thai_microtransactionslot_Item> {}
-    
+    export interface data_thai_microtransactionslot
+      extends Array<data_thai_microtransactionslot_Item> {}
+
     interface data_thai_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_thai_microtransactionslotadditionaldefaultoptions extends Array<data_thai_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_thai_microtransactionslotadditionaldefaultoptions
+      extends Array<data_thai_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_thai_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -30832,15 +31770,15 @@ declare namespace Poe2DataMain {
       Unk007?: number;
     }
     export interface data_thai_minimapicons extends Array<data_thai_minimapicons_Item> {}
-    
+
     export type data_thai_mobilecharactercreation = any[];
-    
+
     export type data_thai_mobileskillgemlayout = any[];
-    
+
     export type data_thai_mobileskillgemlayoutpages = any[];
-    
+
     export type data_thai_mobiletutorial = any[];
-    
+
     interface data_thai_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -30929,7 +31867,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_mods extends Array<data_thai_mods_Item> {}
-    
+
     interface data_thai_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_thai_monstervarieties_Item_MonsterTypesKey;
@@ -31065,16 +32003,17 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_monstervarieties extends Array<data_thai_monstervarieties_Item> {}
-    
+
     interface data_thai_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_thai_mousecursorsizesettings extends Array<data_thai_mousecursorsizesettings_Item> {}
-    
+    export interface data_thai_mousecursorsizesettings
+      extends Array<data_thai_mousecursorsizesettings_Item> {}
+
     export type data_thai_mtxtypes = any[];
-    
+
     interface data_thai_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -31088,7 +32027,7 @@ declare namespace Poe2DataMain {
       Unk009?: number;
     }
     export interface data_thai_music extends Array<data_thai_music_Item> {}
-    
+
     interface data_thai_musiccategories_Item {
       Id?: string;
       Name?: string;
@@ -31096,7 +32035,7 @@ declare namespace Poe2DataMain {
       Unk003?: boolean;
     }
     export interface data_thai_musiccategories extends Array<data_thai_musiccategories_Item> {}
-    
+
     interface data_thai_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -31108,9 +32047,9 @@ declare namespace Poe2DataMain {
       Unk007?: boolean;
     }
     export interface data_thai_notifications extends Array<data_thai_notifications_Item> {}
-    
+
     export type data_thai_npcmaster = any[];
-    
+
     interface data_thai_npcs_Item {
       Id?: string;
       Name?: string;
@@ -31131,7 +32070,7 @@ declare namespace Poe2DataMain {
       Unk016?: boolean;
     }
     export interface data_thai_npcs extends Array<data_thai_npcs_Item> {}
-    
+
     interface data_thai_npctalk_Item {
       NPCKey?: data_thai_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -31201,7 +32140,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_npctalk extends Array<data_thai_npctalk_Item> {}
-    
+
     interface data_thai_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -31222,19 +32161,20 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_npctextaudio extends Array<data_thai_npctextaudio_Item> {}
-    
+
     export type data_thai_pantheonpanellayout = any[];
-    
+
     export type data_thai_pantheonsouls = any[];
-    
+
     interface data_thai_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_thai_passiveoverridelimits extends Array<data_thai_passiveoverridelimits_Item> {}
-    
+    export interface data_thai_passiveoverridelimits
+      extends Array<data_thai_passiveoverridelimits_Item> {}
+
     export type data_thai_passiveskilloverrides = any[];
-    
+
     interface data_thai_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -31292,23 +32232,25 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_passiveskills extends Array<data_thai_passiveskills_Item> {}
-    
+
     interface data_thai_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_thai_passiveskillstatcategories extends Array<data_thai_passiveskillstatcategories_Item> {}
-    
+    export interface data_thai_passiveskillstatcategories
+      extends Array<data_thai_passiveskillstatcategories_Item> {}
+
     export type data_thai_passiveskilltreetutorial = any[];
-    
+
     interface data_thai_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_thai_playertradewhisperformats extends Array<data_thai_playertradewhisperformats_Item> {}
-    
+    export interface data_thai_playertradewhisperformats
+      extends Array<data_thai_playertradewhisperformats_Item> {}
+
     interface data_thai_quest_Item {
       Id?: string;
       Act?: number;
@@ -31332,7 +32274,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_quest extends Array<data_thai_quest_Item> {}
-    
+
     interface data_thai_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -31345,7 +32287,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_questrewardtype extends Array<data_thai_questrewardtype_Item> {}
-    
+
     interface data_thai_queststates_Item {
       Quest?: data_thai_queststates_Item_Quest;
       Order?: number;
@@ -31361,7 +32303,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_queststates extends Array<data_thai_queststates_Item> {}
-    
+
     interface data_thai_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -31372,9 +32314,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_questtrackergroup extends Array<data_thai_questtrackergroup_Item> {}
-    
+
     export type data_thai_races = any[];
-    
+
     interface data_thai_realms_Item {
       Id?: string;
       Name?: string;
@@ -31393,7 +32335,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_realms extends Array<data_thai_realms_Item> {}
-    
+
     interface data_thai_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -31402,25 +32344,27 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_thai_recipeunlockdisplay extends Array<data_thai_recipeunlockdisplay_Item> {}
-    
+    export interface data_thai_recipeunlockdisplay
+      extends Array<data_thai_recipeunlockdisplay_Item> {}
+
     interface data_thai_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_thai_relicinventorylayout extends Array<data_thai_relicinventorylayout_Item> {}
-    
+    export interface data_thai_relicinventorylayout
+      extends Array<data_thai_relicinventorylayout_Item> {}
+
     export type data_thai_relicitemeffectvariations = any[];
-    
+
     interface data_thai_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
     export interface data_thai_remindertext extends Array<data_thai_remindertext_Item> {}
-    
+
     interface data_thai_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_thai_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -31463,7 +32407,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_ritualrunetypes extends Array<data_thai_ritualrunetypes_Item> {}
-    
+
     interface data_thai_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_thai_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_thai_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -31482,8 +32426,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_safehousebyocrafting extends Array<data_thai_safehousebyocrafting_Item> {}
-    
+    export interface data_thai_safehousebyocrafting
+      extends Array<data_thai_safehousebyocrafting_Item> {}
+
     interface data_thai_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -31493,8 +32438,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_thai_safehousecraftingspreetype extends Array<data_thai_safehousecraftingspreetype_Item> {}
-    
+    export interface data_thai_safehousecraftingspreetype
+      extends Array<data_thai_safehousecraftingspreetype_Item> {}
+
     interface data_thai_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_thai_sanctumdefenceicons_Item_Stat;
@@ -31507,8 +32453,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_sanctumdefenceicons extends Array<data_thai_sanctumdefenceicons_Item> {}
-    
+    export interface data_thai_sanctumdefenceicons
+      extends Array<data_thai_sanctumdefenceicons_Item> {}
+
     interface data_thai_sanctumfloors_Item {
       Id?: string;
       Area?: data_thai_sanctumfloors_Item_Area;
@@ -31536,7 +32483,7 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_sanctumfloors extends Array<data_thai_sanctumfloors_Item> {}
-    
+
     interface data_thai_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -31548,8 +32495,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_thai_sanctumpersistenteffectcategories extends Array<data_thai_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_thai_sanctumpersistenteffectcategories
+      extends Array<data_thai_sanctumpersistenteffectcategories_Item> {}
+
     interface data_thai_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -31579,8 +32527,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_sanctumpersistenteffects extends Array<data_thai_sanctumpersistenteffects_Item> {}
-    
+    export interface data_thai_sanctumpersistenteffects
+      extends Array<data_thai_sanctumpersistenteffects_Item> {}
+
     interface data_thai_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -31605,9 +32554,9 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_sanctumroomtypes extends Array<data_thai_sanctumroomtypes_Item> {}
-    
+
     export type data_thai_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_thai_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -31626,7 +32575,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_sentinelpassives extends Array<data_thai_sentinelpassives_Item> {}
-    
+
     interface data_thai_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -31635,7 +32584,7 @@ declare namespace Poe2DataMain {
       SkillGem?: any[];
     }
     export interface data_thai_shoptag extends Array<data_thai_shoptag_Item> {}
-    
+
     interface data_thai_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -31681,9 +32630,9 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_shrines extends Array<data_thai_shrines_Item> {}
-    
+
     export type data_thai_skillcraftingdata = any[];
-    
+
     interface data_thai_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -31697,7 +32646,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_skillgeminfo extends Array<data_thai_skillgeminfo_Item> {}
-    
+
     interface data_thai_skillgems_Item {
       BaseItemTypesKey?: data_thai_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -31728,7 +32677,7 @@ declare namespace Poe2DataMain {
       RowIndex?: number;
     }
     export interface data_thai_skillgems extends Array<data_thai_skillgems_Item> {}
-    
+
     interface data_thai_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -31737,14 +32686,15 @@ declare namespace Poe2DataMain {
       GreenSocketImage?: string;
     }
     export interface data_thai_socketnotches extends Array<data_thai_socketnotches_Item> {}
-    
+
     interface data_thai_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_thai_stashtabaffinities extends Array<data_thai_stashtabaffinities_Item> {}
-    
+    export interface data_thai_stashtabaffinities
+      extends Array<data_thai_stashtabaffinities_Item> {}
+
     interface data_thai_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -31755,7 +32705,7 @@ declare namespace Poe2DataMain {
       Icon?: any;
     }
     export interface data_thai_stashtype extends Array<data_thai_stashtype_Item> {}
-    
+
     interface data_thai_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -31782,23 +32732,23 @@ declare namespace Poe2DataMain {
       Id?: string;
     }
     export interface data_thai_stats extends Array<data_thai_stats_Item> {}
-    
+
     interface data_thai_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
     export interface data_thai_tags extends Array<data_thai_tags_Item> {}
-    
+
     export type data_thai_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_thai_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
     export interface data_thai_tips extends Array<data_thai_tips_Item> {}
-    
+
     interface data_thai_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -31812,16 +32762,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_thai_trademarketcategory extends Array<data_thai_trademarketcategory_Item> {}
-    
+    export interface data_thai_trademarketcategory
+      extends Array<data_thai_trademarketcategory_Item> {}
+
     interface data_thai_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_thai_trademarketcategorygroups extends Array<data_thai_trademarketcategorygroups_Item> {}
-    
+    export interface data_thai_trademarketcategorygroups
+      extends Array<data_thai_trademarketcategorygroups_Item> {}
+
     export type data_thai_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_thai_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -31831,15 +32783,15 @@ declare namespace Poe2DataMain {
       NPCTextAudio?: any;
     }
     export interface data_thai_uitalktext extends Array<data_thai_uitalktext_Item> {}
-    
+
     export type data_thai_ultimatumencountertypes = any[];
-    
+
     export type data_thai_ultimatummodifiers = any[];
-    
+
     export type data_thai_ultimatumwagertypes = any[];
-    
+
     export type data_thai_uniquemaps = any[];
-    
+
     interface data_thai_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -31854,9 +32806,9 @@ declare namespace Poe2DataMain {
       IsDisabled?: boolean;
     }
     export interface data_thai_uniquestashtypes extends Array<data_thai_uniquestashtypes_Item> {}
-    
+
     export type data_thai_warbandspackmonsters = any[];
-    
+
     interface data_thai_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -31869,7 +32821,7 @@ declare namespace Poe2DataMain {
       Unk008?: number;
     }
     export interface data_thai_windowcursors extends Array<data_thai_windowcursors_Item> {}
-    
+
     interface data_thai_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -31880,7 +32832,7 @@ declare namespace Poe2DataMain {
       Inflection?: string;
     }
     export interface data_thai_words extends Array<data_thai_words_Item> {}
-    
+
     interface data_thai_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -31897,9 +32849,9 @@ declare namespace Poe2DataMain {
       SomehowConnectedAreasMaybe?: any[];
     }
     export interface data_thai_worldareas extends Array<data_thai_worldareas_Item> {}
-    
+
     export type data_thai_worldmaplegends = any[];
-    
+
     interface data_thai_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -31911,8 +32863,9 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_thai_worldpopupicontypes extends Array<data_thai_worldpopupicontypes_Item> {}
-    
+    export interface data_thai_worldpopupicontypes
+      extends Array<data_thai_worldpopupicontypes_Item> {}
+
     interface data_traditional_chinese_achievementitemrewards_Item {
       AchievementItemsKey?: data_traditional_chinese_achievementitemrewards_Item_AchievementItemsKey;
       BaseItemTypesKey?: data_traditional_chinese_achievementitemrewards_Item_BaseItemTypesKey;
@@ -31927,8 +32880,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_achievementitemrewards extends Array<data_traditional_chinese_achievementitemrewards_Item> {}
-    
+    export interface data_traditional_chinese_achievementitemrewards
+      extends Array<data_traditional_chinese_achievementitemrewards_Item> {}
+
     interface data_traditional_chinese_achievementitems_Item {
       Id?: string;
       Unk001?: number;
@@ -31945,8 +32899,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_achievementitems extends Array<data_traditional_chinese_achievementitems_Item> {}
-    
+    export interface data_traditional_chinese_achievementitems
+      extends Array<data_traditional_chinese_achievementitems_Item> {}
+
     interface data_traditional_chinese_achievements_Item {
       Id?: string;
       Description?: string;
@@ -31967,8 +32922,9 @@ declare namespace Poe2DataMain {
       Unk016?: string;
       Unk017?: string;
     }
-    export interface data_traditional_chinese_achievements extends Array<data_traditional_chinese_achievements_Item> {}
-    
+    export interface data_traditional_chinese_achievements
+      extends Array<data_traditional_chinese_achievements_Item> {}
+
     interface data_traditional_chinese_achievementsetrewards_Item {
       SetId?: number;
       AchievementsRequired?: number;
@@ -31979,14 +32935,16 @@ declare namespace Poe2DataMain {
       HideoutName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_achievementsetrewards extends Array<data_traditional_chinese_achievementsetrewards_Item> {}
-    
+    export interface data_traditional_chinese_achievementsetrewards
+      extends Array<data_traditional_chinese_achievementsetrewards_Item> {}
+
     interface data_traditional_chinese_achievementsetsdisplay_Item {
       Id?: number;
       Title?: string;
     }
-    export interface data_traditional_chinese_achievementsetsdisplay extends Array<data_traditional_chinese_achievementsetsdisplay_Item> {}
-    
+    export interface data_traditional_chinese_achievementsetsdisplay
+      extends Array<data_traditional_chinese_achievementsetsdisplay_Item> {}
+
     interface data_traditional_chinese_activeskills_Item {
       Id?: string;
       DisplayedName?: string;
@@ -32036,8 +32994,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_activeskills extends Array<data_traditional_chinese_activeskills_Item> {}
-    
+    export interface data_traditional_chinese_activeskills
+      extends Array<data_traditional_chinese_activeskills_Item> {}
+
     interface data_traditional_chinese_acts_Item {
       Id?: string;
       Part?: number;
@@ -32051,12 +33010,13 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Unk010?: any[];
     }
-    export interface data_traditional_chinese_acts extends Array<data_traditional_chinese_acts_Item> {}
-    
+    export interface data_traditional_chinese_acts
+      extends Array<data_traditional_chinese_acts_Item> {}
+
     export type data_traditional_chinese_advancedcraftingbenchcustomtags = any[];
-    
+
     export type data_traditional_chinese_advancedcraftingbenchtabfiltertypes = any[];
-    
+
     interface data_traditional_chinese_advancedskillstutorial_Item {
       Id?: string;
       SkillGemInfoKey1?: any[];
@@ -32067,15 +33027,17 @@ declare namespace Poe2DataMain {
       China_BK2File?: string;
       CharactersKey?: any[];
     }
-    export interface data_traditional_chinese_advancedskillstutorial extends Array<data_traditional_chinese_advancedskillstutorial_Item> {}
-    
+    export interface data_traditional_chinese_advancedskillstutorial
+      extends Array<data_traditional_chinese_advancedskillstutorial_Item> {}
+
     interface data_traditional_chinese_afflictionrewardtypevisuals_Item {
       AfflictionRewardTypes?: number;
       Id?: string;
       Name?: string;
     }
-    export interface data_traditional_chinese_afflictionrewardtypevisuals extends Array<data_traditional_chinese_afflictionrewardtypevisuals_Item> {}
-    
+    export interface data_traditional_chinese_afflictionrewardtypevisuals
+      extends Array<data_traditional_chinese_afflictionrewardtypevisuals_Item> {}
+
     interface data_traditional_chinese_alternatepassiveskills_Item {
       Id?: string;
       AlternateTreeVersionsKey?: data_traditional_chinese_alternatepassiveskills_Item_AlternateTreeVersionsKey;
@@ -32108,10 +33070,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_alternatepassiveskills extends Array<data_traditional_chinese_alternatepassiveskills_Item> {}
-    
+    export interface data_traditional_chinese_alternatepassiveskills
+      extends Array<data_traditional_chinese_alternatepassiveskills_Item> {}
+
     export type data_traditional_chinese_alternatequalitytypes = any[];
-    
+
     interface data_traditional_chinese_archetypes_Item {
       Id?: string;
       CharactersKey?: any;
@@ -32130,8 +33093,9 @@ declare namespace Poe2DataMain {
       Unk014?: boolean;
       Unk015?: boolean;
     }
-    export interface data_traditional_chinese_archetypes extends Array<data_traditional_chinese_archetypes_Item> {}
-    
+    export interface data_traditional_chinese_archetypes
+      extends Array<data_traditional_chinese_archetypes_Item> {}
+
     interface data_traditional_chinese_archnemesismetarewards_Item {
       Id?: string;
       RewardText?: string;
@@ -32140,8 +33104,9 @@ declare namespace Poe2DataMain {
       MinLevel?: number;
       MaxLevel?: number;
     }
-    export interface data_traditional_chinese_archnemesismetarewards extends Array<data_traditional_chinese_archnemesismetarewards_Item> {}
-    
+    export interface data_traditional_chinese_archnemesismetarewards
+      extends Array<data_traditional_chinese_archnemesismetarewards_Item> {}
+
     interface data_traditional_chinese_archnemesismods_Item {
       Mod?: data_traditional_chinese_archnemesismods_Item_Mod;
       Name?: string;
@@ -32154,8 +33119,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_archnemesismods extends Array<data_traditional_chinese_archnemesismods_Item> {}
-    
+    export interface data_traditional_chinese_archnemesismods
+      extends Array<data_traditional_chinese_archnemesismods_Item> {}
+
     interface data_traditional_chinese_ascendancy_Item {
       Id?: string;
       ClassNo?: number;
@@ -32172,15 +33138,17 @@ declare namespace Poe2DataMain {
       Unk012?: number;
       Unk013?: boolean;
     }
-    export interface data_traditional_chinese_ascendancy extends Array<data_traditional_chinese_ascendancy_Item> {}
-    
+    export interface data_traditional_chinese_ascendancy
+      extends Array<data_traditional_chinese_ascendancy_Item> {}
+
     interface data_traditional_chinese_atlasfavouredmapslots_Item {
       Unk000?: number;
       Unk001?: number;
       Requirement?: string;
     }
-    export interface data_traditional_chinese_atlasfavouredmapslots extends Array<data_traditional_chinese_atlasfavouredmapslots_Item> {}
-    
+    export interface data_traditional_chinese_atlasfavouredmapslots
+      extends Array<data_traditional_chinese_atlasfavouredmapslots_Item> {}
+
     interface data_traditional_chinese_atlasprimordialaltarchoicetypes_Item {
       Id?: string;
       TopIconEater?: string;
@@ -32189,8 +33157,9 @@ declare namespace Poe2DataMain {
       BottomIconExarch?: string;
       Text?: string;
     }
-    export interface data_traditional_chinese_atlasprimordialaltarchoicetypes extends Array<data_traditional_chinese_atlasprimordialaltarchoicetypes_Item> {}
-    
+    export interface data_traditional_chinese_atlasprimordialaltarchoicetypes
+      extends Array<data_traditional_chinese_atlasprimordialaltarchoicetypes_Item> {}
+
     interface data_traditional_chinese_atlasprimordialbossoptions_Item {
       Unk000?: number;
       Unk001?: number;
@@ -32213,8 +33182,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_atlasprimordialbossoptions extends Array<data_traditional_chinese_atlasprimordialbossoptions_Item> {}
-    
+    export interface data_traditional_chinese_atlasprimordialbossoptions
+      extends Array<data_traditional_chinese_atlasprimordialbossoptions_Item> {}
+
     interface data_traditional_chinese_atlasupgradesinventorylayout_Item {
       Id?: string;
       Unk001?: number;
@@ -32236,16 +33206,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_atlasupgradesinventorylayout extends Array<data_traditional_chinese_atlasupgradesinventorylayout_Item> {}
-    
+    export interface data_traditional_chinese_atlasupgradesinventorylayout
+      extends Array<data_traditional_chinese_atlasupgradesinventorylayout_Item> {}
+
     export type data_traditional_chinese_awarddisplay = any[];
-    
+
     interface data_traditional_chinese_backenderrors_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_traditional_chinese_backenderrors extends Array<data_traditional_chinese_backenderrors_Item> {}
-    
+    export interface data_traditional_chinese_backenderrors
+      extends Array<data_traditional_chinese_backenderrors_Item> {}
+
     interface data_traditional_chinese_baseitemtypes_Item {
       Id?: string;
       ItemClassesKey?: data_traditional_chinese_baseitemtypes_Item_ItemClassesKey;
@@ -32293,8 +33265,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_baseitemtypes extends Array<data_traditional_chinese_baseitemtypes_Item> {}
-    
+    export interface data_traditional_chinese_baseitemtypes
+      extends Array<data_traditional_chinese_baseitemtypes_Item> {}
+
     interface data_traditional_chinese_battlepasses_Item {
       Id?: string;
       LeagueCategory?: number;
@@ -32304,8 +33277,9 @@ declare namespace Poe2DataMain {
       Unk005?: boolean;
       Id2?: string;
     }
-    export interface data_traditional_chinese_battlepasses extends Array<data_traditional_chinese_battlepasses_Item> {}
-    
+    export interface data_traditional_chinese_battlepasses
+      extends Array<data_traditional_chinese_battlepasses_Item> {}
+
     interface data_traditional_chinese_battlepassrewards_Item {
       BattlePass?: data_traditional_chinese_battlepassrewards_Item_BattlePass;
       RewardTier?: number;
@@ -32339,14 +33313,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_battlepassrewards extends Array<data_traditional_chinese_battlepassrewards_Item> {}
-    
+    export interface data_traditional_chinese_battlepassrewards
+      extends Array<data_traditional_chinese_battlepassrewards_Item> {}
+
     interface data_traditional_chinese_battlepasstracks_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_traditional_chinese_battlepasstracks extends Array<data_traditional_chinese_battlepasstracks_Item> {}
-    
+    export interface data_traditional_chinese_battlepasstracks
+      extends Array<data_traditional_chinese_battlepasstracks_Item> {}
+
     interface data_traditional_chinese_bestiaryfamilies_Item {
       Id?: string;
       Name?: string;
@@ -32369,8 +33345,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_bestiaryfamilies extends Array<data_traditional_chinese_bestiaryfamilies_Item> {}
-    
+    export interface data_traditional_chinese_bestiaryfamilies
+      extends Array<data_traditional_chinese_bestiaryfamilies_Item> {}
+
     interface data_traditional_chinese_bestiarygenus_Item {
       Id?: string;
       Name?: string;
@@ -32382,8 +33359,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_bestiarygenus extends Array<data_traditional_chinese_bestiarygenus_Item> {}
-    
+    export interface data_traditional_chinese_bestiarygenus
+      extends Array<data_traditional_chinese_bestiarygenus_Item> {}
+
     interface data_traditional_chinese_bestiarygroups_Item {
       Id?: string;
       Description?: string;
@@ -32398,14 +33376,16 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_bestiarygroups extends Array<data_traditional_chinese_bestiarygroups_Item> {}
-    
+    export interface data_traditional_chinese_bestiarygroups
+      extends Array<data_traditional_chinese_bestiarygroups_Item> {}
+
     interface data_traditional_chinese_bestiaryrecipecategories_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_traditional_chinese_bestiaryrecipecategories extends Array<data_traditional_chinese_bestiaryrecipecategories_Item> {}
-    
+    export interface data_traditional_chinese_bestiaryrecipecategories
+      extends Array<data_traditional_chinese_bestiaryrecipecategories_Item> {}
+
     interface data_traditional_chinese_bestiaryrecipes_Item {
       Id?: string;
       Description?: string;
@@ -32424,16 +33404,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_bestiaryrecipes extends Array<data_traditional_chinese_bestiaryrecipes_Item> {}
-    
+    export interface data_traditional_chinese_bestiaryrecipes
+      extends Array<data_traditional_chinese_bestiaryrecipes_Item> {}
+
     interface data_traditional_chinese_betrayalchoices_Item {
       Id?: string;
       Text?: string;
       Unk002?: number;
       Achievements?: any[];
     }
-    export interface data_traditional_chinese_betrayalchoices extends Array<data_traditional_chinese_betrayalchoices_Item> {}
-    
+    export interface data_traditional_chinese_betrayalchoices
+      extends Array<data_traditional_chinese_betrayalchoices_Item> {}
+
     interface data_traditional_chinese_betrayaljobs_Item {
       Id?: string;
       Text?: string;
@@ -32446,22 +33428,25 @@ declare namespace Poe2DataMain {
       OpenChests_AchievementItemsKey?: any[];
       MissionCompletion_AcheivementItemsKey?: any[];
     }
-    export interface data_traditional_chinese_betrayaljobs extends Array<data_traditional_chinese_betrayaljobs_Item> {}
-    
+    export interface data_traditional_chinese_betrayaljobs
+      extends Array<data_traditional_chinese_betrayaljobs_Item> {}
+
     interface data_traditional_chinese_betrayalranks_Item {
       Id?: string;
       Text?: string;
       Level?: number;
       RankImage?: string;
     }
-    export interface data_traditional_chinese_betrayalranks extends Array<data_traditional_chinese_betrayalranks_Item> {}
-    
+    export interface data_traditional_chinese_betrayalranks
+      extends Array<data_traditional_chinese_betrayalranks_Item> {}
+
     interface data_traditional_chinese_betrayalrelationshipstate_Item {
       Id?: string;
       Text?: string;
     }
-    export interface data_traditional_chinese_betrayalrelationshipstate extends Array<data_traditional_chinese_betrayalrelationshipstate_Item> {}
-    
+    export interface data_traditional_chinese_betrayalrelationshipstate
+      extends Array<data_traditional_chinese_betrayalrelationshipstate_Item> {}
+
     interface data_traditional_chinese_betrayaltargets_Item {
       Id?: string;
       BetrayalRanksKey?: any;
@@ -32482,8 +33467,9 @@ declare namespace Poe2DataMain {
       Unk016?: any;
       ScriptArgument?: string;
     }
-    export interface data_traditional_chinese_betrayaltargets extends Array<data_traditional_chinese_betrayaltargets_Item> {}
-    
+    export interface data_traditional_chinese_betrayaltargets
+      extends Array<data_traditional_chinese_betrayaltargets_Item> {}
+
     interface data_traditional_chinese_betrayaltraitorrewards_Item {
       BetrayalJobsKey?: data_traditional_chinese_betrayaltraitorrewards_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_traditional_chinese_betrayaltraitorrewards_Item_BetrayalTargetsKey;
@@ -32503,8 +33489,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_betrayaltraitorrewards extends Array<data_traditional_chinese_betrayaltraitorrewards_Item> {}
-    
+    export interface data_traditional_chinese_betrayaltraitorrewards
+      extends Array<data_traditional_chinese_betrayaltraitorrewards_Item> {}
+
     interface data_traditional_chinese_betrayalupgrades_Item {
       Id?: string;
       Name?: string;
@@ -32519,15 +33506,17 @@ declare namespace Poe2DataMain {
       Unk010?: number;
       ItemClassesKey?: any;
     }
-    export interface data_traditional_chinese_betrayalupgrades extends Array<data_traditional_chinese_betrayalupgrades_Item> {}
-    
+    export interface data_traditional_chinese_betrayalupgrades
+      extends Array<data_traditional_chinese_betrayalupgrades_Item> {}
+
     interface data_traditional_chinese_bindablevirtualkeys_Item {
       KeyCode?: number;
       Name?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_bindablevirtualkeys extends Array<data_traditional_chinese_bindablevirtualkeys_Item> {}
-    
+    export interface data_traditional_chinese_bindablevirtualkeys
+      extends Array<data_traditional_chinese_bindablevirtualkeys_Item> {}
+
     interface data_traditional_chinese_blightcraftingitems_Item {
       Oil?: data_traditional_chinese_blightcraftingitems_Item_Oil;
       Tier?: number;
@@ -32539,8 +33528,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_blightcraftingitems extends Array<data_traditional_chinese_blightcraftingitems_Item> {}
-    
+    export interface data_traditional_chinese_blightcraftingitems
+      extends Array<data_traditional_chinese_blightcraftingitems_Item> {}
+
     interface data_traditional_chinese_blighttowers_Item {
       Id?: string;
       Name?: string;
@@ -32557,8 +33547,9 @@ declare namespace Poe2DataMain {
       StatsKeys2?: any[];
       Unk013?: boolean;
     }
-    export interface data_traditional_chinese_blighttowers extends Array<data_traditional_chinese_blighttowers_Item> {}
-    
+    export interface data_traditional_chinese_blighttowers
+      extends Array<data_traditional_chinese_blighttowers_Item> {}
+
     interface data_traditional_chinese_buffdefinitions_Item {
       Id?: string;
       Description?: string;
@@ -32616,8 +33607,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_buffdefinitions extends Array<data_traditional_chinese_buffdefinitions_Item> {}
-    
+    export interface data_traditional_chinese_buffdefinitions
+      extends Array<data_traditional_chinese_buffdefinitions_Item> {}
+
     interface data_traditional_chinese_buffvisuals_Item {
       Id?: string;
       BuffDDSFile?: string;
@@ -32639,8 +33631,9 @@ declare namespace Poe2DataMain {
       Unk017?: any;
       Unk018?: any;
     }
-    export interface data_traditional_chinese_buffvisuals extends Array<data_traditional_chinese_buffvisuals_Item> {}
-    
+    export interface data_traditional_chinese_buffvisuals
+      extends Array<data_traditional_chinese_buffvisuals_Item> {}
+
     interface data_traditional_chinese_charactercreationicons_Item {
       Id?: string;
       Type?: string;
@@ -32648,16 +33641,18 @@ declare namespace Poe2DataMain {
       Video?: string;
       Icon?: string;
     }
-    export interface data_traditional_chinese_charactercreationicons extends Array<data_traditional_chinese_charactercreationicons_Item> {}
-    
+    export interface data_traditional_chinese_charactercreationicons
+      extends Array<data_traditional_chinese_charactercreationicons_Item> {}
+
     interface data_traditional_chinese_characterpaneldescriptionmodes_Item {
       Id?: string;
       Unk001?: string;
       FormatString_Positive?: string;
       FormatString_Negative?: string;
     }
-    export interface data_traditional_chinese_characterpaneldescriptionmodes extends Array<data_traditional_chinese_characterpaneldescriptionmodes_Item> {}
-    
+    export interface data_traditional_chinese_characterpaneldescriptionmodes
+      extends Array<data_traditional_chinese_characterpaneldescriptionmodes_Item> {}
+
     interface data_traditional_chinese_characterpanelstats_Item {
       Id?: string;
       Text?: string;
@@ -32678,16 +33673,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_characterpanelstats extends Array<data_traditional_chinese_characterpanelstats_Item> {}
-    
+    export interface data_traditional_chinese_characterpanelstats
+      extends Array<data_traditional_chinese_characterpanelstats_Item> {}
+
     interface data_traditional_chinese_characterpaneltabs_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
       Unk003?: number;
     }
-    export interface data_traditional_chinese_characterpaneltabs extends Array<data_traditional_chinese_characterpaneltabs_Item> {}
-    
+    export interface data_traditional_chinese_characterpaneltabs
+      extends Array<data_traditional_chinese_characterpaneltabs_Item> {}
+
     interface data_traditional_chinese_characters_Item {
       Id?: string;
       Name?: string;
@@ -32812,8 +33809,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_characters extends Array<data_traditional_chinese_characters_Item> {}
-    
+    export interface data_traditional_chinese_characters
+      extends Array<data_traditional_chinese_characters_Item> {}
+
     interface data_traditional_chinese_characterstartstates_Item {
       Id?: string;
       Description?: string;
@@ -32839,8 +33837,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_characterstartstates extends Array<data_traditional_chinese_characterstartstates_Item> {}
-    
+    export interface data_traditional_chinese_characterstartstates
+      extends Array<data_traditional_chinese_characterstartstates_Item> {}
+
     interface data_traditional_chinese_charactertextaudio_Item {
       Id?: string;
       Text?: string;
@@ -32848,8 +33847,9 @@ declare namespace Poe2DataMain {
       ParrotSoundFile?: string;
       Unk004?: number;
     }
-    export interface data_traditional_chinese_charactertextaudio extends Array<data_traditional_chinese_charactertextaudio_Item> {}
-    
+    export interface data_traditional_chinese_charactertextaudio
+      extends Array<data_traditional_chinese_charactertextaudio_Item> {}
+
     interface data_traditional_chinese_chests_Item {
       Id?: string;
       Unk001?: boolean;
@@ -32896,8 +33896,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_chests extends Array<data_traditional_chinese_chests_Item> {}
-    
+    export interface data_traditional_chinese_chests
+      extends Array<data_traditional_chinese_chests_Item> {}
+
     interface data_traditional_chinese_clientstrings_Item {
       Id?: string;
       Text?: string;
@@ -32906,12 +33907,13 @@ declare namespace Poe2DataMain {
       HASH32?: number;
       PlaystationText?: string;
     }
-    export interface data_traditional_chinese_clientstrings extends Array<data_traditional_chinese_clientstrings_Item> {}
-    
+    export interface data_traditional_chinese_clientstrings
+      extends Array<data_traditional_chinese_clientstrings_Item> {}
+
     export type data_traditional_chinese_clientstrings2 = any[];
-    
+
     export type data_traditional_chinese_combatuiprompts = any[];
-    
+
     interface data_traditional_chinese_commands_Item {
       Id?: string;
       Command?: string;
@@ -32920,10 +33922,11 @@ declare namespace Poe2DataMain {
       Description?: string;
       Unk005?: boolean;
     }
-    export interface data_traditional_chinese_commands extends Array<data_traditional_chinese_commands_Item> {}
-    
+    export interface data_traditional_chinese_commands
+      extends Array<data_traditional_chinese_commands_Item> {}
+
     export type data_traditional_chinese_completionnotifications = any[];
-    
+
     interface data_traditional_chinese_costtypes_Item {
       Id?: string;
       StatsKey?: data_traditional_chinese_costtypes_Item_StatsKey;
@@ -32934,10 +33937,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_costtypes extends Array<data_traditional_chinese_costtypes_Item> {}
-    
+    export interface data_traditional_chinese_costtypes
+      extends Array<data_traditional_chinese_costtypes_Item> {}
+
     export type data_traditional_chinese_craftingbenchoptions = any[];
-    
+
     interface data_traditional_chinese_craftingbenchunlockcategories_Item {
       Id?: string;
       Unk001?: number;
@@ -32946,16 +33950,18 @@ declare namespace Poe2DataMain {
       CraftingItemClassCategories?: any[];
       ObtainingDescription?: string;
     }
-    export interface data_traditional_chinese_craftingbenchunlockcategories extends Array<data_traditional_chinese_craftingbenchunlockcategories_Item> {}
-    
+    export interface data_traditional_chinese_craftingbenchunlockcategories
+      extends Array<data_traditional_chinese_craftingbenchunlockcategories_Item> {}
+
     export type data_traditional_chinese_craftingitemclasscategories = any[];
-    
+
     interface data_traditional_chinese_currencyexchangecategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_traditional_chinese_currencyexchangecategories extends Array<data_traditional_chinese_currencyexchangecategories_Item> {}
-    
+    export interface data_traditional_chinese_currencyexchangecategories
+      extends Array<data_traditional_chinese_currencyexchangecategories_Item> {}
+
     interface data_traditional_chinese_currencyitems_Item {
       BaseItemTypesKey?: data_traditional_chinese_currencyitems_Item_BaseItemTypesKey;
       StackSize?: number;
@@ -32988,16 +33994,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_currencyitems extends Array<data_traditional_chinese_currencyitems_Item> {}
-    
+    export interface data_traditional_chinese_currencyitems
+      extends Array<data_traditional_chinese_currencyitems_Item> {}
+
     export type data_traditional_chinese_delvebiomes = any[];
-    
+
     interface data_traditional_chinese_delvecraftingmodifierdescriptions_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_traditional_chinese_delvecraftingmodifierdescriptions extends Array<data_traditional_chinese_delvecraftingmodifierdescriptions_Item> {}
-    
+    export interface data_traditional_chinese_delvecraftingmodifierdescriptions
+      extends Array<data_traditional_chinese_delvecraftingmodifierdescriptions_Item> {}
+
     interface data_traditional_chinese_delvecraftingtags_Item {
       TagsKey?: data_traditional_chinese_delvecraftingtags_Item_TagsKey;
       ItemClass?: string;
@@ -33006,8 +34014,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_delvecraftingtags extends Array<data_traditional_chinese_delvecraftingtags_Item> {}
-    
+    export interface data_traditional_chinese_delvecraftingtags
+      extends Array<data_traditional_chinese_delvecraftingtags_Item> {}
+
     interface data_traditional_chinese_delvefeatures_Item {
       Id?: string;
       Name?: string;
@@ -33024,8 +34033,9 @@ declare namespace Poe2DataMain {
       Unk012?: any[];
       Unk013?: number[];
     }
-    export interface data_traditional_chinese_delvefeatures extends Array<data_traditional_chinese_delvefeatures_Item> {}
-    
+    export interface data_traditional_chinese_delvefeatures
+      extends Array<data_traditional_chinese_delvefeatures_Item> {}
+
     interface data_traditional_chinese_dronetypes_Item {
       Id?: string;
       Unk001?: data_traditional_chinese_dronetypes_Item_Unk001;
@@ -33048,14 +34058,15 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_dronetypes extends Array<data_traditional_chinese_dronetypes_Item> {}
-    
+    export interface data_traditional_chinese_dronetypes
+      extends Array<data_traditional_chinese_dronetypes_Item> {}
+
     export type data_traditional_chinese_endgamemapcontent = any[];
-    
+
     export type data_traditional_chinese_endgamemaps = any[];
-    
+
     export type data_traditional_chinese_expeditiondeals = any[];
-    
+
     interface data_traditional_chinese_expeditionfactions_Item {
       Id?: string;
       Name?: string;
@@ -33088,8 +34099,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_expeditionfactions extends Array<data_traditional_chinese_expeditionfactions_Item> {}
-    
+    export interface data_traditional_chinese_expeditionfactions
+      extends Array<data_traditional_chinese_expeditionfactions_Item> {}
+
     interface data_traditional_chinese_expeditionrelics_Item {
       Id?: string;
       Name?: string;
@@ -33102,15 +34114,17 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_expeditionrelics extends Array<data_traditional_chinese_expeditionrelics_Item> {}
-    
+    export interface data_traditional_chinese_expeditionrelics
+      extends Array<data_traditional_chinese_expeditionrelics_Item> {}
+
     interface data_traditional_chinese_flavourtext_Item {
       Id?: string;
       Unk001?: number;
       Text?: string;
     }
-    export interface data_traditional_chinese_flavourtext extends Array<data_traditional_chinese_flavourtext_Item> {}
-    
+    export interface data_traditional_chinese_flavourtext
+      extends Array<data_traditional_chinese_flavourtext_Item> {}
+
     interface data_traditional_chinese_fragmentstashtablayout_Item {
       Id?: string;
       XOffset?: number;
@@ -33128,8 +34142,9 @@ declare namespace Poe2DataMain {
       Unk013?: string;
       Unk014?: number;
     }
-    export interface data_traditional_chinese_fragmentstashtablayout extends Array<data_traditional_chinese_fragmentstashtablayout_Item> {}
-    
+    export interface data_traditional_chinese_fragmentstashtablayout
+      extends Array<data_traditional_chinese_fragmentstashtablayout_Item> {}
+
     interface data_traditional_chinese_gamepadbutton_Item {
       Unk000?: string;
       Unk001?: string;
@@ -33137,10 +34152,11 @@ declare namespace Poe2DataMain {
       Unk003?: string;
       Unk004?: string;
     }
-    export interface data_traditional_chinese_gamepadbutton extends Array<data_traditional_chinese_gamepadbutton_Item> {}
-    
+    export interface data_traditional_chinese_gamepadbutton
+      extends Array<data_traditional_chinese_gamepadbutton_Item> {}
+
     export type data_traditional_chinese_gamepadbuttonbindaction = any[];
-    
+
     interface data_traditional_chinese_gemeffects_Item {
       Id?: string;
       Name?: string;
@@ -33170,10 +34186,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_gemeffects extends Array<data_traditional_chinese_gemeffects_Item> {}
-    
+    export interface data_traditional_chinese_gemeffects
+      extends Array<data_traditional_chinese_gemeffects_Item> {}
+
     export type data_traditional_chinese_gemtags = any[];
-    
+
     interface data_traditional_chinese_genericleaguerewardtypevisuals_Item {
       Type?: data_traditional_chinese_genericleaguerewardtypevisuals_Item_Type;
       Unk001?: data_traditional_chinese_genericleaguerewardtypevisuals_Item_Unk001;
@@ -33194,10 +34211,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_genericleaguerewardtypevisuals extends Array<data_traditional_chinese_genericleaguerewardtypevisuals_Item> {}
-    
+    export interface data_traditional_chinese_genericleaguerewardtypevisuals
+      extends Array<data_traditional_chinese_genericleaguerewardtypevisuals_Item> {}
+
     export type data_traditional_chinese_grantedeffectlabels = any[];
-    
+
     interface data_traditional_chinese_harvestcraftfilters_Item {
       Id?: string;
       BaseItem?: data_traditional_chinese_harvestcraftfilters_Item_BaseItem;
@@ -33207,8 +34225,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_harvestcraftfilters extends Array<data_traditional_chinese_harvestcraftfilters_Item> {}
-    
+    export interface data_traditional_chinese_harvestcraftfilters
+      extends Array<data_traditional_chinese_harvestcraftfilters_Item> {}
+
     interface data_traditional_chinese_harvestcraftoptions_Item {
       Id?: string;
       Text?: string;
@@ -33230,10 +34249,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_harvestcraftoptions extends Array<data_traditional_chinese_harvestcraftoptions_Item> {}
-    
+    export interface data_traditional_chinese_harvestcraftoptions
+      extends Array<data_traditional_chinese_harvestcraftoptions_Item> {}
+
     export type data_traditional_chinese_heistchestrewardtypes = any[];
-    
+
     interface data_traditional_chinese_heistjobs_Item {
       Id?: string;
       Name?: string;
@@ -33270,8 +34290,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_heistjobs extends Array<data_traditional_chinese_heistjobs_Item> {}
-    
+    export interface data_traditional_chinese_heistjobs
+      extends Array<data_traditional_chinese_heistjobs_Item> {}
+
     interface data_traditional_chinese_heistobjectives_Item {
       BaseItemType?: data_traditional_chinese_heistobjectives_Item_BaseItemType;
       Scaling?: number;
@@ -33281,17 +34302,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_heistobjectives extends Array<data_traditional_chinese_heistobjectives_Item> {}
-    
+    export interface data_traditional_chinese_heistobjectives
+      extends Array<data_traditional_chinese_heistobjectives_Item> {}
+
     interface data_traditional_chinese_heistobjectivevaluedescriptions_Item {
       Tier?: number;
       MarkersMultiply?: number;
       Description?: string;
     }
-    export interface data_traditional_chinese_heistobjectivevaluedescriptions extends Array<data_traditional_chinese_heistobjectivevaluedescriptions_Item> {}
-    
+    export interface data_traditional_chinese_heistobjectivevaluedescriptions
+      extends Array<data_traditional_chinese_heistobjectivevaluedescriptions_Item> {}
+
     export type data_traditional_chinese_heistquestcontracts = any[];
-    
+
     interface data_traditional_chinese_hellscapepassives_Item {
       Id?: string;
       Name?: string;
@@ -33305,24 +34328,27 @@ declare namespace Poe2DataMain {
       Unk009?: number;
       Quest?: any;
     }
-    export interface data_traditional_chinese_hellscapepassives extends Array<data_traditional_chinese_hellscapepassives_Item> {}
-    
+    export interface data_traditional_chinese_hellscapepassives
+      extends Array<data_traditional_chinese_hellscapepassives_Item> {}
+
     interface data_traditional_chinese_hideoutdoodadcategory_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_traditional_chinese_hideoutdoodadcategory extends Array<data_traditional_chinese_hideoutdoodadcategory_Item> {}
-    
+    export interface data_traditional_chinese_hideoutdoodadcategory
+      extends Array<data_traditional_chinese_hideoutdoodadcategory_Item> {}
+
     interface data_traditional_chinese_hideoutdoodadtags_Item {
       Id?: string;
       Unk001?: number[];
       Unk002?: number[];
       Name?: string;
     }
-    export interface data_traditional_chinese_hideoutdoodadtags extends Array<data_traditional_chinese_hideoutdoodadtags_Item> {}
-    
+    export interface data_traditional_chinese_hideoutdoodadtags
+      extends Array<data_traditional_chinese_hideoutdoodadtags_Item> {}
+
     export type data_traditional_chinese_hideouts = any[];
-    
+
     interface data_traditional_chinese_incubators_Item {
       BaseItemTypesKey?: data_traditional_chinese_incubators_Item_BaseItemTypesKey;
       Unk001?: number;
@@ -33334,19 +34360,21 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_incubators extends Array<data_traditional_chinese_incubators_Item> {}
-    
+    export interface data_traditional_chinese_incubators
+      extends Array<data_traditional_chinese_incubators_Item> {}
+
     export type data_traditional_chinese_incursionrooms = any[];
-    
+
     export type data_traditional_chinese_indexablesupportgems = any[];
-    
+
     interface data_traditional_chinese_itemclasscategories_Item {
       Id?: string;
       Text?: string;
       Unk002?: any;
     }
-    export interface data_traditional_chinese_itemclasscategories extends Array<data_traditional_chinese_itemclasscategories_Item> {}
-    
+    export interface data_traditional_chinese_itemclasscategories
+      extends Array<data_traditional_chinese_itemclasscategories_Item> {}
+
     interface data_traditional_chinese_itemclasses_Item {
       Id?: string;
       Name?: string;
@@ -33386,16 +34414,17 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_itemclasses extends Array<data_traditional_chinese_itemclasses_Item> {}
-    
+    export interface data_traditional_chinese_itemclasses
+      extends Array<data_traditional_chinese_itemclasses_Item> {}
+
     export type data_traditional_chinese_keywordpopups = any[];
-    
+
     export type data_traditional_chinese_kioskmodecharactertutorials = any[];
-    
+
     export type data_traditional_chinese_leagueinfo = any[];
-    
+
     export type data_traditional_chinese_mapconnections = any[];
-    
+
     interface data_traditional_chinese_mappins_Item {
       Id?: string;
       Unk001?: number;
@@ -33415,12 +34444,13 @@ declare namespace Poe2DataMain {
       Unk015?: any;
       Unk016?: string;
     }
-    export interface data_traditional_chinese_mappins extends Array<data_traditional_chinese_mappins_Item> {}
-    
+    export interface data_traditional_chinese_mappins
+      extends Array<data_traditional_chinese_mappins_Item> {}
+
     export type data_traditional_chinese_mapseries = any[];
-    
+
     export type data_traditional_chinese_mapstashspecialtypeentries = any[];
-    
+
     interface data_traditional_chinese_memorylinetype_Item {
       Id?: string;
       Unk001?: data_traditional_chinese_memorylinetype_Item_Unk001;
@@ -33446,21 +34476,24 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_memorylinetype extends Array<data_traditional_chinese_memorylinetype_Item> {}
-    
+    export interface data_traditional_chinese_memorylinetype
+      extends Array<data_traditional_chinese_memorylinetype_Item> {}
+
     interface data_traditional_chinese_microtransactioncategory_Item {
       Id?: number;
       Name?: string;
     }
-    export interface data_traditional_chinese_microtransactioncategory extends Array<data_traditional_chinese_microtransactioncategory_Item> {}
-    
+    export interface data_traditional_chinese_microtransactioncategory
+      extends Array<data_traditional_chinese_microtransactioncategory_Item> {}
+
     interface data_traditional_chinese_microtransactionskillgemeffectslottypes_Item {
       Id?: string;
       Type?: string;
       Unk002?: number;
     }
-    export interface data_traditional_chinese_microtransactionskillgemeffectslottypes extends Array<data_traditional_chinese_microtransactionskillgemeffectslottypes_Item> {}
-    
+    export interface data_traditional_chinese_microtransactionskillgemeffectslottypes
+      extends Array<data_traditional_chinese_microtransactionskillgemeffectslottypes_Item> {}
+
     interface data_traditional_chinese_microtransactionslot_Item {
       Id?: number;
       Unk001?: data_traditional_chinese_microtransactionslot_Item_Unk001;
@@ -33480,16 +34513,18 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_microtransactionslot extends Array<data_traditional_chinese_microtransactionslot_Item> {}
-    
+    export interface data_traditional_chinese_microtransactionslot
+      extends Array<data_traditional_chinese_microtransactionslot_Item> {}
+
     interface data_traditional_chinese_microtransactionslotadditionaldefaultoptions_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: string;
       Unk003?: string;
     }
-    export interface data_traditional_chinese_microtransactionslotadditionaldefaultoptions extends Array<data_traditional_chinese_microtransactionslotadditionaldefaultoptions_Item> {}
-    
+    export interface data_traditional_chinese_microtransactionslotadditionaldefaultoptions
+      extends Array<data_traditional_chinese_microtransactionslotadditionaldefaultoptions_Item> {}
+
     interface data_traditional_chinese_minimapicons_Item {
       Id?: string;
       MinimapIconRadius?: number;
@@ -33500,16 +34535,17 @@ declare namespace Poe2DataMain {
       MinimapIconPointerMaxDistance?: number;
       Unk007?: number;
     }
-    export interface data_traditional_chinese_minimapicons extends Array<data_traditional_chinese_minimapicons_Item> {}
-    
+    export interface data_traditional_chinese_minimapicons
+      extends Array<data_traditional_chinese_minimapicons_Item> {}
+
     export type data_traditional_chinese_mobilecharactercreation = any[];
-    
+
     export type data_traditional_chinese_mobileskillgemlayout = any[];
-    
+
     export type data_traditional_chinese_mobileskillgemlayoutpages = any[];
-    
+
     export type data_traditional_chinese_mobiletutorial = any[];
-    
+
     interface data_traditional_chinese_mods_Item {
       Id?: string;
       HASH16?: number;
@@ -33597,8 +34633,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_mods extends Array<data_traditional_chinese_mods_Item> {}
-    
+    export interface data_traditional_chinese_mods
+      extends Array<data_traditional_chinese_mods_Item> {}
+
     interface data_traditional_chinese_monstervarieties_Item {
       Id?: string;
       MonsterTypesKey?: data_traditional_chinese_monstervarieties_Item_MonsterTypesKey;
@@ -33733,17 +34770,19 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_monstervarieties extends Array<data_traditional_chinese_monstervarieties_Item> {}
-    
+    export interface data_traditional_chinese_monstervarieties
+      extends Array<data_traditional_chinese_monstervarieties_Item> {}
+
     interface data_traditional_chinese_mousecursorsizesettings_Item {
       Size?: string;
       Description?: string;
       Ratio?: number;
     }
-    export interface data_traditional_chinese_mousecursorsizesettings extends Array<data_traditional_chinese_mousecursorsizesettings_Item> {}
-    
+    export interface data_traditional_chinese_mousecursorsizesettings
+      extends Array<data_traditional_chinese_mousecursorsizesettings_Item> {}
+
     export type data_traditional_chinese_mtxtypes = any[];
-    
+
     interface data_traditional_chinese_music_Item {
       Id?: string;
       SoundFile?: string;
@@ -33756,16 +34795,18 @@ declare namespace Poe2DataMain {
       Unk008?: boolean;
       Unk009?: number;
     }
-    export interface data_traditional_chinese_music extends Array<data_traditional_chinese_music_Item> {}
-    
+    export interface data_traditional_chinese_music
+      extends Array<data_traditional_chinese_music_Item> {}
+
     interface data_traditional_chinese_musiccategories_Item {
       Id?: string;
       Name?: string;
       Order?: number;
       Unk003?: boolean;
     }
-    export interface data_traditional_chinese_musiccategories extends Array<data_traditional_chinese_musiccategories_Item> {}
-    
+    export interface data_traditional_chinese_musiccategories
+      extends Array<data_traditional_chinese_musiccategories_Item> {}
+
     interface data_traditional_chinese_notifications_Item {
       Id?: string;
       Unk001?: boolean;
@@ -33776,10 +34817,11 @@ declare namespace Poe2DataMain {
       Unk006?: boolean;
       Unk007?: boolean;
     }
-    export interface data_traditional_chinese_notifications extends Array<data_traditional_chinese_notifications_Item> {}
-    
+    export interface data_traditional_chinese_notifications
+      extends Array<data_traditional_chinese_notifications_Item> {}
+
     export type data_traditional_chinese_npcmaster = any[];
-    
+
     interface data_traditional_chinese_npcs_Item {
       Id?: string;
       Name?: string;
@@ -33799,8 +34841,9 @@ declare namespace Poe2DataMain {
       Gender?: any;
       Unk016?: boolean;
     }
-    export interface data_traditional_chinese_npcs extends Array<data_traditional_chinese_npcs_Item> {}
-    
+    export interface data_traditional_chinese_npcs
+      extends Array<data_traditional_chinese_npcs_Item> {}
+
     interface data_traditional_chinese_npctalk_Item {
       NPCKey?: data_traditional_chinese_npctalk_Item_NPCKey;
       Unk001?: number;
@@ -33869,8 +34912,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_npctalk extends Array<data_traditional_chinese_npctalk_Item> {}
-    
+    export interface data_traditional_chinese_npctalk
+      extends Array<data_traditional_chinese_npctalk_Item> {}
+
     interface data_traditional_chinese_npctextaudio_Item {
       Id?: string;
       Characters?: any[];
@@ -33890,20 +34934,22 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_npctextaudio extends Array<data_traditional_chinese_npctextaudio_Item> {}
-    
+    export interface data_traditional_chinese_npctextaudio
+      extends Array<data_traditional_chinese_npctextaudio_Item> {}
+
     export type data_traditional_chinese_pantheonpanellayout = any[];
-    
+
     export type data_traditional_chinese_pantheonsouls = any[];
-    
+
     interface data_traditional_chinese_passiveoverridelimits_Item {
       Id?: string;
       Description?: string;
     }
-    export interface data_traditional_chinese_passiveoverridelimits extends Array<data_traditional_chinese_passiveoverridelimits_Item> {}
-    
+    export interface data_traditional_chinese_passiveoverridelimits
+      extends Array<data_traditional_chinese_passiveoverridelimits_Item> {}
+
     export type data_traditional_chinese_passiveskilloverrides = any[];
-    
+
     interface data_traditional_chinese_passiveskills_Item {
       Id?: string;
       Icon_DDSFile?: string;
@@ -33960,24 +35006,27 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_passiveskills extends Array<data_traditional_chinese_passiveskills_Item> {}
-    
+    export interface data_traditional_chinese_passiveskills
+      extends Array<data_traditional_chinese_passiveskills_Item> {}
+
     interface data_traditional_chinese_passiveskillstatcategories_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_traditional_chinese_passiveskillstatcategories extends Array<data_traditional_chinese_passiveskillstatcategories_Item> {}
-    
+    export interface data_traditional_chinese_passiveskillstatcategories
+      extends Array<data_traditional_chinese_passiveskillstatcategories_Item> {}
+
     export type data_traditional_chinese_passiveskilltreetutorial = any[];
-    
+
     interface data_traditional_chinese_playertradewhisperformats_Item {
       Id?: string;
       Whisper?: string;
       InStash?: boolean;
       IsPriced?: boolean;
     }
-    export interface data_traditional_chinese_playertradewhisperformats extends Array<data_traditional_chinese_playertradewhisperformats_Item> {}
-    
+    export interface data_traditional_chinese_playertradewhisperformats
+      extends Array<data_traditional_chinese_playertradewhisperformats_Item> {}
+
     interface data_traditional_chinese_quest_Item {
       Id?: string;
       Act?: number;
@@ -34000,8 +35049,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_quest extends Array<data_traditional_chinese_quest_Item> {}
-    
+    export interface data_traditional_chinese_quest
+      extends Array<data_traditional_chinese_quest_Item> {}
+
     interface data_traditional_chinese_questrewardtype_Item {
       Id?: string;
       Icon?: string;
@@ -34013,8 +35063,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_questrewardtype extends Array<data_traditional_chinese_questrewardtype_Item> {}
-    
+    export interface data_traditional_chinese_questrewardtype
+      extends Array<data_traditional_chinese_questrewardtype_Item> {}
+
     interface data_traditional_chinese_queststates_Item {
       Quest?: data_traditional_chinese_queststates_Item_Quest;
       Order?: number;
@@ -34029,8 +35080,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_queststates extends Array<data_traditional_chinese_queststates_Item> {}
-    
+    export interface data_traditional_chinese_queststates
+      extends Array<data_traditional_chinese_queststates_Item> {}
+
     interface data_traditional_chinese_questtrackergroup_Item {
       Id?: string;
       Name?: string;
@@ -34040,10 +35092,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_questtrackergroup extends Array<data_traditional_chinese_questtrackergroup_Item> {}
-    
+    export interface data_traditional_chinese_questtrackergroup
+      extends Array<data_traditional_chinese_questtrackergroup_Item> {}
+
     export type data_traditional_chinese_races = any[];
-    
+
     interface data_traditional_chinese_realms_Item {
       Id?: string;
       Name?: string;
@@ -34061,8 +35114,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_realms extends Array<data_traditional_chinese_realms_Item> {}
-    
+    export interface data_traditional_chinese_realms
+      extends Array<data_traditional_chinese_realms_Item> {}
+
     interface data_traditional_chinese_recipeunlockdisplay_Item {
       RecipeId?: number;
       Description?: string;
@@ -34071,25 +35125,28 @@ declare namespace Poe2DataMain {
       Rank?: number;
       UnlockArea?: any;
     }
-    export interface data_traditional_chinese_recipeunlockdisplay extends Array<data_traditional_chinese_recipeunlockdisplay_Item> {}
-    
+    export interface data_traditional_chinese_recipeunlockdisplay
+      extends Array<data_traditional_chinese_recipeunlockdisplay_Item> {}
+
     interface data_traditional_chinese_relicinventorylayout_Item {
       Unk000?: number;
       Unk001?: number;
       Unk002?: number;
       Requirement?: string;
     }
-    export interface data_traditional_chinese_relicinventorylayout extends Array<data_traditional_chinese_relicinventorylayout_Item> {}
-    
+    export interface data_traditional_chinese_relicinventorylayout
+      extends Array<data_traditional_chinese_relicinventorylayout_Item> {}
+
     export type data_traditional_chinese_relicitemeffectvariations = any[];
-    
+
     interface data_traditional_chinese_remindertext_Item {
       Id?: string;
       Text?: string;
       TextHardmode?: string;
     }
-    export interface data_traditional_chinese_remindertext extends Array<data_traditional_chinese_remindertext_Item> {}
-    
+    export interface data_traditional_chinese_remindertext
+      extends Array<data_traditional_chinese_remindertext_Item> {}
+
     interface data_traditional_chinese_ritualrunetypes_Item {
       Id?: string;
       MiscAnimatedKey1?: data_traditional_chinese_ritualrunetypes_Item_MiscAnimatedKey1;
@@ -34131,8 +35188,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_ritualrunetypes extends Array<data_traditional_chinese_ritualrunetypes_Item> {}
-    
+    export interface data_traditional_chinese_ritualrunetypes
+      extends Array<data_traditional_chinese_ritualrunetypes_Item> {}
+
     interface data_traditional_chinese_safehousebyocrafting_Item {
       BetrayalJobsKey?: data_traditional_chinese_safehousebyocrafting_Item_BetrayalJobsKey;
       BetrayalTargetsKey?: data_traditional_chinese_safehousebyocrafting_Item_BetrayalTargetsKey;
@@ -34151,8 +35209,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_safehousebyocrafting extends Array<data_traditional_chinese_safehousebyocrafting_Item> {}
-    
+    export interface data_traditional_chinese_safehousebyocrafting
+      extends Array<data_traditional_chinese_safehousebyocrafting_Item> {}
+
     interface data_traditional_chinese_safehousecraftingspreetype_Item {
       Id?: string;
       Currencies?: any[];
@@ -34162,8 +35221,9 @@ declare namespace Poe2DataMain {
       ItemClassText?: string;
       Unk006?: number;
     }
-    export interface data_traditional_chinese_safehousecraftingspreetype extends Array<data_traditional_chinese_safehousecraftingspreetype_Item> {}
-    
+    export interface data_traditional_chinese_safehousecraftingspreetype
+      extends Array<data_traditional_chinese_safehousecraftingspreetype_Item> {}
+
     interface data_traditional_chinese_sanctumdefenceicons_Item {
       Id?: string;
       Stat?: data_traditional_chinese_sanctumdefenceicons_Item_Stat;
@@ -34176,8 +35236,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_sanctumdefenceicons extends Array<data_traditional_chinese_sanctumdefenceicons_Item> {}
-    
+    export interface data_traditional_chinese_sanctumdefenceicons
+      extends Array<data_traditional_chinese_sanctumdefenceicons_Item> {}
+
     interface data_traditional_chinese_sanctumfloors_Item {
       Id?: string;
       Area?: data_traditional_chinese_sanctumfloors_Item_Area;
@@ -34204,8 +35265,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_sanctumfloors extends Array<data_traditional_chinese_sanctumfloors_Item> {}
-    
+    export interface data_traditional_chinese_sanctumfloors
+      extends Array<data_traditional_chinese_sanctumfloors_Item> {}
+
     interface data_traditional_chinese_sanctumpersistenteffectcategories_Item {
       Id?: string;
       Frame?: string;
@@ -34217,8 +35279,9 @@ declare namespace Poe2DataMain {
       Name?: string;
       Deferral?: boolean;
     }
-    export interface data_traditional_chinese_sanctumpersistenteffectcategories extends Array<data_traditional_chinese_sanctumpersistenteffectcategories_Item> {}
-    
+    export interface data_traditional_chinese_sanctumpersistenteffectcategories
+      extends Array<data_traditional_chinese_sanctumpersistenteffectcategories_Item> {}
+
     interface data_traditional_chinese_sanctumpersistenteffects_Item {
       Id?: string;
       Stats?: any[];
@@ -34248,8 +35311,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_sanctumpersistenteffects extends Array<data_traditional_chinese_sanctumpersistenteffects_Item> {}
-    
+    export interface data_traditional_chinese_sanctumpersistenteffects
+      extends Array<data_traditional_chinese_sanctumpersistenteffects_Item> {}
+
     interface data_traditional_chinese_sanctumroomtypes_Item {
       Id?: string;
       Unk001?: boolean;
@@ -34273,10 +35337,11 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_sanctumroomtypes extends Array<data_traditional_chinese_sanctumroomtypes_Item> {}
-    
+    export interface data_traditional_chinese_sanctumroomtypes
+      extends Array<data_traditional_chinese_sanctumroomtypes_Item> {}
+
     export type data_traditional_chinese_sanctumselectiondisplayoverride = any[];
-    
+
     interface data_traditional_chinese_sentinelpassives_Item {
       Id?: string;
       HASH16?: number;
@@ -34294,8 +35359,9 @@ declare namespace Poe2DataMain {
       TableName?: any;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_sentinelpassives extends Array<data_traditional_chinese_sentinelpassives_Item> {}
-    
+    export interface data_traditional_chinese_sentinelpassives
+      extends Array<data_traditional_chinese_sentinelpassives_Item> {}
+
     interface data_traditional_chinese_shoptag_Item {
       Id?: string;
       Name?: string;
@@ -34303,8 +35369,9 @@ declare namespace Poe2DataMain {
       Category?: any;
       SkillGem?: any[];
     }
-    export interface data_traditional_chinese_shoptag extends Array<data_traditional_chinese_shoptag_Item> {}
-    
+    export interface data_traditional_chinese_shoptag
+      extends Array<data_traditional_chinese_shoptag_Item> {}
+
     interface data_traditional_chinese_shrines_Item {
       Id?: string;
       TimeoutInSeconds?: number;
@@ -34349,10 +35416,11 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_shrines extends Array<data_traditional_chinese_shrines_Item> {}
-    
+    export interface data_traditional_chinese_shrines
+      extends Array<data_traditional_chinese_shrines_Item> {}
+
     export type data_traditional_chinese_skillcraftingdata = any[];
-    
+
     interface data_traditional_chinese_skillgeminfo_Item {
       Id?: string;
       Description?: string;
@@ -34365,8 +35433,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_skillgeminfo extends Array<data_traditional_chinese_skillgeminfo_Item> {}
-    
+    export interface data_traditional_chinese_skillgeminfo
+      extends Array<data_traditional_chinese_skillgeminfo_Item> {}
+
     interface data_traditional_chinese_skillgems_Item {
       BaseItemTypesKey?: data_traditional_chinese_skillgems_Item_BaseItemTypesKey;
       StrengthRequirementPercent?: number;
@@ -34396,8 +35465,9 @@ declare namespace Poe2DataMain {
       TableName?: string;
       RowIndex?: number;
     }
-    export interface data_traditional_chinese_skillgems extends Array<data_traditional_chinese_skillgems_Item> {}
-    
+    export interface data_traditional_chinese_skillgems
+      extends Array<data_traditional_chinese_skillgems_Item> {}
+
     interface data_traditional_chinese_socketnotches_Item {
       Id?: string;
       Description?: string;
@@ -34405,15 +35475,17 @@ declare namespace Poe2DataMain {
       BlueSocketImage?: string;
       GreenSocketImage?: string;
     }
-    export interface data_traditional_chinese_socketnotches extends Array<data_traditional_chinese_socketnotches_Item> {}
-    
+    export interface data_traditional_chinese_socketnotches
+      extends Array<data_traditional_chinese_socketnotches_Item> {}
+
     interface data_traditional_chinese_stashtabaffinities_Item {
       SpecializedStash?: number;
       Name?: string;
       ShowInStashes?: number[];
     }
-    export interface data_traditional_chinese_stashtabaffinities extends Array<data_traditional_chinese_stashtabaffinities_Item> {}
-    
+    export interface data_traditional_chinese_stashtabaffinities
+      extends Array<data_traditional_chinese_stashtabaffinities_Item> {}
+
     interface data_traditional_chinese_stashtype_Item {
       Id?: string;
       StashId?: number;
@@ -34423,8 +35495,9 @@ declare namespace Poe2DataMain {
       Unk005?: number;
       Icon?: any;
     }
-    export interface data_traditional_chinese_stashtype extends Array<data_traditional_chinese_stashtype_Item> {}
-    
+    export interface data_traditional_chinese_stashtype
+      extends Array<data_traditional_chinese_stashtype_Item> {}
+
     interface data_traditional_chinese_stats_Item {
       Id?: string;
       Unk001?: boolean;
@@ -34450,24 +35523,27 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_stats extends Array<data_traditional_chinese_stats_Item> {}
-    
+    export interface data_traditional_chinese_stats
+      extends Array<data_traditional_chinese_stats_Item> {}
+
     interface data_traditional_chinese_tags_Item {
       Id?: string;
       Unk001?: number;
       Unk002?: number;
     }
-    export interface data_traditional_chinese_tags extends Array<data_traditional_chinese_tags_Item> {}
-    
+    export interface data_traditional_chinese_tags
+      extends Array<data_traditional_chinese_tags_Item> {}
+
     export type data_traditional_chinese_tieredmicrotransactionsvisuals = any[];
-    
+
     interface data_traditional_chinese_tips_Item {
       Id?: string;
       Text?: string;
       TextXBox?: string;
     }
-    export interface data_traditional_chinese_tips extends Array<data_traditional_chinese_tips_Item> {}
-    
+    export interface data_traditional_chinese_tips
+      extends Array<data_traditional_chinese_tips_Item> {}
+
     interface data_traditional_chinese_trademarketcategory_Item {
       Id?: string;
       Name?: string;
@@ -34481,16 +35557,18 @@ declare namespace Poe2DataMain {
       TableName?: string;
       Id?: string;
     }
-    export interface data_traditional_chinese_trademarketcategory extends Array<data_traditional_chinese_trademarketcategory_Item> {}
-    
+    export interface data_traditional_chinese_trademarketcategory
+      extends Array<data_traditional_chinese_trademarketcategory_Item> {}
+
     interface data_traditional_chinese_trademarketcategorygroups_Item {
       Id?: string;
       Name?: string;
     }
-    export interface data_traditional_chinese_trademarketcategorygroups extends Array<data_traditional_chinese_trademarketcategorygroups_Item> {}
-    
+    export interface data_traditional_chinese_trademarketcategorygroups
+      extends Array<data_traditional_chinese_trademarketcategorygroups_Item> {}
+
     export type data_traditional_chinese_trademarketimplicitmoddisplay = any[];
-    
+
     interface data_traditional_chinese_uitalktext_Item {
       Id?: string;
       UITalkCategoriesKey?: number;
@@ -34499,16 +35577,17 @@ declare namespace Poe2DataMain {
       Unk004?: boolean;
       NPCTextAudio?: any;
     }
-    export interface data_traditional_chinese_uitalktext extends Array<data_traditional_chinese_uitalktext_Item> {}
-    
+    export interface data_traditional_chinese_uitalktext
+      extends Array<data_traditional_chinese_uitalktext_Item> {}
+
     export type data_traditional_chinese_ultimatumencountertypes = any[];
-    
+
     export type data_traditional_chinese_ultimatummodifiers = any[];
-    
+
     export type data_traditional_chinese_ultimatumwagertypes = any[];
-    
+
     export type data_traditional_chinese_uniquemaps = any[];
-    
+
     interface data_traditional_chinese_uniquestashtypes_Item {
       Id?: string;
       Order?: number;
@@ -34522,10 +35601,11 @@ declare namespace Poe2DataMain {
       ChallengeLeagueCount?: number;
       IsDisabled?: boolean;
     }
-    export interface data_traditional_chinese_uniquestashtypes extends Array<data_traditional_chinese_uniquestashtypes_Item> {}
-    
+    export interface data_traditional_chinese_uniquestashtypes
+      extends Array<data_traditional_chinese_uniquestashtypes_Item> {}
+
     export type data_traditional_chinese_warbandspackmonsters = any[];
-    
+
     interface data_traditional_chinese_windowcursors_Item {
       Id?: string;
       CursorDefault?: string;
@@ -34537,8 +35617,9 @@ declare namespace Poe2DataMain {
       IsEnabled?: boolean;
       Unk008?: number;
     }
-    export interface data_traditional_chinese_windowcursors extends Array<data_traditional_chinese_windowcursors_Item> {}
-    
+    export interface data_traditional_chinese_windowcursors
+      extends Array<data_traditional_chinese_windowcursors_Item> {}
+
     interface data_traditional_chinese_words_Item {
       Wordlist?: number;
       Text?: string;
@@ -34548,8 +35629,9 @@ declare namespace Poe2DataMain {
       Text2?: string;
       Inflection?: string;
     }
-    export interface data_traditional_chinese_words extends Array<data_traditional_chinese_words_Item> {}
-    
+    export interface data_traditional_chinese_words
+      extends Array<data_traditional_chinese_words_Item> {}
+
     interface data_traditional_chinese_worldareas_Item {
       Id?: string;
       Name?: string;
@@ -34565,10 +35647,11 @@ declare namespace Poe2DataMain {
       UnkInt01?: number;
       SomehowConnectedAreasMaybe?: any[];
     }
-    export interface data_traditional_chinese_worldareas extends Array<data_traditional_chinese_worldareas_Item> {}
-    
+    export interface data_traditional_chinese_worldareas
+      extends Array<data_traditional_chinese_worldareas_Item> {}
+
     export type data_traditional_chinese_worldmaplegends = any[];
-    
+
     interface data_traditional_chinese_worldpopupicontypes_Item {
       Id?: string;
       Unk001?: string;
@@ -34580,8 +35663,8 @@ declare namespace Poe2DataMain {
       Unk007?: number;
       Unk008?: string;
     }
-    export interface data_traditional_chinese_worldpopupicontypes extends Array<data_traditional_chinese_worldpopupicontypes_Item> {}
-    
+    export interface data_traditional_chinese_worldpopupicontypes
+      extends Array<data_traditional_chinese_worldpopupicontypes_Item> {}
   }
 
   export namespace Xt {
@@ -34593,7 +35676,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_equipmentType = xt_metadata_items_equipment;
-    
+
     interface xt_metadata_items_item {
       Path?: string;
       Extends?: any;
@@ -34602,7 +35685,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_itemType = xt_metadata_items_item;
-    
+
     interface xt_metadata_items_amulets_abstractamulet {
       Path?: string;
       Extends?: any;
@@ -34610,8 +35693,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_amulets_abstractamuletType = xt_metadata_items_amulets_abstractamulet;
-    
+    export type xt_metadata_items_amulets_abstractamuletType =
+      xt_metadata_items_amulets_abstractamulet;
+
     interface xt_metadata_items_archnemesis_archnemesismod {
       Path?: string;
       Extends?: any;
@@ -34619,8 +35703,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_archnemesis_archnemesismodType = xt_metadata_items_archnemesis_archnemesismod;
-    
+    export type xt_metadata_items_archnemesis_archnemesismodType =
+      xt_metadata_items_archnemesis_archnemesismod;
+
     interface xt_metadata_items_armours_abstractarmour {
       Path?: string;
       Extends?: any;
@@ -34628,8 +35713,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_abstractarmourType = xt_metadata_items_armours_abstractarmour;
-    
+    export type xt_metadata_items_armours_abstractarmourType =
+      xt_metadata_items_armours_abstractarmour;
+
     interface xt_metadata_items_armours_bodyarmours_abstractbodyarmour {
       Path?: string;
       Extends?: any;
@@ -34637,8 +35723,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_bodyarmours_abstractbodyarmourType = xt_metadata_items_armours_bodyarmours_abstractbodyarmour;
-    
+    export type xt_metadata_items_armours_bodyarmours_abstractbodyarmourType =
+      xt_metadata_items_armours_bodyarmours_abstractbodyarmour;
+
     interface xt_metadata_items_armours_boots_abstractboots {
       Path?: string;
       Extends?: any;
@@ -34646,8 +35733,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_boots_abstractbootsType = xt_metadata_items_armours_boots_abstractboots;
-    
+    export type xt_metadata_items_armours_boots_abstractbootsType =
+      xt_metadata_items_armours_boots_abstractboots;
+
     interface xt_metadata_items_armours_focus_abstractfocus {
       Path?: string;
       Extends?: any;
@@ -34655,8 +35743,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_focus_abstractfocusType = xt_metadata_items_armours_focus_abstractfocus;
-    
+    export type xt_metadata_items_armours_focus_abstractfocusType =
+      xt_metadata_items_armours_focus_abstractfocus;
+
     interface xt_metadata_items_armours_gloves_abstractgloves {
       Path?: string;
       Extends?: any;
@@ -34664,8 +35753,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_gloves_abstractglovesType = xt_metadata_items_armours_gloves_abstractgloves;
-    
+    export type xt_metadata_items_armours_gloves_abstractglovesType =
+      xt_metadata_items_armours_gloves_abstractgloves;
+
     interface xt_metadata_items_armours_helmets_abstracthelmet {
       Path?: string;
       Extends?: any;
@@ -34673,8 +35763,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_helmets_abstracthelmetType = xt_metadata_items_armours_helmets_abstracthelmet;
-    
+    export type xt_metadata_items_armours_helmets_abstracthelmetType =
+      xt_metadata_items_armours_helmets_abstracthelmet;
+
     interface xt_metadata_items_armours_shields_abstractshield {
       Path?: string;
       Extends?: any;
@@ -34682,8 +35773,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_armours_shields_abstractshieldType = xt_metadata_items_armours_shields_abstractshield;
-    
+    export type xt_metadata_items_armours_shields_abstractshieldType =
+      xt_metadata_items_armours_shields_abstractshield;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade {
       Path?: string;
       Extends?: any;
@@ -34691,8 +35783,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgradeType = xt_metadata_items_atlasupgrades_atlasregionupgrade;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgradeType =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade1_1 {
       Path?: string;
       Extends?: any;
@@ -34700,8 +35793,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_1Type = xt_metadata_items_atlasupgrades_atlasregionupgrade1_1;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_1Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade1_1;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade1_6 {
       Path?: string;
       Extends?: any;
@@ -34709,8 +35803,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_6Type = xt_metadata_items_atlasupgrades_atlasregionupgrade1_6;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_6Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade1_6;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade1_7 {
       Path?: string;
       Extends?: any;
@@ -34718,8 +35813,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_7Type = xt_metadata_items_atlasupgrades_atlasregionupgrade1_7;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_7Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade1_7;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade1_8 {
       Path?: string;
       Extends?: any;
@@ -34727,8 +35823,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_8Type = xt_metadata_items_atlasupgrades_atlasregionupgrade1_8;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade1_8Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade1_8;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade2_1 {
       Path?: string;
       Extends?: any;
@@ -34736,8 +35833,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_1Type = xt_metadata_items_atlasupgrades_atlasregionupgrade2_1;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_1Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade2_1;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade2_6 {
       Path?: string;
       Extends?: any;
@@ -34745,8 +35843,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_6Type = xt_metadata_items_atlasupgrades_atlasregionupgrade2_6;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_6Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade2_6;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade2_7 {
       Path?: string;
       Extends?: any;
@@ -34754,8 +35853,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_7Type = xt_metadata_items_atlasupgrades_atlasregionupgrade2_7;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_7Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade2_7;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade2_8 {
       Path?: string;
       Extends?: any;
@@ -34763,8 +35863,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_8Type = xt_metadata_items_atlasupgrades_atlasregionupgrade2_8;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade2_8Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade2_8;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade3_1 {
       Path?: string;
       Extends?: any;
@@ -34772,8 +35873,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_1Type = xt_metadata_items_atlasupgrades_atlasregionupgrade3_1;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_1Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade3_1;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade3_6 {
       Path?: string;
       Extends?: any;
@@ -34781,8 +35883,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_6Type = xt_metadata_items_atlasupgrades_atlasregionupgrade3_6;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_6Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade3_6;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade3_7 {
       Path?: string;
       Extends?: any;
@@ -34790,8 +35893,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_7Type = xt_metadata_items_atlasupgrades_atlasregionupgrade3_7;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_7Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade3_7;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade3_8 {
       Path?: string;
       Extends?: any;
@@ -34799,8 +35903,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_8Type = xt_metadata_items_atlasupgrades_atlasregionupgrade3_8;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade3_8Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade3_8;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade4_1 {
       Path?: string;
       Extends?: any;
@@ -34808,8 +35913,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_1Type = xt_metadata_items_atlasupgrades_atlasregionupgrade4_1;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_1Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade4_1;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade4_6 {
       Path?: string;
       Extends?: any;
@@ -34817,8 +35923,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_6Type = xt_metadata_items_atlasupgrades_atlasregionupgrade4_6;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_6Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade4_6;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade4_7 {
       Path?: string;
       Extends?: any;
@@ -34826,8 +35933,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_7Type = xt_metadata_items_atlasupgrades_atlasregionupgrade4_7;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_7Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade4_7;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgrade4_8 {
       Path?: string;
       Extends?: any;
@@ -34835,8 +35943,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_8Type = xt_metadata_items_atlasupgrades_atlasregionupgrade4_8;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgrade4_8Type =
+      xt_metadata_items_atlasupgrades_atlasregionupgrade4_8;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgradefinal {
       Path?: string;
       Extends?: any;
@@ -34844,8 +35953,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgradefinalType = xt_metadata_items_atlasupgrades_atlasregionupgradefinal;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgradefinalType =
+      xt_metadata_items_atlasupgrades_atlasregionupgradefinal;
+
     interface xt_metadata_items_atlasupgrades_atlasregionupgradequestbase {
       Path?: string;
       Extends?: any;
@@ -34853,8 +35963,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasregionupgradequestbaseType = xt_metadata_items_atlasupgrades_atlasregionupgradequestbase;
-    
+    export type xt_metadata_items_atlasupgrades_atlasregionupgradequestbaseType =
+      xt_metadata_items_atlasupgrades_atlasregionupgradequestbase;
+
     interface xt_metadata_items_atlasupgrades_atlasupgradeprimordial1 {
       Path?: string;
       Extends?: any;
@@ -34862,8 +35973,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial1Type = xt_metadata_items_atlasupgrades_atlasupgradeprimordial1;
-    
+    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial1Type =
+      xt_metadata_items_atlasupgrades_atlasupgradeprimordial1;
+
     interface xt_metadata_items_atlasupgrades_atlasupgradeprimordial2 {
       Path?: string;
       Extends?: any;
@@ -34871,8 +35983,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial2Type = xt_metadata_items_atlasupgrades_atlasupgradeprimordial2;
-    
+    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial2Type =
+      xt_metadata_items_atlasupgrades_atlasupgradeprimordial2;
+
     interface xt_metadata_items_atlasupgrades_atlasupgradeprimordial3 {
       Path?: string;
       Extends?: any;
@@ -34880,8 +35993,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial3Type = xt_metadata_items_atlasupgrades_atlasupgradeprimordial3;
-    
+    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial3Type =
+      xt_metadata_items_atlasupgrades_atlasupgradeprimordial3;
+
     interface xt_metadata_items_atlasupgrades_atlasupgradeprimordial4 {
       Path?: string;
       Extends?: any;
@@ -34889,8 +36003,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial4Type = xt_metadata_items_atlasupgrades_atlasupgradeprimordial4;
-    
+    export type xt_metadata_items_atlasupgrades_atlasupgradeprimordial4Type =
+      xt_metadata_items_atlasupgrades_atlasupgradeprimordial4;
+
     interface xt_metadata_items_belts_abstractbelt {
       Path?: string;
       Extends?: any;
@@ -34899,7 +36014,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_belts_abstractbeltType = xt_metadata_items_belts_abstractbelt;
-    
+
     interface xt_metadata_items_classic_mysteryleaguestone {
       Path?: string;
       Extends?: any;
@@ -34907,8 +36022,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_classic_mysteryleaguestoneType = xt_metadata_items_classic_mysteryleaguestone;
-    
+    export type xt_metadata_items_classic_mysteryleaguestoneType =
+      xt_metadata_items_classic_mysteryleaguestone;
+
     interface xt_metadata_items_currency_abstractcurrency {
       Path?: string;
       Extends?: any;
@@ -34916,8 +36032,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_abstractcurrencyType = xt_metadata_items_currency_abstractcurrency;
-    
+    export type xt_metadata_items_currency_abstractcurrencyType =
+      xt_metadata_items_currency_abstractcurrency;
+
     interface xt_metadata_items_currency_abstractmicrotransaction {
       Path?: string;
       Extends?: any;
@@ -34925,8 +36042,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_abstractmicrotransactionType = xt_metadata_items_currency_abstractmicrotransaction;
-    
+    export type xt_metadata_items_currency_abstractmicrotransactionType =
+      xt_metadata_items_currency_abstractmicrotransaction;
+
     interface xt_metadata_items_currency_currencyaddgemexperience {
       Path?: string;
       Extends?: any;
@@ -34934,8 +36052,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_currencyaddgemexperienceType = xt_metadata_items_currency_currencyaddgemexperience;
-    
+    export type xt_metadata_items_currency_currencyaddgemexperienceType =
+      xt_metadata_items_currency_currencyaddgemexperience;
+
     interface xt_metadata_items_currency_currencyimprint {
       Path?: string;
       Extends?: any;
@@ -34943,8 +36062,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_currencyimprintType = xt_metadata_items_currency_currencyimprint;
-    
+    export type xt_metadata_items_currency_currencyimprintType =
+      xt_metadata_items_currency_currencyimprint;
+
     interface xt_metadata_items_currency_currencyitemisedcapturedmonster {
       Path?: string;
       Extends?: any;
@@ -34952,8 +36072,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_currencyitemisedcapturedmonsterType = xt_metadata_items_currency_currencyitemisedcapturedmonster;
-    
+    export type xt_metadata_items_currency_currencyitemisedcapturedmonsterType =
+      xt_metadata_items_currency_currencyitemisedcapturedmonster;
+
     interface xt_metadata_items_currency_currencyitemisedsextantmodifier {
       Path?: string;
       Extends?: any;
@@ -34961,8 +36082,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_currencyitemisedsextantmodifierType = xt_metadata_items_currency_currencyitemisedsextantmodifier;
-    
+    export type xt_metadata_items_currency_currencyitemisedsextantmodifierType =
+      xt_metadata_items_currency_currencyitemisedsextantmodifier;
+
     interface xt_metadata_items_currency_skillgemtoken {
       Path?: string;
       Extends?: any;
@@ -34970,8 +36092,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_skillgemtokenType = xt_metadata_items_currency_skillgemtoken;
-    
+    export type xt_metadata_items_currency_skillgemtokenType =
+      xt_metadata_items_currency_skillgemtoken;
+
     interface xt_metadata_items_currency_stackablecurrency {
       Path?: string;
       Extends?: any;
@@ -34979,8 +36102,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_currency_stackablecurrencyType = xt_metadata_items_currency_stackablecurrency;
-    
+    export type xt_metadata_items_currency_stackablecurrencyType =
+      xt_metadata_items_currency_stackablecurrency;
+
     interface xt_metadata_items_delve_delvesocketablecurrency {
       Path?: string;
       Extends?: any;
@@ -34988,8 +36112,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_delve_delvesocketablecurrencyType = xt_metadata_items_delve_delvesocketablecurrency;
-    
+    export type xt_metadata_items_delve_delvesocketablecurrencyType =
+      xt_metadata_items_delve_delvesocketablecurrency;
+
     interface xt_metadata_items_delve_delvestackablesocketablecurrency {
       Path?: string;
       Extends?: any;
@@ -34997,8 +36122,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_delve_delvestackablesocketablecurrencyType = xt_metadata_items_delve_delvestackablesocketablecurrency;
-    
+    export type xt_metadata_items_delve_delvestackablesocketablecurrencyType =
+      xt_metadata_items_delve_delvestackablesocketablecurrency;
+
     interface xt_metadata_items_expedition_expeditionsaga {
       Path?: string;
       Extends?: any;
@@ -35006,8 +36132,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_expedition_expeditionsagaType = xt_metadata_items_expedition_expeditionsaga;
-    
+    export type xt_metadata_items_expedition_expeditionsagaType =
+      xt_metadata_items_expedition_expeditionsaga;
+
     interface xt_metadata_items_flasks_abstractflask {
       Path?: string;
       Extends?: any;
@@ -35016,7 +36143,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_flasks_abstractflaskType = xt_metadata_items_flasks_abstractflask;
-    
+
     interface xt_metadata_items_flasks_abstractlifeflask {
       Path?: string;
       Extends?: any;
@@ -35024,8 +36151,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_flasks_abstractlifeflaskType = xt_metadata_items_flasks_abstractlifeflask;
-    
+    export type xt_metadata_items_flasks_abstractlifeflaskType =
+      xt_metadata_items_flasks_abstractlifeflask;
+
     interface xt_metadata_items_flasks_abstractmanaflask {
       Path?: string;
       Extends?: any;
@@ -35033,8 +36161,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_flasks_abstractmanaflaskType = xt_metadata_items_flasks_abstractmanaflask;
-    
+    export type xt_metadata_items_flasks_abstractmanaflaskType =
+      xt_metadata_items_flasks_abstractmanaflask;
+
     interface xt_metadata_items_flasks_abstractutilityflask {
       Path?: string;
       Extends?: any;
@@ -35042,8 +36171,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_flasks_abstractutilityflaskType = xt_metadata_items_flasks_abstractutilityflask;
-    
+    export type xt_metadata_items_flasks_abstractutilityflaskType =
+      xt_metadata_items_flasks_abstractutilityflask;
+
     interface xt_metadata_items_gems_abstractskillgem {
       Path?: string;
       Extends?: any;
@@ -35051,8 +36181,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_gems_abstractskillgemType = xt_metadata_items_gems_abstractskillgem;
-    
+    export type xt_metadata_items_gems_abstractskillgemType =
+      xt_metadata_items_gems_abstractskillgem;
+
     interface xt_metadata_items_gems_activeskillgem {
       Path?: string;
       Extends?: any;
@@ -35061,7 +36192,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_gems_activeskillgemType = xt_metadata_items_gems_activeskillgem;
-    
+
     interface xt_metadata_items_gems_metaskillgem {
       Path?: string;
       Extends?: any;
@@ -35070,7 +36201,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_gems_metaskillgemType = xt_metadata_items_gems_metaskillgem;
-    
+
     interface xt_metadata_items_gems_skillgemuncutquest {
       Path?: string;
       Extends?: any;
@@ -35078,8 +36209,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_gems_skillgemuncutquestType = xt_metadata_items_gems_skillgemuncutquest;
-    
+    export type xt_metadata_items_gems_skillgemuncutquestType =
+      xt_metadata_items_gems_skillgemuncutquest;
+
     interface xt_metadata_items_gems_supportskillgem {
       Path?: string;
       Extends?: any;
@@ -35088,7 +36220,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_gems_supportskillgemType = xt_metadata_items_gems_supportskillgem;
-    
+
     interface xt_metadata_items_gems_uncutreservationgem {
       Path?: string;
       Extends?: any;
@@ -35096,8 +36228,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_gems_uncutreservationgemType = xt_metadata_items_gems_uncutreservationgem;
-    
+    export type xt_metadata_items_gems_uncutreservationgemType =
+      xt_metadata_items_gems_uncutreservationgem;
+
     interface xt_metadata_items_gems_uncutskillgem {
       Path?: string;
       Extends?: any;
@@ -35106,7 +36239,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_gems_uncutskillgemType = xt_metadata_items_gems_uncutskillgem;
-    
+
     interface xt_metadata_items_gems_uncutsupportgem {
       Path?: string;
       Extends?: any;
@@ -35115,7 +36248,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_gems_uncutsupportgemType = xt_metadata_items_gems_uncutsupportgem;
-    
+
     interface xt_metadata_items_heist_abstractheistequipment {
       Path?: string;
       Extends?: any;
@@ -35123,8 +36256,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_abstractheistequipmentType = xt_metadata_items_heist_abstractheistequipment;
-    
+    export type xt_metadata_items_heist_abstractheistequipmentType =
+      xt_metadata_items_heist_abstractheistequipment;
+
     interface xt_metadata_items_heist_heistblueprint {
       Path?: string;
       Extends?: any;
@@ -35133,7 +36267,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_heist_heistblueprintType = xt_metadata_items_heist_heistblueprint;
-    
+
     interface xt_metadata_items_heist_heistcoin {
       Path?: string;
       Extends?: any;
@@ -35142,7 +36276,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_heist_heistcoinType = xt_metadata_items_heist_heistcoin;
-    
+
     interface xt_metadata_items_heist_heistcontract {
       Path?: string;
       Extends?: any;
@@ -35151,7 +36285,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_heist_heistcontractType = xt_metadata_items_heist_heistcontract;
-    
+
     interface xt_metadata_items_heist_heistobjective {
       Path?: string;
       Extends?: any;
@@ -35160,7 +36294,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_heist_heistobjectiveType = xt_metadata_items_heist_heistobjective;
-    
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestadiyah1 {
       Path?: string;
       Extends?: any;
@@ -35168,8 +36302,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyah1Type = xt_metadata_items_heist_questcontracts_heistcontractquestadiyah1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyah1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestadiyah1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestadiyah2 {
       Path?: string;
       Extends?: any;
@@ -35177,8 +36312,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyah2Type = xt_metadata_items_heist_questcontracts_heistcontractquestadiyah2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyah2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestadiyah2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestadiyahrepeatable {
       Path?: string;
       Extends?: any;
@@ -35186,8 +36322,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyahrepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestadiyahrepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestadiyahrepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestadiyahrepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestfaustus1 {
       Path?: string;
       Extends?: any;
@@ -35195,8 +36332,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustus1Type = xt_metadata_items_heist_questcontracts_heistcontractquestfaustus1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustus1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestfaustus1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestfaustus2 {
       Path?: string;
       Extends?: any;
@@ -35204,8 +36342,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustus2Type = xt_metadata_items_heist_questcontracts_heistcontractquestfaustus2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustus2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestfaustus2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestfaustusrepeatable {
       Path?: string;
       Extends?: any;
@@ -35213,8 +36352,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustusrepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestfaustusrepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestfaustusrepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestfaustusrepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestgianna1 {
       Path?: string;
       Extends?: any;
@@ -35222,8 +36362,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestgianna1Type = xt_metadata_items_heist_questcontracts_heistcontractquestgianna1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestgianna1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestgianna1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestgianna2 {
       Path?: string;
       Extends?: any;
@@ -35231,8 +36372,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestgianna2Type = xt_metadata_items_heist_questcontracts_heistcontractquestgianna2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestgianna2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestgianna2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesthuck1 {
       Path?: string;
       Extends?: any;
@@ -35240,8 +36382,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesthuck1Type = xt_metadata_items_heist_questcontracts_heistcontractquesthuck1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesthuck1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesthuck1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesthuck2 {
       Path?: string;
       Extends?: any;
@@ -35249,8 +36392,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesthuck2Type = xt_metadata_items_heist_questcontracts_heistcontractquesthuck2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesthuck2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesthuck2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestisla1 {
       Path?: string;
       Extends?: any;
@@ -35258,8 +36402,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestisla1Type = xt_metadata_items_heist_questcontracts_heistcontractquestisla1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestisla1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestisla1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestisla2 {
       Path?: string;
       Extends?: any;
@@ -35267,8 +36412,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestisla2Type = xt_metadata_items_heist_questcontracts_heistcontractquestisla2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestisla2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestisla2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestislarepeatable {
       Path?: string;
       Extends?: any;
@@ -35276,8 +36422,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestislarepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestislarepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestislarepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestislarepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkarst1 {
       Path?: string;
       Extends?: any;
@@ -35285,8 +36432,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst1Type = xt_metadata_items_heist_questcontracts_heistcontractquestkarst1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkarst1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkarst2 {
       Path?: string;
       Extends?: any;
@@ -35294,8 +36442,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst2Type = xt_metadata_items_heist_questcontracts_heistcontractquestkarst2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkarst2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkarst3 {
       Path?: string;
       Extends?: any;
@@ -35303,8 +36452,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst3Type = xt_metadata_items_heist_questcontracts_heistcontractquestkarst3;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkarst3Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkarst3;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkurai1 {
       Path?: string;
       Extends?: any;
@@ -35312,8 +36462,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai1Type = xt_metadata_items_heist_questcontracts_heistcontractquestkurai1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkurai1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkurai2 {
       Path?: string;
       Extends?: any;
@@ -35321,8 +36472,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai2Type = xt_metadata_items_heist_questcontracts_heistcontractquestkurai2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkurai2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkurai3 {
       Path?: string;
       Extends?: any;
@@ -35330,8 +36482,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai3Type = xt_metadata_items_heist_questcontracts_heistcontractquestkurai3;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurai3Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkurai3;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestkurairepeatable {
       Path?: string;
       Extends?: any;
@@ -35339,8 +36492,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurairepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestkurairepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestkurairepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestkurairepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestnenet1 {
       Path?: string;
       Extends?: any;
@@ -35348,8 +36502,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestnenet1Type = xt_metadata_items_heist_questcontracts_heistcontractquestnenet1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestnenet1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestnenet1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestnenetrepeatable {
       Path?: string;
       Extends?: any;
@@ -35357,8 +36512,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestnenetrepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestnenetrepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestnenetrepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestnenetrepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestniles1 {
       Path?: string;
       Extends?: any;
@@ -35366,8 +36522,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestniles1Type = xt_metadata_items_heist_questcontracts_heistcontractquestniles1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestniles1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestniles1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestniles2 {
       Path?: string;
       Extends?: any;
@@ -35375,8 +36532,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestniles2Type = xt_metadata_items_heist_questcontracts_heistcontractquestniles2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestniles2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestniles2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesttibbs1 {
       Path?: string;
       Extends?: any;
@@ -35384,8 +36542,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesttibbs1Type = xt_metadata_items_heist_questcontracts_heistcontractquesttibbs1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesttibbs1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesttibbs1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesttibbs2 {
       Path?: string;
       Extends?: any;
@@ -35393,8 +36552,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesttibbs2Type = xt_metadata_items_heist_questcontracts_heistcontractquesttibbs2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesttibbs2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesttibbs2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesttullina1 {
       Path?: string;
       Extends?: any;
@@ -35402,8 +36562,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesttullina1Type = xt_metadata_items_heist_questcontracts_heistcontractquesttullina1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesttullina1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesttullina1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquesttullina2 {
       Path?: string;
       Extends?: any;
@@ -35411,8 +36572,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquesttullina2Type = xt_metadata_items_heist_questcontracts_heistcontractquesttullina2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquesttullina2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquesttullina2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestvinderi1 {
       Path?: string;
       Extends?: any;
@@ -35420,8 +36582,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestvinderi1Type = xt_metadata_items_heist_questcontracts_heistcontractquestvinderi1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestvinderi1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestvinderi1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestvinderi2 {
       Path?: string;
       Extends?: any;
@@ -35429,8 +36592,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestvinderi2Type = xt_metadata_items_heist_questcontracts_heistcontractquestvinderi2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestvinderi2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestvinderi2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestwhakano1 {
       Path?: string;
       Extends?: any;
@@ -35438,8 +36602,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakano1Type = xt_metadata_items_heist_questcontracts_heistcontractquestwhakano1;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakano1Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestwhakano1;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestwhakano2 {
       Path?: string;
       Extends?: any;
@@ -35447,8 +36612,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakano2Type = xt_metadata_items_heist_questcontracts_heistcontractquestwhakano2;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakano2Type =
+      xt_metadata_items_heist_questcontracts_heistcontractquestwhakano2;
+
     interface xt_metadata_items_heist_questcontracts_heistcontractquestwhakanorepeatable {
       Path?: string;
       Extends?: any;
@@ -35456,8 +36622,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakanorepeatableType = xt_metadata_items_heist_questcontracts_heistcontractquestwhakanorepeatable;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontractquestwhakanorepeatableType =
+      xt_metadata_items_heist_questcontracts_heistcontractquestwhakanorepeatable;
+
     interface xt_metadata_items_heist_questcontracts_heistcontracttutorial {
       Path?: string;
       Extends?: any;
@@ -35465,8 +36632,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questcontracts_heistcontracttutorialType = xt_metadata_items_heist_questcontracts_heistcontracttutorial;
-    
+    export type xt_metadata_items_heist_questcontracts_heistcontracttutorialType =
+      xt_metadata_items_heist_questcontracts_heistcontracttutorial;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah1 {
       Path?: string;
       Extends?: any;
@@ -35474,8 +36642,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah2 {
       Path?: string;
       Extends?: any;
@@ -35483,8 +36652,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestadiyah2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1 {
       Path?: string;
       Extends?: any;
@@ -35492,8 +36662,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1b {
       Path?: string;
       Extends?: any;
@@ -35501,8 +36672,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1bType = xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1b;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1bType =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus1b;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus2 {
       Path?: string;
       Extends?: any;
@@ -35510,8 +36682,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestfaustus2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna1 {
       Path?: string;
       Extends?: any;
@@ -35519,8 +36692,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna2 {
       Path?: string;
       Extends?: any;
@@ -35528,8 +36702,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestgianna2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck1 {
       Path?: string;
       Extends?: any;
@@ -35537,8 +36712,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck2 {
       Path?: string;
       Extends?: any;
@@ -35546,8 +36722,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesthuck2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestisla1 {
       Path?: string;
       Extends?: any;
@@ -35555,8 +36732,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestisla1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestisla1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestisla1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestisla1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestisla2 {
       Path?: string;
       Extends?: any;
@@ -35564,8 +36742,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestisla2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestisla2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestisla2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestisla2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst1 {
       Path?: string;
       Extends?: any;
@@ -35573,8 +36752,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst2 {
       Path?: string;
       Extends?: any;
@@ -35582,8 +36762,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst3 {
       Path?: string;
       Extends?: any;
@@ -35591,8 +36772,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst3Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst3;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst3Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestkarst3;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestkurai1 {
       Path?: string;
       Extends?: any;
@@ -35600,8 +36782,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkurai1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestkurai1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestkurai1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestkurai1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestnenet1 {
       Path?: string;
       Extends?: any;
@@ -35609,8 +36792,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestnenet1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestnenet1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestnenet1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestnenet1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestniles1 {
       Path?: string;
       Extends?: any;
@@ -35618,8 +36802,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestniles1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestniles1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestniles1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestniles1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestniles2 {
       Path?: string;
       Extends?: any;
@@ -35627,8 +36812,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestniles2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestniles2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestniles2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestniles2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs1 {
       Path?: string;
       Extends?: any;
@@ -35636,8 +36822,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs2 {
       Path?: string;
       Extends?: any;
@@ -35645,8 +36832,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesttibbs2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina1 {
       Path?: string;
       Extends?: any;
@@ -35654,8 +36842,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina2 {
       Path?: string;
       Extends?: any;
@@ -35663,8 +36852,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequesttullina2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi1 {
       Path?: string;
       Extends?: any;
@@ -35672,8 +36862,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi2 {
       Path?: string;
       Extends?: any;
@@ -35681,8 +36872,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestvinderi2;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano1 {
       Path?: string;
       Extends?: any;
@@ -35690,8 +36882,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano1Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano1;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano1Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano1;
+
     interface xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano2 {
       Path?: string;
       Extends?: any;
@@ -35699,8 +36892,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano2Type = xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano2;
-    
+    export type xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano2Type =
+      xt_metadata_items_heist_questitems_heistfinalobjectivequestwhakano2;
+
     interface xt_metadata_items_incursion_incursionbomb {
       Path?: string;
       Extends?: any;
@@ -35708,8 +36902,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_incursion_incursionbombType = xt_metadata_items_incursion_incursionbomb;
-    
+    export type xt_metadata_items_incursion_incursionbombType =
+      xt_metadata_items_incursion_incursionbomb;
+
     interface xt_metadata_items_incursion_incursionkey {
       Path?: string;
       Extends?: any;
@@ -35717,8 +36912,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_incursion_incursionkeyType = xt_metadata_items_incursion_incursionkey;
-    
+    export type xt_metadata_items_incursion_incursionkeyType =
+      xt_metadata_items_incursion_incursionkey;
+
     interface xt_metadata_items_incursion_itemisedtemple {
       Path?: string;
       Extends?: any;
@@ -35726,8 +36922,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_incursion_itemisedtempleType = xt_metadata_items_incursion_itemisedtemple;
-    
+    export type xt_metadata_items_incursion_itemisedtempleType =
+      xt_metadata_items_incursion_itemisedtemple;
+
     interface xt_metadata_items_jewels_abstractjewel {
       Path?: string;
       Extends?: any;
@@ -35736,7 +36933,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_jewels_abstractjewelType = xt_metadata_items_jewels_abstractjewel;
-    
+
     interface xt_metadata_items_labyrinth_abstractlabyrinthitem {
       Path?: string;
       Extends?: any;
@@ -35744,8 +36941,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_labyrinth_abstractlabyrinthitemType = xt_metadata_items_labyrinth_abstractlabyrinthitem;
-    
+    export type xt_metadata_items_labyrinth_abstractlabyrinthitemType =
+      xt_metadata_items_labyrinth_abstractlabyrinthitem;
+
     interface xt_metadata_items_legion_incubator {
       Path?: string;
       Extends?: any;
@@ -35754,7 +36952,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_legion_incubatorType = xt_metadata_items_legion_incubator;
-    
+
     interface xt_metadata_items_legion_incubatorstackable {
       Path?: string;
       Extends?: any;
@@ -35762,8 +36960,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_legion_incubatorstackableType = xt_metadata_items_legion_incubatorstackable;
-    
+    export type xt_metadata_items_legion_incubatorstackableType =
+      xt_metadata_items_legion_incubatorstackable;
+
     interface xt_metadata_items_mapfragments_340vaultkey {
       Path?: string;
       Extends?: any;
@@ -35771,8 +36970,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_340vaultkeyType = xt_metadata_items_mapfragments_340vaultkey;
-    
+    export type xt_metadata_items_mapfragments_340vaultkeyType =
+      xt_metadata_items_mapfragments_340vaultkey;
+
     interface xt_metadata_items_mapfragments_abstractmapfragment {
       Path?: string;
       Extends?: any;
@@ -35780,8 +36980,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_abstractmapfragmentType = xt_metadata_items_mapfragments_abstractmapfragment;
-    
+    export type xt_metadata_items_mapfragments_abstractmapfragmentType =
+      xt_metadata_items_mapfragments_abstractmapfragment;
+
     interface xt_metadata_items_mapfragments_abstractmiscmapitem {
       Path?: string;
       Extends?: any;
@@ -35789,8 +36990,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_abstractmiscmapitemType = xt_metadata_items_mapfragments_abstractmiscmapitem;
-    
+    export type xt_metadata_items_mapfragments_abstractmiscmapitemType =
+      xt_metadata_items_mapfragments_abstractmiscmapitem;
+
     interface xt_metadata_items_mapfragments_abstractvaultkey {
       Path?: string;
       Extends?: any;
@@ -35798,8 +37000,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_abstractvaultkeyType = xt_metadata_items_mapfragments_abstractvaultkey;
-    
+    export type xt_metadata_items_mapfragments_abstractvaultkeyType =
+      xt_metadata_items_mapfragments_abstractvaultkey;
+
     interface xt_metadata_items_mapfragments_classicvaultkey {
       Path?: string;
       Extends?: any;
@@ -35807,8 +37010,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_classicvaultkeyType = xt_metadata_items_mapfragments_classicvaultkey;
-    
+    export type xt_metadata_items_mapfragments_classicvaultkeyType =
+      xt_metadata_items_mapfragments_classicvaultkey;
+
     interface xt_metadata_items_mapfragments_fragmentpantheonflask {
       Path?: string;
       Extends?: any;
@@ -35816,8 +37020,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_fragmentpantheonflaskType = xt_metadata_items_mapfragments_fragmentpantheonflask;
-    
+    export type xt_metadata_items_mapfragments_fragmentpantheonflaskType =
+      xt_metadata_items_mapfragments_fragmentpantheonflask;
+
     interface xt_metadata_items_mapfragments_pinnaclekey {
       Path?: string;
       Extends?: any;
@@ -35825,8 +37030,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_pinnaclekeyType = xt_metadata_items_mapfragments_pinnaclekey;
-    
+    export type xt_metadata_items_mapfragments_pinnaclekeyType =
+      xt_metadata_items_mapfragments_pinnaclekey;
+
     interface xt_metadata_items_mapfragments_ritualfragment {
       Path?: string;
       Extends?: any;
@@ -35834,8 +37040,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ritualfragmentType = xt_metadata_items_mapfragments_ritualfragment;
-    
+    export type xt_metadata_items_mapfragments_ritualfragmentType =
+      xt_metadata_items_mapfragments_ritualfragment;
+
     interface xt_metadata_items_mapfragments_ubereaterofworldsvaultkey {
       Path?: string;
       Extends?: any;
@@ -35843,8 +37050,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubereaterofworldsvaultkeyType = xt_metadata_items_mapfragments_ubereaterofworldsvaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubereaterofworldsvaultkeyType =
+      xt_metadata_items_mapfragments_ubereaterofworldsvaultkey;
+
     interface xt_metadata_items_mapfragments_ubermavenvaultkey {
       Path?: string;
       Extends?: any;
@@ -35852,8 +37060,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubermavenvaultkeyType = xt_metadata_items_mapfragments_ubermavenvaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubermavenvaultkeyType =
+      xt_metadata_items_mapfragments_ubermavenvaultkey;
+
     interface xt_metadata_items_mapfragments_ubersearingexarchvaultkey {
       Path?: string;
       Extends?: any;
@@ -35861,8 +37070,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubersearingexarchvaultkeyType = xt_metadata_items_mapfragments_ubersearingexarchvaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubersearingexarchvaultkeyType =
+      xt_metadata_items_mapfragments_ubersearingexarchvaultkey;
+
     interface xt_metadata_items_mapfragments_ubershapervaultkey {
       Path?: string;
       Extends?: any;
@@ -35870,8 +37080,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubershapervaultkeyType = xt_metadata_items_mapfragments_ubershapervaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubershapervaultkeyType =
+      xt_metadata_items_mapfragments_ubershapervaultkey;
+
     interface xt_metadata_items_mapfragments_ubersirusvaultkey {
       Path?: string;
       Extends?: any;
@@ -35879,8 +37090,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubersirusvaultkeyType = xt_metadata_items_mapfragments_ubersirusvaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubersirusvaultkeyType =
+      xt_metadata_items_mapfragments_ubersirusvaultkey;
+
     interface xt_metadata_items_mapfragments_uberubereldervaultkey {
       Path?: string;
       Extends?: any;
@@ -35888,8 +37100,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_uberubereldervaultkeyType = xt_metadata_items_mapfragments_uberubereldervaultkey;
-    
+    export type xt_metadata_items_mapfragments_uberubereldervaultkeyType =
+      xt_metadata_items_mapfragments_uberubereldervaultkey;
+
     interface xt_metadata_items_mapfragments_ubervenariusvaultkey {
       Path?: string;
       Extends?: any;
@@ -35897,8 +37110,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_ubervenariusvaultkeyType = xt_metadata_items_mapfragments_ubervenariusvaultkey;
-    
+    export type xt_metadata_items_mapfragments_ubervenariusvaultkeyType =
+      xt_metadata_items_mapfragments_ubervenariusvaultkey;
+
     interface xt_metadata_items_mapfragments_vaalvaultkey {
       Path?: string;
       Extends?: any;
@@ -35906,8 +37120,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_vaalvaultkeyType = xt_metadata_items_mapfragments_vaalvaultkey;
-    
+    export type xt_metadata_items_mapfragments_vaalvaultkeyType =
+      xt_metadata_items_mapfragments_vaalvaultkey;
+
     interface xt_metadata_items_mapfragments_maven_abstractmavenmap {
       Path?: string;
       Extends?: any;
@@ -35915,8 +37130,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_abstractmavenmapType = xt_metadata_items_mapfragments_maven_abstractmavenmap;
-    
+    export type xt_metadata_items_mapfragments_maven_abstractmavenmapType =
+      xt_metadata_items_mapfragments_maven_abstractmavenmap;
+
     interface xt_metadata_items_mapfragments_maven_abstractmavenmapcraftable {
       Path?: string;
       Extends?: any;
@@ -35924,8 +37140,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_abstractmavenmapcraftableType = xt_metadata_items_mapfragments_maven_abstractmavenmapcraftable;
-    
+    export type xt_metadata_items_mapfragments_maven_abstractmavenmapcraftableType =
+      xt_metadata_items_mapfragments_maven_abstractmavenmapcraftable;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapatlas5 {
       Path?: string;
       Extends?: any;
@@ -35933,8 +37150,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapatlas5Type = xt_metadata_items_mapfragments_maven_mavenmapatlas5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapatlas5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapatlas5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapinsidebottomleft5 {
       Path?: string;
       Extends?: any;
@@ -35942,8 +37160,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapinsidebottomleft5Type = xt_metadata_items_mapfragments_maven_mavenmapinsidebottomleft5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapinsidebottomleft5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapinsidebottomleft5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapinsidebottomright5 {
       Path?: string;
       Extends?: any;
@@ -35951,8 +37170,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapinsidebottomright5Type = xt_metadata_items_mapfragments_maven_mavenmapinsidebottomright5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapinsidebottomright5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapinsidebottomright5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapinsidetopleft5 {
       Path?: string;
       Extends?: any;
@@ -35960,8 +37180,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapinsidetopleft5Type = xt_metadata_items_mapfragments_maven_mavenmapinsidetopleft5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapinsidetopleft5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapinsidetopleft5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapinsidetopright5 {
       Path?: string;
       Extends?: any;
@@ -35969,8 +37190,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapinsidetopright5Type = xt_metadata_items_mapfragments_maven_mavenmapinsidetopright5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapinsidetopright5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapinsidetopright5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomleft5 {
       Path?: string;
       Extends?: any;
@@ -35978,8 +37200,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomleft5Type = xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomleft5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomleft5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomleft5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomright5 {
       Path?: string;
       Extends?: any;
@@ -35987,8 +37210,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomright5Type = xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomright5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomright5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapoutsidebottomright5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapoutsidetopleft5 {
       Path?: string;
       Extends?: any;
@@ -35996,8 +37220,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidetopleft5Type = xt_metadata_items_mapfragments_maven_mavenmapoutsidetopleft5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidetopleft5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapoutsidetopleft5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapoutsidetopright5 {
       Path?: string;
       Extends?: any;
@@ -36005,8 +37230,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidetopright5Type = xt_metadata_items_mapfragments_maven_mavenmapoutsidetopright5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapoutsidetopright5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapoutsidetopright5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid1 {
       Path?: string;
       Extends?: any;
@@ -36014,8 +37240,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid1Type = xt_metadata_items_mapfragments_maven_mavenmapvoid1;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid1Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid1;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid2 {
       Path?: string;
       Extends?: any;
@@ -36023,8 +37250,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid2Type = xt_metadata_items_mapfragments_maven_mavenmapvoid2;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid2Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid2;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid3 {
       Path?: string;
       Extends?: any;
@@ -36032,8 +37260,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid3Type = xt_metadata_items_mapfragments_maven_mavenmapvoid3;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid3Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid3;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid4 {
       Path?: string;
       Extends?: any;
@@ -36041,8 +37270,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid4Type = xt_metadata_items_mapfragments_maven_mavenmapvoid4;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid4Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid4;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid5 {
       Path?: string;
       Extends?: any;
@@ -36050,8 +37280,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid5Type = xt_metadata_items_mapfragments_maven_mavenmapvoid5;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid5Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid5;
+
     interface xt_metadata_items_mapfragments_maven_mavenmapvoid6 {
       Path?: string;
       Extends?: any;
@@ -36059,8 +37290,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_maven_mavenmapvoid6Type = xt_metadata_items_mapfragments_maven_mavenmapvoid6;
-    
+    export type xt_metadata_items_mapfragments_maven_mavenmapvoid6Type =
+      xt_metadata_items_mapfragments_maven_mavenmapvoid6;
+
     interface xt_metadata_items_mapfragments_primordial_abstractprimordialmap {
       Path?: string;
       Extends?: any;
@@ -36068,8 +37300,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_primordial_abstractprimordialmapType = xt_metadata_items_mapfragments_primordial_abstractprimordialmap;
-    
+    export type xt_metadata_items_mapfragments_primordial_abstractprimordialmapType =
+      xt_metadata_items_mapfragments_primordial_abstractprimordialmap;
+
     interface xt_metadata_items_mapfragments_primordial_currencycleansingfirebosskey {
       Path?: string;
       Extends?: any;
@@ -36077,8 +37310,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_primordial_currencycleansingfirebosskeyType = xt_metadata_items_mapfragments_primordial_currencycleansingfirebosskey;
-    
+    export type xt_metadata_items_mapfragments_primordial_currencycleansingfirebosskeyType =
+      xt_metadata_items_mapfragments_primordial_currencycleansingfirebosskey;
+
     interface xt_metadata_items_mapfragments_primordial_currencycleansingfirekey {
       Path?: string;
       Extends?: any;
@@ -36086,8 +37320,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_primordial_currencycleansingfirekeyType = xt_metadata_items_mapfragments_primordial_currencycleansingfirekey;
-    
+    export type xt_metadata_items_mapfragments_primordial_currencycleansingfirekeyType =
+      xt_metadata_items_mapfragments_primordial_currencycleansingfirekey;
+
     interface xt_metadata_items_mapfragments_primordial_currencytanglebosskey {
       Path?: string;
       Extends?: any;
@@ -36095,8 +37330,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_primordial_currencytanglebosskeyType = xt_metadata_items_mapfragments_primordial_currencytanglebosskey;
-    
+    export type xt_metadata_items_mapfragments_primordial_currencytanglebosskeyType =
+      xt_metadata_items_mapfragments_primordial_currencytanglebosskey;
+
     interface xt_metadata_items_mapfragments_primordial_currencytanglekey {
       Path?: string;
       Extends?: any;
@@ -36104,8 +37340,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_mapfragments_primordial_currencytanglekeyType = xt_metadata_items_mapfragments_primordial_currencytanglekey;
-    
+    export type xt_metadata_items_mapfragments_primordial_currencytanglekeyType =
+      xt_metadata_items_mapfragments_primordial_currencytanglekey;
+
     interface xt_metadata_items_maps_abstractmap {
       Path?: string;
       Extends?: any;
@@ -36114,7 +37351,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_maps_abstractmapType = xt_metadata_items_maps_abstractmap;
-    
+
     interface xt_metadata_items_memorylines_memorylinebase {
       Path?: string;
       Extends?: any;
@@ -36122,8 +37359,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_memorylines_memorylinebaseType = xt_metadata_items_memorylines_memorylinebase;
-    
+    export type xt_metadata_items_memorylines_memorylinebaseType =
+      xt_metadata_items_memorylines_memorylinebase;
+
     interface xt_metadata_items_microtransactioncurrency_abstractgiftbox {
       Path?: string;
       Extends?: any;
@@ -36131,8 +37369,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_abstractgiftboxType = xt_metadata_items_microtransactioncurrency_abstractgiftbox;
-    
+    export type xt_metadata_items_microtransactioncurrency_abstractgiftboxType =
+      xt_metadata_items_microtransactioncurrency_abstractgiftbox;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x1 {
       Path?: string;
       Extends?: any;
@@ -36140,8 +37379,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x1Type = xt_metadata_items_microtransactioncurrency_hiddenitem1x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x1Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x1;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x1ritual {
       Path?: string;
       Extends?: any;
@@ -36149,8 +37389,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x1ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem1x1ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x1ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x1ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x2 {
       Path?: string;
       Extends?: any;
@@ -36158,8 +37399,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x2Type = xt_metadata_items_microtransactioncurrency_hiddenitem1x2;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x2Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x2;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x2ritual {
       Path?: string;
       Extends?: any;
@@ -36167,8 +37409,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x2ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem1x2ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x2ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x2ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x3 {
       Path?: string;
       Extends?: any;
@@ -36176,8 +37419,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x3Type = xt_metadata_items_microtransactioncurrency_hiddenitem1x3;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x3Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x3;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x3ritual {
       Path?: string;
       Extends?: any;
@@ -36185,8 +37429,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x3ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem1x3ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x3ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x3ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x4 {
       Path?: string;
       Extends?: any;
@@ -36194,8 +37439,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x4Type = xt_metadata_items_microtransactioncurrency_hiddenitem1x4;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x4Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x4;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem1x4ritual {
       Path?: string;
       Extends?: any;
@@ -36203,8 +37449,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x4ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem1x4ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem1x4ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem1x4ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x1 {
       Path?: string;
       Extends?: any;
@@ -36212,8 +37459,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x1Type = xt_metadata_items_microtransactioncurrency_hiddenitem2x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x1Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x1;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x1ritual {
       Path?: string;
       Extends?: any;
@@ -36221,8 +37469,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x1ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem2x1ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x1ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x1ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x2 {
       Path?: string;
       Extends?: any;
@@ -36230,8 +37479,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x2Type = xt_metadata_items_microtransactioncurrency_hiddenitem2x2;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x2Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x2;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x2ritual {
       Path?: string;
       Extends?: any;
@@ -36239,8 +37489,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x2ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem2x2ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x2ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x2ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x3 {
       Path?: string;
       Extends?: any;
@@ -36248,8 +37499,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x3Type = xt_metadata_items_microtransactioncurrency_hiddenitem2x3;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x3Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x3;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x3ritual {
       Path?: string;
       Extends?: any;
@@ -36257,8 +37509,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x3ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem2x3ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x3ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x3ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x4 {
       Path?: string;
       Extends?: any;
@@ -36266,8 +37519,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x4Type = xt_metadata_items_microtransactioncurrency_hiddenitem2x4;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x4Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x4;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem2x4ritual {
       Path?: string;
       Extends?: any;
@@ -36275,8 +37529,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x4ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem2x4ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem2x4ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem2x4ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem3x1 {
       Path?: string;
       Extends?: any;
@@ -36284,8 +37539,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x1Type = xt_metadata_items_microtransactioncurrency_hiddenitem3x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x1Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem3x1;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem3x1ritual {
       Path?: string;
       Extends?: any;
@@ -36293,8 +37549,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x1ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem3x1ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x1ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem3x1ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem3x2 {
       Path?: string;
       Extends?: any;
@@ -36302,8 +37559,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x2Type = xt_metadata_items_microtransactioncurrency_hiddenitem3x2;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x2Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem3x2;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem3x2ritual {
       Path?: string;
       Extends?: any;
@@ -36311,8 +37569,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x2ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem3x2ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem3x2ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem3x2ritual;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem4x1 {
       Path?: string;
       Extends?: any;
@@ -36320,8 +37579,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem4x1Type = xt_metadata_items_microtransactioncurrency_hiddenitem4x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem4x1Type =
+      xt_metadata_items_microtransactioncurrency_hiddenitem4x1;
+
     interface xt_metadata_items_microtransactioncurrency_hiddenitem4x1ritual {
       Path?: string;
       Extends?: any;
@@ -36329,8 +37589,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_hiddenitem4x1ritualType = xt_metadata_items_microtransactioncurrency_hiddenitem4x1ritual;
-    
+    export type xt_metadata_items_microtransactioncurrency_hiddenitem4x1ritualType =
+      xt_metadata_items_microtransactioncurrency_hiddenitem4x1ritual;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionmysteryboxwrapper {
       Path?: string;
       Extends?: any;
@@ -36338,8 +37599,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionmysteryboxwrapperType = xt_metadata_items_microtransactioncurrency_microtransactionmysteryboxwrapper;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionmysteryboxwrapperType =
+      xt_metadata_items_microtransactioncurrency_microtransactionmysteryboxwrapper;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x1 {
       Path?: string;
       Extends?: any;
@@ -36347,8 +37609,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x1Type = xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x1Type =
+      xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x1;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x2 {
       Path?: string;
       Extends?: any;
@@ -36356,8 +37619,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x2Type = xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x2;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x2Type =
+      xt_metadata_items_microtransactioncurrency_microtransactionwrapper1x2;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x1 {
       Path?: string;
       Extends?: any;
@@ -36365,8 +37629,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x1Type = xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x1;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x1Type =
+      xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x1;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x2 {
       Path?: string;
       Extends?: any;
@@ -36374,8 +37639,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x2Type = xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x2;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x2Type =
+      xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x2;
+
     interface xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x3 {
       Path?: string;
       Extends?: any;
@@ -36383,8 +37649,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x3Type = xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x3;
-    
+    export type xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x3Type =
+      xt_metadata_items_microtransactioncurrency_microtransactionwrapper2x3;
+
     interface xt_metadata_items_omens_abstractomen {
       Path?: string;
       Extends?: any;
@@ -36393,7 +37660,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_omens_abstractomenType = xt_metadata_items_omens_abstractomen;
-    
+
     interface xt_metadata_items_pantheonsouls_abstactpantheonsoul {
       Path?: string;
       Extends?: any;
@@ -36401,8 +37668,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_pantheonsouls_abstactpantheonsoulType = xt_metadata_items_pantheonsouls_abstactpantheonsoul;
-    
+    export type xt_metadata_items_pantheonsouls_abstactpantheonsoulType =
+      xt_metadata_items_pantheonsouls_abstactpantheonsoul;
+
     interface xt_metadata_items_questitems_abstractquestitem {
       Path?: string;
       Extends?: any;
@@ -36410,8 +37678,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_abstractquestitemType = xt_metadata_items_questitems_abstractquestitem;
-    
+    export type xt_metadata_items_questitems_abstractquestitemType =
+      xt_metadata_items_questitems_abstractquestitem;
+
     interface xt_metadata_items_questitems_abstractusablequestitem {
       Path?: string;
       Extends?: any;
@@ -36419,8 +37688,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_abstractusablequestitemType = xt_metadata_items_questitems_abstractusablequestitem;
-    
+    export type xt_metadata_items_questitems_abstractusablequestitemType =
+      xt_metadata_items_questitems_abstractusablequestitem;
+
     interface xt_metadata_items_questitems_act11_cleansingfiremapdevicealteration {
       Path?: string;
       Extends?: any;
@@ -36428,8 +37698,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_act11_cleansingfiremapdevicealterationType = xt_metadata_items_questitems_act11_cleansingfiremapdevicealteration;
-    
+    export type xt_metadata_items_questitems_act11_cleansingfiremapdevicealterationType =
+      xt_metadata_items_questitems_act11_cleansingfiremapdevicealteration;
+
     interface xt_metadata_items_questitems_act11_mavenmapdevicealteration {
       Path?: string;
       Extends?: any;
@@ -36437,8 +37708,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_act11_mavenmapdevicealterationType = xt_metadata_items_questitems_act11_mavenmapdevicealteration;
-    
+    export type xt_metadata_items_questitems_act11_mavenmapdevicealterationType =
+      xt_metadata_items_questitems_act11_mavenmapdevicealteration;
+
     interface xt_metadata_items_questitems_act11_tanglemapdevicealteration {
       Path?: string;
       Extends?: any;
@@ -36446,8 +37718,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_act11_tanglemapdevicealterationType = xt_metadata_items_questitems_act11_tanglemapdevicealteration;
-    
+    export type xt_metadata_items_questitems_act11_tanglemapdevicealterationType =
+      xt_metadata_items_questitems_act11_tanglemapdevicealteration;
+
     interface xt_metadata_items_questitems_gallows_act3_frostcore1 {
       Path?: string;
       Extends?: any;
@@ -36455,8 +37728,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_frostcore1Type = xt_metadata_items_questitems_gallows_act3_frostcore1;
-    
+    export type xt_metadata_items_questitems_gallows_act3_frostcore1Type =
+      xt_metadata_items_questitems_gallows_act3_frostcore1;
+
     interface xt_metadata_items_questitems_gallows_act3_frostcore2 {
       Path?: string;
       Extends?: any;
@@ -36464,8 +37738,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_frostcore2Type = xt_metadata_items_questitems_gallows_act3_frostcore2;
-    
+    export type xt_metadata_items_questitems_gallows_act3_frostcore2Type =
+      xt_metadata_items_questitems_gallows_act3_frostcore2;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygem {
       Path?: string;
       Extends?: any;
@@ -36473,8 +37748,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemType = xt_metadata_items_questitems_gallows_act3_vaalkeygem;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemType =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygem;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygem2 {
       Path?: string;
       Extends?: any;
@@ -36482,8 +37758,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem2Type = xt_metadata_items_questitems_gallows_act3_vaalkeygem2;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem2Type =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygem2;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygem3 {
       Path?: string;
       Extends?: any;
@@ -36491,8 +37768,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem3Type = xt_metadata_items_questitems_gallows_act3_vaalkeygem3;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem3Type =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygem3;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygem4 {
       Path?: string;
       Extends?: any;
@@ -36500,8 +37778,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem4Type = xt_metadata_items_questitems_gallows_act3_vaalkeygem4;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygem4Type =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygem4;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium {
       Path?: string;
       Extends?: any;
@@ -36509,8 +37788,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemmediumType = xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemmediumType =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium;
+
     interface xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium2 {
       Path?: string;
       Extends?: any;
@@ -36518,8 +37798,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium2Type = xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium2;
-    
+    export type xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium2Type =
+      xt_metadata_items_questitems_gallows_act3_vaalkeygemmedium2;
+
     interface xt_metadata_items_quivers_abstractquiver {
       Path?: string;
       Extends?: any;
@@ -36527,8 +37808,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_quivers_abstractquiverType = xt_metadata_items_quivers_abstractquiver;
-    
+    export type xt_metadata_items_quivers_abstractquiverType =
+      xt_metadata_items_quivers_abstractquiver;
+
     interface xt_metadata_items_relics_abstractrelic {
       Path?: string;
       Extends?: any;
@@ -36537,7 +37819,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_relics_abstractrelicType = xt_metadata_items_relics_abstractrelic;
-    
+
     interface xt_metadata_items_relics_abstractspecialrelic {
       Path?: string;
       Extends?: any;
@@ -36545,8 +37827,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_relics_abstractspecialrelicType = xt_metadata_items_relics_abstractspecialrelic;
-    
+    export type xt_metadata_items_relics_abstractspecialrelicType =
+      xt_metadata_items_relics_abstractspecialrelic;
+
     interface xt_metadata_items_rings_abstractring {
       Path?: string;
       Extends?: any;
@@ -36555,7 +37838,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_rings_abstractringType = xt_metadata_items_rings_abstractring;
-    
+
     interface xt_metadata_items_sanctum_sanctumfloorbase {
       Path?: string;
       Extends?: any;
@@ -36563,8 +37846,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_sanctum_sanctumfloorbaseType = xt_metadata_items_sanctum_sanctumfloorbase;
-    
+    export type xt_metadata_items_sanctum_sanctumfloorbaseType =
+      xt_metadata_items_sanctum_sanctumfloorbase;
+
     interface xt_metadata_items_sanctum_sanctumkey {
       Path?: string;
       Extends?: any;
@@ -36573,7 +37857,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_sanctum_sanctumkeyType = xt_metadata_items_sanctum_sanctumkey;
-    
+
     interface xt_metadata_items_sceptres_abstractsceptre {
       Path?: string;
       Extends?: any;
@@ -36581,8 +37865,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_sceptres_abstractsceptreType = xt_metadata_items_sceptres_abstractsceptre;
-    
+    export type xt_metadata_items_sceptres_abstractsceptreType =
+      xt_metadata_items_sceptres_abstractsceptre;
+
     interface xt_metadata_items_sentinel_sentineldronebase {
       Path?: string;
       Extends?: any;
@@ -36590,8 +37875,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_sentinel_sentineldronebaseType = xt_metadata_items_sentinel_sentineldronebase;
-    
+    export type xt_metadata_items_sentinel_sentineldronebaseType =
+      xt_metadata_items_sentinel_sentineldronebase;
+
     interface xt_metadata_items_soulcores_abstractsoulcore {
       Path?: string;
       Extends?: any;
@@ -36599,8 +37885,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_soulcores_abstractsoulcoreType = xt_metadata_items_soulcores_abstractsoulcore;
-    
+    export type xt_metadata_items_soulcores_abstractsoulcoreType =
+      xt_metadata_items_soulcores_abstractsoulcore;
+
     interface xt_metadata_items_staves_abstractstaff {
       Path?: string;
       Extends?: any;
@@ -36609,7 +37896,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_staves_abstractstaffType = xt_metadata_items_staves_abstractstaff;
-    
+
     interface xt_metadata_items_toweraugments_toweraugment {
       Path?: string;
       Extends?: any;
@@ -36617,8 +37904,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_toweraugments_toweraugmentType = xt_metadata_items_toweraugments_toweraugment;
-    
+    export type xt_metadata_items_toweraugments_toweraugmentType =
+      xt_metadata_items_toweraugments_toweraugment;
+
     interface xt_metadata_items_traptools_abstracttraptool {
       Path?: string;
       Extends?: any;
@@ -36626,8 +37914,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_traptools_abstracttraptoolType = xt_metadata_items_traptools_abstracttraptool;
-    
+    export type xt_metadata_items_traptools_abstracttraptoolType =
+      xt_metadata_items_traptools_abstracttraptool;
+
     interface xt_metadata_items_ultimatum_itemisedtrial {
       Path?: string;
       Extends?: any;
@@ -36635,8 +37924,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_ultimatum_itemisedtrialType = xt_metadata_items_ultimatum_itemisedtrial;
-    
+    export type xt_metadata_items_ultimatum_itemisedtrialType =
+      xt_metadata_items_ultimatum_itemisedtrial;
+
     interface xt_metadata_items_ultimatum_ultimatumkey {
       Path?: string;
       Extends?: any;
@@ -36644,8 +37934,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_ultimatum_ultimatumkeyType = xt_metadata_items_ultimatum_ultimatumkey;
-    
+    export type xt_metadata_items_ultimatum_ultimatumkeyType =
+      xt_metadata_items_ultimatum_ultimatumkey;
+
     interface xt_metadata_items_ultimatum_ultimatumkeyspecial {
       Path?: string;
       Extends?: any;
@@ -36653,8 +37944,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_ultimatum_ultimatumkeyspecialType = xt_metadata_items_ultimatum_ultimatumkeyspecial;
-    
+    export type xt_metadata_items_ultimatum_ultimatumkeyspecialType =
+      xt_metadata_items_ultimatum_ultimatumkeyspecial;
+
     interface xt_metadata_items_uniquefragments_abstractuniquefragment {
       Path?: string;
       Extends?: any;
@@ -36662,8 +37954,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_uniquefragments_abstractuniquefragmentType = xt_metadata_items_uniquefragments_abstractuniquefragment;
-    
+    export type xt_metadata_items_uniquefragments_abstractuniquefragmentType =
+      xt_metadata_items_uniquefragments_abstractuniquefragment;
+
     interface xt_metadata_items_wands_abstractwand {
       Path?: string;
       Extends?: any;
@@ -36672,7 +37965,7 @@ declare namespace Poe2DataMain {
       Children?: any[];
     }
     export type xt_metadata_items_wands_abstractwandType = xt_metadata_items_wands_abstractwand;
-    
+
     interface xt_metadata_items_weapons_abstractweapon {
       Path?: string;
       Extends?: any;
@@ -36680,8 +37973,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_abstractweaponType = xt_metadata_items_weapons_abstractweapon;
-    
+    export type xt_metadata_items_weapons_abstractweaponType =
+      xt_metadata_items_weapons_abstractweapon;
+
     interface xt_metadata_items_weapons_onehandweapons_abstractonehandweapon {
       Path?: string;
       Extends?: any;
@@ -36689,8 +37983,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_abstractonehandweaponType = xt_metadata_items_weapons_onehandweapons_abstractonehandweapon;
-    
+    export type xt_metadata_items_weapons_onehandweapons_abstractonehandweaponType =
+      xt_metadata_items_weapons_onehandweapons_abstractonehandweapon;
+
     interface xt_metadata_items_weapons_onehandweapons_claws_abstractclaw {
       Path?: string;
       Extends?: any;
@@ -36698,8 +37993,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_claws_abstractclawType = xt_metadata_items_weapons_onehandweapons_claws_abstractclaw;
-    
+    export type xt_metadata_items_weapons_onehandweapons_claws_abstractclawType =
+      xt_metadata_items_weapons_onehandweapons_claws_abstractclaw;
+
     interface xt_metadata_items_weapons_onehandweapons_daggers_abstractdagger {
       Path?: string;
       Extends?: any;
@@ -36707,8 +38003,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_daggers_abstractdaggerType = xt_metadata_items_weapons_onehandweapons_daggers_abstractdagger;
-    
+    export type xt_metadata_items_weapons_onehandweapons_daggers_abstractdaggerType =
+      xt_metadata_items_weapons_onehandweapons_daggers_abstractdagger;
+
     interface xt_metadata_items_weapons_onehandweapons_flail_abstractflail {
       Path?: string;
       Extends?: any;
@@ -36716,8 +38013,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_flail_abstractflailType = xt_metadata_items_weapons_onehandweapons_flail_abstractflail;
-    
+    export type xt_metadata_items_weapons_onehandweapons_flail_abstractflailType =
+      xt_metadata_items_weapons_onehandweapons_flail_abstractflail;
+
     interface xt_metadata_items_weapons_onehandweapons_onehandaxes_abstractonehandaxe {
       Path?: string;
       Extends?: any;
@@ -36725,8 +38023,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_onehandaxes_abstractonehandaxeType = xt_metadata_items_weapons_onehandweapons_onehandaxes_abstractonehandaxe;
-    
+    export type xt_metadata_items_weapons_onehandweapons_onehandaxes_abstractonehandaxeType =
+      xt_metadata_items_weapons_onehandweapons_onehandaxes_abstractonehandaxe;
+
     interface xt_metadata_items_weapons_onehandweapons_onehandmaces_abstractonehandmace {
       Path?: string;
       Extends?: any;
@@ -36734,8 +38033,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_onehandmaces_abstractonehandmaceType = xt_metadata_items_weapons_onehandweapons_onehandmaces_abstractonehandmace;
-    
+    export type xt_metadata_items_weapons_onehandweapons_onehandmaces_abstractonehandmaceType =
+      xt_metadata_items_weapons_onehandweapons_onehandmaces_abstractonehandmace;
+
     interface xt_metadata_items_weapons_onehandweapons_onehandswords_abstractonehandsword {
       Path?: string;
       Extends?: any;
@@ -36743,8 +38043,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_onehandswords_abstractonehandswordType = xt_metadata_items_weapons_onehandweapons_onehandswords_abstractonehandsword;
-    
+    export type xt_metadata_items_weapons_onehandweapons_onehandswords_abstractonehandswordType =
+      xt_metadata_items_weapons_onehandweapons_onehandswords_abstractonehandsword;
+
     interface xt_metadata_items_weapons_onehandweapons_onehandswords_stormbladeonehand {
       Path?: string;
       Extends?: any;
@@ -36752,8 +38053,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_onehandswords_stormbladeonehandType = xt_metadata_items_weapons_onehandweapons_onehandswords_stormbladeonehand;
-    
+    export type xt_metadata_items_weapons_onehandweapons_onehandswords_stormbladeonehandType =
+      xt_metadata_items_weapons_onehandweapons_onehandswords_stormbladeonehand;
+
     interface xt_metadata_items_weapons_onehandweapons_spears_abstractspear {
       Path?: string;
       Extends?: any;
@@ -36761,8 +38063,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_onehandweapons_spears_abstractspearType = xt_metadata_items_weapons_onehandweapons_spears_abstractspear;
-    
+    export type xt_metadata_items_weapons_onehandweapons_spears_abstractspearType =
+      xt_metadata_items_weapons_onehandweapons_spears_abstractspear;
+
     interface xt_metadata_items_weapons_twohandweapons_abstracttwohandweapon {
       Path?: string;
       Extends?: any;
@@ -36770,8 +38073,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_abstracttwohandweaponType = xt_metadata_items_weapons_twohandweapons_abstracttwohandweapon;
-    
+    export type xt_metadata_items_weapons_twohandweapons_abstracttwohandweaponType =
+      xt_metadata_items_weapons_twohandweapons_abstracttwohandweapon;
+
     interface xt_metadata_items_weapons_twohandweapons_bows_abstractbow {
       Path?: string;
       Extends?: any;
@@ -36779,8 +38083,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_bows_abstractbowType = xt_metadata_items_weapons_twohandweapons_bows_abstractbow;
-    
+    export type xt_metadata_items_weapons_twohandweapons_bows_abstractbowType =
+      xt_metadata_items_weapons_twohandweapons_bows_abstractbow;
+
     interface xt_metadata_items_weapons_twohandweapons_crossbows_abstractcrossbow {
       Path?: string;
       Extends?: any;
@@ -36788,8 +38093,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_crossbows_abstractcrossbowType = xt_metadata_items_weapons_twohandweapons_crossbows_abstractcrossbow;
-    
+    export type xt_metadata_items_weapons_twohandweapons_crossbows_abstractcrossbowType =
+      xt_metadata_items_weapons_twohandweapons_crossbows_abstractcrossbow;
+
     interface xt_metadata_items_weapons_twohandweapons_fishingrods_abstractfishingrod {
       Path?: string;
       Extends?: any;
@@ -36797,8 +38103,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_fishingrods_abstractfishingrodType = xt_metadata_items_weapons_twohandweapons_fishingrods_abstractfishingrod;
-    
+    export type xt_metadata_items_weapons_twohandweapons_fishingrods_abstractfishingrodType =
+      xt_metadata_items_weapons_twohandweapons_fishingrods_abstractfishingrod;
+
     interface xt_metadata_items_weapons_twohandweapons_staves_abstractwarstaff {
       Path?: string;
       Extends?: any;
@@ -36806,8 +38113,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_staves_abstractwarstaffType = xt_metadata_items_weapons_twohandweapons_staves_abstractwarstaff;
-    
+    export type xt_metadata_items_weapons_twohandweapons_staves_abstractwarstaffType =
+      xt_metadata_items_weapons_twohandweapons_staves_abstractwarstaff;
+
     interface xt_metadata_items_weapons_twohandweapons_twohandaxes_abstracttwohandaxe {
       Path?: string;
       Extends?: any;
@@ -36815,8 +38123,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_twohandaxes_abstracttwohandaxeType = xt_metadata_items_weapons_twohandweapons_twohandaxes_abstracttwohandaxe;
-    
+    export type xt_metadata_items_weapons_twohandweapons_twohandaxes_abstracttwohandaxeType =
+      xt_metadata_items_weapons_twohandweapons_twohandaxes_abstracttwohandaxe;
+
     interface xt_metadata_items_weapons_twohandweapons_twohandmaces_abstracttwohandmace {
       Path?: string;
       Extends?: any;
@@ -36824,8 +38133,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_twohandmaces_abstracttwohandmaceType = xt_metadata_items_weapons_twohandweapons_twohandmaces_abstracttwohandmace;
-    
+    export type xt_metadata_items_weapons_twohandweapons_twohandmaces_abstracttwohandmaceType =
+      xt_metadata_items_weapons_twohandweapons_twohandmaces_abstracttwohandmace;
+
     interface xt_metadata_items_weapons_twohandweapons_twohandswords_abstracttwohandsword {
       Path?: string;
       Extends?: any;
@@ -36833,8 +38143,9 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_twohandswords_abstracttwohandswordType = xt_metadata_items_weapons_twohandweapons_twohandswords_abstracttwohandsword;
-    
+    export type xt_metadata_items_weapons_twohandweapons_twohandswords_abstracttwohandswordType =
+      xt_metadata_items_weapons_twohandweapons_twohandswords_abstracttwohandsword;
+
     interface xt_metadata_items_weapons_twohandweapons_twohandswords_stormbladetwohand {
       Path?: string;
       Extends?: any;
@@ -36842,8 +38153,7 @@ declare namespace Poe2DataMain {
       Value?: any;
       Children?: any[];
     }
-    export type xt_metadata_items_weapons_twohandweapons_twohandswords_stormbladetwohandType = xt_metadata_items_weapons_twohandweapons_twohandswords_stormbladetwohand;
-    
+    export type xt_metadata_items_weapons_twohandweapons_twohandswords_stormbladetwohandType =
+      xt_metadata_items_weapons_twohandweapons_twohandswords_stormbladetwohand;
   }
-
 }

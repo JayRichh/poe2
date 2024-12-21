@@ -1,9 +1,10 @@
+import type { POEOAuthConfig, POEScope } from "@/types/poe-api";
+
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { POEClient } from "~/lib/poe/client";
 import { createMiddlewareClient } from "~/lib/supabase/actions";
-import type { POEOAuthConfig, POEScope } from "@/types/poe-api";
 
 const POE_CONFIG: POEOAuthConfig = {
   clientId: process.env.NEXT_PUBLIC_POE_CLIENT_ID!,

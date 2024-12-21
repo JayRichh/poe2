@@ -1,12 +1,13 @@
 "use server";
 
+import type { POEOAuthConfig, POEScope } from "@/types/poe-api";
+
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 import { getServerClient } from "~/app/_actions/supabase";
 import { POEClient } from "~/lib/poe/client";
 import type { POEAccountData } from "~/lib/supabase/types";
-import type { POEOAuthConfig, POEScope } from "@/types/poe-api";
 
 const POE_CONFIG: POEOAuthConfig = {
   clientId: process.env.NEXT_PUBLIC_POE_CLIENT_ID!,

@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "DPS Calculator - POE2 Tools",
-  description: "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
+  description:
+    "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
   openGraph: {
     title: "POE2 DPS Calculator - Optimize Your Character's Damage",
-    description: "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
+    description:
+      "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
     images: [
       {
         url: "/android-chrome-512x512.png",
@@ -23,11 +25,12 @@ export const metadata: Metadata = {
       name: "POE2 DPS Calculator",
       applicationCategory: "GameApplication",
       operatingSystem: "Web Browser",
-      description: "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
+      description:
+        "Calculate and optimize your Path of Exile 2 character's damage per second (DPS). Advanced DPS simulator with skill gem configurations, equipment modifiers, and buff calculations.",
       offers: {
         "@type": "Offer",
         price: "0",
-        priceCurrency: "USD"
+        priceCurrency: "USD",
       },
       featureList: [
         "DPS Calculations",
@@ -35,36 +38,37 @@ export const metadata: Metadata = {
         "Equipment Modifiers",
         "Buff Management",
         "Damage Type Analysis",
-        "DPS Comparison Tools"
-      ]
+        "DPS Comparison Tools",
+      ],
     }),
     "schema:HowTo": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "HowTo",
       name: "How to Calculate POE2 DPS",
-      description: "Learn how to calculate and optimize your Path of Exile 2 character's damage output.",
+      description:
+        "Learn how to calculate and optimize your Path of Exile 2 character's damage output.",
       step: [
         {
           "@type": "HowToStep",
           name: "Configure Skills",
-          text: "Select and configure your character's skill gems and support gems"
+          text: "Select and configure your character's skill gems and support gems",
         },
         {
           "@type": "HowToStep",
           name: "Add Equipment",
-          text: "Input your character's equipment and modifiers"
+          text: "Input your character's equipment and modifiers",
         },
         {
           "@type": "HowToStep",
           name: "Set Buffs",
-          text: "Configure active buffs and conditions"
+          text: "Configure active buffs and conditions",
         },
         {
           "@type": "HowToStep",
           name: "View Results",
-          text: "Analyze your character's total DPS and damage breakdown"
-        }
-      ]
-    })
-  }
+          text: "Analyze your character's total DPS and damage breakdown",
+        },
+      ],
+    }),
+  },
 };

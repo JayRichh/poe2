@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Build Planner - POE2 Tools",
-  description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+  description:
+    "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
   openGraph: {
     title: "POE2 Build Planner - Create and Share POE2 Builds",
-    description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+    description:
+      "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
     images: [
       {
         url: "/android-chrome-512x512.png",
@@ -23,11 +25,12 @@ export const metadata: Metadata = {
       name: "POE2 Build Planner",
       applicationCategory: "GameApplication",
       operatingSystem: "Web Browser",
-      description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+      description:
+        "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
       offers: {
         "@type": "Offer",
         price: "0",
-        priceCurrency: "USD"
+        priceCurrency: "USD",
       },
       featureList: [
         "Interactive Skill Tree",
@@ -35,8 +38,8 @@ export const metadata: Metadata = {
         "Stat Calculations",
         "Build Sharing",
         "Build Templates",
-        "Build Versioning"
-      ]
-    })
-  }
+        "Build Versioning",
+      ],
+    }),
+  },
 };
