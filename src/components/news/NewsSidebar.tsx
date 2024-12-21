@@ -1,17 +1,23 @@
 "use client";
 
 import { Clock, Megaphone, Newspaper, Trophy, Users } from "lucide-react";
-
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
-
+import { useSearchParams } from "next/navigation";
 import { cn } from "~/utils/cn";
-
 import { Text } from "../ui/Text";
 
-const categories = [
+interface Category {
+  title: string;
+  slug: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+interface Source {
+  title: string;
+  slug: string;
+}
+
+const categories: Category[] = [
   {
     title: "All News",
     slug: "",
@@ -39,101 +45,103 @@ const categories = [
   },
 ];
 
-const sources = [
+const sources: Source[] = [
   { title: "Official", slug: "official" },
   { title: "Community", slug: "community" },
   { title: "Reddit", slug: "reddit" },
 ];
 
+const timeRanges = ["Today", "This Week", "This Month"] as const;
+type TimeRange = typeof timeRanges[number];
+
 export function NewsSidebar() {
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("category") || "";
-  const currentSource = searchParams.get("source") || "";
-  const isVisible = useHeaderScroll();
+  const currentCategory = searchParams?.get("category") || "";
+  const currentSource = searchParams?.get("source") || "";
+
+  const handleTimeRangeClick = (range: TimeRange) => {
+    // TODO: Implement time range filtering
+    console.log("Selected time range:", range);
+  };
 
   return (
-    <div
-      className={cn(
-        "fixed top-0 left-0 w-64 transition-transform duration-300",
-        isVisible ? "translate-y-20" : "translate-y-0"
-      )}
-    >
-      <aside className="h-screen overflow-y-auto border-r border-border bg-card/50 backdrop-blur-sm">
-        <nav className="p-3 space-y-4">
-          {/* Categories */}
-          <div className="space-y-1">
-            <Text variant="h4" className="text-sm font-semibold text-foreground/80 px-2">
-              Categories
-            </Text>
-            <ul className="space-y-0.5">
-              {categories.map((category) => {
-                const Icon = category.icon;
-                const isActive = currentCategory === category.slug;
+    <nav className="py-4 space-y-6" aria-label="News navigation">
+      {/* Categories */}
+      <div role="region" aria-label="News categories">
+        <Text className="text-sm font-medium text-foreground/70 px-4 mb-2">
+          Categories
+        </Text>
+        <div className="space-y-0.5">
+          {categories.map((category) => {
+            const Icon = category.icon;
+            const isActive = currentCategory === category.slug;
 
-                return (
-                  <li key={category.slug}>
-                    <Link
-                      href={`/news${category.slug ? `?category=${category.slug}` : ""}`}
-                      className={`flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-colors ${
-                        isActive
-                          ? "bg-accent/20 text-accent"
-                          : "text-muted-foreground hover:text-foreground hover:bg-accent/10"
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {category.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+            return (
+              <Link
+                key={category.slug}
+                href={`/news${category.slug ? `?category=${category.slug}` : ""}`}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-colors mx-2",
+                  isActive
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                )}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <Icon className="w-4 h-4" aria-hidden="true" />
+                <span>{category.title}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
 
-          {/* Sources */}
-          <div className="space-y-1">
-            <Text variant="h4" className="text-sm font-semibold text-foreground/80 px-2">
-              Sources
-            </Text>
-            <ul className="space-y-0.5">
-              {sources.map((source) => {
-                const isActive = currentSource === source.slug;
+      {/* Sources */}
+      <div className="border-t border-border/30 pt-6" role="region" aria-label="News sources">
+        <Text className="text-sm font-medium text-foreground/70 px-4 mb-2">
+          Sources
+        </Text>
+        <div className="space-y-0.5">
+          {sources.map((source) => {
+            const isActive = currentSource === source.slug;
 
-                return (
-                  <li key={source.slug}>
-                    <Link
-                      href={`/news?source=${source.slug}`}
-                      className={`block px-2 py-1.5 rounded text-sm transition-colors ${
-                        isActive
-                          ? "bg-accent/20 text-accent"
-                          : "text-muted-foreground hover:text-foreground hover:bg-accent/10"
-                      }`}
-                    >
-                      {source.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+            return (
+              <Link
+                key={source.slug}
+                href={`/news?source=${source.slug}`}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-colors mx-2",
+                  isActive
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                )}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span>{source.title}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
 
-          {/* Time Filter */}
-          <div className="space-y-1">
-            <Text variant="h4" className="text-sm font-semibold text-foreground/80 px-2">
-              Time Range
-            </Text>
-            <ul className="space-y-0.5">
-              {["Today", "This Week", "This Month"].map((range) => (
-                <li key={range}>
-                  <button className="w-full text-left px-2 py-1.5 rounded text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 transition-colors">
-                    {range}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-      </aside>
-    </div>
+      {/* Time Filter */}
+      <div className="border-t border-border/30 pt-6" role="region" aria-label="Time range filter">
+        <Text className="text-sm font-medium text-foreground/70 px-4 mb-2">
+          Time Range
+        </Text>
+        <div className="space-y-0.5">
+          {timeRanges.map((range) => (
+            <button
+              key={range}
+              onClick={() => handleTimeRangeClick(range)}
+              className="w-full text-left px-4 py-2 text-sm rounded-lg mx-2 text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+              type="button"
+            >
+              {range}
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
   );
 }

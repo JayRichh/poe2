@@ -1,60 +1,89 @@
-import { PatchNote } from "@/types/news";
-
-import { Text } from "~/components/ui/Text";
+import type { PatchNote, PatchNoteSection, PatchNoteHotfix } from "~/types/news";
+import { Text } from "../ui/Text";
+import { cn } from "~/utils/cn";
 
 interface PatchNotesProps {
   patchNotes: PatchNote[];
 }
 
+function PatchNoteChanges({ changes }: { changes: string[] }) {
+  return (
+    <ul className="space-y-1.5 list-disc list-inside text-sm text-foreground/80">
+      {changes.map((change, i) => (
+        <li key={i} className="leading-relaxed">
+          {change}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PatchNoteSection({ section }: { section: PatchNoteSection }) {
+  return (
+    <div className="space-y-2">
+      <Text className="text-sm font-medium text-primary">
+        {section.title}
+      </Text>
+      <PatchNoteChanges changes={section.changes} />
+    </div>
+  );
+}
+
+function PatchNoteHotfix({ hotfix }: { hotfix: PatchNoteHotfix }) {
+  return (
+    <div className="space-y-2 pl-4 border-l-2 border-primary/20">
+      <div className="flex items-center justify-between">
+        <Text className="text-sm font-medium text-primary/80">
+          Hotfix {hotfix.version}
+        </Text>
+        <Text className="text-sm text-foreground/60">
+          {new Date(hotfix.date).toLocaleDateString(undefined, {
+            month: "short",
+            day: "numeric",
+          })}
+        </Text>
+      </div>
+      <PatchNoteChanges changes={hotfix.changes} />
+    </div>
+  );
+}
+
 export function PatchNotes({ patchNotes }: PatchNotesProps) {
   return (
     <div className="space-y-8">
-      {patchNotes.map((patch) => (
-        <div key={patch.version} className="space-y-4">
-          <div className="border-b border-border pb-2">
-            <Text variant="h3" className="flex items-center gap-2">
-              Version {patch.version}
-              <span className="text-sm font-normal text-muted-foreground">
-                {new Date(patch.date).toLocaleDateString()}
-              </span>
+      {patchNotes.map((note, index) => (
+        <div 
+          key={`${note.version}-${note.date}`} 
+          className={cn("space-y-6", index !== 0 && "pt-8 border-t border-border/30")}
+        >
+          <div className="flex items-center justify-between">
+            <Text variant="h4" className="font-medium">
+              Version {note.version}
+            </Text>
+            <Text className="text-sm text-foreground/60">
+              {new Date(note.date).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </Text>
           </div>
 
-          <div className="space-y-6">
-            {patch.sections.map((section, idx) => (
-              <div key={idx} className="space-y-2">
-                <Text variant="h4" className="text-lg font-semibold">
-                  {section.title}
-                </Text>
-                <ul className="list-disc pl-6 space-y-1.5">
-                  {section.changes.map((change, changeIdx) => (
-                    <li key={changeIdx} className="text-sm text-muted-foreground">
-                      {change}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Main Sections */}
+          <div className="space-y-4">
+            {note.sections.map((section, idx) => (
+              <PatchNoteSection key={`${section.title}-${idx}`} section={section} />
             ))}
           </div>
 
-          {patch.hotfixes && patch.hotfixes.length > 0 && (
-            <div className="mt-6 space-y-4">
-              <Text variant="h4" className="text-lg font-semibold">
+          {/* Hotfixes */}
+          {note.hotfixes.length > 0 && (
+            <div className="space-y-4 mt-4">
+              <Text className="text-sm font-medium text-foreground/70">
                 Hotfixes
               </Text>
-              {patch.hotfixes.map((hotfix, idx) => (
-                <div key={idx} className="space-y-2">
-                  <Text variant="body" weight="medium" className="text-sm">
-                    Hotfix {hotfix.version} - {new Date(hotfix.date).toLocaleDateString()}
-                  </Text>
-                  <ul className="list-disc pl-6 space-y-1.5">
-                    {hotfix.changes.map((change, changeIdx) => (
-                      <li key={changeIdx} className="text-sm text-muted-foreground">
-                        {change}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {note.hotfixes.map((hotfix, idx) => (
+                <PatchNoteHotfix key={`${hotfix.version}-${idx}`} hotfix={hotfix} />
               ))}
             </div>
           )}

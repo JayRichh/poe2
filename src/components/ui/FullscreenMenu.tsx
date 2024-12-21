@@ -13,6 +13,9 @@ import {
   Sun,
   User,
   X,
+  Newspaper,
+  Users,
+  FileText,
 } from "lucide-react";
 
 import * as React from "react";
@@ -28,9 +31,33 @@ import { Button } from "./Button";
 import { Text } from "./Text";
 
 const mainLinks = [
-  { label: "Build Planner", path: "/build-planner", icon: Layout },
-  { label: "Skill Tree", path: "/skill-tree", icon: GitBranch },
-  { label: "DPS Calculator", path: "/dps-calc", icon: Calculator },
+  { 
+    label: "Build Planner",
+    path: "/build-planner",
+    icon: Layout,
+    description: "Create and share your POE2 character builds",
+    features: ["Equipment Planning", "Skill Gems", "Build Notes", "Stats Calculator"]
+  },
+  { 
+    label: "Skill Tree",
+    path: "/skill-tree",
+    icon: GitBranch,
+    description: "Explore and plan your passive skill tree",
+    features: ["Visual Tree Explorer", "Path Planning", "Build Integration"]
+  },
+  { 
+    label: "DPS Calculator",
+    path: "/dps-calc",
+    icon: Calculator,
+    description: "Calculate and optimize your damage output",
+    features: ["Skill Damage", "Support Gems", "Equipment Effects"]
+  },
+];
+
+const quickLinks = [
+  { label: "Latest News", path: "/news", icon: Newspaper },
+  { label: "Community Builds", path: "/build-planner", icon: Users },
+  { label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
 ];
 
 const themeOptions = [
@@ -88,21 +115,19 @@ function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
       variants={animations.item}
       initial="hidden"
       animate="visible"
-      className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5"
+      className="p-4 rounded-xl border border-border/50 bg-background/95"
     >
-      <div className="flex items-start gap-3">
-        <LogIn className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-        <div className="space-y-2 w-full">
-          <Text className="font-medium">Sign in to access all features</Text>
-          <Button
-            variant="outline"
-            onClick={() => onNavigate("/auth/login")}
-            className="w-full flex items-center gap-2"
-          >
-            <LogIn className="h-4 w-4" />
-            Sign In
-          </Button>
-        </div>
+      <div className="flex items-center justify-between">
+        <Text className="text-sm text-foreground/60">Continue where you left off</Text>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onNavigate("/auth/login")}
+          className="flex items-center gap-2 text-foreground/70 hover:text-foreground"
+        >
+          <LogIn className="h-4 w-4" />
+          <span className="text-sm">Sign in</span>
+        </Button>
       </div>
     </motion.div>
   );
@@ -122,30 +147,30 @@ function UserProfile({
       variants={animations.item}
       initial="hidden"
       animate="visible"
-      className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5"
+      className="p-4 rounded-xl border border-border/50 bg-background/95"
     >
-      <div className="flex items-start gap-3">
-        <User className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-        <div className="space-y-2 w-full">
-          <Text className="font-medium">{user.email}</Text>
-          <div className="grid gap-2">
-            <Button
-              variant="outline"
-              onClick={() => onNavigate("/profile")}
-              className="w-full flex items-center gap-2"
-            >
-              <Settings className="h-4 w-4" />
-              Go to Profile
-            </Button>
-            <Button
-              variant="outline"
-              onClick={onSignOut}
-              className="w-full flex items-center gap-2"
-            >
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </Button>
-          </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <User className="h-4 w-4 text-foreground/70" />
+          <Text className="text-sm text-foreground/70">{user.email}</Text>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => onNavigate("/profile")}
+            className="text-foreground/70 hover:text-foreground"
+          >
+            <Settings className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onSignOut}
+            className="text-foreground/70 hover:text-foreground"
+          >
+            <LogOut className="h-4 w-4" />
+          </Button>
         </div>
       </div>
     </motion.div>
@@ -161,8 +186,8 @@ function NavigationSection({
 }) {
   return (
     <div className="space-y-6">
-      <Text className="text-lg font-medium">Navigation</Text>
-      <div className="grid gap-4">
+      <Text className="text-lg font-medium">Tools & Features</Text>
+      <div className="grid gap-6">
         {mainLinks.map((item, index) => {
           const isActive = pathname === item.path;
           const Icon = item.icon;
@@ -185,12 +210,55 @@ function NavigationSection({
                     : "border-border/50 bg-background/95 hover:border-primary/50"
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <Icon className="h-5 w-5" />
-                  <Text className="font-medium">{item.label}</Text>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Icon className="h-5 w-5" />
+                    <Text className="font-medium">{item.label}</Text>
+                  </div>
+                  <Text className="text-sm text-foreground/60">{item.description}</Text>
+                  <div className="flex flex-wrap gap-2">
+                    {item.features.map((feature) => (
+                      <span
+                        key={feature}
+                        className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </button>
             </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function QuickLinksSection({ onNavigate }: { onNavigate: (path: string) => void }) {
+  return (
+    <div className="space-y-4">
+      <Text className="text-lg font-medium">Quick Links</Text>
+      <div className="grid grid-cols-3 gap-4">
+        {quickLinks.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <motion.button
+              key={item.path}
+              custom={index}
+              variants={animations.item}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.6 + index * 0.1 }}
+              onClick={() => onNavigate(item.path)}
+              className="p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 transition-all"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <Icon className="h-5 w-5" />
+                <Text className="text-sm font-medium text-center">{item.label}</Text>
+              </div>
+            </motion.button>
           );
         })}
       </div>
@@ -292,19 +360,19 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
           className="flex-1 overflow-y-auto overscroll-contain"
         >
           <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-              <div className="space-y-8">
-                {user ? (
-                  <UserProfile
-                    user={user}
-                    onSignOut={handleSignOut}
-                    onNavigate={handleNavigation}
-                  />
-                ) : (
-                  <SignInSection onNavigate={handleNavigation} />
-                )}
-                <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+                <div className="space-y-12">
+                  <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
+                  <QuickLinksSection onNavigate={handleNavigation} />
+                  {!user && <SignInSection onNavigate={handleNavigation} />}
+                  {user && (
+                    <UserProfile
+                      user={user}
+                      onSignOut={handleSignOut}
+                      onNavigate={handleNavigation}
+                    />
+                  )}
+                </div>
 
               <div className="space-y-8">
                 <Text className="text-lg font-medium">Settings</Text>

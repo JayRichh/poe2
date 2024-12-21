@@ -1,18 +1,23 @@
 import Link from "next/link";
-
 import { AuthForm } from "~/components/auth/AuthForm";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
+import { Alert } from "~/components/ui/Alert";
 
 export default function LoginPage() {
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
       <Container className="max-w-md py-12">
         <div className="space-y-8">
-          <div className="text-center">
-            <Text className="text-3xl font-bold">Welcome Back</Text>
-            <Text className="text-foreground/60 mt-2">Sign in to continue to POE2 Tools</Text>
+          <div className="flex flex-col w-full">
+            <Text className="text-3xl text-center font-bold">Welcome Back</Text>
+            <Text className="text-foreground/60 text-center mt-2">Sign in to your account</Text>
           </div>
+
+          <Alert variant="info" className="text-sm">
+            POE2 Tools is actively being developed with new features added daily. 
+            <br></br>Thanks have a great day :&#41;
+          </Alert>
 
           <AuthForm type="login" />
 

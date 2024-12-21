@@ -1,9 +1,8 @@
-import { NewsItem } from "@/types/news";
+import { NewsItem } from "~/types/news";
 import { ArrowRight, Clock } from "lucide-react";
-
 import Link from "next/link";
-
 import { Text } from "../ui/Text";
+import { cn } from "~/utils/cn";
 
 interface NewsCardProps {
   news: NewsItem;
@@ -33,18 +32,18 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
         href={news.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative overflow-hidden rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors h-full"
+        className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-accent">{news.category}</span>
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Clock className="w-3 h-3" />
+            <span className="text-sm font-medium text-primary">{news.category}</span>
+            <div className="flex items-center gap-1.5 text-sm text-foreground/60">
+              <Clock className="w-3.5 h-3.5" />
               {timeAgo(news.publishedAt)}
             </div>
           </div>
 
-          <div className="flex-grow space-y-2">
+          <div className="flex-grow space-y-3">
             <Text variant="h4" className="line-clamp-2">
               {news.title}
             </Text>
@@ -53,12 +52,12 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
             </Text>
           </div>
 
-          <div className="flex items-center text-sm text-accent pt-4">
+          <div className="flex items-center text-sm text-primary font-medium pt-4">
             Read More
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
-        <div className="absolute inset-0 border border-accent/10 rounded-lg group-hover:border-accent/20 transition-colors" />
+        <div className="absolute inset-0 border border-primary/10 rounded-lg group-hover:border-primary/20 transition-colors" />
       </Link>
     );
   }
@@ -68,18 +67,18 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
       href={news.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block p-4 rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors"
+      className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"
     >
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-accent">{news.category}</span>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <Clock className="w-3 h-3" />
+          <span className="text-sm font-medium text-primary">{news.category}</span>
+          <div className="flex items-center gap-1.5 text-sm text-foreground/60">
+            <Clock className="w-3.5 h-3.5" />
             {timeAgo(news.publishedAt)}
           </div>
         </div>
         <div className="flex items-start gap-4">
-          <div className="flex-grow space-y-1 min-w-0">
+          <div className="flex-grow space-y-1.5 min-w-0">
             <Text variant="h4" className="line-clamp-1">
               {news.title}
             </Text>
@@ -87,7 +86,9 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
               {news.description}
             </Text>
           </div>
-          <ArrowRight className="w-5 h-5 text-accent flex-shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+          <div className="flex-shrink-0 mt-1 text-primary">
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </div>
         </div>
       </div>
     </Link>

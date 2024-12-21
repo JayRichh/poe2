@@ -1,23 +1,18 @@
-import type { NewsItem, PatchNote } from "@/types/news";
-
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
-
 import { NewsCard } from "~/components/news/NewsCard";
-import { NewsSidebar } from "~/components/news/NewsSidebar";
 import { PatchNotes } from "~/components/news/PatchNotes";
+import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
-
 import { NewsService } from "~/services/news-service";
 
 export const dynamic = "force-dynamic";
 
 interface PageProps {
-  searchParams:
-    | Promise<{
-        category?: string;
-        source?: string;
-      }>
-    | undefined;
+  searchParams: Promise<{
+    category?: string;
+    source?: string;
+  }> | undefined;
 }
 
 export default async function NewsPage({ searchParams }: PageProps) {
@@ -34,20 +29,20 @@ export default async function NewsPage({ searchParams }: PageProps) {
     const recentNews = news.slice(2);
 
     return (
-      <>
-        <NewsSidebar />
-        <main className="flex-1">
-          <div className="space-y-8 p-6 md:p-10">
-            {/* Header */}
-            <div className="space-y-1.5">
-              <Text variant="h1" className="flex items-center">
-                Latest News
-              </Text>
-              <Text variant="body" color="secondary" className="max-w-2xl leading-relaxed">
-                Stay updated with the latest Path of Exile 2 news and announcements
-              </Text>
-            </div>
-
+      <NewsLayout
+        title="Latest News"
+        description="Stay updated with the latest Path of Exile 2 news and announcements"
+      >
+        <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
+          <Suspense
+            fallback={
+              <div className="text-center py-12">
+                <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                </div>
+              </div>
+            }
+          >
             {/* Featured News */}
             <div>
               <Text variant="h3" className="mb-3">
@@ -81,9 +76,9 @@ export default async function NewsPage({ searchParams }: PageProps) {
                 <PatchNotes patchNotes={patchNotes} />
               </div>
             </div>
-          </div>
-        </main>
-      </>
+          </Suspense>
+        </div>
+      </NewsLayout>
     );
   } catch (error) {
     console.error("Error loading news:", error);

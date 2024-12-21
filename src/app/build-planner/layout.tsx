@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
-
+import { Container } from "~/components/ui/Container";
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [
-  { href: "/build-planner", label: "Passive Tree" },
+  { href: "/build-planner", label: "Overview" },
   { href: "/build-planner/equipment", label: "Equipment" },
   { href: "/build-planner/skills", label: "Skills" },
   { href: "/build-planner/stats", label: "Stats" },
@@ -21,24 +20,24 @@ export default function BuildPlannerLayout({ children }: { children: React.React
   const isVisible = useHeaderScroll();
 
   return (
-    <div className="min-h-screen pt-28">
+    <div className="min-h-screen">
       <div
         className={cn(
-          "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
+          "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/95 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
           !isVisible ? "-translate-y-[calc(100%+20px)]" : "translate-y-0"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center space-x-8 h-full">
+        <Container size="xl" noPadding>
+          <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
             {subNavLinks.map(({ href, label }) => {
-              const isActive = pathname === href;
+              const isActive = pathname === href || (href !== "/build-planner" && pathname?.startsWith(href));
               return (
                 <Link
                   key={href}
                   href={href}
                   className={cn(
-                    "text-sm font-medium transition-colors duration-200 relative group h-full flex items-center",
-                    isActive ? "text-primary" : "text-foreground hover:text-primary"
+                    "text-sm font-medium transition-colors duration-200 relative group h-full flex items-center py-3",
+                    isActive ? "text-primary" : "text-foreground/70 hover:text-foreground"
                   )}
                 >
                   {label}
@@ -50,9 +49,9 @@ export default function BuildPlannerLayout({ children }: { children: React.React
               );
             })}
           </div>
-        </div>
+        </Container>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+      {children}
     </div>
   );
 }

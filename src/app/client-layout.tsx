@@ -8,6 +8,7 @@ import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
+import { WIPBanner } from "~/components/ui/WIPBanner";
 
 import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
 
@@ -44,6 +45,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <div className="fixed inset-0 z-0 pointer-events-none">
           <GradientBackground variant="mesh" interactive={false} />
         </div>
+
+        {/* WIP Banner */}
+        <WIPBanner />
 
         {/* Navigation */}
         <Suspense fallback={<NavigationLoading />}>
