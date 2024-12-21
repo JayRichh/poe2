@@ -24,7 +24,7 @@ import { Skeleton } from "~/components/ui/Skeleton";
 import { Text } from "~/components/ui/Text";
 
 import { NewsService } from "~/services/news-service";
-import type { NewsItem } from "~/types/news";
+import type { NewsItem } from "@/types/news";
 
 function FeaturedNewsSkeleton() {
   return (

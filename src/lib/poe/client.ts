@@ -9,7 +9,7 @@ import type {
   POEProfile,
   POEScope,
   POETokenResponse,
-} from "~/types/poe-api";
+} from "@/types/poe-api";
 
 const POE_API_URL = "https://api.pathofexile.com";
 const POE_OAUTH_URL = "https://www.pathofexile.com/oauth";

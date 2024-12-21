@@ -18,10 +18,14 @@ export default function DPSCalcPage() {
               between weapons.
             </Text>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">Manual Mode</span>
+              <span className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                Manual Mode
+              </span>
               <span className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full relative group">
                 <span>Live Data Import</span>
-                <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded-full">Soon</span>
+                <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded-full">
+                  Soon
+                </span>
               </span>
             </div>
           </div>

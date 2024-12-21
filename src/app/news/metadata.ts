@@ -1,23 +1,25 @@
 import type { Metadata, ResolvingMetadata } from "next";
+
+import type { NewsItem } from "@/types/news";
 import { NewsService } from "~/services/news-service";
 
 type Props = {
-  params: { [key: string]: string | string[] | undefined }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Get parent metadata
-  const previousImages = (await parent).openGraph?.images || []
-  const previousKeywords = (await parent).keywords || []
+  const previousImages = (await parent).openGraph?.images || [];
+  const previousKeywords = (await parent).keywords || [];
 
   // Fetch latest news for dynamic metadata
   const latestNews = await NewsService.getLatestNews();
   const categories = await NewsService.getCategories();
-  
+
   const description = `Latest Path of Exile 2 news, patch notes, developer updates, and community announcements. Stay informed about game mechanics, balance changes, and upcoming features for POE2.${
     latestNews.length ? ` Latest update: ${latestNews[0].title}` : ""
   }`;
@@ -34,36 +36,36 @@ export async function generateMetadata(
     "poe2 game changes",
     "path of exile 2 community news",
     "poe2 balance updates",
-    ...categories.map(cat => `poe2 ${cat.toLowerCase()}`),
-    ...previousKeywords
+    ...categories.map((cat) => `poe2 ${cat.toLowerCase()}`),
+    ...previousKeywords,
   ].filter((keyword): keyword is string => Boolean(keyword));
 
   // Enhanced schema.org data
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "POE2 News Feed",
-    "description": description,
-    "publisher": {
+    name: "POE2 News Feed",
+    description: description,
+    publisher: {
       "@type": "Organization",
-      "name": "POE2 Tools",
-      "logo": {
+      name: "POE2 Tools",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://poe2.dev/favicon.svg"
-      }
-    },
-    "url": pageUrl,
-    "hasPart": latestNews.slice(0, 5).map(article => ({
-      "@type": "NewsArticle",
-      "headline": article.title,
-      "description": article.description,
-      "datePublished": article.publishedAt,
-      "author": {
-        "@type": "Organization",
-        "name": article.source
+        url: "https://poe2.dev/favicon.svg",
       },
-      "url": `${pageUrl}/${article.id}`
-    }))
+    },
+    url: pageUrl,
+    hasPart: latestNews.slice(0, 5).map((article) => ({
+      "@type": "NewsArticle",
+      headline: article.title,
+      description: article.description,
+      datePublished: article.publishedAt,
+      author: {
+        "@type": "Organization",
+        name: article.source,
+      },
+      url: `${pageUrl}/${article.id}`,
+    })),
   };
 
   return {
@@ -82,7 +84,7 @@ export async function generateMetadata(
           height: 630,
           alt: "POE2 News Feed",
         },
-        ...previousImages
+        ...previousImages,
       ],
     },
     twitter: {
@@ -100,8 +102,8 @@ export async function generateMetadata(
     robots: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
     other: {
       "schema:WebPage": JSON.stringify(schemaData),

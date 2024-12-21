@@ -2,29 +2,26 @@ export interface NewsItem {
   id: string;
   title: string;
   description: string;
-  category: "Update" | "Announcement" | "Event" | "Community" | "Patch Notes";
+  category: string;
   publishedAt: string;
   source: string;
   url: string;
 }
 
-export interface NewsCategory {
-  id: string;
+export interface PatchNoteSection {
   title: string;
-  slug: string;
-  description: string;
+  changes: string[];
+}
+
+export interface PatchNoteHotfix {
+  version: string;
+  date: string;
+  changes: string[];
 }
 
 export interface PatchNote {
   version: string;
   date: string;
-  sections: {
-    title: string;
-    changes: string[];
-  }[];
-  hotfixes?: {
-    version: string;
-    date: string;
-    changes: string[];
-  }[];
+  sections: PatchNoteSection[];
+  hotfixes: PatchNoteHotfix[];
 }

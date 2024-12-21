@@ -1,4 +1,12 @@
-import { ApiError, BaseResponse } from "~/types";
+interface BaseResponse {
+  success: boolean;
+}
+
+interface ApiError {
+  success: false;
+  error: string;
+  code?: number;
+}
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 

@@ -6,9 +6,9 @@ import { cookies } from "next/headers";
 import { getServerClient } from "~/app/_actions/supabase";
 import { POEClient } from "~/lib/poe/client";
 import type { POEAccountData } from "~/lib/supabase/types";
-import type { POEScope } from "~/types/poe-api";
+import type { POEOAuthConfig, POEScope } from "@/types/poe-api";
 
-const POE_CONFIG = {
+const POE_CONFIG: POEOAuthConfig = {
   clientId: process.env.NEXT_PUBLIC_POE_CLIENT_ID!,
   clientSecret: process.env.POE_CLIENT_SECRET!,
   redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback?provider=poe`,

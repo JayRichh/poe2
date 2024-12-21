@@ -4,7 +4,7 @@
 /*
 import { createClient } from '~/lib/supabase/client'
 import type { Database } from '~/lib/supabase/types'
-import type { Group, Member, Gift, GiftStatus } from '~/types/gift-list'
+import type { Group, Member, Gift, GiftStatus } from '@/types/gift-list'
 
 const STORAGE_KEYS = {
   SETUP_COMPLETED: 'hasCompletedSetup',

@@ -106,6 +106,17 @@ export default function ProfilePage() {
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
       <Container className="max-w-2xl py-8 space-y-8">
+        <div className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+            <Text className="font-medium">Profile Features in Development</Text>
+          </div>
+          <Text className="text-sm text-foreground/60">
+            More features coming soon including build synchronization, character imports, build
+            sharing, and advanced profile customization.
+          </Text>
+        </div>
+
         <div className="flex flex-col space-y-1">
           <Text className="text-3xl font-bold">Profile Settings</Text>
           <Text className="text-foreground/60">Manage your account settings and preferences</Text>

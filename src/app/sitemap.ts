@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
-import { NewsService } from "~/services/news-service";
+
+import { NewsService } from "../services/news-service";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://poe2.dev";
@@ -13,12 +14,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/skill-tree`,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/build-planner`,
       lastModified: new Date(),
       changeFrequency: "daily" as const,
@@ -28,14 +23,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/dps-calc`,
       lastModified: new Date(),
       changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/skill-tree`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/profile`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/news`,
       lastModified: new Date(),
       changeFrequency: "daily" as const,
-      priority: 0.8,
-    }
+      priority: 0.7,
+    },
   ];
 
   try {

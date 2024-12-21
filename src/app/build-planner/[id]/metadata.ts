@@ -1,13 +1,14 @@
 import type { Metadata, ResolvingMetadata } from "next";
+
 import { getBuild } from "~/app/actions/builds";
 import type { Database } from "~/lib/supabase/types";
 
 type Build = Database["public"]["Tables"]["builds"]["Row"];
 
 type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata(
   { params, searchParams }: Props,
@@ -18,8 +19,8 @@ export async function generateMetadata(
     const build = await getBuild(params.id);
 
     // Get parent metadata
-    const previousImages = (await parent).openGraph?.images || []
-    const previousKeywords = (await parent).keywords || []
+    const previousImages = (await parent).openGraph?.images || [];
+    const previousKeywords = (await parent).keywords || [];
 
     if (!build) {
       return {
@@ -28,7 +29,7 @@ export async function generateMetadata(
         robots: {
           index: false,
           follow: true,
-        }
+        },
       };
     }
 
@@ -59,7 +60,7 @@ export async function generateMetadata(
       "poe2 build",
       "path of exile 2 build",
       ...(build.tags || []),
-      ...(Array.isArray(previousKeywords) ? previousKeywords : [previousKeywords].filter(Boolean))
+      ...(Array.isArray(previousKeywords) ? previousKeywords : [previousKeywords].filter(Boolean)),
     ].filter((keyword): keyword is string => Boolean(keyword));
 
     return {
@@ -80,7 +81,7 @@ export async function generateMetadata(
             height: 630,
             alt: `${build.name} POE2 Build`,
           },
-          ...previousImages
+          ...previousImages,
         ],
       },
       twitter: {
@@ -95,8 +96,8 @@ export async function generateMetadata(
       robots: {
         index: true,
         follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
       other: {
         "article:published_time": build.created_at,
@@ -114,7 +115,7 @@ export async function generateMetadata(
       robots: {
         index: false,
         follow: true,
-      }
+      },
     };
   }
 }

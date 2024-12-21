@@ -1,11 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
+
+import type { NewsItem } from "@/types/news";
 import { NewsService } from "~/services/news-service";
-import type { NewsItem } from "~/types/news";
 
 type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata(
   { params, searchParams }: Props,
@@ -13,8 +14,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     // Get parent metadata
-    const previousImages = (await parent).openGraph?.images || []
-    const previousKeywords = (await parent).keywords || []
+    const previousImages = (await parent).openGraph?.images || [];
+    const previousKeywords = (await parent).keywords || [];
 
     // Since we're using ID-based lookup in the service
     const article = await NewsService.getNewsById(params.slug);
@@ -25,7 +26,7 @@ export async function generateMetadata(
         robots: {
           index: false,
           follow: true,
-        }
+        },
       };
     }
 
@@ -38,34 +39,34 @@ export async function generateMetadata(
       "poe2 updates",
       article.category.toLowerCase(),
       `poe2 ${article.category.toLowerCase()}`,
-      ...previousKeywords
+      ...previousKeywords,
     ].filter((keyword): keyword is string => Boolean(keyword));
 
     // Enhanced schema.org data
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
-      "headline": article.title,
-      "description": description,
-      "datePublished": article.publishedAt,
-      "author": {
+      headline: article.title,
+      description: description,
+      datePublished: article.publishedAt,
+      author: {
         "@type": "Organization",
-        "name": article.source
+        name: article.source,
       },
-      "publisher": {
+      publisher: {
         "@type": "Organization",
-        "name": "POE2 Tools",
-        "logo": {
+        name: "POE2 Tools",
+        logo: {
           "@type": "ImageObject",
-          "url": "https://poe2.dev/favicon.svg"
-        }
+          url: "https://poe2.dev/favicon.svg",
+        },
       },
-      "mainEntityOfPage": {
+      mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": articleUrl
+        "@id": articleUrl,
       },
-      "articleSection": article.category,
-      "url": articleUrl
+      articleSection: article.category,
+      url: articleUrl,
     };
 
     return {
@@ -86,7 +87,7 @@ export async function generateMetadata(
             height: 630,
             alt: `${article.title} - POE2 News`,
           },
-          ...previousImages
+          ...previousImages,
         ],
       },
       twitter: {
@@ -101,8 +102,8 @@ export async function generateMetadata(
       robots: {
         index: true,
         follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
       other: {
         "schema:NewsArticle": JSON.stringify(schemaData),
@@ -122,7 +123,7 @@ export async function generateMetadata(
       robots: {
         index: false,
         follow: true,
-      }
+      },
     };
   }
 }

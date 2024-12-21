@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 
-import { ApiError, BaseResponse } from "~/types";
+import { ApiError, BaseResponse } from "@/types/api";
 
 interface AsyncState<T> {
   data: T | null;

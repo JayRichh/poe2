@@ -1,19 +1,20 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
-  params: { [key: string]: string | string[] | undefined }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Get parent metadata
-  const previousImages = (await parent).openGraph?.images || []
-  const previousKeywords = (await parent).keywords || []
+  const previousImages = (await parent).openGraph?.images || [];
+  const previousKeywords = (await parent).keywords || [];
 
-  const description = "Interactive Path of Exile 2 skill tree planner with advanced build optimization. Plan passive skills, calculate stat bonuses, and share your character builds. Features visual node connections and build saving.";
+  const description =
+    "Interactive Path of Exile 2 skill tree planner with advanced build optimization. Plan passive skills, calculate stat bonuses, and share your character builds. Features visual node connections and build saving.";
 
   const pageUrl = "https://poe2.dev/skill-tree";
 
@@ -29,33 +30,33 @@ export async function generateMetadata(
     "poe2 skill planning",
     "poe2 character optimization",
     "path of exile 2 build sharing",
-    ...previousKeywords
+    ...previousKeywords,
   ].filter((keyword): keyword is string => Boolean(keyword));
 
   // Enhanced schema.org data
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "POE2 Skill Tree Planner",
-    "applicationCategory": "GameApplication",
-    "operatingSystem": "Any",
-    "description": description,
-    "offers": {
+    name: "POE2 Skill Tree Planner",
+    applicationCategory: "GameApplication",
+    operatingSystem: "Any",
+    description: description,
+    offers: {
       "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+      price: "0",
+      priceCurrency: "USD",
     },
-    "featureList": [
+    featureList: [
       "Interactive skill tree visualization",
       "Build optimization tools",
       "Stat calculation",
       "Build sharing",
       "Visual node connections",
-      "Build saving and loading"
+      "Build saving and loading",
     ],
-    "url": pageUrl,
-    "image": "https://poe2.dev/skill-tree.png",
-    "screenshot": "https://poe2.dev/skill-tree.png"
+    url: pageUrl,
+    image: "https://poe2.dev/skill-tree.png",
+    screenshot: "https://poe2.dev/skill-tree.png",
   };
 
   return {
@@ -74,7 +75,7 @@ export async function generateMetadata(
           height: 630,
           alt: "POE2 Skill Tree Preview",
         },
-        ...previousImages
+        ...previousImages,
       ],
     },
     twitter: {
@@ -89,8 +90,8 @@ export async function generateMetadata(
     robots: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
     other: {
       "schema:WebApplication": JSON.stringify(schemaData),
@@ -100,7 +101,7 @@ export async function generateMetadata(
         "Interactive skill tree",
         "Build optimization",
         "Stat calculation",
-        "Build sharing"
+        "Build sharing",
       ].join(","),
     },
   };

@@ -1,92 +1,42 @@
-import type { Metadata, ResolvingMetadata } from "next";
-import { getBuilds } from "~/app/actions/builds";
+import type { Metadata } from "next";
 
-type Props = {
-  params: { [key: string]: string | string[] | undefined }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  try {
-    // Get parent metadata
-    const previousImages = (await parent).openGraph?.images || []
-    const previousKeywords = (await parent).keywords || []
-
-    // Fetch build statistics
-    const publicBuilds = await getBuilds({ visibility: "public" });
-    const buildCount = publicBuilds.length;
-    
-    // Get unique classes for keywords
-    const uniqueClasses = Array.from(
-      new Set(publicBuilds.map(b => b.poe_class).filter(Boolean))
-    );
-
-    const description = `Plan and explore Path of Exile 2 character builds. Browse ${buildCount} community builds or create your own. Features skill tree planning, equipment management, and build sharing.`;
-
-    // Combine keywords with class-specific terms
-    const buildKeywords = [
-      "poe2 builds",
-      "path of exile 2 builds",
-      "build planner",
-      "character planner",
-      "skill tree",
-      ...uniqueClasses.map(c => `${c?.toLowerCase()} builds`),
-      ...previousKeywords
-    ].filter((keyword): keyword is string => Boolean(keyword));
-
-    const pageUrl = "https://poe2.dev/build-planner";
-
-    return {
-      title: { absolute: "Build Planner | POE2 Tools" },
-      description,
-      keywords: buildKeywords,
-      openGraph: {
-        title: "POE2 Build Planner - Create and Share Path of Exile 2 Builds",
-        description,
-        type: "website",
-        url: pageUrl,
-        images: [
-          {
-            url: "/build-planner-bg.jpg",
-            width: 1200,
-            height: 630,
-            alt: "POE2 Build Planner",
-          },
-          ...previousImages
-        ],
+export const metadata: Metadata = {
+  title: "Build Planner - POE2 Tools",
+  description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+  openGraph: {
+    title: "POE2 Build Planner - Create and Share POE2 Builds",
+    description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "POE2 Tools Icon",
+        type: "image/png",
       },
-      twitter: {
-        card: "summary_large_image",
-        title: "POE2 Build Planner | Create and Share Builds",
-        description,
-        images: ["/build-planner-bg.jpg"],
+    ],
+  },
+  other: {
+    "schema:SoftwareApplication": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "POE2 Build Planner",
+      applicationCategory: "GameApplication",
+      operatingSystem: "Web Browser",
+      description: "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD"
       },
-      alternates: {
-        canonical: pageUrl,
-      },
-      robots: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-      other: {
-        "build:count": buildCount.toString(),
-        "build:classes": uniqueClasses.join(","),
-      },
-    };
-  } catch (error) {
-    console.error("Error generating build planner metadata:", error);
-    return {
-      title: { absolute: "Build Planner | POE2 Tools" },
-      description: "Plan and explore Path of Exile 2 character builds. Create, customize, and share builds with the community.",
-      robots: {
-        index: true,
-        follow: true,
-      }
-    };
+      featureList: [
+        "Interactive Skill Tree",
+        "Equipment Planning",
+        "Stat Calculations",
+        "Build Sharing",
+        "Build Templates",
+        "Build Versioning"
+      ]
+    })
   }
-}
+};
