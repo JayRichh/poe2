@@ -28,10 +28,15 @@ const POE_CLASSES = [
   "Ranger",
 ] as const;
 
-const VISIBILITY_OPTIONS: { value: VisibilityType; label: string }[] = [
+const VISIBILITY_OPTIONS: { value: VisibilityType; label: string; disabled?: boolean; tooltip?: string }[] = [
   { value: "private", label: "Private - Only visible to you" },
   { value: "unlisted", label: "Unlisted - Accessible via direct link" },
-  { value: "public", label: "Public - Visible to everyone" },
+  { 
+    value: "public", 
+    label: "Public - Visible to everyone", 
+    disabled: true,
+    tooltip: "Public builds are temporarily disabled pending development"
+  },
 ];
 
 export default function NewBuildPage() {
@@ -126,18 +131,29 @@ export default function NewBuildPage() {
 
           <div className="space-y-2">
             <Text>Visibility *</Text>
-            <select
-              name="visibility"
-              defaultValue="private"
-              required
-              className="flex h-10 w-full rounded-md border border-border/50 bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {VISIBILITY_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                name="visibility"
+                defaultValue="private"
+                required
+                className="flex h-10 w-full rounded-md border border-border/50 bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {VISIBILITY_OPTIONS.map((option) => (
+                  <option 
+                    key={option.value} 
+                    value={option.value}
+                    disabled={option.disabled}
+                  >
+                    {option.label} {option.disabled ? "(Coming Soon)" : ""}
+                  </option>
+                ))}
+              </select>
+              {VISIBILITY_OPTIONS.find(opt => opt.disabled && opt.tooltip) && (
+                <div className="absolute left-0 -bottom-6 text-xs text-foreground/60">
+                  {VISIBILITY_OPTIONS.find(opt => opt.disabled)?.tooltip}
+                </div>
+              )}
+            </div>
           </div>
 
           {error && (

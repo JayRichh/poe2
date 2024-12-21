@@ -37,7 +37,7 @@ const SORT_OPTIONS = [
 
 const VISIBILITY_OPTIONS = [
   { value: "all", label: "All Builds" },
-  { value: "public", label: "Public Only" },
+  { value: "public", label: "Public Only (Coming Soon)", disabled: true },
   { value: "private", label: "Private Only" },
 ] as SelectOption[];
 
