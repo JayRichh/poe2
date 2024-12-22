@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { NewsService } from "../services/news-service";
+import { getBuilds } from "./actions/builds";
 import { generateDynamicSitemap, generateNewsSitemapRoutes, generateBuildPlannerSitemapRoutes, DynamicRoute } from "../utils/sitemap";
 
 // Static routes organized by section
@@ -11,7 +12,7 @@ const staticRoutes: DynamicRoute[] = [
     priority: 1,
   },
   
-  // Build Planner section
+  // Build Planner section (only static pages)
   {
     path: "/build-planner",
     changeFrequency: "daily",
@@ -24,7 +25,7 @@ const staticRoutes: DynamicRoute[] = [
   },
   {
     path: "/build-planner/equipment",
-    changeFrequency: "daily",
+    changeFrequency: "daily", 
     priority: 0.7,
   },
   {
@@ -88,26 +89,6 @@ const staticRoutes: DynamicRoute[] = [
     changeFrequency: "daily",
     priority: 0.8,
   },
-  {
-    path: "/news/announcements",
-    changeFrequency: "daily",
-    priority: 0.7,
-  },
-  {
-    path: "/news/updates",
-    changeFrequency: "daily",
-    priority: 0.7,
-  },
-  {
-    path: "/news/community",
-    changeFrequency: "daily",
-    priority: 0.7,
-  },
-  {
-    path: "/news/patch-notes",
-    changeFrequency: "daily",
-    priority: 0.7,
-  },
 
   // RSS Feed
   {
@@ -129,21 +110,16 @@ const excludedRoutes = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // Fetch all dynamic content in parallel
-    const [newsItems, builds] = await Promise.all([
+    const [newsItems, patchNotes] = await Promise.all([
       NewsService.getLatestNews(),
-      // Add your build service call here, for example:
-      // BuildService.getAllPublicBuilds(),
-      Promise.resolve([]), // Temporary placeholder for builds
+      NewsService.getPatchNotes(),
     ]);
 
     // Generate dynamic routes
-    const [newsRoutes, buildRoutes] = await Promise.all([
-      generateNewsSitemapRoutes(newsItems),
-      generateBuildPlannerSitemapRoutes(builds),
-    ]);
+    const newsRoutes = await generateNewsSitemapRoutes(newsItems, patchNotes);
 
     // Combine all dynamic routes
-    const dynamicRoutes = [...newsRoutes, ...buildRoutes];
+    const dynamicRoutes = [...newsRoutes];
 
     // Generate final sitemap
     return generateDynamicSitemap({

@@ -63,23 +63,48 @@ export function validateSitemapPriority(priority: number): number {
 // Helper function to generate dynamic news routes
 export async function generateNewsSitemapRoutes(
   newsItems: Array<{ id: string; publishedAt: string }>,
+  patchNotes: Array<{ version: string; date: string }> = []
 ): Promise<DynamicRoute[]> {
-  return newsItems.map(item => ({
+  const newsRoutes = newsItems.map(item => ({
     path: `/news/${item.id}`,
     lastModified: item.publishedAt,
-    changeFrequency: 'daily',
+    changeFrequency: 'daily' as const,
     priority: 0.8,
   }));
+
+  const patchNoteRoutes = patchNotes.map(note => ({
+    path: `/news/patch-notes/${note.version.toLowerCase()}`,
+    lastModified: note.date,
+    changeFrequency: 'daily' as const,
+    priority: 0.8,
+  }));
+
+  return [...newsRoutes, ...patchNoteRoutes];
 }
 
 // Helper function to generate dynamic build planner routes
 export async function generateBuildPlannerSitemapRoutes(
-  builds: Array<{ id: string; updatedAt: string }>,
+  builds: Array<{ id: string; updated_at: string }>,
 ): Promise<DynamicRoute[]> {
-  return builds.map(build => ({
-    path: `/build-planner/${build.id}`,
-    lastModified: build.updatedAt,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
+  const buildSubpages = ['equipment', 'skills', 'stats', 'notes', 'import-export'];
+  
+  return builds.flatMap(build => {
+    // Main build page
+    const mainRoute = {
+      path: `/build-planner/${build.id}`,
+      lastModified: build.updated_at,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    };
+
+    // Build subpages
+    const subRoutes = buildSubpages.map(subpage => ({
+      path: `/build-planner/${build.id}/${subpage}`,
+      lastModified: build.updated_at,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    }));
+
+    return [mainRoute, ...subRoutes];
+  });
 }

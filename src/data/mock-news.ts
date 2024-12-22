@@ -2,7 +2,7 @@ import { NewsItem, PatchNote } from "~/types/news";
 
 export const MOCK_NEWS: NewsItem[] = [
   {
-    id: "1",
+    id: "poe2-beta-weekend-announced",
     title: "Path of Exile 2 Beta Weekend Announced",
     description:
       "Join us for an exclusive beta test of Path of Exile 2 this weekend. Test new features and provide feedback.",
@@ -12,7 +12,7 @@ export const MOCK_NEWS: NewsItem[] = [
     url: "https://www.pathofexile.com/news/beta-weekend",
   },
   {
-    id: "2",
+    id: "latest-development-update",
     title: "Latest Development Update",
     description:
       "Check out the latest changes and improvements coming to Path of Exile 2, including new skills and balance changes.",
@@ -22,7 +22,7 @@ export const MOCK_NEWS: NewsItem[] = [
     url: "https://www.pathofexile.com/news/dev-update",
   },
   {
-    id: "3",
+    id: "community-build-competition",
     title: "Community Event: Build Competition",
     description:
       "Showcase your best builds and compete for prizes in our community build competition.",
