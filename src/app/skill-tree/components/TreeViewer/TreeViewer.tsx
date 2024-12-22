@@ -301,9 +301,8 @@ export function TreeViewer({
           draggable={false}
           priority
           quality={75}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 2048px"
-          loading="eager"
-          fetchPriority="high"
+          sizes="100vw"
+          crossOrigin="anonymous"
         />
 
         {selectedAscendancy !== "None" && (
@@ -323,7 +322,7 @@ export function TreeViewer({
             priority
             quality={75}
             sizes="320px"
-            loading="eager"
+            crossOrigin="anonymous"
           />
         )}
 
