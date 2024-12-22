@@ -19,3 +19,5 @@ npm install
 # Start development server
 npm run dev
 ```
+
+GoatCounter: [poe2.dev goat counts](https://poe2.goatcounter.com/)
