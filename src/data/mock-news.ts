@@ -1,4 +1,4 @@
-import { NewsItem, PatchNote } from "@/types/news";
+import { NewsItem, PatchNote } from "~/types/news";
 
 export const MOCK_NEWS: NewsItem[] = [
   {

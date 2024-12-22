@@ -46,24 +46,24 @@ export function BuildPlannerLayout({
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex">
+      <div className="flex-1 flex min-h-0">
         {/* Sidebar */}
         {sidebar !== false && (
-          <div className="w-80 border-r border-border/50 overflow-y-auto bg-background/50">
-            <div className="sticky top-0">
+          <div className="w-80 flex-shrink-0 border-r border-border/50 overflow-y-auto bg-background/50">
+            <div className="sticky top-0 h-full">
               {typeof sidebar === "boolean" || !sidebar ? <BuildPlannerSidebar /> : sidebar}
             </div>
           </div>
         )}
 
         {/* Content */}
-        <div className={`flex-1 overflow-y-auto ${isPassiveTree ? "bg-muted/30" : ""}`}>
+        <div className={`flex-1 overflow-y-auto -ml-80 min-h-0 ${isPassiveTree ? "bg-muted/30" : ""}`}>
           <Container
             size="xl"
             noPadding
             className={`h-full ${fullWidth ? "max-w-none" : ""}`}
           >
-            <div className={`px-4 sm:px-6 lg:px-8 py-4 ${isPassiveTree ? "px-0" : ""}`}>
+            <div className={`h-full py-4 ${isPassiveTree ? "px-0" : ""}`}>
               {children}
             </div>
           </Container>

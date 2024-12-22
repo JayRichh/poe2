@@ -46,8 +46,7 @@ export function NewsLayout({
           </div>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto -ml-80">
           <Container size="xl" noPadding className="h-full">
             {children}
           </Container>
