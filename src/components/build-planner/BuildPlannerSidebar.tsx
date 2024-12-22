@@ -13,6 +13,10 @@ interface NavItem {
   items?: NavItem[];
 }
 
+interface BuildPlannerSidebarProps {
+  collapsed?: boolean;
+}
+
 const navigation: NavItem[] = [
   {
     label: "Build Core",
@@ -37,7 +41,7 @@ const navigation: NavItem[] = [
   }
 ];
 
-function NavGroup({ item }: { item: NavItem }) {
+function NavGroup({ item, collapsed }: { item: NavItem; collapsed?: boolean }) {
   const [isExpanded, setIsExpanded] = useState(true);
   const pathname = usePathname();
 
@@ -47,23 +51,25 @@ function NavGroup({ item }: { item: NavItem }) {
 
   return (
     <div className="border-b border-border/30 last:border-0">
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={cn(
-          "w-full flex items-center justify-between px-3 py-2 text-sm font-medium transition-colors",
-          isExpanded ? "text-foreground" : "text-foreground/70 hover:text-foreground"
-        )}
-      >
-        {item.label}
-        {isExpanded ? (
-          <ChevronDown className="w-4 h-4 opacity-70" />
-        ) : (
-          <ChevronRight className="w-4 h-4 opacity-70" />
-        )}
-      </button>
+      {!collapsed && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={cn(
+            "w-full flex items-center justify-between px-3 py-2 text-sm font-medium transition-colors",
+            isExpanded ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+          )}
+        >
+          {item.label}
+          {isExpanded ? (
+            <ChevronDown className="w-4 h-4 opacity-70" />
+          ) : (
+            <ChevronRight className="w-4 h-4 opacity-70" />
+          )}
+        </button>
+      )}
       
-      {isExpanded && (
-        <div className="space-y-1 pb-3">
+      {(isExpanded || collapsed) && (
+        <div className={collapsed ? "" : "space-y-1 pb-3"}>
           {item.items.map((subItem) => (
             <Link
               key={subItem.href}
@@ -74,9 +80,10 @@ function NavGroup({ item }: { item: NavItem }) {
                   ? "bg-primary/10 text-primary font-medium"
                   : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
               )}
+              title={collapsed ? subItem.label : undefined}
             >
               {subItem.icon}
-              {subItem.label}
+              {!collapsed && subItem.label}
             </Link>
           ))}
         </div>
@@ -85,12 +92,12 @@ function NavGroup({ item }: { item: NavItem }) {
   );
 }
 
-export function BuildPlannerSidebar() {
+export function BuildPlannerSidebar({ collapsed }: BuildPlannerSidebarProps) {
   return (
     <div className="py-4">
       <nav>
         {navigation.map((item, index) => (
-          <NavGroup key={index} item={item} />
+          <NavGroup key={index} item={item} collapsed={collapsed} />
         ))}
       </nav>
     </div>
