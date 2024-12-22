@@ -144,11 +144,11 @@ export async function generateMetadata(
       creator: "@poe2tools",
     },
     alternates: {
-      canonical: "https://poe2.dev",
       types: {
         "application/rss+xml": "https://poe2.dev/feed.xml",
       },
     },
+    // Canonical URL will be set per-page
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     },
