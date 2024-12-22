@@ -22,7 +22,6 @@ const navLinks = [
 
 const externalResources = [
   { href: "https://www.pathofexile2.com/", label: "Path of Exile 2" },
-  { href: "https://www.pathofexile.com/developer/docs", label: "POE API Docs" },
 ];
 
 export function Footer() {
@@ -44,8 +43,8 @@ export function Footer() {
             <div>
               <h3 className="text-xl font-semibold text-foreground">POE2 Tools</h3>
               <p className="mt-2 text-sm text-foreground/60 leading-relaxed">
-                Community-driven tools for Path of Exile 2 players. Build planning, DPS
-                calculations, and more.
+                POE2 tools and utilities - Featuring build planning, 
+                damage calculator, skill tree planner, character optimization tools, and build analysis utilities.
               </p>
             </div>
 
@@ -87,8 +86,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Middle Column */}
-          <div className="space-y-8">
+           {/* Middle Column */}
+           <div className="space-y-8">
             <div>
               <h4 className="text-sm font-medium text-foreground mb-3">Support the Project</h4>
               <p className="text-sm text-foreground/60 mb-4">
@@ -106,17 +105,10 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Item Data</h4>
+              <h4 className="text-sm font-medium text-foreground mb-3">Features</h4>
               <p className="text-sm text-foreground/60">
-                All item data is sourced from the official{" "}
-                <a
-                  href="https://www.pathofexile.com/developer/docs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 transition-colors"
-                >
-                  Path of Exile API
-                </a>
+                Build planner, DPS calculator, skill tree optimizer, character analyzer, 
+                and other essential POE2 planning tools.
               </p>
             </div>
           </div>
@@ -124,7 +116,7 @@ export function Footer() {
           {/* Right Column */}
           <div className="space-y-8">
             <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Navigation</h4>
+              <h4 className="text-sm font-medium text-foreground mb-3">Tools & Utilities</h4>
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.href}>
@@ -140,7 +132,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">External Resources</h4>
+              <h4 className="text-sm font-medium text-foreground mb-3">Resources</h4>
               <ul className="space-y-2">
                 {externalResources.map((resource) => (
                   <li key={resource.href}>
@@ -161,10 +153,10 @@ export function Footer() {
 
         <div className="py-6 border-t border-border/5">
           <p className="text-xs text-center text-foreground/50">
-            © {new Date().getFullYear()} POE2 Tools. All rights reserved.
+            © {new Date().getFullYear()} POE2 Tools - Community Build Planning & Analysis Toolkit
           </p>
           <p className="mt-2 text-xs text-center text-foreground/50">
-            This is a fan-made tool and is not affiliated with or endorsed by Grinding Gear Games.
+            This is a fan-made toolkit and is not affiliated with or endorsed by Grinding Gear Games.
             Path of Exile 2 is a trademark of Grinding Gear Games.
           </p>
         </div>
