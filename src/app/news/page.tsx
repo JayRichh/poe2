@@ -6,25 +6,22 @@ import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
 
-// Route segment config
-export const dynamic = 'force-dynamic'; // Required for searchParams
-export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-dynamic";
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     source?: string;
-  };
+  }> | undefined;
 }
 
 export default async function NewsPage({ searchParams }: PageProps) {
+  if (!searchParams) return null;
+
   try {
-    // Create a promise that resolves with the searchParams
-    const params = await Promise.resolve(searchParams);
-    
-    // Wait for both promises to resolve
+    const params = await searchParams;
     const [news, patchNotes] = await Promise.all([
-      NewsService.getLatestNews(params?.category),
+      NewsService.getLatestNews(params.category),
       NewsService.getPatchNotes(),
     ]);
 
