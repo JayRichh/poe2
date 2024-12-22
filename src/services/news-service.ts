@@ -2,25 +2,39 @@ import { NewsItem, PatchNote } from "~/types/news";
 import { MOCK_NEWS, MOCK_PATCH_NOTES } from "~/data/mock-news";
 
 export class NewsService {
-  static async getLatestNews(category?: string): Promise<NewsItem[]> {
+  static async getLatestNews(
+    category?: string, 
+    source?: string,
+    timeRange?: string
+  ): Promise<NewsItem[]> {
     // Simulating API call with Next.js 15 fetch caching
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // In a real implementation, you would use Next.js 15 fetch:
-    // const res = await fetch('YOUR_API_ENDPOINT/news', {
-    //   next: { 
-    //     revalidate: 3600, // Cache for 1 hour
-    //     tags: ['news']    // Tag for selective revalidation
-    //   }
-    // });
-    // if (!res.ok) throw new Error('Failed to fetch news');
-    // const data = await res.json();
+    let filteredNews = MOCK_NEWS;
 
     if (category) {
-      return MOCK_NEWS.filter((news) => news.category.toLowerCase() === category.toLowerCase());
+      filteredNews = filteredNews.filter(
+        (news) => news.category.toLowerCase() === category.toLowerCase()
+      );
     }
 
-    return MOCK_NEWS;
+    if (source) {
+      filteredNews = filteredNews.filter(
+        (news) => news.source.toLowerCase() === source.toLowerCase()
+      );
+    }
+
+    if (timeRange) {
+      const now = new Date();
+      const days = parseInt(timeRange.replace('d', ''));
+      const cutoff = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
+      
+      filteredNews = filteredNews.filter(
+        (news) => new Date(news.publishedAt) >= cutoff
+      );
+    }
+
+    return filteredNews;
   }
 
   static async getNewsById(id: string): Promise<NewsItem | null> {

@@ -2,7 +2,7 @@
 
 import { Clock, Megaphone, Newspaper, Trophy, Users } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "~/utils/cn";
 import { Text } from "../ui/Text";
 
@@ -55,17 +55,37 @@ const sources: Source[] = [
   { title: "Reddit", slug: "reddit" },
 ];
 
-const timeRanges = ["Today", "This Week", "This Month"] as const;
-type TimeRange = typeof timeRanges[number];
+const timeRanges = [
+  { label: "Today", value: "1d" },
+  { label: "This Week", value: "7d" },
+  { label: "This Month", value: "30d" }
+] as const;
 
 export function NewsSidebar({ collapsed }: NewsSidebarProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const currentCategory = searchParams?.get("category") || "";
   const currentSource = searchParams?.get("source") || "";
+  const currentTimeRange = searchParams?.get("timeRange") || "";
 
-  const handleTimeRangeClick = (range: TimeRange) => {
-    // TODO: Implement time range filtering
-    console.log("Selected time range:", range);
+  const createUrlWithParams = (updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams?.toString());
+    
+    // Update or remove parameters
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    return `/news${params.toString() ? `?${params.toString()}` : ""}`;
+  };
+
+  const handleTimeRangeClick = (range: string) => {
+    const url = createUrlWithParams({ timeRange: range });
+    router.push(url);
   };
 
   return (
@@ -85,9 +105,15 @@ export function NewsSidebar({ collapsed }: NewsSidebarProps) {
             return (
               <Link
                 key={category.slug}
-                href={`/news${category.slug ? `?category=${category.slug}` : ""}`}
+                href={createUrlWithParams({ 
+                  category: category.slug || null,
+                  // Preserve other params
+                  source: currentSource || null,
+                  timeRange: currentTimeRange || null
+                })}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-colors mx-2",
+                  "flex items-center gap-3 py-2 text-sm rounded-lg transition-colors mx-2",
+                  collapsed ? "justify-center px-2" : "px-4",
                   isActive
                     ? "bg-primary/10 text-primary font-medium"
                     : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
@@ -95,7 +121,13 @@ export function NewsSidebar({ collapsed }: NewsSidebarProps) {
                 aria-current={isActive ? "page" : undefined}
                 title={collapsed ? category.title : undefined}
               >
-                <Icon className="w-4 h-4" aria-hidden="true" />
+                <Icon 
+                  className={cn(
+                    "w-4 h-4",
+                    collapsed && "mx-auto"
+                  )} 
+                  aria-hidden="true" 
+                />
                 {!collapsed && <span>{category.title}</span>}
               </Link>
             );
@@ -116,13 +148,19 @@ export function NewsSidebar({ collapsed }: NewsSidebarProps) {
               return (
                 <Link
                   key={source.slug}
-                  href={`/news?source=${source.slug}`}
-                  className={cn(
-                    "flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-colors mx-2",
-                    isActive
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
-                  )}
+                  href={createUrlWithParams({ 
+                    source: source.slug,
+                    // Preserve other params
+                    category: currentCategory || null,
+                    timeRange: currentTimeRange || null
+                  })}
+                className={cn(
+                  "flex items-center gap-3 py-2 text-sm rounded-lg transition-colors mx-2",
+                  collapsed ? "justify-center px-2" : "px-4",
+                  isActive
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                )}
                   aria-current={isActive ? "page" : undefined}
                 >
                   <span>{source.title}</span>
@@ -140,16 +178,24 @@ export function NewsSidebar({ collapsed }: NewsSidebarProps) {
             Time Range
           </Text>
           <div className="space-y-0.5">
-            {timeRanges.map((range) => (
-              <button
-                key={range}
-                onClick={() => handleTimeRangeClick(range)}
-                className="w-full text-left px-4 py-2 text-sm rounded-lg mx-2 text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
-                type="button"
-              >
-                {range}
-              </button>
-            ))}
+            {timeRanges.map(({ label, value }) => {
+              const isActive = currentTimeRange === value;
+              return (
+                <button
+                  key={value}
+                  onClick={() => handleTimeRangeClick(isActive ? "" : value)}
+                  className={cn(
+                    "w-full text-left px-4 py-2 text-sm rounded-lg mx-2 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50",
+                    isActive
+                      ? "bg-primary/10 text-primary font-medium"
+                      : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                  )}
+                  type="button"
+                >
+                  {label}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}

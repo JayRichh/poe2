@@ -1,6 +1,9 @@
+"use client";
+
 import { NewsItem } from "~/types/news";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useMemo } from "react";
 import { Text } from "../ui/Text";
 import { cn } from "~/utils/cn";
 
@@ -10,6 +13,8 @@ interface NewsCardProps {
 }
 
 export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
+  const isExternalUrl = useMemo(() => news.url.startsWith('http'), [news.url]);
+  
   const timeAgo = (date: string) => {
     const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
 
@@ -29,9 +34,9 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
   if (variant === "featured") {
     return (
       <Link
-        href={news.url}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={isExternalUrl ? news.url : `/news/${news.id}?category=${news.category.toLowerCase()}`}
+        target={isExternalUrl ? "_blank" : undefined}
+        rel={isExternalUrl ? "noopener noreferrer" : undefined}
         className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
       >
         <div className="flex flex-col h-full p-6">
@@ -54,7 +59,11 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
 
           <div className="flex items-center text-sm text-primary font-medium pt-4">
             Read More
-            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            {isExternalUrl ? (
+              <ExternalLink className="w-4 h-4 ml-1" />
+            ) : (
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            )}
           </div>
         </div>
         <div className="absolute inset-0 border border-primary/10 rounded-lg group-hover:border-primary/20 transition-colors" />
@@ -64,9 +73,9 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
 
   return (
     <Link
-      href={news.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={isExternalUrl ? news.url : `/news/${news.id}?category=${news.category.toLowerCase()}`}
+      target={isExternalUrl ? "_blank" : undefined}
+      rel={isExternalUrl ? "noopener noreferrer" : undefined}
       className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"
     >
       <div className="space-y-2">

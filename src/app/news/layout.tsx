@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { Container } from "~/components/ui/Container";
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [
   { href: "/news", label: "Latest" },
-  { href: "/news/announcements", label: "Announcements" },
-  { href: "/news/updates", label: "Updates" },
-  { href: "/news/community", label: "Community" },
+  { href: "/news?category=event", label: "Events" },
+  { href: "/news?category=update", label: "Updates" },
+  { href: "/news?category=announcement", label: "Announcements" },
+  { href: "/news?category=community", label: "Community" },
   { href: "/news/patch-notes", label: "Patch Notes" },
 ];
 
@@ -29,7 +30,12 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
         <Container size="xl" noPadding>
           <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
             {subNavLinks.map(({ href, label }) => {
-              const isActive = pathname === href || (href !== "/news" && pathname?.startsWith(href));
+              const searchParams = useSearchParams();
+              const category = searchParams.get('category');
+              const isActive = 
+                href === "/news" ? pathname === href && !category :
+                href === "/news/patch-notes" ? pathname === href :
+                href === pathname + `?category=${category}`;
               return (
                 <Link
                   key={href}

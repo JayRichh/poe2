@@ -12,6 +12,7 @@ interface PageProps {
   searchParams: Promise<{
     category?: string;
     source?: string;
+    timeRange?: string;
   }> | undefined;
 }
 
@@ -20,11 +21,43 @@ export default async function NewsPage({ searchParams }: PageProps) {
 
   try {
     const params = await searchParams;
-    const [news, patchNotes] = await Promise.all([
-      NewsService.getLatestNews(params.category),
-      NewsService.getPatchNotes(),
-    ]);
+    const news = await NewsService.getLatestNews(
+      params.category,
+      params.source,
+      params.timeRange
+    );
 
+    // If category is selected, show filtered view
+    if (params.category) {
+      const formattedCategory = params.category.charAt(0).toUpperCase() + params.category.slice(1);
+      return (
+        <NewsLayout
+          title={`${formattedCategory} News`}
+          description={`Latest ${formattedCategory.toLowerCase()} news and updates`}
+        >
+          <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
+            <Suspense
+              fallback={
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                </div>
+              }
+            >
+              <div className="space-y-3">
+                {news.map((item) => (
+                  <NewsCard key={item.id} news={item} />
+                ))}
+              </div>
+            </Suspense>
+          </div>
+        </NewsLayout>
+      );
+    }
+
+    // Show full layout for main news page
+    const [patchNotes] = await Promise.all([NewsService.getPatchNotes()]);
     const featuredNews = news.slice(0, 2);
     const recentNews = news.slice(2);
 

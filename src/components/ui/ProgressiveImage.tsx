@@ -4,22 +4,25 @@ import { shimmer, toBase64 } from '~/utils/image';
 
 import type { ImageProps } from 'next/image';
 
-type ProgressiveImageProps = ImageProps & {
+type ProgressiveImageProps = Omit<ImageProps, 'alt'> & {
   onLoad?: () => void;
+  alt: string; // Make alt required
 };
 
 export const ProgressiveImage = forwardRef<HTMLImageElement, ProgressiveImageProps>(
   function ProgressiveImage({
-  className,
-  onLoad,
-  ...props
+    className,
+    onLoad,
+    alt,
+    ...props
   }, ref) {
     const [isLoading, setLoading] = useState(true);
 
     return (
       <Image
         ref={ref}
-      {...props}
+        alt={alt}
+        {...props}
       className={`
         ${className || ''}
         ${isLoading ? 'blur-sm' : 'blur-0'}

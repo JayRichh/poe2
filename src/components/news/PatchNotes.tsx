@@ -1,3 +1,5 @@
+"use client";
+
 import type { PatchNote, PatchNoteSection, PatchNoteHotfix } from "~/types/news";
 import { Text } from "../ui/Text";
 import { cn } from "~/utils/cn";
@@ -37,7 +39,7 @@ function PatchNoteHotfix({ hotfix }: { hotfix: PatchNoteHotfix }) {
           Hotfix {hotfix.version}
         </Text>
         <Text className="text-sm text-foreground/60">
-          {new Date(hotfix.date).toLocaleDateString(undefined, {
+          {new Date(hotfix.date).toLocaleDateString('en-US', {
             month: "short",
             day: "numeric",
           })}
@@ -61,7 +63,7 @@ export function PatchNotes({ patchNotes }: PatchNotesProps) {
               Version {note.version}
             </Text>
             <Text className="text-sm text-foreground/60">
-              {new Date(note.date).toLocaleDateString(undefined, {
+              {new Date(note.date).toLocaleDateString('en-US', {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
