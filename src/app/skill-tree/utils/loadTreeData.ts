@@ -8,9 +8,38 @@ import {
   TreeNodeData,
 } from "../components/TreeViewer/data";
 
+const CACHE_VERSION = '1.0.0';
+const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
 async function fetchJson<T>(path: string): Promise<T> {
+  // Try localStorage cache first
+  if (typeof window !== 'undefined') {
+    const cacheKey = `tree_data_${path}`;
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const { data, version, timestamp } = JSON.parse(cached);
+        // Check if cache is valid
+        if (
+          version === CACHE_VERSION &&
+          Date.now() - timestamp < CACHE_TTL
+        ) {
+          return data as T;
+        }
+      } catch (error) {
+        console.warn('Cache parse error:', error);
+      }
+    }
+  }
+
   try {
-    const response = await fetch(path);
+    // Fetch with caching headers
+    const response = await fetch(path, {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+    });
+
     if (!response.ok) {
       throw new Error(`Failed to load ${path} (${response.status})`);
     }
@@ -18,6 +47,22 @@ async function fetchJson<T>(path: string): Promise<T> {
     const data = await response.json();
     if (!data) {
       throw new Error(`No data returned from ${path}`);
+    }
+
+    // Cache in localStorage
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(
+          `tree_data_${path}`,
+          JSON.stringify({
+            data,
+            version: CACHE_VERSION,
+            timestamp: Date.now(),
+          })
+        );
+      } catch (error) {
+        console.warn('Cache write error:', error);
+      }
     }
 
     return data;
@@ -197,11 +242,42 @@ export async function loadTreeData(): Promise<TreeData> {
 
 export function getTreeData(): TreeData | null {
   if (typeof window === "undefined") return null;
-  return (window as any).__TREE_DATA__ || null;
+  
+  // Try memory cache first
+  const memoryCache = (window as any).__TREE_DATA__;
+  if (memoryCache) return memoryCache;
+
+  // Try localStorage cache
+  try {
+    const cached = localStorage.getItem('tree_data_full');
+    if (cached) {
+      const { data, version, timestamp } = JSON.parse(cached);
+      if (version === CACHE_VERSION && Date.now() - timestamp < CACHE_TTL) {
+        (window as any).__TREE_DATA__ = data;
+        return data;
+      }
+    }
+  } catch (error) {
+    console.warn('Cache read error:', error);
+  }
+
+  return null;
 }
 
 export function setTreeData(data: TreeData): void {
   if (typeof window !== "undefined") {
+    // Set memory cache
     (window as any).__TREE_DATA__ = data;
+
+    // Set localStorage cache
+    try {
+      localStorage.setItem('tree_data_full', JSON.stringify({
+        data,
+        version: CACHE_VERSION,
+        timestamp: Date.now(),
+      }));
+    } catch (error) {
+      console.warn('Cache write error:', error);
+    }
   }
 }

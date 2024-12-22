@@ -6,7 +6,10 @@ import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
 
-export const dynamic = "force-dynamic";
+// Route segment config
+export const revalidate = 3600; // Revalidate every hour
+export const dynamic = 'error';
+export const fetchCache = 'force-cache';
 
 interface PageProps {
   searchParams: Promise<{

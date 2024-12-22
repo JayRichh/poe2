@@ -21,22 +21,53 @@ import { StatsPanel } from "./components/Sidebar/StatsPanel";
 import { TreeViewer } from "./components/TreeViewer/TreeViewer";
 import { useSkillTree } from "./hooks/useSkillTree";
 
-// Pre-load data files
+// Pre-load and cache data files and images
 const preloadData = () => {
-  const files = [
+  // Add cache headers
+  const cacheControl = 'public, max-age=31536000, immutable';
+  
+  // Preload and cache data files
+  const dataFiles = [
     "/data/nodes.json",
     "/data/nodes_desc.json",
     "/data/skills.json",
     "/data/keywords.json",
   ];
 
-  files.forEach((file) => {
+  dataFiles.forEach(async (file) => {
+    // Create preload link
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "fetch";
     link.href = file;
     link.crossOrigin = "anonymous";
     document.head.appendChild(link);
+
+    // Cache the response
+    try {
+      const response = await fetch(file, {
+        headers: { 'Cache-Control': cacheControl }
+      });
+      await response.json();
+    } catch (error) {
+      console.error(`Failed to cache ${file}:`, error);
+    }
+  });
+
+  // Preload and cache images
+  const images = ["/skill-tree.png"];
+  images.forEach((src) => {
+    // Create preload link
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = src;
+    link.crossOrigin = "anonymous";
+    document.head.appendChild(link);
+
+    // Preload image
+    const img = new Image();
+    img.src = src;
   });
 };
 

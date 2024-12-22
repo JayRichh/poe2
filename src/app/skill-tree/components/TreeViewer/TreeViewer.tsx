@@ -3,6 +3,7 @@
 import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import { Maximize2, ZoomIn, ZoomOut } from "lucide-react";
+import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -289,33 +290,40 @@ export function TreeViewer({
           userSelect: "none",
         }}
       >
-        <img
+        <ProgressiveImage
           ref={imageRef}
           src="/skill-tree.png"
           alt="Skill Tree"
+          width={2048}
+          height={2048}
           className="w-full h-full pointer-events-none"
           onLoad={handleImageLoad}
           draggable={false}
+          priority
+          quality={75}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 2048px"
           loading="eager"
-          decoding="async"
+          fetchPriority="high"
         />
 
         {selectedAscendancy !== "None" && (
-          <img
+          <ProgressiveImage
             src={`/ascendancies/${selectedAscendancy.toLowerCase()}.webp`}
             alt={selectedAscendancy}
+            width={320}
+            height={320}
             className="absolute pointer-events-none"
             style={{
-              width: "320px",
               top: "50%",
               left: "50%",
               transform: "translate3d(-50%, -50%, 0)",
-              height: "320px",
               willChange: "transform",
             }}
             draggable={false}
+            priority
+            quality={75}
+            sizes="320px"
             loading="eager"
-            decoding="async"
           />
         )}
 

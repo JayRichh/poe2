@@ -28,6 +28,35 @@ export class NewsService {
   }
 
   private static async fetchFromSources() {
-    throw new Error("Not implemented");
+    // When implementing real API calls, use Next.js 15 fetch with caching:
+    const res = await fetch('YOUR_API_ENDPOINT', {
+      next: { 
+        revalidate: 3600, // Cache for 1 hour
+        tags: ['news']    // Tag for selective revalidation
+      }
+    });
+    
+    if (!res.ok) {
+      throw new Error('Failed to fetch news');
+    }
+    
+    return res.json();
+  }
+
+  // Method to force revalidate specific data
+  static async revalidateNews() {
+    try {
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tag: 'news'
+        })
+      });
+    } catch (error) {
+      console.error('Failed to revalidate:', error);
+    }
   }
 }
