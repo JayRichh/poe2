@@ -149,9 +149,9 @@ export function Navigation() {
                           </div>
                         )}
                         {isActive && (
-                          <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary" />
+                          <span className="absolute -bottom-[16px] sm:-bottom-[21px] left-0 w-full h-[2px] bg-primary" />
                         )}
-                        <span className="absolute -bottom-[23px] sm:-bottom-[27px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+                        <span className="absolute -bottom-[16px] sm:-bottom-[21px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
                       </Link>
                     );
                   })}
