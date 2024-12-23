@@ -14,25 +14,6 @@ code[class*="language-"] {
   tab-size: 2 !important;
 }
 
-.water-char {
-  --water-intensity: 0;
-  --water-angle: 0;
-  transform: translate(0, 0);
-  transition: all 0.2s ease-out;
-  display: inline-block;
-}
-
-.group:hover .water-char {
-  color: hsl(var(--primary));
-}
-
-.group:hover .water-char:hover {
-  transform: translate(
-    calc(var(--water-intensity) * 10px * cos(var(--water-angle))),
-    calc(var(--water-intensity) * 10px * sin(var(--water-angle)))
-  );
-}
-
 @layer base {
   :root {
     --background: 0 0% 99%;
@@ -192,29 +173,7 @@ code[class*="language-"] {
   }
 
   .transition-smooth {
-    @apply transition-all duration-200 ease-in-out;
-  }
-
-  .animate-shimmer {
-    @apply relative overflow-hidden;
-  }
-
-  .animate-shimmer::after {
-    @apply absolute inset-0 -translate-x-full;
-    background-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 215, 0, 0.12) 20%,
-      rgba(255, 215, 0, 0.18) 60%,
-      transparent 100%
-    );
-    animation: shimmer 2s infinite;
-    content: "";
-  }
-
-  .animate-gradient {
-    animation: gradient 15s ease infinite;
-    background-size: 200% 200%;
+    @apply transition-colors duration-150 ease-out;
   }
 
   .dps-value {
@@ -231,24 +190,6 @@ code[class*="language-"] {
 
   .dps-decrease {
     @apply numeric font-bold text-error;
-  }
-}
-
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 
@@ -339,27 +280,4 @@ code[class*="language-"] {
   .dps-checkbox {
     @apply h-4 w-4 rounded border-border bg-background checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary/25;
   }
-}
-
-@keyframes progress-stripe {
-  0% {
-    background-position: 1rem 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.progress-striped {
-  background-image: linear-gradient(
-    45deg,
-    rgba(255, 215, 0, 0.15) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 215, 0, 0.15) 50%,
-    rgba(255, 215, 0, 0.15) 75%,
-    transparent 75%,
-    transparent
-  );
-  background-size: 1rem 1rem;
 }

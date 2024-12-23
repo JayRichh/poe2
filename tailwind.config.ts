@@ -125,19 +125,9 @@ const config: Config = {
         "4xl": ["2.25rem", { lineHeight: "2.5rem", letterSpacing: "-0.025em" }],
         "5xl": ["3rem", { lineHeight: "1.15", letterSpacing: "-0.025em" }],
       },
-      animation: {
-        gradient: "gradient 8s linear infinite",
-        "gradient-fast": "gradient 4s linear infinite",
-        "gradient-slow": "gradient 12s linear infinite",
-        shimmer: "shimmer 2s infinite",
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%,var(--tw-gradient-stops))",
-        "gradient-primary": "linear-gradient(to right,#FFB800,#FF9500,#00B341)",
-        "gradient-accent": "linear-gradient(to right,#FF9500,#00B341,#FFB800)",
-        "gradient-secondary": "linear-gradient(to right,#00B341,#FFB800,#FF9500)",
-        "gradient-amber": "linear-gradient(to right,#F59E0B,#FBBF24,#F97316)",
       },
       boxShadow: {
         subtle: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
@@ -177,7 +167,7 @@ const config: Config = {
             lineHeight: "1.25rem",
             width: "100%",
             boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-            transition: "all 200ms",
+            transition: "colors 150ms ease-out",
             "&:focus": {
               outline: "none",
               borderColor: "hsl(var(--primary)/0.6)",
@@ -222,10 +212,7 @@ const config: Config = {
               borderRadius: "9999px",
               backgroundColor: "hsl(var(--primary))",
               border: "none",
-              transition: "all 200ms",
-              "&:hover": {
-                transform: "scale(1.1)",
-              },
+            transition: "colors 150ms ease-out",
             },
           },
         });
