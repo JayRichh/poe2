@@ -3,7 +3,7 @@
 import { NewsItem } from "~/types/news";
 import { ArrowRight, Clock, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Text } from "../ui/Text";
 import { cn } from "~/utils/cn";
 
@@ -13,7 +13,7 @@ interface NewsCardProps {
 }
 
 export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
-  const isExternalUrl = useMemo(() => news.url.startsWith('http'), [news.url]);
+  const isExternalUrl = useMemo(() => news.url?.startsWith('http') ?? false, [news.url]);
   
   const timeAgo = (date: string) => {
     const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -34,17 +34,19 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
   if (variant === "featured") {
     return (
       <Link
-        href={isExternalUrl ? news.url : `/news/${news.id}?category=${news.category.toLowerCase()}`}
+        href={isExternalUrl ? (news.url ?? '#') : `/news/${news.id}`}
         target={isExternalUrl ? "_blank" : undefined}
         rel={isExternalUrl ? "noopener noreferrer" : undefined}
         className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-primary">{news.category}</span>
+            {news.category && (
+              <span className="text-sm font-medium text-primary">{news.category}</span>
+            )}
             <div className="flex items-center gap-1.5 text-sm text-foreground/60">
               <Clock className="w-3.5 h-3.5" />
-              {timeAgo(news.publishedAt)}
+              {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
             </div>
           </div>
 
@@ -52,9 +54,31 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
             <Text variant="h4" className="line-clamp-2">
               {news.title}
             </Text>
-            <Text variant="body" color="secondary" className="line-clamp-3">
-              {news.description}
-            </Text>
+            {news.type === 'patch' ? (
+              <div className="space-y-2">
+                <Text variant="body" color="secondary" className="line-clamp-2">
+                  {news.description}
+                </Text>
+                {Array.isArray(news.content) && news.content.length > 0 && (
+                  <ul className="space-y-1 list-disc list-inside text-sm text-foreground/70">
+                    {news.content.slice(0, 3).map((change: string, i: number) => (
+                      <li key={i} className="line-clamp-1 leading-relaxed">
+                        {change}
+                      </li>
+                    ))}
+                    {news.content.length > 3 && (
+                      <Text color="secondary" className="text-sm">
+                        +{news.content.length - 3} more changes
+                      </Text>
+                    )}
+                  </ul>
+                )}
+              </div>
+            ) : (
+              <Text variant="body" color="secondary" className="line-clamp-3">
+                {news.description}
+              </Text>
+            )}
           </div>
 
           <div className="flex items-center text-sm text-primary font-medium pt-4">
@@ -73,17 +97,19 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
 
   return (
     <Link
-      href={isExternalUrl ? news.url : `/news/${news.id}?category=${news.category.toLowerCase()}`}
+      href={isExternalUrl ? (news.url ?? '#') : `/news/${news.id}`}
       target={isExternalUrl ? "_blank" : undefined}
       rel={isExternalUrl ? "noopener noreferrer" : undefined}
       className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"
     >
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-primary">{news.category}</span>
+          {news.category && (
+            <span className="text-sm font-medium text-primary">{news.category}</span>
+          )}
           <div className="flex items-center gap-1.5 text-sm text-foreground/60">
             <Clock className="w-3.5 h-3.5" />
-            {timeAgo(news.publishedAt)}
+              {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
           </div>
         </div>
         <div className="flex items-start gap-4">

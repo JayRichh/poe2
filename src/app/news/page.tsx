@@ -7,29 +7,31 @@ import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 3600; // Revalidate every hour
 
 interface PageProps {
-  searchParams: Promise<{
+  searchParams: {
     category?: string;
     source?: string;
     timeRange?: string;
-  }> | undefined;
+  };
 }
 
 export default async function NewsPage({ searchParams }: PageProps) {
-  if (!searchParams) return null;
-
   try {
-    const params = await searchParams;
+    // Await searchParams before using
+    const params = await Promise.resolve(searchParams);
+    const { category, source, timeRange } = params;
+
     const news = await NewsService.getLatestNews(
-      params.category,
-      params.source,
-      params.timeRange
+      category,
+      source,
+      timeRange
     );
 
     // If category is selected, show filtered view
-    if (params.category) {
-      const formattedCategory = params.category.charAt(0).toUpperCase() + params.category.slice(1);
+    if (category) {
+      const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
       return (
         <NewsLayout
           title={`${formattedCategory} News`}

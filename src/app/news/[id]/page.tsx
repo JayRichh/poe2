@@ -1,51 +1,31 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
-import { Clock } from "lucide-react";
+import { Clock, ChevronLeft } from "lucide-react";
 
 interface PageProps {
-  params: Promise<{ id: string }> | undefined;
-  searchParams: Promise<{ category?: string }> | undefined;
-}
-
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
-  if (!params || !searchParams) return { title: "News Not Found" };
-
-  try {
-    const { id } = await params;
-    const { category } = await searchParams;
-    const news = await NewsService.getNewsById(id);
-    if (!news || (category && news.category.toLowerCase() !== category.toLowerCase())) {
-      return { title: "News Not Found" };
-    }
-
-    return {
-      title: `${news.title} - Path of Exile 2 News`,
-      description: news.description,
-    };
-  } catch (error) {
-    console.error("Error generating news metadata:", error);
-    return { title: "News Not Found" };
-  }
+  params: { id: string };
+  searchParams: { category?: string };
 }
 
 export default async function NewsItemPage({ params, searchParams }: PageProps) {
-  if (!params || !searchParams) notFound();
+  // Await params and searchParams before using
+  const resolvedParams = await Promise.resolve(params);
+  const resolvedSearchParams = await Promise.resolve(searchParams);
+  
+  const id = resolvedParams.id;
+  const category = resolvedSearchParams.category;
 
   try {
-    const { id } = await params;
-    const { category } = await searchParams;
     const news = await NewsService.getNewsById(id);
-
-    if (!news) {
-      notFound();
-    }
+    if (!news) notFound();
 
     // If category is provided in URL, validate it matches the news item
-    if (category && news.category.toLowerCase() !== category.toLowerCase()) {
+    if (category && news.category?.toLowerCase() !== category.toLowerCase()) {
       notFound();
     }
 
@@ -82,21 +62,59 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
           >
             <article className="prose prose-invert max-w-none">
               <div className="flex items-center gap-4 text-sm text-foreground/60 mb-8">
-                <span className="text-primary font-medium">{news.category}</span>
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4" />
-                  {timeAgo(news.publishedAt)}
-                </div>
+                {news.category && (
+                  <span className="text-primary font-medium">{news.category}</span>
+                )}
+                {news.publishedAt && (
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" />
+                    {timeAgo(news.publishedAt)}
+                  </div>
+                )}
                 <span className="text-foreground/40">•</span>
-                <span>{news.source}</span>
+                {news.source && <span>{news.source}</span>}
               </div>
 
               <div className="space-y-6">
                 <Text variant="h1" className="!mt-0">{news.title}</Text>
-                <Text variant="body" color="secondary" className="text-lg">
-                  {news.description}
-                </Text>
-                {/* Add more content sections as needed */}
+                {news.description && (
+                  <Text variant="body" color="secondary" className="text-lg">
+                    {news.description}
+                  </Text>
+                )}
+                
+                {/* Patch Notes Content */}
+                {news.type === 'patch' && Array.isArray(news.content) && (
+                  <div className="mt-8 space-y-6">
+                    <div className="prose prose-invert max-w-none">
+                      <ul className="space-y-3 list-disc list-inside">
+                        {news.content.map((change, i) => (
+                          <li key={i} className="leading-relaxed text-foreground/80">
+                            {change}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {/* Regular News Content */}
+                {news.type !== 'patch' && news.content && !Array.isArray(news.content) && (
+                  <div className="mt-8 prose prose-invert max-w-none">
+                    {news.content}
+                  </div>
+                )}
+
+                {/* Back to News Link */}
+                <div className="mt-12 pt-6 border-t border-border/30">
+                  <Link 
+                    href="/news" 
+                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-medium"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Back to News
+                  </Link>
+                </div>
               </div>
             </article>
           </Suspense>

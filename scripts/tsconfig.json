@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "baseUrl": "../",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["../src/scripts/**/*", "../src/services/**/*"],
+  "exclude": ["node_modules"]
+}
