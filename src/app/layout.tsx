@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
-        <script data-goatcounter="https://jayrich.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+        <script data-goatcounter="https://poe2.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
         <ClientLayout>{children}</ClientLayout>
