@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-
+import { TreeDataPrefetcher } from "./components/TreeDataPrefetcher";
 import "./styles/skill-tree.css";
 
 export default function SkillTreeLayout({ children }: { children: React.ReactNode }) {
@@ -19,13 +19,16 @@ export default function SkillTreeLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <div
-      className="flex flex-col w-full overflow-hidden bg-background"
-      style={{
-        height: "calc((var(--vh, 0vh) * 100) - 4rem)",
-      }}
-    >
-      <div className="flex-1 relative">{children}</div>
-    </div>
+    <>
+      <TreeDataPrefetcher />
+      <div
+        className="flex flex-col w-full overflow-hidden bg-background"
+        style={{
+          height: "calc((var(--vh, 0vh) * 100) - 4rem)",
+        }}
+      >
+        <div className="flex-1 relative">{children}</div>
+      </div>
+    </>
   );
 }

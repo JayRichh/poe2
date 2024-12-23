@@ -13,7 +13,7 @@ import {
   Upload,
 } from "lucide-react";
 
-import { useEffect } from "react";
+import { shimmer, toBase64 } from "~/utils/image";
 
 import { Filters } from "./components/Sidebar/Filters";
 import { NodeDetails } from "./components/Sidebar/NodeDetails";
@@ -21,31 +21,10 @@ import { StatsPanel } from "./components/Sidebar/StatsPanel";
 import { TreeViewer } from "./components/TreeViewer/TreeViewer";
 import { useSkillTree } from "./hooks/useSkillTree";
 
-// Pre-fetch data files
-const preloadData = () => {
-  const dataFiles = [
-    "/data/nodes.json",
-    "/data/nodes_desc.json",
-    "/data/skills.json",
-    "/data/keywords.json",
-  ];
-
-  dataFiles.forEach(async (file) => {
-    try {
-      await fetch(file, {
-        next: { revalidate: 3600 }
-      });
-    } catch (error) {
-      console.error(`Failed to prefetch ${file}:`, error);
-    }
-  });
-};
-
 export default function SkillTreePage() {
   const {
     // Core state
     treeData,
-    isLoading,
     error,
     selectedNode,
     setSelectedNode,
@@ -95,32 +74,26 @@ export default function SkillTreePage() {
     getShareLink,
   } = useSkillTree();
 
-  // Preload data files
-  useEffect(() => {
-    preloadData();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center w-full h-screen bg-background text-foreground">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-foreground border-t-transparent" />
-          <div>Loading skill tree...</div>
-        </div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className="flex items-center justify-center w-full h-screen bg-background text-foreground">
-        <div className="text-red-500">Error loading skill tree: {error.message}</div>
+        <div className="flex flex-col items-center gap-4 p-6 rounded-lg border border-destructive/50 bg-destructive/10">
+          <div className="text-lg font-medium text-destructive">Error loading skill tree</div>
+          <div className="text-sm text-muted-foreground">{error.message}</div>
+          <button 
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
     <main className="flex flex-col w-full h-[calc(100vh-4rem)] bg-background text-foreground overflow-hidden">
+      {/* Rest of the component remains unchanged */}
       {/* Main Content Area */}
       <div className="flex flex-1 min-h-0">
         {/* Left Sidebar - Filters */}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-
+import type { CSSProperties } from "react";
 import { TreeNodeData } from "./data";
 
 interface TreeNodeProps {
@@ -16,49 +16,7 @@ interface TreeNodeProps {
   onMouseLeave: (node: TreeNodeData) => void;
 }
 
-const NODE_SIZE = {
-  notable: 20,
-  small: 10,
-  keystone: 24,
-  normal: 10,
-  mastery: 10,
-} as const;
-
-interface NodeColors {
-  base: string;
-  border: string;
-}
-
-const NODE_COLORS: Record<keyof typeof NODE_SIZE, NodeColors> = {
-  keystone: {
-    base: "#9f7aea",
-    border: "#b794f4",
-  },
-  notable: {
-    base: "#ed8936",
-    border: "#f6ad55",
-  },
-  normal: {
-    base: "#4a5568",
-    border: "#718096",
-  },
-  small: {
-    base: "#4a5568",
-    border: "#718096",
-  },
-  mastery: {
-    base: "#48bb78",
-    border: "#68d391",
-  },
-};
-
-// Pre-computed RGB values for better performance
-const RGB_COLORS = {
-  blue500: "66,153,225",
-  blue400: "99,179,237",
-  blue700: "43,108,176",
-  yellow400: "246,224,94",
-};
+import { NODE_STYLES, EFFECT_COLORS, getNodeStyle } from "./data";
 
 const TreeNode = React.memo(function TreeNode({
   node,
@@ -71,55 +29,37 @@ const TreeNode = React.memo(function TreeNode({
   onMouseEnter,
   onMouseLeave,
 }: TreeNodeProps) {
-  const baseSize = NODE_SIZE[node.type] || NODE_SIZE.normal;
+  const nodeStyles = getNodeStyle(node.type);
   const scale = isSelected ? 1.2 : isHighlighted ? 1.1 : isPath ? 1.05 : 1;
-  const size = baseSize * scale;
+  const size = nodeStyles.size * scale;
 
   // Memoize node style calculations
   const nodeStyle = useMemo(() => {
-    const nodeColors = NODE_COLORS[node.type] || NODE_COLORS.normal;
-    let backgroundColor = nodeColors.base;
-    let borderColor = nodeColors.border;
-    let shadowColor = backgroundColor;
-    let glowIntensity = isSelected ? 15 : isHighlighted ? 10 : isPath ? 8 : 5;
-    let glowOpacity = isSelected ? 0.8 : isHighlighted ? 0.6 : isPath ? 0.5 : 0.3;
-    let backgroundOpacity = isAllocated ? 0.9 : 0.4;
+    const glowIntensity = isSelected ? 15 : isHighlighted ? 10 : isPath ? 8 : 5;
+    const glowOpacity = isSelected ? 0.8 : isHighlighted ? 0.6 : isPath ? 0.5 : 0.3;
+    const backgroundOpacity = isAllocated ? 0.9 : 0.4;
 
-    if (isAllocated) {
-      backgroundColor = "#4299e1";
-      borderColor = "#63b3ed";
-      shadowColor = "#2b6cb0";
-      glowOpacity = 0.8;
-      backgroundOpacity = 0.9;
-    }
-
-    if (isPath && !isAllocated) {
-      borderColor = "#f6e05e";
-      shadowColor = "#f6e05e";
-      glowOpacity = 0.6;
-    } else if (isHighlighted) {
-      borderColor = "#f6e05e";
-      shadowColor = "#f6e05e";
-    }
-
-    // Simplified shadow style for better performance
-    const glowStyle =
-      isSelected || isHighlighted || isPath
-        ? `0 0 ${glowIntensity}px rgba(${RGB_COLORS.yellow400},${glowOpacity})`
-        : "none";
+    const colors = isAllocated ? EFFECT_COLORS.allocated :
+                  isHighlighted || (isPath && !isAllocated) ? EFFECT_COLORS.highlighted :
+                  nodeStyles.colors;
 
     return {
       width: `${size}px`,
       height: `${size}px`,
-      backgroundColor: `${backgroundColor}${Math.round(backgroundOpacity * 255)
+      backgroundColor: `${colors.base}${Math.round(backgroundOpacity * 255)
         .toString(16)
         .padStart(2, "0")}`,
-      borderColor: `${borderColor}${Math.round(glowOpacity * 255)
+      borderColor: `${colors.border}${Math.round(glowOpacity * 255)
         .toString(16)
         .padStart(2, "0")}`,
-      boxShadow: glowStyle,
       transform: `translate3d(0,0,0) scale(${scale})`,
-      willChange: "transform",
+      willChange: "transform, opacity",
+      backfaceVisibility: "hidden" as CSSProperties["backfaceVisibility"],
+      perspective: 1000,
+      WebkitFontSmoothing: "antialiased" as CSSProperties["WebkitFontSmoothing"],
+      // Use CSS custom properties for glow effect
+      ["--glow-color" as string]: `rgba(${colors.rgb},${glowOpacity})`,
+      ["--glow-size" as string]: `${glowIntensity}px`,
     };
   }, [node.type, isSelected, isHighlighted, isAllocated, isPath, size, scale]);
 
@@ -148,7 +88,18 @@ const TreeNode = React.memo(function TreeNode({
       onMouseEnter={() => onMouseEnter(node)}
       onMouseLeave={() => onMouseLeave(node)}
     >
-      <div className="rounded-full border-2" style={nodeStyle}>
+      <div 
+        className={`
+          rounded-full border-2 relative
+          before:absolute before:inset-[-8px] before:rounded-full before:opacity-0
+          before:transition-opacity before:duration-200
+          ${(isSelected || isHighlighted || isPath) ? 
+            'before:opacity-100 before:bg-[radial-gradient(circle,var(--glow-color)_0%,transparent_70%)]' : 
+            ''
+          }
+        `} 
+        style={nodeStyle}
+      >
         {node.type === "keystone" && (
           <div className="absolute inset-0 rounded-full border-2 border-white/20" />
         )}

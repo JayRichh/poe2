@@ -19,9 +19,18 @@ const nextConfig = {
       },
     ],
     formats: ['image/webp'],
-    minimumCacheTTL: 60, // 1 minute minimum cache
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 3600, // 1 hour minimum cache
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    dangerouslyAllowSVG: true, // Required for shimmer effect
+  },
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+    optimisticClientCache: true,
   },
   async headers() {
     return [
@@ -30,8 +39,11 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            // Use standard cache control for better CDN and browser caching
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
+            value: 'public, max-age=31536000, must-revalidate',
+          },
+          {
+            key: 'Vary',
+            value: 'Accept',
           },
         ],
       },
@@ -40,7 +52,11 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
+            value: 'public, max-age=31536000, must-revalidate',
+          },
+          {
+            key: 'Vary',
+            value: 'Accept',
           },
         ],
       },

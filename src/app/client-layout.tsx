@@ -1,8 +1,9 @@
 "use client";
 
 import { Suspense } from "react";
-
+import { shimmer, toBase64 } from "~/utils/image";
 import { ThemeProvider } from "next-themes";
+import { QueryProvider } from "~/components/providers/QueryProvider";
 
 import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
@@ -24,8 +25,16 @@ function NavigationLoading() {
 
 function MainContentLoading() {
   return (
-    <div className="flex-1 flex items-center justify-center min-h-[60vh]">
-      <Spinner size="lg" variant="primary" />
+    <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] relative">
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
+        style={{
+          backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(1200, 800))}')`
+        }}
+      />
+      <div className="relative z-10">
+        <Spinner size="lg" variant="primary" />
+      </div>
     </div>
   );
 }
@@ -40,7 +49,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       enableSystem={false}
       disableTransitionOnChange
     >
-      <AuthProvider>
+      <QueryProvider>
+        <AuthProvider>
         {/* Background gradient */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <GradientBackground variant="mesh" interactive={false} />
@@ -65,7 +75,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <div className="relative z-10 mt-auto">
           <Footer />
         </div>
-      </AuthProvider>
+        </AuthProvider>
+      </QueryProvider>
     </ThemeProvider>
   );
 }

@@ -33,6 +33,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
+        <link 
+          rel="preload" 
+          href="/skill-tree.png" 
+          as="image" 
+          type="image/png"
+        />
+        <link 
+          rel="preload" 
+          href="/ascendancies/acolyte.webp" 
+          as="image" 
+          type="image/webp"
+        />
         <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION} />
         <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
         <meta name="yandex-verification" content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION} />

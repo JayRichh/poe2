@@ -91,42 +91,66 @@ export interface RawTreeData {
   nodes: Record<string, RawTreeNodeData>;
 }
 
-// Node styling utilities
-export function getNodeSize(type: NodeType): number {
-  switch (type) {
-    case "keystone":
-      return 40;
-    case "notable":
-      return 32;
-    case "mastery":
-      return 36;
-    default:
-      return 24;
-  }
-}
+// Node styling constants
+export const NODE_STYLES = {
+  keystone: {
+    size: 24,
+    colors: {
+      base: "#9f7aea", // purple-500
+      border: "#b794f4", // purple-400
+      rgb: "159,122,234", // pre-computed RGB for performance
+    },
+  },
+  notable: {
+    size: 20,
+    colors: {
+      base: "#ed8936", // orange-500
+      border: "#f6ad55", // orange-400
+      rgb: "237,137,54",
+    },
+  },
+  normal: {
+    size: 10,
+    colors: {
+      base: "#4a5568", // gray-600
+      border: "#718096", // gray-500
+      rgb: "74,85,104",
+    },
+  },
+  small: {
+    size: 10,
+    colors: {
+      base: "#4a5568",
+      border: "#718096",
+      rgb: "74,85,104",
+    },
+  },
+  mastery: {
+    size: 10,
+    colors: {
+      base: "#48bb78", // green-500
+      border: "#68d391", // green-400
+      rgb: "72,187,120",
+    },
+  },
+} as const;
 
-export function getNodeColor(type: NodeType): string {
-  switch (type) {
-    case "keystone":
-      return "#9f7aea"; // purple-500
-    case "notable":
-      return "#ed8936"; // orange-500
-    case "mastery":
-      return "#48bb78"; // green-500
-    default:
-      return "#4a5568"; // gray-600
-  }
-}
+// Pre-computed colors for better performance
+export const EFFECT_COLORS = {
+  allocated: {
+    base: "#4299e1", // blue-500
+    border: "#63b3ed", // blue-400
+    shadow: "#2b6cb0", // blue-700
+    rgb: "66,153,225",
+  },
+  highlighted: {
+    base: "#f6e05e", // yellow-400
+    border: "#f6e05e",
+    rgb: "246,224,94",
+  },
+} as const;
 
-export function getNodeBorderColor(type: NodeType): string {
-  switch (type) {
-    case "keystone":
-      return "#b794f4"; // purple-400
-    case "notable":
-      return "#f6ad55"; // orange-400
-    case "mastery":
-      return "#68d391"; // green-400
-    default:
-      return "#718096"; // gray-500
-  }
+// Helper functions with better type safety
+export function getNodeStyle(type: NodeType) {
+  return NODE_STYLES[type] || NODE_STYLES.normal;
 }

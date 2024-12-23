@@ -20,6 +20,12 @@ interface Dimensions {
   height: number;
 }
 
+// Cache for various operations
+const regexCache = new Map<string, RegExp>();
+const highlightRegexCache = new Map<string, RegExp>();
+const searchResultsCache = new Map<string, Set<string>>();
+const escapeRegex = /[.*+?^${}()|[\]\\]/g;
+
 // Existing utility functions
 export function mergeDatas<T extends { name: string; nodes: string[] }>(arrays: T[]): T[] {
   const merged: { [key: string]: T } = {};
@@ -89,8 +95,19 @@ export function getSkillsAndKeywords(
   return { keywords, skills };
 }
 
+function getHighlightRegex(data: SkillMap | KeywordMap): RegExp {
+  const key = Object.keys(data).join("|");
+  if (highlightRegexCache.has(key)) {
+    return highlightRegexCache.get(key)!;
+  }
+
+  const regex = new RegExp(`\\b(${key})\\b`, "gi");
+  highlightRegexCache.set(key, regex);
+  return regex;
+}
+
 export function highlight(text: string, className: string, data: SkillMap | KeywordMap): string {
-  const regex = new RegExp(`\\b(${Object.keys(data).join("|")})\\b`, "gi");
+  const regex = getHighlightRegex(data);
   return text.replace(regex, (match) => `<span class="${className}">${match}</span>`);
 }
 
@@ -163,37 +180,18 @@ export function calculateInitialPanOffset(
   };
 }
 
-export function getNodeSize(type: NodeType): number {
-  switch (type) {
-    case "keystone":
-      return 40;
-    case "notable":
-      return 32;
-    default:
-      return 24;
+function getSearchRegex(searchTerm: string, isRegexSearch: boolean): RegExp {
+  const cacheKey = `${searchTerm}:${isRegexSearch}`;
+  if (regexCache.has(cacheKey)) {
+    return regexCache.get(cacheKey)!;
   }
-}
 
-export function getNodeColor(type: NodeType): string {
-  switch (type) {
-    case "keystone":
-      return "#9f7aea"; // purple-500
-    case "notable":
-      return "#ed8936"; // orange-500
-    default:
-      return "#4a5568"; // gray-600
-  }
-}
+  const regex = isRegexSearch
+    ? new RegExp(searchTerm, "i")
+    : new RegExp(searchTerm.replace(escapeRegex, "\\$&"), "i");
 
-export function getNodeBorderColor(type: NodeType): string {
-  switch (type) {
-    case "keystone":
-      return "#b794f4"; // purple-400
-    case "notable":
-      return "#f6ad55"; // orange-400
-    default:
-      return "#718096"; // gray-500
-  }
+  regexCache.set(cacheKey, regex);
+  return regex;
 }
 
 export function searchNodes(
@@ -203,21 +201,45 @@ export function searchNodes(
 ): Set<string> {
   if (!searchTerm) return new Set();
 
+  const cacheKey = `${searchTerm}:${isRegexSearch}:${Object.keys(nodes).length}`;
+  if (searchResultsCache.has(cacheKey)) {
+    return searchResultsCache.get(cacheKey)!;
+  }
+
   try {
-    const searchRegex = isRegexSearch
-      ? new RegExp(searchTerm, "i")
-      : new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
-
+    const searchRegex = getSearchRegex(searchTerm, isRegexSearch);
     const results = new Set<string>();
-    Object.values(nodes).forEach((node) => {
-      if (searchRegex.test(node.name) || node.description.some((desc) => searchRegex.test(desc))) {
-        results.add(node.id);
-      }
-    });
 
+    // Use for...of for better performance with early returns
+    for (const node of Object.values(nodes)) {
+      // Check name first as it's faster than description array
+      if (searchRegex.test(node.name)) {
+        results.add(node.id);
+        continue;
+      }
+
+      // Check descriptions
+      for (const desc of node.description) {
+        if (searchRegex.test(desc)) {
+          results.add(node.id);
+          break;
+        }
+      }
+    }
+
+    searchResultsCache.set(cacheKey, results);
     return results;
   } catch (error) {
     console.error("Search error:", error);
     return new Set();
   }
+}
+
+// Clear caches when memory pressure is high
+if (typeof window !== 'undefined') {
+  window.addEventListener('blur', () => {
+    regexCache.clear();
+    highlightRegexCache.clear();
+    searchResultsCache.clear();
+  });
 }

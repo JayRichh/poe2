@@ -1,13 +1,11 @@
 "use client";
 
 import LZString from "lz-string";
-
 import { useCallback, useEffect, useRef, useState } from "react";
-
 import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
-import { getTreeData, loadTreeData } from "../utils/loadTreeData";
 import { useTreeHistory } from "./useTreeHistory";
 import { useUrlState } from "./useUrlState";
+import { useTreeData } from "./useTreeData";
 
 type NodeId = string;
 
@@ -19,9 +17,9 @@ interface BuildState {
 }
 
 export function useSkillTree() {
-  const [treeData, setTreeData] = useState<TreeData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  // Use React Query for tree data
+  const { data: treeData, error } = useTreeData();
+  const treeDataRef = treeData || null; // Convert undefined to null for compatibility
 
   // Core state
   const [selectedNode, setSelectedNode] = useState<TreeNodeData | null>(null);
@@ -94,30 +92,6 @@ export function useSkillTree() {
     updateUrl(Array.from(allocatedNodes), selectedAscendancy);
   }, [allocatedNodes, selectedAscendancy, updateUrl]);
 
-  // Load tree data
-  useEffect(() => {
-    async function initializeData() {
-      try {
-        setIsLoading(true);
-        const data = await loadTreeData();
-        setTreeData(data);
-        setError(null);
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error("Failed to load tree data"));
-        console.error("Error loading tree data:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    if (!getTreeData()) {
-      initializeData();
-    } else {
-      setTreeData(getTreeData());
-      setIsLoading(false);
-    }
-  }, []);
-
   // Node filtering functions
   const filterNormalNodes = useCallback(
     (node: TreeNodeData): boolean => {
@@ -167,7 +141,7 @@ export function useSkillTree() {
   // Handle node allocation with validation
   const handleNodeAllocate = useCallback(
     (node: TreeNodeData): void => {
-      if (!treeData) return;
+      if (!treeDataRef) return;
 
       setAllocatedNodes((prev) => {
         const newAllocated = new Set(prev);
@@ -177,7 +151,7 @@ export function useSkillTree() {
           const wouldDisconnect = Array.from(newAllocated)
             .filter((id) => id !== node.id)
             .some((id) => {
-              const otherNode = treeData.nodes[id];
+              const otherNode = treeDataRef.nodes[id];
               return otherNode && otherNode.connections.includes(node.id);
             });
 
@@ -198,13 +172,13 @@ export function useSkillTree() {
         return newAllocated;
       });
     },
-    [treeData, selectedAscendancy, pushState]
+    [treeDataRef, selectedAscendancy, pushState]
   );
 
   // Check if a node can be allocated
   const canAllocateNode = useCallback(
     (node: TreeNodeData, currentAllocated: Set<NodeId>): boolean => {
-      if (!treeData) return false;
+      if (!treeDataRef) return false;
 
       // If no nodes are allocated, only allow starting nodes
       if (currentAllocated.size === 0) {
@@ -214,7 +188,7 @@ export function useSkillTree() {
       // Check if the node is connected to any allocated node
       return node.connections.some((connectedId) => currentAllocated.has(connectedId));
     },
-    [treeData]
+    [treeDataRef]
   );
 
   const handleAscendancyChange = useCallback(
@@ -303,8 +277,7 @@ export function useSkillTree() {
 
   return {
     // Core state
-    treeData,
-    isLoading,
+    treeData: treeDataRef,
     error,
     selectedNode,
     setSelectedNode,

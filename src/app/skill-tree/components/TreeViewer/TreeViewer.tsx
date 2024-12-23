@@ -4,8 +4,10 @@ import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import { Maximize2, ZoomIn, ZoomOut } from "lucide-react";
 import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
+import { shimmer, toBase64 } from "~/utils/image";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { SyntheticEvent } from "react";
 
 import {
   calculateInitialPanOffset,
@@ -235,16 +237,7 @@ export function TreeViewer({
     );
   }, [filteredNodes, scale, panOffset, hasLoaded, imageSize]);
 
-  if (!treeData) {
-    return (
-      <div className="w-full h-full flex items-center justify-center bg-background text-foreground">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-foreground border-t-transparent" />
-          <div>Loading skill tree...</div>
-        </div>
-      </div>
-    );
-  }
+  if (!treeData) return null;
 
   return (
     <div
@@ -280,30 +273,45 @@ export function TreeViewer({
 
       {/* Tree Content */}
       <div
-        style={{
-          transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
-          transformOrigin: "0 0",
-          position: "absolute",
-          width: imageSize.width || "100%",
-          height: imageSize.height || "100%",
-          willChange: "transform",
-          userSelect: "none",
-        }}
+          style={{
+            transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
+            transformOrigin: "0 0",
+            position: "absolute",
+            width: imageSize.width || "100%",
+            height: imageSize.height || "100%",
+            willChange: "transform",
+            userSelect: "none",
+            backfaceVisibility: "hidden",
+            perspective: 1000,
+            WebkitFontSmoothing: "antialiased",
+          }}
       >
-        <ProgressiveImage
-          ref={imageRef}
-          src="/skill-tree.png"
-          alt="Skill Tree"
-          width={2048}
-          height={2048}
-          className="w-full h-full pointer-events-none"
-          onLoad={handleImageLoad}
-          draggable={false}
-          priority
-          quality={75}
-          sizes="100vw"
-          crossOrigin="anonymous"
-        />
+        <div className="relative w-full h-full">
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
+            style={{
+              backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(2048, 2048))}')`
+            }}
+          />
+          <ProgressiveImage
+            ref={imageRef}
+            src="/skill-tree.png"
+            alt="Skill Tree"
+            width={2048}
+            height={2048}
+            className="w-full h-full pointer-events-none"
+            onLoad={handleImageLoad}
+            onError={(error) => {
+              console.error('Failed to load skill tree image:', error);
+              // Could add error UI here if needed
+            }}
+            draggable={false}
+            priority
+            quality={75}
+            sizes="100vw"
+            crossOrigin="anonymous"
+          />
+        </div>
 
         {selectedAscendancy !== "None" && (
           <ProgressiveImage
@@ -317,6 +325,10 @@ export function TreeViewer({
               left: "50%",
               transform: "translate3d(-50%, -50%, 0)",
               willChange: "transform",
+            }}
+            fallback={`/ascendancies/${selectedAscendancy.toLowerCase()}.png`}
+            onError={(error) => {
+              console.error('Failed to load ascendancy image:', error);
             }}
             draggable={false}
             priority

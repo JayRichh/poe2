@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+import { shimmer, toBase64 } from "~/utils/image";
 
 interface Feature {
   title: string;
@@ -112,17 +113,37 @@ export function SkillTreeSection() {
             <div className="relative h-full rounded-full p-1 bg-gradient-to-br from-primary/30 via-accent/30 to-secondary/30 group-hover/image:from-primary/40 group-hover/image:via-accent/40 group-hover/image:to-secondary/40 transition-all duration-700">
               <div className="absolute inset-0 rounded-full backdrop-blur-sm" />
               <div className="relative h-full rounded-full overflow-hidden border border-border/30 group-hover/image:border-border/50 transition-colors duration-700">
-                <Image
-                  src="/skill-tree.png"
-                  alt="POE2 Skill Tree Preview"
-                  fill
-                  quality={60}
-                  sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
-                  className="object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-transform duration-700 contrast-[1.1] brightness-110"
-                  loading="eager"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRseHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                />
+                <div className="relative w-full h-full">
+                  {/* Shimmer loading effect */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
+                    style={{
+                      backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}')`
+                    }}
+                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/skill-tree.png"
+                      alt="POE2 Skill Tree Preview"
+                      fill
+                      quality={75}
+                      priority
+                      sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
+                      className="opacity-0 object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
+                      onLoad={(event) => {
+                        const target = event.target as HTMLImageElement;
+                        if (target.complete) {
+                          target.classList.remove('opacity-0');
+                          target.classList.add('opacity-100');
+                        }
+                      }}
+                      onError={(event) => {
+                        const target = event.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                </div>
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent backdrop-blur-[1px] mix-blend-soft-light after:absolute after:inset-0 after:bg-[radial-gradient(circle,transparent_60%,rgba(0,0,0,0.4))]"
                   animate={{
