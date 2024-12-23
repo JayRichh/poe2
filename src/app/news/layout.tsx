@@ -22,7 +22,7 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
   const category = searchParams.get('category');
 
   return (
-    <div className="min-h-screen pt-12 sm:pt-16">
+    <div className="min-h-screen pt-12">
       <div
         className={cn(
           "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/95 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
