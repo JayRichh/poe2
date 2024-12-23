@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { User } from "lucide-react";
 
 import { Button } from "~/components/ui/Button";
+import { useAuth } from "~/contexts/auth";
 import { Container } from "~/components/ui/Container";
 import { Input } from "~/components/ui/Input";
 import { Select } from "~/components/ui/Select";
@@ -43,6 +45,7 @@ export default function NewBuildPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const { user, loading: authLoading } = useAuth();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -68,18 +71,26 @@ export default function NewBuildPage() {
   }
 
   return (
-    <Container>
+    <Container className="max-w-2xl mx-auto py-8">
       <div className="space-y-8">
         {/* Header */}
-        <div>
+        <div className="text-center">
           <Text className="text-3xl font-bold tracking-tight mb-4">Create New Build</Text>
-          <Text className="text-foreground/60 text-balance">
+          <Text className="text-foreground/60 text-balance mx-auto">
             Create a new Path of Exile 2 build to plan your character progression, equipment, and skills.
           </Text>
         </div>
 
+        {!user && !authLoading && (
+          <div className="bg-background/50 border border-border/10 rounded-lg p-4 flex items-center justify-center gap-3">
+            <Text className="text-sm text-foreground/70">
+              Please <Button variant="link" className="px-1 text-sm font-semibold" onClick={() => router.push("/auth/login")}>sign in</Button> to save and share your builds
+            </Text>
+          </div>
+        )}
+
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+        <form onSubmit={handleSubmit} className="space-y-8 bg-background/50 rounded-lg border border-border/10 p-6">
           <div className="space-y-2">
             <Text>Build Name *</Text>
             <Input
@@ -160,10 +171,7 @@ export default function NewBuildPage() {
             <Text className="text-destructive">{error}</Text>
           )}
 
-          <div className="flex items-center gap-4 pt-4">
-            <Button type="submit" variant="primary" isLoading={isLoading}>
-              Create Build
-            </Button>
+          <div className="flex items-center justify-end gap-4 pt-4">
             <Button
               type="button"
               variant="outline"
@@ -171,6 +179,15 @@ export default function NewBuildPage() {
               disabled={isLoading}
             >
               Cancel
+            </Button>
+            <Button 
+              type="submit" 
+              variant="primary" 
+              isLoading={isLoading}
+              disabled={!user || authLoading}
+              title={!user ? "Sign in required to create builds" : undefined}
+            >
+              Create Build
             </Button>
           </div>
         </form>

@@ -1,26 +1,29 @@
 "use client";
 
-import { Coffee, Github } from "lucide-react";
-
+import { Coffee, Github, ArrowUpRight, BookOpen, Wrench, Gamepad, Users, Code, FileText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-const contributors = [
-  {
-    name: "Jay",
-    url: "https://github.com/jayrichh",
-    avatar: "https://avatars.githubusercontent.com/jayrichh",
-  },
+
+const mainLinks = [
+  { href: "/build-planner", label: "Build Planner", icon: Wrench, description: "Plan and optimize your character builds" },
+  { href: "/skill-tree", label: "Skill Tree", icon: Code, description: "Interactive skill tree visualization" },
+  { href: "/dps-calc", label: "DPS Calculator", icon: Gamepad, description: "Calculate and compare weapon damage" },
+  { href: "/guides", label: "Guides", icon: BookOpen, description: "Community guides and tutorials" },
+  { href: "/news", label: "News", icon: FileText, description: "Latest updates and patch notes" },
 ];
 
-const navLinks = [
-  { href: "/build-planner", label: "Build Planner" },
-  { href: "/skill-tree", label: "Skill Tree" },
-  { href: "/dps-calc", label: "DPS Calculator" },
+const communityLinks = [
+  { href: "/profile", label: "Profile" },
+  { href: "/build-planner/import-export", label: "Share Builds" },
+  { href: "/news/patch-notes", label: "Patch Notes" },
 ];
 
-const externalResources = [
-  { href: "https://www.pathofexile2.com/", label: "Path of Exile 2" },
+const toolLinks = [
+  { href: "/build-planner/equipment", label: "Equipment Manager" },
+  { href: "/build-planner/skills", label: "Skills Configuration" },
+  { href: "/build-planner/stats", label: "Stats Analyzer" },
+  { href: "/build-planner/notes", label: "Build Notes" },
 ];
 
 export function Footer() {
@@ -35,130 +38,189 @@ export function Footer() {
   if (!isVisible) return null;
 
   return (
-    <footer className="mt-auto border-t border-border/10 z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left Column */}
-          <div className="space-y-8">
+    <footer className="mt-auto border-t border-border/10 z-10 min-h-screen bg-gradient-to-b from-background to-background/95">
+      <style jsx>{`
+        @keyframes steam {
+          0% {
+            opacity: 0;
+            transform: translateY(0) translateX(0) scale(0.5) rotate(0deg);
+          }
+          30% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.6;
+            transform: translateY(-6px) translateX(-2px) scale(1) rotate(5deg);
+          }
+          70% {
+            opacity: 0.3;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-12px) translateX(-4px) scale(1.2) rotate(-5deg);
+          }
+        }
+        @keyframes wiggle {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(-2deg);
+          }
+          75% {
+            transform: rotate(2deg);
+          }
+        }
+        .coffee-icon {
+          position: relative;
+          transition: transform 0.3s ease;
+        }
+        .group:hover .coffee-icon {
+          animation: wiggle 1s ease-in-out infinite;
+        }
+        .coffee-icon::before,
+        .coffee-icon::after {
+          content: "";
+          position: absolute;
+          top: -2px;
+          width: 3px;
+          height: 3px;
+          background: rgb(245,158,11);
+          border-radius: 50%;
+          opacity: 0;
+          filter: blur(0.5px);
+        }
+        .coffee-icon::before {
+          left: 45%;
+          animation: steam 2.5s ease-out infinite;
+        }
+        .coffee-icon::after {
+          left: 55%;
+          animation: steam 2.5s ease-out infinite 0.7s;
+        }
+        .group:hover .coffee-icon::before,
+        .group:hover .coffee-icon::after {
+          background: rgb(245,158,11);
+          filter: blur(0);
+        }
+      `}</style>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-24">
+          {/* Left Column - Main Links */}
+          <div className="space-y-16">
             <div>
-              <h3 className="text-xl font-semibold text-foreground">POE2 Tools</h3>
-              <p className="mt-2 text-sm text-foreground/60 leading-relaxed">
-                POE2 tools and utilities - Featuring build planning, 
-                damage calculator, skill tree planner, character optimization tools, and build analysis utilities.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Follow & Contribute</h4>
-              <a
-                href="https://github.com/jayrichh/poe2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                View on GitHub
-              </a>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Contributors</h4>
-              <div className="flex flex-wrap gap-2">
-                {contributors.map((contributor) => (
-                  <a
-                    key={contributor.name}
-                    href={contributor.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative"
+              <h2 className="text-4xl font-bold tracking-tight mb-12">
+                POE2 Tools
+              </h2>
+              <div className="grid gap-8">
+                {mainLinks.map((link) => (
+                  <Link 
+                    key={link.href} 
+                    href={link.href}
+                    className="group flex items-start gap-6 p-4 rounded-xl hover:bg-accent/5 transition-colors"
                   >
-                    <Image
-                      src={contributor.avatar}
-                      alt={contributor.name}
-                      width={32}
-                      height={32}
-                      className="rounded-full hover:opacity-80 transition-opacity"
-                    />
-                    <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                    <div className="p-2 rounded-lg bg-accent/5 text-accent">
+                      <link.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1 group-hover:text-accent transition-colors">
+                        {link.label}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {link.description}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="w-5 h-5 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
-           {/* Middle Column */}
-           <div className="space-y-8">
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Support the Project</h4>
-              <p className="text-sm text-foreground/60 mb-4">
-                Help keep POE2 Tools running and support future development.
+          {/* Right Column - Support & Community */}
+          <div className="space-y-16 lg:text-right">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold tracking-tight">Support the Project</h3>
+              <p className="text-lg text-muted-foreground max-w-md ml-auto">
+                Help keep POE2 Tools running and support future development of new features.
               </p>
-              <a
-                href="https://ko-fi.com/C0C217U6Z6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#72a4f2] text-white hover:bg-[#5a83d0] transition-colors"
-              >
-                <Coffee className="w-4 h-4" />
-                Buy us a coffee
-              </a>
+              <div className="flex lg:justify-end gap-4">
+                <a
+                  href="https://ko-fi.com/C0C217U6Z6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/5 backdrop-blur-sm border border-accent/20 hover:border-accent/40 text-white/70 hover:text-white/90 transition-all hover:shadow-[0_0_15px_rgba(245,158,11,0.1)] group"
+                >
+                  <span className="coffee-icon">
+                    <Coffee className="w-5 h-5 text-accent/70 group-hover:text-accent/90 transition-colors" />
+                  </span>
+                  Buy us a coffee
+                </a>
+                <a
+                  href="https://github.com/jayrichh/poe2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 hover:bg-background/80 text-white/70 hover:text-white/90 transition-all group"
+                >
+                  <Github className="w-5 h-5" />
+                  View on GitHub
+                </a>
+              </div>
             </div>
 
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Features</h4>
-              <p className="text-sm text-foreground/60">
-                Build planner, DPS calculator, skill tree optimizer, character analyzer, 
-                and other essential POE2 planning tools.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-8">
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Tools & Utilities</h4>
-              <ul className="space-y-2">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-foreground/60 hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold tracking-tight">Community</h3>
+              <div className="flex flex-col lg:items-end gap-4">
+                {communityLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
 
-            <div>
-              <h4 className="text-sm font-medium text-foreground mb-3">Resources</h4>
-              <ul className="space-y-2">
-                {externalResources.map((resource) => (
-                  <li key={resource.href}>
-                    <a
-                      href={resource.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-foreground/60 hover:text-foreground transition-colors"
-                    >
-                      {resource.label}
-                    </a>
-                  </li>
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold tracking-tight">Tools & Utilities</h3>
+              <div className="flex flex-col lg:items-end gap-4">
+                {toolLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="py-6 border-t border-border/5">
-          <p className="text-xs text-center text-foreground/50">
-            © {new Date().getFullYear()} POE2 Tools - Community Build Planning & Analysis Toolkit
-          </p>
-          <p className="mt-2 text-xs text-center text-foreground/50">
-            This is a fan-made toolkit and is not affiliated with or endorsed by Grinding Gear Games.
-            Path of Exile 2 is a trademark of Grinding Gear Games.
-          </p>
+        {/* Bottom Section */}
+        <div className="pt-16 border-t border-border/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} POE2 Tools - Community Build Planning & Analysis Toolkit
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                This is a fan-made toolkit and is not affiliated with or endorsed by Grinding Gear Games.
+              </p>
+            </div>
+            <div className="flex md:justify-end gap-4">
+              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
