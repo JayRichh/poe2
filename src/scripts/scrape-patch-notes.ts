@@ -1,4 +1,4 @@
-import { scrapePatchNotes, savePatchNotes } from '../services/patch-notes-service'
+import { scrapePatchNotes, savePatchNotes } from '../../scripts/patch-notes-service'
 
 async function main() {
   console.log('Starting patch notes scraper...')

@@ -8,14 +8,16 @@ import { NewsService } from "~/services/news-service";
 import { Clock, ChevronLeft } from "lucide-react";
 
 interface PageProps {
-  params: { id: string };
-  searchParams: { category?: string };
+  params: Promise<{ id: string }> | undefined;
+  searchParams: Promise<{ category?: string }> | undefined;
 }
 
 export default async function NewsItemPage({ params, searchParams }: PageProps) {
+  if (!params || !searchParams) notFound();
+
   // Await params and searchParams before using
-  const resolvedParams = await Promise.resolve(params);
-  const resolvedSearchParams = await Promise.resolve(searchParams);
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
   
   const id = resolvedParams.id;
   const category = resolvedSearchParams.category;

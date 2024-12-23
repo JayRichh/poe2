@@ -109,14 +109,11 @@ const excludedRoutes = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
-    // Fetch all dynamic content in parallel
-    const [newsItems, patchNotes] = await Promise.all([
-      NewsService.getLatestNews(),
-      NewsService.getPatchNotes(),
-    ]);
+    // Fetch all news items (including both mock news and patch notes)
+    const allNews = await NewsService.getAllNews();
 
     // Generate dynamic routes
-    const newsRoutes = await generateNewsSitemapRoutes(newsItems, patchNotes);
+    const newsRoutes = await generateNewsSitemapRoutes(allNews, []);
 
     // Combine all dynamic routes
     const dynamicRoutes = [...newsRoutes];

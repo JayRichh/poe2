@@ -3,17 +3,19 @@ import { generateDynamicMetadata } from "~/utils/metadata";
 import { NewsService } from "~/services/news-service";
 
 interface PageProps {
-  params: { id: string };
-  searchParams: { category?: string };
+  params: Promise<{ id: string }> | undefined;
+  searchParams: Promise<{ category?: string }> | undefined;
 }
 
 export async function generateMetadata(
   { params, searchParams }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  if (!params || !searchParams) return {};
+
   // Await params and searchParams before using
-  const resolvedParams = await Promise.resolve(params);
-  const resolvedSearchParams = await Promise.resolve(searchParams);
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
   
   const id = resolvedParams.id;
   const category = resolvedSearchParams.category;
@@ -28,7 +30,7 @@ export async function generateMetadata(
     }
 
     return generateDynamicMetadata(
-      { params },
+      { params: resolvedParams },
       parent,
       {
         title: news.title,

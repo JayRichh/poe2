@@ -62,22 +62,26 @@ export function validateSitemapPriority(priority: number): number {
 
 // Helper function to generate dynamic news routes
 export async function generateNewsSitemapRoutes(
-  newsItems: Array<{ id: string; publishedAt: string }>,
-  patchNotes: Array<{ version: string; date: string }> = []
+  newsItems: Array<{ id: string; publishedAt?: string; date?: string }>,
+  patchNotes: Array<{ version: string; date: string; url?: string }> = []
 ): Promise<DynamicRoute[]> {
   const newsRoutes = newsItems.map(item => ({
     path: `/news/${item.id}`,
-    lastModified: item.publishedAt,
+    lastModified: item.publishedAt || item.date || new Date().toISOString(),
     changeFrequency: 'daily' as const,
     priority: 0.8,
   }));
 
-  const patchNoteRoutes = patchNotes.map(note => ({
-    path: `/news/patch-notes/${note.version.toLowerCase()}`,
-    lastModified: note.date,
-    changeFrequency: 'daily' as const,
-    priority: 0.8,
-  }));
+  const patchNoteRoutes = patchNotes.map(note => {
+    // Use URL ID if available, otherwise normalize version number
+    const id = note.url?.split('/').pop() || note.version.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    return {
+      path: `/news/${id}`,
+      lastModified: note.date,
+      changeFrequency: 'daily' as const,
+      priority: 0.8,
+    };
+  });
 
   return [...newsRoutes, ...patchNoteRoutes];
 }

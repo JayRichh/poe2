@@ -24,10 +24,10 @@ const sectionTitles: Record<SectionKey, string> = {
   additional: "Additional Content"
 };
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
-  searchParams: Promise<{
-    category?: string;
-  }> | undefined;
+  searchParams: Promise<{ category?: string }> | undefined;
 }
 
 export default async function GuidesPage({ searchParams }: PageProps) {

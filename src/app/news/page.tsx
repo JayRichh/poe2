@@ -10,17 +10,19 @@ export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     source?: string;
     timeRange?: string;
-  };
+  }> | undefined;
 }
 
 export default async function NewsPage({ searchParams }: PageProps) {
+  if (!searchParams) return null;
+
   try {
     // Await searchParams before using
-    const params = await Promise.resolve(searchParams);
+    const params = await searchParams;
     const { category, source, timeRange } = params;
 
     const news = await NewsService.getLatestNews(
