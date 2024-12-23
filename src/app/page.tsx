@@ -27,8 +27,8 @@ export default function HomePage() {
 
       <ScrollToTopButton />
 
-      <section className="w-full py-32 flex justify-center">
-        <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
+      <section className="w-full py-32 flex justify-center bg-background">
+        <Container className="px-6 md:px-8 lg:px-10 max-w-7xl bg-opacity-100">
           <PatchNotesSection />
         </Container>
       </section>

@@ -9,7 +9,10 @@ type Feature = {
   href: string;
   icon: typeof Layout | typeof Calculator | typeof Newspaper;
   title: string;
-  bgClass: string;
+  colors: {
+    from: string;
+    to: string;
+  };
   items: readonly string[];
   wide?: boolean;
 };
@@ -19,7 +22,10 @@ const features: Feature[] = [
     href: "/build-planner",
     icon: Layout,
     title: "Build Planner",
-    bgClass: "bg-gradient-to-br from-primary-500 to-primary-700",
+    colors: {
+      from: "#E5A732",
+      to: "#B87300"
+    },
     items: [
       "Plan skill trees",
       "Manage gear & skills",
@@ -32,7 +38,10 @@ const features: Feature[] = [
     href: "/dps-calc",
     icon: Calculator,
     title: "DPS Calculator",
-    bgClass: "bg-gradient-to-br from-secondary-500 to-secondary-700",
+    colors: {
+      from: "#449E48",
+      to: "#29712D"
+    },
     items: [
       "Calculate weapon DPS",
       "Compare weapons",
@@ -44,7 +53,10 @@ const features: Feature[] = [
     href: "/news",
     icon: Newspaper,
     title: "Game Updates",
-    bgClass: "bg-gradient-to-br from-accent-500 to-accent-700",
+    colors: {
+      from: "#B87839",
+      to: "#7D3E11"
+    },
     items: [
       "Latest updates",
       "Community announcements",
@@ -56,7 +68,10 @@ const features: Feature[] = [
     href: "/skill-tree",
     icon: Layout,
     title: "Skill Tree",
-    bgClass: "bg-gradient-to-br from-damage-chaos-light to-damage-chaos-dark",
+    colors: {
+      from: "#8C239E",
+      to: "#5F188A"
+    },
     items: [
       "Interactive tree viewer",
       "Path optimization",
@@ -69,7 +84,7 @@ const features: Feature[] = [
 
 export function FeaturesSection() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
       {features.map((feature, index) => {
         const isFirstRow = index < 2;
         const gridClasses = feature.wide
@@ -86,29 +101,31 @@ export function FeaturesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ 
-                scale: 1.02,
-                y: -4,
+                y: -2,
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.98 }}
-              className={`
+              style={{
+                background: `linear-gradient(to bottom right, ${feature.colors.from}0D, ${feature.colors.to}0D)`,
+                borderColor: feature.colors.from,
+                borderWidth: "8px"
+              }}
+              className="
                 group h-full relative overflow-hidden
-                rounded-3xl p-8 lg:p-10
-                ${feature.bgClass}
+                rounded-3xl p-6 lg:p-8
                 shadow-lg
-                before:absolute before:inset-0
-                before:bg-black/10 before:opacity-0
-                before:transition-opacity
-                hover:before:opacity-100
-                after:absolute after:inset-0
-                after:bg-[url('/build-planner-bg.jpg')]
-                after:opacity-5 after:mix-blend-overlay
-                after:bg-cover after:bg-center
-              `}
+                hover:opacity-100
+                transition-all duration-200
+              "
             >
               <div className="relative z-10">
                 <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-8">
-                  <feature.icon className="w-10 h-10 text-white" />
+                  <feature.icon 
+                    style={{
+                      color: feature.colors.from
+                    }}
+                    className="w-10 h-10 text-white opacity-80 group-hover:opacity-100 transition-all duration-200" 
+                  />
                 </div>
                 <Text
                   variant="h3"
