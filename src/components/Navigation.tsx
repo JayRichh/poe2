@@ -10,6 +10,7 @@ import {
   Newspaper,
   Settings,
   User,
+  FileText,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -32,8 +33,8 @@ import { Toast } from "./ui/Toast";
 const PROTECTED_ROUTES = ["/profile"];
 
 const primaryLinks = [
-  { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
   { href: "/build-planner", label: "Build Planner", icon: Layout },
+  { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
   { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
 ];
 
@@ -42,7 +43,13 @@ const secondaryLinks = [
     href: "/news",
     label: "News",
     icon: Newspaper,
-    description: "Latest updates, announcements & events",
+    description: "Latest updates, announcements & patch notes",
+  },
+  {
+    href: "/guides",
+    label: "Guides",
+    icon: FileText,
+    description: "Community guides & build tutorials",
   },
 ];
 
@@ -117,7 +124,7 @@ export function Navigation() {
                 <span className="w-px h-6 bg-foreground/20 mx-5" aria-hidden="true" />
 
                 {/* Secondary Links */}
-                <div className="flex items-center">
+                <div className="flex items-center gap-6">
                   {secondaryLinks.map(({ href, label, icon: Icon, description }) => {
                     const isActive = pathname === href || pathname?.startsWith(`${href}/`);
                     return (

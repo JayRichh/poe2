@@ -35,27 +35,28 @@ const mainLinks = [
     label: "Build Planner",
     path: "/build-planner",
     icon: Layout,
-    description: "Create and share your POE2 character builds",
-    features: ["Equipment Planning", "Skill Gems", "Build Notes", "Stats Calculator"]
+    description: "Create, optimize and share your POE2 character builds",
+    features: ["Equipment Planning", "Skill Gems", "Build Notes", "Stats Calculator", "Build Sharing"]
   },
   { 
     label: "Skill Tree",
     path: "/skill-tree",
     icon: GitBranch,
-    description: "Explore and plan your passive skill tree",
-    features: ["Visual Tree Explorer", "Path Planning", "Build Integration"]
+    description: "Interactive passive skill tree planner with advanced features",
+    features: ["Visual Tree Explorer", "Path Planning", "Build Integration", "Node Analysis"]
   },
   { 
     label: "DPS Calculator",
     path: "/dps-calc",
     icon: Calculator,
-    description: "Calculate and optimize your damage output",
-    features: ["Skill Damage", "Support Gems", "Equipment Effects"]
+    description: "Advanced damage calculator with comprehensive stat analysis",
+    features: ["Skill Damage", "Support Gems", "Equipment Effects", "DPS Optimization"]
   },
 ];
 
 const quickLinks = [
   { label: "Latest News", path: "/news", icon: Newspaper },
+  { label: "Guides", path: "/guides", icon: FileText },
   { label: "Community Builds", path: "/build-planner", icon: Users },
   { label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
 ];
@@ -240,7 +241,7 @@ function QuickLinksSection({ onNavigate }: { onNavigate: (path: string) => void 
   return (
     <div className="space-y-4">
       <Text className="text-lg font-medium">Quick Links</Text>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {quickLinks.map((item, index) => {
           const Icon = item.icon;
           return (

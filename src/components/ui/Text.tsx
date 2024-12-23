@@ -93,7 +93,7 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
           glass && "glass",
           balance && "text-balance",
           mono ? "font-mono" : "font-sans",
-          "inline-block",
+          "inline-block w-full",
           className
         )}
         {...props}
