@@ -90,7 +90,7 @@ export function BuildPlannerLayout({
             transition: 'margin-left 0.3s ease'
           }}
         >
-          <div className={`h-full ${isPassiveTree ? "" : sidebarDimensions.contentPadding}`}>
+          <div className="h-full">
             {children}
           </div>
         </div>

@@ -31,7 +31,6 @@ export function useSidebarWidth() {
     // Add container classes to match navigation
     containerClasses: 'px-4 sm:px-6 lg:px-8',
     // Add specific padding for collapsed state
-    headerPadding: isCollapsed ? 'px-1.5' : 'px-4',
-    contentPadding: isCollapsed ? 'px-1' : 'px-4'
+    headerPadding: isCollapsed ? 'px-1.5' : 'px-4'
   };
 }

@@ -68,26 +68,31 @@ function NavGroup({ item, collapsed }: { item: NavItem; collapsed?: boolean }) {
         </button>
       )}
       
-      {(isExpanded || collapsed) && (
-        <div className={collapsed ? "" : "space-y-1 pb-3"}>
-          {item.items.map((subItem) => (
-            <Link
-              key={subItem.href}
-              href={subItem.href || "#"}
-              className={cn(
-                "flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-colors mx-2",
-                pathname === subItem.href
-                  ? "bg-primary/10 text-primary font-medium"
-                  : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
-              )}
-              title={collapsed ? subItem.label : undefined}
-            >
+      <div className={cn(
+        "space-y-1",
+        collapsed ? "pt-2" : "pb-3",
+        (!isExpanded && !collapsed) && "hidden"
+      )}>
+        {item.items.map((subItem) => (
+          <Link
+            key={subItem.href}
+            href={subItem.href || "#"}
+            className={cn(
+              "flex items-center gap-3 py-2 text-sm rounded-lg transition-colors mx-2",
+              collapsed ? "justify-center px-2" : "px-4",
+              pathname === subItem.href
+                ? "bg-primary/10 text-primary font-medium"
+                : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+            )}
+            title={collapsed ? subItem.label : undefined}
+          >
+            <div className={cn(collapsed && "mx-auto")}>
               {subItem.icon}
-              {!collapsed && subItem.label}
-            </Link>
-          ))}
-        </div>
-      )}
+            </div>
+            {!collapsed && subItem.label}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

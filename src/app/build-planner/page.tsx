@@ -20,7 +20,7 @@ export default async function BuildPlannerPage() {
       }
     >
       <Container size="xl" noPadding>
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div>
           <Suspense
             fallback={
               <div className="text-center py-12">

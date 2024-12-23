@@ -20,7 +20,7 @@ export default function BuildPlannerLayout({ children }: { children: React.React
   const isVisible = useHeaderScroll();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-12 sm:pt-16">
       <div
         className={cn(
           "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/95 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
