@@ -77,7 +77,7 @@ export function NewsLayout({
             transition: 'margin-left 0.3s ease'
           }}
         >
-          <div className={`h-full ${sidebar.contentPadding}`}>
+          <div className={`h-full`}>
             {children}
           </div>
         </div>
