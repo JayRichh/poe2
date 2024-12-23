@@ -77,6 +77,9 @@ export function Navigation() {
 
   return (
     <>
+      <div className="fixed top-7 mt-12 right-[-6rem] z-20 w-80 transform rotate-45 bg-primary text-primary-foreground py-2 text-center font-bold text-sm shadow-md border border-primary-foreground/20">
+        BETA
+      </div>
       <nav
         className={cn(
           "fixed top-0 w-full z-30 transition-all duration-300",

@@ -13,8 +13,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/icon.svg",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
@@ -22,6 +32,24 @@
       "src": "/favicon.svg",
       "sizes": "32x32",
       "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple-touch-icon"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/skill-tree.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide",
+      "label": "POE2 Skill Tree Interface"
+    }
+  ],
+  "categories": ["games", "utilities"],
+  "orientation": "any",
+  "prefer_related_applications": false
 }
