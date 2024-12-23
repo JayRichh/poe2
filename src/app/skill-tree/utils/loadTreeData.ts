@@ -12,11 +12,12 @@ async function fetchJson<T>(path: string): Promise<T> {
   try {
     const response = await fetch(path, {
       next: { 
-        revalidate: 3600,
+        revalidate: false,
         tags: ['skill-tree-data']
       },
+      cache: 'force-cache',
       headers: {
-        'Cache-Control': 'public, max-age=3600, must-revalidate'
+        'Cache-Control': 'public, max-age=31536000, immutable'
       }
     });
 
@@ -127,6 +128,16 @@ function mapNodeType(kind: string): NodeType {
 
 export async function loadTreeData(): Promise<TreeData> {
   try {
+    // Check browser cache first
+    const cachedData = globalThis.window ? 
+      sessionStorage.getItem('skill-tree-data') : null;
+    
+    if (cachedData) {
+      const parsed = JSON.parse(cachedData);
+      if (parsed && Object.keys(parsed.nodes).length > 0) {
+        return parsed;
+      }
+    }
 
     // Load all required data files
     const [nodesData, descriptions, skills, keywords] = await Promise.all([
@@ -188,6 +199,15 @@ export async function loadTreeData(): Promise<TreeData> {
       throw new Error("No valid nodes after processing");
     }
 
+
+    // Cache the enriched data in browser
+    if (globalThis.window) {
+      try {
+        sessionStorage.setItem('skill-tree-data', JSON.stringify(enrichedData));
+      } catch (error) {
+        console.warn('Failed to cache skill tree data:', error);
+      }
+    }
 
     return enrichedData;
   } catch (error) {

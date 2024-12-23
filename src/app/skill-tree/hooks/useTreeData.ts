@@ -4,14 +4,19 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { TreeData } from "../components/TreeViewer/data";
 import { loadTreeData } from "../utils/loadTreeData";
 
-const TREE_DATA_KEY = "skill-tree-data";
+const TREE_DATA_KEY = ["skill-tree", "data"] as const;
 
 export function useTreeData() {
   return useQuery({
-    queryKey: [TREE_DATA_KEY],
+    queryKey: TREE_DATA_KEY,
     queryFn: loadTreeData,
-    staleTime: 24 * 60 * 60 * 1000, // 24 hours
-    gcTime: 7 * 24 * 60 * 60 * 1000, // 7 days
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: 2,
+    enabled: true,
   });
 }
 
@@ -19,15 +24,22 @@ export function useTreeDataOperations() {
   const queryClient = useQueryClient();
 
   return {
-    prefetchTreeData: () => {
-      return queryClient.prefetchQuery({
-        queryKey: [TREE_DATA_KEY],
+    prefetchTreeData: async () => {
+      const cachedData = queryClient.getQueryData(TREE_DATA_KEY);
+      if (cachedData) return;
+
+      await queryClient.prefetchQuery({
+        queryKey: TREE_DATA_KEY,
         queryFn: loadTreeData,
-        staleTime: 24 * 60 * 60 * 1000,
+        staleTime: Infinity,
+        gcTime: Infinity,
       });
     },
     getTreeDataFromCache: (): TreeData | undefined => {
-      return queryClient.getQueryData([TREE_DATA_KEY]);
+      return queryClient.getQueryData(TREE_DATA_KEY);
+    },
+    invalidateTreeData: () => {
+      return queryClient.invalidateQueries({ queryKey: TREE_DATA_KEY });
     }
   };
 }

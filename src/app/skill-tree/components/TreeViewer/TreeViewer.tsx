@@ -72,11 +72,41 @@ export function TreeViewer({
   const [hoveredNode, setHoveredNode] = useState<TreeNodeData | null>(null);
   const [searchResults, setSearchResults] = useState<Set<string>>(new Set());
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [scale, setScale] = useState(0.75);
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(() => {
+    try {
+      const saved = localStorage.getItem('skill-tree-scale');
+      return saved ? parseFloat(saved) : 0.75;
+    } catch {
+      return 0.75;
+    }
+  });
+  const [panOffset, setPanOffset] = useState(() => {
+    try {
+      const saved = localStorage.getItem('skill-tree-pan');
+      return saved ? JSON.parse(saved) : { x: 0, y: 0 };
+    } catch {
+      return { x: 0, y: 0 };
+    }
+  });
   const [isPanning, setIsPanning] = useState(false);
   const [startPan, setStartPan] = useState({ x: 0, y: 0 });
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+  const [imageSize, setImageSize] = useState(() => {
+    try {
+      const saved = localStorage.getItem('skill-tree-image-size');
+      return saved ? JSON.parse(saved) : { width: 0, height: 0 };
+    } catch {
+      return { width: 0, height: 0 };
+    }
+  });
+
+  // Persist view state
+  useEffect(() => {
+    if (hasLoaded) {
+      localStorage.setItem('skill-tree-scale', scale.toString());
+      localStorage.setItem('skill-tree-pan', JSON.stringify(panOffset));
+      localStorage.setItem('skill-tree-image-size', JSON.stringify(imageSize));
+    }
+  }, [scale, panOffset, imageSize, hasLoaded]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -174,7 +204,7 @@ export function TreeViewer({
           y: e.clientY - startPan.y,
         };
         rafRef.current = requestAnimationFrame(() => {
-          setPanOffset((prev) =>
+          setPanOffset((prev: { x: number; y: number }) =>
             clampPanOffsets(
               newPanOffset,
               {
@@ -303,13 +333,15 @@ export function TreeViewer({
             onLoad={handleImageLoad}
             onError={(error) => {
               console.error('Failed to load skill tree image:', error);
-              // Could add error UI here if needed
             }}
             draggable={false}
             priority
             quality={75}
             sizes="100vw"
             crossOrigin="anonymous"
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
           />
         </div>
 

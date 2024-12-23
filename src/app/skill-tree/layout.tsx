@@ -1,10 +1,12 @@
 "use client";
 
+import { HydrationBoundary, dehydrate, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { TreeDataPrefetcher } from "./components/TreeDataPrefetcher";
 import "./styles/skill-tree.css";
 
 export default function SkillTreeLayout({ children }: { children: React.ReactNode }) {
+  const queryClient = useQueryClient();
   // Handle mobile responsiveness
   useEffect(() => {
     const handleResize = () => {
@@ -19,7 +21,7 @@ export default function SkillTreeLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <TreeDataPrefetcher />
       <div
         className="flex flex-col w-full overflow-hidden bg-background"
@@ -29,6 +31,6 @@ export default function SkillTreeLayout({ children }: { children: React.ReactNod
       >
         <div className="flex-1 relative">{children}</div>
       </div>
-    </>
+    </HydrationBoundary>
   );
 }
