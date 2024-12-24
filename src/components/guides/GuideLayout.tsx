@@ -1,12 +1,16 @@
 "use client";
 
-import { ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { ReactNode } from "react";
+
+import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
-import { GuideSidebar } from "./GuideSidebar";
+
 import { useSidebarWidth } from "~/hooks/useSidebarWidth";
-import { Button } from "~/components/ui/Button";
+
+import { GuideSidebar } from "./GuideSidebar";
 
 interface GuideLayoutProps {
   children: ReactNode;
@@ -15,12 +19,7 @@ interface GuideLayoutProps {
   actions?: ReactNode;
 }
 
-export function GuideLayout({
-  children,
-  title,
-  description,
-  actions,
-}: GuideLayoutProps) {
+export function GuideLayout({ children, title, description, actions }: GuideLayoutProps) {
   const sidebar = useSidebarWidth();
 
   return (
@@ -45,21 +44,23 @@ export function GuideLayout({
       {/* Main Content */}
       <div className="flex-1 flex min-h-0 relative">
         {/* Sidebar */}
-        <div 
+        <div
           className={`absolute inset-y-0 left-0 z-20 border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebar.className}`}
           style={{ width: sidebar.width }}
         >
           <div className={`sticky ${sidebar.topOffset} h-full`}>
-            <div className={`flex items-center justify-between py-3 border-b border-border/50 ${sidebar.headerPadding}`}>
+            <div
+              className={`flex items-center justify-between py-3 border-b border-border/50 ${sidebar.headerPadding}`}
+            >
               {!sidebar.isCollapsed && <Text className="font-medium">Categories</Text>}
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={sidebar.toggleCollapse}
                 className={`p-2 hover:bg-primary/10 rounded-lg transition-colors ${
-                  sidebar.isCollapsed 
-                    ? 'w-full flex justify-center bg-primary/5' 
-                    : 'hover:text-primary'
+                  sidebar.isCollapsed
+                    ? "w-full flex justify-center bg-primary/5"
+                    : "hover:text-primary"
                 }`}
               >
                 {sidebar.isCollapsed ? (
@@ -74,16 +75,14 @@ export function GuideLayout({
         </div>
 
         {/* Content */}
-        <div 
+        <div
           className="flex-1 min-h-0"
-          style={{ 
+          style={{
             marginLeft: sidebar.width,
-            transition: 'margin-left 0.3s ease'
+            transition: "margin-left 0.3s ease",
           }}
         >
-          <div className="h-full w-full px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+          <div className="h-full w-full px-4 sm:px-6 lg:px-8">{children}</div>
         </div>
       </div>
     </div>

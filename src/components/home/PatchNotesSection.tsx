@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Users, BookOpen, Video, Clock } from "lucide-react";
+import { ArrowRight, BookOpen, Calendar, Clock, Users, Video } from "lucide-react";
+
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
-import type { PatchNote } from "~/types/news";
+
+import { PatchNotesCarousel } from "~/components/news/PatchNotesCarousel";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import { PatchNotesCarousel } from "~/components/news/PatchNotesCarousel";
+
 import { NewsService } from "~/services/news-service";
+import type { PatchNote } from "~/types/news";
 
 export function PatchNotesSection() {
   const [patchNotes, setPatchNotes] = useState<PatchNote[]>([]);
@@ -92,19 +96,27 @@ export function PatchNotesSection() {
 
   const getUpdateIcon = (type: Update["type"]) => {
     switch (type) {
-      case "event": return Calendar;
-      case "community": return Users;
-      case "guide": return BookOpen;
-      case "stream": return Video;
+      case "event":
+        return Calendar;
+      case "community":
+        return Users;
+      case "guide":
+        return BookOpen;
+      case "stream":
+        return Video;
     }
   };
 
   const getTagStyle = (type: Update["type"]) => {
     switch (type) {
-      case "event": return "bg-primary/10 text-primary border-primary/20";
-      case "community": return "bg-accent/10 text-accent border-accent/20";
-      case "guide": return "bg-secondary/10 text-secondary border-secondary/20";
-      case "stream": return "bg-damage-chaos-light/10 text-damage-chaos-light border-damage-chaos-light/20";
+      case "event":
+        return "bg-primary/10 text-primary border-primary/20";
+      case "community":
+        return "bg-accent/10 text-accent border-accent/20";
+      case "guide":
+        return "bg-secondary/10 text-secondary border-secondary/20";
+      case "stream":
+        return "bg-damage-chaos-light/10 text-damage-chaos-light border-damage-chaos-light/20";
     }
   };
 
@@ -114,29 +126,29 @@ export function PatchNotesSection() {
       title: "Season Launch Event",
       date: "2024-03-15",
       description: "Join us for the launch of the new season with exclusive rewards",
-      tag: "Upcoming"
+      tag: "Upcoming",
     },
     {
       type: "community",
       title: "Community Challenge",
       date: "2024-03-10",
       description: "Complete special objectives to unlock community rewards",
-      tag: "Active"
+      tag: "Active",
     },
     {
       type: "guide",
       title: "New Player Guide",
       date: "2024-03-08",
       description: "Essential tips and tricks for new players",
-      tag: "Guide"
+      tag: "Guide",
     },
     {
       type: "stream",
       title: "Developer Stream",
       date: "2024-03-05",
       description: "Q&A session with the development team",
-      tag: "VOD"
-    }
+      tag: "VOD",
+    },
   ];
 
   return (
@@ -181,7 +193,10 @@ export function PatchNotesSection() {
         >
           <div className="bg-card/95 backdrop-blur-sm border border-border/50 rounded-xl p-6 space-y-6 shadow-lg h-full">
             <div className="flex items-center justify-between">
-              <Text variant="h3" className="text-xl font-semibold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <Text
+                variant="h3"
+                className="text-xl font-semibold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+              >
                 Recent Updates
               </Text>
               <Clock className="w-5 h-5 text-muted-foreground/60" />
@@ -190,7 +205,7 @@ export function PatchNotesSection() {
               {recentUpdates.map((update, index) => {
                 const Icon = getUpdateIcon(update.type);
                 const tagStyle = getTagStyle(update.type);
-                
+
                 return (
                   <motion.div
                     key={index}
@@ -211,7 +226,9 @@ export function PatchNotesSection() {
                               <Text className="font-medium group-hover:text-primary transition-colors truncate">
                                 {update.title}
                               </Text>
-                              <span className={`shrink-0 px-2 py-1 text-xs rounded-full border ${tagStyle}`}>
+                              <span
+                                className={`shrink-0 px-2 py-1 text-xs rounded-full border ${tagStyle}`}
+                              >
                                 {update.tag}
                               </span>
                             </div>

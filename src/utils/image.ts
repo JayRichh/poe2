@@ -41,17 +41,16 @@ export const toBase64 = (str: string) => {
     return base64Cache.get(str)!;
   }
 
-  const base64 = typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str);
+  const base64 =
+    typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str);
 
   base64Cache.set(str, base64);
   return base64;
 };
 
 // Clear caches when memory pressure is high
-if (typeof window !== 'undefined') {
-  window.addEventListener('blur', () => {
+if (typeof window !== "undefined") {
+  window.addEventListener("blur", () => {
     shimmerCache.clear();
     base64Cache.clear();
   });

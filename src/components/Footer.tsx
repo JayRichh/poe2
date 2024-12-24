@@ -1,15 +1,46 @@
 "use client";
 
-import { Coffee, Github, ArrowUpRight, BookOpen, Wrench, Gamepad, Users, Code, FileText } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Code,
+  Coffee,
+  FileText,
+  Gamepad,
+  Github,
+  Users,
+  Wrench,
+} from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const mainLinks = [
-  { href: "/build-planner", label: "Build Planner", icon: Wrench, description: "Plan and optimize your character builds" },
-  { href: "/skill-tree", label: "Skill Tree", icon: Code, description: "Interactive skill tree visualization" },
-  { href: "/dps-calc", label: "DPS Calculator", icon: Gamepad, description: "Calculate and compare weapon damage" },
-  { href: "/guides", label: "Guides", icon: BookOpen, description: "Community guides and tutorials" },
+  {
+    href: "/build-planner",
+    label: "Build Planner",
+    icon: Wrench,
+    description: "Plan and optimize your character builds",
+  },
+  {
+    href: "/skill-tree",
+    label: "Skill Tree",
+    icon: Code,
+    description: "Interactive skill tree visualization",
+  },
+  {
+    href: "/dps-calc",
+    label: "DPS Calculator",
+    icon: Gamepad,
+    description: "Calculate and compare weapon damage",
+  },
+  {
+    href: "/guides",
+    label: "Guides",
+    icon: BookOpen,
+    description: "Community guides and tutorials",
+  },
   { href: "/news", label: "News", icon: FileText, description: "Latest updates and patch notes" },
 ];
 
@@ -61,7 +92,8 @@ export function Footer() {
           }
         }
         @keyframes wiggle {
-          0%, 100% {
+          0%,
+          100% {
             transform: rotate(0deg);
           }
           25% {
@@ -85,7 +117,7 @@ export function Footer() {
           top: -2px;
           width: 3px;
           height: 3px;
-          background: rgb(245,158,11);
+          background: rgb(245, 158, 11);
           border-radius: 50%;
           opacity: 0;
           filter: blur(0.5px);
@@ -100,7 +132,7 @@ export function Footer() {
         }
         .group:hover .coffee-icon::before,
         .group:hover .coffee-icon::after {
-          background: rgb(245,158,11);
+          background: rgb(245, 158, 11);
           filter: blur(0);
         }
       `}</style>
@@ -110,13 +142,11 @@ export function Footer() {
           {/* Left Column - Main Links */}
           <div className="space-y-16">
             <div>
-              <h2 className="text-4xl font-bold tracking-tight mb-12">
-                POE2 Tools
-              </h2>
+              <h2 className="text-4xl font-bold tracking-tight mb-12">POE2 Tools</h2>
               <div className="grid gap-8">
                 {mainLinks.map((link) => (
-                  <Link 
-                    key={link.href} 
+                  <Link
+                    key={link.href}
                     href={link.href}
                     className="group flex items-start gap-6 p-4 rounded-xl hover:bg-accent/5 transition-colors"
                   >
@@ -127,9 +157,7 @@ export function Footer() {
                       <h3 className="text-lg font-semibold mb-1 group-hover:text-accent transition-colors">
                         {link.label}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {link.description}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{link.description}</p>
                     </div>
                     <ArrowUpRight className="w-5 h-5 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
@@ -206,17 +234,25 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} POE2 Tools - Community Build Planning & Analysis Toolkit
+                © {new Date().getFullYear()} POE2 Tools - Community Build Planning & Analysis
+                Toolkit
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
-                This is a fan-made toolkit and is not affiliated with or endorsed by Grinding Gear Games.
+                This is a fan-made toolkit and is not affiliated with or endorsed by Grinding Gear
+                Games.
               </p>
             </div>
             <div className="flex md:justify-end gap-4">
-              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/privacy"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/terms"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Terms of Service
               </Link>
             </div>

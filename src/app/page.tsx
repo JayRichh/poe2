@@ -1,13 +1,15 @@
 "use client";
 
-import { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
-import { Container } from "~/components/ui/Container";
-import { HeroSection } from "~/components/home/HeroSection";
+
+import { useRef } from "react";
+
 import { FeaturesSection } from "~/components/home/FeaturesSection";
-import { SkillTreeSection } from "~/components/home/SkillTreeSection";
+import { HeroSection } from "~/components/home/HeroSection";
 import { PatchNotesSection } from "~/components/home/PatchNotesSection";
 import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
+import { SkillTreeSection } from "~/components/home/SkillTreeSection";
+import { Container } from "~/components/ui/Container";
 
 export default function HomePage() {
   const containerRef = useRef(null);
@@ -32,7 +34,7 @@ export default function HomePage() {
           <PatchNotesSection />
         </Container>
       </section>
-      
+
       <section className="w-full py-32 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <FeaturesSection />
@@ -44,7 +46,6 @@ export default function HomePage() {
           <SkillTreeSection />
         </Container>
       </section>
-
     </div>
   );
 }

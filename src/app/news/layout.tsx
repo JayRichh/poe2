@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { Container } from "~/components/ui/Container";
+
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [
@@ -19,7 +22,7 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const isVisible = useHeaderScroll();
   const searchParams = useSearchParams();
-  const category = searchParams.get('category');
+  const category = searchParams.get("category");
 
   return (
     <div className="min-h-screen pt-12">
@@ -32,10 +35,12 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
         <Container size="xl" noPadding>
           <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
             {subNavLinks.map(({ href, label }) => {
-              const isActive = 
-                href === "/news" ? pathname === href && !category :
-                href === "/news/patch-notes" ? pathname === href :
-                href === pathname + `?category=${category}`;
+              const isActive =
+                href === "/news"
+                  ? pathname === href && !category
+                  : href === "/news/patch-notes"
+                    ? pathname === href
+                    : href === pathname + `?category=${category}`;
               return (
                 <Link
                   key={href}

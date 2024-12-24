@@ -1,7 +1,13 @@
 import { MetadataRoute } from "next";
+
 import { NewsService } from "../services/news-service";
+import {
+  DynamicRoute,
+  generateBuildPlannerSitemapRoutes,
+  generateDynamicSitemap,
+  generateNewsSitemapRoutes,
+} from "../utils/sitemap";
 import { getBuilds } from "./actions/builds";
-import { generateDynamicSitemap, generateNewsSitemapRoutes, generateBuildPlannerSitemapRoutes, DynamicRoute } from "../utils/sitemap";
 
 // Static routes organized by section
 const staticRoutes: DynamicRoute[] = [
@@ -11,8 +17,8 @@ const staticRoutes: DynamicRoute[] = [
     changeFrequency: "daily",
     priority: 1,
   },
-  
-  // Build Planner section (only static pages)
+
+  // Build Planner section
   {
     path: "/build-planner",
     changeFrequency: "daily",
@@ -25,7 +31,7 @@ const staticRoutes: DynamicRoute[] = [
   },
   {
     path: "/build-planner/equipment",
-    changeFrequency: "daily", 
+    changeFrequency: "daily",
     priority: 0.7,
   },
   {
@@ -61,6 +67,117 @@ const staticRoutes: DynamicRoute[] = [
     priority: 0.9,
   },
 
+  // Game Mechanics
+  {
+    path: "/mechanics",
+    changeFrequency: "daily",
+    priority: 0.9,
+  },
+  {
+    path: "/mechanics/damage-types",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/mechanics/status-effects",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/mechanics/character-stats",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/mechanics/combat",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+
+  // Game Features
+  {
+    path: "/guides",
+    changeFrequency: "daily",
+    priority: 0.9,
+  },
+  {
+    path: "/guides/builds",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+  {
+    path: "/guides/mechanics",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+  {
+    path: "/guides/leveling",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+
+  // Ascendancy Pages
+  {
+    path: "/ascendancies/acolyte",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/bloodmage",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/chronomancer",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/deadeye",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/gemling",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/infernalist",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/invoker",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/pathfinder",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/stormweaver",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/titan",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/warbringer",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/ascendancies/witchhunter",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+
   // User section
   {
     path: "/profile",
@@ -83,9 +200,19 @@ const staticRoutes: DynamicRoute[] = [
     priority: 0.5,
   },
 
-  // News section
+  // News & Updates
   {
     path: "/news",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+  {
+    path: "/news/patch-notes",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+  {
+    path: "/news/updates",
     changeFrequency: "daily",
     priority: 0.8,
   },
@@ -100,11 +227,11 @@ const staticRoutes: DynamicRoute[] = [
 
 // Routes that should be excluded from sitemap
 const excludedRoutes = [
-  '/api/',
-  '/auth/callback',
-  '/build-planner/[id]/edit',
-  '/_actions',
-  '/fonts',
+  "/api/",
+  "/auth/callback",
+  "/build-planner/[id]/edit",
+  "/_actions",
+  "/fonts",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

@@ -15,7 +15,8 @@ export default function BuildPlannerLoading() {
             </div>
             <Text className="text-sm text-foreground/60">
               The build planner is currently in beta. More features coming soon including build
-              templates, public build sharing, character imports, and advanced build optimization tools.
+              templates, public build sharing, character imports, and advanced build optimization
+              tools.
             </Text>
           </div>
 

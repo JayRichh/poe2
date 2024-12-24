@@ -7,14 +7,16 @@ export const MOCK_PATCH_NOTES: PatchNote[] = [
     url: "https://www.pathofexile.com/forum/patch-0.5.0",
     author: "Grinding Gear Games",
     lastBumped: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-    sections: [{
-      title: "Changes",
-      changes: [
-        "Added new skill gems",
-        "Balance adjustments to existing skills",
-        "Performance improvements"
-      ]
-    }]
+    sections: [
+      {
+        title: "Changes",
+        changes: [
+          "Added new skill gems",
+          "Balance adjustments to existing skills",
+          "Performance improvements",
+        ],
+      },
+    ],
   },
   {
     version: "0.4.9",
@@ -22,15 +24,13 @@ export const MOCK_PATCH_NOTES: PatchNote[] = [
     url: "https://www.pathofexile.com/forum/patch-0.4.9",
     author: "Grinding Gear Games",
     lastBumped: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
-    sections: [{
-      title: "Changes",
-      changes: [
-        "Bug fixes",
-        "UI improvements",
-        "New character customization options"
-      ]
-    }]
-  }
+    sections: [
+      {
+        title: "Changes",
+        changes: ["Bug fixes", "UI improvements", "New character customization options"],
+      },
+    ],
+  },
 ];
 
 export const MOCK_NEWS: NewsItem[] = [

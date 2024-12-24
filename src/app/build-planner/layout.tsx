@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { Container } from "~/components/ui/Container";
+
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [
@@ -30,7 +33,8 @@ export default function BuildPlannerLayout({ children }: { children: React.React
         <Container size="xl" noPadding>
           <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
             {subNavLinks.map(({ href, label }) => {
-              const isActive = pathname === href || (href !== "/build-planner" && pathname?.startsWith(href));
+              const isActive =
+                pathname === href || (href !== "/build-planner" && pathname?.startsWith(href));
               return (
                 <Link
                   key={href}

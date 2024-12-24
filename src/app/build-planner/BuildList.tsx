@@ -1,7 +1,8 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+
+import { useSearchParams } from "next/navigation";
 
 import { BuildGrid } from "~/components/build-planner/BuildGrid";
 import { BuildListControls } from "~/components/build-planner/BuildListControls";
@@ -47,7 +48,7 @@ export function BuildList({ initialBuilds }: BuildListProps) {
       const aVal = a[field];
       const bVal = b[field];
       const modifier = direction === "asc" ? 1 : -1;
-      
+
       if (aVal === undefined || aVal === null) return 1;
       if (bVal === undefined || bVal === null) return -1;
       return aVal > bVal ? modifier : -modifier;
@@ -55,10 +56,7 @@ export function BuildList({ initialBuilds }: BuildListProps) {
 
   // Paginate builds
   const totalPages = Math.ceil(filteredBuilds.length / ITEMS_PER_PAGE);
-  const paginatedBuilds = filteredBuilds.slice(
-    (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE
-  );
+  const paginatedBuilds = filteredBuilds.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   return (
     <div className="space-y-4">

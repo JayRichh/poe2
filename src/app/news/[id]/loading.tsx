@@ -2,10 +2,7 @@ import { NewsLayout } from "~/components/news/NewsLayout";
 
 export default function NewsItemLoading() {
   return (
-    <NewsLayout
-      title="Loading..."
-      description="Loading news content"
-    >
+    <NewsLayout title="Loading..." description="Loading news content">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <article className="animate-pulse">
           {/* Header metadata */}

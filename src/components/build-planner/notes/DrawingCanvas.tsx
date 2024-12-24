@@ -1,5 +1,7 @@
-import { useRef, useEffect, useState } from "react";
-import { Undo, Redo, Download } from "lucide-react";
+import { Download, Redo, Undo } from "lucide-react";
+
+import { useEffect, useRef, useState } from "react";
+
 import { Button } from "~/components/ui/Button";
 
 interface DrawingCanvasProps {
@@ -21,7 +23,7 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
     lines: [],
     isDrawing: false,
     history: [],
-    currentStep: -1
+    currentStep: -1,
   });
 
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -32,10 +34,10 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    setDrawing(prev => ({
+    setDrawing((prev) => ({
       ...prev,
       lines: [...prev.lines, { points: [x, y], color: selectedColor, width: lineWidth }],
-      isDrawing: true
+      isDrawing: true,
     }));
   };
 
@@ -67,17 +69,20 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
       }
     }
 
-    setDrawing(prev => ({ ...prev, lines: [...prev.lines] }));
+    setDrawing((prev) => ({ ...prev, lines: [...prev.lines] }));
   };
 
   const stopDrawing = () => {
-    setDrawing(prev => {
-      const newHistory = [...prev.history.slice(0, prev.currentStep + 1), { lines: [...prev.lines] }];
+    setDrawing((prev) => {
+      const newHistory = [
+        ...prev.history.slice(0, prev.currentStep + 1),
+        { lines: [...prev.lines] },
+      ];
       return {
         ...prev,
         isDrawing: false,
         history: newHistory,
-        currentStep: newHistory.length - 1
+        currentStep: newHistory.length - 1,
       };
     });
   };
@@ -93,27 +98,27 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
         lines: [],
         isDrawing: false,
         history: [],
-        currentStep: -1
+        currentStep: -1,
       });
     }
   };
 
   const undo = () => {
     if (drawing.currentStep > 0) {
-      setDrawing(prev => ({
+      setDrawing((prev) => ({
         ...prev,
         lines: [...prev.history[prev.currentStep - 1].lines],
-        currentStep: prev.currentStep - 1
+        currentStep: prev.currentStep - 1,
       }));
     }
   };
 
   const redo = () => {
     if (drawing.currentStep < drawing.history.length - 1) {
-      setDrawing(prev => ({
+      setDrawing((prev) => ({
         ...prev,
         lines: [...prev.history[prev.currentStep + 1].lines],
-        currentStep: prev.currentStep + 1
+        currentStep: prev.currentStep + 1,
       }));
     }
   };
@@ -122,8 +127,8 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const link = document.createElement('a');
-    link.download = 'build-diagram.png';
+    const link = document.createElement("a");
+    link.download = "build-diagram.png";
     link.href = canvas.toDataURL();
     link.click();
   };
@@ -139,7 +144,7 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
     canvas.height = canvas.offsetHeight;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawing.lines.forEach(line => {
+    drawing.lines.forEach((line) => {
       ctx.strokeStyle = line.color;
       ctx.lineWidth = line.width;
       ctx.lineCap = "round";
@@ -175,12 +180,7 @@ export function DrawingCanvas({ className = "" }: DrawingCanvasProps) {
           />
         </div>
         <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={undo}
-            disabled={drawing.currentStep <= 0}
-          >
+          <Button variant="outline" size="sm" onClick={undo} disabled={drawing.currentStep <= 0}>
             <Undo className="h-4 w-4" />
           </Button>
           <Button

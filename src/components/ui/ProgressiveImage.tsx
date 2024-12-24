@@ -1,10 +1,11 @@
-import Image from 'next/image';
-import { forwardRef, useCallback, useEffect, useState } from 'react';
-import { shimmer, toBase64 } from '~/utils/image';
+import { forwardRef, useCallback, useEffect, useState } from "react";
 
-import type { ImageProps } from 'next/image';
+import Image from "next/image";
+import type { ImageProps } from "next/image";
 
-type ProgressiveImageProps = Omit<ImageProps, 'alt'> & {
+import { shimmer, toBase64 } from "~/utils/image";
+
+type ProgressiveImageProps = Omit<ImageProps, "alt"> & {
   onLoad?: () => void;
   onError?: (error: Error) => void;
   alt: string; // Make alt required
@@ -12,14 +13,7 @@ type ProgressiveImageProps = Omit<ImageProps, 'alt'> & {
 };
 
 export const ProgressiveImage = forwardRef<HTMLImageElement, ProgressiveImageProps>(
-  function ProgressiveImage({
-    className,
-    onLoad,
-    onError,
-    alt,
-    fallback,
-    ...props
-  }, ref) {
+  function ProgressiveImage({ className, onLoad, onError, alt, fallback, ...props }, ref) {
     const [isLoading, setLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
     const [src, setSrc] = useState(props.src);
@@ -53,21 +47,23 @@ export const ProgressiveImage = forwardRef<HTMLImageElement, ProgressiveImagePro
         {...props}
         src={src}
         className={`
-          ${className || ''}
-          ${isLoading ? 'blur-sm scale-[1.02]' : 'blur-0 scale-100'}
-          ${hasError ? 'opacity-50' : 'opacity-100'}
+          ${className || ""}
+          ${isLoading ? "blur-sm scale-[1.02]" : "blur-0 scale-100"}
+          ${hasError ? "opacity-50" : "opacity-100"}
           transition-all duration-300
         `}
         onLoad={handleLoad}
         onError={handleError}
         placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(
-          typeof props.width === 'number' ? props.width : 1920,
-          typeof props.height === 'number' ? props.height : 1080
-        ))}`}
+        blurDataURL={`data:image/svg+xml;base64,${toBase64(
+          shimmer(
+            typeof props.width === "number" ? props.width : 1920,
+            typeof props.height === "number" ? props.height : 1080
+          )
+        )}`}
       />
     );
   }
 );
 
-ProgressiveImage.displayName = 'ProgressiveImage';
+ProgressiveImage.displayName = "ProgressiveImage";

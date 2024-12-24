@@ -1,10 +1,12 @@
 "use client";
 
+import debounce from "lodash/debounce";
 import { Search } from "lucide-react";
+
+import { useCallback, useState } from "react";
+
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
-import debounce from "lodash/debounce";
 
 import { Button } from "~/components/ui/Button";
 import { Input } from "~/components/ui/Input";
@@ -49,7 +51,7 @@ export function BuildListControls() {
   const createQueryString = useCallback(
     (params: Record<string, string | undefined>) => {
       const newSearchParams = new URLSearchParams(searchParams?.toString());
-      
+
       Object.entries(params).forEach(([key, value]) => {
         if (value === undefined) {
           newSearchParams.delete(key);
@@ -92,17 +94,14 @@ export function BuildListControls() {
             }}
             aria-label="Search builds"
           />
-          <Search 
+          <Search
             className={`absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors ${
               isSearching ? "text-primary" : "text-foreground/40"
-            }`} 
+            }`}
           />
         </div>
         <Link href="/build-planner/new">
-          <Button 
-            variant="primary"
-            className="whitespace-nowrap"
-          >
+          <Button variant="primary" className="whitespace-nowrap">
             Create New Build
           </Button>
         </Link>
@@ -111,7 +110,9 @@ export function BuildListControls() {
       {/* Filters */}
       <div className="flex items-center gap-4">
         <div className="w-48">
-          <span className="sr-only" id="class-filter-label">Filter by class</span>
+          <span className="sr-only" id="class-filter-label">
+            Filter by class
+          </span>
           <Select
             value={searchParams?.get("class") ?? ""}
             onChange={(value: string) => {
@@ -125,7 +126,9 @@ export function BuildListControls() {
         </div>
 
         <div className="w-48">
-          <span className="sr-only" id="sort-order-label">Sort builds</span>
+          <span className="sr-only" id="sort-order-label">
+            Sort builds
+          </span>
           <Select
             value={searchParams?.get("sort") ?? "created_at:desc"}
             onChange={(value: string) => {
@@ -139,12 +142,14 @@ export function BuildListControls() {
         </div>
 
         <div className="w-48">
-          <span className="sr-only" id="visibility-filter-label">Filter by visibility</span>
+          <span className="sr-only" id="visibility-filter-label">
+            Filter by visibility
+          </span>
           <Select
             value={searchParams?.get("visibility") ?? "all"}
             onChange={(value: string) => {
-              const query = createQueryString({ 
-                visibility: value === "all" ? undefined : value 
+              const query = createQueryString({
+                visibility: value === "all" ? undefined : value,
               });
               router.push(`?${query}`);
             }}

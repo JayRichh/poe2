@@ -5,7 +5,7 @@ export default function PrivacyPolicyLoading() {
   return (
     <Container size="md" className="py-16">
       <Skeleton className="h-12 w-64 mb-8" />
-      
+
       <div className="space-y-8">
         {Array.from({ length: 5 }).map((_, i) => (
           <section key={i} className="space-y-4">

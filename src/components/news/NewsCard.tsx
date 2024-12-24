@@ -1,11 +1,16 @@
 "use client";
 
-import { NewsItem } from "~/types/news";
 import { ArrowRight, Clock, ExternalLink } from "lucide-react";
-import Link from "next/link";
+
 import { useMemo, useState } from "react";
-import { Text } from "../ui/Text";
+
+import Link from "next/link";
+
 import { cn } from "~/utils/cn";
+
+import { NewsItem } from "~/types/news";
+
+import { Text } from "../ui/Text";
 
 interface NewsCardProps {
   news: NewsItem;
@@ -13,8 +18,8 @@ interface NewsCardProps {
 }
 
 export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
-  const isExternalUrl = useMemo(() => news.url?.startsWith('http') ?? false, [news.url]);
-  
+  const isExternalUrl = useMemo(() => news.url?.startsWith("http") ?? false, [news.url]);
+
   const timeAgo = (date: string) => {
     const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
 
@@ -34,7 +39,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
   if (variant === "featured") {
     return (
       <Link
-        href={isExternalUrl ? (news.url ?? '#') : `/news/${news.id}`}
+        href={isExternalUrl ? (news.url ?? "#") : `/news/${news.id}`}
         target={isExternalUrl ? "_blank" : undefined}
         rel={isExternalUrl ? "noopener noreferrer" : undefined}
         className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
@@ -54,7 +59,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
             <Text variant="h4" className="line-clamp-2">
               {news.title}
             </Text>
-            {news.type === 'patch' ? (
+            {news.type === "patch" ? (
               <div className="space-y-2">
                 <Text variant="body" color="secondary" className="line-clamp-2">
                   {news.description}
@@ -97,7 +102,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
 
   return (
     <Link
-      href={isExternalUrl ? (news.url ?? '#') : `/news/${news.id}`}
+      href={isExternalUrl ? (news.url ?? "#") : `/news/${news.id}`}
       target={isExternalUrl ? "_blank" : undefined}
       rel={isExternalUrl ? "noopener noreferrer" : undefined}
       className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"
@@ -109,7 +114,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
           )}
           <div className="flex items-center gap-1.5 text-sm text-foreground/60">
             <Clock className="w-3.5 h-3.5" />
-              {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
+            {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
           </div>
         </div>
         <div className="flex items-start gap-4">

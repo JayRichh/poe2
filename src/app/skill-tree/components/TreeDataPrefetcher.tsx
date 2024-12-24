@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { useTreeDataOperations } from "../hooks/useTreeData";
 
 export function TreeDataPrefetcher() {
@@ -9,10 +10,10 @@ export function TreeDataPrefetcher() {
 
   useEffect(() => {
     if (hasPrefetched.current) return;
-    
+
     hasPrefetched.current = true;
     prefetchTreeData().catch((error) => {
-      console.error('Failed to prefetch tree data:', error);
+      console.error("Failed to prefetch tree data:", error);
       hasPrefetched.current = false;
     });
   }, [prefetchTreeData]);

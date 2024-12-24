@@ -331,9 +331,7 @@
     "version": "0.1.0c Hotfix 2",
     "date": "Dec 11, 2024, 6:24:59 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3617298",
-    "content": [
-      "Demon form now has a minimum of 1 life lost per second, per stack."
-    ],
+    "content": ["Demon form now has a minimum of 1 life lost per second, per stack."],
     "author": "Jeff_GGG",
     "lastBumped": "Last bumped on Dec 18, 2024, 2:20:16 AM"
   },
@@ -468,9 +466,7 @@
     "version": "0.1.0 Hotfix 2",
     "date": "Dec 7, 2024, 6:24:43 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3595427",
-    "content": [
-      "Fixed multiple client crashes."
-    ],
+    "content": ["Fixed multiple client crashes."],
     "author": "Stacey_GGG",
     "lastBumped": "Last bumped on Dec 12, 2024, 3:27:44 AM"
   },

@@ -10,12 +10,7 @@ const DEFAULT_SECTIONS = [
   "Visual Guides",
 ] as const;
 
-const QUICK_LINKS = [
-  "Passive Tree",
-  "Equipment",
-  "Skills",
-  "Stats",
-] as const;
+const QUICK_LINKS = ["Passive Tree", "Equipment", "Skills", "Stats"] as const;
 
 export default function NotesLoading() {
   return (

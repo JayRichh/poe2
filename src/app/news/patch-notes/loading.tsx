@@ -2,10 +2,7 @@ import { NewsLayout } from "~/components/news/NewsLayout";
 
 export default function PatchNotesLoading() {
   return (
-    <NewsLayout
-      title="Loading..."
-      description="Loading patch notes"
-    >
+    <NewsLayout title="Loading..." description="Loading patch notes">
       <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
         <div className="bg-card rounded-lg p-6 border border-border">
           {/* Version header skeleton */}

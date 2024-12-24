@@ -1,7 +1,9 @@
 "use client";
 
 import { HydrationBoundary, dehydrate, useQueryClient } from "@tanstack/react-query";
+
 import { useEffect } from "react";
+
 import { TreeDataPrefetcher } from "./components/TreeDataPrefetcher";
 import "./styles/skill-tree.css";
 

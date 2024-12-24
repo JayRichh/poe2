@@ -1,6 +1,24 @@
-export type GuideCategory = 'gameplay' | 'trading' | 'boss-fights' | 'cruel-mode' | 'character-building' | 'equipment' | 'combat' | 'progression' | 'mapping';
+export type GuideCategory =
+  | "gameplay"
+  | "trading"
+  | "boss-fights"
+  | "cruel-mode"
+  | "character-building"
+  | "equipment"
+  | "combat"
+  | "progression"
+  | "mapping";
 
-export type GuideIcon = "Book" | "Coins" | "Sword" | "Shield" | "User" | "Box" | "Crosshair" | "ArrowUp" | "Map";
+export type GuideIcon =
+  | "Book"
+  | "Coins"
+  | "Sword"
+  | "Shield"
+  | "User"
+  | "Box"
+  | "Crosshair"
+  | "ArrowUp"
+  | "Map";
 
 export interface Guide {
   title: string;
@@ -29,8 +47,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Choose strength for attribute nodes when traveling the tree",
           "Use The Hooded One to respec individual attribute nodes in town",
           "Slows apply to action speed and provide significant defensive layer",
-          "Slows are 70% effective on rare mobs and 50% on bosses"
-        ]
+          "Slows are 70% effective on rare mobs and 50% on bosses",
+        ],
       },
       {
         title: "Ascendancy Guide",
@@ -40,12 +58,12 @@ export const guides: Record<GuideCategory, Guide> = {
           "Monster level 38 trial items don't count for second ascendancy",
           "Ascendancy choices cannot be changed after selection",
           "Blood Mage: Avoid Sanguimancy node early without proper setup",
-          "Blood Mage Sanguimancy can be refunded at The Hooded One if needed"
-        ]
-      }
-    ]
+          "Blood Mage Sanguimancy can be refunded at The Hooded One if needed",
+        ],
+      },
+    ],
   },
-  "equipment": {
+  equipment: {
     title: "Equipment & Crafting",
     description: "Guide to gear progression and crafting mechanics",
     sections: [
@@ -57,8 +75,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Use Artificer's orbs to add sockets to items",
           "Salvage quality gear for armourers scraps",
           "Salvage socketed gear for artificier's shards (10 for an orb)",
-          "First guaranteed 4-link from Orok Campfire chest in Act 3"
-        ]
+          "First guaranteed 4-link from Orok Campfire chest in Act 3",
+        ],
       },
       {
         title: "Gear Progression",
@@ -67,10 +85,10 @@ export const guides: Record<GuideCategory, Guide> = {
           "Look for blue items with good stats to augment/regal",
           "Use empty rune sockets as search criteria when trading",
           "Consider level and attribute requirements when buying gear",
-          "Save currency early game for trading rather than crafting"
-        ]
-      }
-    ]
+          "Save currency early game for trading rather than crafting",
+        ],
+      },
+    ],
   },
   gameplay: {
     title: "Gameplay Tips",
@@ -88,10 +106,10 @@ export const guides: Record<GuideCategory, Guide> = {
           "CRTL + click The Hooded One to automatically ID inventory",
           "Hold SHIFT on skill tree nodes to see stat changes before committing",
           "CRTL + ENTER opens whisper to last message sender",
-          "Press P to pause game in solo play while allowing chat"
-        ]
-      }
-    ]
+          "Press P to pause game in solo play while allowing chat",
+        ],
+      },
+    ],
   },
   trading: {
     title: "Trading Tips",
@@ -107,8 +125,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "If a seller doesn't respond, move on to other listings",
           "Buy a premium stash tab to list items for sale",
           "Set premium tab items to sell for Exalted Orbs (main currency)",
-          "List all decent looking rares - you'll be surprised what sells"
-        ]
+          "List all decent looking rares - you'll be surprised what sells",
+        ],
       },
       {
         title: "Smart Trading",
@@ -117,10 +135,10 @@ export const guides: Record<GuideCategory, Guide> = {
           "Consider empty rune sockets when buying gear for customization",
           "Buy perfect gear instead of gambling with currency crafting",
           "Check trade site regularly for upgrades during progression",
-          "Focus on resistance and life stats early game"
-        ]
-      }
-    ]
+          "Focus on resistance and life stats early game",
+        ],
+      },
+    ],
   },
   "boss-fights": {
     title: "Boss Fight Mechanics",
@@ -134,8 +152,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Learn timing between boss animations and actual attacks",
           "Sometimes moving is better than dodging for certain attacks",
           "Get boots with movement speed to make boss fights easier",
-          "Use level 2 support hinder on DoT skills for boss slows"
-        ]
+          "Use level 2 support hinder on DoT skills for boss slows",
+        ],
       },
       {
         title: "Boss Strategies",
@@ -145,10 +163,10 @@ export const guides: Record<GuideCategory, Guide> = {
           "Consider buying weapon upgrades to double your damage",
           "Overlevel by farming zones for easier progression",
           "Complete side quests later when you're stronger",
-          "Don't rush ascendancy trials if undergeared"
-        ]
-      }
-    ]
+          "Don't rush ascendancy trials if undergeared",
+        ],
+      },
+    ],
   },
   "cruel-mode": {
     title: "Cruel Mode Guide",
@@ -161,12 +179,12 @@ export const guides: Record<GuideCategory, Guide> = {
           "-10% elemental resistance per completed act (-60% total)",
           "Complete side quests for +20% resistance bonus",
           "Ascendency quests in Acts 2-3 are currently bugged",
-          "Focus on gear with multiple resistances to counter penalties"
-        ]
-      }
-    ]
+          "Focus on gear with multiple resistances to counter penalties",
+        ],
+      },
+    ],
   },
-  "combat": {
+  combat: {
     title: "Combat Mechanics",
     description: "Understanding combat mechanics and skill interactions",
     sections: [
@@ -178,8 +196,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Use level 2 support hinder on DoT abilities for boss slows",
           "Slows affect action speed instead of movement speed",
           "Blink provides both clearspeed and survivability benefits",
-          "Consider swapping gems between mapping and bossing"
-        ]
+          "Consider swapping gems between mapping and bossing",
+        ],
       },
       {
         title: "Combat Tips",
@@ -188,12 +206,12 @@ export const guides: Record<GuideCategory, Guide> = {
           "Use movement skills for both offense and defense",
           "Position carefully to maximize skill effectiveness",
           "Combine slows with other defensive layers",
-          "Adapt your combat style based on enemy types"
-        ]
-      }
-    ]
+          "Adapt your combat style based on enemy types",
+        ],
+      },
+    ],
   },
-  "progression": {
+  progression: {
     title: "Character Progression",
     description: "Guide to efficient character progression and development",
     sections: [
@@ -204,8 +222,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Overlevel zones for smoother progression",
           "Focus on core defensive stats early game",
           "Get your first 4-link from Orok Campfire in Act 3",
-          "Complete resistance-boosting side quests before Cruel mode"
-        ]
+          "Complete resistance-boosting side quests before Cruel mode",
+        ],
       },
       {
         title: "Build Development",
@@ -214,12 +232,12 @@ export const guides: Record<GuideCategory, Guide> = {
           "Balance offense and defense while leveling",
           "Keep gear updated through vendor checks and trading",
           "Use the trade site to find key upgrades",
-          "Consider temporary gear setups while progressing"
-        ]
-      }
-    ]
+          "Consider temporary gear setups while progressing",
+        ],
+      },
+    ],
   },
-  "mapping": {
+  mapping: {
     title: "Mapping Guide",
     description: "Advanced endgame mapping strategies and tips",
     sections: [
@@ -230,8 +248,8 @@ export const guides: Record<GuideCategory, Guide> = {
           "Level 20 gems drop at area level 82+",
           "Running blue T15 maps is fine for efficiency",
           "Don't waste time over-rolling maps",
-          "Run Citadels with no negative mods for safety"
-        ]
+          "Run Citadels with no negative mods for safety",
+        ],
       },
       {
         title: "Efficiency Tips",
@@ -240,21 +258,21 @@ export const guides: Record<GuideCategory, Guide> = {
           "Focus on maps with 2+ mechanics (Breach, Expedition)",
           "Always run Blink for movement speed and survival",
           "Consider using 60 spirit amulet/body for Blink",
-          "Swap gems for mapping vs bossing as needed"
-        ]
-      }
-    ]
-  }
+          "Swap gems for mapping vs bossing as needed",
+        ],
+      },
+    ],
+  },
 };
 
 export const guidesWithMeta: GuideWithMeta[] = [
-  { ...guides.gameplay, id: 'gameplay', icon: "Book" },
-  { ...guides["character-building"], id: 'character-building', icon: "User" },
-  { ...guides.equipment, id: 'equipment', icon: "Box" },
-  { ...guides.combat, id: 'combat', icon: "Crosshair" },
-  { ...guides.progression, id: 'progression', icon: "ArrowUp" },
-  { ...guides.trading, id: 'trading', icon: "Coins" },
-  { ...guides["boss-fights"], id: 'boss-fights', icon: "Sword" },
-  { ...guides["cruel-mode"], id: 'cruel-mode', icon: "Shield" },
-  { ...guides.mapping, id: 'mapping', icon: "Map" }
+  { ...guides.gameplay, id: "gameplay", icon: "Book" },
+  { ...guides["character-building"], id: "character-building", icon: "User" },
+  { ...guides.equipment, id: "equipment", icon: "Box" },
+  { ...guides.combat, id: "combat", icon: "Crosshair" },
+  { ...guides.progression, id: "progression", icon: "ArrowUp" },
+  { ...guides.trading, id: "trading", icon: "Coins" },
+  { ...guides["boss-fights"], id: "boss-fights", icon: "Sword" },
+  { ...guides["cruel-mode"], id: "cruel-mode", icon: "Shield" },
+  { ...guides.mapping, id: "mapping", icon: "Map" },
 ];

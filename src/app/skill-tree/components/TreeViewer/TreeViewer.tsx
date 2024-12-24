@@ -3,11 +3,13 @@
 import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import { Maximize2, ZoomIn, ZoomOut } from "lucide-react";
-import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
-import { shimmer, toBase64 } from "~/utils/image";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { SyntheticEvent } from "react";
+
+import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
+
+import { shimmer, toBase64 } from "~/utils/image";
 
 import {
   calculateInitialPanOffset,
@@ -74,7 +76,7 @@ export function TreeViewer({
   const [hasLoaded, setHasLoaded] = useState(false);
   const [scale, setScale] = useState(() => {
     try {
-      const saved = localStorage.getItem('skill-tree-scale');
+      const saved = localStorage.getItem("skill-tree-scale");
       return saved ? parseFloat(saved) : 0.75;
     } catch {
       return 0.75;
@@ -82,7 +84,7 @@ export function TreeViewer({
   });
   const [panOffset, setPanOffset] = useState(() => {
     try {
-      const saved = localStorage.getItem('skill-tree-pan');
+      const saved = localStorage.getItem("skill-tree-pan");
       return saved ? JSON.parse(saved) : { x: 0, y: 0 };
     } catch {
       return { x: 0, y: 0 };
@@ -92,7 +94,7 @@ export function TreeViewer({
   const [startPan, setStartPan] = useState({ x: 0, y: 0 });
   const [imageSize, setImageSize] = useState(() => {
     try {
-      const saved = localStorage.getItem('skill-tree-image-size');
+      const saved = localStorage.getItem("skill-tree-image-size");
       return saved ? JSON.parse(saved) : { width: 0, height: 0 };
     } catch {
       return { width: 0, height: 0 };
@@ -102,9 +104,9 @@ export function TreeViewer({
   // Persist view state
   useEffect(() => {
     if (hasLoaded) {
-      localStorage.setItem('skill-tree-scale', scale.toString());
-      localStorage.setItem('skill-tree-pan', JSON.stringify(panOffset));
-      localStorage.setItem('skill-tree-image-size', JSON.stringify(imageSize));
+      localStorage.setItem("skill-tree-scale", scale.toString());
+      localStorage.setItem("skill-tree-pan", JSON.stringify(panOffset));
+      localStorage.setItem("skill-tree-image-size", JSON.stringify(imageSize));
     }
   }, [scale, panOffset, imageSize, hasLoaded]);
 
@@ -303,24 +305,24 @@ export function TreeViewer({
 
       {/* Tree Content */}
       <div
-          style={{
-            transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
-            transformOrigin: "0 0",
-            position: "absolute",
-            width: imageSize.width || "100%",
-            height: imageSize.height || "100%",
-            willChange: "transform",
-            userSelect: "none",
-            backfaceVisibility: "hidden",
-            perspective: 1000,
-            WebkitFontSmoothing: "antialiased",
-          }}
+        style={{
+          transform: `translate3d(${panOffset.x}px, ${panOffset.y}px, 0) scale(${scale})`,
+          transformOrigin: "0 0",
+          position: "absolute",
+          width: imageSize.width || "100%",
+          height: imageSize.height || "100%",
+          willChange: "transform",
+          userSelect: "none",
+          backfaceVisibility: "hidden",
+          perspective: 1000,
+          WebkitFontSmoothing: "antialiased",
+        }}
       >
         <div className="relative w-full h-full">
-          <div 
+          <div
             className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
             style={{
-              backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(2048, 2048))}')`
+              backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(2048, 2048))}')`,
             }}
           />
           <ProgressiveImage
@@ -332,7 +334,7 @@ export function TreeViewer({
             className="w-full h-full pointer-events-none"
             onLoad={handleImageLoad}
             onError={(error) => {
-              console.error('Failed to load skill tree image:', error);
+              console.error("Failed to load skill tree image:", error);
             }}
             draggable={false}
             priority
@@ -360,7 +362,7 @@ export function TreeViewer({
             }}
             fallback={`/ascendancies/${selectedAscendancy.toLowerCase()}.png`}
             onError={(error) => {
-              console.error('Failed to load ascendancy image:', error);
+              console.error("Failed to load ascendancy image:", error);
             }}
             draggable={false}
             priority

@@ -1,13 +1,18 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { ReactNode } from "react";
+
+import { usePathname } from "next/navigation";
+
+import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
-import { Button } from "~/components/ui/Button";
-import { BuildPlannerSidebar } from "./BuildPlannerSidebar";
+
 import { useSidebarWidth } from "~/hooks/useSidebarWidth";
+
+import { BuildPlannerSidebar } from "./BuildPlannerSidebar";
 
 interface BuildPlannerLayoutProps {
   children: ReactNode;
@@ -53,18 +58,20 @@ export function BuildPlannerLayout({
       <div className="flex-1 flex min-h-0 relative">
         {/* Sidebar */}
         {sidebar !== false && (
-          <div 
+          <div
             className={`absolute inset-y-0 left-0 z-20 border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarDimensions.className}`}
             style={{ width: sidebarDimensions.width }}
           >
             <div className={`sticky ${sidebarDimensions.topOffset} h-full`}>
-              <div className={`flex items-center justify-between py-2 border-b border-border/50 ${sidebarDimensions.headerPadding}`}>
+              <div
+                className={`flex items-center justify-between py-2 border-b border-border/50 ${sidebarDimensions.headerPadding}`}
+              >
                 {!sidebarDimensions.isCollapsed && <Text className="font-medium">Navigation</Text>}
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={sidebarDimensions.toggleCollapse}
-                  className={`p-1.5 hover:bg-muted/50 rounded-lg transition-colors ${sidebarDimensions.isCollapsed ? 'w-full flex justify-center' : ''}`}
+                  className={`p-1.5 hover:bg-muted/50 rounded-lg transition-colors ${sidebarDimensions.isCollapsed ? "w-full flex justify-center" : ""}`}
                 >
                   {sidebarDimensions.isCollapsed ? (
                     <ChevronRight className="w-4 h-4" />
@@ -83,16 +90,14 @@ export function BuildPlannerLayout({
         )}
 
         {/* Content */}
-        <div 
+        <div
           className={`flex-1 min-h-0 ${isPassiveTree ? "bg-muted/30" : ""}`}
-          style={{ 
+          style={{
             marginLeft: sidebar !== false ? sidebarDimensions.width : undefined,
-            transition: 'margin-left 0.3s ease'
+            transition: "margin-left 0.3s ease",
           }}
         >
-          <div className="h-full">
-            {children}
-          </div>
+          <div className="h-full">{children}</div>
         </div>
       </div>
     </div>

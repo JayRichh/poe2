@@ -1,9 +1,21 @@
 "use client";
 
+import {
+  BarChart2,
+  Book,
+  ChevronDown,
+  ChevronRight,
+  FileText,
+  Layout,
+  Share2,
+  Sword,
+} from "lucide-react";
+
 import { useState } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, Layout, Sword, Book, BarChart2, FileText, Share2 } from "lucide-react";
+
 import { cn } from "~/utils/cn";
 
 interface NavItem {
@@ -24,21 +36,25 @@ const navigation: NavItem[] = [
       { label: "Passive Tree", href: "/build-planner", icon: <Layout className="w-4 h-4" /> },
       { label: "Equipment", href: "/build-planner/equipment", icon: <Sword className="w-4 h-4" /> },
       { label: "Skills", href: "/build-planner/skills", icon: <Book className="w-4 h-4" /> },
-    ]
+    ],
   },
   {
     label: "Analysis",
     items: [
       { label: "Stats", href: "/build-planner/stats", icon: <BarChart2 className="w-4 h-4" /> },
       { label: "Notes", href: "/build-planner/notes", icon: <FileText className="w-4 h-4" /> },
-    ]
+    ],
   },
   {
     label: "Tools",
     items: [
-      { label: "Import/Export", href: "/build-planner/import-export", icon: <Share2 className="w-4 h-4" /> },
-    ]
-  }
+      {
+        label: "Import/Export",
+        href: "/build-planner/import-export",
+        icon: <Share2 className="w-4 h-4" />,
+      },
+    ],
+  },
 ];
 
 function NavGroup({ item, collapsed }: { item: NavItem; collapsed?: boolean }) {
@@ -67,12 +83,14 @@ function NavGroup({ item, collapsed }: { item: NavItem; collapsed?: boolean }) {
           )}
         </button>
       )}
-      
-      <div className={cn(
-        "space-y-1",
-        collapsed ? "pt-2" : "pb-3",
-        (!isExpanded && !collapsed) && "hidden"
-      )}>
+
+      <div
+        className={cn(
+          "space-y-1",
+          collapsed ? "pt-2" : "pb-3",
+          !isExpanded && !collapsed && "hidden"
+        )}
+      >
         {item.items.map((subItem) => (
           <Link
             key={subItem.href}
@@ -86,9 +104,7 @@ function NavGroup({ item, collapsed }: { item: NavItem; collapsed?: boolean }) {
             )}
             title={collapsed ? subItem.label : undefined}
           >
-            <div className={cn(collapsed && "mx-auto")}>
-              {subItem.icon}
-            </div>
+            <div className={cn(collapsed && "mx-auto")}>{subItem.icon}</div>
             {!collapsed && subItem.label}
           </Link>
         ))}

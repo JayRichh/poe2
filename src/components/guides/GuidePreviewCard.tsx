@@ -1,10 +1,15 @@
 "use client";
 
+import { ArrowUp, Book, Box, Coins, Crosshair, Map, Shield, Sword, User } from "lucide-react";
+
 import React from "react";
+
 import Link from "next/link";
-import { Book, Coins, Sword, Shield, User, Box, Crosshair, ArrowUp, Map } from "lucide-react";
+
 import { Text } from "~/components/ui/Text";
+
 import { cn } from "~/utils/cn";
+
 import type { GuideIcon } from "~/lib/guides/data";
 
 interface GuidePreviewCardProps {
@@ -25,12 +30,18 @@ const IconMap: Record<GuideIcon, React.ComponentType<{ className?: string }>> = 
   Box,
   Crosshair,
   ArrowUp,
-  Map
+  Map,
 };
 
-export function GuidePreviewCard({ title, description, icon, href, featured }: GuidePreviewCardProps) {
+export function GuidePreviewCard({
+  title,
+  description,
+  icon,
+  href,
+  featured,
+}: GuidePreviewCardProps) {
   return (
-    <Link 
+    <Link
       href={href}
       className={cn(
         "block group relative overflow-hidden",
@@ -41,27 +52,21 @@ export function GuidePreviewCard({ title, description, icon, href, featured }: G
       )}
     >
       <div className="relative z-10 flex gap-4">
-        <div className={cn(
-          "shrink-0 rounded-full bg-primary/10 flex items-center justify-center",
-          featured ? "w-12 h-12" : "w-10 h-10"
-        )}>
+        <div
+          className={cn(
+            "shrink-0 rounded-full bg-primary/10 flex items-center justify-center",
+            featured ? "w-12 h-12" : "w-10 h-10"
+          )}
+        >
           {React.createElement(IconMap[icon], {
-            className: cn(
-              "text-primary",
-              featured ? "w-6 h-6" : "w-5 h-5"
-            )
+            className: cn("text-primary", featured ? "w-6 h-6" : "w-5 h-5"),
           })}
         </div>
         <div className="space-y-2">
-          <Text className={cn(
-            "font-semibold tracking-tight",
-            featured ? "text-xl" : "text-lg"
-          )}>
+          <Text className={cn("font-semibold tracking-tight", featured ? "text-xl" : "text-lg")}>
             {title}
           </Text>
-          <Text className="text-foreground/70 line-clamp-2">
-            {description}
-          </Text>
+          <Text className="text-foreground/70 line-clamp-2">{description}</Text>
         </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

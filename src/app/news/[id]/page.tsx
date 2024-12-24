@@ -1,11 +1,15 @@
+import { ChevronLeft, Clock } from "lucide-react";
+
 import { Suspense } from "react";
+
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
+
 import { NewsService } from "~/services/news-service";
-import { Clock, ChevronLeft } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ id: string }> | undefined;
@@ -18,7 +22,7 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
   // Await params and searchParams before using
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
-  
+
   const id = resolvedParams.id;
   const category = resolvedSearchParams.category;
 
@@ -33,7 +37,7 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
 
     const timeAgo = (date: string) => {
       const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
-  
+
       let interval = seconds / 31536000;
       if (interval > 1) return Math.floor(interval) + " years ago";
       interval = seconds / 2592000;
@@ -48,10 +52,7 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
     };
 
     return (
-      <NewsLayout
-        title={news.title}
-        description={news.description}
-      >
+      <NewsLayout title={news.title} description={news.description}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
             fallback={
@@ -64,9 +65,7 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
           >
             <article className="prose prose-invert max-w-none">
               <div className="flex items-center gap-4 text-sm text-foreground/60 mb-8">
-                {news.category && (
-                  <span className="text-primary font-medium">{news.category}</span>
-                )}
+                {news.category && <span className="text-primary font-medium">{news.category}</span>}
                 {news.publishedAt && (
                   <div className="flex items-center gap-1.5">
                     <Clock className="w-4 h-4" />
@@ -78,15 +77,17 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
               </div>
 
               <div className="space-y-6">
-                <Text variant="h1" className="!mt-0">{news.title}</Text>
+                <Text variant="h1" className="!mt-0">
+                  {news.title}
+                </Text>
                 {news.description && (
                   <Text variant="body" color="secondary" className="text-lg">
                     {news.description}
                   </Text>
                 )}
-                
+
                 {/* Patch Notes Content */}
-                {news.type === 'patch' && Array.isArray(news.content) && (
+                {news.type === "patch" && Array.isArray(news.content) && (
                   <div className="mt-8 space-y-6">
                     <div className="prose prose-invert max-w-none">
                       <ul className="space-y-3 list-disc list-inside">
@@ -101,16 +102,14 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
                 )}
 
                 {/* Regular News Content */}
-                {news.type !== 'patch' && news.content && !Array.isArray(news.content) && (
-                  <div className="mt-8 prose prose-invert max-w-none">
-                    {news.content}
-                  </div>
+                {news.type !== "patch" && news.content && !Array.isArray(news.content) && (
+                  <div className="mt-8 prose prose-invert max-w-none">{news.content}</div>
                 )}
 
                 {/* Back to News Link */}
                 <div className="mt-12 pt-6 border-t border-border/30">
-                  <Link 
-                    href="/news" 
+                  <Link
+                    href="/news"
                     className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-medium"
                   >
                     <ChevronLeft className="w-4 h-4" />

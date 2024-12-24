@@ -1,8 +1,11 @@
 import { Suspense } from "react";
-import { BuildList } from "./BuildList";
-import { getBuilds } from "~/app/actions/builds";
-import { Container } from "~/components/ui/Container";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
+import { Container } from "~/components/ui/Container";
+
+import { getBuilds } from "~/app/actions/builds";
+
+import { BuildList } from "./BuildList";
 
 export const dynamic = "force-dynamic";
 

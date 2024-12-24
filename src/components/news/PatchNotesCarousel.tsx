@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { PatchNote } from "~/types/news";
+
+import { useEffect, useState } from "react";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+
+import type { PatchNote } from "~/types/news";
 
 interface PatchNotesCarouselProps {
   patchNotes: PatchNote[];
@@ -16,18 +19,18 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+      opacity: 0,
+    }),
   };
 
   const swipeConfidenceThreshold = 10000;
@@ -61,7 +64,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
           {currentIndex + 1} / {patchNotes.length}
         </Text>
       </div>
-      
+
       <div className="relative flex-1">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -73,7 +76,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
             exit="exit"
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 }
+              opacity: { duration: 0.2 },
             }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -91,19 +94,25 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
             <div className="flex-1 flex flex-col">
               <div className="space-y-4 pb-6">
                 <div className="flex items-center justify-between">
-                  <Text variant="h3" className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  <Text
+                    variant="h3"
+                    className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                  >
                     {currentNote.version}
                   </Text>
-                  <Text color="secondary" className="text-sm bg-background/40 px-3 py-1 rounded-full">
+                  <Text
+                    color="secondary"
+                    className="text-sm bg-background/40 px-3 py-1 rounded-full"
+                  >
                     {new Date(currentNote.date).toLocaleDateString()}
                   </Text>
                 </div>
                 <div className="border-t border-border/50" />
               </div>
-              
+
               <div className="flex-1 overflow-y-auto space-y-5 pr-4 scrollbar-thin">
                 {currentNote.content?.slice(0, 5).map((change, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -118,16 +127,19 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
                 ))}
                 {currentNote.content && currentNote.content.length > 5 && (
                   <div className="pt-2">
-                    <Text color="secondary" className="text-sm bg-background/30 px-3 py-1.5 rounded-full inline-block">
+                    <Text
+                      color="secondary"
+                      className="text-sm bg-background/30 px-3 py-1.5 rounded-full inline-block"
+                    >
                       +{currentNote.content.length - 5} more changes...
                     </Text>
                   </div>
                 )}
               </div>
-              
+
               {currentNote.url && (
                 <div className="pt-6 border-t border-border/50 mt-4">
-                  <a 
+                  <a
                     href={currentNote.url}
                     target="_blank"
                     rel="noopener noreferrer"

@@ -1,9 +1,11 @@
 "use client";
 
-import { motion, MotionValue } from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
 import { ArrowRight, ChevronsDown, ScrollIcon } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Text } from "~/components/ui/Text";
 
 interface HeroSectionProps {
@@ -48,8 +50,8 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         color="secondary"
         className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-2"
       >
-        Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and
-        optimize gameplay.
+        Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize
+        gameplay.
       </Text>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
         <Link href="/build-planner">

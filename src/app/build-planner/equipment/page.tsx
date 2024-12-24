@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
@@ -19,15 +20,19 @@ const EQUIPMENT_SLOTS = [
   "Belt",
 ] as const;
 
-type EquipmentSlot = typeof EQUIPMENT_SLOTS[number];
+type EquipmentSlot = (typeof EQUIPMENT_SLOTS)[number];
 
 export default function EquipmentPage() {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null);
   const [selectedInventorySlot, setSelectedInventorySlot] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
-  const handleDragStart = (e: React.DragEvent, type: 'equipment' | 'inventory', id: string | number) => {
-    e.dataTransfer.setData('text/plain', JSON.stringify({ type, id }));
+  const handleDragStart = (
+    e: React.DragEvent,
+    type: "equipment" | "inventory",
+    id: string | number
+  ) => {
+    e.dataTransfer.setData("text/plain", JSON.stringify({ type, id }));
     setIsDragging(true);
   };
 
@@ -35,9 +40,9 @@ export default function EquipmentPage() {
     setIsDragging(false);
   };
 
-  const handleDrop = (e: React.DragEvent, type: 'equipment' | 'inventory', id: string | number) => {
+  const handleDrop = (e: React.DragEvent, type: "equipment" | "inventory", id: string | number) => {
     e.preventDefault();
-    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+    const data = JSON.parse(e.dataTransfer.getData("text/plain"));
     // Handle item swapping logic here
     setIsDragging(false);
   };
@@ -52,9 +57,15 @@ export default function EquipmentPage() {
       description="Manage your character's equipment and inventory"
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">Import</Button>
-          <Button variant="outline" size="sm">Export</Button>
-          <Button variant="primary" size="sm">Save</Button>
+          <Button variant="outline" size="sm">
+            Import
+          </Button>
+          <Button variant="outline" size="sm">
+            Export
+          </Button>
+          <Button variant="primary" size="sm">
+            Save
+          </Button>
         </div>
       }
       sidebar={
@@ -66,13 +77,13 @@ export default function EquipmentPage() {
                 key={slot}
                 onClick={() => setSelectedSlot(slot)}
                 onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, 'equipment', slot)}
+                onDrop={(e) => handleDrop(e, "equipment", slot)}
                 draggable
-                onDragStart={(e) => handleDragStart(e, 'equipment', slot)}
+                onDragStart={(e) => handleDragStart(e, "equipment", slot)}
                 onDragEnd={handleDragEnd}
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 ${
-                  selectedSlot === slot 
-                    ? "bg-primary/10 text-primary hover:bg-primary/20" 
+                  selectedSlot === slot
+                    ? "bg-primary/10 text-primary hover:bg-primary/20"
                     : "hover:bg-muted/50"
                 } ${isDragging ? "opacity-50" : ""}`}
                 aria-selected={selectedSlot === slot}
@@ -87,7 +98,7 @@ export default function EquipmentPage() {
           <div className="border-t border-border/50 my-4" />
 
           <Text className="font-medium">Inventory</Text>
-          <div 
+          <div
             className="grid grid-cols-12 gap-1 p-2 rounded-lg border border-border/50"
             role="grid"
             aria-label="Inventory grid"
@@ -97,9 +108,9 @@ export default function EquipmentPage() {
                 key={i}
                 onClick={() => setSelectedInventorySlot(i)}
                 onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, 'inventory', i)}
+                onDrop={(e) => handleDrop(e, "inventory", i)}
                 draggable
-                onDragStart={(e) => handleDragStart(e, 'inventory', i)}
+                onDragStart={(e) => handleDragStart(e, "inventory", i)}
                 onDragEnd={handleDragEnd}
                 className={`aspect-square rounded border transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                   selectedInventorySlot === i
@@ -113,8 +124,8 @@ export default function EquipmentPage() {
                 onKeyDown={(e) => {
                   const col = i % 12;
                   const row = Math.floor(i / 12);
-                  
-                  switch(e.key) {
+
+                  switch (e.key) {
                     case "ArrowRight":
                       if (col < 11) setSelectedInventorySlot(i + 1);
                       break;
@@ -143,36 +154,34 @@ export default function EquipmentPage() {
 
         {/* Equipment Stats */}
         <div className="space-y-6">
-          <div className={`p-4 rounded-lg border transition-colors ${
-            selectedSlot || selectedInventorySlot !== null
-              ? "border-primary/50 bg-primary/5"
-              : "border-border/50"
-          }`}>
+          <div
+            className={`p-4 rounded-lg border transition-colors ${
+              selectedSlot || selectedInventorySlot !== null
+                ? "border-primary/50 bg-primary/5"
+                : "border-border/50"
+            }`}
+          >
             <Text className="font-medium">Selected Item</Text>
             <Text className="text-sm text-foreground/60 mt-2">
-              {selectedSlot 
+              {selectedSlot
                 ? `Viewing ${selectedSlot} slot`
                 : selectedInventorySlot !== null
-                ? `Viewing inventory slot ${selectedInventorySlot + 1}`
-                : "Select an equipment slot or inventory item to view its details"}
+                  ? `Viewing inventory slot ${selectedInventorySlot + 1}`
+                  : "Select an equipment slot or inventory item to view its details"}
             </Text>
           </div>
 
           <div className="p-4 rounded-lg border border-border/50 space-y-4">
             <Text className="font-medium">Equipment Stats</Text>
             <div className="space-y-2">
-              {[
-                "Armour",
-                "Evasion",
-                "Energy Shield",
-                "Block Chance",
-                "Movement Speed",
-              ].map((stat) => (
-                <div key={stat} className="flex items-center justify-between">
-                  <Text className="text-sm text-foreground/60">{stat}</Text>
-                  <Text className="text-sm">0</Text>
-                </div>
-              ))}
+              {["Armour", "Evasion", "Energy Shield", "Block Chance", "Movement Speed"].map(
+                (stat) => (
+                  <div key={stat} className="flex items-center justify-between">
+                    <Text className="text-sm text-foreground/60">{stat}</Text>
+                    <Text className="text-sm">0</Text>
+                  </div>
+                )
+              )}
             </div>
           </div>
 

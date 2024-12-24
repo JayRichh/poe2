@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 import { TreeData } from "../components/TreeViewer/data";
 import { loadTreeData } from "../utils/loadTreeData";
 
@@ -40,6 +41,6 @@ export function useTreeDataOperations() {
     },
     invalidateTreeData: () => {
       return queryClient.invalidateQueries({ queryKey: TREE_DATA_KEY });
-    }
+    },
   };
 }

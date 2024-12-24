@@ -1,20 +1,25 @@
 import { Suspense } from "react";
+
 import { notFound } from "next/navigation";
+
 import { NewsCard } from "~/components/news/NewsCard";
-import { PatchNotes } from "~/components/news/PatchNotes";
 import { NewsLayout } from "~/components/news/NewsLayout";
+import { PatchNotes } from "~/components/news/PatchNotes";
 import { Text } from "~/components/ui/Text";
+
 import { NewsService } from "~/services/news-service";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
 
 interface PageProps {
-  searchParams: Promise<{
-    category?: string;
-    source?: string;
-    timeRange?: string;
-  }> | undefined;
+  searchParams:
+    | Promise<{
+        category?: string;
+        source?: string;
+        timeRange?: string;
+      }>
+    | undefined;
 }
 
 export default async function NewsPage({ searchParams }: PageProps) {
@@ -25,11 +30,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
     const params = await searchParams;
     const { category, source, timeRange } = params;
 
-    const news = await NewsService.getLatestNews(
-      category,
-      source,
-      timeRange
-    );
+    const news = await NewsService.getLatestNews(category, source, timeRange);
 
     // If category is selected, show filtered view
     if (category) {

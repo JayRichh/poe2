@@ -80,7 +80,7 @@ export default function SkillTreePage() {
         <div className="flex flex-col items-center gap-4 p-6 rounded-lg border border-destructive/50 bg-destructive/10">
           <div className="text-lg font-medium text-destructive">Error loading skill tree</div>
           <div className="text-sm text-muted-foreground">{error.message}</div>
-          <button 
+          <button
             onClick={() => window.location.reload()}
             className="px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
           >

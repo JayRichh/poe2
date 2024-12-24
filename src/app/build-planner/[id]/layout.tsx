@@ -70,10 +70,7 @@ interface BuildPlannerLayoutProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function BuildPlannerLayout({
-  children,
-  params,
-}: BuildPlannerLayoutProps) {
+export default async function BuildPlannerLayout({ children, params }: BuildPlannerLayoutProps) {
   const resolvedParams = await params;
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">

@@ -9,6 +9,7 @@
     "no-console": "off",
     "react/no-unused-prop-types": "off",
     "react/self-closing-comp": "off",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "react/no-unescaped-entities": "off"
   }
 }

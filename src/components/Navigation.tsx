@@ -2,6 +2,8 @@
 
 import {
   Calculator,
+  Cog,
+  FileText,
   GitBranch,
   Layout,
   LogIn,
@@ -10,7 +12,7 @@ import {
   Newspaper,
   Settings,
   User,
-  FileText,
+  Users,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -36,6 +38,7 @@ const primaryLinks = [
   { href: "/build-planner", label: "Build Planner", icon: Layout },
   { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
   { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
+  { href: "/mechanics", label: "Game Mechanics", icon: Cog },
 ];
 
 const secondaryLinks = [
@@ -50,6 +53,12 @@ const secondaryLinks = [
     label: "Guides",
     icon: FileText,
     description: "Community guides & build tutorials",
+  },
+  {
+    href: "/ascendancies",
+    label: "Ascendancies",
+    icon: Users,
+    description: "Explore POE2 ascendancy classes and their unique abilities",
   },
 ];
 
@@ -89,18 +98,17 @@ export function Navigation() {
         <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 sm:h-16">
-            <span className="flex col gap-5">
-              <Link href="/" className="flex items-center gap-2 transition-colors">
+            <div className="flex items-center">
+              <Link href="/" className="mr-8">
                 <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#F59E0B] via-[#FBBF24] to-[#F97316] font-bold text-xl">
                   POE2 Tools
                 </span>
               </Link>
-              <span className="w-px h-6 bg-foreground/20 mx-2" aria-hidden="true" />
 
               <div className="hidden md:flex items-center">
-                {/* Primary Links */}
-                <div className="flex items-center gap-8">
-                  {primaryLinks.map(({ href, label, icon: Icon }) => {
+                {/* Primary Tools Section */}
+                <div className="flex items-center space-x-5">
+                  {primaryLinks.map(({ href, label }) => {
                     const isActive = pathname === href || pathname?.startsWith(`${href}/`);
                     return (
                       <Link
@@ -108,27 +116,22 @@ export function Navigation() {
                         href={href}
                         prefetch={false}
                         className={cn(
-                          "text-base font-medium transition-colors duration-200 relative group flex items-center gap-2",
-                          isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
+                          "text-[15px] font-medium tracking-wide transition-colors duration-200 relative group",
+                          isActive ? "text-primary" : "text-foreground/90 hover:text-primary"
                         )}
                       >
-                        {/* <Icon className="w-4 h-4" /> */}
                         {label}
                         {isActive && (
-                          <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-[2px] bg-primary" />
+                          <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-0.5 bg-primary" />
                         )}
-                        <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
                       </Link>
                     );
                   })}
                 </div>
 
-                {/* Divider */}
-                <span className="w-px h-6 bg-foreground/20 mx-5" aria-hidden="true" />
-
-                {/* Secondary Links */}
-                <div className="flex items-center gap-6">
-                  {secondaryLinks.map(({ href, label, icon: Icon, description }) => {
+                {/* Secondary Links Section */}
+                <div className="flex items-center space-x-4 border-l border-foreground/10 ml-5 pl-5">
+                  {secondaryLinks.map(({ href, label }) => {
                     const isActive = pathname === href || pathname?.startsWith(`${href}/`);
                     return (
                       <Link
@@ -136,28 +139,17 @@ export function Navigation() {
                         href={href}
                         prefetch={false}
                         className={cn(
-                          "text-sm font-medium transition-colors duration-200 relative group flex items-center gap-2",
-                          isActive ? "text-primary" : "text-foreground/70 hover:text-primary",
-                          "opacity-70"
+                          "text-sm transition-colors duration-200",
+                          isActive ? "text-primary/90" : "text-foreground/50 hover:text-foreground/70"
                         )}
                       >
-                        <Icon className="w-4 h-4" />
                         {label}
-                        {description && (
-                          <div className="absolute hidden group-hover:block left-0 bottom-full mb-2 p-2 bg-background/95 backdrop-blur-sm border border-border/50 rounded-md shadow-lg whitespace-nowrap z-50">
-                            <p className="text-xs text-foreground/60">{description}</p>
-                          </div>
-                        )}
-                        {isActive && (
-                          <span className="absolute -bottom-[16px] sm:-bottom-[21px] left-0 w-full h-[2px] bg-primary" />
-                        )}
-                        <span className="absolute -bottom-[16px] sm:-bottom-[21px] left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
                       </Link>
                     );
                   })}
                 </div>
               </div>
-            </span>
+            </div>
 
             <div className="flex items-center gap-4">
               {user ? (

@@ -1,12 +1,15 @@
 import { Metadata, ResolvingMetadata } from "next";
+
 import {
-  generateWebsiteSchema,
-  generateNewsArticleSchema,
-  generateToolSchema,
-  generateBuildPlannerSchema,
-  generateProfileSchema,
-  generateBreadcrumbSchema,
   combineSchemas,
+  generateAscendancySchema,
+  generateBreadcrumbSchema,
+  generateBuildPlannerSchema,
+  generateMechanicsSchema,
+  generateNewsArticleSchema,
+  generateProfileSchema,
+  generateToolSchema,
+  generateWebsiteSchema,
 } from "./schema";
 
 export type MetadataProps = {
@@ -20,7 +23,19 @@ export interface BaseMetadata {
   path: string;
   openGraph?: {
     images?: string[];
-    type?: "website" | "article" | "book" | "profile" | "music.song" | "music.album" | "music.playlist" | "music.radio_station" | "video.movie" | "video.episode" | "video.tv_show" | "video.other";
+    type?:
+      | "website"
+      | "article"
+      | "book"
+      | "profile"
+      | "music.song"
+      | "music.album"
+      | "music.playlist"
+      | "music.radio_station"
+      | "video.movie"
+      | "video.episode"
+      | "video.tv_show"
+      | "video.other";
     publishedTime?: string;
     authors?: string[];
   };
@@ -37,9 +52,9 @@ export interface BaseMetadata {
     };
   };
   schema?: {
-    type: "website" | "article" | "tool" | "build" | "profile";
+    type: "website" | "article" | "tool" | "build" | "profile" | "mechanics" | "ascendancy";
     data?: any;
-    breadcrumbs?: Array<{ name: string; path: string; }>;
+    breadcrumbs?: Array<{ name: string; path: string }>;
   };
 }
 
@@ -66,15 +81,16 @@ export async function generateDynamicMetadata(
   } as const;
 
   // Build type-specific OpenGraph metadata
-  const openGraph: Metadata['openGraph'] = {
+  const openGraph: Metadata["openGraph"] = {
     ...baseOpenGraph,
-    ...(data.openGraph?.type === "article" && data.openGraph?.publishedTime && {
-      type: "article" as const,
-      publishedTime: data.openGraph.publishedTime,
-      authors: data.openGraph.authors,
-    }),
+    ...(data.openGraph?.type === "article" &&
+      data.openGraph?.publishedTime && {
+        type: "article" as const,
+        publishedTime: data.openGraph.publishedTime,
+        authors: data.openGraph.authors,
+      }),
     ...(data.openGraph?.images && {
-      images: data.openGraph.images.map(image => ({
+      images: data.openGraph.images.map((image) => ({
         url: image,
         width: 1200,
         height: 630,
@@ -123,7 +139,7 @@ export async function generateDynamicMetadata(
   return metadata;
 }
 
-function generateSchemaData(schema: NonNullable<BaseMetadata['schema']>, data: BaseMetadata) {
+function generateSchemaData(schema: NonNullable<BaseMetadata["schema"]>, data: BaseMetadata) {
   const context = defaultContext;
   const schemas = [];
 
@@ -139,18 +155,26 @@ function generateSchemaData(schema: NonNullable<BaseMetadata['schema']>, data: B
       schemas.push(generateNewsArticleSchema(context, schema.data));
       break;
     case "tool":
-      schemas.push(generateToolSchema(context, {
-        name: data.title,
-        path: data.path,
-        description: data.description,
-        features: schema.data?.features,
-      }));
+      schemas.push(
+        generateToolSchema(context, {
+          name: data.title,
+          path: data.path,
+          description: data.description,
+          features: schema.data?.features,
+        })
+      );
       break;
     case "build":
       schemas.push(generateBuildPlannerSchema(context, schema.data));
       break;
     case "profile":
       schemas.push(generateProfileSchema(context, schema.data));
+      break;
+    case "mechanics":
+      schemas.push(generateMechanicsSchema(context, schema.data));
+      break;
+    case "ascendancy":
+      schemas.push(generateAscendancySchema(context, schema.data));
       break;
   }
 

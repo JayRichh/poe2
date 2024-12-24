@@ -3,19 +3,20 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Calculator,
+  Cog,
+  FileText,
   GitBranch,
   Layout,
   LogIn,
   LogOut,
   Monitor,
   Moon,
+  Newspaper,
   Settings,
   Sun,
   User,
-  X,
-  Newspaper,
   Users,
-  FileText,
+  X,
 } from "lucide-react";
 
 import * as React from "react";
@@ -31,26 +32,46 @@ import { Button } from "./Button";
 import { Text } from "./Text";
 
 const mainLinks = [
-  { 
+  {
     label: "Build Planner",
     path: "/build-planner",
     icon: Layout,
     description: "Create, optimize and share your POE2 character builds",
-    features: ["Equipment Planning", "Skill Gems", "Build Notes", "Stats Calculator", "Build Sharing"]
+    features: [
+      "Equipment Planning",
+      "Skill Gems",
+      "Build Notes",
+      "Stats Calculator",
+      "Build Sharing",
+    ],
   },
-  { 
+  {
+    label: "Game Mechanics",
+    path: "/mechanics",
+    icon: Cog,
+    description: "Comprehensive guide to POE2's core game mechanics and systems",
+    features: ["Damage Types", "Status Effects", "Character Stats", "Combat Mechanics"],
+  },
+  {
+    label: "Ascendancies",
+    path: "/ascendancies",
+    icon: Users,
+    description: "Explore POE2's unique ascendancy classes and their abilities",
+    features: ["Class Guides", "Build Suggestions", "Mechanics Overview", "Playstyle Analysis"],
+  },
+  {
     label: "Skill Tree",
     path: "/skill-tree",
     icon: GitBranch,
     description: "Interactive passive skill tree planner with advanced features",
-    features: ["Visual Tree Explorer", "Path Planning", "Build Integration", "Node Analysis"]
+    features: ["Visual Tree Explorer", "Path Planning", "Build Integration", "Node Analysis"],
   },
-  { 
+  {
     label: "DPS Calculator",
     path: "/dps-calc",
     icon: Calculator,
     description: "Advanced damage calculator with comprehensive stat analysis",
-    features: ["Skill Damage", "Support Gems", "Equipment Effects", "DPS Optimization"]
+    features: ["Skill Damage", "Support Gems", "Equipment Effects", "DPS Optimization"],
   },
 ];
 
@@ -59,6 +80,7 @@ const quickLinks = [
   { label: "Guides", path: "/guides", icon: FileText },
   { label: "Community Builds", path: "/build-planner", icon: Users },
   { label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
+  { label: "Ascendancy Classes", path: "/ascendancies", icon: Users },
 ];
 
 const themeOptions = [
@@ -361,19 +383,19 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
           className="flex-1 overflow-y-auto overscroll-contain"
         >
           <div className="max-w-7xl mx-auto px-6 py-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
-                <div className="space-y-12">
-                  <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
-                  <QuickLinksSection onNavigate={handleNavigation} />
-                  {!user && <SignInSection onNavigate={handleNavigation} />}
-                  {user && (
-                    <UserProfile
-                      user={user}
-                      onSignOut={handleSignOut}
-                      onNavigate={handleNavigation}
-                    />
-                  )}
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+              <div className="space-y-12">
+                <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
+                <QuickLinksSection onNavigate={handleNavigation} />
+                {!user && <SignInSection onNavigate={handleNavigation} />}
+                {user && (
+                  <UserProfile
+                    user={user}
+                    onSignOut={handleSignOut}
+                    onNavigate={handleNavigation}
+                  />
+                )}
+              </div>
 
               <div className="space-y-8">
                 <Text className="text-lg font-medium">Settings</Text>

@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { Alert } from "@/components/ui/Alert";
+import { AlertCircle, Check, Save } from "lucide-react";
+
+import { useCallback, useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
-import { Save, AlertCircle, Check } from "lucide-react";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
-import { NotesEditor } from "~/components/build-planner/notes/NotesEditor";
 import { DrawingCanvas } from "~/components/build-planner/notes/DrawingCanvas";
+import { NotesEditor } from "~/components/build-planner/notes/NotesEditor";
 import { NotesSections, Section } from "~/components/build-planner/notes/NotesSections";
 import { Text } from "~/components/ui/Text";
-import { Alert } from "@/components/ui/Alert";
 
 const DEFAULT_SECTIONS: Section[] = [
   {
@@ -25,7 +28,7 @@ const DEFAULT_SECTIONS: Section[] = [
 - How to effectively play the build
 - Combat rotation and positioning
 - Defensive mechanics`,
-    isExpanded: true
+    isExpanded: true,
   },
   {
     id: "progression",
@@ -81,7 +84,7 @@ const DEFAULT_SECTIONS: Section[] = [
     id: "diagrams",
     name: "Visual Guides",
     content: "Use the canvas below to create visual guides for your build.",
-  }
+  },
 ];
 
 export default function NotesPage() {
@@ -93,11 +96,13 @@ export default function NotesPage() {
     }
     return DEFAULT_SECTIONS;
   });
-  
+
   const [activeSection, setActiveSection] = useState<string>("overview");
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(
+    null
+  );
 
   const debouncedSave = useCallback(
     debounce((newSections: Section[]) => {
@@ -119,12 +124,12 @@ export default function NotesPage() {
   );
 
   const handleContentChange = (sectionId: string, newContent: string) => {
-    const newSections = sections.map(section => 
-      section.id === sectionId 
-        ? { 
-            ...section, 
+    const newSections = sections.map((section) =>
+      section.id === sectionId
+        ? {
+            ...section,
             content: newContent,
-            lastSaved: new Date().toISOString()
+            lastSaved: new Date().toISOString(),
           }
         : section
     );
@@ -138,11 +143,11 @@ export default function NotesPage() {
   };
 
   const toggleSection = (sectionId: string) => {
-    setSections(prev => prev.map(section =>
-      section.id === sectionId
-        ? { ...section, isExpanded: !section.isExpanded }
-        : section
-    ));
+    setSections((prev) =>
+      prev.map((section) =>
+        section.id === sectionId ? { ...section, isExpanded: !section.isExpanded } : section
+      )
+    );
   };
 
   useEffect(() => {
@@ -169,9 +174,11 @@ export default function NotesPage() {
             </div>
           )}
           {feedback && (
-            <div className={`flex items-center gap-2 ${
-              feedback.type === "success" ? "text-emerald-500" : "text-red-500"
-            }`}>
+            <div
+              className={`flex items-center gap-2 ${
+                feedback.type === "success" ? "text-emerald-500" : "text-red-500"
+              }`}
+            >
               {feedback.type === "success" ? (
                 <Check className="h-4 w-4" />
               ) : (

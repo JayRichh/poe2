@@ -1,10 +1,13 @@
 "use client";
 
 import React, { memo, useMemo } from "react";
+
 import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
+
+import { cn } from "~/utils/cn";
+
 import { sanitizeString } from "../../utils/treeUtils";
 import { TreeNodeData } from "./data";
-import { cn } from "~/utils/cn";
 
 interface TreeNodeTooltipProps {
   node: TreeNodeData;
@@ -34,7 +37,7 @@ export const TreeNodeTooltip = memo(function TreeNodeTooltip({
             height={52}
             priority
           />
-          <h1 
+          <h1
             className="whitespace-nowrap relative z-20 text-center px-12 font-medium"
             aria-label={`Node: ${node.name}`}
           >
@@ -43,16 +46,18 @@ export const TreeNodeTooltip = memo(function TreeNodeTooltip({
         </header>
         <div className="p-4 pb-2 space-y-2">
           <div className="grid" role="list">
-            {useMemo(() => 
-              node.description.map((description, index) => (
-                <p
-                  key={index}
-                  className="m-0 font-light text-[#9090ff]"
-                  dangerouslySetInnerHTML={{ __html: sanitizeString(description) }}
-                  role="listitem"
-                />
-              ))
-            , [node.description])}
+            {useMemo(
+              () =>
+                node.description.map((description, index) => (
+                  <p
+                    key={index}
+                    className="m-0 font-light text-[#9090ff]"
+                    dangerouslySetInnerHTML={{ __html: sanitizeString(description) }}
+                    role="listitem"
+                  />
+                )),
+              [node.description]
+            )}
           </div>
           <footer className="italic">
             <span className="text-[#888] text-xs float-right">{node.id}</span>
@@ -66,7 +71,7 @@ export const TreeNodeTooltip = memo(function TreeNodeTooltip({
   );
 });
 
-const SkillList = memo(function SkillList({ skills }: { skills: TreeNodeData['skills'] }) {
+const SkillList = memo(function SkillList({ skills }: { skills: TreeNodeData["skills"] }) {
   return (
     <>
       {skills.map((skill, index) => (
@@ -94,7 +99,11 @@ const SkillList = memo(function SkillList({ skills }: { skills: TreeNodeData['sk
   );
 });
 
-const KeywordList = memo(function KeywordList({ keywords }: { keywords: TreeNodeData['keywords'] }) {
+const KeywordList = memo(function KeywordList({
+  keywords,
+}: {
+  keywords: TreeNodeData["keywords"];
+}) {
   return (
     <>
       {keywords.map((keyword, index) => (
@@ -122,6 +131,6 @@ const KeywordList = memo(function KeywordList({ keywords }: { keywords: TreeNode
   );
 });
 
-TreeNodeTooltip.displayName = 'TreeNodeTooltip';
-SkillList.displayName = 'SkillList';
-KeywordList.displayName = 'KeywordList';
+TreeNodeTooltip.displayName = "TreeNodeTooltip";
+SkillList.displayName = "SkillList";
+KeywordList.displayName = "KeywordList";

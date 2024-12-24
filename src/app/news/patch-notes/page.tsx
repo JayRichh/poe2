@@ -1,8 +1,11 @@
 import { Suspense } from "react";
+
 import { notFound } from "next/navigation";
-import { PatchNotes } from "~/components/news/PatchNotes";
+
 import { NewsLayout } from "~/components/news/NewsLayout";
+import { PatchNotes } from "~/components/news/PatchNotes";
 import { Text } from "~/components/ui/Text";
+
 import { NewsService } from "~/services/news-service";
 
 export const metadata = {
@@ -19,10 +22,7 @@ export default async function PatchNotesPage() {
     }
 
     return (
-      <NewsLayout
-        title="Patch Notes"
-        description="Latest game updates and changes"
-      >
+      <NewsLayout title="Patch Notes" description="Latest game updates and changes">
         <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
           <Suspense
             fallback={

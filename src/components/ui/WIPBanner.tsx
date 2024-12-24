@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+
 import { useEffect, useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 const STORAGE_KEY = "beta-banner-seen";
@@ -31,11 +33,11 @@ export function WIPBanner() {
       <motion.div
         initial={{ y: -50 }}
         animate={{ y: 0 }}
-        transition={{ 
+        transition={{
           type: "spring",
           stiffness: 100,
           damping: 20,
-          delay: 0.2
+          delay: 0.2,
         }}
         style={{ opacity }}
         className={cn(

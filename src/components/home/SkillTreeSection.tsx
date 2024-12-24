@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+
 import { shimmer, toBase64 } from "~/utils/image";
 
 interface Feature {
@@ -16,7 +19,8 @@ interface Feature {
 const features: Feature[] = [
   {
     title: "Visual Pathfinding",
-    description: "Intuitive node connections with real-time path visualization and optimization suggestions",
+    description:
+      "Intuitive node connections with real-time path visualization and optimization suggestions",
   },
   {
     title: "Stat Tracking",
@@ -44,11 +48,15 @@ export function SkillTreeSection() {
       >
         <div className="space-y-6">
           <div className="space-y-4">
-            <Text variant="h1" className="text-5xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <Text
+              variant="h1"
+              className="text-5xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+            >
               Interactive Skill Tree
             </Text>
             <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed max-w-xl">
-              Explore and plan your character&apos;s progression with our, interactive skill tree visualization system.
+              Explore and plan your character&apos;s progression with our, interactive skill tree
+              visualization system.
             </Text>
           </div>
           <div className="h-px bg-gradient-to-r from-border via-accent/20 to-border" />
@@ -96,68 +104,68 @@ export function SkillTreeSection() {
         transition={{ duration: 0.8 }}
         className="flex-1 relative group/image"
       >
-          <div className="relative w-full h-[600px] max-w-xl mx-auto">
-            <motion.div
-              className="absolute inset-0 -m-2 rounded-full bg-gradient-to-br from-primary/15 via-accent/15 to-secondary/15 blur-xl opacity-40"
-              animate={{
-                opacity: [0.3, 0.5, 0.3],
-                scale: [1, 1.02, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20" />
-            <div className="relative h-full rounded-full p-1 bg-gradient-to-br from-primary/30 via-accent/30 to-secondary/30 group-hover/image:from-primary/40 group-hover/image:via-accent/40 group-hover/image:to-secondary/40 transition-all duration-700">
-              <div className="absolute inset-0 rounded-full backdrop-blur-sm" />
-              <div className="relative h-full rounded-full overflow-hidden border border-border/30 group-hover/image:border-border/50 transition-colors duration-700">
-                <div className="relative w-full h-full">
-                  {/* Shimmer loading effect */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
-                    style={{
-                      backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}')`
-                    }}
-                  />
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/skill-tree.png"
-                      alt="POE2 Skill Tree Preview"
-                      fill
-                      quality={75}
-                      priority
-                      sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
-                      className="opacity-0 object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
-                      onLoad={(event) => {
-                        const target = event.target as HTMLImageElement;
-                        if (target.complete) {
-                          target.classList.remove('opacity-0');
-                          target.classList.add('opacity-100');
-                        }
-                      }}
-                      onError={(event) => {
-                        const target = event.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                </div>
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent backdrop-blur-[1px] mix-blend-soft-light after:absolute after:inset-0 after:bg-[radial-gradient(circle,transparent_60%,rgba(0,0,0,0.4))]"
-                  animate={{
-                    opacity: [0.8, 0.9, 0.8],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
+        <div className="relative w-full h-[600px] max-w-xl mx-auto">
+          <motion.div
+            className="absolute inset-0 -m-2 rounded-full bg-gradient-to-br from-primary/15 via-accent/15 to-secondary/15 blur-xl opacity-40"
+            animate={{
+              opacity: [0.3, 0.5, 0.3],
+              scale: [1, 1.02, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20" />
+          <div className="relative h-full rounded-full p-1 bg-gradient-to-br from-primary/30 via-accent/30 to-secondary/30 group-hover/image:from-primary/40 group-hover/image:via-accent/40 group-hover/image:to-secondary/40 transition-all duration-700">
+            <div className="absolute inset-0 rounded-full backdrop-blur-sm" />
+            <div className="relative h-full rounded-full overflow-hidden border border-border/30 group-hover/image:border-border/50 transition-colors duration-700">
+              <div className="relative w-full h-full">
+                {/* Shimmer loading effect */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
+                  style={{
+                    backgroundImage: `url('data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}')`,
                   }}
                 />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/skill-tree.png"
+                    alt="POE2 Skill Tree Preview"
+                    fill
+                    quality={75}
+                    priority
+                    sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
+                    className="opacity-0 object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
+                    onLoad={(event) => {
+                      const target = event.target as HTMLImageElement;
+                      if (target.complete) {
+                        target.classList.remove("opacity-0");
+                        target.classList.add("opacity-100");
+                      }
+                    }}
+                    onError={(event) => {
+                      const target = event.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                </div>
               </div>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent backdrop-blur-[1px] mix-blend-soft-light after:absolute after:inset-0 after:bg-[radial-gradient(circle,transparent_60%,rgba(0,0,0,0.4))]"
+                animate={{
+                  opacity: [0.8, 0.9, 0.8],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
             </div>
           </div>
+        </div>
       </motion.div>
     </div>
   );

@@ -1,8 +1,10 @@
 "use client";
 
 import { Grid, LayoutGrid, List } from "lucide-react";
-import Link from "next/link";
+
 import { useState } from "react";
+
+import Link from "next/link";
 
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
@@ -33,12 +35,15 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 
   // Group builds if needed
   const groupedBuilds = groupBy
-    ? builds.reduce((acc, build) => {
-        const key = getGroupKey(build, groupBy);
-        if (!acc[key]) acc[key] = [];
-        acc[key].push(build);
-        return acc;
-      }, {} as Record<string, Build[]>)
+    ? builds.reduce(
+        (acc, build) => {
+          const key = getGroupKey(build, groupBy);
+          if (!acc[key]) acc[key] = [];
+          acc[key].push(build);
+          return acc;
+        },
+        {} as Record<string, Build[]>
+      )
     : null;
 
   return (
@@ -127,7 +132,7 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 
 function BuildCard({ build }: { build: Build }) {
   return (
-    <Link 
+    <Link
       href={`/build-planner/${build.id}`}
       className="group block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
       tabIndex={0}
@@ -161,9 +166,9 @@ function BuildCard({ build }: { build: Build }) {
             </span>
           )}
         </div>
-        <Button 
-          variant="outline" 
-          size="sm" 
+        <Button
+          variant="outline"
+          size="sm"
           tabIndex={-1}
           className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
         >
@@ -189,9 +194,7 @@ function BuildListItem({ build }: { build: Build }) {
             {build.name}
           </Text>
           {build.description && (
-            <Text className="text-sm text-foreground/60 truncate">
-              {build.description}
-            </Text>
+            <Text className="text-sm text-foreground/60 truncate">{build.description}</Text>
           )}
         </div>
         <div className="flex items-center gap-4">
@@ -209,9 +212,9 @@ function BuildListItem({ build }: { build: Build }) {
             Template
           </span>
         )}
-        <Button 
-          variant="outline" 
-          size="sm" 
+        <Button
+          variant="outline"
+          size="sm"
           tabIndex={-1}
           className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
         >

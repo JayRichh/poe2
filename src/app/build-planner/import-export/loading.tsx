@@ -2,20 +2,9 @@ import { Container } from "~/components/ui/Container";
 import { Skeleton } from "~/components/ui/Skeleton";
 import { Text } from "~/components/ui/Text";
 
-const EXPORT_OPTIONS = [
-  "Everything",
-  "Passive Tree",
-  "Equipment",
-  "Skills",
-  "Notes",
-] as const;
+const EXPORT_OPTIONS = ["Everything", "Passive Tree", "Equipment", "Skills", "Notes"] as const;
 
-const IMPORT_SOURCES = [
-  "From File",
-  "From Clipboard",
-  "From Code",
-  "From URL",
-] as const;
+const IMPORT_SOURCES = ["From File", "From Clipboard", "From Code", "From URL"] as const;
 
 export default function ImportExportLoading() {
   return (
@@ -26,10 +15,7 @@ export default function ImportExportLoading() {
 
         <div className="space-y-3">
           {EXPORT_OPTIONS.map((_, i) => (
-            <div
-              key={i}
-              className="p-3 rounded-lg border border-border/50 space-y-2"
-            >
+            <div key={i} className="p-3 rounded-lg border border-border/50 space-y-2">
               <Skeleton className="h-5 w-32" />
               <Skeleton className="h-4 w-full" />
             </div>
@@ -55,10 +41,7 @@ export default function ImportExportLoading() {
 
         <div className="space-y-3">
           {IMPORT_SOURCES.map((_, i) => (
-            <div
-              key={i}
-              className="p-3 rounded-lg border border-border/50 space-y-2"
-            >
+            <div key={i} className="p-3 rounded-lg border border-border/50 space-y-2">
               <div className="flex items-center gap-2">
                 <Skeleton className="h-5 w-5" />
                 <Skeleton className="h-5 w-32" />

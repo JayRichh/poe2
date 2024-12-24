@@ -1,7 +1,9 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { useState, useCallback } from "react";
+
+import { useCallback, useState } from "react";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
@@ -25,23 +27,29 @@ const GEM_SLOTS = [
   { name: "Boots", slots: 4 },
 ] as const;
 
-type SkillGroup = typeof SKILL_GROUPS[number]["name"];
+type SkillGroup = (typeof SKILL_GROUPS)[number]["name"];
 type GemSlot = { itemId: string | null; name: string | null };
 
 export default function SkillsPage() {
   const [selectedGroup, setSelectedGroup] = useState<SkillGroup | null>(null);
-  const [selectedSocket, setSelectedSocket] = useState<{item: string; slot: number} | null>(null);
+  const [selectedSocket, setSelectedSocket] = useState<{ item: string; slot: number } | null>(null);
   const [isSearching, setIsSearching] = useState(false);
-  const [gemSlots, setGemSlots] = useState<Record<string, GemSlot[]>>(() => 
-    GEM_SLOTS.reduce((acc, item) => ({
-      ...acc,
-      [item.name]: Array(item.slots).fill({ itemId: null, name: null })
-    }), {})
+  const [gemSlots, setGemSlots] = useState<Record<string, GemSlot[]>>(() =>
+    GEM_SLOTS.reduce(
+      (acc, item) => ({
+        ...acc,
+        [item.name]: Array(item.slots).fill({ itemId: null, name: null }),
+      }),
+      {}
+    )
   );
 
-  const handleSearch = useCallback(debounce((value: string) => {
-    setIsSearching(false);
-  }, 300), []);
+  const handleSearch = useCallback(
+    debounce((value: string) => {
+      setIsSearching(false);
+    }, 300),
+    []
+  );
 
   return (
     <BuildPlannerLayout
@@ -49,24 +57,33 @@ export default function SkillsPage() {
       description="Configure your character's skills and gem setup"
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">Import</Button>
-          <Button variant="outline" size="sm">Export</Button>
-          <Button variant="primary" size="sm">Save</Button>
+          <Button variant="outline" size="sm">
+            Import
+          </Button>
+          <Button variant="outline" size="sm">
+            Export
+          </Button>
+          <Button variant="primary" size="sm">
+            Save
+          </Button>
         </div>
       }
       sidebar={
         <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
             <Text className="font-medium">Skills</Text>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="sm"
               onClick={() => {
                 setGemSlots(
-                  GEM_SLOTS.reduce((acc, item) => ({
-                    ...acc,
-                    [item.name]: Array(item.slots).fill({ itemId: null, name: null })
-                  }), {})
+                  GEM_SLOTS.reduce(
+                    (acc, item) => ({
+                      ...acc,
+                      [item.name]: Array(item.slots).fill({ itemId: null, name: null }),
+                    }),
+                    {}
+                  )
                 );
                 setSelectedSocket(null);
               }}
@@ -91,9 +108,11 @@ export default function SkillsPage() {
                 tabIndex={0}
               >
                 <span>{group.name}</span>
-                <span className={`${
-                  selectedGroup === group.name ? "text-primary" : "text-foreground/40"
-                }`}>
+                <span
+                  className={`${
+                    selectedGroup === group.name ? "text-primary" : "text-foreground/40"
+                  }`}
+                >
                   {group.count}
                 </span>
               </button>
@@ -113,7 +132,7 @@ export default function SkillsPage() {
               }}
               aria-label="Search skills"
             />
-            <Search 
+            <Search
               className={`absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors ${
                 isSearching ? "text-primary" : "text-foreground/40"
               }`}
@@ -123,7 +142,7 @@ export default function SkillsPage() {
           {/* Skill List */}
           <div className="space-y-2">
             <Text className="text-sm text-foreground/60">
-              {selectedGroup 
+              {selectedGroup
                 ? "No skills found in this category"
                 : "Select a category to view available skills"}
             </Text>
@@ -146,18 +165,18 @@ export default function SkillsPage() {
                       selectedSocket?.item === item.name && selectedSocket?.slot === i
                         ? "border-primary bg-primary/5"
                         : socket.itemId
-                        ? "border-solid border-primary/50 hover:bg-primary/5"
-                        : "border-dashed border-border/50 hover:border-primary/50"
+                          ? "border-solid border-primary/50 hover:bg-primary/5"
+                          : "border-dashed border-border/50 hover:border-primary/50"
                     }`}
                     role="button"
                     aria-label={socket.itemId ? `Socket with ${socket.name}` : "Empty socket"}
                     tabIndex={0}
                   >
-                    <Text className={`text-sm ${
-                      socket.itemId 
-                        ? "text-foreground" 
-                        : "text-foreground/40"
-                    }`}>
+                    <Text
+                      className={`text-sm ${
+                        socket.itemId ? "text-foreground" : "text-foreground/40"
+                      }`}
+                    >
                       {socket.name || "Empty Socket"}
                     </Text>
                   </button>
@@ -169,9 +188,11 @@ export default function SkillsPage() {
 
         {/* Skill Configuration */}
         <div className="space-y-6">
-          <div className={`p-4 rounded-lg border transition-colors ${
-            selectedSocket ? "border-primary/50 bg-primary/5" : "border-border/50"
-          }`}>
+          <div
+            className={`p-4 rounded-lg border transition-colors ${
+              selectedSocket ? "border-primary/50 bg-primary/5" : "border-border/50"
+            }`}
+          >
             <Text className="font-medium">Selected Skill</Text>
             <Text className="text-sm text-foreground/60 mt-2">
               {selectedSocket
@@ -183,12 +204,7 @@ export default function SkillsPage() {
           <div className="p-4 rounded-lg border border-border/50 space-y-4">
             <Text className="font-medium">Skill Stats</Text>
             <div className="space-y-2">
-              {[
-                "Cast Time",
-                "Mana Cost",
-                "Critical Strike Chance",
-                "Effectiveness",
-              ].map((stat) => (
+              {["Cast Time", "Mana Cost", "Critical Strike Chance", "Effectiveness"].map((stat) => (
                 <div key={stat} className="flex items-center justify-between">
                   <Text className="text-sm text-foreground/60">{stat}</Text>
                   <Text className="text-sm">-</Text>
@@ -212,17 +228,11 @@ export default function SkillsPage() {
           <div className="p-4 rounded-lg border border-border/50 space-y-4">
             <div className="flex items-center justify-between">
               <Text className="font-medium">Support Gems</Text>
-              <Button 
-                variant="ghost" 
-                size="sm"
-                disabled={!selectedSocket}
-              >
+              <Button variant="ghost" size="sm" disabled={!selectedSocket}>
                 Add Support
               </Button>
             </div>
-            <Text className="text-sm text-foreground/60">
-              No support gems linked to this skill
-            </Text>
+            <Text className="text-sm text-foreground/60">No support gems linked to this skill</Text>
           </div>
         </div>
       </div>

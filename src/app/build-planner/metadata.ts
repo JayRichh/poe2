@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Build Planner - POE2 Tools",
+  title: "POE2 Build Planner - Path of Exile 2 Character Builder & Optimizer",
   description:
-    "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+    "Create, optimize, and share your Path of Exile 2 character builds. Advanced build planner featuring interactive skill tree, equipment loadouts, gem configurations, and detailed stat calculations. Plan your POE2 character progression with our comprehensive toolkit.",
   openGraph: {
-    title: "POE2 Build Planner - Create and Share POE2 Builds",
-    description:
-      "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
-    images: [
-      {
-        url: "/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "POE2 Tools Icon",
-        type: "image/png",
-      },
-    ],
+    type: "website",
+    images: ["/build-planner-bg.jpg"],
   },
   other: {
     "schema:SoftwareApplication": JSON.stringify({
@@ -26,19 +16,45 @@ export const metadata: Metadata = {
       applicationCategory: "GameApplication",
       operatingSystem: "Web Browser",
       description:
-        "Plan, optimize, and share your Path of Exile 2 character builds. Interactive build planner with skill tree, equipment, and stat calculations.",
+        "Create and optimize your Path of Exile 2 character builds with our comprehensive build planning toolkit. Features interactive skill tree, equipment loadouts, and detailed stat calculations.",
+      keywords: [
+        "poe2 build planner",
+        "path of exile 2 character builder",
+        "poe2 skill tree planner",
+        "poe2 character optimizer",
+        "path of exile 2 builds",
+        "poe2 build calculator",
+        "poe2 character planner",
+        "path of exile 2 skill tree",
+        "poe2 gem calculator",
+        "poe2 equipment planner",
+        "poe2 ascendancy planner",
+        "poe2 build guide",
+        "poe2 character progression",
+        "poe2 build sharing",
+        "poe2 build templates",
+      ],
       offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
       },
       featureList: [
-        "Interactive Skill Tree",
-        "Equipment Planning",
-        "Stat Calculations",
-        "Build Sharing",
-        "Build Templates",
-        "Build Versioning",
+        "Interactive Skill Tree Planning",
+        "Equipment & Gem Configuration",
+        "Detailed Stat Calculations",
+        "Build Templates & Sharing",
+        "Character Progression Planning",
+        "Multiple Ascendancy Support",
+        "Build Version History",
+        "DPS & Defense Calculations",
+        "Build Export & Import",
+        "Real-time Stat Updates",
+        "Equipment Comparison Tools",
+        "Gem Socket Planning",
+        "Build Optimization Tips",
+        "Save & Load Builds",
+        "Build Sharing Community",
       ],
     }),
   },

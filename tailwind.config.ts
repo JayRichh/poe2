@@ -212,7 +212,7 @@ const config: Config = {
               borderRadius: "9999px",
               backgroundColor: "hsl(var(--primary))",
               border: "none",
-            transition: "colors 150ms ease-out",
+              transition: "colors 150ms ease-out",
             },
           },
         });

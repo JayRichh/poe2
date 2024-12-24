@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { Button } from "~/components/ui/Button";
+
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+
+import { Button } from "~/components/ui/Button";
 
 const Portal = ({ children }: { children: React.ReactNode }) => {
   const [mounted, setMounted] = useState(false);

@@ -96,15 +96,20 @@ export default function SkillsLoading() {
         {/* Skill Categories */}
         <div className="space-y-2">
           {SKILL_GROUPS.map((group, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={`animate-pulse ${
-                i === 0 ? 'delay-0' :
-                i === 1 ? 'delay-100' :
-                i === 2 ? 'delay-200' :
-                i === 3 ? 'delay-300' :
-                i === 4 ? 'delay-400' :
-                'delay-500'
+                i === 0
+                  ? "delay-0"
+                  : i === 1
+                    ? "delay-100"
+                    : i === 2
+                      ? "delay-200"
+                      : i === 3
+                        ? "delay-300"
+                        : i === 4
+                          ? "delay-400"
+                          : "delay-500"
               }`}
             >
               <Skeleton className="h-9 w-full rounded-lg" />

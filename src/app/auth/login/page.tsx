@@ -1,8 +1,9 @@
 import Link from "next/link";
+
 import { AuthForm } from "~/components/auth/AuthForm";
+import { Alert } from "~/components/ui/Alert";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
-import { Alert } from "~/components/ui/Alert";
 
 export default function LoginPage() {
   return (
@@ -15,7 +16,7 @@ export default function LoginPage() {
           </div>
 
           <Alert variant="info" className="text-sm">
-            POE2 Tools is actively being developed with new features added daily. 
+            POE2 Tools is actively being developed with new features added daily.
             <br></br>Thanks have a great day :&#41;
           </Alert>
 

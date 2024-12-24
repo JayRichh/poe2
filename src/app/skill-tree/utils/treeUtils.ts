@@ -236,8 +236,8 @@ export function searchNodes(
 }
 
 // Clear caches when memory pressure is high
-if (typeof window !== 'undefined') {
-  window.addEventListener('blur', () => {
+if (typeof window !== "undefined") {
+  window.addEventListener("blur", () => {
     regexCache.clear();
     highlightRegexCache.clear();
     searchResultsCache.clear();

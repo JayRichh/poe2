@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Calculator, Layout, Newspaper } from "lucide-react";
+
 import Link from "next/link";
+
 import { Text } from "~/components/ui/Text";
 
 type Feature = {
@@ -24,7 +26,7 @@ const features: Feature[] = [
     title: "Build Planner",
     colors: {
       from: "#E5A732",
-      to: "#B87300"
+      to: "#B87300",
     },
     items: [
       "Plan skill trees",
@@ -40,7 +42,7 @@ const features: Feature[] = [
     title: "DPS Calculator",
     colors: {
       from: "#449E48",
-      to: "#29712D"
+      to: "#29712D",
     },
     items: [
       "Calculate weapon DPS",
@@ -55,14 +57,9 @@ const features: Feature[] = [
     title: "Game Updates",
     colors: {
       from: "#B87839",
-      to: "#7D3E11"
+      to: "#7D3E11",
     },
-    items: [
-      "Latest updates",
-      "Community announcements",
-      "Event schedules",
-      "Marketplace pricing",
-    ],
+    items: ["Latest updates", "Community announcements", "Event schedules", "Marketplace pricing"],
   },
   {
     href: "/skill-tree",
@@ -70,14 +67,9 @@ const features: Feature[] = [
     title: "Skill Tree",
     colors: {
       from: "#8C239E",
-      to: "#5F188A"
+      to: "#5F188A",
     },
-    items: [
-      "Interactive tree viewer",
-      "Path optimization",
-      "Build sharing",
-      "Stat calculations",
-    ],
+    items: ["Interactive tree viewer", "Path optimization", "Build sharing", "Stat calculations"],
     wide: true,
   },
 ];
@@ -100,15 +92,15 @@ export function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 y: -2,
-                transition: { duration: 0.2 }
+                transition: { duration: 0.2 },
               }}
               whileTap={{ scale: 0.98 }}
               style={{
                 background: `linear-gradient(to bottom right, ${feature.colors.from}0D, ${feature.colors.to}0D)`,
                 borderColor: feature.colors.from,
-                borderWidth: "8px"
+                borderWidth: "8px",
               }}
               className="
                 group h-full relative overflow-hidden
@@ -120,17 +112,14 @@ export function FeaturesSection() {
             >
               <div className="relative z-10">
                 <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-8">
-                  <feature.icon 
+                  <feature.icon
                     style={{
-                      color: feature.colors.from
+                      color: feature.colors.from,
                     }}
-                    className="w-10 h-10 text-white opacity-80 group-hover:opacity-100 transition-all duration-200" 
+                    className="w-10 h-10 text-white opacity-80 group-hover:opacity-100 transition-all duration-200"
                   />
                 </div>
-                <Text
-                  variant="h3"
-                  className="text-2xl font-semibold mb-6 text-white"
-                >
+                <Text variant="h3" className="text-2xl font-semibold mb-6 text-white">
                   {feature.title}
                 </Text>
                 <ul className="space-y-3 text-white/80 group-hover:text-white transition-colors">

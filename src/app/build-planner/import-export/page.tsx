@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { FileUp, Clipboard, Code, Link2, AlertCircle, Check } from "lucide-react";
+import { AlertCircle, Check, Clipboard, Code, FileUp, Link2 } from "lucide-react";
+
+import { useCallback, useState } from "react";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
@@ -18,7 +20,12 @@ const EXPORT_OPTIONS = [
 
 const IMPORT_SOURCES = [
   { id: "file", name: "From File", description: "Import from a JSON or POB file", icon: FileUp },
-  { id: "clipboard", name: "From Clipboard", description: "Import from clipboard data", icon: Clipboard },
+  {
+    id: "clipboard",
+    name: "From Clipboard",
+    description: "Import from clipboard data",
+    icon: Clipboard,
+  },
   { id: "code", name: "From Code", description: "Import using a build code", icon: Code },
   { id: "url", name: "From URL", description: "Import from a build URL", icon: Link2 },
 ] as const;
@@ -30,14 +37,16 @@ export default function ImportExportPage() {
   const [isImporting, setIsImporting] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [importData, setImportData] = useState("");
-  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(
+    null
+  );
 
   const handleExport = async () => {
     setIsExporting(true);
     setFeedback(null);
     try {
       // Simulate export
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setFeedback({ type: "success", message: "Build exported successfully" });
     } catch (error) {
       setFeedback({ type: "error", message: "Failed to export build" });
@@ -50,7 +59,7 @@ export default function ImportExportPage() {
     setFeedback(null);
     try {
       // Simulate import
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setFeedback({ type: "success", message: "Build imported successfully" });
     } catch (error) {
       setFeedback({ type: "error", message: "Failed to import build" });
@@ -72,7 +81,7 @@ export default function ImportExportPage() {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       // Handle file
       handleImport();
@@ -109,9 +118,7 @@ export default function ImportExportPage() {
                 />
                 <div className="flex flex-col">
                   <Text className="font-medium">{option.name}</Text>
-                  <Text className="text-sm text-foreground/60">
-                    {option.description}
-                  </Text>
+                  <Text className="text-sm text-foreground/60">{option.description}</Text>
                 </div>
               </label>
             ))}
@@ -121,23 +128,19 @@ export default function ImportExportPage() {
             <div className="p-4 rounded-lg border border-border/50 space-y-4">
               <Text className="font-medium">Export Format</Text>
               <div className="grid grid-cols-2 gap-4">
-                <button 
-                  className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center gap-1"
-                >
+                <button className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center gap-1">
                   <span>JSON</span>
                   <span className="text-xs opacity-80">Export as JSON file</span>
                 </button>
-                <button 
-                  className="px-4 py-2 rounded-lg border border-border/50 text-sm hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center gap-1"
-                >
+                <button className="px-4 py-2 rounded-lg border border-border/50 text-sm hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center gap-1">
                   <span>Path of Building</span>
                   <span className="text-xs opacity-80">Export as POB code</span>
                 </button>
               </div>
             </div>
 
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               className="w-full"
               onClick={handleExport}
               disabled={isExporting}
@@ -174,9 +177,7 @@ export default function ImportExportPage() {
                     <source.icon className="h-5 w-5 text-foreground/60" />
                     <Text className="font-medium">{source.name}</Text>
                   </div>
-                  <Text className="text-sm text-foreground/60 pl-7">
-                    {source.description}
-                  </Text>
+                  <Text className="text-sm text-foreground/60 pl-7">{source.description}</Text>
                 </div>
               </label>
             ))}
@@ -203,19 +204,19 @@ export default function ImportExportPage() {
               >
                 <FileUp className="h-8 w-8 mx-auto mb-2 text-foreground/60" />
                 <Text className="font-medium">Drop File Here</Text>
-                <Text className="text-sm text-foreground/60 mt-1">
-                  or click to select file
-                </Text>
-                <input 
+                <Text className="text-sm text-foreground/60 mt-1">or click to select file</Text>
+                <input
                   id="file-upload"
-                  type="file" 
-                  className="hidden" 
+                  type="file"
+                  className="hidden"
                   onChange={() => handleImport()}
                 />
               </div>
             )}
 
-            {(selectedImport === "clipboard" || selectedImport === "code" || selectedImport === "url") && (
+            {(selectedImport === "clipboard" ||
+              selectedImport === "code" ||
+              selectedImport === "url") && (
               <div className="p-4 rounded-lg border border-border/50 transition-all hover:border-primary/50">
                 {selectedImport === "clipboard" ? (
                   <textarea
@@ -227,7 +228,9 @@ export default function ImportExportPage() {
                 ) : (
                   <Input
                     type={selectedImport === "url" ? "url" : "text"}
-                    placeholder={selectedImport === "url" ? "Enter build URL..." : "Enter build code..."}
+                    placeholder={
+                      selectedImport === "url" ? "Enter build URL..." : "Enter build code..."
+                    }
                     value={importData}
                     onChange={(e) => setImportData(e.target.value)}
                     className="w-full"
@@ -236,8 +239,8 @@ export default function ImportExportPage() {
               </div>
             )}
 
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               className="w-full"
               onClick={handleImport}
               disabled={isImporting}
@@ -247,9 +250,11 @@ export default function ImportExportPage() {
           </div>
 
           {feedback && (
-            <div className={`p-4 rounded-lg flex items-center gap-2 ${
-              feedback.type === "success" ? "bg-emerald-500/10" : "bg-red-500/10"
-            }`}>
+            <div
+              className={`p-4 rounded-lg flex items-center gap-2 ${
+                feedback.type === "success" ? "bg-emerald-500/10" : "bg-red-500/10"
+              }`}
+            >
               {feedback.type === "success" ? (
                 <Check className="h-5 w-5 text-emerald-500" />
               ) : (
@@ -265,8 +270,8 @@ export default function ImportExportPage() {
             <div className="flex items-center gap-2">
               <AlertCircle className="h-5 w-5 text-foreground/60" />
               <Text className="text-sm text-foreground/60">
-                Note: Importing a build will overwrite your current build configuration.
-                Make sure to backup your current build if needed.
+                Note: Importing a build will overwrite your current build configuration. Make sure
+                to backup your current build if needed.
               </Text>
             </div>
           </div>

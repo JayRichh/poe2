@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  distDir: '.next',
-  output: 'standalone',
+  distDir: ".next",
+  output: "standalone",
   images: {
     remotePatterns: [
       {
@@ -18,7 +18,7 @@ const nextConfig = {
         pathname: "**",
       },
     ],
-    formats: ['image/webp'],
+    formats: ["image/webp"],
     minimumCacheTTL: 3600, // 1 hour minimum cache
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
@@ -28,35 +28,35 @@ const nextConfig = {
     optimizeCss: true,
     scrollRestoration: true,
     serverActions: {
-      bodySizeLimit: '2mb',
+      bodySizeLimit: "2mb",
     },
     optimisticClientCache: true,
   },
   async headers() {
     return [
       {
-        source: '/skill-tree.png',
+        source: "/skill-tree.png",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, must-revalidate',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, must-revalidate",
           },
           {
-            key: 'Vary',
-            value: 'Accept',
+            key: "Vary",
+            value: "Accept",
           },
         ],
       },
       {
-        source: '/ascendancies/:path*',
+        source: "/ascendancies/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, must-revalidate',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, must-revalidate",
           },
           {
-            key: 'Vary',
-            value: 'Accept',
+            key: "Vary",
+            value: "Accept",
           },
         ],
       },

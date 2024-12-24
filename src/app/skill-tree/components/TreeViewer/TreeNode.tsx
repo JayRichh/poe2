@@ -2,7 +2,9 @@
 
 import React, { useMemo } from "react";
 import type { CSSProperties } from "react";
+
 import { TreeNodeData } from "./data";
+import { EFFECT_COLORS, NODE_STYLES, getNodeStyle } from "./data";
 
 interface TreeNodeProps {
   node: TreeNodeData;
@@ -15,8 +17,6 @@ interface TreeNodeProps {
   onMouseEnter: (node: TreeNodeData) => void;
   onMouseLeave: (node: TreeNodeData) => void;
 }
-
-import { NODE_STYLES, EFFECT_COLORS, getNodeStyle } from "./data";
 
 const TreeNode = React.memo(function TreeNode({
   node,
@@ -39,9 +39,11 @@ const TreeNode = React.memo(function TreeNode({
     const glowOpacity = isSelected ? 0.8 : isHighlighted ? 0.6 : isPath ? 0.5 : 0.3;
     const backgroundOpacity = isAllocated ? 0.9 : 0.4;
 
-    const colors = isAllocated ? EFFECT_COLORS.allocated :
-                  isHighlighted || (isPath && !isAllocated) ? EFFECT_COLORS.highlighted :
-                  nodeStyles.colors;
+    const colors = isAllocated
+      ? EFFECT_COLORS.allocated
+      : isHighlighted || (isPath && !isAllocated)
+        ? EFFECT_COLORS.highlighted
+        : nodeStyles.colors;
 
     return {
       width: `${size}px`,
@@ -88,16 +90,17 @@ const TreeNode = React.memo(function TreeNode({
       onMouseEnter={() => onMouseEnter(node)}
       onMouseLeave={() => onMouseLeave(node)}
     >
-      <div 
+      <div
         className={`
           rounded-full border-2 relative
           before:absolute before:inset-[-8px] before:rounded-full before:opacity-0
           before:transition-opacity before:duration-200
-          ${(isSelected || isHighlighted || isPath) ? 
-            'before:opacity-100 before:bg-[radial-gradient(circle,var(--glow-color)_0%,transparent_70%)]' : 
-            ''
+          ${
+            isSelected || isHighlighted || isPath
+              ? "before:opacity-100 before:bg-[radial-gradient(circle,var(--glow-color)_0%,transparent_70%)]"
+              : ""
           }
-        `} 
+        `}
         style={nodeStyle}
       >
         {node.type === "keystone" && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown, ChevronRight } from "lucide-react";
+
 import { cn } from "~/utils/cn";
 
 export interface Section {
@@ -41,9 +42,9 @@ export function NotesSections({
             <div className="flex items-center gap-2">
               {section.lastSaved && (
                 <span className="text-xs text-foreground/40 group-hover:text-foreground/60">
-                  {new Date(section.lastSaved).toLocaleTimeString([], { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
+                  {new Date(section.lastSaved).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
                   })}
                 </span>
               )}
@@ -54,7 +55,7 @@ export function NotesSections({
               )}
             </div>
           </button>
-          
+
           {section.isExpanded && (
             <div className="pb-2">
               <button

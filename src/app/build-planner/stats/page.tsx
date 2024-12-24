@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
@@ -65,20 +66,21 @@ export default function StatsPage() {
 
   const handleAllocation = (stat: string, change: number) => {
     if (change > 0 && availablePoints <= 0) return;
-    
-    setAllocation(prev => ({
+
+    setAllocation((prev) => ({
       ...prev,
       [stat]: {
         value: prev[stat].value + change * 5,
-        points: prev[stat].points + change
-      }
+        points: prev[stat].points + change,
+      },
     }));
     setIsCalculating(true);
     // Simulate calculation delay
     setTimeout(() => setIsCalculating(false), 300);
   };
 
-  const availablePoints = 123 - Object.values(allocation).reduce((sum, stat) => sum + stat.points, 0);
+  const availablePoints =
+    123 - Object.values(allocation).reduce((sum, stat) => sum + stat.points, 0);
 
   return (
     <BuildPlannerLayout
@@ -86,8 +88,8 @@ export default function StatsPage() {
       description="View and analyze your character's statistics"
       actions={
         <div className="flex items-center gap-2">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="sm"
             onClick={() => {
               setAllocation({
@@ -101,7 +103,9 @@ export default function StatsPage() {
           >
             Reset
           </Button>
-          <Button variant="primary" size="sm">Save</Button>
+          <Button variant="primary" size="sm">
+            Save
+          </Button>
         </div>
       }
       sidebar={
@@ -133,7 +137,7 @@ export default function StatsPage() {
                   </div>
                 </div>
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
-                  <div 
+                  <div
                     className="h-full bg-primary transition-all duration-300"
                     style={{ width: `${(data.value / 500) * 100}%` }}
                     role="progressbar"
@@ -151,9 +155,11 @@ export default function StatsPage() {
           <div className="space-y-4">
             <Text className="font-medium">Available Points</Text>
             <div className="grid grid-cols-2 gap-4">
-              <div className={`p-3 rounded-lg border transition-colors ${
-                availablePoints > 0 ? "border-primary/50 bg-primary/5" : "border-border/50"
-              }`}>
+              <div
+                className={`p-3 rounded-lg border transition-colors ${
+                  availablePoints > 0 ? "border-primary/50 bg-primary/5" : "border-border/50"
+                }`}
+              >
                 <Text className="text-sm text-foreground/60">Passive Points</Text>
                 <Text className="text-2xl font-bold">{availablePoints}</Text>
               </div>
@@ -170,18 +176,23 @@ export default function StatsPage() {
         {/* Main Stats */}
         <div className="space-y-6">
           {STAT_GROUPS.map((group) => (
-            <div key={group.name} className={`p-4 rounded-lg border space-y-4 transition-colors ${
-              isCalculating ? "border-primary/50 bg-primary/5" : "border-border/50"
-            }`}>
+            <div
+              key={group.name}
+              className={`p-4 rounded-lg border space-y-4 transition-colors ${
+                isCalculating ? "border-primary/50 bg-primary/5" : "border-border/50"
+              }`}
+            >
               <Text className="font-medium">{group.name}</Text>
               <div className="space-y-2">
                 {group.stats.map((stat) => (
                   <div key={stat.name} className="flex items-center justify-between">
                     <Text className="text-sm text-foreground/60">{stat.name}</Text>
                     <div className="flex items-center gap-2">
-                      <Text className={`text-sm transition-opacity duration-200 ${
-                        isCalculating ? "opacity-50" : "opacity-100"
-                      }`}>
+                      <Text
+                        className={`text-sm transition-opacity duration-200 ${
+                          isCalculating ? "opacity-50" : "opacity-100"
+                        }`}
+                      >
                         {stat.value}
                       </Text>
                       {stat.bonus > 0 && (
@@ -237,31 +248,39 @@ export default function StatsPage() {
                 </div>
               </div>
 
-              <div className={`p-4 rounded-lg transition-colors ${
-                isCalculating ? "bg-primary/5" : "bg-muted/30"
-              }`}>
+              <div
+                className={`p-4 rounded-lg transition-colors ${
+                  isCalculating ? "bg-primary/5" : "bg-muted/30"
+                }`}
+              >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Text className="text-sm text-foreground/60">Total DPS</Text>
-                    <Text className={`text-lg font-bold transition-opacity duration-200 ${
-                      isCalculating ? "opacity-50" : "opacity-100"
-                    }`}>
+                    <Text
+                      className={`text-lg font-bold transition-opacity duration-200 ${
+                        isCalculating ? "opacity-50" : "opacity-100"
+                      }`}
+                    >
                       0
                     </Text>
                   </div>
                   <div className="flex items-center justify-between">
                     <Text className="text-sm text-foreground/60">Physical DPS</Text>
-                    <Text className={`text-sm transition-opacity duration-200 ${
-                      isCalculating ? "opacity-50" : "opacity-100"
-                    }`}>
+                    <Text
+                      className={`text-sm transition-opacity duration-200 ${
+                        isCalculating ? "opacity-50" : "opacity-100"
+                      }`}
+                    >
                       0
                     </Text>
                   </div>
                   <div className="flex items-center justify-between">
                     <Text className="text-sm text-foreground/60">Elemental DPS</Text>
-                    <Text className={`text-sm transition-opacity duration-200 ${
-                      isCalculating ? "opacity-50" : "opacity-100"
-                    }`}>
+                    <Text
+                      className={`text-sm transition-opacity duration-200 ${
+                        isCalculating ? "opacity-50" : "opacity-100"
+                      }`}
+                    >
                       0
                     </Text>
                   </div>
@@ -275,14 +294,16 @@ export default function StatsPage() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Text className="text-sm text-foreground/60">Life</Text>
-                <Text className={`text-sm transition-opacity duration-200 ${
-                  isCalculating ? "opacity-50" : "opacity-100"
-                }`}>
+                <Text
+                  className={`text-sm transition-opacity duration-200 ${
+                    isCalculating ? "opacity-50" : "opacity-100"
+                  }`}
+                >
                   0
                 </Text>
               </div>
               <div className="h-2 rounded-full bg-muted overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-red-500 transition-all duration-300 w-0"
                   role="progressbar"
                   aria-valuenow={0}
@@ -292,14 +313,16 @@ export default function StatsPage() {
               </div>
               <div className="flex items-center justify-between">
                 <Text className="text-sm text-foreground/60">Energy Shield</Text>
-                <Text className={`text-sm transition-opacity duration-200 ${
-                  isCalculating ? "opacity-50" : "opacity-100"
-                }`}>
+                <Text
+                  className={`text-sm transition-opacity duration-200 ${
+                    isCalculating ? "opacity-50" : "opacity-100"
+                  }`}
+                >
                   0
                 </Text>
               </div>
               <div className="h-2 rounded-full bg-muted overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-blue-500 transition-all duration-300 w-0"
                   role="progressbar"
                   aria-valuenow={0}
@@ -316,7 +339,7 @@ export default function StatsPage() {
               <div className="space-y-2">
                 <Text className="text-sm text-foreground/60">Physical Damage Reduction</Text>
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
-                  <div 
+                  <div
                     className="h-full bg-primary transition-all duration-300 w-0"
                     role="progressbar"
                     aria-valuenow={0}
@@ -324,16 +347,18 @@ export default function StatsPage() {
                     aria-valuemax={100}
                   />
                 </div>
-                <Text className={`text-sm text-right transition-opacity duration-200 ${
-                  isCalculating ? "opacity-50" : "opacity-100"
-                }`}>
+                <Text
+                  className={`text-sm text-right transition-opacity duration-200 ${
+                    isCalculating ? "opacity-50" : "opacity-100"
+                  }`}
+                >
                   0%
                 </Text>
               </div>
               <div className="space-y-2">
                 <Text className="text-sm text-foreground/60">Evade Chance</Text>
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
-                  <div 
+                  <div
                     className="h-full bg-primary transition-all duration-300 w-0"
                     role="progressbar"
                     aria-valuenow={0}
@@ -341,9 +366,11 @@ export default function StatsPage() {
                     aria-valuemax={100}
                   />
                 </div>
-                <Text className={`text-sm text-right transition-opacity duration-200 ${
-                  isCalculating ? "opacity-50" : "opacity-100"
-                }`}>
+                <Text
+                  className={`text-sm text-right transition-opacity duration-200 ${
+                    isCalculating ? "opacity-50" : "opacity-100"
+                  }`}
+                >
                   0%
                 </Text>
               </div>
