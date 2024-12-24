@@ -116,16 +116,16 @@ export function FeaturesSection() {
                     style={{
                       color: feature.colors.from,
                     }}
-                    className="w-10 h-10 text-white opacity-80 group-hover:opacity-100 transition-all duration-200"
+                    className="w-10 h-10 text-gray-900 dark:text-white opacity-80 group-hover:opacity-100 transition-all duration-200"
                   />
                 </div>
-                <Text variant="h3" className="text-2xl font-semibold mb-6 text-white">
+                <Text variant="h3" className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
                   {feature.title}
                 </Text>
-                <ul className="space-y-3 text-white/80 group-hover:text-white transition-colors">
+                <ul className="space-y-3 text-gray-700 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                   {feature.items.map((item, i) => (
                     <li key={i} className="flex gap-2 items-center">
-                      <span className="w-2 h-2 rounded-full bg-white/60" />
+                      <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-white/60" />
                       {item}
                     </li>
                   ))}

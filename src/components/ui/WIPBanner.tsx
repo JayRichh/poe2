@@ -49,7 +49,7 @@ export function WIPBanner() {
           "shadow-sm"
         )}
       >
-        <span className="tracking-wider text-black/90">BETA</span>
+        <span className="tracking-wider text-foreground">BETA</span>
       </motion.div>
     </div>
   );

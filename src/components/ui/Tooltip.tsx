@@ -89,7 +89,7 @@ export function Tooltip({
           <div
             className={cn(
               "relative",
-              "bg-gray-900 text-white dark:bg-white dark:text-gray-900",
+              "bg-background text-foreground",
               "border border-border/50 rounded-lg shadow-lg",
               "px-3 py-1.5 text-sm whitespace-nowrap"
             )}
@@ -99,7 +99,7 @@ export function Tooltip({
               className={cn(
                 "absolute w-2 h-2",
                 "border border-border/50",
-                "bg-gray-900 dark:bg-white rotate-45",
+                "bg-background rotate-45",
                 arrowPositions[position]
               )}
             />

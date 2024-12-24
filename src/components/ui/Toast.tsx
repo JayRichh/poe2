@@ -16,10 +16,10 @@ interface ToastProps {
 }
 
 const toastStyles: Record<ToastType, string> = {
-  success: "bg-green-500/90 text-white",
-  error: "bg-red-500/90 text-white",
-  info: "bg-blue-500/90 text-white",
-  warning: "bg-yellow-500/90 text-white",
+  success: "bg-success text-success-foreground",
+  error: "bg-error text-error-foreground",
+  info: "bg-primary text-primary-foreground",
+  warning: "bg-warning text-warning-foreground",
 };
 
 const toastIcons: Record<ToastType, string> = {

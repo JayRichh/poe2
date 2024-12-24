@@ -51,15 +51,15 @@ const ascendancyFeatures: SystemFeature[] = [
 
 export function GameSystemsSection() {
   return (
-    <div className="relative">
+    <div className="relative py-16">
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
       {/* Content */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mechanics Section */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -75,12 +75,12 @@ export function GameSystemsSection() {
             >
               Game Mechanics
             </Text>
-            <Text color="secondary" className="text-lg leading-relaxed">
-              Master Path of Exile 2's deep gameplay systems and mechanics
+            <Text color="secondary" className="text-lg leading-relaxed max-w-xl">
+              Master Path of Exile 2's deep gameplay systems and mechanics to create powerful builds and dominate the endgame.
             </Text>
           </div>
 
-          <div className="space-y-6">
+          <div className="grid gap-4">
             {mechanicsFeatures.map((feature, i) => (
               <motion.div
                 key={i}
@@ -88,13 +88,13 @@ export function GameSystemsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group flex gap-4 p-4 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border transition-all"
+                className="group flex gap-4 p-6 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border hover:shadow-lg transition-all duration-300"
               >
-                <div className="shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <feature.icon className="w-7 h-7 text-primary" />
                 </div>
-                <div className="space-y-1">
-                  <Text className="font-semibold group-hover:text-primary transition-colors">
+                <div className="space-y-2">
+                  <Text className="text-lg font-semibold group-hover:text-primary transition-colors">
                     {feature.title}
                   </Text>
                   <Text color="secondary" className="text-sm">
@@ -105,18 +105,20 @@ export function GameSystemsSection() {
             ))}
           </div>
 
-          <Link href="/mechanics">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
-            >
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:text-foreground transition-colors">
-                Explore Mechanics
-              </span>
-              <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
-            </Button>
-          </Link>
+          <div>
+            <Link href="/mechanics">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
+              >
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:text-foreground transition-colors">
+                  Explore Mechanics
+                </span>
+                <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
+              </Button>
+            </Link>
+          </div>
         </motion.div>
 
         {/* Ascendancy Section */}
@@ -134,8 +136,8 @@ export function GameSystemsSection() {
             >
               Ascendancy Classes
             </Text>
-            <Text color="secondary" className="text-lg leading-relaxed">
-              Discover unique class specializations and master their powers
+            <Text color="secondary" className="text-lg leading-relaxed max-w-xl">
+              Discover and master 12 unique class specializations, each with their own powerful abilities and playstyles.
             </Text>
           </div>
 
@@ -170,7 +172,7 @@ export function GameSystemsSection() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="grid gap-4">
             {ascendancyFeatures.map((feature, i) => (
               <motion.div
                 key={i}
@@ -178,13 +180,13 @@ export function GameSystemsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group flex gap-4 p-4 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border transition-all"
+                className="group flex gap-4 p-6 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border hover:shadow-lg transition-all duration-300"
               >
-                <div className="shrink-0 w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-secondary" />
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors duration-300">
+                  <feature.icon className="w-7 h-7 text-secondary" />
                 </div>
-                <div className="space-y-1">
-                  <Text className="font-semibold group-hover:text-secondary transition-colors">
+                <div className="space-y-2">
+                  <Text className="text-lg font-semibold group-hover:text-secondary transition-colors">
                     {feature.title}
                   </Text>
                   <Text color="secondary" className="text-sm">
@@ -195,18 +197,20 @@ export function GameSystemsSection() {
             ))}
           </div>
 
-          <Link href="/ascendancies">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
-            >
-              <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:text-foreground transition-colors">
-                View Classes
-              </span>
-              <ArrowUpRight className="w-4 h-4 group-hover:text-secondary transition-colors" />
-            </Button>
-          </Link>
+          <div>
+            <Link href="/ascendancies">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
+              >
+                <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:text-foreground transition-colors">
+                  View Classes
+                </span>
+                <ArrowUpRight className="w-4 h-4 group-hover:text-secondary transition-colors" />
+              </Button>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>

@@ -178,7 +178,7 @@ export function Footer() {
                   href="https://ko-fi.com/C0C217U6Z6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/5 backdrop-blur-sm border border-accent/20 hover:border-accent/40 text-white/70 hover:text-white/90 transition-all hover:shadow-[0_0_15px_rgba(245,158,11,0.1)] group"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/5 backdrop-blur-sm border border-accent/20 hover:border-accent/40 text-foreground/70 hover:text-foreground/90 transition-all hover:shadow-accent/10 group"
                 >
                   <span className="coffee-icon">
                     <Coffee className="w-5 h-5 text-accent/70 group-hover:text-accent/90 transition-colors" />
@@ -189,7 +189,7 @@ export function Footer() {
                   href="https://github.com/jayrichh/poe2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 hover:bg-background/80 text-white/70 hover:text-white/90 transition-all group"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 hover:bg-background/80 text-foreground/70 hover:text-foreground/90 transition-all group"
                 >
                   <Github className="w-5 h-5" />
                   View on GitHub
