@@ -1,5 +1,6 @@
 import { MOCK_NEWS, MOCK_PATCH_NOTES } from "~/data/mock-news";
 import type { NewsItem, PatchNote } from "~/types/news";
+import { generateSlug } from "~/utils/slug";
 
 export class NewsService {
   static async getLatestNews(
@@ -38,22 +39,34 @@ export class NewsService {
     return filteredNews;
   }
 
-  static async getNewsById(id: string): Promise<NewsItem | null> {
+  static async getNewsById(idOrSlug: string): Promise<NewsItem | null> {
     try {
-      // First try to find in regular news
-      const newsItem = MOCK_NEWS.find((news) => news.id === id);
+      // First try to find by slug in regular news
+      let newsItem = MOCK_NEWS.find((news) => news.slug === idOrSlug);
+      
+      // If not found by slug, try to find by ID (legacy support)
+      if (!newsItem) {
+        newsItem = MOCK_NEWS.find((news) => news.id === idOrSlug);
+      }
+      
       if (newsItem) return newsItem;
 
       // If not found in regular news, try patch notes
       const patchNotes = await this.getPatchNotes();
       const patchNote = patchNotes.find((note) => {
-        // Normalize the ID from the URL or version number
-        const normalizedId = this.normalizePatchNoteId(note);
-        return normalizedId === id;
+        // Try both ID and slug match
+        const id = this.extractPatchNoteId(note);
+        const slug = this.generatePatchNoteSlug(note);
+        return id === idOrSlug || slug === idOrSlug;
       });
 
       if (patchNote) {
-        return this.convertPatchNoteToNewsItem(patchNote);
+        const newsItem = this.convertPatchNoteToNewsItem(patchNote);
+        // If accessed by ID, ensure we're using the slug
+        if (idOrSlug === this.extractPatchNoteId(patchNote)) {
+          newsItem.redirectToSlug = true;
+        }
+        return newsItem;
       }
 
       return null;
@@ -63,24 +76,50 @@ export class NewsService {
     }
   }
 
-  private static normalizePatchNoteId(note: PatchNote): string {
-    // If URL exists, use its last segment
-    if (note.url) {
-      const urlSegments = note.url.split("/");
-      const lastSegment = urlSegments[urlSegments.length - 1];
-      if (lastSegment) return lastSegment;
+  private static ensureNewsSlug(news: NewsItem): NewsItem {
+    if (!news.slug) {
+      news.slug = generateSlug(news.title);
     }
+    return news;
+  }
 
-    // Otherwise normalize the version number
-    return note.version
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
+  private static generatePatchNoteSlug(note: PatchNote): string {
+    const title = `Patch Notes ${note.version}`;
+    return generateSlug(title);
+  }
+
+  private static ensurePatchNoteSlug(note: PatchNote): string {
+    return this.generatePatchNoteSlug(note);
+  }
+
+  private static extractPatchNoteId(note: PatchNote): string {
+    if (note.url) {
+      // Extract numeric ID from URL (e.g., "view-thread/3650268" -> "3650268")
+      const match = note.url.match(/\/(\d+)(?:\/|$)/);
+      if (match) return match[1];
+    }
+    return generateSlug(note.version);
+  }
+
+  static getNewsUrl(news: NewsItem): string {
+    const ensuredNews = this.ensureNewsSlug(news);
+    if (ensuredNews.type === "patch") {
+      return `/news/patch-notes/${ensuredNews.slug}`;
+    }
+    return `/news/${ensuredNews.slug}`;
+  }
+
+  static getPatchNoteUrl(note: PatchNote): string {
+    return `/news/patch-notes/${this.ensurePatchNoteSlug(note)}`;
   }
 
   private static convertPatchNoteToNewsItem(note: PatchNote): NewsItem {
+    const id = this.extractPatchNoteId(note);
+    const slug = this.generatePatchNoteSlug(note);
+    
     return {
-      id: this.normalizePatchNoteId(note),
+      id,
+      slug,
       title: `Version ${note.version}`,
       date: note.date,
       description: note.content?.[0] || "",
@@ -137,11 +176,12 @@ export class NewsService {
     ]);
 
     const patchNewsItems = patchNotes.map((note) => {
-      // Use URL ID if available, otherwise use version as ID
-      const id = note.url?.split("/").pop() || note.version.replace(/\s+/g, "-").toLowerCase();
+      const id = this.extractPatchNoteId(note);
+      const slug = this.generatePatchNoteSlug(note);
 
       return {
         id,
+        slug,
         title: `Version ${note.version}`,
         date: note.date,
         description: `Patch ${note.version} - ${note.sections?.[0]?.changes[0] || note.content?.[0] || ""}`,

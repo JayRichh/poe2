@@ -7,11 +7,10 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Text } from "~/components/ui/Text";
 import { Tooltip } from "~/components/ui/Tooltip";
 import { cn } from "~/utils/cn";
-import { guidesBySection } from "~/lib/guides/data";
-import { sectionTitles } from "~/lib/shared/types";
+import { mechanicsWithMeta } from "~/lib/mechanics/data";
 import type { ContentIcon } from "~/lib/shared/types";
 
-interface GuideSidebarProps {
+interface MechanicsSidebarProps {
   collapsed?: boolean;
 }
 
@@ -30,10 +29,9 @@ const IconMap: Record<ContentIcon, React.ComponentType<{ className?: string }>> 
   Map,
 };
 
-export function GuideSidebar({ collapsed }: GuideSidebarProps) {
+export function MechanicsSidebar({ collapsed }: MechanicsSidebarProps) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("category");
+  const currentSlug = pathname.split("/").pop();
 
   const NavLink = ({ href, icon: Icon, label, isActive }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string; isActive: boolean }) => {
     const linkContent = (
@@ -73,37 +71,34 @@ export function GuideSidebar({ collapsed }: GuideSidebarProps) {
     <div className={cn("p-2", collapsed && "w-[60px]")}>
       <div className="space-y-1">
         <NavLink
-          href="/guides"
-          icon={Book}
-          label="All Guides"
-          isActive={!currentCategory}
+          href="/mechanics"
+          icon={Zap}
+          label="All Mechanics"
+          isActive={pathname === "/mechanics"}
         />
 
-        {/* Render sections */}
-        {Object.entries(guidesBySection).map(([sectionKey, guides]) => (
-          <div key={sectionKey} className="mt-6">
-            {!collapsed && (
-              <Text className="px-3 py-2 text-xs font-medium text-foreground/50 uppercase tracking-wider">
-                {sectionTitles[sectionKey as keyof typeof sectionTitles]}
-              </Text>
-            )}
-            <div className="space-y-1 mt-2">
-              {guides.map((guide) => {
-                const isActive = currentCategory === guide.id;
-                const Icon = IconMap[guide.icon] || Book;
-                return (
-                  <NavLink
-                    key={guide.id}
-                    href={`/guides?category=${guide.id}`}
-                    icon={Icon}
-                    label={guide.title}
-                    isActive={isActive}
-                  />
-                );
-              })}
-            </div>
+        <div className="mt-6">
+          {!collapsed && (
+            <Text className="px-3 py-2 text-xs font-medium text-foreground/50 uppercase tracking-wider">
+              Game Mechanics
+            </Text>
+          )}
+          <div className="space-y-1 mt-2">
+            {mechanicsWithMeta.map((mechanic) => {
+              const isActive = currentSlug === mechanic.id;
+              const Icon = IconMap[mechanic.icon] || Zap;
+              return (
+                <NavLink
+                  key={mechanic.id}
+                  href={`/mechanics/${mechanic.id}`}
+                  icon={Icon}
+                  label={mechanic.title}
+                  isActive={isActive}
+                />
+              );
+            })}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

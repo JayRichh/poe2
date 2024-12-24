@@ -38,7 +38,7 @@ const features: Feature[] = [
 
 export function SkillTreeSection() {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-16 min-h-[600px]">
+    <div className="flex flex-col lg:flex-row items-center gap-16 min-h-[600px] py-32 pt-12">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}

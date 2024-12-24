@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Book, Box, Coins, Crosshair, Map, Shield, Sword, User } from "lucide-react";
+import { Activity, ArrowUp, Book, Box, Coins, Crosshair, Map, Shield, Sword, User, Zap } from "lucide-react";
 
 import React from "react";
 
@@ -10,18 +10,18 @@ import { Text } from "~/components/ui/Text";
 
 import { cn } from "~/utils/cn";
 
-import type { GuideIcon } from "~/lib/guides/data";
+import type { ContentIcon } from "~/lib/shared/types";
 
 interface GuidePreviewCardProps {
   title: string;
   description: string;
-  icon: GuideIcon;
+  icon: ContentIcon;
   href: string;
   featured?: boolean;
 }
 
 // Icon map
-const IconMap: Record<GuideIcon, React.ComponentType<{ className?: string }>> = {
+const IconMap: Record<ContentIcon, React.ComponentType<{ className?: string }>> = {
   Book,
   Coins,
   Sword,
@@ -31,6 +31,8 @@ const IconMap: Record<GuideIcon, React.ComponentType<{ className?: string }>> = 
   Crosshair,
   ArrowUp,
   Map,
+  Zap,
+  Activity,
 };
 
 export function GuidePreviewCard({

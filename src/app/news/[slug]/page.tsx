@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
@@ -12,27 +12,40 @@ import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
 
 interface PageProps {
-  params: Promise<{ id: string }> | undefined;
-  searchParams: Promise<{ category?: string }> | undefined;
+  params: Promise<{ slug: string }>;
 }
 
-export default async function NewsItemPage({ params, searchParams }: PageProps) {
-  if (!params || !searchParams) notFound();
-
-  // Await params and searchParams before using
-  const resolvedParams = await params;
-  const resolvedSearchParams = await searchParams;
-
-  const id = resolvedParams.id;
-  const category = resolvedSearchParams.category;
-
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
-    const news = await NewsService.getNewsById(id);
-    if (!news) notFound();
+    const { slug } = await params;
+    const news = await NewsService.getNewsById(slug);
+    if (!news) return {};
 
-    // If category is provided in URL, validate it matches the news item
-    if (category && news.category?.toLowerCase() !== category.toLowerCase()) {
-      notFound();
+    return {
+      title: news.title,
+      description: news.description,
+      openGraph: {
+        title: news.title,
+        description: news.description,
+        type: 'article',
+        publishedTime: news.publishedAt || news.date,
+        modifiedTime: news.publishedAt || news.date,
+      },
+    };
+  } catch {
+    return {};
+  }
+}
+
+export default async function NewsItemPage({ params }: PageProps) {
+  try {
+    const { slug } = await params;
+    const news = await NewsService.getNewsById(slug);
+    if (!news) notFound();
+    
+    // Redirect patch notes to their dedicated route
+    if (news.type === 'patch') {
+      return redirect(`/news/patch-notes/${news.slug || news.id}`);
     }
 
     const timeAgo = (date: string) => {
@@ -72,8 +85,12 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
                     {timeAgo(news.publishedAt)}
                   </div>
                 )}
-                <span className="text-foreground/40">•</span>
-                {news.source && <span>{news.source}</span>}
+                {news.source && (
+                  <>
+                    <span className="text-foreground/40">•</span>
+                    <span>{news.source}</span>
+                  </>
+                )}
               </div>
 
               <div className="space-y-6">
@@ -86,23 +103,7 @@ export default async function NewsItemPage({ params, searchParams }: PageProps) 
                   </Text>
                 )}
 
-                {/* Patch Notes Content */}
-                {news.type === "patch" && Array.isArray(news.content) && (
-                  <div className="mt-8 space-y-6">
-                    <div className="prose prose-invert max-w-none">
-                      <ul className="space-y-3 list-disc list-inside">
-                        {news.content.map((change, i) => (
-                          <li key={i} className="leading-relaxed text-foreground/80">
-                            {change}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-
-                {/* Regular News Content */}
-                {news.type !== "patch" && news.content && !Array.isArray(news.content) && (
+                {news.content && !Array.isArray(news.content) && (
                   <div className="mt-8 prose prose-invert max-w-none">{news.content}</div>
                 )}
 

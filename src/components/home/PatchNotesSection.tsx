@@ -152,7 +152,7 @@ export function PatchNotesSection() {
   ];
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -3,13 +3,21 @@ import { Metadata, ResolvingMetadata } from "next";
 import { generateDynamicMetadata } from "~/utils/metadata";
 
 export async function generateMetadata(
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> | undefined },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  if (!params) {
+    return {
+      title: "Build Not Found",
+      description: "The requested build could not be found",
+    };
+  }
+
   try {
+    const { id } = await params;
     // TODO: Replace with actual build service call when implemented
     const build = {
-      id: params.id,
+      id,
       name: "Example Build",
       description: "A detailed Path of Exile 2 character build configuration.",
       author: "POE2 Tools User",
@@ -22,7 +30,7 @@ export async function generateMetadata(
       likes: 50,
     };
 
-    return generateDynamicMetadata({ params }, parent, {
+    return generateDynamicMetadata({ params: { id } }, parent, {
       title: `${build.name} (${build.class}) - POE2 Build`,
       description: `Level ${build.level} ${build.class} build. ${build.description}`,
       path: `/build-planner/${build.id}`,

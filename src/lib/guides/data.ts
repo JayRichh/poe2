@@ -1,102 +1,13 @@
-export type GuideCategory =
-  | "gameplay"
-  | "trading"
-  | "boss-fights"
-  | "cruel-mode"
-  | "character-building"
-  | "equipment"
-  | "combat"
-  | "progression"
-  | "mapping";
+import type { ContentCategory, ContentIcon, BaseContent, ContentWithMeta, SectionKey } from "~/lib/shared/types";
 
-export type GuideIcon =
-  | "Book"
-  | "Coins"
-  | "Sword"
-  | "Shield"
-  | "User"
-  | "Box"
-  | "Crosshair"
-  | "ArrowUp"
-  | "Map";
-
-export interface Guide {
-  title: string;
-  description: string;
-  sections: {
-    title: string;
-    tips: string[];
-  }[];
-}
-
-export interface GuideWithMeta extends Guide {
-  id: GuideCategory;
-  icon: GuideIcon;
-}
-
-export const guides: Record<GuideCategory, Guide> = {
-  "character-building": {
-    title: "Character Building",
-    description: "Essential information about building and developing your character",
-    sections: [
-      {
-        title: "Defense Mechanics",
-        tips: [
-          "Health nodes are mostly replaced by strength attribute nodes",
-          "1 strength now gives 2 maximum life (4x more than POE1)",
-          "Choose strength for attribute nodes when traveling the tree",
-          "Use The Hooded One to respec individual attribute nodes in town",
-          "Slows apply to action speed and provide significant defensive layer",
-          "Slows are 70% effective on rare mobs and 50% on bosses",
-        ],
-      },
-      {
-        title: "Ascendancy Guide",
-        tips: [
-          "First ascendancy comes from Act 2 Trial of the Sekhemas",
-          "Second ascendancy from Act 3 The Temple of Chaos",
-          "Monster level 38 trial items don't count for second ascendancy",
-          "Ascendancy choices cannot be changed after selection",
-          "Blood Mage: Avoid Sanguimancy node early without proper setup",
-          "Blood Mage Sanguimancy can be refunded at The Hooded One if needed",
-        ],
-      },
-    ],
-  },
-  equipment: {
-    title: "Equipment & Crafting",
-    description: "Guide to gear progression and crafting mechanics",
-    sections: [
-      {
-        title: "Gear Sockets & Runes",
-        tips: [
-          "Gloves/Boots/Helmets/Body armours/Weapons can have rune sockets",
-          "Runes provide powerful stats like 12% elemental res or 25 max life",
-          "Use Artificer's orbs to add sockets to items",
-          "Salvage quality gear for armourers scraps",
-          "Salvage socketed gear for artificier's shards (10 for an orb)",
-          "First guaranteed 4-link from Orok Campfire chest in Act 3",
-        ],
-      },
-      {
-        title: "Gear Progression",
-        tips: [
-          "Check vendor inventories regularly for +gems gear",
-          "Look for blue items with good stats to augment/regal",
-          "Use empty rune sockets as search criteria when trading",
-          "Consider level and attribute requirements when buying gear",
-          "Save currency early game for trading rather than crafting",
-        ],
-      },
-    ],
-  },
+export const guides: Record<ContentCategory, BaseContent> = {
   gameplay: {
     title: "Gameplay Tips",
     description: "Essential gameplay tips and tricks for new POE2 players",
     sections: [
       {
         title: "Keyboard Shortcuts",
-        tips: [
+        content: [
           "CRTL clicking on map in waypoint view forces the map to reset right away",
           "CRTL clicking items for fast selling/moving to stash in trade windows",
           "Double click portal icon on party member portrait to fast teleport",
@@ -110,79 +21,115 @@ export const guides: Record<GuideCategory, Guide> = {
         ],
       },
     ],
+    relatedContent: [
+      {
+        title: "Character Stats",
+        description: "Learn about core character statistics and mechanics",
+        href: "/mechanics/character-stats",
+        type: "mechanic"
+      }
+    ]
   },
   trading: {
     title: "Trading Tips",
-    description: "Essential trading information for POE2 players",
+    description: "Essential trading information and strategies for POE2 players",
     sections: [
       {
         title: "Currency & Trading Basics",
-        tips: [
-          "Save Exalted Orbs (EX) during campaign - they're valuable for trading",
-          "Use official POE2 trade site at pathofexile.com/trade2",
-          "Search for items with pseudo total res and maximum life",
-          "Click contact button on trade site to auto-whisper sellers in-game",
-          "If a seller doesn't respond, move on to other listings",
-          "Buy a premium stash tab to list items for sale",
-          "Set premium tab items to sell for Exalted Orbs (main currency)",
-          "List all decent looking rares - you'll be surprised what sells",
+        content: [
+          "Save Exalted Orbs (EX) during campaign - they're the primary trading currency",
+          "Use official POE2 trade site at pathofexile.com/trade2 for non-stackable items",
+          "Use Currency Exchange Market through Alva for stackable currency trading",
+          "Buy premium stash tabs to list items - required for selling",
+          "Set up a proper loot filter to identify valuable drops efficiently",
+          "Don't ignore 'small' currency - they add up significantly over time",
+          "Learn to price check using both trade site and currency exchange",
+          "Use the contact button on trade site for automatic whisper formatting",
         ],
       },
       {
-        title: "Smart Trading",
-        tips: [
-          "Use trade site filters for level and attribute requirements",
-          "Consider empty rune sockets when buying gear for customization",
-          "Buy perfect gear instead of gambling with currency crafting",
-          "Check trade site regularly for upgrades during progression",
-          "Focus on resistance and life stats early game",
+        title: "Smart Trading Strategies",
+        content: [
+          "Use pseudo total resistance and maximum life searches for efficient pricing",
+          "Consider level and attribute requirements when buying progression gear",
+          "Look for empty rune sockets as valuable customization opportunities",
+          "Don't waste currency crafting when you can buy perfect gear",
+          "Focus on resistance and life stats for early game progression",
+          "Check vendor inventories regularly for valuable base items",
+          "Use dump tabs with fixed prices for efficient bulk selling",
+          "Research market rates before raising prices on frequently whispered items",
         ],
       },
     ],
+    relatedContent: [
+      {
+        title: "Economy System",
+        description: "Deep dive into POE2's economy and currency mechanics",
+        href: "/mechanics/economy",
+        type: "mechanic"
+      }
+    ]
   },
-  "boss-fights": {
-    title: "Boss Fight Mechanics",
-    description: "Understanding and mastering boss fight patterns",
+  "character-building": {
+    title: "Character Building",
+    description: "Essential information about building and developing your character",
     sections: [
       {
-        title: "Core Mechanics",
-        tips: [
-          "Look for safe spots where no damage is dealt during fights",
-          "Prioritize destroying minions/adds when they appear",
-          "Learn timing between boss animations and actual attacks",
-          "Sometimes moving is better than dodging for certain attacks",
-          "Get boots with movement speed to make boss fights easier",
-          "Use level 2 support hinder on DoT skills for boss slows",
+        title: "Defense Mechanics",
+        content: [
+          "Health nodes are mostly replaced by strength attribute nodes",
+          "1 strength now gives 2 maximum life (4x more than POE1)",
+          "Choose strength for attribute nodes when traveling the tree",
+          "Use The Hooded One to respec individual attribute nodes in town",
+          "Slows apply to action speed and provide significant defensive layer",
+          "Slows are 70% effective on rare mobs and 50% on bosses",
         ],
       },
       {
-        title: "Boss Strategies",
-        tips: [
-          "Learn boss patterns through practice (Dark Souls approach)",
-          "Improve your build with better gear and support gems",
-          "Consider buying weapon upgrades to double your damage",
-          "Overlevel by farming zones for easier progression",
-          "Complete side quests later when you're stronger",
-          "Don't rush ascendancy trials if undergeared",
+        title: "Ascendancy Guide",
+        content: [
+          "First ascendancy comes from Act 2 Trial of the Sekhemas",
+          "Second ascendancy from Act 3 The Temple of Chaos",
+          "Monster level 38 trial items don't count for second ascendancy",
+          "Ascendancy choices cannot be changed after selection",
+          "Blood Mage: Avoid Sanguimancy node early without proper setup",
+          "Blood Mage Sanguimancy can be refunded at The Hooded One if needed",
         ],
       },
     ],
+    relatedContent: [
+      {
+        title: "Character Stats",
+        description: "Understanding core character statistics",
+        href: "/mechanics/character-stats",
+        type: "mechanic"
+      }
+    ]
   },
-  "cruel-mode": {
-    title: "Cruel Mode Guide",
-    description: "Important information about Cruel difficulty",
+  equipment: {
+    title: "Equipment & Crafting",
+    description: "Guide to gear progression and crafting mechanics",
     sections: [
       {
-        title: "Difficulty Changes",
-        tips: [
-          "Cruel mode unlocks after completing Acts 1-3",
-          "-10% elemental resistance per completed act (-60% total)",
-          "Complete side quests for +20% resistance bonus",
-          "Ascendency quests in Acts 2-3 are currently bugged",
-          "Focus on gear with multiple resistances to counter penalties",
+        title: "Gear Sockets & Runes",
+        content: [
+          "Gloves/Boots/Helmets/Body armours/Weapons can have rune sockets",
+          "Runes provide powerful stats like 12% elemental res or 25 max life",
+          "Use Artificer's orbs to add sockets to items",
+          "Salvage quality gear for armourers scraps",
+          "Salvage socketed gear for artificier's shards (10 for an orb)",
+          "First guaranteed 4-link from Orok Campfire chest in Act 3",
         ],
       },
     ],
+    relatedContent: [
+      {
+        title: "Economy Guide",
+        description: "Learn about currency and crafting materials",
+        href: "/mechanics/economy",
+        type: "mechanic"
+      }
+    ]
   },
   combat: {
     title: "Combat Mechanics",
@@ -190,7 +137,7 @@ export const guides: Record<GuideCategory, Guide> = {
     sections: [
       {
         title: "Skill Mechanics",
-        tips: [
+        content: [
           "Some melee skills allow direction changes while casting",
           "Hold skill button instead of clicking for directional control",
           "Use level 2 support hinder on DoT abilities for boss slows",
@@ -199,17 +146,46 @@ export const guides: Record<GuideCategory, Guide> = {
           "Consider swapping gems between mapping and bossing",
         ],
       },
+    ],
+    relatedContent: [
       {
-        title: "Combat Tips",
-        tips: [
-          "Learn enemy attack patterns and animations",
-          "Use movement skills for both offense and defense",
-          "Position carefully to maximize skill effectiveness",
-          "Combine slows with other defensive layers",
-          "Adapt your combat style based on enemy types",
+        title: "Damage Types",
+        description: "Learn about different damage types and their interactions",
+        href: "/mechanics/damage-types",
+        type: "mechanic"
+      },
+      {
+        title: "Status Effects",
+        description: "Understanding status effects and ailments",
+        href: "/mechanics/status-effects",
+        type: "mechanic"
+      }
+    ]
+  },
+  "boss-fights": {
+    title: "Boss Fight Mechanics",
+    description: "Understanding and mastering boss fight patterns",
+    sections: [
+      {
+        title: "Core Mechanics",
+        content: [
+          "Look for safe spots where no damage is dealt during fights",
+          "Prioritize destroying minions/adds when they appear",
+          "Learn timing between boss animations and actual attacks",
+          "Sometimes moving is better than dodging for certain attacks",
+          "Get boots with movement speed to make boss fights easier",
+          "Use level 2 support hinder on DoT skills for boss slows",
         ],
       },
     ],
+    relatedContent: [
+      {
+        title: "Combat Mechanics",
+        description: "Master core combat mechanics",
+        href: "/mechanics/combat",
+        type: "mechanic"
+      }
+    ]
   },
   progression: {
     title: "Character Progression",
@@ -217,7 +193,7 @@ export const guides: Record<GuideCategory, Guide> = {
     sections: [
       {
         title: "Leveling Strategy",
-        tips: [
+        content: [
           "Don't rush side quests - return when stronger if needed",
           "Overlevel zones for smoother progression",
           "Focus on core defensive stats early game",
@@ -225,17 +201,15 @@ export const guides: Record<GuideCategory, Guide> = {
           "Complete resistance-boosting side quests before Cruel mode",
         ],
       },
-      {
-        title: "Build Development",
-        tips: [
-          "Plan your ascendancy choices carefully",
-          "Balance offense and defense while leveling",
-          "Keep gear updated through vendor checks and trading",
-          "Use the trade site to find key upgrades",
-          "Consider temporary gear setups while progressing",
-        ],
-      },
     ],
+    relatedContent: [
+      {
+        title: "Character Stats",
+        description: "Understanding character statistics and scaling",
+        href: "/mechanics/character-stats",
+        type: "mechanic"
+      }
+    ]
   },
   mapping: {
     title: "Mapping Guide",
@@ -243,7 +217,7 @@ export const guides: Record<GuideCategory, Guide> = {
     sections: [
       {
         title: "Map Management",
-        tips: [
+        content: [
           "Save T16 maps for +2 waystones (corrupted + irradiated)",
           "Level 20 gems drop at area level 82+",
           "Running blue T15 maps is fine for efficiency",
@@ -251,28 +225,71 @@ export const guides: Record<GuideCategory, Guide> = {
           "Run Citadels with no negative mods for safety",
         ],
       },
-      {
-        title: "Efficiency Tips",
-        tips: [
-          "Make Tower buffs overlap in areas with multiple watchtowers",
-          "Focus on maps with 2+ mechanics (Breach, Expedition)",
-          "Always run Blink for movement speed and survival",
-          "Consider using 60 spirit amulet/body for Blink",
-          "Swap gems for mapping vs bossing as needed",
-        ],
-      },
     ],
+    relatedContent: [
+      {
+        title: "Economy Guide",
+        description: "Learn about map investment and returns",
+        href: "/mechanics/economy",
+        type: "mechanic"
+      }
+    ]
   },
+  // Add stubs for other required categories
+  "damage-types": {
+    title: "Damage Types",
+    description: "Damage type mechanics",
+    sections: []
+  },
+  "status-effects": {
+    title: "Status Effects",
+    description: "Status effect mechanics",
+    sections: []
+  },
+  "character-stats": {
+    title: "Character Stats",
+    description: "Character stat mechanics",
+    sections: []
+  },
+  economy: {
+    title: "Economy",
+    description: "Economy mechanics",
+    sections: []
+  }
 };
 
-export const guidesWithMeta: GuideWithMeta[] = [
-  { ...guides.gameplay, id: "gameplay", icon: "Book" },
-  { ...guides["character-building"], id: "character-building", icon: "User" },
-  { ...guides.equipment, id: "equipment", icon: "Box" },
-  { ...guides.combat, id: "combat", icon: "Crosshair" },
-  { ...guides.progression, id: "progression", icon: "ArrowUp" },
-  { ...guides.trading, id: "trading", icon: "Coins" },
-  { ...guides["boss-fights"], id: "boss-fights", icon: "Sword" },
-  { ...guides["cruel-mode"], id: "cruel-mode", icon: "Shield" },
-  { ...guides.mapping, id: "mapping", icon: "Map" },
-];
+const guideIconMap: Record<ContentCategory, ContentIcon> = {
+  gameplay: "Book",
+  trading: "Coins",
+  "boss-fights": "Sword",
+  "character-building": "User",
+  equipment: "Box",
+  combat: "Crosshair",
+  progression: "ArrowUp",
+  mapping: "Map",
+  "damage-types": "Zap",
+  "status-effects": "Activity",
+  "character-stats": "User",
+  economy: "Coins"
+};
+
+export const guidesWithMeta: ContentWithMeta[] = Object.entries(guides).map(([id, guide]) => ({
+  ...guide,
+  id: id as ContentCategory,
+  icon: guideIconMap[id as ContentCategory]
+}));
+
+// Organize guides by section
+export const guidesBySection: Record<SectionKey, ContentWithMeta[]> = {
+  getting_started: guidesWithMeta.filter((g) => ["gameplay", "character-building"].includes(g.id)),
+  combat_equipment: guidesWithMeta.filter((g) =>
+    ["combat", "equipment", "boss-fights"].includes(g.id)
+  ),
+  progression_economy: guidesWithMeta.filter((g) =>
+    ["progression", "trading", "mapping"].includes(g.id)
+  ),
+  game_mechanics: guidesWithMeta.filter((g) =>
+    ["damage-types", "status-effects", "character-stats", "economy"].includes(g.id)
+  ),
+  additional: [],
+};

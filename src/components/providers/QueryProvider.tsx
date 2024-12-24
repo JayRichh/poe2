@@ -1,44 +1,28 @@
 "use client";
 
-import { HydrationBoundary, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-import { type ReactNode, useState } from "react";
-
-// Create a client
-const getQueryClient = () =>
-  new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-        gcTime: Infinity,
-        refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        refetchOnReconnect: false,
-        retry: 3,
-      },
-    },
-  });
+import { useState, type ReactNode } from "react";
 
 export function QueryProvider({ children }: { children: ReactNode }) {
-  const [queryClient] = useState(getQueryClient);
-
-  // Configure specific query key defaults
-  queryClient.setQueryDefaults(["skill-tree", "data"], {
-    staleTime: Infinity,
-    gcTime: Infinity,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    retry: 3,
-  });
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 1000 * 60 * 5, // 5 minutes
+            gcTime: 1000 * 60 * 10, // 10 minutes
+            refetchOnWindowFocus: false,
+            retry: false,
+          },
+        },
+      })
+  );
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HydrationBoundary>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </HydrationBoundary>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

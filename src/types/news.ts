@@ -1,6 +1,7 @@
 export interface NewsItem {
   id: string;
   title: string;
+  slug: string; // Required for consistent URL handling
   description?: string;
   category?: string;
   publishedAt?: string;
@@ -9,6 +10,7 @@ export interface NewsItem {
   date?: string;
   content?: string | string[];
   type?: "news" | "patch" | "announcement";
+  redirectToSlug?: boolean; // Used internally for handling ID-based URLs
 }
 
 export interface PatchNoteSection {

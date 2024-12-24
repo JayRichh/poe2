@@ -7,9 +7,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import { cn } from "~/utils/cn";
-
+import { NewsService } from "~/services/news-service";
 import { NewsItem } from "~/types/news";
-
 import { Text } from "../ui/Text";
 
 interface NewsCardProps {
@@ -39,7 +38,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
   if (variant === "featured") {
     return (
       <Link
-        href={isExternalUrl ? (news.url ?? "#") : `/news/${news.id}`}
+        href={isExternalUrl ? (news.url ?? "#") : NewsService.getNewsUrl(news)}
         target={isExternalUrl ? "_blank" : undefined}
         rel={isExternalUrl ? "noopener noreferrer" : undefined}
         className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
@@ -102,7 +101,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
 
   return (
     <Link
-      href={isExternalUrl ? (news.url ?? "#") : `/news/${news.id}`}
+      href={isExternalUrl ? (news.url ?? "#") : NewsService.getNewsUrl(news)}
       target={isExternalUrl ? "_blank" : undefined}
       rel={isExternalUrl ? "noopener noreferrer" : undefined}
       className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"

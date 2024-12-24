@@ -21,15 +21,15 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col gap-6"
+      className="flex flex-col gap-10 min-h-[90vh] justify-center"
     >
-      <div className="relative mx-auto pointer-events-none select-none">
+      <div className="relative mx-auto pointer-events-none select-none -mt-24">
         <Image
           src="/poe2logonobg.png"
           alt="POE2 Logo"
           className="
-            scale-150
-            -mb-[120px]
+            scale-[1.75]
+            -mb-[140px]
             pr-[6px]
             filter
             dark:invert
@@ -48,7 +48,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       <Text
         variant="body-lg"
         color="secondary"
-        className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-2"
+        className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-6"
       >
         Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize
         gameplay.
@@ -103,7 +103,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.9 }}
         transition={{ delay: 1, duration: 1 }}
-        className="flex flex-col items-center gap-2 mt-20 md:mt-32"
+        className="flex flex-col items-center gap-2 mt-28 md:mt-40"
       >
         <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
           <ScrollIcon className="w-6 h-6 text-secondary" />

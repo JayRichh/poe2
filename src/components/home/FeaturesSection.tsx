@@ -76,7 +76,7 @@ const features: Feature[] = [
 
 export function FeaturesSection() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 pt-24 pb-12">
       {features.map((feature, index) => {
         const isFirstRow = index < 2;
         const gridClasses = feature.wide

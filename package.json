@@ -29,6 +29,7 @@
     "@uiw/react-md-editor": "^4.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.4",
     "critters": "^0.0.23",
     "framer-motion": "^11.11.17",
     "i": "^0.3.7",

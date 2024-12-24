@@ -9,6 +9,7 @@ import Link from "next/link";
 import { cn } from "~/utils/cn";
 
 import type { PatchNote, PatchNoteHotfix, PatchNoteSection } from "~/types/news";
+import { NewsService } from "~/services/news-service";
 
 import { Text } from "../ui/Text";
 
@@ -84,7 +85,7 @@ export function PatchNotes({ patchNotes }: PatchNotesProps) {
           className={cn("space-y-6", index !== 0 && "pt-8 border-t border-border/30")}
         >
           <Link
-            href={`/news/${note.url?.split("/").pop() || note.version}`}
+            href={NewsService.getPatchNoteUrl(note)}
             className="group block"
           >
             <div className="flex items-center justify-between">

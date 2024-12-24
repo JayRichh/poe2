@@ -9,7 +9,15 @@ export const MOCK_PATCH_NOTES: PatchNote[] = [
     lastBumped: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
     sections: [
       {
-        title: "Changes",
+        title: "Critical Strike Changes",
+        changes: [
+          "Base Critical Strike chance increased from 5% to 7%",
+          "Critical Strike Multiplier now scales more effectively with level",
+          "Fixed a bug where Critical Strike calculations were incorrect for certain skills"
+        ],
+      },
+      {
+        title: "Skill Changes",
         changes: [
           "Added new skill gems",
           "Balance adjustments to existing skills",
@@ -26,7 +34,15 @@ export const MOCK_PATCH_NOTES: PatchNote[] = [
     lastBumped: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
     sections: [
       {
-        title: "Changes",
+        title: "Combat Updates",
+        changes: [
+          "Improved Critical Strike feedback visuals",
+          "Added new Critical Strike sound effects",
+          "BaseCritical modifiers now show correctly in tooltips"
+        ],
+      },
+      {
+        title: "General Changes",
         changes: ["Bug fixes", "UI improvements", "New character customization options"],
       },
     ],
@@ -37,6 +53,7 @@ export const MOCK_NEWS: NewsItem[] = [
   {
     id: "poe2-beta-weekend-announced",
     title: "Path of Exile 2 Beta Weekend Announced",
+    slug: "path-of-exile-2-beta-weekend-announced",
     description:
       "Join us for an exclusive beta test of Path of Exile 2 this weekend. Test new features and provide feedback.",
     category: "Event",
@@ -47,6 +64,7 @@ export const MOCK_NEWS: NewsItem[] = [
   {
     id: "latest-development-update",
     title: "Latest Development Update",
+    slug: "latest-development-update",
     description:
       "Check out the latest changes and improvements coming to Path of Exile 2, including new skills and balance changes.",
     category: "Update",
@@ -57,6 +75,7 @@ export const MOCK_NEWS: NewsItem[] = [
   {
     id: "community-build-competition",
     title: "Community Event: Build Competition",
+    slug: "community-event-build-competition",
     description:
       "Showcase your best builds and compete for prizes in our community build competition.",
     category: "Community",
