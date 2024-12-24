@@ -5,6 +5,7 @@ import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 import { FeaturesSection } from "~/components/home/FeaturesSection";
+import { GameSystemsSection } from "~/components/home/GameSystemsSection";
 import { HeroSection } from "~/components/home/HeroSection";
 import { PatchNotesSection } from "~/components/home/PatchNotesSection";
 import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
@@ -38,6 +39,12 @@ export default function HomePage() {
       <section className="w-full py-32 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <FeaturesSection />
+        </Container>
+      </section>
+
+      <section className="w-full py-32">
+        <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
+          <GameSystemsSection />
         </Container>
       </section>
 
