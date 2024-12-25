@@ -68,6 +68,7 @@ export interface Database {
           name: string;
           description?: string;
           visibility: VisibilityType;
+          slug: string;
           poe_class?: string;
           level?: number;
           notes?: string;
@@ -84,6 +85,7 @@ export interface Database {
           name: string;
           description?: string;
           visibility?: VisibilityType;
+          slug?: string;
           poe_class?: string;
           level?: number;
           notes?: string;
@@ -100,6 +102,7 @@ export interface Database {
           name?: string;
           description?: string;
           visibility?: VisibilityType;
+          slug?: string;
           poe_class?: string;
           level?: number;
           notes?: string;

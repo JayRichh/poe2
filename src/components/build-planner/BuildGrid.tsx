@@ -133,7 +133,7 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 function BuildCard({ build }: { build: Build }) {
   return (
     <Link
-      href={`/build-planner/${build.id}`}
+      href={`/build-planner/${build.slug || build.id}`}
       className="group block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
       tabIndex={0}
       role="article"
@@ -182,7 +182,7 @@ function BuildCard({ build }: { build: Build }) {
 function BuildListItem({ build }: { build: Build }) {
   return (
     <Link
-      href={`/build-planner/${build.id}`}
+      href={`/build-planner/${build.slug || build.id}`}
       className="group flex items-center justify-between gap-4 p-3 rounded-lg border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
       tabIndex={0}
       role="article"

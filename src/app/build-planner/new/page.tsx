@@ -63,7 +63,7 @@ export default function NewBuildPage() {
 
     try {
       const newBuild = await createBuild(build as BuildInsert);
-      router.push(`/build-planner/${newBuild.id}`);
+      router.push(`/build-planner/${newBuild.slug || newBuild.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create build");
       setIsLoading(false);

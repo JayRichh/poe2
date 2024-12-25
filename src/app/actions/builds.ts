@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 import { getServerClient } from "~/app/_actions/supabase";
+import { generateSlug } from "~/utils/slug";
 import type { Database } from "~/lib/supabase/types";
 
 type Build = Database["public"]["Tables"]["builds"]["Row"];
@@ -24,9 +25,13 @@ export async function createBuild(build: BuildInsert) {
   } = await supabase.auth.getUser();
   if (!user) throw new Error("Must be logged in to create builds");
 
+  // Generate a unique slug from the build name
+  const baseSlug = generateSlug(build.name);
+  const uniqueSlug = `${baseSlug}-${Math.random().toString(36).substring(2, 10)}`;
+
   const { data, error } = await supabase
     .from("builds")
-    .insert([{ ...build, user_id: user.id }])
+    .insert([{ ...build, user_id: user.id, slug: uniqueSlug }])
     .select()
     .single();
 
@@ -51,16 +56,23 @@ export async function updateBuild(id: string, updates: BuildUpdate) {
     throw new Error("Build not found or unauthorized");
   }
 
+  // Generate new slug if name is being updated
+  let updatedFields = { ...updates };
+  if (updates.name) {
+    const baseSlug = generateSlug(updates.name);
+    updatedFields.slug = `${baseSlug}-${Math.random().toString(36).substring(2, 10)}`;
+  }
+
   const { data, error } = await supabase
     .from("builds")
-    .update(updates)
+    .update(updatedFields)
     .eq("id", id)
     .select()
     .single();
 
   if (error) throw error;
 
-  revalidatePath(`/build-planner/${id}`);
+  revalidatePath(`/build-planner/${data.slug || id}`);
   return data;
 }
 
@@ -86,36 +98,72 @@ export async function deleteBuild(id: string) {
   revalidatePath("/build-planner");
 }
 
-export async function getBuild(id: string): Promise<BuildWithRelations> {
+export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
   const supabase = await getServerClient();
 
-  const { data, error } = await supabase
-    .from("builds")
-    .select(
-      `
-      *,
-      equipment (*),
-      skill_gems (*),
-      build_configs (*)
-    `
-    )
-    .eq("id", id)
-    .single();
+  try {
+    const query = `
+      id,
+      name,
+      description,
+      visibility,
+      slug,
+      poe_class,
+      level,
+      notes,
+      is_template,
+      parent_build_id,
+      version,
+      tags,
+      created_at,
+      updated_at,
+      user_id,
+      equipment:equipment(*),
+      skill_gems:skill_gems(*),
+      build_configs:build_configs(*)
+    `;
 
-  if (error) throw error;
-  if (!data) throw new Error("Build not found");
+    // Try to find by slug first
+    let { data, error } = await supabase
+      .from("builds")
+      .select(query)
+      .eq("slug", idOrSlug)
+      .single();
 
-  // Check visibility
-  if (data.visibility !== "public") {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (!user || data.user_id !== user.id) {
-      throw new Error("Build not found or unauthorized");
+    // If not found by slug, try by id
+    if (!data && !error) {
+      ({ data, error } = await supabase
+        .from("builds")
+        .select(query)
+        .eq("id", idOrSlug)
+        .single());
     }
-  }
 
-  return data;
+    if (error) {
+      if (error.code === "42703") {
+        console.error("Column not found error. Migration may not be applied:", error);
+        throw new Error("Database schema error. Please contact support.");
+      }
+      console.error("Database error:", error);
+      throw new Error("Failed to fetch build");
+    }
+    if (!data) throw new Error("Build not found");
+
+    // Check visibility
+    if (data.visibility !== "public") {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user || data.user_id !== user.id) {
+        throw new Error("Build not found or unauthorized");
+      }
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error in getBuild:", error);
+    throw error;
+  }
 }
 
 export async function getBuilds({
@@ -127,20 +175,45 @@ export async function getBuilds({
 } = {}): Promise<Build[]> {
   const supabase = await getServerClient();
 
-  let query = supabase.from("builds").select().order("created_at", { ascending: false });
+  try {
+    const query = `
+      id,
+      name,
+      description,
+      visibility,
+      slug,
+      poe_class,
+      level,
+      notes,
+      is_template,
+      parent_build_id,
+      version,
+      tags,
+      created_at,
+      updated_at,
+      user_id
+    `;
 
-  if (userId) {
-    query = query.eq("user_id", userId);
+    let { data, error } = await supabase
+      .from("builds")
+      .select(query)
+      .eq(userId ? "user_id" : "visibility", userId || visibility)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      if (error.code === "42703") {
+        console.error("Column not found error. Migration may not be applied:", error);
+        throw new Error("Database schema error. Please contact support.");
+      }
+      console.error("Database error:", error);
+      throw new Error("Failed to fetch builds");
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error("Error in getBuilds:", error);
+    throw error;
   }
-
-  if (visibility) {
-    query = query.eq("visibility", visibility);
-  }
-
-  const { data, error } = await query;
-
-  if (error) throw error;
-  return data;
 }
 
 export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {}) {
@@ -154,6 +227,10 @@ export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {})
   // Get original build with relations
   const original = await getBuild(id);
 
+  // Generate a unique slug for the cloned build
+  const baseSlug = generateSlug(updates.name || `${original.name} (Clone)`);
+  const uniqueSlug = `${baseSlug}-${Math.random().toString(36).substring(2, 10)}`;
+
   // Create new build
   const { data: newBuild, error: buildError } = await supabase
     .from("builds")
@@ -165,6 +242,7 @@ export async function cloneBuild(id: string, updates: Partial<BuildInsert> = {})
         user_id: user.id,
         created_at: undefined,
         updated_at: undefined,
+        slug: uniqueSlug,
       },
     ])
     .select()

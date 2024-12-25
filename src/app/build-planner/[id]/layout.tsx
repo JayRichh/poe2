@@ -13,18 +13,19 @@ import type { Database } from "~/lib/supabase/types";
 type Build = Database["public"]["Tables"]["builds"]["Row"];
 
 interface BuildNavProps {
-  buildId: string;
+  build: Build;
   currentPath: string;
 }
 
-function BuildNav({ buildId, currentPath }: BuildNavProps) {
+function BuildNav({ build, currentPath }: BuildNavProps) {
+  const pathBase = build.slug || build.id;
   const links = [
-    { href: `/build-planner/${buildId}`, label: "Overview" },
-    { href: `/build-planner/${buildId}/equipment`, label: "Equipment" },
-    { href: `/build-planner/${buildId}/skills`, label: "Skills" },
-    { href: `/build-planner/${buildId}/stats`, label: "Stats" },
-    { href: `/build-planner/${buildId}/notes`, label: "Notes" },
-    { href: `/build-planner/${buildId}/import-export`, label: "Import/Export" },
+    { href: `/build-planner/${pathBase}`, label: "Overview" },
+    { href: `/build-planner/${pathBase}/equipment`, label: "Equipment" },
+    { href: `/build-planner/${pathBase}/skills`, label: "Skills" },
+    { href: `/build-planner/${pathBase}/stats`, label: "Stats" },
+    { href: `/build-planner/${pathBase}/notes`, label: "Notes" },
+    { href: `/build-planner/${pathBase}/import-export`, label: "Import/Export" },
   ];
 
   return (
@@ -70,8 +71,13 @@ interface BuildPlannerLayoutProps {
   params: Promise<{ id: string }>;
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function BuildPlannerLayout({ children, params }: BuildPlannerLayoutProps) {
   const resolvedParams = await params;
+  const build = await getBuild(resolvedParams.id);
+  if (!build) notFound();
+
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
       <Container className="max-w-7xl py-8 space-y-8">
@@ -79,7 +85,7 @@ export default async function BuildPlannerLayout({ children, params }: BuildPlan
           <BuildHeader buildId={resolvedParams.id} />
         </Suspense>
 
-        <BuildNav buildId={resolvedParams.id} currentPath={`/build-planner/${resolvedParams.id}`} />
+        <BuildNav build={build} currentPath={`/build-planner/${build.slug || build.id}`} />
 
         <div className="pt-4 border-t border-border/50">{children}</div>
       </Container>
