@@ -2,10 +2,8 @@
 
 import { MotionValue, motion } from "framer-motion";
 import { ArrowRight, ChevronsDown, ScrollIcon } from "lucide-react";
-
 import Image from "next/image";
 import Link from "next/link";
-
 import { Text } from "~/components/ui/Text";
 
 interface HeroSectionProps {
@@ -21,15 +19,15 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col gap-10 min-h-[90vh] justify-center"
+      className="flex flex-col gap-10 min-h-[90vh] justify-center overflow-hidden"
     >
       <div className="relative mx-auto pointer-events-none select-none -mt-24">
         <Image
           src="/poe2logonobg.png"
           alt="POE2 Logo"
           className="
-            scale-[1.75]
-            -mb-[140px]
+            scale-100 sm:scale-[1.35]
+            -mb-[80px] sm:-mb-[120px]
             pr-[6px]
             filter
             dark:invert
@@ -39,6 +37,8 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
             dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]
             [mask-image:radial-gradient(circle,white_70%,transparent_100%)]
             [mask-size:cover]
+            w-[85vw] max-w-[400px] sm:max-w-[600px]
+            h-auto
           "
           height="200"
           width="400"
@@ -48,16 +48,16 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       <Text
         variant="body-lg"
         color="secondary"
-        className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-6"
+        className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-6 px-4 sm:px-0"
       >
         Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize
         gameplay.
       </Text>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-        <Link href="/build-planner">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-full px-4 sm:px-0">
+        <Link href="/build-planner" className="w-full sm:w-auto">
           <motion.button
             whileHover={{ scale: 1.03, opacity: 0.95 }}
-            className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg flex items-center justify-center gap-2 rounded-lg transition-all duration-300 
            bg-primary text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 
            focus:ring-offset-2 focus:ring-primary"
           >
@@ -76,10 +76,10 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
           </motion.button>
         </Link>
 
-        <Link href="/dps-calc">
+        <Link href="/dps-calc" className="w-full sm:w-auto">
           <motion.button
             whileHover={{ scale: 1.03, opacity: 0.95 }}
-            className="px-8 py-4 text-lg flex items-center gap-2 rounded-lg transition-all duration-300 
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg flex items-center justify-center gap-2 rounded-lg transition-all duration-300 
            bg-secondary text-secondary-foreground hover:bg-secondary/90 focus:outline-none focus:ring-2 
            focus:ring-offset-2 focus:ring-secondary"
           >

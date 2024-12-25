@@ -1,16 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Calendar, Clock, Users, Video } from "lucide-react";
-
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
-
 import { PatchNotesCarousel } from "~/components/news/PatchNotesCarousel";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-
 import { NewsService } from "~/services/news-service";
 import type { PatchNote } from "~/types/news";
 
@@ -40,13 +35,7 @@ export function PatchNotesSection() {
   if (!patchNotes.length && !loading) {
     return (
       <div className="space-y-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-4 flex flex-col pb-12"
-        >
+        <div className="text-center space-y-4 flex flex-col pb-12">
           <Text
             variant="h1"
             className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
@@ -56,7 +45,7 @@ export function PatchNotesSection() {
           <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
             No patch notes available at the moment. Check back soon for updates.
           </Text>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -64,13 +53,7 @@ export function PatchNotesSection() {
   if (loading) {
     return (
       <div className="space-y-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-4 flex flex-col pb-12"
-        >
+        <div className="text-center space-y-4 flex flex-col pb-12">
           <Text
             variant="h1"
             className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
@@ -80,7 +63,7 @@ export function PatchNotesSection() {
           <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
             Stay informed about the latest Path of Exile 2 patch notes and updates.
           </Text>
-        </motion.div>
+        </div>
         <div className="w-full h-[400px] animate-pulse bg-card/50 rounded-xl" />
       </div>
     );
@@ -153,13 +136,7 @@ export function PatchNotesSection() {
 
   return (
     <div className="space-y-16 py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center space-y-4 flex flex-col pb-12"
-      >
+      <div className="text-center space-y-4 flex flex-col pb-12">
         <Text
           variant="h1"
           className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
@@ -169,28 +146,16 @@ export function PatchNotesSection() {
         <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
           Stay informed about the latest Path of Exile 2 patch notes and updates.
         </Text>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[450px]">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="lg:col-span-2 h-full"
-        >
+        <div className="lg:col-span-2 h-full">
           <div className="h-full">
             <PatchNotesCarousel patchNotes={patchNotes} />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="h-full"
-        >
+        <div className="h-full">
           <div className="bg-card/95 backdrop-blur-sm border border-border/50 rounded-xl p-6 space-y-6 shadow-lg h-full">
             <div className="flex items-center justify-between">
               <Text
@@ -207,14 +172,7 @@ export function PatchNotesSection() {
                 const tagStyle = getTagStyle(update.type);
 
                 return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="group"
-                  >
+                  <div key={index} className="group">
                     <Link href="#" className="block">
                       <div className="relative p-4 rounded-lg bg-background/50 hover:bg-background/80 transition-all border border-border/50 hover:border-border group-hover:shadow-md">
                         <div className="flex items-start gap-3">
@@ -245,12 +203,12 @@ export function PatchNotesSection() {
                         </div>
                       </div>
                     </Link>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="pt-8 flex justify-center">

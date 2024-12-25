@@ -54,20 +54,14 @@ export function GameSystemsSection() {
     <div className="relative py-16">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[50vw] max-w-96 h-[50vw] max-h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[50vw] max-w-96 h-[50vw] max-h-96 bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
       {/* Content */}
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mechanics Section */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8">
           <div className="space-y-4">
             <Text
               variant="h2"
@@ -82,12 +76,8 @@ export function GameSystemsSection() {
 
           <div className="grid gap-4">
             {mechanicsFeatures.map((feature, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="group flex gap-4 p-6 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border hover:shadow-lg transition-all duration-300"
               >
                 <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
@@ -101,7 +91,7 @@ export function GameSystemsSection() {
                     {feature.description}
                   </Text>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -119,16 +109,10 @@ export function GameSystemsSection() {
               </Button>
             </Link>
           </div>
-        </motion.div>
+        </div>
 
         {/* Ascendancy Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8">
           <div className="space-y-4">
             <Text
               variant="h2"
@@ -152,12 +136,8 @@ export function GameSystemsSection() {
                 "infernalist",
                 "titan",
               ].map((className, i) => (
-                <motion.div
+                <div
                   key={className}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="aspect-square relative rounded-lg overflow-hidden group"
                 >
                   <Image
@@ -167,19 +147,15 @@ export function GameSystemsSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
           <div className="grid gap-4">
             {ascendancyFeatures.map((feature, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="group flex gap-4 p-6 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border hover:shadow-lg transition-all duration-300"
               >
                 <div className="shrink-0 w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors duration-300">
@@ -193,7 +169,7 @@ export function GameSystemsSection() {
                     {feature.description}
                   </Text>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -211,7 +187,7 @@ export function GameSystemsSection() {
               </Button>
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

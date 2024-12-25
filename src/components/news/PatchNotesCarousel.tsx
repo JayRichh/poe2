@@ -18,7 +18,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? '100%' : '-100%',
       opacity: 0,
     }),
     center: {
@@ -28,7 +28,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? '100%' : '-100%',
       opacity: 0,
     }),
   };
@@ -89,14 +89,14 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
                 paginate(-1);
               }
             }}
-            className="absolute inset-0 p-8 lg:p-10 flex flex-col"
+            className="absolute inset-0 p-4 sm:p-6 lg:p-10 flex flex-col"
           >
             <div className="flex-1 flex flex-col">
-              <div className="space-y-4 pb-6">
+              <div className="space-y-3 sm:space-y-4 pb-4 sm:pb-6">
                 <div className="flex items-center justify-between">
                   <Text
                     variant="h3"
-                    className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                    className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
                   >
                     {currentNote.version}
                   </Text>
@@ -112,18 +112,15 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
 
               <div className="flex-1 overflow-y-auto space-y-5 pr-4 scrollbar-thin">
                 {currentNote.content?.slice(0, 5).map((change, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.1 }}
                     className="flex items-start gap-3 group"
                   >
                     <span className="w-2 h-2 rounded-full bg-primary/60 mt-2 flex-shrink-0 group-hover:bg-primary transition-colors" />
                     <Text className="text-muted-foreground/90 group-hover:text-foreground transition-colors">
                       {change}
                     </Text>
-                  </motion.div>
+                  </div>
                 ))}
                 {currentNote.content && currentNote.content.length > 5 && (
                   <div className="pt-2">

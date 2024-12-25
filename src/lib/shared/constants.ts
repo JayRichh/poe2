@@ -6,5 +6,7 @@ export const sectionLabels: Record<SearchSection, string> = {
   news: "News",
   mechanics: "Mechanics",
   "patch-notes": "Patch Notes",
-  ascendancies: "Ascendancies"
+  ascendancies: "Ascendancies",
+  "dps-calc": "DPS Calculator",
+  "skill-tree": "Skill Tree"
 };

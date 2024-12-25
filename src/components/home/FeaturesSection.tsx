@@ -88,10 +88,6 @@ export function FeaturesSection() {
         return (
           <Link key={feature.href} href={feature.href} className={gridClasses}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{
                 y: -2,
                 transition: { duration: 0.2 },

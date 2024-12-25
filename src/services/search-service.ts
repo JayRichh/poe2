@@ -12,7 +12,9 @@ export type SearchSection =
   | "news" 
   | "mechanics" 
   | "patch-notes"
-  | "ascendancies";
+  | "ascendancies"
+  | "dps-calc"
+  | "skill-tree";
 
 interface SearchableContent {
   title: string;
@@ -306,6 +308,101 @@ export async function searchContent(
       })
       .filter((result): result is NonNullable<typeof result> => result !== null);
     results.push(...ascendancyResults);
+  }
+
+  // Search build planner
+  if (!section || section === "build-planner") {
+    const buildPlannerContent = {
+      title: "POE2 Build Planner",
+      description: "Plan and optimize your POE2 character builds with our comprehensive build planning tool",
+      content: [
+        "Character build planning",
+        "Skill gem configurations",
+        "Equipment loadouts",
+        "Build optimization",
+        "Save and share builds",
+        "Build comparison",
+        "Character progression planning"
+      ]
+    };
+
+    const matches = searchInContent(buildPlannerContent, query);
+    if (matches.length > 0) {
+      const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
+      results.push({
+        id: "build-planner",
+        title: buildPlannerContent.title,
+        description: buildPlannerContent.description,
+        matches,
+        url: "/build-planner",
+        section: "build-planner" as const,
+        relevance
+      });
+    }
+  }
+
+  // Search skill tree
+  if (!section || section === "skill-tree") {
+    const skillTreeContent = {
+      title: "POE2 Skill Tree",
+      description: "Explore and plan your character's skill tree progression",
+      content: [
+        "Interactive skill tree",
+        "Node exploration",
+        "Path planning",
+        "Skill point allocation",
+        "Build optimization",
+        "Character progression",
+        "Passive skills"
+      ]
+    };
+
+    const matches = searchInContent(skillTreeContent, query);
+    if (matches.length > 0) {
+      const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
+      results.push({
+        id: "skill-tree",
+        title: skillTreeContent.title,
+        description: skillTreeContent.description,
+        matches,
+        url: "/skill-tree",
+        section: "skill-tree" as const,
+        relevance
+      });
+    }
+  }
+
+  // Search DPS calculator
+  if (!section || section === "dps-calc") {
+    const dpsCalcContent = {
+      title: "POE2 DPS Calculator",
+      description: "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types",
+      content: [
+        "Calculate weapon DPS",
+        "Compare multiple weapons",
+        "Detailed damage type breakdowns",
+        "Physical damage calculations",
+        "Elemental damage calculations",
+        "Chaos damage calculations",
+        "Manual weapon stat input",
+        "Global damage modifiers",
+        "DPS comparison history"
+      ]
+    };
+
+    const matches = searchInContent(dpsCalcContent, query);
+    if (matches.length > 0) {
+      const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
+      results.push({
+        id: "dps-calc",
+        title: dpsCalcContent.title,
+        description: dpsCalcContent.description,
+        matches,
+        url: "/dps-calc",
+        section: "dps-calc" as const,
+        relevance
+      });
+    }
   }
 
   // Sort by relevance and apply limit

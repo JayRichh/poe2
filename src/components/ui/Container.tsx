@@ -15,6 +15,7 @@ interface ContainerProps extends Omit<HTMLMotionProps<"div">, "children"> {
   innerClassName?: string;
   maxWidth?: boolean;
   gutter?: boolean;
+  animate?: boolean;
 }
 
 const containerSizes = {
@@ -46,18 +47,6 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
     },
     ref
   ) => {
-    const containerVariants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.4,
-          ease: "easeOut",
-        },
-      },
-    };
-
     const containerStyles = `
       relative
       w-full
@@ -83,9 +72,10 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
     return (
       <motion.div
         ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={props.animate ? { opacity: 0, y: 20 } : undefined}
+        whileInView={props.animate ? { opacity: 1, y: 0 } : undefined}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className={containerStyles}
         {...props}
       >

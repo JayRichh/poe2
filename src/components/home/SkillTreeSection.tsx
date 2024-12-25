@@ -2,13 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
 import Image from "next/image";
 import Link from "next/link";
-
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-
 import { shimmer, toBase64 } from "~/utils/image";
 
 interface Feature {
@@ -39,13 +36,7 @@ const features: Feature[] = [
 export function SkillTreeSection() {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-16 min-h-[600px] py-32 pt-12">
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 space-y-12"
-      >
+      <div className="flex-1 space-y-12">
         <div className="space-y-6">
           <div className="space-y-4">
             <Text
@@ -63,14 +54,7 @@ export function SkillTreeSection() {
         </div>
         <div className="space-y-6">
           {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group"
-            >
+            <div key={i} className="group">
               <div className="space-y-2">
                 <Text className="font-semibold text-lg group-hover:text-primary transition-colors">
                   {feature.title}
@@ -79,7 +63,7 @@ export function SkillTreeSection() {
                   {feature.description}
                 </Text>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         <div className="pt-10">
@@ -96,23 +80,17 @@ export function SkillTreeSection() {
             </Button>
           </Link>
         </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 relative group/image"
-      >
+      </div>
+
+      <div className="flex-1 relative group/image">
         <div className="relative w-full h-[600px] max-w-xl mx-auto">
           <motion.div
             className="absolute inset-0 -m-2 rounded-full bg-gradient-to-br from-primary/15 via-accent/15 to-secondary/15 blur-xl opacity-40"
             animate={{
-              opacity: [0.3, 0.5, 0.3],
-              scale: [1, 1.02, 1],
+              opacity: [0.3, 0.4, 0.3],
             }}
             transition={{
-              duration: 4,
+              duration: 3,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -122,7 +100,6 @@ export function SkillTreeSection() {
             <div className="absolute inset-0 rounded-full backdrop-blur-sm" />
             <div className="relative h-full rounded-full overflow-hidden border border-border/30 group-hover/image:border-border/50 transition-colors duration-700">
               <div className="relative w-full h-full">
-                {/* Shimmer loading effect */}
                 <div
                   className="absolute inset-0 bg-gradient-to-br from-background via-background/50 to-background"
                   style={{
@@ -166,7 +143,7 @@ export function SkillTreeSection() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

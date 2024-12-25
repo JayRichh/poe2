@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <div ref={containerRef} className="flex flex-col items-center w-full relative min-h-screen">
       <section className="w-full pt-12 sm:pt-24 flex justify-center">
-        <Container className="px-6 md:px-8 lg:px-10 flex flex-col items-center text-center max-w-5xl">
+        <Container className="flex flex-col items-center text-center max-w-5xl">
           <HeroSection opacity={opacity} scale={scale} y={y} />
         </Container>
       </section>
