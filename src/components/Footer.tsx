@@ -11,10 +11,14 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const contributors = [
+  { username: "jayrichh", avatar: "https://github.com/jayrichh.png" },
+];
 
 const mainLinks = [
   {
@@ -226,6 +230,38 @@ export function Footer() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Contributors Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-semibold tracking-tight mb-8">Contributors</h2>
+          <div className="flex flex-wrap gap-4">
+            {contributors.map((contributor) => (
+              <motion.a
+                key={contributor.username}
+                href={`https://github.com/${contributor.username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div
+                  className="absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-pink-600 to-purple-600 blur"
+                  initial={false}
+                  animate={{ opacity: 0 }}
+                  whileHover={{ opacity: 0.5 }}
+                />
+                <Image
+                  src={contributor.avatar}
+                  alt={contributor.username}
+                  width={40}
+                  height={40}
+                  className="rounded-full relative"
+                />
+              </motion.a>
+            ))}
           </div>
         </div>
 
