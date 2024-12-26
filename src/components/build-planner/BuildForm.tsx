@@ -124,10 +124,13 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
             className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 px-4"
             required
           >
-            <option value="private">Private</option>
-            <option value="public">Public</option>
-            <option value="unlisted">Unlisted</option>
+            <option value="private">Private - Only visible to you</option>
+            <option value="unlisted">Unlisted - Accessible via direct link</option>
+            <option value="unlisted" disabled>Public - Visible to everyone (Coming Soon)</option>
           </select>
+          <div className="text-xs text-foreground/60 mt-1">
+            Public builds are temporarily disabled pending development
+          </div>
         </div>
       </div>
 

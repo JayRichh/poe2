@@ -20,26 +20,30 @@ import type { Database } from "~/lib/supabase/types";
 type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
 type VisibilityType = Database["public"]["Enums"]["visibility_type"];
 
-// Client-side build creation type (omit server-side fields)
-type NewBuild = Omit<BuildInsert, "user_id" | "id" | "created_at" | "updated_at">;
-
-const POE_CLASSES = ["Acolyte", "Druid", "Warrior", "Rogue", "Sorcerer", "Ranger"] as const;
-
-const VISIBILITY_OPTIONS: {
+// Type for visibility options in the UI
+type VisibilityOption = {
   value: VisibilityType;
   label: string;
   disabled?: boolean;
   tooltip?: string;
-}[] = [
+};
+
+// Client-side build creation type (omit server-side fields)
+type NewBuild = Omit<BuildInsert, "user_id" | "id" | "created_at" | "updated_at">;
+
+const VISIBILITY_OPTIONS: VisibilityOption[] = [
   { value: "private", label: "Private - Only visible to you" },
   { value: "unlisted", label: "Unlisted - Accessible via direct link" },
   {
-    value: "public",
+    value: "unlisted",
     label: "Public - Visible to everyone",
     disabled: true,
     tooltip: "Public builds are temporarily disabled pending development",
   },
 ];
+
+const POE_CLASSES = ["Acolyte", "Druid", "Warrior", "Rogue", "Sorcerer", "Ranger"] as const;
+
 
 export default function NewBuildPage() {
   const router = useRouter();

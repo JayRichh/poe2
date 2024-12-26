@@ -8,7 +8,7 @@
       "Fixed a bug where characters who hadn't completed the campaign could enter endgame areas through other players hideouts."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 23, 2024, 1:56:50 PM"
+    "lastBumped": "Last bumped on Dec 25, 2024, 11:43:01 PM"
   },
   {
     "version": "0.1.0e Hotfix 3",
@@ -196,7 +196,7 @@
       "Fixed 3 Instance Crashes."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 21, 2024, 5:24:51 AM"
+    "lastBumped": "Last bumped on Dec 25, 2024, 10:09:22 AM"
   },
   {
     "version": "0.1.0d Hotfix 5",
@@ -331,7 +331,9 @@
     "version": "0.1.0c Hotfix 2",
     "date": "Dec 11, 2024, 6:24:59 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3617298",
-    "content": ["Demon form now has a minimum of 1 life lost per second, per stack."],
+    "content": [
+      "Demon form now has a minimum of 1 life lost per second, per stack."
+    ],
     "author": "Jeff_GGG",
     "lastBumped": "Last bumped on Dec 18, 2024, 2:20:16 AM"
   },
@@ -466,7 +468,9 @@
     "version": "0.1.0 Hotfix 2",
     "date": "Dec 7, 2024, 6:24:43 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3595427",
-    "content": ["Fixed multiple client crashes."],
+    "content": [
+      "Fixed multiple client crashes."
+    ],
     "author": "Stacey_GGG",
     "lastBumped": "Last bumped on Dec 12, 2024, 3:27:44 AM"
   },

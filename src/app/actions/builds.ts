@@ -149,8 +149,8 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
     }
     if (!data) throw new Error("Build not found");
 
-    // Check visibility
-    if (data.visibility !== "public") {
+    // Check visibility - only private/unlisted builds need auth
+    if (data.visibility === "private" || data.visibility === "unlisted") {
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -168,10 +168,10 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
 
 export async function getBuilds({
   userId,
-  visibility = "public",
+  visibility = "unlisted",
 }: {
   userId?: string;
-  visibility?: "public" | "private" | "unlisted";
+  visibility?: "private" | "unlisted";
 } = {}): Promise<Build[]> {
   const supabase = await getServerClient();
 
