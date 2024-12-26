@@ -16,9 +16,8 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
   return (
     <motion.div
       style={{ opacity, scale, y }}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 1, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col gap-10 min-h-[90vh] justify-center overflow-hidden"
     >
       <div className="relative mx-auto pointer-events-none select-none -mt-24">

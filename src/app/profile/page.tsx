@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
+import { FormField } from "~/components/shared/FormField";
 
 import { usePOEAccount } from "~/hooks/usePOEAccount";
 import { cn } from "~/utils/cn";
@@ -237,36 +238,32 @@ export default function ProfilePage() {
         </div>
 
         <form onSubmit={handleUpdateProfile} className="space-y-6">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Text className="text-sm text-foreground/60">Email</Text>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-primary/60" />
-                </div>
-                <input
-                  type="email"
-                  value={user.email}
-                  disabled
-                  className={cn(
-                    "pl-11 w-full h-12 rounded-xl",
-                    "bg-background/95",
-                    "border-2 border-border/50",
-                    "text-foreground/60"
-                  )}
-                />
-              </div>
-            </div>
+          <div className="grid gap-6 max-w-lg">
+            <FormField
+              label="Email"
+              icon={<Mail className="h-5 w-5 text-primary/60" />}
+            >
+              <input
+                type="email"
+                value={user.email}
+                disabled
+                className={cn(
+                  "pl-11 w-full h-12 rounded-xl",
+                  "bg-background/95",
+                  "border-2 border-border/50",
+                  "text-foreground/60"
+                )}
+              />
+            </FormField>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Text className="text-sm text-foreground/60">Display Name</Text>
-                <Text className="text-xs text-destructive">Required</Text>
-              </div>
+            <FormField
+              label="Display Name"
+              required
+              icon={<User className="h-5 w-5 text-primary/60" />}
+              error={validationError || undefined}
+              hint="This name will be displayed on your builds and profile"
+            >
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-primary/60" />
-                </div>
                 <input
                   type="text"
                   value={name}
@@ -292,14 +289,7 @@ export default function ProfilePage() {
                   </button>
                 )}
               </div>
-              {validationError ? (
-                <Text className="text-sm text-destructive">{validationError}</Text>
-              ) : (
-                <Text className="text-xs text-foreground/40">
-                  This name will be displayed on your builds and profile
-                </Text>
-              )}
-            </div>
+            </FormField>
           </div>
 
           {submitError && (
@@ -526,15 +516,18 @@ export default function ProfilePage() {
 
             {showPasswordForm && (
               <form onSubmit={handleChangePassword} className="mt-4 space-y-4">
-                <div className="space-y-2">
-                  <Text className="text-sm text-foreground/60">New Password</Text>
+                <FormField
+                  label="New Password"
+                  icon={<Key className="h-5 w-5 text-primary/60" />}
+                  hint="Must be at least 6 characters long"
+                >
                   <input
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Enter new password"
                     className={cn(
-                      "w-full h-12 px-4 rounded-xl",
+                      "pl-11 w-full h-12 rounded-xl",
                       "bg-background/95",
                       "border-2 border-border/50",
                       "focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
@@ -543,7 +536,7 @@ export default function ProfilePage() {
                     required
                     minLength={6}
                   />
-                </div>
+                </FormField>
                 <div className="flex justify-end">
                   <Button type="submit" variant="primary" disabled={loading || !newPassword}>
                     {loading ? "Updating..." : "Update Password"}
