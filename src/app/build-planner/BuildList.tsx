@@ -26,9 +26,12 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const poeClass = searchParams?.get("class") || "";
   const visibility = searchParams?.get("visibility") || "all";
   const sort = searchParams?.get("sort") || "created_at:desc";
+  const view = searchParams?.get("view") as "grid" | "list" | "grouped" | undefined;
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
   // Fetch builds when visibility changes
+  // Force groupBy to undefined if not in grouped view
+  const effectiveGroupBy = view === "grouped" ? groupBy : undefined;
   const [builds, setBuilds] = useState(initialBuilds);
 
   useEffect(() => {
@@ -103,7 +106,11 @@ export function BuildList({ initialBuilds }: BuildListProps) {
             </Text>
           </div>
         ) : (
-          <BuildGrid builds={paginatedBuilds} groupBy={groupBy} />
+          <BuildGrid 
+            builds={paginatedBuilds} 
+            groupBy={effectiveGroupBy}
+            viewMode={view || "grid"} 
+          />
         )}
       </Suspense>
 

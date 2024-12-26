@@ -87,7 +87,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             {(!isHomePage && !isSkillTree) && (
               <div
                 className={cn(
-                  "fixed top-0 left-0 right-0 z-20",
+                  "fixed top-0 left-0 right-0 z-50",
                   "transition-transform duration-300",
                   isVisible 
                     ? hasSubNav 

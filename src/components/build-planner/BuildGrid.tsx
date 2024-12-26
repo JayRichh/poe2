@@ -1,17 +1,11 @@
 "use client";
 
-import { Edit2, Grid, LayoutGrid, List, MoreVertical, Trash2 } from "lucide-react";
-
-import { useTransition, useState } from "react";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-import { deleteBuild } from "~/app/actions/builds";
+import { useAuth } from "~/contexts/auth";
 import { Button } from "~/components/ui/Button";
-import { Dropdown } from "~/components/ui/Dropdown";
 import { Text } from "~/components/ui/Text";
-import { Toast } from "~/components/ui/Toast";
+import { BuildActions } from "./BuildActions";
 
 import type { Database } from "~/lib/supabase/types";
 
@@ -21,6 +15,7 @@ type GroupByKey = "poe_class" | "level" | "visibility";
 interface BuildGridProps {
   builds: Build[];
   groupBy?: GroupByKey;
+  viewMode?: "grid" | "list" | "grouped";
 }
 
 function getGroupKey(build: Build, key: GroupByKey): string {
@@ -34,9 +29,7 @@ function getGroupKey(build: Build, key: GroupByKey): string {
   }
 }
 
-export function BuildGrid({ builds, groupBy }: BuildGridProps) {
-  const [viewType, setViewType] = useState<"grid" | "list" | "grouped">("grid");
-
+export function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
   // Group builds if needed
   const groupedBuilds = groupBy
     ? builds.reduce(
@@ -52,53 +45,8 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 
   return (
     <div className="space-y-6">
-      {/* View Controls */}
-      <div className="flex items-center justify-between">
-        <Text className="text-sm text-foreground/60">
-          {builds.length} build{builds.length === 1 ? "" : "s"}
-        </Text>
-        <div className="flex items-center gap-2 bg-muted/50 rounded-lg p-1">
-          <button
-            className={`p-1.5 rounded-md transition-colors ${
-              viewType === "grid"
-                ? "bg-background text-foreground shadow-sm"
-                : "text-foreground/60 hover:text-foreground"
-            }`}
-            onClick={() => setViewType("grid")}
-            title="Grid view"
-            aria-label="Grid view"
-          >
-            <LayoutGrid className="h-4 w-4" />
-          </button>
-          <button
-            className={`p-1.5 rounded-md transition-colors ${
-              viewType === "list"
-                ? "bg-background text-foreground shadow-sm"
-                : "text-foreground/60 hover:text-foreground"
-            }`}
-            onClick={() => setViewType("list")}
-            title="List view"
-            aria-label="List view"
-          >
-            <List className="h-4 w-4" />
-          </button>
-          <button
-            className={`p-1.5 rounded-md transition-colors ${
-              viewType === "grouped"
-                ? "bg-background text-foreground shadow-sm"
-                : "text-foreground/60 hover:text-foreground"
-            }`}
-            onClick={() => setViewType("grouped")}
-            title="Grouped view"
-            aria-label="Grouped view"
-          >
-            <Grid className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-
       {/* Grid View */}
-      {viewType === "grid" && (
+      {viewMode === "grid" && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-fadeIn">
           {builds.map((build) => (
             <BuildCard key={build.id} build={build} />
@@ -107,7 +55,7 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
       )}
 
       {/* List View */}
-      {viewType === "list" && (
+      {viewMode === "list" && (
         <div className="space-y-3 animate-fadeIn">
           {builds.map((build) => (
             <BuildListItem key={build.id} build={build} />
@@ -116,7 +64,7 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
       )}
 
       {/* Grouped View */}
-      {viewType === "grouped" && groupedBuilds && (
+      {viewMode === "grouped" && groupedBuilds && (
         <div className="space-y-8 animate-fadeIn">
           {Object.entries(groupedBuilds).map(([group, groupBuilds]) => (
             <div key={group}>
@@ -135,24 +83,8 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 }
 
 function BuildCard({ build }: { build: Build }) {
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string>();
-  const router = useRouter();
-
-  const handleAction = (action: string) => {
-    if (action === "edit") {
-      router.push(`/build-planner/${build.slug || build.id}/edit`);
-    } else if (action === "delete") {
-      startTransition(async () => {
-        try {
-          await deleteBuild(build.id);
-          router.refresh();
-        } catch (err) {
-          setError(err instanceof Error ? err.message : "Failed to delete build");
-        }
-      });
-    }
-  };
+  const { user } = useAuth();
+  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
 
   return (
     <div
@@ -176,43 +108,9 @@ function BuildCard({ build }: { build: Build }) {
         </Link>
         <div className="flex items-center gap-3">
           <Text className="text-sm text-foreground/40">Level {build.level || "?"}</Text>
-          <Dropdown
-            trigger={
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 text-foreground/60 hover:text-primary"
-                disabled={isPending}
-              >
-                <MoreVertical className="h-4 w-4" />
-              </Button>
-            }
-            items={[
-              {
-                label: "Edit Build",
-                value: "edit",
-                icon: <Edit2 className="h-4 w-4" />,
-              },
-              {
-                label: "Delete Build",
-                value: "delete",
-                icon: <Trash2 className="h-4 w-4" />,
-              },
-            ]}
-            onChange={handleAction}
-            position="bottom-right"
-          />
+          <BuildActions build={build} canModify={canModify} />
         </div>
       </div>
-
-      {error && (
-        <Toast 
-          message={error}
-          type="error"
-          isVisible={!!error}
-          onClose={() => setError(undefined)}
-        />
-      )}
 
       <div className="mt-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
@@ -241,24 +139,8 @@ function BuildCard({ build }: { build: Build }) {
 }
 
 function BuildListItem({ build }: { build: Build }) {
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string>();
-  const router = useRouter();
-
-  const handleAction = (action: string) => {
-    if (action === "edit") {
-      router.push(`/build-planner/${build.slug || build.id}/edit`);
-    } else if (action === "delete") {
-      startTransition(async () => {
-        try {
-          await deleteBuild(build.id);
-          router.refresh();
-        } catch (err) {
-          setError(err instanceof Error ? err.message : "Failed to delete build");
-        }
-      });
-    }
-  };
+  const { user } = useAuth();
+  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
 
   return (
     <div
@@ -288,47 +170,13 @@ function BuildListItem({ build }: { build: Build }) {
         </div>
       </Link>
 
-      {error && (
-        <Toast 
-          message={error}
-          type="error"
-          isVisible={!!error}
-          onClose={() => setError(undefined)}
-        />
-      )}
-
       <div className="flex items-center gap-3 flex-shrink-0">
         {build.is_template && (
           <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs whitespace-nowrap">
             Template
           </span>
         )}
-        <Dropdown
-          trigger={
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 text-foreground/60 hover:text-primary"
-              disabled={isPending}
-            >
-              <MoreVertical className="h-4 w-4" />
-            </Button>
-          }
-          items={[
-            {
-              label: "Edit Build",
-              value: "edit",
-              icon: <Edit2 className="h-4 w-4" />,
-            },
-            {
-              label: "Delete Build",
-              value: "delete",
-              icon: <Trash2 className="h-4 w-4" />,
-            },
-          ]}
-          onChange={handleAction}
-          position="bottom-right"
-        />
+        <BuildActions build={build} canModify={canModify} />
       </div>
     </div>
   );

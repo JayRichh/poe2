@@ -1,20 +1,24 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
-
 import { cn } from "~/utils/cn";
+
+interface DropdownItem {
+  label: string;
+  value: string;
+  icon?: React.ReactNode;
+  disabled?: boolean;
+  className?: string;
+}
 
 interface DropdownProps {
   trigger: React.ReactNode;
-  items: {
-    label: string;
-    value: string;
-    icon?: React.ReactNode;
-    disabled?: boolean;
-  }[];
+  items: DropdownItem[];
   value?: string;
   onChange?: (value: string) => void;
   className?: string;
+  itemClassName?: string;
   position?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
   width?: "auto" | "trigger" | number;
   maxHeight?: number;
@@ -26,6 +30,7 @@ export function Dropdown({
   value,
   onChange,
   className,
+  itemClassName,
   position = "bottom-left",
   width = "trigger",
   maxHeight = 300,
@@ -72,7 +77,7 @@ export function Dropdown({
     return styles;
   }, [position, width, maxHeight]);
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (!isOpen) {
       if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
         event.preventDefault();
@@ -103,7 +108,7 @@ export function Dropdown({
         setIsOpen(false);
         break;
     }
-  };
+  }, [isOpen, items.length, activeIndex]);
 
   useEffect(() => {
     if (isOpen && activeIndex >= 0 && menuRef.current) {
@@ -118,20 +123,25 @@ export function Dropdown({
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setActiveIndex(-1);
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [isOpen]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  const handleSelect = (itemValue: string) => {
+  const handleSelect = useCallback((itemValue: string) => {
     onChange?.(itemValue);
     setIsOpen(false);
     setActiveIndex(-1);
-  };
+  }, [onChange]);
+
+  const handleTriggerClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOpen((prev) => !prev);
+  }, []);
 
   return (
     <div
@@ -141,15 +151,12 @@ export function Dropdown({
     >
       <div
         ref={triggerRef}
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsOpen(!isOpen);
-        }}
+        onClick={handleTriggerClick}
         role="button"
         tabIndex={0}
         aria-haspopup="true"
         aria-expanded={isOpen}
-        className="outline-none focus:ring-2 focus:ring-primary/70 focus:ring-offset-2 rounded-md"
+        className="outline-none focus:ring-2 focus:ring-primary/70 focus:ring-offset-2 rounded-md cursor-pointer"
       >
         {trigger}
       </div>
@@ -180,18 +187,22 @@ export function Dropdown({
                   key={item.value}
                   whileHover={{ backgroundColor: "rgba(0,0,0,0.1)" }}
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     if (!item.disabled) {
                       handleSelect(item.value);
                     }
                   }}
+                  onMouseEnter={() => setActiveIndex(index)}
                   className={cn(
                     "w-full px-4 py-2.5 text-left flex items-center gap-2",
                     "transition-colors duration-150",
                     "focus:outline-none focus:bg-primary/15",
                     item.disabled ? "opacity-50 cursor-not-allowed" : "hover:text-primary",
                     value === item.value && "text-primary font-medium",
-                    activeIndex === index && "bg-primary/10"
+                    activeIndex === index && "bg-primary/10",
+                    itemClassName,
+                    item.className
                   )}
                   role="menuitem"
                   tabIndex={-1}

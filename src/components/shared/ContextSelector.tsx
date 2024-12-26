@@ -128,7 +128,7 @@ export function ContextSelector() {
           <div 
             data-dropdown
             className={cn(
-              "absolute top-full left-0 mt-1 w-48 py-1",
+              "absolute top-full left-0 mt-1 w-48",
               "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80",
               "border border-border/50 rounded-xl shadow-lg",
               "transform transition-all duration-200 origin-top",
@@ -136,19 +136,32 @@ export function ContextSelector() {
               isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
             )}
           >
-            {currentContext.children.map((child) => (
-              <Link
-                key={child.path}
-                href={`${currentContext.path}${child.path}`}
-                className="block px-3 py-1.5 text-sm hover:bg-primary/5 transition-colors"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpen(false);
-                }}
-              >
-                {child.label}
-              </Link>
-            ))}
+            <Link
+              href={currentContext.path}
+              className="block px-3 py-1.5 text-sm hover:bg-primary/5 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
+            >
+              Overview
+            </Link>
+            <div className="h-px bg-border/50 mx-3 my-1" />
+            <div className="py-1">
+              {currentContext.children.map((child) => (
+                <Link
+                  key={child.path}
+                  href={`${currentContext.path}${child.path}`}
+                  className="block px-3 py-1.5 text-sm hover:bg-primary/5 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsOpen(false);
+                  }}
+                >
+                  {child.label}
+                </Link>
+              ))}
+            </div>
           </div>
         )}
       </div>

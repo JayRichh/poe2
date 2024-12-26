@@ -1,7 +1,7 @@
 "use client";
 
 import debounce from "lodash/debounce";
-import { Search } from "lucide-react";
+import { Grid, LayoutGrid, List, Search } from "lucide-react";
 
 import { useCallback, useState } from "react";
 
@@ -41,6 +41,13 @@ const VISIBILITY_OPTIONS = [
   { value: "all", label: "All Builds" },
   { value: "public", label: "Public Only (Coming Soon)", disabled: true },
   { value: "private", label: "Private Only" },
+] as SelectOption[];
+
+const GROUP_OPTIONS = [
+  { value: "", label: "No Grouping" },
+  { value: "poe_class", label: "Group by Class" },
+  { value: "level", label: "Group by Level" },
+  { value: "visibility", label: "Group by Visibility" },
 ] as SelectOption[];
 
 export function BuildListControls() {
@@ -107,8 +114,79 @@ export function BuildListControls() {
         </Link>
       </div>
 
-      {/* Filters */}
-      <div className="flex items-center gap-4">
+      {/* View Controls and Filters */}
+      <div className="flex flex-wrap items-center gap-4">
+        {/* View Mode */}
+        <div className="flex items-center gap-2 bg-muted/50 rounded-lg p-1">
+          <button
+            className={`p-1.5 rounded-md transition-colors ${
+              searchParams?.get("view") !== "list" && searchParams?.get("view") !== "grouped"
+                ? "bg-background text-foreground shadow-sm"
+                : "text-foreground/60 hover:text-foreground"
+            }`}
+            onClick={() => {
+              const query = createQueryString({ view: undefined });
+              router.push(`?${query}`);
+            }}
+            title="Grid view"
+            aria-label="Grid view"
+          >
+            <LayoutGrid className="h-4 w-4" />
+          </button>
+          <button
+            className={`p-1.5 rounded-md transition-colors ${
+              searchParams?.get("view") === "list"
+                ? "bg-background text-foreground shadow-sm"
+                : "text-foreground/60 hover:text-foreground"
+            }`}
+            onClick={() => {
+              const query = createQueryString({ view: "list" });
+              router.push(`?${query}`);
+            }}
+            title="List view"
+            aria-label="List view"
+          >
+            <List className="h-4 w-4" />
+          </button>
+          <button
+            className={`p-1.5 rounded-md transition-colors ${
+              searchParams?.get("view") === "grouped"
+                ? "bg-background text-foreground shadow-sm"
+                : "text-foreground/60 hover:text-foreground"
+            }`}
+            onClick={() => {
+              const query = createQueryString({ view: "grouped" });
+              router.push(`?${query}`);
+            }}
+            title="Grouped view"
+            aria-label="Grouped view"
+          >
+            <Grid className="h-4 w-4" />
+          </button>
+        </div>
+
+        {/* Grouping */}
+        <div className="w-48">
+          <span className="sr-only" id="group-by-label">
+            Group builds
+          </span>
+          <Select
+            value={searchParams?.get("groupBy") ?? ""}
+            onChange={(value: string) => {
+              const query = createQueryString({ 
+                groupBy: value || undefined,
+                // Force grouped view when grouping is selected
+                view: value ? "grouped" : undefined
+              });
+              router.push(`?${query}`);
+            }}
+            options={GROUP_OPTIONS}
+            className="w-full"
+            aria-labelledby="group-by-label"
+          />
+        </div>
+
+        {/* Class Filter */}
         <div className="w-48">
           <span className="sr-only" id="class-filter-label">
             Filter by class
@@ -125,6 +203,7 @@ export function BuildListControls() {
           />
         </div>
 
+        {/* Sort Order */}
         <div className="w-48">
           <span className="sr-only" id="sort-order-label">
             Sort builds
@@ -141,6 +220,7 @@ export function BuildListControls() {
           />
         </div>
 
+        {/* Visibility Filter */}
         <div className="w-48">
           <span className="sr-only" id="visibility-filter-label">
             Filter by visibility

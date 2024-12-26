@@ -91,12 +91,12 @@ export function Navigation() {
       </div>
       <nav
         className={cn(
-          "fixed top-0 w-full z-30 transition-all duration-300",
+          "fixed top-0 w-full transition-all duration-300",
           !isVisible ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50 z-20" />
+        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 sm:h-16">
             <div className="flex items-center">
               <Link href="/" className="mr-8">
