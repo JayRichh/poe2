@@ -87,6 +87,10 @@ export async function generateMetadata(
     },
   ];
 
+  // Get the current path from params
+  const path = params.path ? `/${[params.path].flat().join('/')}` : '';
+  const canonicalPath = path.replace(/\/$/, ''); // Remove trailing slash
+
   return {
     metadataBase: new URL("https://poe2.dev"),
     title: {
@@ -201,11 +205,15 @@ export async function generateMetadata(
       creator: "@poe2tools",
     },
     alternates: {
+      canonical: `https://poe2.dev${canonicalPath}`,
       types: {
-        "application/rss+xml": "https://poe2.dev/feed.xml",
+        "application/rss+xml": [
+          { url: "https://poe2.dev/feed.xml", title: "POE2 Tools - All Updates" },
+          { url: "https://poe2.dev/feed.xml?type=news", title: "POE2 Tools - News" },
+          { url: "https://poe2.dev/feed.xml?type=patch", title: "POE2 Tools - Patch Notes" }
+        ],
       },
     },
-    // Canonical URL will be set per-page
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     },

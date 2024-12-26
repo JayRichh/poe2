@@ -193,11 +193,57 @@ const supportGemSettings: ToggleSetting[] = [
 
   const damageSettings: NumericSetting[] = [
     {
+      key: "damageMultiplier",
+      label: "Damage Multiplier",
+      min: 1.0,
+      max: 2.0,
+      step: 0.1,
+      tooltip: "Global damage multiplier",
+      formatValue: (value) => `${value.toFixed(1)}x`,
+    },
+    {
       key: "bowDamage",
       label: "Bow Damage",
       min: 0,
       max: 100,
+      step: 5,
       tooltip: "Increased bow damage",
+      formatValue: (value) => `${value}%`,
+    },
+    {
+      key: "physicalDamageIncrease",
+      label: "Physical Damage",
+      min: 0,
+      max: 200,
+      step: 5,
+      tooltip: "Increased physical damage",
+      formatValue: (value) => `${value}%`,
+    },
+    {
+      key: "elementalDamageIncrease",
+      label: "Elemental Damage",
+      min: 0,
+      max: 200,
+      step: 5,
+      tooltip: "Increased elemental damage",
+      formatValue: (value) => `${value}%`,
+    },
+    {
+      key: "attackDamageIncrease",
+      label: "Attack Damage",
+      min: 0,
+      max: 200,
+      step: 5,
+      tooltip: "Increased attack damage",
+      formatValue: (value) => `${value}%`,
+    },
+    {
+      key: "projectileDamageIncrease",
+      label: "Projectile Damage",
+      min: 0,
+      max: 200,
+      step: 5,
+      tooltip: "Increased projectile damage",
       formatValue: (value) => `${value}%`,
     },
   ];
@@ -256,8 +302,9 @@ const supportGemSettings: ToggleSetting[] = [
         <Text className="text-lg font-semibold tracking-tight">Global Settings</Text>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-x divide-border/60">
-        <div key="attack" className="px-4 py-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 divide-x divide-border/60">
+        {/* Attack Settings */}
+        <div key="attack" className="p-4">
           <Text className="text-sm font-medium text-foreground-secondary mb-6">
             Attack Settings
           </Text>
@@ -266,7 +313,8 @@ const supportGemSettings: ToggleSetting[] = [
           </div>
         </div>
 
-        <div key="crit" className="px-4 py-4">
+        {/* Critical Strike */}
+        <div key="crit" className="p-4">
           <Text className="text-sm font-medium text-foreground-secondary mb-6">
             Critical Strike
           </Text>
@@ -275,7 +323,8 @@ const supportGemSettings: ToggleSetting[] = [
           </div>
         </div>
 
-        <div key="damage" className="px-4 py-4">
+        {/* Damage Modifiers */}
+        <div key="damage" className="p-4">
           <Text className="text-sm font-medium text-foreground-secondary mb-6">
             Damage Modifiers
           </Text>
@@ -284,7 +333,8 @@ const supportGemSettings: ToggleSetting[] = [
           </div>
         </div>
 
-        <div key="support" className="px-4 py-4">
+        {/* Support Gems */}
+        <div key="support" className="p-4">
           <Text className="text-sm font-medium text-foreground-secondary mb-6">
             Support Gems
           </Text>
@@ -314,7 +364,8 @@ const supportGemSettings: ToggleSetting[] = [
           </div>
         </div>
 
-        <div key="status" className="px-4 py-4">
+        {/* Status Effects */}
+        <div key="status" className="p-4 lg:col-span-2 xl:col-span-1">
           <Text className="text-sm font-medium text-foreground-secondary mb-6">
             Status Effects
           </Text>

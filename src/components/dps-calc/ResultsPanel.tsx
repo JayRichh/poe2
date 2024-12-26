@@ -108,20 +108,26 @@ export function ResultsPanel({ results }: ResultsPanelProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* DPS Comparison */}
           <div className="space-y-2">
-            <Text className="text-sm font-medium text-foreground-secondary">DPS Change</Text>
-            <div className="flex items-baseline gap-2">
-              <Text
-                className={`text-2xl font-bold tabular-nums tracking-tight ${dpsIncrease >= 0 ? "text-success" : "text-error"}`}
-              >
-                {dpsIncrease >= 0 ? "+" : ""}
-                {(dpsIncrease * 100).toFixed(1)}%
-              </Text>
+            <Text className="text-sm font-medium text-foreground-secondary">Weapon Comparison</Text>
+            <div className="space-y-2">
+              <div className="flex items-baseline gap-2">
+                <Text
+                  className={`text-2xl font-bold tabular-nums tracking-tight ${dpsIncrease >= 0 ? "text-success" : "text-error"}`}
+                >
+                  {dpsIncrease >= 0 ? "+" : ""}
+                  {(dpsIncrease * 100).toFixed(1)}%
+                </Text>
+                <Text className="text-sm text-foreground-secondary">DPS Difference</Text>
+              </div>
+              <div className="text-sm text-foreground-secondary">
+                {dpsIncrease > 0 ? "Weapon 2 performs better" : dpsIncrease < 0 ? "Weapon 1 performs better" : "Equal performance"}
+              </div>
             </div>
           </div>
 
           {/* Weapon 1 Breakdown */}
           <div className="space-y-3">
-            <Text className="text-sm font-medium text-foreground-secondary">Weapon 1</Text>
+            <Text className="text-sm font-medium text-foreground-secondary">Weapon 1 Output</Text>
             <div className="space-y-2">
               <div className="flex items-baseline justify-between">
                 <Text className="text-sm font-medium">Total DPS</Text>
@@ -135,7 +141,7 @@ export function ResultsPanel({ results }: ResultsPanelProps) {
 
           {/* Weapon 2 Breakdown */}
           <div className="space-y-3">
-            <Text className="text-sm font-medium text-foreground-secondary">Weapon 2</Text>
+            <Text className="text-sm font-medium text-foreground-secondary">Weapon 2 Output</Text>
             <div className="space-y-2">
               <div className="flex items-baseline justify-between">
                 <Text className="text-sm font-medium">Total DPS</Text>

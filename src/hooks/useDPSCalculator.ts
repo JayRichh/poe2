@@ -33,6 +33,10 @@ export interface GlobalSettings {
   
   // Damage Modifiers
   bowDamage: number;
+  physicalDamageIncrease: number;
+  elementalDamageIncrease: number;
+  attackDamageIncrease: number;
+  projectileDamageIncrease: number;
   
   // Support Gems
   supportGems: {
@@ -89,6 +93,10 @@ const defaultSettings: GlobalSettings = {
   
   // Damage Modifiers
   bowDamage: 22, // 22% from CSV
+  physicalDamageIncrease: 0,
+  elementalDamageIncrease: 0,
+  attackDamageIncrease: 0,
+  projectileDamageIncrease: 0,
   
   // Support Gems
   supportGems: {
