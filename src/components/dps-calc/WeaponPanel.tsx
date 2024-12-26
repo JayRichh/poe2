@@ -29,6 +29,7 @@ interface DamageInput {
   min: number;
   max: number;
   step?: number;
+  tooltip?: string;
   relatedKey?: keyof WeaponInputs; // For min/max pairs
 }
 
@@ -115,8 +116,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Physical",
       color: "var(--damage-physical)",
       inputs: [
-        { key: "physicalMin", label: "Minimum", min: 0, max: 100, relatedKey: "physicalMax" },
-        { key: "physicalMax", label: "Maximum", min: 0, max: 100, relatedKey: "physicalMin" },
+        { 
+          key: "physicalMin", 
+          label: "Minimum", 
+          min: 0, 
+          max: 500, 
+          step: 5,
+          relatedKey: "physicalMax",
+          tooltip: "Base physical damage minimum (0-500)" 
+        },
+        { 
+          key: "physicalMax", 
+          label: "Maximum", 
+          min: 0, 
+          max: 800, 
+          step: 5,
+          relatedKey: "physicalMin",
+          tooltip: "Base physical damage maximum (0-800)" 
+        },
       ] as DamageInput[],
     },
     {
@@ -124,8 +141,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Lightning",
       color: "var(--damage-lightning)",
       inputs: [
-        { key: "lightningMin", label: "Minimum", min: 0, max: 100, relatedKey: "lightningMax" },
-        { key: "lightningMax", label: "Maximum", min: 0, max: 100, relatedKey: "lightningMin" },
+        { 
+          key: "lightningMin", 
+          label: "Minimum", 
+          min: 0, 
+          max: 300, 
+          step: 2,
+          relatedKey: "lightningMax",
+          tooltip: "Lightning damage minimum (0-300)" 
+        },
+        { 
+          key: "lightningMax", 
+          label: "Maximum", 
+          min: 0, 
+          max: 600, 
+          step: 5,
+          relatedKey: "lightningMin",
+          tooltip: "Lightning damage maximum (0-600)" 
+        },
       ] as DamageInput[],
     },
     {
@@ -133,8 +166,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Fire",
       color: "var(--damage-fire)",
       inputs: [
-        { key: "fireMin", label: "Minimum", min: 0, max: 100, relatedKey: "fireMax" },
-        { key: "fireMax", label: "Maximum", min: 0, max: 100, relatedKey: "fireMin" },
+        { 
+          key: "fireMin", 
+          label: "Minimum", 
+          min: 0, 
+          max: 300, 
+          step: 2,
+          relatedKey: "fireMax",
+          tooltip: "Fire damage minimum (0-300)" 
+        },
+        { 
+          key: "fireMax", 
+          label: "Maximum", 
+          min: 0, 
+          max: 600, 
+          step: 5,
+          relatedKey: "fireMin",
+          tooltip: "Fire damage maximum (0-600)" 
+        },
       ] as DamageInput[],
     },
     {
@@ -142,8 +191,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Cold",
       color: "var(--damage-cold)",
       inputs: [
-        { key: "coldMin", label: "Minimum", min: 0, max: 100, relatedKey: "coldMax" },
-        { key: "coldMax", label: "Maximum", min: 0, max: 100, relatedKey: "coldMin" },
+        { 
+          key: "coldMin", 
+          label: "Minimum", 
+          min: 0, 
+          max: 300, 
+          step: 2,
+          relatedKey: "coldMax",
+          tooltip: "Cold damage minimum (0-300)" 
+        },
+        { 
+          key: "coldMax", 
+          label: "Maximum", 
+          min: 0, 
+          max: 600, 
+          step: 5,
+          relatedKey: "coldMin",
+          tooltip: "Cold damage maximum (0-600)" 
+        },
       ] as DamageInput[],
     },
     {
@@ -151,8 +216,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Chaos",
       color: "var(--damage-chaos)",
       inputs: [
-        { key: "chaosMin", label: "Minimum", min: 0, max: 100, relatedKey: "chaosMax" },
-        { key: "chaosMax", label: "Maximum", min: 0, max: 100, relatedKey: "chaosMin" },
+        { 
+          key: "chaosMin", 
+          label: "Minimum", 
+          min: 0, 
+          max: 200, 
+          step: 2,
+          relatedKey: "chaosMax",
+          tooltip: "Chaos damage minimum (0-200)" 
+        },
+        { 
+          key: "chaosMax", 
+          label: "Maximum", 
+          min: 0, 
+          max: 400, 
+          step: 5,
+          relatedKey: "chaosMin",
+          tooltip: "Chaos damage maximum (0-400)" 
+        },
       ] as DamageInput[],
     },
   ];
@@ -190,8 +271,24 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
         <div className="px-4 py-3">
           <Text className="text-sm font-medium text-foreground-secondary mb-3">Base Damage</Text>
           {renderDamageInputs([
-            { key: "minBaseDmg", label: "Minimum", min: 0, max: 100, relatedKey: "maxBaseDmg" },
-            { key: "maxBaseDmg", label: "Maximum", min: 0, max: 100, relatedKey: "minBaseDmg" },
+            { 
+              key: "minBaseDmg", 
+              label: "Minimum", 
+              min: 0, 
+              max: 400, 
+              step: 5,
+              relatedKey: "maxBaseDmg",
+              tooltip: "Base weapon damage minimum (0-400)" 
+            },
+            { 
+              key: "maxBaseDmg", 
+              label: "Maximum", 
+              min: 0, 
+              max: 600, 
+              step: 5,
+              relatedKey: "minBaseDmg",
+              tooltip: "Base weapon damage maximum (0-600)" 
+            },
           ])}
         </div>
 

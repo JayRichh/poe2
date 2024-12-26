@@ -20,19 +20,37 @@ export interface WeaponInputs {
 }
 
 export interface GlobalSettings {
+  // Attack Settings
   attackSpeed: number;
   attackSpeedIncrease: number;
   totalSkillProjectiles: number;
   damageMultiplier: number;
+  
+  // Critical Strike
   critChance: number;
   critDamage: number;
   resPenetration: number;
+  
+  // Damage Modifiers
+  bowDamage: number;
+  
+  // Support Gems
+  supportGems: {
+    martialTempo: boolean;
+    primalArmament: boolean;
+    lightningInfusion: boolean;
+    iceBite: boolean;
+  };
+  
+  // Status Effects
   shock: boolean;
+  shockMagnitude: number;
+  shockDuration: number;
   electrocution: boolean;
+  electrocutionDuration: number;
   exposure: boolean;
-  lightningInfusion: boolean;
-  primalArmament: boolean;
-  iceBite: boolean;
+  exposureMagnitude: number;
+  exposureDuration: number;
 }
 
 export interface DPSState {
@@ -58,19 +76,37 @@ const defaultWeapon: WeaponInputs = {
 };
 
 const defaultSettings: GlobalSettings = {
+  // Attack Settings
   attackSpeed: 1.0,
   attackSpeedIncrease: 0,
   totalSkillProjectiles: 1,
   damageMultiplier: 1.0,
+  
+  // Critical Strike
   critChance: 5,
   critDamage: 150,
   resPenetration: 0,
+  
+  // Damage Modifiers
+  bowDamage: 22, // 22% from CSV
+  
+  // Support Gems
+  supportGems: {
+    martialTempo: false,
+    primalArmament: false,
+    lightningInfusion: false,
+    iceBite: false
+  },
+  
+  // Status Effects
   shock: false,
+  shockMagnitude: 48, // From CSV
+  shockDuration: 100, // From CSV
   electrocution: false,
+  electrocutionDuration: 20, // From CSV
   exposure: false,
-  lightningInfusion: false,
-  primalArmament: false,
-  iceBite: false,
+  exposureMagnitude: 100, // From CSV
+  exposureDuration: 100 // From CSV
 };
 
 const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
@@ -176,11 +212,22 @@ export function useDPSCalculator() {
 
       // Status Effects
       shock: sanitizedSettings.shock,
+      shockMagnitude: sanitizedSettings.shockMagnitude,
+      shockDuration: sanitizedSettings.shockDuration,
       electrocution: sanitizedSettings.electrocution,
+      electrocutionDuration: sanitizedSettings.electrocutionDuration,
       exposure: sanitizedSettings.exposure,
-      lightningInfusion: sanitizedSettings.lightningInfusion,
-      primalArmament: sanitizedSettings.primalArmament,
-      iceBite: sanitizedSettings.iceBite,
+      exposureMagnitude: sanitizedSettings.exposureMagnitude,
+      exposureDuration: sanitizedSettings.exposureDuration,
+
+      // Support Gems
+      lightningInfusion: sanitizedSettings.supportGems.lightningInfusion,
+      primalArmament: sanitizedSettings.supportGems.primalArmament,
+      iceBite: sanitizedSettings.supportGems.iceBite,
+      martialTempo: sanitizedSettings.supportGems.martialTempo,
+
+      // Damage Modifiers
+      bowDamage: sanitizedSettings.bowDamage,
 
       // New Physical Calculations
       newPhysicalMinWeapon1: sanitizedWeapon1.physicalMin,

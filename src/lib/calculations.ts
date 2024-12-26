@@ -42,11 +42,23 @@ export class DPSCalc {
    * Calculates various sources of damage increases
    */
   get totalIncreaseWeapon1(): number {
-    return 0.58 + 0.12 + 0.2 + 0.12 + 4 * 0.12;
+    const elementalIncrease = this.elementalDamageIncreaseWeapon1;
+    const physicalIncrease = this.physicalDamageIncreaseWeapon1;
+    const attackIncrease = this.attackDamageIncreaseWeapon1;
+    const projectileIncrease = this.projectileDamageIncreaseWeapon1;
+    const bowIncrease = this.bowDamageIncreaseWeapon1;
+    
+    return elementalIncrease + physicalIncrease + attackIncrease + projectileIncrease + bowIncrease;
   }
 
   get totalIncreaseWeapon2(): number {
-    return 0.58 + 0.12 + 0.2 + 0.12 + 4 * 0.12;
+    const elementalIncrease = this.elementalDamageIncreaseWeapon2;
+    const physicalIncrease = this.physicalDamageIncreaseWeapon2;
+    const attackIncrease = this.attackDamageIncreaseWeapon2;
+    const projectileIncrease = this.projectileDamageIncreaseWeapon2;
+    const bowIncrease = this.bowDamageIncreaseWeapon2;
+    
+    return elementalIncrease + physicalIncrease + attackIncrease + projectileIncrease + bowIncrease;
   }
 
   /**
@@ -54,11 +66,17 @@ export class DPSCalc {
    * Handles all elemental damage types and their increases
    */
   get elementalDamageIncreaseWeapon1(): number {
-    return 0.1 + 0.12 + 0.12 + 0.13;
+    const baseIncrease = Number(this.i.elementalDamageIncrease) / 100;
+    const lightningBonus = this.i.lightningInfusion === true ? 0.2 : 0;
+    const exposureBonus = this.i.exposure === true ? Number(this.i.exposureMagnitude) / 100 : 0;
+    return baseIncrease + lightningBonus + exposureBonus;
   }
 
   get elementalDamageIncreaseWeapon2(): number {
-    return 0.1 + 0.12 + 0.12 + 0.13;
+    const baseIncrease = Number(this.i.elementalDamageIncrease) / 100;
+    const lightningBonus = this.i.lightningInfusion === true ? 0.2 : 0;
+    const exposureBonus = this.i.exposure === true ? Number(this.i.exposureMagnitude) / 100 : 0;
+    return baseIncrease + lightningBonus + exposureBonus;
   }
 
   /**
@@ -66,11 +84,15 @@ export class DPSCalc {
    * Handles physical damage and its modifiers
    */
   get physicalDamageIncreaseWeapon1(): number {
-    return 0.1 + 0.12;
+    const baseIncrease = Number(this.i.physicalDamageIncrease) / 100;
+    const primalBonus = this.i.primalArmament === true ? 0.2 : 0;
+    return baseIncrease + primalBonus;
   }
 
   get physicalDamageIncreaseWeapon2(): number {
-    return 0.1 + 0.12;
+    const baseIncrease = Number(this.i.physicalDamageIncrease) / 100;
+    const primalBonus = this.i.primalArmament === true ? 0.2 : 0;
+    return baseIncrease + primalBonus;
   }
 
   /**
@@ -96,11 +118,14 @@ export class DPSCalc {
   }
 
   get effectiveCritChance(): number {
-    return Math.min(100, Number(this.i.critChance)) / 100;
+    // Convert crit chance from percentage to decimal (e.g., 5% -> 0.05)
+    return Math.min(95, Number(this.i.critChance)) / 100;
   }
 
   get effectiveCritMultiplier(): number {
+    // Convert crit damage from percentage to multiplier (e.g., 150% -> 1.5)
     const critDamage = Number(this.i.critDamage) / 100;
+    // Apply crit chance to get effective multiplier
     return 1 + (critDamage - 1) * this.effectiveCritChance;
   }
 
@@ -127,19 +152,35 @@ export class DPSCalc {
    * Handles attack speed and projectile-based calculations
    */
   get attackDamageIncreaseWeapon1(): number {
-    return 0.1 + 0.08 + 0.25;
+    const baseIncrease = Number(this.i.attackDamageIncrease) / 100;
+    const martialBonus = this.i.martialTempo === true ? 0.15 : 0;
+    return baseIncrease + martialBonus;
   }
 
   get attackDamageIncreaseWeapon2(): number {
-    return 0.1 + 0.08 + 0.25;
+    const baseIncrease = Number(this.i.attackDamageIncrease) / 100;
+    const martialBonus = this.i.martialTempo === true ? 0.15 : 0;
+    return baseIncrease + martialBonus;
   }
 
   get projectileDamageIncreaseWeapon1(): number {
-    return 0.1 + 0.12;
+    const baseIncrease = Number(this.i.projectileDamageIncrease) / 100;
+    const iceBiteBonus = this.i.iceBite === true ? 0.2 : 0;
+    return baseIncrease + iceBiteBonus;
   }
 
   get projectileDamageIncreaseWeapon2(): number {
-    return 0.1 + 0.12;
+    const baseIncrease = Number(this.i.projectileDamageIncrease) / 100;
+    const iceBiteBonus = this.i.iceBite === true ? 0.2 : 0;
+    return baseIncrease + iceBiteBonus;
+  }
+
+  get bowDamageIncreaseWeapon1(): number {
+    return Number(this.i.bowDamage) / 100; // Convert from percentage to decimal
+  }
+
+  get bowDamageIncreaseWeapon2(): number {
+    return Number(this.i.bowDamage) / 100; // Convert from percentage to decimal
   }
 
   /**
@@ -159,21 +200,31 @@ export class DPSCalc {
    * Processes magnitude-based effects
    */
   get magnitudePercentWeapon1(): number {
-    return (
-      (Number(this.i.newPhysicalMinWeapon1) +
-        (Number(this.i.newPhysicalMaxWeapon1) - Number(this.i.newPhysicalMinWeapon1)) * (2 / 3) -
-        (Number(this.i.newPhysicalMinWeapon1) + Number(this.i.newPhysicalMaxWeapon1)) / 2) /
-      ((Number(this.i.newPhysicalMinWeapon1) + Number(this.i.newPhysicalMaxWeapon1)) / 2)
-    );
+    const min = Number(this.i.newPhysicalMinWeapon1) || 0;
+    const max = Number(this.i.newPhysicalMaxWeapon1) || 0;
+    
+    // Avoid division by zero
+    if (min === 0 && max === 0) return 0;
+    
+    const avgDamage = (min + max) / 2;
+    const effectiveDamage = min + (max - min) * (2 / 3);
+    
+    // Calculate magnitude as percentage difference
+    return Math.max(0, (effectiveDamage - avgDamage) / avgDamage);
   }
 
   get magnitudePercentWeapon2(): number {
-    return (
-      (Number(this.i.newPhysicalMinWeapon2) +
-        (Number(this.i.newPhysicalMaxWeapon2) - Number(this.i.newPhysicalMinWeapon2)) * (2 / 3) -
-        (Number(this.i.newPhysicalMinWeapon2) + Number(this.i.newPhysicalMaxWeapon2)) / 2) /
-      ((Number(this.i.newPhysicalMinWeapon2) + Number(this.i.newPhysicalMaxWeapon2)) / 2)
-    );
+    const min = Number(this.i.newPhysicalMinWeapon2) || 0;
+    const max = Number(this.i.newPhysicalMaxWeapon2) || 0;
+    
+    // Avoid division by zero
+    if (min === 0 && max === 0) return 0;
+    
+    const avgDamage = (min + max) / 2;
+    const effectiveDamage = min + (max - min) * (2 / 3);
+    
+    // Calculate magnitude as percentage difference
+    return Math.max(0, (effectiveDamage - avgDamage) / avgDamage);
   }
 
   /**
@@ -181,55 +232,71 @@ export class DPSCalc {
    * Calculates duration-based modifiers and effects
    */
   get durationPercentWeapon1(): number {
-    return (
-      (1 +
-        (this.i.lightningInfusionWeapon1 === true ? 0.2 * this.averageWeaponBaseDamageWeapon1 : 0) *
-          (1 + this.attackSpeedIncreaseWeapon1)) *
-      (1 +
-        (this.i.primalArmamentWeapon1 === true ? 0.2 * this.attackDamageIncreaseWeapon1 : 0) *
-          (1 + this.totalPhysicalDamageWeapon1)) *
-      (1 +
-        (this.i.iceBiteWeapon1 === true ? 0.2 * this.projectileDamageIncreaseWeapon1 : 0) *
-          (1 + this.attackDamageIncreaseWeapon1)) *
-      (1 +
-        (this.i.shockWeapon1 === true
-          ? this.durationPercentWeapon1 * this.magnitudePercentWeapon1
-          : 0)) *
-      (1 +
-        this.otherMultiplierWeapon1 *
-          this.otherMultiplierWeapon1 *
-          (1 + this.otherMultiplierWeapon1)) *
-      (1 +
-        this.otherMultiplierWeapon1 *
-          this.otherMultiplierWeapon1 *
-          (1 + this.otherMultiplierWeapon1))
-    );
+    let duration = 1;
+
+    // Lightning infusion effect
+    if (this.i.lightningInfusionWeapon1 === true) {
+      const lightningBonus = 0.2 * this.averageWeaponBaseDamageWeapon1;
+      duration *= (1 + lightningBonus * (1 + Number(this.i.attackSpeedIncrease || 0) / 100));
+    }
+
+    // Primal armament effect
+    if (this.i.primalArmamentWeapon1 === true) {
+      const primalBonus = 0.2 * this.attackDamageIncreaseWeapon1;
+      duration *= (1 + primalBonus * (1 + this.totalPhysicalDamageWeapon1));
+    }
+
+    // Ice bite effect
+    if (this.i.iceBiteWeapon1 === true) {
+      const iceBonus = 0.2 * this.projectileDamageIncreaseWeapon1;
+      duration *= (1 + iceBonus * (1 + this.attackDamageIncreaseWeapon1));
+    }
+
+    // Shock effect (without recursion)
+    if (this.i.shockWeapon1 === true) {
+      const shockEffect = Number(this.i.shockMagnitude || 0) / 100;
+      duration *= (1 + shockEffect);
+    }
+
+    // Other multipliers (capped)
+    const otherMult = Math.min(Number(this.i.otherSkillDmgWeapon1 || 0), 10);
+    duration *= (1 + otherMult * otherMult * (1 + otherMult));
+
+    return Math.max(1, duration); // Duration should never be less than 1
   }
 
   get durationPercentWeapon2(): number {
-    return (
-      (1 +
-        (this.i.lightningInfusionWeapon2 === true ? 0.2 * this.averageWeaponBaseDamageWeapon2 : 0) *
-          (1 + this.attackSpeedIncreaseWeapon2)) *
-      (1 +
-        (this.i.primalArmamentWeapon2 === true ? 0.2 * this.attackDamageIncreaseWeapon2 : 0) *
-          (1 + this.totalPhysicalDamageWeapon2)) *
-      (1 +
-        (this.i.iceBiteWeapon2 === true ? 0.2 * this.projectileDamageIncreaseWeapon2 : 0) *
-          (1 + this.attackDamageIncreaseWeapon2)) *
-      (1 +
-        (this.i.shockWeapon2 === true
-          ? this.durationPercentWeapon2 * this.magnitudePercentWeapon2
-          : 0)) *
-      (1 +
-        this.otherMultiplierWeapon2 *
-          this.otherMultiplierWeapon2 *
-          (1 + this.otherMultiplierWeapon2)) *
-      (1 +
-        this.otherMultiplierWeapon2 *
-          this.otherMultiplierWeapon2 *
-          (1 + this.otherMultiplierWeapon2))
-    );
+    let duration = 1;
+
+    // Lightning infusion effect
+    if (this.i.lightningInfusionWeapon2 === true) {
+      const lightningBonus = 0.2 * this.averageWeaponBaseDamageWeapon2;
+      duration *= (1 + lightningBonus * (1 + Number(this.i.attackSpeedIncrease || 0) / 100));
+    }
+
+    // Primal armament effect
+    if (this.i.primalArmamentWeapon2 === true) {
+      const primalBonus = 0.2 * this.attackDamageIncreaseWeapon2;
+      duration *= (1 + primalBonus * (1 + this.totalPhysicalDamageWeapon2));
+    }
+
+    // Ice bite effect
+    if (this.i.iceBiteWeapon2 === true) {
+      const iceBonus = 0.2 * this.projectileDamageIncreaseWeapon2;
+      duration *= (1 + iceBonus * (1 + this.attackDamageIncreaseWeapon2));
+    }
+
+    // Shock effect (without recursion)
+    if (this.i.shockWeapon2 === true) {
+      const shockEffect = Number(this.i.shockMagnitude || 0) / 100;
+      duration *= (1 + shockEffect);
+    }
+
+    // Other multipliers (capped)
+    const otherMult = Math.min(Number(this.i.otherSkillDmgWeapon2 || 0), 10);
+    duration *= (1 + otherMult * otherMult * (1 + otherMult));
+
+    return Math.max(1, duration); // Duration should never be less than 1
   }
 
   /**
@@ -277,11 +344,15 @@ export class DPSCalc {
    * Handles resistance penetration calculations
    */
   get resPenetrationWeapon1(): number {
-    return Number(this.i.resPenetration) * (1 - Number(this.i.resPenetration));
+    // Convert penetration from percentage to decimal (e.g., 20% -> 0.2)
+    const pen = Math.min(75, Number(this.i.resPenetration)) / 100;
+    // Return penetration multiplier (higher penetration = more damage)
+    return 1 - pen;
   }
 
   get resPenetrationWeapon2(): number {
-    return Number(this.i.resPenetration) * (1 - Number(this.i.resPenetration));
+    const pen = Math.min(75, Number(this.i.resPenetration)) / 100;
+    return 1 - pen;
   }
 
   /**
@@ -289,27 +360,37 @@ export class DPSCalc {
    * Processes crit chance and damage
    */
   get critChanceWeapon1(): number {
-    return Number(this.i.baseCritChance) * (1 + Number(this.i.critChanceIncrease));
+    // Convert base crit chance from percentage to decimal (e.g., 5% -> 0.05)
+    const baseCrit = Number(this.i.baseCritChance) / 100;
+    // Convert crit chance increase from percentage to decimal
+    const critIncrease = Number(this.i.critChanceIncrease) / 100;
+    // Calculate final crit chance with increases
+    return Math.min(0.95, baseCrit * (1 + critIncrease));
   }
 
   get critChanceWeapon2(): number {
-    return Number(this.i.baseCritChance2) * (1 + Number(this.i.critChanceIncrease2));
+    const baseCrit = Number(this.i.baseCritChance2) / 100;
+    const critIncrease = Number(this.i.critChanceIncrease2) / 100;
+    return Math.min(0.95, baseCrit * (1 + critIncrease));
   }
 
   get critDamageWeapon1(): number {
-    return Number(this.i.critDamage);
+    // Convert crit damage from percentage to multiplier (e.g., 150% -> 1.5)
+    return Number(this.i.critDamage) / 100;
   }
 
   get critDamageWeapon2(): number {
-    return Number(this.i.critDamage2);
+    return Number(this.i.critDamage2) / 100;
   }
 
   get critMultiplierWeapon1(): number {
-    return 1 + Number(this.i.critMultiplier) * Number(this.i.resPenetration);
+    // Base multiplier of 1 (100% damage)
+    // Plus the crit damage multiplier times the crit chance
+    return 1 + (this.critDamageWeapon1 - 1) * this.critChanceWeapon1;
   }
 
   get critMultiplierWeapon2(): number {
-    return 1 + Number(this.i.critMultiplier2) * Number(this.i.resPenetration);
+    return 1 + (this.critDamageWeapon2 - 1) * this.critChanceWeapon2;
   }
 
   /**
@@ -317,29 +398,35 @@ export class DPSCalc {
    * Calculates percentage-based elemental damage
    */
   get elementalDmgPercentWeapon1(): number {
-    return (
-      (Number(this.i.newPhysicalMinWeapon1) -
-        Number(this.i.weapon1PhysicalMin) -
-        Number(this.i.weapon1ChaosMin) +
-        (Number(this.i.newPhysicalMaxWeapon1) -
-          Number(this.i.weapon1PhysicalMax) -
-          Number(this.i.weapon1ChaosMax))) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    // Calculate average damage for each element
+    const lightning = ((Number(this.i.weapon1LightningMin) || 0) + (Number(this.i.weapon1LightningMax) || 0)) / 2;
+    const fire = ((Number(this.i.weapon1FireMin) || 0) + (Number(this.i.weapon1FireMax) || 0)) / 2;
+    const cold = ((Number(this.i.weapon1ColdMin) || 0) + (Number(this.i.weapon1ColdMax) || 0)) / 2;
+    
+    // Sum all elemental damage
+    const totalElemental = lightning + fire + cold;
+    
+    // Get total base damage
+    const totalDamage = this.averageBaseDmgWeapon1;
+    
+    // Calculate percentage, ensuring no division by zero
+    return totalDamage > 0 ? Math.min(100, (totalElemental / totalDamage) * 100) : 0;
   }
 
   get elementalDmgPercentWeapon2(): number {
-    return (
-      (Number(this.i.newPhysicalMinWeapon2) -
-        Number(this.i.weapon2PhysicalMin) -
-        Number(this.i.weapon2ChaosMin) +
-        (Number(this.i.newPhysicalMaxWeapon2) -
-          Number(this.i.weapon2PhysicalMax) -
-          Number(this.i.weapon2ChaosMax))) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    // Calculate average damage for each element
+    const lightning = ((Number(this.i.weapon2LightningMin) || 0) + (Number(this.i.weapon2LightningMax) || 0)) / 2;
+    const fire = ((Number(this.i.weapon2FireMin) || 0) + (Number(this.i.weapon2FireMax) || 0)) / 2;
+    const cold = ((Number(this.i.weapon2ColdMin) || 0) + (Number(this.i.weapon2ColdMax) || 0)) / 2;
+    
+    // Sum all elemental damage
+    const totalElemental = lightning + fire + cold;
+    
+    // Get total base damage
+    const totalDamage = this.averageBaseDmgWeapon2;
+    
+    // Calculate percentage, ensuring no division by zero
+    return totalDamage > 0 ? Math.min(100, (totalElemental / totalDamage) * 100) : 0;
   }
 
   /**
@@ -347,75 +434,63 @@ export class DPSCalc {
    * Calculates percentage-based physical and elemental contributions
    */
   get physicalDmgPercentWeapon1(): number {
-    return 3 * 0.15 + 5 * 0.06;
+    const basePhysical = (Number(this.i.weapon1PhysicalMin) + Number(this.i.weapon1PhysicalMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon1;
+    return totalDamage > 0 ? Math.min(100, (basePhysical / totalDamage) * 100) : 0;
   }
 
   get physicalDmgPercentWeapon2(): number {
-    return Number(this.i.physicalDmgPercent);
+    const basePhysical = (Number(this.i.weapon2PhysicalMin) + Number(this.i.weapon2PhysicalMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon2;
+    return totalDamage > 0 ? Math.min(100, (basePhysical / totalDamage) * 100) : 0;
   }
 
   get lightningDmgPercentWeapon1(): number {
-    return (
-      (Number(this.i.weapon1LightningMin) + Number(this.i.weapon1LightningMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseLightning = (Number(this.i.weapon1LightningMin) + Number(this.i.weapon1LightningMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon1;
+    return totalDamage > 0 ? Math.min(100, (baseLightning / totalDamage) * 100) : 0;
   }
 
   get lightningDmgPercentWeapon2(): number {
-    return (
-      (Number(this.i.weapon2LightningMin) + Number(this.i.weapon2LightningMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseLightning = (Number(this.i.weapon2LightningMin) + Number(this.i.weapon2LightningMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon2;
+    return totalDamage > 0 ? Math.min(100, (baseLightning / totalDamage) * 100) : 0;
   }
 
   get fireDmgPercentWeapon1(): number {
-    return (
-      (Number(this.i.weapon1FireMin) + Number(this.i.weapon1FireMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseFire = (Number(this.i.weapon1FireMin) + Number(this.i.weapon1FireMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon1;
+    return totalDamage > 0 ? Math.min(100, (baseFire / totalDamage) * 100) : 0;
   }
 
   get fireDmgPercentWeapon2(): number {
-    return (
-      (Number(this.i.weapon2FireMin) + Number(this.i.weapon2FireMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseFire = (Number(this.i.weapon2FireMin) + Number(this.i.weapon2FireMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon2;
+    return totalDamage > 0 ? Math.min(100, (baseFire / totalDamage) * 100) : 0;
   }
 
   get coldDmgPercentWeapon1(): number {
-    return (
-      (Number(this.i.weapon1ColdMin) + Number(this.i.weapon1ColdMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseCold = (Number(this.i.weapon1ColdMin) + Number(this.i.weapon1ColdMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon1;
+    return totalDamage > 0 ? Math.min(100, (baseCold / totalDamage) * 100) : 0;
   }
 
   get coldDmgPercentWeapon2(): number {
-    return (
-      (Number(this.i.weapon2ColdMin) + Number(this.i.weapon2ColdMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseCold = (Number(this.i.weapon2ColdMin) + Number(this.i.weapon2ColdMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon2;
+    return totalDamage > 0 ? Math.min(100, (baseCold / totalDamage) * 100) : 0;
   }
 
   get chaosDmgPercentWeapon1(): number {
-    return (
-      (Number(this.i.weapon1ChaosMin) + Number(this.i.weapon1ChaosMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseChaos = (Number(this.i.weapon1ChaosMin) + Number(this.i.weapon1ChaosMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon1;
+    return totalDamage > 0 ? Math.min(100, (baseChaos / totalDamage) * 100) : 0;
   }
 
   get chaosDmgPercentWeapon2(): number {
-    return (
-      (Number(this.i.weapon2ChaosMin) + Number(this.i.weapon2ChaosMax)) /
-      2 /
-      Number(this.i.attacksPerSecond)
-    );
+    const baseChaos = (Number(this.i.weapon2ChaosMin) + Number(this.i.weapon2ChaosMax)) / 2;
+    const totalDamage = this.averageBaseDmgWeapon2;
+    return totalDamage > 0 ? Math.min(100, (baseChaos / totalDamage) * 100) : 0;
   }
 
   /**
@@ -423,41 +498,95 @@ export class DPSCalc {
    * Combines all modifiers to calculate total DPS
    */
   get totalDpsWeapon1(): number {
-    return (
-      this.attackSpeedWeapon1 *
-      Number(this.i.totalSkillProjectiles) *
-      this.damageConversionWeapon1 *
-      this.magnitudePercentWeapon1 *
-      this.durationPercentWeapon1 *
-      this.critMultiplierWeapon1 *
-      (1 - 0.75 + this.physicalDmgPercentWeapon1 > 1
-        ? 1
-        : 1 - 0.75 + this.physicalDmgPercentWeapon1) *
-      (this.finalPhysicalDamage +
-        this.finalLightningDamage +
-        this.finalFireDamage +
-        this.finalColdDamage +
-        this.finalChaosDamage)
-    );
+    // Get all required values with null checks
+    const attackSpeed = Number(this.attackSpeedWeapon1) || 0;
+    const damageConversion = Number(this.damageConversionWeapon1) || 1;
+    const magnitude = Number(this.magnitudePercentWeapon1) || 0;
+    const duration = Number(this.durationPercentWeapon1) || 1;
+    const critMultiplier = Number(this.critMultiplierWeapon1) || 1;
+    const projectiles = Number(this.i.totalSkillProjectiles) || 1;
+    const bowDamage = 1 + (Number(this.i.bowDamage || 0) / 100);
+    const resistancePen = Number(this.resPenetrationWeapon1) || 1;
+    const physicalPercent = Number(this.physicalDmgPercentWeapon1) || 0;
+
+    // Calculate physical modifier with bounds
+    const physicalMod = Math.min(Math.max(0, 1 - 0.75 + physicalPercent), 1);
+
+    // Calculate total damage per hit with null checks
+    const totalDamagePerHit = 
+      (Number(this.finalPhysicalDamage) || 0) +
+      (Number(this.finalLightningDamage) || 0) +
+      (Number(this.finalFireDamage) || 0) +
+      (Number(this.finalColdDamage) || 0) +
+      (Number(this.finalChaosDamage) || 0);
+
+    // Ensure all multipliers are valid numbers
+    if (isNaN(attackSpeed) || isNaN(damageConversion) || isNaN(magnitude) || 
+        isNaN(duration) || isNaN(critMultiplier) || isNaN(projectiles) || 
+        isNaN(bowDamage) || isNaN(resistancePen) || isNaN(physicalMod) || 
+        isNaN(totalDamagePerHit)) {
+      return 0;
+    }
+
+    // Calculate DPS with all multipliers
+    const dps = attackSpeed * 
+      damageConversion * 
+      (1 + magnitude) * // Magnitude is an increase, not a multiplier
+      duration * 
+      critMultiplier * 
+      projectiles * 
+      bowDamage * 
+      resistancePen * 
+      physicalMod * 
+      totalDamagePerHit;
+
+    return Math.max(0, dps); // Ensure DPS is never negative
   }
 
   get totalDpsWeapon2(): number {
-    return (
-      this.attackSpeedWeapon2 *
-      Number(this.i.totalSkillProjectiles) *
-      this.damageConversionWeapon2 *
-      this.magnitudePercentWeapon2 *
-      this.durationPercentWeapon2 *
-      this.critMultiplierWeapon2 *
-      (1 - 0.75 + this.physicalDmgPercentWeapon2 > 1
-        ? 1
-        : 1 - 0.75 + this.physicalDmgPercentWeapon2) *
-      (this.finalPhysicalDamage2 +
-        this.finalLightningDamage2 +
-        this.finalFireDamage2 +
-        this.finalColdDamage2 +
-        this.finalChaosDamage2)
-    );
+    // Get all required values with null checks
+    const attackSpeed = Number(this.attackSpeedWeapon2) || 0;
+    const damageConversion = Number(this.damageConversionWeapon2) || 1;
+    const magnitude = Number(this.magnitudePercentWeapon2) || 0;
+    const duration = Number(this.durationPercentWeapon2) || 1;
+    const critMultiplier = Number(this.critMultiplierWeapon2) || 1;
+    const projectiles = Number(this.i.totalSkillProjectiles) || 1;
+    const bowDamage = 1 + (Number(this.i.bowDamage || 0) / 100);
+    const resistancePen = Number(this.resPenetrationWeapon2) || 1;
+    const physicalPercent = Number(this.physicalDmgPercentWeapon2) || 0;
+
+    // Calculate physical modifier with bounds
+    const physicalMod = Math.min(Math.max(0, 1 - 0.75 + physicalPercent), 1);
+
+    // Calculate total damage per hit with null checks
+    const totalDamagePerHit = 
+      (Number(this.finalPhysicalDamage2) || 0) +
+      (Number(this.finalLightningDamage2) || 0) +
+      (Number(this.finalFireDamage2) || 0) +
+      (Number(this.finalColdDamage2) || 0) +
+      (Number(this.finalChaosDamage2) || 0);
+
+    // Ensure all multipliers are valid numbers
+    if (isNaN(attackSpeed) || isNaN(damageConversion) || isNaN(magnitude) || 
+        isNaN(duration) || isNaN(critMultiplier) || isNaN(projectiles) || 
+        isNaN(bowDamage) || isNaN(resistancePen) || isNaN(physicalMod) || 
+        isNaN(totalDamagePerHit)) {
+      return 0;
+    }
+
+    // Calculate DPS with all multipliers
+    const dps = attackSpeed * 
+      damageConversion * 
+      (1 + magnitude) * // Magnitude is an increase, not a multiplier
+      duration * 
+      critMultiplier * 
+      projectiles * 
+      bowDamage * 
+      resistancePen * 
+      physicalMod * 
+      totalDamagePerHit;
+
+    return Math.max(0, dps); // Ensure DPS is never negative
   }
 
   /**
@@ -467,8 +596,15 @@ export class DPSCalc {
   get finalPhysicalDamage(): number {
     const basePhysical = Number(this.i.weapon1PhysicalMin);
     const conversionBonus = this.damageConversionWeapon1 * this.averageWeaponBaseDamageWeapon1;
-    const shockBonus = this.i.shockWeapon1 === true ? 0.25 * this.averageBaseDmgWeapon1 : 0;
-    const electrocutionMultiplier = this.i.electrocutionWeapon1 === true ? 1.25 : 1;
+    
+    // Apply shock effect with proper magnitude
+    const shockMagnitude = this.i.shockWeapon1 === true ? Number(this.i.shockMagnitude) / 100 : 0;
+    const shockBonus = shockMagnitude * this.averageBaseDmgWeapon1;
+    
+    // Apply electrocution with proper duration
+    const electrocutionDuration = this.i.electrocutionWeapon1 === true ? 
+      Number(this.i.electrocutionDuration) / 100 : 0;
+    const electrocutionMultiplier = 1 + electrocutionDuration;
 
     return (basePhysical + conversionBonus + shockBonus) * electrocutionMultiplier;
   }
@@ -506,8 +642,15 @@ export class DPSCalc {
   get finalPhysicalDamage2(): number {
     const basePhysical = Number(this.i.weapon2PhysicalMin);
     const conversionBonus = this.damageConversionWeapon2 * this.averageWeaponBaseDamageWeapon2;
-    const shockBonus = this.i.shockWeapon2 === true ? 0.25 * this.averageBaseDmgWeapon2 : 0;
-    const electrocutionMultiplier = this.i.electrocutionWeapon2 === true ? 1.25 : 1;
+    
+    // Apply shock effect with proper magnitude
+    const shockMagnitude = this.i.shockWeapon2 === true ? Number(this.i.shockMagnitude) / 100 : 0;
+    const shockBonus = shockMagnitude * this.averageBaseDmgWeapon2;
+    
+    // Apply electrocution with proper duration
+    const electrocutionDuration = this.i.electrocutionWeapon2 === true ? 
+      Number(this.i.electrocutionDuration) / 100 : 0;
+    const electrocutionMultiplier = 1 + electrocutionDuration;
 
     return (basePhysical + conversionBonus + shockBonus) * electrocutionMultiplier;
   }
