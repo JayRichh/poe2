@@ -6,81 +6,23 @@ const nextConfig = {
   trailingSlash: false,
   async redirects() {
     return [
-      // Handle www to non-www first
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.poe2.dev',
-          },
-        ],
-        destination: {
-          protocol: 'https',
-          hostname: 'poe2.dev',
-          pathname: '/:path*',
-        },
-        permanent: true,
-      },
-      // Redirect trailing slashes
-      {
-        source: '/:path+/',
-        destination: '/:path+',
-        permanent: true,
-      },
-      // Redirect /index to /
+      // Essential redirects only
       {
         source: '/index',
         destination: '/',
         permanent: true,
       },
-      // Redirect old build URLs to new format
       {
         source: '/builds/:path*',
         destination: '/build-planner/:path*',
         permanent: true,
       },
-      // Redirect lowercase ascendancy names
-      {
-        source: '/ascendancies/:name',
-        destination: '/ascendancies/:name',
-        permanent: true,
-        has: [
-          {
-            type: 'query',
-            key: 'name',
-            value: '(?i)^(titan|acolyte|bloodmage|chronomancer|deadeye|gemling|infernalist|invoker|pathfinder|stormweaver|warbringer|witchhunter)$'
-          }
-        ]
-      },
-      // Handle RSS feed URLs
       {
         source: '/rss',
         destination: '/feed.xml',
         permanent: true,
-      },
-      {
-        source: '/rss.xml',
-        destination: '/feed.xml',
-        permanent: true,
-      },
-      {
-        source: '/atom.xml',
-        destination: '/feed.xml',
-        permanent: true,
       }
     ];
-  },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        // Handle /build-planner/skills as a special case
-        {
-          source: '/build-planner/skills',
-          destination: '/build-planner/skills/page',
-        }
-      ]
-    };
   },
   images: {
     remotePatterns: [

@@ -207,13 +207,13 @@ export async function generateMetadata(
       creator: "@poe2tools",
     },
     alternates: {
-      canonical: `${baseUrl}${canonicalPath}`,
       types: {
         "application/rss+xml": [
-          { url: "https://poe2.dev/feed.xml", title: "POE2 Tools - All Updates" },
-          { url: "https://poe2.dev/feed.xml?type=news", title: "POE2 Tools - News" },
-          { url: "https://poe2.dev/feed.xml?type=patch", title: "POE2 Tools - Patch Notes" }
-        ],
+          {
+            url: "https://poe2.dev/feed.xml",
+            title: "POE2 Tools Updates"
+          }
+        ]
       },
     },
     verification: {
