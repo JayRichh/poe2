@@ -6,7 +6,7 @@ const nextConfig = {
   trailingSlash: false,
   async redirects() {
     return [
-      // Redirect www to non-www
+      // Handle www to non-www first
       {
         source: '/:path*',
         has: [
@@ -15,7 +15,11 @@ const nextConfig = {
             value: 'www.poe2.dev',
           },
         ],
-        destination: 'https://poe2.dev/:path*',
+        destination: {
+          protocol: 'https',
+          hostname: 'poe2.dev',
+          pathname: '/:path*',
+        },
         permanent: true,
       },
       // Redirect trailing slashes

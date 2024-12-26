@@ -89,10 +89,12 @@ export async function generateMetadata(
 
   // Get the current path from params
   const path = params.path ? `/${[params.path].flat().join('/')}` : '';
+  // Get the hostname from the request if available, fallback to poe2.dev
   const canonicalPath = path.replace(/\/$/, ''); // Remove trailing slash
+  const baseUrl = "https://poe2.dev"; // Always use non-www version
 
   return {
-    metadataBase: new URL("https://poe2.dev"),
+    metadataBase: new URL(baseUrl),
     title: {
       template: "%s | POE2 Tools",
       default: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
@@ -205,7 +207,7 @@ export async function generateMetadata(
       creator: "@poe2tools",
     },
     alternates: {
-      canonical: `https://poe2.dev${canonicalPath}`,
+      canonical: `${baseUrl}${canonicalPath}`,
       types: {
         "application/rss+xml": [
           { url: "https://poe2.dev/feed.xml", title: "POE2 Tools - All Updates" },
