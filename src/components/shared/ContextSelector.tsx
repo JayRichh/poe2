@@ -52,8 +52,20 @@ export function ContextSelector() {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
   const [isOpen, setIsOpen] = useState(false);
-  const menuHoveredRef = useRef(false);
-  const closeTimeoutRef = useRef<NodeJS.Timeout>();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen]);
 
   const currentContext = useMemo(() => {
     const rootSegment = segments[0];
@@ -88,7 +100,7 @@ export function ContextSelector() {
 
   return (
     <div className="flex items-center gap-1.5">
-      <div className="relative">
+      <div className={cn("relative", isOpen && "z-[100]")} ref={containerRef}>
         <Button
           variant="ghost"
           size="sm"
@@ -96,16 +108,9 @@ export function ContextSelector() {
             "h-7 text-sm gap-1",
             !currentContext.children && "pr-2"
           )}
-          onMouseEnter={() => {
-            clearTimeout(closeTimeoutRef.current);
-            setIsOpen(true);
-          }}
-          onMouseLeave={() => {
-            closeTimeoutRef.current = setTimeout(() => {
-              if (!menuHoveredRef.current) {
-                setIsOpen(false);
-              }
-            }, 100);
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsOpen(!isOpen);
           }}
         >
           {currentContext.label}
@@ -123,25 +128,23 @@ export function ContextSelector() {
           <div 
             data-dropdown
             className={cn(
-              "absolute top-full left-0 mt-1 w-48 py-1 bg-background/95 backdrop-blur-sm rounded-md border border-border/30 shadow-lg",
-              "opacity-0 transition-opacity z-50",
-              isOpen && "opacity-100"
+              "absolute top-full left-0 mt-1 w-48 py-1",
+              "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80",
+              "border border-border/50 rounded-xl shadow-lg",
+              "transform transition-all duration-200 origin-top",
+              "z-[100]",
+              isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
             )}
-            onMouseEnter={() => {
-              clearTimeout(closeTimeoutRef.current);
-              menuHoveredRef.current = true;
-              setIsOpen(true);
-            }}
-            onMouseLeave={() => {
-              menuHoveredRef.current = false;
-              setIsOpen(false);
-            }}
           >
             {currentContext.children.map((child) => (
               <Link
                 key={child.path}
                 href={`${currentContext.path}${child.path}`}
                 className="block px-3 py-1.5 text-sm hover:bg-primary/5 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsOpen(false);
+                }}
               >
                 {child.label}
               </Link>

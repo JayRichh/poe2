@@ -3,6 +3,7 @@
 import { AlertCircle, Check, Clipboard, Code, FileUp, Link2 } from "lucide-react";
 
 import { useCallback, useState } from "react";
+import { validateFile } from "~/utils/validation";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
@@ -83,7 +84,12 @@ export default function ImportExportPage() {
     setDragActive(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      // Handle file
+      const file = e.dataTransfer.files[0];
+      const validation = validateFile(file);
+      if (!validation.valid) {
+        setFeedback({ type: "error", message: validation.error || "Invalid file" });
+        return;
+      }
       handleImport();
     }
   }, []);
@@ -209,7 +215,17 @@ export default function ImportExportPage() {
                   id="file-upload"
                   type="file"
                   className="hidden"
-                  onChange={() => handleImport()}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const validation = validateFile(file);
+                      if (!validation.valid) {
+                        setFeedback({ type: "error", message: validation.error || "Invalid file" });
+                        return;
+                      }
+                      handleImport();
+                    }
+                  }}
                 />
               </div>
             )}

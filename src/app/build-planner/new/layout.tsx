@@ -1,7 +1,16 @@
-export default function NewBuildLayout({ children }: { children: React.ReactNode }) {
+import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function NewBuildLayout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
-    </div>
+    <BuildPlannerLayout
+      title="Create New Build"
+      description="Create a new Path of Exile 2 build to plan your character progression, equipment, and skills."
+    >
+      {children}
+    </BuildPlannerLayout>
   );
 }

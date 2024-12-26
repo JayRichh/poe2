@@ -41,7 +41,7 @@ export async function createBuild(build: BuildInsert) {
   return data;
 }
 
-export async function updateBuild(id: string, updates: BuildUpdate) {
+export async function updateBuild(idOrSlug: string, updates: BuildUpdate) {
   const supabase = await getServerClient();
 
   const {
@@ -49,8 +49,12 @@ export async function updateBuild(id: string, updates: BuildUpdate) {
   } = await supabase.auth.getUser();
   if (!user) throw new Error("Must be logged in to update builds");
 
-  // Verify ownership
-  const { data: build } = await supabase.from("builds").select().eq("id", id).single();
+  // Verify ownership - try slug first, then id
+  let { data: build } = await supabase.from("builds").select().eq("slug", idOrSlug).single();
+  
+  if (!build) {
+    ({ data: build } = await supabase.from("builds").select().eq("id", idOrSlug).single());
+  }
 
   if (!build || build.user_id !== user.id) {
     throw new Error("Build not found or unauthorized");
@@ -66,13 +70,13 @@ export async function updateBuild(id: string, updates: BuildUpdate) {
   const { data, error } = await supabase
     .from("builds")
     .update(updatedFields)
-    .eq("id", id)
+    .eq("id", build.id) // Always use ID for update
     .select()
     .single();
 
   if (error) throw error;
 
-  revalidatePath(`/build-planner/${data.slug || id}`);
+  revalidatePath(`/build-planner/${data.slug || build.id}`);
   return data;
 }
 
@@ -169,9 +173,11 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
 export async function getBuilds({
   userId,
   visibility = "unlisted",
+  includeOwn = true
 }: {
   userId?: string;
-  visibility?: "private" | "unlisted";
+  visibility?: "private" | "unlisted" | "public" | "all";
+  includeOwn?: boolean;
 } = {}): Promise<Build[]> {
   const supabase = await getServerClient();
 
@@ -194,11 +200,32 @@ export async function getBuilds({
       user_id
     `;
 
-    let { data, error } = await supabase
-      .from("builds")
-      .select(query)
-      .eq(userId ? "user_id" : "visibility", userId || visibility)
-      .order("created_at", { ascending: false });
+    let buildsQuery = supabase.from("builds").select(query);
+
+    // Get current user if includeOwn is true
+    let currentUser = null;
+    if (includeOwn) {
+      const { data: { user } } = await supabase.auth.getUser();
+      currentUser = user;
+    }
+
+    if (userId) {
+      buildsQuery = buildsQuery.eq("user_id", userId);
+    } else if (visibility === "all") {
+      if (currentUser) {
+        buildsQuery = buildsQuery.or(`visibility.in.(public,unlisted),user_id.eq.${currentUser.id}`);
+      } else {
+        buildsQuery = buildsQuery.in("visibility", ["public", "unlisted"]);
+      }
+    } else {
+      if (currentUser) {
+        buildsQuery = buildsQuery.or(`visibility.eq.${visibility},user_id.eq.${currentUser.id}`);
+      } else {
+        buildsQuery = buildsQuery.eq("visibility", visibility);
+      }
+    }
+
+    let { data, error } = await buildsQuery.order("created_at", { ascending: false });
 
     if (error) {
       if (error.code === "42703") {
@@ -213,6 +240,22 @@ export async function getBuilds({
   } catch (error) {
     console.error("Error in getBuilds:", error);
     throw error;
+  }
+}
+
+export async function updateBuildAndRedirect(id: string, updates: BuildUpdate) {
+  try {
+    const build = await updateBuild(id, updates);
+    if (!build) {
+      throw new Error("Build update failed - no build returned");
+    }
+    return build.slug || build.id;
+  } catch (error) {
+    console.error("Error in updateBuildAndRedirect:", error);
+    if (error instanceof Error) {
+      throw error; // Preserve the original error message
+    }
+    throw new Error("Failed to update build");
   }
 }
 

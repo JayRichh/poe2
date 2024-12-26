@@ -1,7 +1,15 @@
 "use client";
 
+import { Edit2, MoreVertical, Trash2 } from "lucide-react";
+import { useTransition, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { deleteBuild } from "~/app/actions/builds";
+import { Button } from "~/components/ui/Button";
 import { Card } from "~/components/ui/Card";
+import { Dropdown } from "~/components/ui/Dropdown";
 import { Text } from "~/components/ui/Text";
+import { Toast } from "~/components/ui/Toast";
 
 import type { Database } from "~/lib/supabase/types";
 
@@ -21,9 +29,75 @@ interface BuildOverviewProps {
 }
 
 export function BuildOverview({ build }: BuildOverviewProps) {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string>();
+  const router = useRouter();
+
+  const handleAction = (action: string) => {
+    if (action === "edit") {
+      router.push(`/build-planner/${build.slug || build.id}/edit`);
+    } else if (action === "delete") {
+      startTransition(async () => {
+        try {
+          await deleteBuild(build.id);
+          router.push("/build-planner");
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Failed to delete build");
+        }
+      });
+    }
+  };
+
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <Card className="p-4">
+    <div className="space-y-6">
+      <div className="flex items-start justify-between">
+        <div className="flex-1 min-w-0">
+          <Text className="text-2xl font-bold truncate">{build.name}</Text>
+          {build.description && (
+            <Text className="text-foreground/60 mt-1 line-clamp-2">{build.description}</Text>
+          )}
+        </div>
+        <Dropdown
+          width={200}
+          trigger={
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-foreground/60 hover:text-primary"
+              disabled={isPending}
+            >
+              <MoreVertical className="h-4 w-4" />
+            </Button>
+          }
+          items={[
+            {
+              label: "Edit Build",
+              value: "edit",
+              icon: <Edit2 className="h-4 w-4" />,
+            },
+            {
+              label: "Delete Build",
+              value: "delete",
+              icon: <Trash2 className="h-4 w-4" />,
+            },
+          ]}
+          onChange={handleAction}
+          position="bottom-left"
+          className="w-fit"
+        />
+      </div>
+
+      {error && (
+        <Toast 
+          message={error}
+          type="error"
+          isVisible={!!error}
+          onClose={() => setError(undefined)}
+        />
+      )}
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Card className="p-4">
         <Text className="font-medium mb-4">Equipment Summary</Text>
         {build.equipment?.length ? (
           <div className="space-y-2">
@@ -81,6 +155,7 @@ export function BuildOverview({ build }: BuildOverviewProps) {
           <Text className="text-sm text-foreground/60">No notes added yet</Text>
         )}
       </Card>
+      </div>
     </div>
   );
 }

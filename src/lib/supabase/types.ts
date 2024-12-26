@@ -6,7 +6,7 @@ export type BuildSettings = {
 };
 
 export type POEConnectionStatus = "connected" | "disconnected" | "connecting" | "error";
-export type VisibilityType = "private" | "unlisted";
+export type VisibilityType = "private" | "unlisted" | "public";
 export type EquipmentSlot =
   | "mainhand"
   | "offhand"

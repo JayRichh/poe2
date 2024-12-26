@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { shimmer, toBase64 } from "~/utils/image";
+import { validateFile } from "~/utils/validation";
 
 import { Filters } from "./components/Sidebar/Filters";
 import { NodeDetails } from "./components/Sidebar/NodeDetails";
@@ -246,7 +247,14 @@ export default function SkillTreePage() {
                         className="hidden"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
-                          if (file) handleImport(file);
+                        if (file) {
+                          const validation = validateFile(file);
+                          if (!validation.valid) {
+                            alert(validation.error);
+                            return;
+                          }
+                          handleImport(file);
+                        }
                         }}
                       />
                     </label>

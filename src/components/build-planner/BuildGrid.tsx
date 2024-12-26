@@ -1,13 +1,17 @@
 "use client";
 
-import { Grid, LayoutGrid, List } from "lucide-react";
+import { Edit2, Grid, LayoutGrid, List, MoreVertical, Trash2 } from "lucide-react";
 
-import { useState } from "react";
+import { useTransition, useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
+import { deleteBuild } from "~/app/actions/builds";
 import { Button } from "~/components/ui/Button";
+import { Dropdown } from "~/components/ui/Dropdown";
 import { Text } from "~/components/ui/Text";
+import { Toast } from "~/components/ui/Toast";
 
 import type { Database } from "~/lib/supabase/types";
 
@@ -131,17 +135,37 @@ export function BuildGrid({ builds, groupBy }: BuildGridProps) {
 }
 
 function BuildCard({ build }: { build: Build }) {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string>();
+  const router = useRouter();
+
+  const handleAction = (action: string) => {
+    if (action === "edit") {
+      router.push(`/build-planner/${build.slug || build.id}/edit`);
+    } else if (action === "delete") {
+      startTransition(async () => {
+        try {
+          await deleteBuild(build.id);
+          router.refresh();
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Failed to delete build");
+        }
+      });
+    }
+  };
+
   return (
-    <Link
-      href={`/build-planner/${build.slug || build.id}`}
-      className="group block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
-      tabIndex={0}
+    <div
+      className="group block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
       role="article"
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <Text className="font-medium line-clamp-1 group-hover:text-primary transition-colors">
+      <div className="flex items-start justify-between gap-2">
+        <Link
+          href={`/build-planner/${build.slug || build.id}`}
+          className="flex-1 min-w-0 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-md"
+        >
+          <Text className="font-medium line-clamp-1 hover:text-primary transition-colors">
             {build.name}
           </Text>
           {build.description && (
@@ -149,11 +173,46 @@ function BuildCard({ build }: { build: Build }) {
               {build.description}
             </Text>
           )}
-        </div>
-        <div className="flex-shrink-0">
+        </Link>
+        <div className="flex items-center gap-3">
           <Text className="text-sm text-foreground/40">Level {build.level || "?"}</Text>
+          <Dropdown
+            trigger={
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 text-foreground/60 hover:text-primary"
+                disabled={isPending}
+              >
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            }
+            items={[
+              {
+                label: "Edit Build",
+                value: "edit",
+                icon: <Edit2 className="h-4 w-4" />,
+              },
+              {
+                label: "Delete Build",
+                value: "delete",
+                icon: <Trash2 className="h-4 w-4" />,
+              },
+            ]}
+            onChange={handleAction}
+            position="bottom-right"
+          />
         </div>
       </div>
+
+      {error && (
+        <Toast 
+          message={error}
+          type="error"
+          isVisible={!!error}
+          onClose={() => setError(undefined)}
+        />
+      )}
 
       <div className="mt-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
@@ -166,31 +225,53 @@ function BuildCard({ build }: { build: Build }) {
             </span>
           )}
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          tabIndex={-1}
-          className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-        >
-          View Build
-        </Button>
+        <Link href={`/build-planner/${build.slug || build.id}`}>
+          <Button
+            variant="outline"
+            size="sm"
+            tabIndex={-1}
+            className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+          >
+            View Build
+          </Button>
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }
 
 function BuildListItem({ build }: { build: Build }) {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string>();
+  const router = useRouter();
+
+  const handleAction = (action: string) => {
+    if (action === "edit") {
+      router.push(`/build-planner/${build.slug || build.id}/edit`);
+    } else if (action === "delete") {
+      startTransition(async () => {
+        try {
+          await deleteBuild(build.id);
+          router.refresh();
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Failed to delete build");
+        }
+      });
+    }
+  };
+
   return (
-    <Link
-      href={`/build-planner/${build.slug || build.id}`}
-      className="group flex items-center justify-between gap-4 p-3 rounded-lg border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
-      tabIndex={0}
+    <div
+      className="group flex items-center justify-between gap-4 p-3 rounded-lg border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
       role="article"
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
-      <div className="flex items-center gap-6 flex-1 min-w-0">
+      <Link
+        href={`/build-planner/${build.slug || build.id}`}
+        className="flex items-center gap-6 flex-1 min-w-0 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-md"
+      >
         <div className="flex-1 min-w-0">
-          <Text className="font-medium truncate group-hover:text-primary transition-colors">
+          <Text className="font-medium truncate hover:text-primary transition-colors">
             {build.name}
           </Text>
           {build.description && (
@@ -205,22 +286,50 @@ function BuildListItem({ build }: { build: Build }) {
             Level {build.level || "?"}
           </Text>
         </div>
-      </div>
-      <div className="flex items-center gap-3">
+      </Link>
+
+      {error && (
+        <Toast 
+          message={error}
+          type="error"
+          isVisible={!!error}
+          onClose={() => setError(undefined)}
+        />
+      )}
+
+      <div className="flex items-center gap-3 flex-shrink-0">
         {build.is_template && (
           <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs whitespace-nowrap">
             Template
           </span>
         )}
-        <Button
-          variant="outline"
-          size="sm"
-          tabIndex={-1}
-          className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-        >
-          View Build
-        </Button>
+        <Dropdown
+          trigger={
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-foreground/60 hover:text-primary"
+              disabled={isPending}
+            >
+              <MoreVertical className="h-4 w-4" />
+            </Button>
+          }
+          items={[
+            {
+              label: "Edit Build",
+              value: "edit",
+              icon: <Edit2 className="h-4 w-4" />,
+            },
+            {
+              label: "Delete Build",
+              value: "delete",
+              icon: <Trash2 className="h-4 w-4" />,
+            },
+          ]}
+          onChange={handleAction}
+          position="bottom-right"
+        />
       </div>
-    </Link>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
-
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { BuildGrid } from "~/components/build-planner/BuildGrid";
@@ -29,16 +28,27 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const sort = searchParams?.get("sort") || "created_at:desc";
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
+  // Fetch builds when visibility changes
+  const [builds, setBuilds] = useState(initialBuilds);
+
+  useEffect(() => {
+    async function fetchBuilds() {
+      const newBuilds = await getBuilds({ 
+        visibility: visibility as "private" | "unlisted" | "public" | "all", 
+        includeOwn: true 
+      });
+      setBuilds(newBuilds);
+    }
+    fetchBuilds();
+  }, [visibility]);
+
   // Filter and sort builds
-  const filteredBuilds = initialBuilds
+  const filteredBuilds = builds
     .filter((build) => {
       if (search && !build.name.toLowerCase().includes(search.toLowerCase())) {
         return false;
       }
       if (poeClass && build.poe_class !== poeClass) {
-        return false;
-      }
-      if (visibility !== "all" && build.visibility !== visibility) {
         return false;
       }
       return true;

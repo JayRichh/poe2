@@ -29,6 +29,24 @@ const nextConfig = {
     scrollRestoration: true,
     serverActions: {
       bodySizeLimit: "2mb",
+      allowedFormDataKeys: [
+        'name',
+        'description',
+        'poe_class',
+        'level',
+        'visibility',
+        'equipment',
+        'skill_gems',
+        'build_configs',
+        'stats',
+        'notes'
+      ],
+      allowedOrigins: ['same-origin'],
+      acceptedContentTypes: [
+        'application/json',
+        'text/plain',
+        'multipart/form-data'
+      ]
     },
     optimisticClientCache: true,
   },
@@ -82,6 +100,14 @@ const nextConfig = {
           {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+          },
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block"
           },
         ],
       },

@@ -40,7 +40,7 @@ export function Dropdown({
     if (!triggerRef.current) return {};
 
     const menuWidth = width === "auto" ? "auto" : width === "trigger" ? "100%" : width;
-
+    const rect = triggerRef.current.getBoundingClientRect();
     const styles: Record<string, any> = {
       width: menuWidth,
       maxHeight,
@@ -121,9 +121,11 @@ export function Dropdown({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isOpen]);
 
   const handleSelect = (itemValue: string) => {
     onChange?.(itemValue);
@@ -133,13 +135,16 @@ export function Dropdown({
 
   return (
     <div
-      className={cn("relative", isOpen && "z-100", className)}
+      className={cn("relative", isOpen && "z-[100]", className)}
       ref={dropdownRef}
       onKeyDown={handleKeyDown}
     >
       <div
         ref={triggerRef}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
         role="button"
         tabIndex={0}
         aria-haspopup="true"
@@ -149,7 +154,7 @@ export function Dropdown({
         {trigger}
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
             ref={menuRef}
@@ -160,9 +165,10 @@ export function Dropdown({
             style={getPositionStyles()}
             className={cn(
               "absolute",
-              "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80",
-              "border border-border/50 rounded-xl shadow-lg",
-              "focus:outline-none"
+              "bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/75",
+              "border border-border rounded-lg shadow-lg",
+              "focus:outline-none",
+              "z-[100]"
             )}
             role="menu"
             aria-orientation="vertical"
@@ -172,12 +178,17 @@ export function Dropdown({
               {items.map((item, index) => (
                 <motion.button
                   key={item.value}
-                  whileHover={{ backgroundColor: "rgba(0,0,0,0.05)" }}
-                  onClick={() => !item.disabled && handleSelect(item.value)}
+                  whileHover={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (!item.disabled) {
+                      handleSelect(item.value);
+                    }
+                  }}
                   className={cn(
-                    "w-full px-4 py-2 text-left flex items-center gap-2",
-                    "transition-colors duration-200",
-                    "focus:outline-none focus:bg-primary/10",
+                    "w-full px-4 py-2.5 text-left flex items-center gap-2",
+                    "transition-colors duration-150",
+                    "focus:outline-none focus:bg-primary/15",
                     item.disabled ? "opacity-50 cursor-not-allowed" : "hover:text-primary",
                     value === item.value && "text-primary font-medium",
                     activeIndex === index && "bg-primary/10"

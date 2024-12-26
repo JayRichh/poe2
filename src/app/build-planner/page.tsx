@@ -10,7 +10,7 @@ import { BuildList } from "./BuildList";
 export const dynamic = "force-dynamic";
 
 export default async function BuildPlannerPage() {
-  const builds = await getBuilds();
+  const builds = await getBuilds({ visibility: "all", includeOwn: true });
 
   return (
     <BuildPlannerLayout
