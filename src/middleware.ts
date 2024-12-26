@@ -117,7 +117,7 @@ export async function middleware(request: NextRequest) {
       "X-XSS-Protection": "1; mode=block",
       "Content-Security-Policy": [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com",
         "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: https:",
         "font-src 'self' data:",

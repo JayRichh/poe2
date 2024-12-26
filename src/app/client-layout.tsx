@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
+import { Suspense, useMemo, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import { ThemeProvider } from "next-themes";
@@ -50,6 +50,38 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   useDefaultDarkMode();
   const isVisible = useHeaderScroll();
   const pathname = usePathname();
+
+  useEffect(() => {
+    // Initialize GoatCounter
+    window.goatcounter = {
+      no_onload: true,
+      allow_local: true,
+      path: pathname,
+    };
+
+    // Load GoatCounter script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = '//gc.zgo.at/count.js';
+    script.dataset.goatcounter = 'https://poe2.goatcounter.com/count';
+    document.head.appendChild(script);
+
+    // Track initial page view
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: pathname,
+      });
+    }
+  }, []);
+
+  // Track client-side navigation
+  useEffect(() => {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: pathname,
+      });
+    }
+  }, [pathname]);
   
   // Check if current route has sub-navigation
   const hasSubNav = useMemo(() => {
