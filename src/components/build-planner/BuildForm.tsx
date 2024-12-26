@@ -5,10 +5,15 @@ import { useState } from "react";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
-import type { Database } from "~/lib/supabase/types";
+import type { Database, VisibilityType } from "~/lib/supabase/types";
+import type { BuildVisibility } from "~/app/actions/settings";
 
 type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
-type VisibilityType = Database["public"]["Enums"]["visibility_type"];
+
+// Helper to convert database visibility to application visibility
+function toAppVisibility(visibility: VisibilityType | undefined): BuildVisibility {
+  return (visibility === 'private' || visibility === 'unlisted') ? visibility : 'private';
+}
 
 type POEClass = "duelist" | "marauder" | "ranger" | "scion" | "shadow" | "templar" | "witch";
 
@@ -29,8 +34,8 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
     (initialBuild?.poe_class as POEClass) || ""
   );
   const [level, setLevel] = useState(initialBuild?.level?.toString() || "");
-  const [visibility, setVisibility] = useState<VisibilityType>(
-    initialBuild?.visibility || "private"
+  const [visibility, setVisibility] = useState<BuildVisibility>(
+    toAppVisibility(initialBuild?.visibility)
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -127,7 +132,7 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
             <Text className="text-sm text-foreground/60">Visibility</Text>
             <select
               value={visibility}
-              onChange={(e) => setVisibility(e.target.value as VisibilityType)}
+              onChange={(e) => setVisibility(e.target.value as BuildVisibility)}
               className={selectClassName}
               required
             >

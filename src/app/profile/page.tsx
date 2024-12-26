@@ -14,7 +14,8 @@ import { cn } from "~/utils/cn";
 import { validateName } from "~/utils/validation";
 import { updatePassword, updateProfile } from "~/app/actions/profile";
 import { BuildSettings, getBuildSettings, updateBuildSettings } from "~/app/actions/settings";
-import { VisibilityType } from "~/lib/supabase/types";
+import type { VisibilityType } from "~/lib/supabase/types";
+import type { BuildVisibility } from "~/app/actions/settings";
 import { useAuth } from "~/contexts/auth";
 
 export default function ProfilePage() {
@@ -35,7 +36,7 @@ export default function ProfilePage() {
   const [buildCount, setBuildCount] = useState(0);
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [autoSync, setAutoSync] = useState(false);
-  const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<VisibilityType>('private');
+  const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<BuildVisibility>('private');
   const [loading, setLoading] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -84,13 +85,13 @@ export default function ProfilePage() {
   };
 
   const handleSettingsUpdate = async (
-    newSettings: { autoSync?: boolean; defaultVisibility?: VisibilityType }
+    newSettings: { autoSync?: boolean; defaultVisibility?: BuildVisibility }
   ) => {
     setSettingsLoading(true);
     try {
       const settings: BuildSettings = {
         autoSync: newSettings.autoSync ?? autoSync,
-        defaultVisibility: newSettings.defaultVisibility ?? defaultBuildVisibility,
+        defaultVisibility: (newSettings.defaultVisibility ?? defaultBuildVisibility) as BuildVisibility,
       };
       const result = await updateBuildSettings(settings);
       if (result.success) {

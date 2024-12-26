@@ -4,12 +4,23 @@ import { revalidatePath } from "next/cache";
 
 import { getServerClient } from "~/app/_actions/supabase";
 
-export type BuildVisibility = 'private' | 'unlisted';
+import type { Database, VisibilityType } from "~/lib/supabase/types";
+
+// Application currently only supports these types
+export type BuildVisibility = Exclude<VisibilityType, 'public'>;
 
 export type BuildSettings = {
   defaultVisibility: BuildVisibility;
   autoSync: boolean;
 };
+
+// Type guard to ensure visibility is supported
+function isValidVisibility(visibility: VisibilityType): visibility is BuildVisibility {
+  return visibility === 'private' || visibility === 'unlisted';
+}
+
+// Type to ensure database compatibility
+type DatabaseBuildSettings = Database['public']['Tables']['profiles']['Row']['build_settings'];
 
 export type SettingsUpdateResponse = {
   success: boolean;
@@ -68,5 +79,19 @@ export async function getBuildSettings(): Promise<BuildSettings | null> {
     return null;
   }
 
-  return data.build_settings || null;
+  if (data.build_settings) {
+    const dbSettings = data.build_settings as DatabaseBuildSettings;
+    if (!dbSettings) return null;
+    
+    const visibility = dbSettings.defaultVisibility;
+    
+    // Convert database settings to application settings
+    const settings: BuildSettings = {
+      defaultVisibility: isValidVisibility(visibility) ? visibility : 'unlisted',
+      autoSync: dbSettings.autoSync
+    };
+    
+    return settings;
+  }
+  return null;
 }
