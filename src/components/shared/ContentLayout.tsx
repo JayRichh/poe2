@@ -19,9 +19,9 @@ export function ContentLayout({ children, title, description, actions, sidebar }
   const sidebarState = useSidebarWidth();
 
   return (
-    <div className="min-h-screen flex flex-col mt-11">
+    <div className="min-h-screen flex flex-col mt-11 relative overflow-clip">
       {/* Header */}
-      <div className="flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-11 z-10">
+      <div className="flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-11 z-30">
         <Container size="xl" noPadding>
           <div className="px-6 sm:px-8 py-6">
             <div className="flex justify-between gap-8">
@@ -38,11 +38,16 @@ export function ContentLayout({ children, title, description, actions, sidebar }
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex min-h-0 relative">
+      <div className="flex-1 flex relative overflow-hidden">
         {/* Sidebar */}
         <div
-          className={`absolute inset-y-0 left-0 z-20 border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarState.className}`}
-          style={{ width: sidebarState.width }}
+          className={`sticky top-0 h-screen border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarState.className}`}
+          style={{ 
+            width: sidebarState.width, 
+            maxHeight: 'calc(100vh - 2.75rem)',
+            overflowY: 'auto',
+            overscrollBehavior: 'contain'
+          }}
         >
           <div className={`sticky ${sidebarState.topOffset} h-full`}>
             <div
@@ -72,13 +77,14 @@ export function ContentLayout({ children, title, description, actions, sidebar }
 
         {/* Content */}
         <div
-          className="flex-1 min-h-0"
+          className="flex-1 overflow-y-auto overscroll-contain"
           style={{
             marginLeft: sidebarState.width,
             transition: "margin-left 0.3s ease",
+            height: 'calc(100vh - 2.75rem)'
           }}
         >
-          <div className="h-full w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">{children}</div>
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">{children}</div>
         </div>
       </div>
     </div>

@@ -86,17 +86,17 @@ export function Navigation() {
 
   return (
     <>
-      <div className="fixed overflow-none top-7 mt-12 right-[-6rem] z-20 w-80 transform rotate-45 bg-primary text-primary-foreground py-2 text-center font-bold text-sm shadow-md border border-primary-foreground/20">
+      <div className="fixed overflow-hidden top-7 mt-12 right-[-6rem] z-40 w-80 transform rotate-45 bg-primary text-primary-foreground py-2 text-center font-bold text-sm shadow-md border border-primary-foreground/20">
         BETA
       </div>
       <nav
         className={cn(
-          "fixed top-0 w-full transition-all duration-300",
+          "fixed top-0 w-full transition-all duration-300 z-50",
           !isVisible ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50 z-20" />
-        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 sm:h-16">
             <div className="flex items-center">
               <Link href="/" className="mr-8">
@@ -223,7 +223,7 @@ export function Navigation() {
       )}
 
       {!user && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
-        <div className="fixed inset-0 z-20 bg-background/95 backdrop-blur-sm flex items-center justify-center">
+        <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-sm flex items-center justify-center">
           <div className="max-w-md mx-auto p-8 rounded-xl bg-background border border-border/50 shadow-lg text-center space-y-6">
             <User className="w-16 h-16 mx-auto text-primary" />
             <div className="space-y-4">
