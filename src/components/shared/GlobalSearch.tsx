@@ -97,8 +97,11 @@ export function GlobalSearch() {
       setIsSearching(true);
       setContextIsSearching(true);
       try {
+        // Only search if we're in "all" mode or if current section is a valid SearchSection
         const results = await searchContent(query, {
-          section: searchMode === "section" ? currentSection as SearchResult["section"] : undefined,
+          section: searchMode === "section" && currentSection !== "home" 
+            ? currentSection as SearchResult["section"] 
+            : undefined,
           limit: 10,
         });
         setSearchResults(results);
@@ -223,7 +226,7 @@ export function GlobalSearch() {
                       searchMode === "all" ? "text-primary" : "text-muted-foreground"
                     )}
                   >
-                    {searchMode === "all" ? "All" : sectionLabels[currentSection as keyof typeof sectionLabels] || "Section"}
+                    {searchMode === "all" || !sectionLabels[currentSection as SearchSection] ? "All" : sectionLabels[currentSection as SearchSection]}
                   </Button>
                   <Command.Input
                     ref={inputRef}
@@ -233,7 +236,7 @@ export function GlobalSearch() {
                       "disabled:cursor-not-allowed disabled:opacity-50",
                       "pl-2 pr-4"
                     )}
-                    placeholder={`Search ${searchMode === "all" ? "everything" : sectionLabels[currentSection as keyof typeof sectionLabels]}... (⌘K)`}
+                    placeholder={`Search ${searchMode === "all" || !sectionLabels[currentSection as SearchSection] ? "everything" : sectionLabels[currentSection as SearchSection]}... (⌘K)`}
                     value={query}
                     onFocus={handleFocus}
                     onBlur={handleBlur}

@@ -165,7 +165,9 @@ export function Navigation() {
                         ) : (
                           <User className="w-4 h-4" />
                         )}
-                        <span className="max-w-[150px] truncate">{user.email?.split("@")[0]}</span>
+                        <span className="max-w-[150px] truncate">
+                          {user.user_metadata?.name || user.email?.split("@")[0]}
+                        </span>
                       </button>
                     }
                     items={[

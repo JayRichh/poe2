@@ -4,7 +4,20 @@ import { revalidatePath } from "next/cache";
 
 import { getServerClient } from "~/app/_actions/supabase";
 
-export async function updateProfile(name: string) {
+import { validateName } from "~/utils/validation";
+
+export type ProfileUpdateResponse = {
+  success: boolean;
+  error?: string;
+};
+
+export async function updateProfile(name: string): Promise<ProfileUpdateResponse> {
+  // Validate name
+  const validation = validateName(name);
+  if (!validation.valid) {
+    return { success: false, error: validation.error };
+  }
+
   const supabase = await getServerClient();
 
   const {
@@ -20,7 +33,9 @@ export async function updateProfile(name: string) {
     data: { name },
   });
 
-  if (updateError) throw updateError;
+  if (updateError) {
+    return { success: false, error: updateError.message };
+  }
 
   // Update profile
   const { error: profileError } = await supabase
@@ -28,9 +43,12 @@ export async function updateProfile(name: string) {
     .update({ name })
     .eq("id", user.id);
 
-  if (profileError) throw profileError;
+  if (profileError) {
+    return { success: false, error: profileError.message };
+  }
 
   revalidatePath("/profile");
+  return { success: true };
 }
 
 export async function updatePassword(newPassword: string) {

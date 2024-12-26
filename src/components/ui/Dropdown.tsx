@@ -133,7 +133,7 @@ export function Dropdown({
 
   return (
     <div
-      className={cn("relative", isOpen && "z-40", className)}
+      className={cn("relative", isOpen && "z-100", className)}
       ref={dropdownRef}
       onKeyDown={handleKeyDown}
     >

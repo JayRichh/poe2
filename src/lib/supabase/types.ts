@@ -1,7 +1,12 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
+export type BuildSettings = {
+  defaultVisibility: VisibilityType;
+  autoSync: boolean;
+};
+
 export type POEConnectionStatus = "connected" | "disconnected" | "connecting" | "error";
-export type VisibilityType = "public" | "private" | "unlisted";
+export type VisibilityType = "private" | "unlisted";
 export type EquipmentSlot =
   | "mainhand"
   | "offhand"
@@ -35,6 +40,7 @@ export interface Database {
           poe_refresh_token?: string | null;
           theme?: string;
           default_build_visibility?: VisibilityType;
+          build_settings?: BuildSettings;
           created_at: string;
           updated_at: string;
         };
@@ -46,6 +52,7 @@ export interface Database {
           poe_refresh_token?: string | null;
           theme?: string;
           default_build_visibility?: VisibilityType;
+          build_settings?: BuildSettings;
           created_at?: string;
           updated_at?: string;
         };
@@ -57,6 +64,7 @@ export interface Database {
           poe_refresh_token?: string | null;
           theme?: string;
           default_build_visibility?: VisibilityType;
+          build_settings?: BuildSettings;
           created_at?: string;
           updated_at?: string;
         };
