@@ -110,8 +110,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 3px)",
       },
       fontFamily: {
-        sans: ["IBM Plex Sans", "system-ui", "var(--font-geist-sans)"],
-        mono: ["IBM Plex Mono", "monospace", "var(--font-geist-mono)"],
+        sans: ["var(--font-plex-sans)", "IBM Plex Sans", "system-ui", "sans-serif"],
+        mono: ["var(--font-plex-mono)", "IBM Plex Mono", "monospace"],
       },
       fontSize: {
         "2xs": ["0.625rem", { lineHeight: "0.875rem", letterSpacing: "0.025em" }],

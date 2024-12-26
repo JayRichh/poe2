@@ -6,7 +6,6 @@ const nextConfig = {
   trailingSlash: false,
   async redirects() {
     return [
-      // Essential redirects only
       {
         source: '/index',
         destination: '/',
@@ -40,10 +39,10 @@ const nextConfig = {
       },
     ],
     formats: ["image/webp"],
-    minimumCacheTTL: 3600, // 1 hour minimum cache
+    minimumCacheTTL: 3600,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    dangerouslyAllowSVG: true, // Required for shimmer effect
+    dangerouslyAllowSVG: true,
   },
   experimental: {
     optimizeCss: true,
@@ -124,7 +123,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
           },
           {
             key: "X-XSS-Protection",

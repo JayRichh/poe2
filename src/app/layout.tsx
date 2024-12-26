@@ -10,17 +10,19 @@ export { viewport, generateMetadata };
 const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-geist-sans",
-  preload: true,
+  variable: "--font-plex-sans",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["system-ui", "sans-serif"],
 });
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-geist-mono",
-  preload: true,
+  variable: "--font-plex-mono",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["monospace"],
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
