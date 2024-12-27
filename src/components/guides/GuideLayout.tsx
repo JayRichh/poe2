@@ -70,7 +70,7 @@ export function GuideLayout({ children, title, description, actions }: GuideLayo
                 )}
               </Button>
             </div>
-            <GuideSidebar collapsed={sidebar.isCollapsed} />
+            <GuideSidebar />
           </div>
         </div>
 
