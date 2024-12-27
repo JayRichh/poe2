@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { useAuth } from '~/contexts/auth';
 import { 
   getBuilds, 
@@ -17,22 +17,53 @@ export function useBuilds() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Track last fetch time and options
+  const lastFetchRef = useRef<{ time: number; options: string }>({ time: 0, options: '' });
+  const loadTimeoutRef = useRef<NodeJS.Timeout>();
+
   const loadBuilds = useCallback(async (options?: BuildOptions) => {
     if (!user) return;
 
-    setLoading(true);
-    setError(null);
+    // Create a cache key from options
+    const optionsKey = JSON.stringify(options || {});
+    const now = Date.now();
 
-    try {
-      const data = await getBuilds(options);
-      setBuilds(data);
-    } catch (err) {
-      console.error('Error loading builds:', err);
-      setError('Failed to load builds');
-    } finally {
-      setLoading(false);
+    // Prevent duplicate fetches within 2 seconds with same options
+    if (now - lastFetchRef.current.time < 2000 && lastFetchRef.current.options === optionsKey) {
+      return;
     }
+
+    // Clear any pending fetch
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current);
+    }
+
+    // Debounce the fetch
+    loadTimeoutRef.current = setTimeout(async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const data = await getBuilds(options);
+        setBuilds(data);
+        lastFetchRef.current = { time: Date.now(), options: optionsKey };
+      } catch (err) {
+        console.error('Error loading builds:', err);
+        setError('Failed to load builds');
+      } finally {
+        setLoading(false);
+      }
+    }, 100);
   }, [user]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (loadTimeoutRef.current) {
+        clearTimeout(loadTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const create = useCallback(async (buildData: CreateBuildData) => {
     if (!user) return null;

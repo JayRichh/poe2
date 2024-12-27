@@ -102,25 +102,36 @@ export async function getBuilds({ visibility = "all", includeOwn = false }: Buil
 
   let query = supabase.from("builds").select("*");
 
-  if (user) {
-    if (visibility === "all") {
-      // Show unlisted builds and user's own builds
-      query = query.or(`visibility.eq.unlisted,user_id.eq.${user.id}`);
-    } else if (visibility === "private") {
-      // Only show user's private builds
-      query = query.eq("visibility", "private").eq("user_id", user.id);
-    } else if (visibility === "unlisted") {
-      // Only show user's unlisted builds
+  // Base query for public builds
+  if (visibility === "all") {
+    // Show public builds and user's own builds if authenticated
+    query = query.or(
+      user 
+        ? `visibility.eq.public,user_id.eq.${user.id}` 
+        : 'visibility.eq.public'
+    );
+  } else if (visibility === "public") {
+    // Only show public builds
+    query = query.eq("visibility", "public");
+  } else if (visibility === "unlisted") {
+    // Show unlisted builds only if user is authenticated and owns them
+    if (user) {
       query = query.eq("visibility", "unlisted").eq("user_id", user.id);
+    } else {
+      return []; // No unlisted builds for non-authenticated users
     }
+  } else if (visibility === "private") {
+    // Show private builds only if user is authenticated and owns them
+    if (user) {
+      query = query.eq("visibility", "private").eq("user_id", user.id);
+    } else {
+      return []; // No private builds for non-authenticated users
+    }
+  }
 
-    if (includeOwn) {
-      // Include user's own builds regardless of visibility
-      query = query.or(`user_id.eq.${user.id}`);
-    }
-  } else {
-    // Not authenticated, only show unlisted builds
-    query = query.eq("visibility", "unlisted");
+  // Include user's own builds if requested and authenticated
+  if (includeOwn && user) {
+    query = query.or(`user_id.eq.${user.id}`);
   }
 
   const { data, error } = await query.order("created_at", { ascending: false });
@@ -155,8 +166,8 @@ export async function createBuild(build: CreateBuildData) {
     { buildId: data.id, buildName: build.name }
   );
 
-  revalidatePath("/build-planner");
-  revalidatePath(`/build-planner/${data.slug || data.id}`);
+  // Revalidate all build planner routes at once
+  revalidatePath('/build-planner', 'layout');
   return data;
 }
 
@@ -209,7 +220,8 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
     { buildId: id, updates }
   );
 
-  revalidatePath(`/build-planner/${data.slug || build.id}`);
+  // Revalidate all build planner routes at once
+  revalidatePath('/build-planner', 'layout');
   return data;
 }
 

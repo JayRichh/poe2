@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { BuildGrid } from "~/components/build-planner/BuildGrid";
@@ -37,27 +37,30 @@ export function BuildList({ initialBuilds }: BuildListProps) {
     });
   }, [visibility, loadBuilds]);
 
-  // Filter and sort builds
-  const filteredBuilds = (builds.length > 0 ? builds : initialBuilds)
-    .filter((build: Build) => {
-      if (search && !build.name.toLowerCase().includes(search.toLowerCase())) {
-        return false;
-      }
-      if (poeClass && build.poe_class !== poeClass) {
-        return false;
-      }
-      return true;
-    })
-    .sort((a: Build, b: Build) => {
-      const [field, direction] = sort.split(":") as [keyof Build, "asc" | "desc"];
-      const aVal = a[field];
-      const bVal = b[field];
-      const modifier = direction === "asc" ? 1 : -1;
+  // Memoize filtered and sorted builds
+  const filteredBuilds = useMemo(() => {
+    const currentBuilds = builds.length > 0 ? builds : initialBuilds;
+    return currentBuilds
+      .filter((build: Build) => {
+        if (search && !build.name.toLowerCase().includes(search.toLowerCase())) {
+          return false;
+        }
+        if (poeClass && build.poe_class !== poeClass) {
+          return false;
+        }
+        return true;
+      })
+      .sort((a: Build, b: Build) => {
+        const [field, direction] = sort.split(":") as [keyof Build, "asc" | "desc"];
+        const aVal = a[field];
+        const bVal = b[field];
+        const modifier = direction === "asc" ? 1 : -1;
 
-      if (aVal === undefined || aVal === null) return 1;
-      if (bVal === undefined || bVal === null) return -1;
-      return aVal > bVal ? modifier : -modifier;
-    });
+        if (aVal === undefined || aVal === null) return 1;
+        if (bVal === undefined || bVal === null) return -1;
+        return aVal > bVal ? modifier : -modifier;
+      });
+  }, [builds, initialBuilds, search, poeClass, sort]);
 
   // Paginate builds
   const totalPages = Math.ceil(filteredBuilds.length / ITEMS_PER_PAGE);

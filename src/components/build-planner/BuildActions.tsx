@@ -8,6 +8,7 @@ import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 import { Dropdown } from "~/components/ui/Dropdown";
 import { useBuilds, type Build } from "~/hooks/useBuilds";
+import type { VisibilityType } from "~/app/actions/server/builds";
 
 interface BuildActionsProps {
   build: Build;
@@ -26,7 +27,12 @@ export function BuildActions({
   const [loading, setLoading] = useState(false);
   const { createBuild, deleteBuild, updateBuild } = useBuilds();
 
+  const handleViewDetail = () => {
+    router.push(`/build-planner/${build.slug || build.id}`);
+  };
+
   const handleEdit = () => {
+    if (!canModify) return;
     router.push(`/build-planner/${build.slug || build.id}/edit`);
   };
 
@@ -77,8 +83,14 @@ export function BuildActions({
     
     setLoading(true);
     try {
-      // Temporarily only toggle between private and unlisted
-      const newVisibility = build.visibility === 'unlisted' ? 'private' : 'unlisted';
+      // Cycle through visibility states: private -> unlisted -> public -> private
+      const visibilityStates: Record<string, VisibilityType> = {
+        'private': 'unlisted',
+        'unlisted': 'public',
+        'public': 'private'
+      };
+      const newVisibility = visibilityStates[build.visibility] || 'private' as VisibilityType;
+      
       await updateBuild(build.id, { visibility: newVisibility });
       onVisibilityChange?.();
       onActionComplete?.();
@@ -89,24 +101,47 @@ export function BuildActions({
     }
   };
 
+  const getVisibilityLabel = () => {
+    switch (build.visibility) {
+      case 'private':
+        return 'Make Unlisted';
+      case 'unlisted':
+        return 'Make Public';
+      case 'public':
+        return 'Make Private';
+      default:
+        return 'Change Visibility';
+    }
+  };
+
   const items = [
+    // View Detail - show for non-modifiable builds
+    ...(!canModify ? [{
+      label: "View Detail",
+      value: "view",
+      icon: <Eye className="h-4 w-4" />,
+      disabled: loading,
+    }] : []),
+    // Edit - only for builds user can modify
     ...(canModify ? [{
       label: "Edit",
       value: "edit",
       icon: <Edit className="h-4 w-4" />,
       disabled: loading,
     }] : []),
-    {
+    // Duplicate - only for owned builds or public builds
+    ...(canModify || build.visibility === 'public' ? [{
       label: "Duplicate",
       value: "duplicate",
       icon: <Copy className="h-4 w-4" />,
       disabled: loading,
-    },
+    }] : []),
+    // Visibility and Delete - only for builds user can modify
     ...(canModify ? [
       {
-        label: build.visibility === 'unlisted' ? "Make Private" : "Make Unlisted",
+        label: getVisibilityLabel(),
         value: "visibility",
-        icon: build.visibility === 'unlisted' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />,
+        icon: build.visibility === 'public' ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />,
         disabled: loading,
       },
       {
@@ -121,6 +156,9 @@ export function BuildActions({
 
   const handleAction = (value: string) => {
     switch (value) {
+      case "view":
+        handleViewDetail();
+        break;
       case "edit":
         handleEdit();
         break;

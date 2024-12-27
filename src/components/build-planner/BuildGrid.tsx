@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
+import { memo, useMemo } from "react";
 import { useAuth } from "~/contexts/auth";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
@@ -29,69 +29,31 @@ function getGroupKey(build: Build, key: GroupByKey): string {
   }
 }
 
-export function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
-  // Group builds if needed
-  const groupedBuilds = groupBy
-    ? builds.reduce(
-        (acc, build) => {
-          const key = getGroupKey(build, groupBy);
-          if (!acc[key]) acc[key] = [];
-          acc[key].push(build);
-          return acc;
-        },
-        {} as Record<string, Build[]>
-      )
-    : null;
-
-  return (
-    <div className="space-y-6">
-      {/* Grid View */}
-      {viewMode === "grid" && (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-fadeIn">
-          {builds.map((build) => (
-            <BuildCard key={build.id} build={build} />
-          ))}
-        </div>
-      )}
-
-      {/* List View */}
-      {viewMode === "list" && (
-        <div className="space-y-3 animate-fadeIn">
-          {builds.map((build) => (
-            <BuildListItem key={build.id} build={build} />
-          ))}
-        </div>
-      )}
-
-      {/* Grouped View */}
-      {viewMode === "grouped" && groupedBuilds && (
-        <div className="space-y-8 animate-fadeIn">
-          {Object.entries(groupedBuilds).map(([group, groupBuilds]) => (
-            <div key={group}>
-              <Text className="text-lg font-medium mb-4 capitalize">{group}</Text>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {groupBuilds.map((build) => (
-                  <BuildCard key={build.id} build={build} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function BuildCard({ build }: { build: Build }) {
+const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
   const { user } = useAuth();
-  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
+  const canModify = useMemo(() => 
+    Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
+    [user, build.user_id, build.visibility]
+  );
 
   return (
     <div
-      className="group block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
+      className="group relative block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
       role="article"
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
+      {/* Visibility Badge */}
+      <div className="absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize"
+        style={{
+          backgroundColor: build.visibility === 'public' ? 'rgb(34 197 94)' : // green-500
+                          build.visibility === 'unlisted' ? 'rgb(234 179 8)' : // yellow-500
+                          'rgb(239 68 68)', // red-500
+          color: '#fff',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
+        {build.visibility}
+      </div>
       <div className="flex items-start justify-between gap-2">
         <Link
           href={`/build-planner/${build.slug || build.id}`}
@@ -136,18 +98,33 @@ function BuildCard({ build }: { build: Build }) {
       </div>
     </div>
   );
-}
+});
 
-function BuildListItem({ build }: { build: Build }) {
+const BuildListItem = memo(function BuildListItem({ build }: { build: Build }) {
   const { user } = useAuth();
-  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
+  const canModify = useMemo(() => 
+    Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
+    [user, build.user_id, build.visibility]
+  );
 
   return (
     <div
-      className="group flex items-center justify-between gap-4 p-3 rounded-lg border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
+      className="group relative flex items-center justify-between gap-4 p-3 rounded-lg border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
       role="article"
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
+      {/* Visibility Badge */}
+      <div className="absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize"
+        style={{
+          backgroundColor: build.visibility === 'public' ? 'rgb(34 197 94)' : // green-500
+                          build.visibility === 'unlisted' ? 'rgb(234 179 8)' : // yellow-500
+                          'rgb(239 68 68)', // red-500
+          color: '#fff',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
+        {build.visibility}
+      </div>
       <Link
         href={`/build-planner/${build.slug || build.id}`}
         className="flex items-center gap-6 flex-1 min-w-0 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-md"
@@ -178,6 +155,60 @@ function BuildListItem({ build }: { build: Build }) {
         )}
         <BuildActions build={build} canModify={canModify} />
       </div>
+    </div>
+  );
+});
+
+export function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
+  // Memoize grouped builds
+  const groupedBuilds = useMemo(() => {
+    if (!groupBy) return null;
+    return builds.reduce(
+      (acc, build) => {
+        const key = getGroupKey(build, groupBy);
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(build);
+        return acc;
+      },
+      {} as Record<string, Build[]>
+    );
+  }, [builds, groupBy]);
+
+  return (
+    <div className="space-y-6">
+      {/* Grid View */}
+      {viewMode === "grid" && (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-fadeIn">
+          {builds.map((build) => (
+            <BuildCard key={build.id} build={build} />
+          ))}
+        </div>
+      )}
+
+      {/* List View */}
+      {viewMode === "list" && (
+        <div className="space-y-3 animate-fadeIn">
+          {builds.map((build) => (
+            <BuildListItem key={build.id} build={build} />
+          ))}
+        </div>
+      )}
+
+      {/* Grouped View */}
+      {viewMode === "grouped" && groupedBuilds && (
+        <div className="space-y-8 animate-fadeIn">
+          {Object.entries(groupedBuilds).map(([group, groupBuilds]) => (
+            <div key={group}>
+              <Text className="text-lg font-medium mb-4 capitalize">{group}</Text>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {groupBuilds.map((build) => (
+                  <BuildCard key={build.id} build={build} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -9,12 +9,21 @@ import { getBuilds } from "~/app/actions/server/builds";
 
 export const dynamic = 'force-dynamic';
 
-async function getInitialBuilds() {
-  return getBuilds({ visibility: "all", includeOwn: true });
+async function getInitialBuilds(searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
+  const params = await searchParams;
+  const visibility = (params.visibility as string) || "all";
+  return getBuilds({ 
+    visibility: visibility as "all" | "public" | "private" | "unlisted", 
+    includeOwn: true 
+  });
 }
 
-export default async function BuildPlannerPage() {
-  const initialBuilds = await getInitialBuilds();
+export default async function BuildPlannerPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const initialBuilds = await getInitialBuilds(searchParams);
 
   return (
     <div className="min-h-screen bg-background">
