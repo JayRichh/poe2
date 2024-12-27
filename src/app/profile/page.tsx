@@ -1,561 +1,294 @@
 "use client";
 
-import { CheckCircle2, Key, Link2, Mail, RefreshCw, User, X, XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
-import { Button } from "~/components/ui/Button";
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowRight, Plus, Settings, User, GitBranch, Shield } from "lucide-react";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
-import { FormField } from "~/components/shared/FormField";
+import { Button } from "~/components/ui/Button";
+import { TabControl } from "~/components/ui/TabControl";
+import { useProfileSettings } from "~/hooks/useProfileSettings";
 
-import { usePOEAccount } from "~/hooks/usePOEAccount";
-import { cn } from "~/utils/cn";
-import { validateName } from "~/utils/validation";
-import { updatePassword, updateProfile } from "~/app/actions/profile";
-import { BuildSettings, getBuildSettings, updateBuildSettings } from "~/app/actions/settings";
-import type { VisibilityType } from "~/lib/supabase/types";
-import type { BuildVisibility } from "~/app/actions/settings";
-import { useAuth } from "~/contexts/auth";
+import { WelcomeBanner } from "~/components/profile/WelcomeBanner";
+import { ProfileForm } from "~/components/profile/ProfileForm";
+import { ConnectionsSection } from "~/components/profile/ConnectionsSection";
+import { BuildSettingsSection } from "~/components/profile/BuildSettingsSection";
+import { SecuritySection } from "~/components/profile/SecuritySection";
+import { BuildsOverview } from "~/components/profile/BuildsOverview";
+import { ActivityFeed } from "~/components/profile/ActivityFeed";
+
+type TabId = 'overview' | 'builds' | 'settings' | 'security';
+
+const tabs: Array<{ id: TabId; label: string; icon: React.ReactNode }> = [
+  { id: 'overview', label: 'Profile', icon: <User className="w-4 h-4" /> },
+  { id: 'builds', label: 'My Builds', icon: <GitBranch className="w-4 h-4" /> },
+  { id: 'settings', label: 'Preferences', icon: <Settings className="w-4 h-4" /> },
+  { id: 'security', label: 'Security', icon: <Shield className="w-4 h-4" /> },
+];
 
 export default function ProfilePage() {
-  const router = useRouter();
-  const { user, signOut, refreshSession } = useAuth();
   const {
-    loading: poeLoading,
-    error: poeError,
+    user,
+    builds,
+    name,
+    isNewUser,
+    setupProgress,
+    buildCount,
+    autoSync,
+    defaultBuildVisibility,
+    loading,
+    settingsLoading,
+    validationError,
+    submitError,
+    submitMessage,
+    showPasswordForm,
+    newPassword,
+    poeLoading,
+    poeError,
     poeAccount,
     poeProfile,
-    connectPOE,
-    disconnectPOE,
+    validateAndSetName,
+    clearName,
+    handleSettingsUpdate,
+    handleUpdateProfile,
+    handleChangePassword,
+    handleSignOut,
     refreshProfile,
-  } = usePOEAccount();
-  const [name, setName] = useState<string>("");
-  const [isNewUser, setIsNewUser] = useState(false);
-  const [setupProgress, setSetupProgress] = useState(0);
-  const [buildCount, setBuildCount] = useState(0);
-  const [settingsLoading, setSettingsLoading] = useState(false);
-  const [autoSync, setAutoSync] = useState(false);
-  const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<BuildVisibility>('private');
-  const [loading, setLoading] = useState(false);
-  const [validationError, setValidationError] = useState<string | null>(null);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
-  const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
+    setShowPasswordForm,
+    setNewPassword,
+  } = useProfileSettings();
 
-  useEffect(() => {
-    if (!user) {
-      router.replace("/auth/login");
-      return;
-    }
-    const hasName = !!user.user_metadata?.name;
-    setName(user.user_metadata?.name || "");
-    setIsNewUser(!hasName);
-    // Calculate setup progress
-    let progress = 0;
-    if (hasName) progress += 30;
-    if (poeAccount?.connected) progress += 40;
-    if (defaultBuildVisibility !== 'private') progress += 30;
-    setSetupProgress(progress);
-    // Load initial settings
-    async function loadSettings() {
-      const settings = await getBuildSettings();
-      if (settings) {
-        setAutoSync(settings.autoSync);
-        setDefaultBuildVisibility(settings.defaultVisibility);
-      }
-    }
-    loadSettings();
-  }, [user, router, poeAccount?.connected, defaultBuildVisibility]);
-
-  const validateAndSetName = (value: string) => {
-    const validation = validateName(value);
-    if (validation.error) {
-      setValidationError(validation.error);
-    } else {
-      setValidationError(null);
-    }
-    setName(value);
-  };
-
-  const clearName = () => {
-    setName("");
-    setValidationError(null);
-  };
-
-  const handleSettingsUpdate = async (
-    newSettings: { autoSync?: boolean; defaultVisibility?: BuildVisibility }
-  ) => {
-    setSettingsLoading(true);
-    try {
-      const settings: BuildSettings = {
-        autoSync: newSettings.autoSync ?? autoSync,
-        defaultVisibility: (newSettings.defaultVisibility ?? defaultBuildVisibility) as BuildVisibility,
-      };
-      const result = await updateBuildSettings(settings);
-      if (result.success) {
-        if (newSettings.autoSync !== undefined) setAutoSync(newSettings.autoSync);
-        if (newSettings.defaultVisibility !== undefined) setDefaultBuildVisibility(newSettings.defaultVisibility);
-        setSubmitMessage("Settings updated successfully");
-      } else {
-        setSubmitError(result.error || "Failed to update settings");
-      }
-    } catch (err) {
-      console.error("Error updating settings:", err);
-      setSubmitError("Failed to update settings");
-    } finally {
-      setSettingsLoading(false);
-    }
-  };
-
-  const handleUpdateProfile = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Clear previous messages
-    setSubmitError(null);
-    setSubmitMessage(null);
-
-    if (!user) return;
-
-    setLoading(true);
-    // Validate before submission
-    const validation = validateName(name);
-    if (!validation.valid && validation.error) {
-      setValidationError(validation.error);
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const result = await updateProfile(name);
-      if (result.success) {
-        setSubmitMessage("Profile updated successfully");
-        await refreshSession();
-      } else {
-        setSubmitError(result.error || "Failed to update profile");
-      }
-    } catch (err) {
-      console.error("Error updating profile:", err);
-      setSubmitError("Failed to update profile");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleChangePassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user?.email || !newPassword) return;
-
-    setLoading(true);
-    setSubmitError(null);
-    setSubmitMessage(null);
-
-    try {
-      await updatePassword(newPassword);
-      setSubmitMessage("Password updated successfully");
-      setShowPasswordForm(false);
-      setNewPassword("");
-      await refreshSession();
-    } catch (err) {
-      console.error("Error updating password:", err);
-      setSubmitError("Failed to update password");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSignOut = async () => {
-    setLoading(true);
-    try {
-      await signOut();
-      router.replace("/auth/login");
-    } catch (err) {
-      console.error("Error signing out:", err);
-      setSubmitError("Failed to sign out");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [activeTab, setActiveTab] = useState<TabId>('overview');
 
   if (!user) {
     return null;
   }
 
   return (
-    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
-      <Container className="max-w-2xl py-8 space-y-10">
-        {isNewUser ? (
-          <div className="p-6 rounded-xl border-2 border-primary/20 bg-primary/5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="h-3 w-3 rounded-full bg-primary animate-pulse" />
-              <Text className="font-medium text-lg">Welcome to POE2 Tools!</Text>
-            </div>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Text className="text-foreground/80">Let's get your profile set up:</Text>
-                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/60 ml-2">
-                  <li className={cn(name ? "text-primary/60 line-through" : "")}>
-                    Set your display name to personalize your experience
-                  </li>
-                  <li className={cn(poeAccount?.connected ? "text-primary/60 line-through" : "")}>
-                    Connect your POE account to sync characters and builds
-                  </li>
-                  <li className={cn(defaultBuildVisibility !== 'private' ? "text-primary/60 line-through" : "")}>
-                    Configure your build sharing preferences
-                  </li>
-                </ul>
-              </div>
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs text-foreground/60">
-                  <span>Profile Setup Progress</span>
-                  <span>{setupProgress}%</span>
-                </div>
-                <div className="h-1 bg-border/50 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-primary transition-all duration-500" 
-                    style={{ width: `${setupProgress}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              <Text className="font-medium">Profile Features in Development</Text>
-            </div>
-            <Text className="text-sm text-foreground/60">
-              More features coming soon including build synchronization, character imports, build
-              sharing, and advanced profile customization.
-            </Text>
-          </div>
-        )}
-
-        <div className="flex flex-col space-y-1">
-          <Text className="text-3xl font-bold">Profile Settings</Text>
-          <Text className="text-foreground/60">Manage your account settings and preferences</Text>
+    <div className="min-h-screen bg-background pt-4">
+      <Container className="py-8">
+        {/* Development Notice */}
+        <div className="p-4 rounded-xl border border-primary/20 bg-primary/5 mb-8">
+          <Text className="font-medium text-lg">Profile Features in Development</Text>
+          <Text className="text-sm text-foreground/60 mt-1">
+            More features coming soon including build synchronization, character imports, build
+            sharing, and advanced profile customization.
+          </Text>
         </div>
 
-        <form onSubmit={handleUpdateProfile} className="space-y-6">
-          <div className="grid gap-6 max-w-lg">
-            <FormField
-              label="Email"
-              icon={<Mail className="h-5 w-5 text-primary/60" />}
-            >
-              <input
-                type="email"
-                value={user.email}
-                disabled
-                className={cn(
-                  "pl-11 w-full h-12 rounded-xl",
-                  "bg-background/95",
-                  "border-2 border-border/50",
-                  "text-foreground/60"
-                )}
-              />
-            </FormField>
+        {/* Profile Header */}
+        <div className="text-center mb-8">
+          <Text className="text-4xl font-bold tracking-tight gradient-text bg-gradient-to-r from-primary via-accent to-primary">
+            Profile Settings
+          </Text>
+          <Text className="text-lg text-foreground/60 mt-2">
+            Manage your account settings and preferences
+          </Text>
+        </div>
 
-            <FormField
-              label="Display Name"
-              required
-              icon={<User className="h-5 w-5 text-primary/60" />}
-              error={validationError || undefined}
-              hint="This name will be displayed on your builds and profile"
-            >
-              <div className="relative">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => validateAndSetName(e.target.value)}
-                  placeholder={isNewUser ? "Choose a display name to get started" : "Enter your display name"}
-                  className={cn(
-                    "pl-11 pr-10 w-full h-12 rounded-xl",
-                    "bg-background/95",
-                    "border-2",
-                    validationError 
-                      ? "border-destructive/50 focus:border-destructive/50 focus:ring-2 focus:ring-destructive/20"
-                      : "border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
-                    "placeholder:text-foreground/40"
-                  )}
+        {/* Tab Navigation */}
+        <TabControl<TabId>
+          tabs={tabs} 
+          activeTab={activeTab} 
+          onChange={(id) => setActiveTab(id)} 
+          className="mb-8"
+        />
+
+        {/* Tab Content */}
+        <div className="mt-6">
+          {activeTab === 'overview' && (
+            <div className="space-y-8">
+              <div className="max-w-2xl mx-auto">
+                <ProfileForm
+                  email={user.email || ""}
+                  name={name}
+                  isNewUser={isNewUser}
+                  loading={loading}
+                  validationError={validationError}
+                  submitError={submitError}
+                  submitMessage={submitMessage}
+                  onNameChange={validateAndSetName}
+                  onNameClear={clearName}
+                  onSubmit={handleUpdateProfile}
                 />
-                {name && (
-                  <button
-                    type="button"
-                    onClick={clearName}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-foreground/40 hover:text-foreground/60 transition-colors"
-                  >
-                    <XCircle className="h-5 w-5" />
-                  </button>
-                )}
               </div>
-            </FormField>
-          </div>
-
-          {submitError && (
-            <div className="p-4 rounded-xl border-2 border-destructive/20 bg-destructive/5">
-              <Text className="text-sm text-destructive">{submitError}</Text>
-            </div>
-          )}
-
-          {submitMessage && (
-            <div className="p-4 rounded-xl border-2 border-primary/20 bg-primary/5">
-              <Text className="text-sm text-primary">{submitMessage}</Text>
-            </div>
-          )}
-
-          <div className="flex justify-end">
-            <Button 
-              type="submit" 
-              variant="primary" 
-              disabled={loading || !!validationError || !name.trim()}
-            >
-              {loading ? "Saving..." : isNewUser ? "Complete Profile Setup" : "Save Changes"}
-            </Button>
-          </div>
-        </form>
-
-        <div className="space-y-4 pt-8 border-t border-border/50">
-          <div className="flex items-center justify-between">
-            <Text className="text-xl font-medium">Connections</Text>
-            {buildCount > 0 && (
-                <Text className="text-sm text-foreground/60">
-                  POE account connection feature is currently in development
-                </Text>
-            )}
-          </div>
-
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border-2 border-border/50 bg-background/95 gap-4">
-            <div className="flex items-center gap-3">
-              {poeAccount?.connected ? (
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-              ) : (
-                <Link2 className="h-5 w-5 text-primary/60" />
-              )}
-              <div>
-                <div className="flex items-center gap-2">
-                  <Text className="font-medium">Path of Exile Account</Text>
-                  {poeAccount?.connected && poeProfile && 'characters' in poeProfile && Array.isArray(poeProfile.characters) && (
-                    <Text className="text-xs text-foreground/60 px-2 py-0.5 rounded-full bg-primary/10">
-                      {poeProfile.characters.length} {poeProfile.characters.length === 1 ? 'character' : 'characters'}
-                    </Text>
-                  )}
-                </div>
-                <Text className="text-sm text-foreground/60">
-                  {poeAccount?.connected
-                    ? `Connected as ${poeAccount.accountName}`
-                    : isNewUser
-                    ? "Connect your POE account to start syncing your characters"
-                    : "Connect your POE account to sync characters"}
-                </Text>
-                {poeAccount?.connected && poeAccount.lastSync && (
-                  <Text className="text-xs text-foreground/40">
-                    Last synced: {new Date(poeAccount.lastSync).toLocaleString()}
-                  </Text>
-                )}
-              </div>
-            </div>
-            <div className="flex items-center gap-2 sm:flex-shrink-0">
-              {poeAccount?.connected && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  onClick={refreshProfile}
-                  disabled={poeLoading}
-                  className="p-2"
-                >
-                  <RefreshCw className="h-4 w-4" />
-                </Button>
-              )}
-              <div className="relative flex flex-col items-center">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  disabled={true}
-                  className="opacity-50"
-                >
-                  Connect
-                </Button>
-                <Text className="absolute -bottom-5 text-[11px] text-foreground/40 whitespace-nowrap">
-                  Coming soon
-                </Text>
-              </div>
-            </div>
-          </div>
-
-          {poeError && (
-            <div className="p-4 rounded-xl border-2 border-destructive/20 bg-destructive/5">
-              <Text className="text-sm text-destructive">{poeError}</Text>
-            </div>
-          )}
-        </div>
-
-        <div className="space-y-4 pt-6 border-t border-border/50">
-          <div className="flex items-center justify-between">
-            <Text className="text-xl font-medium">Build Settings</Text>
-            <Text className="text-sm text-foreground/60 mt-1">Default settings for new builds</Text>
-          </div>
-
-          <div className="flex flex-col p-6 rounded-xl border-2 border-border/50 bg-background/95 space-y-6">
-            <div className="space-y-2">
-              <div className="space-y-1">
-                <Text className="font-medium">Build Visibility</Text>
-                <Text className="text-sm text-foreground/60">Control who can access your builds</Text>
-              </div>
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-start gap-6">
-                  <div className="relative flex flex-col items-center">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      disabled={true}
-                      className="opacity-50 min-w-[80px]"
-                    >
-                      Public
-                    </Button>
-                    <Text className="absolute -bottom-5 text-[11px] text-foreground/40 whitespace-nowrap">
-                      Coming soon
+              <div className="mt-12 space-y-8">
+                <div className="grid grid-cols-3 gap-6">
+                  <div className="p-6 rounded-xl border-2 border-border/50 bg-background/95">
+                    <Text className="text-sm text-foreground/60">Total Builds</Text>
+                    <Text className="text-3xl font-medium mt-1">{buildCount}</Text>
+                  </div>
+                  <div className="p-6 rounded-xl border-2 border-border/50 bg-background/95">
+                    <Text className="text-sm text-foreground/60">Templates</Text>
+                    <Text className="text-3xl font-medium mt-1">
+                      {builds.filter(b => b.is_template).length}
                     </Text>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <Button
-                      type="button"
-                      variant={defaultBuildVisibility === 'unlisted' ? 'primary' : 'outline'}
-                      size="sm"
-                      onClick={() => handleSettingsUpdate({ defaultVisibility: 'unlisted' })}
-                      disabled={settingsLoading}
-                      className="min-w-[80px]"
-                    >
-                      Unlisted
-                    </Button>
-                    {defaultBuildVisibility === 'unlisted' && (
-                      <Text className="mt-1.5 text-xs text-foreground/60">
-                        Link sharing only
-                      </Text>
-                    )}
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <Button
-                      type="button"
-                      variant={defaultBuildVisibility === 'private' ? 'primary' : 'outline'}
-                      size="sm"
-                      onClick={() => handleSettingsUpdate({ defaultVisibility: 'private' })}
-                      disabled={settingsLoading}
-                      className="min-w-[80px]"
-                    >
-                      Private
-                    </Button>
-                    {defaultBuildVisibility === 'private' && (
-                      <Text className="mt-1.5 text-xs text-foreground/60">
-                        Only you
-                      </Text>
-                    )}
+                  <div className="p-6 rounded-xl border-2 border-border/50 bg-background/95">
+                    <Text className="text-sm text-foreground/60">Public Builds</Text>
+                    <Text className="text-3xl font-medium mt-1">
+                      {builds.filter(b => b.visibility === 'public').length}
+                    </Text>
                   </div>
                 </div>
-                <Text className="text-sm text-foreground/60 bg-background/50 p-3 rounded-lg">
-                  {defaultBuildVisibility === 'unlisted' 
-                    ? 'Share your builds with others using a direct link while keeping them hidden from public listings'
-                    : 'Keep your builds private and visible only to you'}
-                </Text>
-              </div>
-            </div>
 
-            {poeAccount?.connected && (
-              <div className="space-y-3 pt-6 border-t border-border/50">
-                <div className="flex items-center justify-between">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   <div>
-                    <Text className="font-medium">Auto-Sync Characters</Text>
-                    <Text className="text-sm text-foreground/60">
-                      Automatically import character updates
-                    </Text>
+                    <div className="flex items-center justify-between mb-6">
+                      <Text className="text-xl font-medium">Recent Builds</Text>
+                      <div className="flex gap-2">
+                        <Link href="/build-planner/new">
+                          <Button variant="outline" size="sm" className="gap-2">
+                            <Plus className="w-4 h-4" />
+                            New Build
+                          </Button>
+                        </Link>
+                        <Link href="/build-planner">
+                          <Button variant="outline" size="sm" className="gap-2">
+                            View All
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      {builds.slice(0, 3).map((build) => (
+                        <Link 
+                          key={build.id} 
+                          href={`/build-planner/${build.slug || build.id}`}
+                          className="block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <Text className="font-medium">{build.name}</Text>
+                              <Text className="text-sm text-foreground/60">
+                                {build.poe_class || "Any Class"} • Level {build.level || "?"}
+                              </Text>
+                            </div>
+                            {build.is_template && (
+                              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs">
+                                Template
+                              </span>
+                            )}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                  <Button
-                    type="button"
-                    variant={autoSync ? 'primary' : 'outline'}
-                    size="sm"
-                    onClick={() => handleSettingsUpdate({ autoSync: !autoSync })}
-                    disabled={settingsLoading}
-                  >
-                    {autoSync ? 'Enabled' : 'Disabled'}
-                  </Button>
-                </div>
-                <Text className="text-xs text-foreground/40">
-                  When enabled, your characters will be automatically synced every 24 hours
-                </Text>
-              </div>
-            )}
-          </div>
-        </div>
 
-        <div className="space-y-4 pt-8 border-t border-border/50">
-          <Text className="text-xl font-medium">Security</Text>
-
-          <div className="flex flex-col p-4 rounded-xl border-2 border-border/50 bg-background/95">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Key className="h-5 w-5 text-primary/60" />
-                <div>
-                  <Text className="font-medium">Password</Text>
-                  <Text className="text-sm text-foreground/60">Change your password</Text>
+                  <div>
+                    <Text className="text-xl font-medium mb-6">Recent Activity</Text>
+                    <ActivityFeed items={[
+                      {
+                        id: '1',
+                        type: 'build',
+                        title: 'Created new build',
+                        description: 'Started a new Ranger build template',
+                        timestamp: '2 hours ago'
+                      },
+                      {
+                        id: '2',
+                        type: 'settings',
+                        title: 'Updated settings',
+                        description: 'Changed build visibility preferences',
+                        timestamp: '1 day ago'
+                      },
+                      {
+                        id: '3',
+                        type: 'profile',
+                        title: 'Profile updated',
+                        description: 'Changed display name',
+                        timestamp: '3 days ago'
+                      }
+                    ]} />
+                  </div>
                 </div>
               </div>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setShowPasswordForm(!showPasswordForm)}
-                disabled={loading}
-                className="sm:flex-shrink-0"
-              >
-                {showPasswordForm ? <X className="h-4 w-4 mr-2" /> : null}
-                {showPasswordForm ? "Cancel" : "Change Password"}
-              </Button>
             </div>
+          )}
 
-            {showPasswordForm && (
-              <form onSubmit={handleChangePassword} className="mt-4 space-y-4">
-                <FormField
-                  label="New Password"
-                  icon={<Key className="h-5 w-5 text-primary/60" />}
-                  hint="Must be at least 6 characters long"
-                >
-                  <input
-                    type="password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="Enter new password"
-                    className={cn(
-                      "pl-11 w-full h-12 rounded-xl",
-                      "bg-background/95",
-                      "border-2 border-border/50",
-                      "focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
-                      "placeholder:text-foreground/40"
-                    )}
-                    required
-                    minLength={6}
-                  />
-                </FormField>
-                <div className="flex justify-end">
-                  <Button type="submit" variant="primary" disabled={loading || !newPassword}>
-                    {loading ? "Updating..." : "Update Password"}
-                  </Button>
+          {activeTab === 'builds' && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <Text className="text-xl font-medium">Your Builds</Text>
+                <div className="flex gap-2">
+                  <Link href="/build-planner/new">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Plus className="w-4 h-4" />
+                      New Build
+                    </Button>
+                  </Link>
+                  <Link href="/build-planner">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      View All
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
-              </form>
-            )}
-          </div>
+              </div>
 
-          <Button
-            type="button"
-            variant="destructive"
-            onClick={handleSignOut}
-            disabled={loading}
-            className="w-full"
-          >
-            Sign Out
-          </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {builds.map((build) => (
+                  <Link 
+                    key={build.id} 
+                    href={`/build-planner/${build.slug || build.id}`}
+                    className="block p-4 rounded-xl border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <Text className="font-medium">{build.name}</Text>
+                        <Text className="text-sm text-foreground/60">
+                          {build.poe_class || "Any Class"} • Level {build.level || "?"}
+                        </Text>
+                      </div>
+                      {build.is_template && (
+                        <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs">
+                          Template
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'settings' && (
+            <div className="space-y-8 max-w-3xl mx-auto">
+              <ConnectionsSection
+                isNewUser={isNewUser}
+                buildCount={buildCount}
+                poeLoading={poeLoading}
+                poeError={poeError}
+                poeAccount={poeAccount}
+                poeProfile={poeProfile}
+                onRefreshProfile={refreshProfile}
+              />
+
+              <BuildSettingsSection
+                poeConnected={!!poeAccount?.connected}
+                autoSync={autoSync}
+                settingsLoading={settingsLoading}
+                defaultBuildVisibility={defaultBuildVisibility}
+                onSettingsUpdate={handleSettingsUpdate}
+              />
+            </div>
+          )}
+
+          {activeTab === 'security' && (
+            <div className="max-w-xl mx-auto">
+              <SecuritySection
+                loading={loading}
+                showPasswordForm={showPasswordForm}
+                newPassword={newPassword}
+                onPasswordChange={setNewPassword}
+                onTogglePasswordForm={() => setShowPasswordForm(!showPasswordForm)}
+                onPasswordSubmit={handleChangePassword}
+                onSignOut={handleSignOut}
+              />
+            </div>
+          )}
         </div>
       </Container>
     </div>

@@ -16,11 +16,7 @@ export default async function BuildPlannerPage() {
     <BuildPlannerLayout
       title="Build Planner"
       description="Browse and explore Path of Exile 2 builds"
-      actions={
-        <span className="px-2 py-0.5 text-xs font-medium bg-primary text-primary-foreground rounded-full">
-          Beta
-        </span>
-      }
+      
     >
       <Container size="xl" noPadding>
         <div>

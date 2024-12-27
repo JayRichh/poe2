@@ -19,7 +19,7 @@ export function ContentLayout({ children, title, description, actions, sidebar }
   const sidebarState = useSidebarWidth();
 
   return (
-    <div className="min-h-screen flex flex-col mt-11 relative overflow-clip">
+    <div className="flex flex-col mt-11">
       {/* Header */}
       <div className="flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-11 z-30">
         <Container size="xl" noPadding>
@@ -38,18 +38,17 @@ export function ContentLayout({ children, title, description, actions, sidebar }
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex relative overflow-hidden">
+      <div className="flex">
         {/* Sidebar */}
         <div
-          className={`sticky top-0 h-screen border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarState.className}`}
+          className={`sticky top-[7.5rem] border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarState.className}`}
           style={{ 
-            width: sidebarState.width, 
-            maxHeight: 'calc(100vh - 2.75rem)',
-            overflowY: 'auto',
-            overscrollBehavior: 'contain'
+            width: sidebarState.width,
+            height: 'calc(100vh - 7.5rem)',
+            overflowY: 'auto'
           }}
         >
-          <div className={`sticky ${sidebarState.topOffset} h-full`}>
+          <div className="h-full">
             <div
               className={`flex items-center justify-between py-3 border-b border-border/50 ${sidebarState.headerPadding}`}
             >
@@ -76,15 +75,10 @@ export function ContentLayout({ children, title, description, actions, sidebar }
         </div>
 
         {/* Content */}
-        <div
-          className="flex-1 overflow-y-auto overscroll-contain"
-          style={{
-            marginLeft: sidebarState.width,
-            transition: "margin-left 0.3s ease",
-            height: 'calc(100vh - 2.75rem)'
-          }}
-        >
-          <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">{children}</div>
+        <div className="flex-1 min-w-0">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[calc(100vh-7.5rem)]">
+            {children}
+          </div>
         </div>
       </div>
     </div>

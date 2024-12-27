@@ -1,48 +1,30 @@
 "use client";
 
-import { Activity, ArrowUp, Book, Box, Coins, Crosshair, Map, Shield, Sword, User, Zap } from "lucide-react";
+import { Book } from "lucide-react";
 import React from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Text } from "~/components/ui/Text";
 import { Tooltip } from "~/components/ui/Tooltip";
 import { cn } from "~/utils/cn";
 import { guidesBySection } from "~/lib/guides/data";
 import { sectionTitles } from "~/lib/shared/types";
-import type { ContentIcon } from "~/lib/shared/types";
+import { IconMap } from "~/components/mechanics/IconMap";
+import { useSidebarWidth } from "~/hooks/useSidebarWidth";
 
-interface GuideSidebarProps {
-  collapsed?: boolean;
-}
-
-// Icon map
-const IconMap: Record<ContentIcon, React.ComponentType<{ className?: string }>> = {
-  Zap,
-  Activity,
-  User,
-  Coins,
-  Book,
-  Sword,
-  Shield,
-  Box,
-  Crosshair,
-  ArrowUp,
-  Map,
-};
-
-export function GuideSidebar({ collapsed }: GuideSidebarProps) {
+export function GuideSidebar() {
+  const { isCollapsed } = useSidebarWidth();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("category");
+  const currentCategory = pathname.split('/').pop();
 
   const NavLink = ({ href, icon: Icon, label, isActive }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string; isActive: boolean }) => {
     const linkContent = (
-      <div className={cn("flex items-center gap-3", collapsed && "justify-center w-full")}>
+      <div className={cn("flex items-center gap-3", isCollapsed && "justify-center w-full")}>
         <Icon className={cn(
           "w-5 h-5 transition-colors",
           isActive ? "text-primary" : "text-foreground/70 group-hover:text-foreground"
         )} />
-        {!collapsed && <span>{label}</span>}
+        {!isCollapsed && <span>{label}</span>}
       </div>
     );
 
@@ -60,7 +42,7 @@ export function GuideSidebar({ collapsed }: GuideSidebarProps) {
       </Link>
     );
 
-    if (!collapsed) return link;
+    if (!isCollapsed) return link;
 
     return (
       <Tooltip content={label} position="right" className="block">
@@ -70,7 +52,7 @@ export function GuideSidebar({ collapsed }: GuideSidebarProps) {
   };
 
   return (
-    <div className={cn("p-2", collapsed && "w-[60px]")}>
+    <div className={cn("p-2", isCollapsed && "w-[60px]")}>
       <div className="space-y-1">
         <NavLink
           href="/guides"
@@ -82,7 +64,7 @@ export function GuideSidebar({ collapsed }: GuideSidebarProps) {
         {/* Render sections */}
         {Object.entries(guidesBySection).map(([sectionKey, guides]) => (
           <div key={sectionKey} className="mt-6">
-            {!collapsed && (
+            {!isCollapsed && (
               <Text className="px-3 py-2 text-xs font-medium text-foreground/50 uppercase tracking-wider">
                 {sectionTitles[sectionKey as keyof typeof sectionTitles]}
               </Text>
@@ -94,7 +76,7 @@ export function GuideSidebar({ collapsed }: GuideSidebarProps) {
                 return (
                   <NavLink
                     key={guide.id}
-                    href={`/guides?category=${guide.id}`}
+                    href={`/guides/${guide.id}`}
                     icon={Icon}
                     label={guide.title}
                     isActive={isActive}

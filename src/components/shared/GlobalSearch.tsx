@@ -227,7 +227,7 @@ export function GlobalSearch() {
               {!query && (
                 <Command.List
                   className={cn(
-                    "absolute top-full left-0 right-0 z-50",
+                    "absolute top-full left-0 right-0 z-[40]",
                     "mt-1 overflow-hidden",
                     "rounded-md border border-border/50",
                     "bg-background shadow-sm"
@@ -275,7 +275,7 @@ export function GlobalSearch() {
                 <Command.List
                   id="search-results"
                   className={cn(
-                    "absolute top-full left-0 right-0 z-50",
+                    "absolute top-full left-0 right-0 z-[40]",
                     "mt-1 max-h-[60vh] overflow-y-auto",
                     "rounded-md border border-border/50",
                     "bg-background shadow-sm",

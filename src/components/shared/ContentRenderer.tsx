@@ -14,8 +14,8 @@ interface ContentRendererProps {
 
 export function ContentRenderer({ sections, relatedContent }: ContentRendererProps) {
   return (
-    <div className="w-full">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <div className="w-full min-h-0 overflow-y-auto">
+      <div className="max-w-6xl mx-auto space-y-12 pb-12">
         {/* Main Content */}
         <motion.div 
           className="space-y-16"
@@ -41,8 +41,8 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
               </div>
 
               {/* Main Section Content */}
-              <div className="grid gap-8 lg:grid-cols-2">
-                <div className="prose prose-invert max-w-none">
+              <div className="grid gap-8 lg:grid-cols-2 min-h-0">
+                <div className="prose prose-invert max-w-none min-h-0">
                   {section.content.map((text, i) => (
                     <motion.p 
                       key={i}
@@ -80,14 +80,14 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: subIndex * 0.1 }}
-                      className="bg-accent/5 rounded-xl p-8 border border-border/50"
+                      className="bg-accent/5 rounded-xl p-8 border border-border/50 min-h-0"
                     >
                       <Text variant="h3" className="text-xl font-semibold mb-6">
                         {subsection.title}
                       </Text>
 
-                      <div className="grid gap-8 lg:grid-cols-2">
-                        <div className="prose prose-invert max-w-none">
+                      <div className="grid gap-8 lg:grid-cols-2 min-h-0">
+                        <div className="prose prose-invert max-w-none min-h-0">
                           {subsection.content.map((text, i) => (
                             <motion.p 
                               key={i}

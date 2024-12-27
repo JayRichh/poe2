@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useMemo, useEffect } from "react";
+import { WIPBanner } from "~/components/ui/WIPBanner";
 import { usePathname } from "next/navigation";
 
 import { ThemeProvider } from "next-themes";
@@ -103,13 +104,14 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       >
         <QueryProvider>
           <AuthProvider>
+            <WIPBanner />
             {/* Background gradient */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
+            <div className="fixed inset-0 z-[5] pointer-events-none">
               <GradientBackground variant="mesh" interactive={false} />
             </div>
 
             {/* Navigation */}
-            <div className="fixed top-0 left-0 right-0 z-20">
+            <div className="fixed top-0 left-0 right-0 z-[30]">
               <Suspense fallback={<NavigationLoading />}>
                 <Navigation />
               </Suspense>
@@ -119,7 +121,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             {(!isHomePage && !isSkillTree) && (
               <div
                 className={cn(
-                  "fixed top-0 left-0 right-0 z-50",
+                  "fixed top-0 left-0 right-0 z-[35]",
                   "transition-transform duration-300",
                   isVisible 
                     ? hasSubNav 
@@ -145,7 +147,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
             {/* Main content */}
             <main className={cn(
-              "flex-1 relative z-10",
+              "flex-1 relative z-[20]",
               isHomePage
                 ? "mt-16 sm:mt-20"
                 : hasSubNav 
