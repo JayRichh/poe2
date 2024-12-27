@@ -179,29 +179,7 @@ export default function ProfilePage() {
 
                   <div>
                     <Text className="text-xl font-medium mb-6">Recent Activity</Text>
-                    <ActivityFeed items={[
-                      {
-                        id: '1',
-                        type: 'build',
-                        title: 'Created new build',
-                        description: 'Started a new Ranger build template',
-                        timestamp: '2 hours ago'
-                      },
-                      {
-                        id: '2',
-                        type: 'settings',
-                        title: 'Updated settings',
-                        description: 'Changed build visibility preferences',
-                        timestamp: '1 day ago'
-                      },
-                      {
-                        id: '3',
-                        type: 'profile',
-                        title: 'Profile updated',
-                        description: 'Changed display name',
-                        timestamp: '3 days ago'
-                      }
-                    ]} />
+                    <ActivityFeed />
                   </div>
                 </div>
               </div>

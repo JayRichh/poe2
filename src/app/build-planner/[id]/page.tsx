@@ -4,36 +4,16 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { BuildOverview } from "~/components/build-planner/BuildOverview";
-
 import { cn } from "~/utils/cn";
-
-import { getBuild, getBuilds } from "~/app/actions/builds";
-import type { Database } from "~/lib/supabase/types";
-
-type Build = Database["public"]["Tables"]["builds"]["Row"] & {
-  slug: string;
-};
-type Equipment = Database["public"]["Tables"]["equipment"]["Row"];
-type SkillGem = Database["public"]["Tables"]["skill_gems"]["Row"];
-type BuildConfig = Database["public"]["Tables"]["build_configs"]["Row"];
-
-interface BuildWithRelations extends Build {
-  equipment: Equipment[];
-  skill_gems: SkillGem[];
-  build_configs: BuildConfig[];
-}
+import { getBuild } from "~/app/actions/server/builds";
 
 interface PageProps {
-  params: Promise<{ id: string }> | undefined;
+  params: Promise<{ id: string }>;
 }
 
-// Remove generateStaticParams since we can't use cookies at build time
-// Instead, we'll rely on dynamic routing with fallback
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  if (!params) return { title: "Build Not Found" };
-
   try {
     const { id } = await params;
     const build = await getBuild(id);
@@ -51,17 +31,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BuildPage({ params }: PageProps) {
-  if (!params) notFound();
-
   try {
     const { id } = await params;
     const build = await getBuild(id);
-    
+
     // Redirect to slug URL if accessed via UUID
     if (build.slug && id !== build.slug) {
       redirect(`/build-planner/${build.slug}`);
     }
-    if (!build) notFound();
 
     return (
       <Suspense
@@ -79,7 +56,7 @@ export default async function BuildPage({ params }: PageProps) {
           </div>
         }
       >
-        <BuildOverview build={build as BuildWithRelations} />
+        <BuildOverview build={build} />
       </Suspense>
     );
   } catch (error) {

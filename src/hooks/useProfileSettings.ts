@@ -5,7 +5,8 @@ import { usePOEAccount } from "~/hooks/usePOEAccount";
 import { validateName } from "~/utils/validation";
 import { updatePassword, updateProfile } from "~/app/actions/profile";
 import { BuildSettings, getBuildSettings, updateBuildSettings } from "~/app/actions/settings";
-import { getBuilds } from "~/app/actions/builds";
+import { useBuilds } from "~/hooks/useBuilds";
+import { logActivity } from "~/app/actions/server/activities";
 import type { Database } from "~/lib/supabase/types";
 
 type Build = Database["public"]["Tables"]["builds"]["Row"];
@@ -25,9 +26,8 @@ export function useProfileSettings() {
   const [name, setName] = useState<string>("");
   const [isNewUser, setIsNewUser] = useState(false);
   const [setupProgress, setSetupProgress] = useState(0);
-  const [builds, setBuilds] = useState<Build[]>([]);
-  const [buildCount, setBuildCount] = useState(0);
-  const [buildsLoading, setBuildsLoading] = useState(true);
+  const { builds, loading: buildsLoading, loadBuilds } = useBuilds();
+  const buildCount = builds.length;
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [autoSync, setAutoSync] = useState(false);
   const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<BuildVisibility>('private');
@@ -58,20 +58,12 @@ export function useProfileSettings() {
     loadBuilds();
   }, [user, router, poeAccount?.connected, defaultBuildVisibility]);
 
-  const loadBuilds = useCallback(async () => {
-    if (!user) return;
-    
-    setBuildsLoading(true);
-    try {
-      const userBuilds = await getBuilds({ visibility: "all", includeOwn: true });
-      setBuilds(userBuilds);
-      setBuildCount(userBuilds.length);
-    } catch (err) {
-      console.error("Error loading builds:", err);
-    } finally {
-      setBuildsLoading(false);
+  // Load builds when user changes
+  useEffect(() => {
+    if (user) {
+      loadBuilds({ visibility: "all", includeOwn: true });
     }
-  }, [user]);
+  }, [user, loadBuilds]);
 
   const loadSettings = async () => {
     const settings = await getBuildSettings();
@@ -108,6 +100,14 @@ export function useProfileSettings() {
         if (newSettings.autoSync !== undefined) setAutoSync(newSettings.autoSync);
         if (newSettings.defaultVisibility !== undefined) setDefaultBuildVisibility(newSettings.defaultVisibility);
         setSubmitMessage("Settings updated successfully");
+        
+        // Log activity
+        await logActivity(
+          'settings',
+          'Updated settings',
+          'Changed build settings preferences',
+          { autoSync: settings.autoSync, defaultVisibility: settings.defaultVisibility }
+        );
       } else {
         setSubmitError(result.error || "Failed to update settings");
       }
@@ -142,6 +142,14 @@ export function useProfileSettings() {
       if (result.success) {
         setSubmitMessage("Profile updated successfully");
         await refreshSession();
+        
+        // Log activity
+        await logActivity(
+          'profile',
+          'Profile updated',
+          'Changed display name',
+          { newName: name }
+        );
       } else {
         setSubmitError(result.error || "Failed to update profile");
       }
@@ -167,6 +175,13 @@ export function useProfileSettings() {
       setShowPasswordForm(false);
       setNewPassword("");
       await refreshSession();
+      
+      // Log activity
+      await logActivity(
+        'settings',
+        'Security updated',
+        'Changed account password'
+      );
     } catch (err) {
       console.error("Error updating password:", err);
       setSubmitError("Failed to update password");

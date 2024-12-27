@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 
 import { BuildForm } from "~/components/build-planner/BuildForm";
 
-import { getBuild } from "~/app/actions/builds";
-import { handleBuildSubmit } from "~/app/actions/build-form";
+import { getBuild } from "~/app/actions/server/builds";
+import { handleBuildSubmit } from "~/app/actions/server/build-form";
 
 interface PageProps {
   params: Promise<{ id: string }>;

@@ -1,8 +1,7 @@
 import { notFound, redirect } from "next/navigation";
-
-import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
-import { getBuild } from "~/app/actions/builds";
 import { getServerClient } from "~/app/_actions/supabase";
+import { getBuild } from "~/app/actions/server/builds";
+import type { Database } from "~/lib/supabase/types";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,10 +21,8 @@ export default async function EditBuildLayout({ children, params }: LayoutProps)
   }
 
   try {
+    // Get the build and check permissions
     const build = await getBuild(id);
-    if (!build) notFound();
-
-    // Check if user has permission to edit
     if (build.user_id !== user.id || build.visibility === 'public') {
       redirect(`/build-planner/${build.slug || build.id}`);
     }

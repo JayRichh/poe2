@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,7 +6,7 @@ import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 
-import { getBuild } from "~/app/actions/builds";
+import { getBuild } from "~/app/actions/server/builds";
 import type { Database } from "~/lib/supabase/types";
 
 type Build = Database["public"]["Tables"]["builds"]["Row"];
@@ -43,7 +42,6 @@ function BuildNav({ build, currentPath }: BuildNavProps) {
 
 async function BuildHeader({ buildId }: { buildId: string }) {
   const build = await getBuild(buildId);
-  if (!build) notFound();
 
   return (
     <div className="flex items-start justify-between gap-4">
@@ -74,21 +72,27 @@ interface BuildPlannerLayoutProps {
 export const dynamic = 'force-dynamic';
 
 export default async function BuildPlannerLayout({ children, params }: BuildPlannerLayoutProps) {
-  const resolvedParams = await params;
-  const build = await getBuild(resolvedParams.id);
-  if (!build) notFound();
+  const { id } = await params;
+  if (!id) notFound();
 
-  return (
-    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
-      <Container className="max-w-7xl py-8 space-y-8">
-        <Suspense fallback={<div className="h-20 animate-pulse rounded-xl bg-foreground/5" />}>
-          <BuildHeader buildId={resolvedParams.id} />
-        </Suspense>
+  try {
+    const build = await getBuild(id);
 
-        <BuildNav build={build} currentPath={`/build-planner/${build.slug || build.id}`} />
+    return (
+      <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
+        <Container className="max-w-7xl py-8 space-y-8">
+          <Suspense fallback={<div className="h-20 animate-pulse rounded-xl bg-foreground/5" />}>
+            <BuildHeader buildId={id} />
+          </Suspense>
 
-        <div className="pt-4 border-t border-border/50">{children}</div>
-      </Container>
-    </div>
-  );
+          <BuildNav build={build} currentPath={`/build-planner/${build.slug || build.id}`} />
+
+          <div className="pt-4 border-t border-border/50">{children}</div>
+        </Container>
+      </div>
+    );
+  } catch (error) {
+    console.error("Error loading build:", error);
+    notFound();
+  }
 }

@@ -44,13 +44,20 @@ export function Dropdown({
   const getPositionStyles = useCallback(() => {
     if (!triggerRef.current) return {};
 
-    const menuWidth = width === "auto" ? "auto" : width === "trigger" ? "100%" : width;
     const rect = triggerRef.current.getBoundingClientRect();
     const styles: Record<string, any> = {
-      width: menuWidth,
       maxHeight,
       overflowY: "auto",
     };
+
+    // Handle menu width
+    if (width === "trigger") {
+      styles.minWidth = rect.width;
+    } else if (width === "auto") {
+      styles.minWidth = "8rem"; // Minimum width for auto
+    } else {
+      styles.width = width;
+    }
 
     switch (position) {
       case "bottom-right":
@@ -145,7 +152,7 @@ export function Dropdown({
 
   return (
     <div
-      className={cn("relative", isOpen && "z-[100]", className)}
+      className={cn("relative inline-block", isOpen && "z-[100]", className)}
       ref={dropdownRef}
       onKeyDown={handleKeyDown}
     >
@@ -170,18 +177,18 @@ export function Dropdown({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={getPositionStyles()}
-            className={cn(
-              "absolute",
-              "bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/75",
-              "border border-border rounded-lg shadow-lg",
-              "focus:outline-none",
-              "z-[100]"
-            )}
+  className={cn(
+    "absolute",
+    "bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/90",
+    "border border-border/50 rounded-lg shadow-xl",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
+    "z-[100]"
+  )}
             role="menu"
             aria-orientation="vertical"
             tabIndex={-1}
           >
-            <div className="py-1">
+            <div className="p-2 space-y-1">
               {items.map((item, index) => (
                 <motion.button
                   key={item.value}
@@ -195,11 +202,12 @@ export function Dropdown({
                   }}
                   onMouseEnter={() => setActiveIndex(index)}
                   className={cn(
-                    "w-full px-4 py-2.5 text-left flex items-center gap-2",
-                    "transition-colors duration-150",
-                    "focus:outline-none focus:bg-primary/15",
-                    item.disabled ? "opacity-50 cursor-not-allowed" : "hover:text-primary",
-                    value === item.value && "text-primary font-medium",
+                    "w-full px-4 py-2.5 text-left flex items-center gap-3",
+                    "transition-all duration-150",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
+                    "rounded-md",
+                    item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-primary/10 hover:text-primary",
+                    value === item.value && "text-primary font-medium bg-primary/5",
                     activeIndex === index && "bg-primary/10",
                     itemClassName,
                     item.className

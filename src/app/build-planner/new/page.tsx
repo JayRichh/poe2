@@ -1,25 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
 import { BuildForm } from "~/components/build-planner/BuildForm";
-import { createBuild } from "~/app/actions/builds";
 import { useAuth } from "~/contexts/auth";
+import { handleNewBuildSubmit } from "~/app/actions/server/build-form";
 import type { Database } from "~/lib/supabase/types";
 
-type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
+type BuildFormData = Omit<Database["public"]["Tables"]["builds"]["Insert"], "user_id">;
 
 export default function NewBuildPage() {
-  const router = useRouter();
   const { user, loading: authLoading } = useAuth();
 
-  async function handleSubmit(build: Partial<BuildInsert>) {
-    if (!user) return;
-    const newBuild = await createBuild(build as BuildInsert);
-    router.push(`/build-planner/${newBuild.slug || newBuild.id}`);
+  async function handleSubmit(formData: Partial<BuildFormData>) {
+    if (!user || !formData.name) return;
+    await handleNewBuildSubmit(formData);
   }
 
   return (
@@ -31,7 +27,7 @@ export default function NewBuildPage() {
             <Button
               variant="link"
               className="px-1 text-sm font-semibold"
-              onClick={() => router.push("/auth/login")}
+              onClick={() => window.location.href = "/auth/login"}
             >
               sign in
             </Button>{" "}

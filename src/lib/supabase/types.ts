@@ -1,5 +1,7 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
+export type ActivityType = 'build' | 'profile' | 'settings' | 'connection';
+
 export type BuildSettings = {
   defaultVisibility: VisibilityType;
   autoSync: boolean;
@@ -31,6 +33,35 @@ export interface POEAccountData {
 export interface Database {
   public: {
     Tables: {
+      activities: {
+        Row: {
+          id: string;
+          user_id: string;
+          type: ActivityType;
+          title: string;
+          description: string;
+          metadata?: Json;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          type: ActivityType;
+          title: string;
+          description: string;
+          metadata?: Json;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          type?: ActivityType;
+          title?: string;
+          description?: string;
+          metadata?: Json;
+          created_at?: string;
+        };
+      };
       profiles: {
         Row: {
           id: string;

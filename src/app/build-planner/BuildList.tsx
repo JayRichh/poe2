@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { BuildGrid } from "~/components/build-planner/BuildGrid";
@@ -8,10 +8,8 @@ import { BuildListControls } from "~/components/build-planner/BuildListControls"
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
-import { getBuilds } from "~/app/actions/builds";
-import type { Database } from "~/lib/supabase/types";
-
-type Build = Database["public"]["Tables"]["builds"]["Row"];
+import { useBuilds } from "~/hooks/useBuilds";
+import type { Build, VisibilityType } from "~/app/actions/server/builds";
 
 interface BuildListProps {
   initialBuilds: Build[];
@@ -29,25 +27,19 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const view = searchParams?.get("view") as "grid" | "list" | "grouped" | undefined;
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
-  // Fetch builds when visibility changes
-  // Force groupBy to undefined if not in grouped view
-  const effectiveGroupBy = view === "grouped" ? groupBy : undefined;
-  const [builds, setBuilds] = useState(initialBuilds);
+  const { builds, loading, loadBuilds } = useBuilds();
 
+  // Fetch builds when visibility changes
   useEffect(() => {
-    async function fetchBuilds() {
-      const newBuilds = await getBuilds({ 
-        visibility: visibility as "private" | "unlisted" | "public" | "all", 
-        includeOwn: true 
-      });
-      setBuilds(newBuilds);
-    }
-    fetchBuilds();
-  }, [visibility]);
+    loadBuilds({ 
+      visibility: visibility as VisibilityType | "all",
+      includeOwn: true 
+    });
+  }, [visibility, loadBuilds]);
 
   // Filter and sort builds
-  const filteredBuilds = builds
-    .filter((build) => {
+  const filteredBuilds = (builds.length > 0 ? builds : initialBuilds)
+    .filter((build: Build) => {
       if (search && !build.name.toLowerCase().includes(search.toLowerCase())) {
         return false;
       }
@@ -56,7 +48,7 @@ export function BuildList({ initialBuilds }: BuildListProps) {
       }
       return true;
     })
-    .sort((a, b) => {
+    .sort((a: Build, b: Build) => {
       const [field, direction] = sort.split(":") as [keyof Build, "asc" | "desc"];
       const aVal = a[field];
       const bVal = b[field];
@@ -70,6 +62,9 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   // Paginate builds
   const totalPages = Math.ceil(filteredBuilds.length / ITEMS_PER_PAGE);
   const paginatedBuilds = filteredBuilds.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+
+  // Force groupBy to undefined if not in grouped view
+  const effectiveGroupBy = view === "grouped" ? groupBy : undefined;
 
   return (
     <div className="space-y-4">
@@ -98,7 +93,13 @@ export function BuildList({ initialBuilds }: BuildListProps) {
           </div>
         }
       >
-        {paginatedBuilds.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          </div>
+        ) : paginatedBuilds.length === 0 ? (
           <div className="text-center py-12 space-y-4">
             <Text className="font-medium">No Builds Found</Text>
             <Text className="text-sm text-foreground/60">
