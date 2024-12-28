@@ -26,7 +26,10 @@ export function useProfileSettings() {
   const [name, setName] = useState<string>("");
   const [isNewUser, setIsNewUser] = useState(false);
   const [setupProgress, setSetupProgress] = useState(0);
-  const { builds, loading: buildsLoading, loadBuilds } = useBuilds();
+  const { builds, loading: buildsLoading } = useBuilds({ 
+    visibility: "all", 
+    includeOwn: true 
+  });
   const buildCount = builds.length;
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [autoSync, setAutoSync] = useState(false);
@@ -54,16 +57,7 @@ export function useProfileSettings() {
     setSetupProgress(progress);
     // Load initial settings
     loadSettings();
-    // Load builds
-    loadBuilds();
   }, [user, router, poeAccount?.connected, defaultBuildVisibility]);
-
-  // Load builds when user changes
-  useEffect(() => {
-    if (user) {
-      loadBuilds({ visibility: "all", includeOwn: true });
-    }
-  }, [user, loadBuilds]);
 
   const loadSettings = async () => {
     const settings = await getBuildSettings();

@@ -4,13 +4,14 @@ import { Suspense } from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function EditBuildLayout({
   children,
   params,
 }: LayoutProps) {
+  const { id } = await params;
   // Check authentication only - build fetch is handled by parent layout and page
   const supabase = await getServerClient();
   const { data: { user } } = await supabase.auth.getUser();
