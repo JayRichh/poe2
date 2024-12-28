@@ -4,6 +4,10 @@ const nextConfig = {
   distDir: ".next",
   output: "standalone",
   trailingSlash: false,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+    reactRemoveProperties: process.env.NODE_ENV === "production",
+  },
   async redirects() {
     return [
       {
@@ -39,14 +43,22 @@ const nextConfig = {
       },
     ],
     formats: ["image/webp"],
-    minimumCacheTTL: 3600,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 300,
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128],
     dangerouslyAllowSVG: true,
   },
+  modularizeImports: {
+    '@nivo/core': {
+      transform: '@nivo/core/dist/{{member}}',
+      preventFullImport: true
+    },
+    '@nivo/line': {
+      transform: '@nivo/line/dist/{{member}}',
+      preventFullImport: true
+    }
+  },
   experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
     serverActions: {
       bodySizeLimit: "2mb",
       allowedFormDataKeys: [
@@ -60,15 +72,8 @@ const nextConfig = {
         'build_configs',
         'stats',
         'notes'
-      ],
-      allowedOrigins: ['same-origin'],
-      acceptedContentTypes: [
-        'application/json',
-        'text/plain',
-        'multipart/form-data'
       ]
     },
-    optimisticClientCache: true,
   },
   async headers() {
     return [
@@ -77,7 +82,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, must-revalidate",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
           {
             key: "Vary",
@@ -90,47 +95,14 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, must-revalidate",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
           {
             key: "Vary",
             value: "Accept",
           },
         ],
-      },
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "Permissions-Policy",
-            value: "storage-access=self",
-          },
-          {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
-          },
-          {
-            key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block"
-          },
-        ],
-      },
+      }
     ];
   },
 };
