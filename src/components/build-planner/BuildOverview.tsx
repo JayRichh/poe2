@@ -6,27 +6,13 @@ import { useMemo } from "react";
 import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
 import { BuildActions } from "./BuildActions";
+import { useBuild } from "~/contexts/build";
 
-import type { Database } from "~/lib/supabase/types";
-
-type Build = Database["public"]["Tables"]["builds"]["Row"];
-type Equipment = Database["public"]["Tables"]["equipment"]["Row"];
-type SkillGem = Database["public"]["Tables"]["skill_gems"]["Row"];
-type BuildConfig = Database["public"]["Tables"]["build_configs"]["Row"];
-
-interface BuildWithRelations extends Build {
-  equipment?: Equipment[];
-  skill_gems?: SkillGem[];
-  build_configs?: BuildConfig[];
-}
-
-interface BuildOverviewProps {
-  build: BuildWithRelations;
-}
-
-export function BuildOverview({ build }: BuildOverviewProps) {
+export function BuildOverview() {
   const { user } = useAuth();
   const router = useRouter();
+  const build = useBuild();
+
   const canModify = useMemo(() => 
     Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
     [user, build.user_id, build.visibility]

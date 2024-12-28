@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-
 import type { Database, VisibilityType } from "~/lib/supabase/types";
 import type { BuildVisibility } from "~/app/actions/settings";
 
@@ -20,9 +18,14 @@ type POEClass = "duelist" | "marauder" | "ranger" | "scion" | "shadow" | "templa
 // Omit user_id since it's handled by the server
 type BuildFormData = Omit<BuildInsert, "user_id">;
 
+interface BuildFormResponse {
+  success: boolean;
+  buildId: string;
+}
+
 interface BuildFormProps {
   initialBuild?: Partial<BuildFormData>;
-  onSubmit: (build: Partial<BuildFormData>) => Promise<void>;
+  onSubmit: (build: Partial<BuildFormData>) => Promise<BuildFormResponse>;
 }
 
 export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
@@ -46,7 +49,7 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
     setError(undefined);
 
     try {
-      await onSubmit({
+      const result = await onSubmit({
         name,
         description: description || undefined,
         poe_class: poeClass || undefined,
@@ -54,11 +57,12 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
         visibility,
         is_template: false, // Default value
       });
-    } catch (err) {
-      // Ignore redirect "errors" as they're part of normal flow
-      if (err instanceof Error && err.message.includes('NEXT_REDIRECT')) {
-        return; // Let Next.js handle the redirect
+
+      if (result?.success) {
+        // Use window.location for full page navigation
+        window.location.href = `/build-planner/${result.buildId}`;
       }
+    } catch (err) {
       console.error("Error saving build:", err);
       setError(err instanceof Error ? err.message : "Failed to save build");
     } finally {

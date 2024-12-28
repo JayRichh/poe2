@@ -1,18 +1,23 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createBuild, updateBuild, type CreateBuildData } from "./builds";
 import type { Database } from "~/lib/supabase/types";
 
 type VisibilityType = Database["public"]["Enums"]["visibility_type"];
 
-type BuildFormData = Omit<Database["public"]["Tables"]["builds"]["Insert"], "user_id">;
+export type BuildFormData = Omit<Database["public"]["Tables"]["builds"]["Insert"], "user_id">;
 
-export async function handleNewBuildSubmit(formData: Partial<BuildFormData>) {
+export interface BuildFormResponse {
+  success: boolean;
+  buildId: string;
+  error?: string;
+}
+
+export async function handleNewBuildSubmit(formData: Partial<BuildFormData>): Promise<BuildFormResponse> {
   try {
     if (!formData.name) {
-      throw new Error("Build name is required");
+      return { success: false, buildId: "", error: "Build name is required" };
     }
 
     // Transform partial form data to required CreateBuildData
@@ -35,25 +40,29 @@ export async function handleNewBuildSubmit(formData: Partial<BuildFormData>) {
 
     const newBuild = await createBuild(buildData);
     if (!newBuild) {
-      throw new Error("Failed to create build");
+      return { success: false, buildId: "", error: "Failed to create build" };
     }
 
-    // Ensure cache is revalidated before redirect
-    revalidatePath("/build-planner");
+    // Revalidate paths
+    revalidatePath('/build-planner');
     revalidatePath(`/build-planner/${newBuild.slug || newBuild.id}`);
-
-    // Use redirect after revalidation
-    redirect(`/build-planner/${newBuild.slug || newBuild.id}`);
+    revalidatePath(`/build-planner/${newBuild.id}`);
+    
+    return { success: true, buildId: newBuild.slug || newBuild.id };
   } catch (error) {
     console.error("Error in handleNewBuildSubmit:", error);
-    throw error;
+    return { 
+      success: false, 
+      buildId: "", 
+      error: error instanceof Error ? error.message : "Failed to create build" 
+    };
   }
 }
 
-export async function handleBuildSubmit(buildId: string, formData: Partial<BuildFormData>) {
+export async function handleBuildSubmit(buildId: string, formData: Partial<BuildFormData>): Promise<BuildFormResponse> {
   try {
     if (!formData.name) {
-      throw new Error("Build name is required");
+      return { success: false, buildId, error: "Build name is required" };
     }
 
     const buildData = {
@@ -72,17 +81,30 @@ export async function handleBuildSubmit(buildId: string, formData: Partial<Build
 
     const updatedBuild = await updateBuild(buildId, buildData);
     if (!updatedBuild) {
-      throw new Error("Failed to update build");
+      return { success: false, buildId, error: "Failed to update build" };
     }
 
-    // Ensure cache is revalidated before redirect
-    revalidatePath("/build-planner");
-    revalidatePath(`/build-planner/${updatedBuild.slug || updatedBuild.id}`);
+    // Revalidate all possible paths
+    revalidatePath('/build-planner');
+    revalidatePath(`/build-planner/${buildId}`);
+    revalidatePath(`/build-planner/${buildId}/edit`);
+    revalidatePath(`/build-planner/${updatedBuild.id}`);
+    revalidatePath(`/build-planner/${updatedBuild.id}/edit`);
+    if (updatedBuild.slug) {
+      revalidatePath(`/build-planner/${updatedBuild.slug}`);
+      revalidatePath(`/build-planner/${updatedBuild.slug}/edit`);
+    }
 
-    // Use redirect after revalidation
-    redirect(`/build-planner/${updatedBuild.slug || updatedBuild.id}`);
+    // Wait for revalidation
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    return { success: true, buildId: updatedBuild.slug || updatedBuild.id };
   } catch (error) {
     console.error("Error in handleBuildSubmit:", error);
-    throw error;
+    return { 
+      success: false, 
+      buildId, 
+      error: error instanceof Error ? error.message : "Failed to update build" 
+    };
   }
 }

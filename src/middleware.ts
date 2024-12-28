@@ -5,8 +5,8 @@ const PROTECTED_ROUTES = ["/profile", "/build-planner/create"];
 const AUTH_ROUTES = ["/auth/login", "/auth/signup", "/auth/callback", "/auth/reset-password"];
 
 // Rate limiting configuration
-const RATE_LIMIT = 100; // requests
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute in ms
+const RATE_LIMIT = 500; // requests
+const RATE_LIMIT_WINDOW = 5 * 60 * 1000; // 5 minutes in ms
 
 // Store request counts with timestamp
 const requestCounts = new Map<string, { count: number; timestamp: number }>();
@@ -117,14 +117,16 @@ export async function middleware(request: NextRequest) {
       "X-XSS-Protection": "1; mode=block",
       "Content-Security-Policy": [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com *.vercel.live vercel.live",
         "style-src 'self' 'unsafe-inline'",
-        "img-src 'self' data: https:",
+        "img-src 'self' data: https: blob:",
         "font-src 'self' data:",
-        "connect-src 'self' https:",
+        "connect-src 'self' https: wss:",
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "form-action 'self'",
+        "worker-src 'self' blob:",
+        "manifest-src 'self'",
         "upgrade-insecure-requests"
       ].join("; ")
     };

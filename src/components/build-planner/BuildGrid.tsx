@@ -7,9 +7,7 @@ import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 import { BuildActions } from "./BuildActions";
 
-import type { Database } from "~/lib/supabase/types";
-
-type Build = Database["public"]["Tables"]["builds"]["Row"];
+import type { Build } from "~/app/actions/server/builds";
 type GroupByKey = "poe_class" | "level" | "visibility";
 
 interface BuildGridProps {
@@ -43,14 +41,11 @@ const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
       {/* Visibility Badge */}
-      <div className="absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize"
-        style={{
-          backgroundColor: build.visibility === 'public' ? 'rgb(34 197 94)' : // green-500
-                          build.visibility === 'unlisted' ? 'rgb(234 179 8)' : // yellow-500
-                          'rgb(239 68 68)', // red-500
-          color: '#fff',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-        }}
+      <div 
+        className={`absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize text-white shadow-sm
+          ${build.visibility === 'public' ? 'bg-green-500' : 
+            build.visibility === 'unlisted' ? 'bg-yellow-500' : 
+            'bg-red-500'}`}
       >
         {build.visibility}
       </div>
@@ -91,6 +86,7 @@ const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
             size="sm"
             tabIndex={-1}
             className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+            aria-label={`View details for ${build.name}`}
           >
             View Build
           </Button>
@@ -159,7 +155,7 @@ const BuildListItem = memo(function BuildListItem({ build }: { build: Build }) {
   );
 });
 
-export function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
+export const BuildGrid = memo(function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
   // Memoize grouped builds
   const groupedBuilds = useMemo(() => {
     if (!groupBy) return null;
@@ -211,4 +207,4 @@ export function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps
       )}
     </div>
   );
-}
+});

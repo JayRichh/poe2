@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useEffect, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
+import { Suspense, useMemo } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { BuildGrid } from "~/components/build-planner/BuildGrid";
 import { BuildListControls } from "~/components/build-planner/BuildListControls";
@@ -18,6 +18,7 @@ interface BuildListProps {
 const ITEMS_PER_PAGE = 12;
 
 export function BuildList({ initialBuilds }: BuildListProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const page = Number(searchParams?.get("page")) || 1;
   const search = searchParams?.get("search") || "";
@@ -27,15 +28,10 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const view = searchParams?.get("view") as "grid" | "list" | "grouped" | undefined;
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
-  const { builds, loading, loadBuilds } = useBuilds();
-
-  // Fetch builds when visibility changes
-  useEffect(() => {
-    loadBuilds({ 
-      visibility: visibility as VisibilityType | "all",
-      includeOwn: true 
-    });
-  }, [visibility, loadBuilds]);
+  const { builds, loading } = useBuilds({ 
+    visibility: visibility as VisibilityType | "all",
+    includeOwn: true 
+  });
 
   // Memoize filtered and sorted builds
   const filteredBuilds = useMemo(() => {
@@ -126,9 +122,9 @@ export function BuildList({ initialBuilds }: BuildListProps) {
             size="sm"
             disabled={page === 1}
             onClick={() => {
-              const newSearchParams = new URLSearchParams(searchParams?.toString());
-              newSearchParams.set("page", String(page - 1));
-              window.history.pushState(null, "", `?${newSearchParams.toString()}`);
+              const params = new URLSearchParams(searchParams?.toString());
+              params.set("page", String(page - 1));
+              router.replace(`?${params.toString()}`);
             }}
           >
             Previous
@@ -141,9 +137,9 @@ export function BuildList({ initialBuilds }: BuildListProps) {
             size="sm"
             disabled={page === totalPages}
             onClick={() => {
-              const newSearchParams = new URLSearchParams(searchParams?.toString());
-              newSearchParams.set("page", String(page + 1));
-              window.history.pushState(null, "", `?${newSearchParams.toString()}`);
+              const params = new URLSearchParams(searchParams?.toString());
+              params.set("page", String(page + 1));
+              router.replace(`?${params.toString()}`);
             }}
           >
             Next

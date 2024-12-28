@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '~/contexts/auth';
 import { 
   getBuilds, 
@@ -11,127 +11,64 @@ import {
   type UpdateBuildData
 } from '~/app/actions/server/builds';
 
-export function useBuilds() {
+const BUILDS_QUERY_KEY = 'builds';
+
+export function useBuilds(options?: BuildOptions) {
   const { user } = useAuth();
-  const [builds, setBuilds] = useState<Build[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
-  // Track last fetch time and options
-  const lastFetchRef = useRef<{ time: number; options: string }>({ time: 0, options: '' });
-  const loadTimeoutRef = useRef<NodeJS.Timeout>();
+  // Main query for builds
+  const { data: builds = [], isLoading, error } = useQuery({
+    queryKey: [BUILDS_QUERY_KEY, options],
+    queryFn: () => getBuilds(options),
+    enabled: !!user,
+    staleTime: 2000, // Consider data fresh for 2 seconds
+  });
 
-  const loadBuilds = useCallback(async (options?: BuildOptions) => {
-    if (!user) return;
+  // Create mutation
+  const createMutation = useMutation({
+    mutationFn: createBuild,
+    onSuccess: (newBuild) => {
+      queryClient.setQueryData<Build[]>([BUILDS_QUERY_KEY, options], (old = []) => 
+        [newBuild, ...old]
+      );
+    },
+  });
 
-    // Create a cache key from options
-    const optionsKey = JSON.stringify(options || {});
-    const now = Date.now();
+  // Update mutation
+  const updateMutation = useMutation({
+    mutationFn: ({ id, data }: { id: string; data: UpdateBuildData }) => 
+      updateBuild(id, data),
+    onSuccess: (updatedBuild) => {
+      queryClient.setQueryData<Build[]>([BUILDS_QUERY_KEY, options], (old = []) =>
+        old.map(build => build.id === updatedBuild.id ? updatedBuild : build)
+      );
+    },
+  });
 
-    // Prevent duplicate fetches within 2 seconds with same options
-    if (now - lastFetchRef.current.time < 2000 && lastFetchRef.current.options === optionsKey) {
-      return;
-    }
-
-    // Clear any pending fetch
-    if (loadTimeoutRef.current) {
-      clearTimeout(loadTimeoutRef.current);
-    }
-
-    // Debounce the fetch
-    loadTimeoutRef.current = setTimeout(async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const data = await getBuilds(options);
-        setBuilds(data);
-        lastFetchRef.current = { time: Date.now(), options: optionsKey };
-      } catch (err) {
-        console.error('Error loading builds:', err);
-        setError('Failed to load builds');
-      } finally {
-        setLoading(false);
-      }
-    }, 100);
-  }, [user]);
-
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (loadTimeoutRef.current) {
-        clearTimeout(loadTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  const create = useCallback(async (buildData: CreateBuildData) => {
-    if (!user) return null;
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const newBuild = await createBuild(buildData);
-      setBuilds(prev => [newBuild, ...prev]);
-      return newBuild;
-    } catch (err) {
-      console.error('Error creating build:', err);
-      setError('Failed to create build');
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  }, [user]);
-
-  const update = useCallback(async (id: string, buildData: UpdateBuildData) => {
-    if (!user) return null;
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const updatedBuild = await updateBuild(id, buildData);
-      setBuilds(prev => prev.map(build => 
-        build.id === id ? updatedBuild : build
-      ));
-      return updatedBuild;
-    } catch (err) {
-      console.error('Error updating build:', err);
-      setError('Failed to update build');
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  }, [user]);
-
-  const remove = useCallback(async (id: string) => {
-    if (!user) return false;
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      await deleteBuild(id);
-      setBuilds(prev => prev.filter(build => build.id !== id));
-      return true;
-    } catch (err) {
-      console.error('Error deleting build:', err);
-      setError('Failed to delete build');
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [user]);
+  // Delete mutation
+  const deleteMutation = useMutation({
+    mutationFn: deleteBuild,
+    onSuccess: (_, deletedId) => {
+      queryClient.setQueryData<Build[]>([BUILDS_QUERY_KEY, options], (old = []) =>
+        old.filter(build => build.id !== deletedId)
+      );
+    },
+  });
 
   return {
     builds,
-    loading,
-    error,
-    loadBuilds,
-    createBuild: create,
-    updateBuild: update,
-    deleteBuild: remove
+    loading: isLoading,
+    error: error as Error | null,
+    loadBuilds: () => queryClient.invalidateQueries({ queryKey: [BUILDS_QUERY_KEY, options] }),
+    createBuild: createMutation.mutateAsync,
+    updateBuild: (id: string, data: UpdateBuildData) => 
+      updateMutation.mutateAsync({ id, data }),
+    deleteBuild: deleteMutation.mutateAsync,
+    // Additional mutation states for UI feedback
+    isCreating: createMutation.isPending,
+    isUpdating: updateMutation.isPending,
+    isDeleting: deleteMutation.isPending,
   };
 }
 

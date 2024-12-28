@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { getServerClient } from "~/app/_actions/supabase";
 import { generateSlug } from "~/utils/slug";
 import { logActivity } from "./activities";
@@ -24,10 +25,13 @@ export interface BuildWithRelations extends Build {
   build_configs?: Database["public"]["Tables"]["build_configs"]["Row"][];
 }
 
-export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
+export async function getBuild(idOrSlug: string): Promise<BuildWithRelations | null> {
   const supabase = await getServerClient();
 
   try {
+    // Get current user first
+    const { data: { user } } = await supabase.auth.getUser();
+
     const query = `
       id,
       name,
@@ -49,48 +53,57 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations> {
       build_configs:build_configs(*)
     `;
 
-    // Try to find by slug first
-    let { data, error } = await supabase
+    // Helper to check if string is a valid UUID
+    const isValidUUID = (str: string) => {
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+      return uuidRegex.test(str);
+    };
+
+    let build;
+
+    // Try by slug first
+    const { data: slugData, error: slugError } = await supabase
       .from("builds")
       .select(query)
       .eq("slug", idOrSlug)
-      .single();
+      .maybeSingle();
+    
+    if (!slugError && slugData) {
+      build = slugData;
+    }
 
-    // If not found by slug, try by id
-    if (!data && !error) {
-      ({ data, error } = await supabase
+    // If not found by slug and input is a valid UUID, try by id
+    if (!build && isValidUUID(idOrSlug)) {
+      const { data: idData, error: idError } = await supabase
         .from("builds")
         .select(query)
         .eq("id", idOrSlug)
-        .single());
-    }
-
-    if (error) {
-      if (error.code === "42703") {
-        console.error("Column not found error. Migration may not be applied:", error);
-        throw new Error("Database schema error. Please contact support.");
+        .maybeSingle();
+      
+      if (!idError && idData) {
+        build = idData;
       }
-      console.error("Database error:", error);
-      throw new Error("Failed to fetch build");
-    }
-    if (!data) throw new Error("Build not found");
-
-    // Get current user if authenticated
-    const { data: { user } } = await supabase.auth.getUser();
-
-    // Check visibility and ownership
-    if (data.visibility === "private" && (!user || data.user_id !== user.id)) {
-      throw new Error("Build not found");
     }
 
-    if (data.visibility === "unlisted" && (!user || data.user_id !== user.id)) {
-      throw new Error("Build not found");
+    // If build not found, return null
+    if (!build) {
+      return null;
     }
 
-    return data;
+    // Check visibility and ownership before returning
+    const isOwner = user && build.user_id === user.id;
+    const isPublic = build.visibility === "public";
+    const canAccess = isOwner || isPublic;
+
+    // If not authorized, return null
+    if (!canAccess) {
+      return null;
+    }
+
+    return build;
   } catch (error) {
     console.error("Error in getBuild:", error);
-    throw error;
+    return null;
   }
 }
 
@@ -166,8 +179,9 @@ export async function createBuild(build: CreateBuildData) {
     { buildId: data.id, buildName: build.name }
   );
 
-  // Revalidate all build planner routes at once
-  revalidatePath('/build-planner', 'layout');
+  // Revalidate all build planner routes
+  revalidatePath('/build-planner');
+  revalidatePath(`/build-planner/${data.slug || data.id}`);
   return data;
 }
 
@@ -177,24 +191,50 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  // Verify ownership - try slug first, then id
-  let { data: build } = await supabase
+  // Helper to check if string is a valid UUID
+  const isValidUUID = (str: string) => {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return uuidRegex.test(str);
+  };
+
+  let foundBuild;
+  
+  // Try by slug first
+  const { data: slugData, error: slugError } = await supabase
     .from("builds")
     .select()
     .eq("slug", id)
-    .single();
+    .maybeSingle();
   
-  if (!build) {
-    ({ data: build } = await supabase
+  if (!slugError && slugData) {
+    foundBuild = slugData;
+  }
+
+  // If not found by slug and input is a valid UUID, try by id
+  if (!foundBuild && isValidUUID(id)) {
+    const { data: idData, error: idError } = await supabase
       .from("builds")
       .select()
       .eq("id", id)
-      .single());
+      .maybeSingle();
+    
+    if (!idError && idData) {
+      foundBuild = idData;
+    }
   }
 
-  if (!build || build.user_id !== user.id) {
+  // If still no match or not the owner, fail
+  if (!foundBuild || foundBuild.user_id !== user.id) {
     throw new Error("Build not found or unauthorized");
   }
+
+  // Store old paths for revalidation
+  const oldPaths = [
+    `/build-planner/${foundBuild.slug || foundBuild.id}`,
+    `/build-planner/${foundBuild.slug || foundBuild.id}/edit`,
+    `/build-planner/${foundBuild.id}`,
+    `/build-planner/${foundBuild.id}/edit`,
+  ];
 
   // Generate new slug if name is being updated
   let updatedFields = { ...updates };
@@ -206,22 +246,39 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
   const { data, error } = await supabase
     .from("builds")
     .update(updatedFields)
-    .eq("id", build.id) // Always use ID for update
+    .eq("id", foundBuild.id) // Always use ID for update
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error("Error updating build:", error);
+    throw new Error(`Failed to update build: ${error.message}`);
+  }
+
+  if (!data) {
+    throw new Error("Failed to update build: No data returned");
+  }
 
   // Log activity
   await logActivity(
     'build',
     'Updated build',
-    `Made changes to ${build.name}`,
+    `Made changes to ${foundBuild.name}`,
     { buildId: id, updates }
   );
 
-  // Revalidate all build planner routes at once
-  revalidatePath('/build-planner', 'layout');
+  // Revalidate all possible paths
+  revalidatePath('/build-planner');
+  
+  // Revalidate old paths
+  oldPaths.forEach(path => revalidatePath(path));
+  
+  // Revalidate new paths
+  revalidatePath(`/build-planner/${data.slug || data.id}`);
+  revalidatePath(`/build-planner/${data.slug || data.id}/edit`);
+  revalidatePath(`/build-planner/${data.id}`);
+  revalidatePath(`/build-planner/${data.id}/edit`);
+  
   return data;
 }
 
@@ -231,21 +288,47 @@ export async function deleteBuild(id: string) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  // Verify ownership
-  const { data: build } = await supabase
+  // Helper to check if string is a valid UUID
+  const isValidUUID = (str: string) => {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return uuidRegex.test(str);
+  };
+
+  let foundBuild;
+  
+  // Try by slug first
+  const { data: slugData, error: slugError } = await supabase
     .from("builds")
     .select()
-    .eq("id", id)
-    .single();
+    .eq("slug", id)
+    .maybeSingle();
+  
+  if (!slugError && slugData) {
+    foundBuild = slugData;
+  }
 
-  if (!build || build.user_id !== user.id) {
+  // If not found by slug and input is a valid UUID, try by id
+  if (!foundBuild && isValidUUID(id)) {
+    const { data: idData, error: idError } = await supabase
+      .from("builds")
+      .select()
+      .eq("id", id)
+      .maybeSingle();
+    
+    if (!idError && idData) {
+      foundBuild = idData;
+    }
+  }
+
+  // If still no match or not the owner, fail
+  if (!foundBuild || foundBuild.user_id !== user.id) {
     throw new Error("Not authorized to delete this build");
   }
 
   const { error } = await supabase
     .from("builds")
     .delete()
-    .eq("id", id);
+    .eq("id", foundBuild.id);
 
   if (error) throw error;
 
@@ -253,10 +336,14 @@ export async function deleteBuild(id: string) {
   await logActivity(
     'build',
     'Deleted build',
-    `Removed ${build.name}`,
+    `Removed ${foundBuild.name}`,
     { buildId: id }
   );
 
-  revalidatePath("/build-planner");
+  // Revalidate paths
+  revalidatePath('/build-planner');
+  revalidatePath(`/build-planner/${foundBuild.slug || foundBuild.id}`);
+  revalidatePath(`/build-planner/${foundBuild.id}`);
+  
   return true;
 }

@@ -14,8 +14,10 @@ export default function NewBuildPage() {
   const { user, loading: authLoading } = useAuth();
 
   async function handleSubmit(formData: Partial<BuildFormData>) {
-    if (!user || !formData.name) return;
-    await handleNewBuildSubmit(formData);
+    if (!user || !formData.name) {
+      throw new Error("User must be logged in and build name is required");
+    }
+    return handleNewBuildSubmit(formData);
   }
 
   return (

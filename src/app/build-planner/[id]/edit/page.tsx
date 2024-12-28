@@ -1,32 +1,29 @@
-import { notFound } from "next/navigation";
-
-import { BuildForm } from "~/components/build-planner/BuildForm";
-
+import { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { Suspense } from "react";
+import { getServerClient } from "~/app/_actions/supabase";
+import { Container } from "~/components/ui/Container";
+import { EditBuildForm } from "./EditBuildForm";
 import { getBuild } from "~/app/actions/server/builds";
-import { handleBuildSubmit } from "~/app/actions/server/build-form";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+export const metadata: Metadata = {
+  title: "Edit Build - POE2 Build Planner",
+  description: "Edit your POE2 build configuration",
+};
+
 export default async function EditBuildPage({ params }: PageProps) {
+  // Await params before using
   const { id } = await params;
-  if (!id) notFound();
 
-  try {
-    const build = await getBuild(id);
-    if (!build) notFound();
-
-    return (
-      <div className="max-w-2xl mx-auto mt-6">
-        <BuildForm 
-          initialBuild={build} 
-          onSubmit={handleBuildSubmit.bind(null, id)} 
-        />
-      </div>
-    );
-  } catch (error) {
-    console.error("Error loading build:", error);
-    notFound();
-  }
+  return (
+    <Container className="max-w-7xl py-8">
+      <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-foreground/5" />}>
+        <EditBuildForm id={id} />
+      </Suspense>
+    </Container>
+  );
 }

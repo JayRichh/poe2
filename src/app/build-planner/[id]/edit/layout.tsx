@@ -1,18 +1,17 @@
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { getServerClient } from "~/app/_actions/supabase";
-import { getBuild } from "~/app/actions/server/builds";
-import type { Database } from "~/lib/supabase/types";
+import { Suspense } from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
-export default async function EditBuildLayout({ children, params }: LayoutProps) {
-  const { id } = await params;
-  if (!id) notFound();
-
-  // Get current user
+export default async function EditBuildLayout({
+  children,
+  params,
+}: LayoutProps) {
+  // Check authentication only - build fetch is handled by parent layout and page
   const supabase = await getServerClient();
   const { data: { user } } = await supabase.auth.getUser();
   
@@ -20,20 +19,11 @@ export default async function EditBuildLayout({ children, params }: LayoutProps)
     redirect('/auth/login');
   }
 
-  try {
-    // Get the build and check permissions
-    const build = await getBuild(id);
-    if (build.user_id !== user.id || build.visibility === 'public') {
-      redirect(`/build-planner/${build.slug || build.id}`);
-    }
-
-    return (
-      <>
+  return (
+    <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
+      <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-foreground/5" />}>
         {children}
-      </>
-    );
-  } catch (error) {
-    console.error("Error loading build:", error);
-    notFound();
-  }
+      </Suspense>
+    </div>
+  );
 }
