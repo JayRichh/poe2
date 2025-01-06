@@ -111,17 +111,12 @@ export function SkillTreeSection() {
                     src="/skill-tree.png"
                     alt="POE2 Skill Tree Preview"
                     fill
-                    quality={75}
-                    priority
+                    quality={65}
+                    loading="lazy"
                     sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
-                    className="opacity-0 object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
-                    onLoad={(event) => {
-                      const target = event.target as HTMLImageElement;
-                      if (target.complete) {
-                        target.classList.remove("opacity-0");
-                        target.classList.add("opacity-100");
-                      }
-                    }}
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                    className="object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
                     onError={(event) => {
                       const target = event.target as HTMLImageElement;
                       target.style.display = "none";
