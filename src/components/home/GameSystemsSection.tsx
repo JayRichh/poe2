@@ -101,6 +101,7 @@ export function GameSystemsSection() {
                 variant="secondary"
                 size="lg"
                 className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
+                aria-label="Explore game mechanics section"
               >
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:text-foreground transition-colors">
                   Explore Mechanics
@@ -142,10 +143,10 @@ export function GameSystemsSection() {
                 >
                   <Image
                     src={`/ascendancies/${className}.webp`}
-                    alt={className}
+                    alt={`${className.charAt(0).toUpperCase() + className.slice(1)} class preview`}
                     fill
-                    sizes="(max-width: 768px) 33vw, (max-width: 1200px) 200px, 300px"
-                    quality={75}
+                    sizes="(max-width: 640px) 33vw, (max-width: 1200px) 200px, 300px"
+                    quality={65}
                     loading="lazy"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -182,6 +183,7 @@ export function GameSystemsSection() {
                 variant="secondary"
                 size="lg"
                 className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
+                aria-label="View ascendancy classes section"
               >
                 <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:text-foreground transition-colors">
                   View Classes

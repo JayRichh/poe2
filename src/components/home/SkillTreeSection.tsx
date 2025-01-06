@@ -72,6 +72,7 @@ export function SkillTreeSection() {
               variant="secondary"
               size="lg"
               className="px-8 py-4 text-lg flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group border-2 border-border/50 hover:border-accent/50"
+              aria-label="View interactive skill tree"
             >
               <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:text-foreground transition-colors">
                 View Skill Tree
@@ -111,12 +112,12 @@ export function SkillTreeSection() {
                     src="/skill-tree.png"
                     alt="POE2 Skill Tree Preview"
                     fill
-                    quality={65}
+                    quality={60}
                     loading="lazy"
-                    sizes="(max-width: 768px) 500px, (max-width: 1200px) 700px, 900px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 800px"
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                    className="object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700 contrast-[1.1] brightness-110"
+                    className="object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700"
                     onError={(event) => {
                       const target = event.target as HTMLImageElement;
                       target.style.display = "none";

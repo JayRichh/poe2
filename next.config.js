@@ -53,7 +53,7 @@ const nextConfig = {
       },
     ],
     formats: ["image/webp"],
-    minimumCacheTTL: 600,
+    minimumCacheTTL: 31536000,
     deviceSizes: [640, 828, 1200],
     imageSizes: [32, 48, 96, 128],
     dangerouslyAllowSVG: true,
@@ -206,7 +206,25 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, stale-while-revalidate=604800'
+            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
+          }
+        ]
+      },
+      {
+        source: '/ascendancies/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
+          }
+        ]
+      },
+      {
+        source: '/:path*.{jpg,jpeg,png,gif,webp,svg,ico}',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
           }
         ]
       }

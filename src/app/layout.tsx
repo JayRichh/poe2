@@ -11,18 +11,20 @@ const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-plex-sans",
-  display: "swap",
-  adjustFontFallback: false,
-  fallback: ["system-ui", "sans-serif"],
+  display: "optional",
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
 });
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-plex-mono",
-  display: "swap",
-  adjustFontFallback: false,
-  fallback: ["monospace"],
+  display: "optional",
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* <link rel="preload" href="/skill-tree.png" as="image" type="image/png" /> */}
         <meta
           name="google-site-verification"
