@@ -1,5 +1,25 @@
 [
   {
+    "version": "0.1.0e Hotfix 6",
+    "date": "Jan 6, 2025, 6:03:40 AM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3682380",
+    "content": [
+      "Fixed a bug where allocating Chaos Inoculation would incorrectly count you as being on Low Life."
+    ],
+    "author": "Kieren_GGG",
+    "lastBumped": "Last bumped on Jan 6, 2025, 12:47:28 PM"
+  },
+  {
+    "version": "0.1.0e Hotfix 5",
+    "date": "Jan 2, 2025, 10:26:28 PM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3677329",
+    "content": [
+      "You can no longer use the instance manager to create multiple instances of the Trial of the Sekhemas."
+    ],
+    "author": "Stacey_GGG",
+    "lastBumped": "Last bumped on Jan 6, 2025, 10:26:45 AM"
+  },
+  {
     "version": "0.1.0e Hotfix 4",
     "date": "Dec 19, 2024, 9:32:21 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3650268",
@@ -8,7 +28,7 @@
       "Fixed a bug where characters who hadn't completed the campaign could enter endgame areas through other players hideouts."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 25, 2024, 11:43:01 PM"
+    "lastBumped": "Last bumped on Jan 6, 2025, 4:48:05 AM"
   },
   {
     "version": "0.1.0e Hotfix 3",
@@ -19,7 +39,7 @@
       "Take 2, fixed a bug where certain rare monsters would respawn at checkpoints after Culling them with Lightning Warp."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 22, 2024, 11:18:40 AM"
+    "lastBumped": "Last bumped on Dec 27, 2024, 8:52:37 AM"
   },
   {
     "version": "0.1.0e Hotfix 2",
@@ -31,7 +51,7 @@
       "Fixed unintentionally lowering the base minion critical damage bonus from +50% to +30% in patch 0.1.0e. We have buffed base minion critical damage bonus to be +100% (higher than pre 0.1.0e values) to match the base player critical damage bonus. This will display incorrectly in the character panel until a later patch."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 22, 2024, 7:20:51 AM"
+    "lastBumped": "Last bumped on Dec 26, 2024, 8:24:37 AM"
   },
   {
     "version": "0.1.0e Hotfix 1",
@@ -46,7 +66,7 @@
       "Fixed a bug where the Passive Skill Notable 'Ancient Aegis' didn't work."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 22, 2024, 7:14:14 AM"
+    "lastBumped": "Last bumped on Dec 27, 2024, 5:03:19 PM"
   },
   {
     "version": "0.1.0e Patch Notes",
@@ -196,7 +216,7 @@
       "Fixed 3 Instance Crashes."
     ],
     "author": "Jeff_GGG",
-    "lastBumped": "Last bumped on Dec 25, 2024, 10:09:22 AM"
+    "lastBumped": "Last bumped on Jan 2, 2025, 8:04:18 PM"
   },
   {
     "version": "0.1.0d Hotfix 5",
@@ -325,7 +345,7 @@
       "Fixed three client crashes that could occur on PlayStation 5."
     ],
     "author": "Kieren_GGG",
-    "lastBumped": "Last bumped on Dec 22, 2024, 2:39:00 AM"
+    "lastBumped": "Last bumped on Dec 28, 2024, 1:25:41 PM"
   },
   {
     "version": "0.1.0c Hotfix 2",
@@ -472,7 +492,7 @@
       "Fixed multiple client crashes."
     ],
     "author": "Stacey_GGG",
-    "lastBumped": "Last bumped on Dec 12, 2024, 3:27:44 AM"
+    "lastBumped": "Last bumped on Jan 4, 2025, 2:20:53 AM"
   },
   {
     "version": "0.1.0 Hotfix",
