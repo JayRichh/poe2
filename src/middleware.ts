@@ -132,7 +132,7 @@ export async function middleware(request: NextRequest) {
           "default-src 'self'",
           "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com *.vercel.live vercel.live",
           "style-src 'self' 'unsafe-inline'",
-          "img-src 'self' data: https: blob:",
+          "img-src 'self' data: https: blob: *.fextralife.com",
           "font-src 'self' data:",
           "connect-src 'self' https: wss:",
           "frame-ancestors 'none'",

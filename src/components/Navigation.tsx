@@ -16,16 +16,11 @@ import {
 } from "lucide-react";
 
 import { useState } from "react";
-
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
-
 import { cn } from "~/utils/cn";
-
 import { useAuth } from "~/contexts/auth";
-
 import { Button } from "./ui/Button";
 import { Dropdown } from "./ui/Dropdown";
 import { FullscreenMenu } from "./ui/FullscreenMenu";
@@ -34,32 +29,34 @@ import { Toast } from "./ui/Toast";
 
 const PROTECTED_ROUTES = ["/profile"];
 
-const primaryLinks = [
+type NavItem = {
+  href: string;
+  label: string;
+  icon: React.ComponentType;
+};
+
+type NavItemWithDropdown = {
+  label: string;
+  items: NavItem[];
+};
+
+const primaryLinks: (NavItem | NavItemWithDropdown)[] = [
   { href: "/build-planner", label: "Build Planner", icon: Layout },
   { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
-  { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
+  {
+    label: "Calculators",
+    items: [
+      { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
+      { href: "/currency-calc", label: "Currency Calculator", icon: Calculator },
+    ],
+  },
   { href: "/mechanics", label: "Game Mechanics", icon: Cog },
 ];
 
-const secondaryLinks = [
-  {
-    href: "/news",
-    label: "News",
-    icon: Newspaper,
-    description: "Latest updates, announcements & patch notes",
-  },
-  {
-    href: "/guides",
-    label: "Guides",
-    icon: FileText,
-    description: "Community guides & build tutorials",
-  },
-  {
-    href: "/ascendancies",
-    label: "Ascendancies",
-    icon: Users,
-    description: "Explore POE2 ascendancy classes and their unique abilities",
-  },
+const secondaryLinks: NavItem[] = [
+  { href: "/news", label: "News", icon: Newspaper },
+  { href: "/guides", label: "Guides", icon: FileText },
+  { href: "/ascendancies", label: "Ascendancies", icon: Users },
 ];
 
 export function Navigation() {
@@ -84,15 +81,19 @@ export function Navigation() {
     router.push("/auth/login");
   };
 
+  const isDropdownItem = (item: NavItem | NavItemWithDropdown): item is NavItemWithDropdown => {
+    return !('href' in item) && 'items' in item;
+  };
+
   return (
     <>
       <nav
         className={cn(
-          "fixed top-0 w-full transition-all duration-300 z-[30]",
+          "fixed top-0 w-full transition-all duration-300 z-[50]",
           !isVisible ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-sm border-b border-border/40" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 sm:h-16">
             <div className="flex items-center">
@@ -102,32 +103,54 @@ export function Navigation() {
                 </span>
               </Link>
 
-              <div className="hidden md:flex items-center">
-                {/* Primary Tools Section */}
-                <div className="flex items-center space-x-5">
-                  {primaryLinks.map(({ href, label }) => {
-                    const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+              <div className="hidden lg:flex items-center">
+                <div className="flex items-center space-x-6">
+                  {primaryLinks.map((item) => {
+                    if (isDropdownItem(item)) {
+                      return (
+                        <Dropdown
+                          key={item.label}
+                          trigger={
+                            <button className="text-[15px] font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2">
+                              {item.label}
+                              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </button>
+                          }
+                          items={item.items.map((subItem) => ({
+                            label: subItem.label,
+                            value: subItem.href,
+                            icon: <subItem.icon />,
+                          }))}
+                          onChange={(value) => router.push(value)}
+                          position="bottom-left"
+                          width={200}
+                        />
+                      );
+                    }
+
+                    const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
                     return (
                       <Link
-                        key={href}
-                        href={href}
+                        key={item.href}
+                        href={item.href}
                         prefetch={false}
                         className={cn(
                           "text-[15px] font-medium tracking-wide transition-colors duration-200 relative group",
                           isActive ? "text-primary" : "text-foreground/90 hover:text-primary"
                         )}
                       >
-                        {label}
+                        {item.label}
                         {isActive && (
-                          <span className="absolute -bottom-[13px] sm:-bottom-[17px] left-0 w-full h-0.5 bg-primary" />
+                          <span className="absolute -bottom-4 left-0 w-full h-0.5 bg-primary" />
                         )}
                       </Link>
                     );
                   })}
                 </div>
 
-                {/* Secondary Links Section */}
-                <div className="flex items-center space-x-4 border-l border-foreground/10 ml-5 pl-5">
+                <div className="flex items-center space-x-5 border-l border-foreground/10 ml-6 pl-6">
                   {secondaryLinks.map(({ href, label }) => {
                     const isActive = pathname === href || pathname?.startsWith(`${href}/`);
                     return (
@@ -137,7 +160,7 @@ export function Navigation() {
                         prefetch={false}
                         className={cn(
                           "text-sm transition-colors duration-200",
-                          isActive ? "text-primary/90" : "text-foreground/50 hover:text-foreground/70"
+                          isActive ? "text-primary/90" : "text-foreground/60 hover:text-foreground/90"
                         )}
                       >
                         {label}
@@ -150,7 +173,7 @@ export function Navigation() {
 
             <div className="flex items-center gap-4">
               {user ? (
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <Dropdown
                     trigger={
                       <button
@@ -158,7 +181,7 @@ export function Navigation() {
                         disabled={authLoading}
                       >
                         {authLoading ? (
-                          <Spinner size="sm" className="w-4 h-4" />
+                          <Spinner size="sm" />
                         ) : (
                           <User className="w-4 h-4" />
                         )}
@@ -188,11 +211,11 @@ export function Navigation() {
                 <Button
                   onClick={handleSignIn}
                   variant="ghost"
-                  className="flex items-center gap-2 text-base font-medium"
+                  className="hidden lg:flex items-center gap-2 text-base font-medium"
                   disabled={authLoading}
                 >
                   {authLoading ? (
-                    <Spinner size="sm" className="w-4 h-4" />
+                    <Spinner size="sm" />
                   ) : (
                     <LogIn className="w-4 h-4" />
                   )}
@@ -233,7 +256,7 @@ export function Navigation() {
                 className="w-full"
                 disabled={authLoading}
               >
-                {authLoading ? <Spinner size="sm" className="w-4 h-4" /> : "Sign In"}
+                {authLoading ? <Spinner size="sm" /> : "Sign In"}
               </Button>
             </div>
           </div>

@@ -32,7 +32,7 @@ const nextConfig = {
     ];
   },
   images: {
-    remotePatterns: [
+    remotePatterns: [ 
       {
         protocol: "https",
         hostname: "github.com",
@@ -44,6 +44,12 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
         port: "",
         pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "pathofexile2.wiki.fextralife.com",
+        port: "",
+        pathname: "/**",
       },
     ],
     formats: ["image/webp"],

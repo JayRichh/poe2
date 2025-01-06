@@ -111,7 +111,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </div>
 
             {/* Navigation */}
-            <div className="fixed top-0 left-0 right-0 z-[30]">
+            <div className="fixed top-0 left-0 right-0 z-[50]">
               <Suspense fallback={<NavigationLoading />}>
                 <Navigation />
               </Suspense>
@@ -121,7 +121,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             {(!isHomePage && !isSkillTree) && (
               <div
                 className={cn(
-                  "fixed top-0 left-0 right-0 z-[35]",
+                  "fixed top-0 left-0 right-0 z-[40]",
                   "transition-transform duration-300",
                   isVisible 
                     ? hasSubNav 

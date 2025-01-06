@@ -40,6 +40,12 @@ const mainLinks = [
     description: "Calculate and compare weapon damage",
   },
   {
+    href: "/currency-calc",
+    label: "Currency Calculator",
+    icon: Gamepad,
+    description: "Convert between different currency types",
+  },
+  {
     href: "/guides",
     label: "Guides",
     icon: BookOpen,

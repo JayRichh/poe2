@@ -73,6 +73,13 @@ const mainLinks = [
     description: "Advanced damage calculator with comprehensive stat analysis",
     features: ["Skill Damage", "Support Gems", "Equipment Effects", "DPS Optimization"],
   },
+  {
+    label: "Currency Calculator",
+    path: "/currency-calc",
+    icon: Calculator,
+    description: "Convert between different Path of Exile 2 currency types",
+    features: ["Real-time Rates", "Conversion History", "Multiple Currencies", "Quick Calculations"],
+  },
 ];
 
 const quickLinks = [
