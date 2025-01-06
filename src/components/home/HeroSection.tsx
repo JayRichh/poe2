@@ -32,11 +32,11 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
             "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] h-auto",
             "-mb-[80px] sm:-mb-[120px]"
           )}
-          width={400}
-          height={200}
+          width={600}
+          height={300}
           priority
           quality={75}
-          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 600px, 400px"
+          sizes="(max-width: 640px) 85vw, 600px"
         />
       </div>
       <Text
