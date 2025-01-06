@@ -111,7 +111,12 @@ export function Navigation() {
                         <Dropdown
                           key={item.label}
                           trigger={
-                            <button className="text-[15px] font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2">
+                            <button 
+                              className="text-[15px] font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2"
+                              aria-label={`${item.label} menu`}
+                              aria-expanded="false"
+                              aria-haspopup="true"
+                            >
                               {item.label}
                               <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

@@ -151,6 +151,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         ref={ref}
         disabled={isLoading || disabled}
+        aria-busy={isLoading}
+        aria-label={isLoading ? "Loading..." : props["aria-label"]}
         {...props}
       >
         {isLoading ? (

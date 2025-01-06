@@ -54,8 +54,8 @@ const nextConfig = {
     ],
     formats: ["image/webp"],
     minimumCacheTTL: 31536000,
-    deviceSizes: [640, 828, 1200],
-    imageSizes: [32, 48, 96, 128],
+    deviceSizes: [360, 640, 768, 1024, 1280],
+    imageSizes: [16, 32, 48, 64, 96],
     dangerouslyAllowSVG: true,
   },
   modularizeImports: {
@@ -95,7 +95,7 @@ const nextConfig = {
       config.optimization.splitChunks = {
         chunks: 'all',
         minSize: 20000,
-        maxSize: 25000,
+      maxSize: 20000,
         cacheGroups: {
           default: false,
           vendors: false,

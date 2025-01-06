@@ -65,11 +65,11 @@ export function GameSystemsSection() {
           <div className="space-y-4">
             <Text
               variant="h2"
-              className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+              className="text-4xl font-bold tracking-tight text-foreground"
             >
               Game Mechanics
             </Text>
-            <Text color="secondary" className="text-lg leading-relaxed max-w-xl">
+            <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
               Master Path of Exile 2's deep gameplay systems and mechanics to create powerful builds and dominate the endgame.
             </Text>
           </div>
@@ -87,7 +87,7 @@ export function GameSystemsSection() {
                   <Text className="text-lg font-semibold group-hover:text-primary transition-colors">
                     {feature.title}
                   </Text>
-                  <Text color="secondary" className="text-sm">
+                  <Text className="text-sm text-foreground/80">
                     {feature.description}
                   </Text>
                 </div>
@@ -103,7 +103,7 @@ export function GameSystemsSection() {
                 className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
                 aria-label="Explore game mechanics section"
               >
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:text-foreground transition-colors">
+                <span className="text-primary font-medium group-hover:text-foreground transition-colors">
                   Explore Mechanics
                 </span>
                 <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
@@ -117,11 +117,11 @@ export function GameSystemsSection() {
           <div className="space-y-4">
             <Text
               variant="h2"
-              className="text-4xl font-bold tracking-tight bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent"
+              className="text-4xl font-bold tracking-tight text-foreground"
             >
               Ascendancy Classes
             </Text>
-            <Text color="secondary" className="text-lg leading-relaxed max-w-xl">
+            <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
               Discover and master 12 unique class specializations, each with their own powerful abilities and playstyles.
             </Text>
           </div>
@@ -163,13 +163,13 @@ export function GameSystemsSection() {
                 className="group flex gap-4 p-6 rounded-xl bg-card/30 border border-border/50 hover:bg-card/50 hover:border-border hover:shadow-lg transition-all duration-300"
               >
                 <div className="shrink-0 w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors duration-300">
-                  <feature.icon className="w-7 h-7 text-secondary" />
+                  <feature.icon className="w-7 h-7 text-foreground/80" />
                 </div>
                 <div className="space-y-2">
-                  <Text className="text-lg font-semibold group-hover:text-secondary transition-colors">
+                  <Text className="text-lg font-semibold group-hover:text-foreground transition-colors">
                     {feature.title}
                   </Text>
-                  <Text color="secondary" className="text-sm">
+                  <Text className="text-sm text-foreground/80">
                     {feature.description}
                   </Text>
                 </div>
@@ -185,10 +185,10 @@ export function GameSystemsSection() {
                 className="px-6 py-3 text-base flex items-center gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/60 transition-all group"
                 aria-label="View ascendancy classes section"
               >
-                <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:text-foreground transition-colors">
+                <span className="text-primary font-medium group-hover:text-foreground transition-colors">
                   View Classes
                 </span>
-                <ArrowUpRight className="w-4 h-4 group-hover:text-secondary transition-colors" />
+                <ArrowUpRight className="w-4 h-4 group-hover:text-foreground transition-colors" />
               </Button>
             </Link>
           </div>
