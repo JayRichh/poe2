@@ -28,14 +28,15 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
           className={cn(
             "pr-[6px] filter dark:invert dark:brightness-125 dark:contrast-125",
             "drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]",
-            "sm:scale-[1.35] transition-transform duration-300",
-            "w-[85vw] max-w-[400px] sm:max-w-[600px] h-auto",
+            "transition-transform duration-300",
+            "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] h-auto",
             "-mb-[80px] sm:-mb-[120px]"
           )}
-          width={600}
-          height={300}
+          width={400}
+          height={200}
           priority
-          sizes="(max-width: 640px) 85vw, 600px"
+          quality={75}
+          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 600px, 400px"
         />
       </div>
       <Text

@@ -54,8 +54,8 @@ const nextConfig = {
     ],
     formats: ["image/webp"],
     minimumCacheTTL: 31536000,
-    deviceSizes: [360, 640, 768, 1024, 1280],
-    imageSizes: [16, 32, 48, 64, 96],
+    deviceSizes: [320, 480, 640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
     dangerouslyAllowSVG: true,
   },
   modularizeImports: {

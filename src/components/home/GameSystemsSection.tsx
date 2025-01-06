@@ -144,11 +144,12 @@ export function GameSystemsSection() {
                   <Image
                     src={`/ascendancies/${className}.webp`}
                     alt={`${className.charAt(0).toUpperCase() + className.slice(1)} class preview`}
-                    fill
-                    sizes="(max-width: 640px) 33vw, (max-width: 1200px) 200px, 300px"
-                    quality={65}
+                    width={200}
+                    height={200}
+                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 150px, 200px"
+                    quality={50}
                     loading="lazy"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                 </div>
