@@ -7,15 +7,22 @@ import { Text } from "~/components/ui/Text";
 import { BuildList } from "./BuildList";
 import { getBuilds } from "~/app/actions/server/builds";
 
-export const dynamic = 'force-dynamic';
+// Cache public builds for 1 minute, revalidate on-demand for private/user builds
+export const revalidate = 60;
 
 async function getInitialBuilds(searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
   const params = await searchParams;
   const visibility = (params.visibility as string) || "all";
-  return getBuilds({ 
-    visibility: visibility as "all" | "public" | "private" | "unlisted", 
-    includeOwn: true 
-  });
+  
+  // Cache strategy based on visibility
+  const options = {
+    visibility: visibility as "all" | "public" | "private" | "unlisted",
+    includeOwn: true,
+    // Cache public builds, but always fetch fresh private/user builds
+    cache: visibility === "public" ? "force-cache" : "no-store" as RequestCache
+  };
+  
+  return getBuilds(options);
 }
 
 export default async function BuildPlannerPage({

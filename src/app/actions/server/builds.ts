@@ -14,6 +14,7 @@ export type VisibilityType = "private" | "unlisted" | "public";
 export interface BuildOptions {
   visibility?: VisibilityType | "all";
   includeOwn?: boolean;
+  cache?: RequestCache;
 }
 
 export type CreateBuildData = Omit<BuildInsert, "user_id">;
@@ -25,11 +26,45 @@ export interface BuildWithRelations extends Build {
   build_configs?: Database["public"]["Tables"]["build_configs"]["Row"][];
 }
 
+// Helper to check if string is a valid UUID
+const isValidUUID = (str: string) => {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(str);
+};
+
+// Unified function to find build by id or slug
+async function findBuild(supabase: any, idOrSlug: string, selectQuery = "*") {
+  // Try by slug first
+  const { data: slugData, error: slugError } = await supabase
+    .from("builds")
+    .select(selectQuery)
+    .eq("slug", idOrSlug)
+    .maybeSingle();
+  
+  if (!slugError && slugData) {
+    return slugData;
+  }
+
+  // If not found by slug and input is a valid UUID, try by id
+  if (isValidUUID(idOrSlug)) {
+    const { data: idData, error: idError } = await supabase
+      .from("builds")
+      .select(selectQuery)
+      .eq("id", idOrSlug)
+      .maybeSingle();
+    
+    if (!idError && idData) {
+      return idData;
+    }
+  }
+
+  return null;
+}
+
 export async function getBuild(idOrSlug: string): Promise<BuildWithRelations | null> {
   const supabase = await getServerClient();
 
   try {
-    // Get current user first
     const { data: { user } } = await supabase.auth.getUser();
 
     const query = `
@@ -53,61 +88,22 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations | n
       build_configs:build_configs(*)
     `;
 
-    // Helper to check if string is a valid UUID
-    const isValidUUID = (str: string) => {
-      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-      return uuidRegex.test(str);
-    };
-
-    let build;
-
-    // Try by slug first
-    const { data: slugData, error: slugError } = await supabase
-      .from("builds")
-      .select(query)
-      .eq("slug", idOrSlug)
-      .maybeSingle();
-    
-    if (!slugError && slugData) {
-      build = slugData;
-    }
-
-    // If not found by slug and input is a valid UUID, try by id
-    if (!build && isValidUUID(idOrSlug)) {
-      const { data: idData, error: idError } = await supabase
-        .from("builds")
-        .select(query)
-        .eq("id", idOrSlug)
-        .maybeSingle();
-      
-      if (!idError && idData) {
-        build = idData;
-      }
-    }
-
-    // If build not found, return null
-    if (!build) {
-      return null;
-    }
+    const build = await findBuild(supabase, idOrSlug, query);
+    if (!build) return null;
 
     // Check visibility and ownership before returning
     const isOwner = user && build.user_id === user.id;
     const isPublic = build.visibility === "public";
     const canAccess = isOwner || isPublic;
 
-    // If not authorized, return null
-    if (!canAccess) {
-      return null;
-    }
-
-    return build;
+    return canAccess ? build : null;
   } catch (error) {
     console.error("Error in getBuild:", error);
     return null;
   }
 }
 
-export async function getBuilds({ visibility = "all", includeOwn = false }: BuildOptions = {}) {
+export async function getBuilds({ visibility = "all", includeOwn = false, cache = "default" }: BuildOptions = {}) {
   const supabase = await getServerClient();
   
   // Get current user if authenticated
@@ -115,41 +111,28 @@ export async function getBuilds({ visibility = "all", includeOwn = false }: Buil
 
   let query = supabase.from("builds").select("*");
 
-  // Base query for public builds
-  if (visibility === "all") {
-    // Show public builds and user's own builds if authenticated
-    query = query.or(
-      user 
-        ? `visibility.eq.public,user_id.eq.${user.id}` 
-        : 'visibility.eq.public'
-    );
-  } else if (visibility === "public") {
-    // Only show public builds
+  // Optimize query based on visibility and user status
+  if (user) {
+    if (visibility === "all") {
+      query = query.or(`visibility.eq.public,user_id.eq.${user.id}`);
+    } else if (visibility === "private" || visibility === "unlisted") {
+      query = query.eq("visibility", visibility).eq("user_id", user.id);
+    } else {
+      query = query.eq("visibility", "public");
+      if (includeOwn) {
+        query = query.or(`user_id.eq.${user.id}`);
+      }
+    }
+  } else {
+    // Non-authenticated users only see public builds
     query = query.eq("visibility", "public");
-  } else if (visibility === "unlisted") {
-    // Show unlisted builds only if user is authenticated and owns them
-    if (user) {
-      query = query.eq("visibility", "unlisted").eq("user_id", user.id);
-    } else {
-      return []; // No unlisted builds for non-authenticated users
-    }
-  } else if (visibility === "private") {
-    // Show private builds only if user is authenticated and owns them
-    if (user) {
-      query = query.eq("visibility", "private").eq("user_id", user.id);
-    } else {
-      return []; // No private builds for non-authenticated users
-    }
   }
 
-  // Include user's own builds if requested and authenticated
-  if (includeOwn && user) {
-    query = query.or(`user_id.eq.${user.id}`);
-  }
+  // Cache headers are handled by Next.js page config
+  const { data, error } = await query
+    .order("created_at", { ascending: false });
 
-  const { data, error } = await query.order("created_at", { ascending: false });
   if (error) throw error;
-
   return data || [];
 }
 
@@ -159,7 +142,6 @@ export async function createBuild(build: CreateBuildData) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  // Generate a unique slug from the build name
   const baseSlug = generateSlug(build.name);
   const uniqueSlug = `${baseSlug}-${Math.random().toString(36).substring(2, 10)}`;
 
@@ -171,7 +153,6 @@ export async function createBuild(build: CreateBuildData) {
 
   if (error) throw error;
 
-  // Log activity
   await logActivity(
     'build',
     'Created new build',
@@ -179,9 +160,8 @@ export async function createBuild(build: CreateBuildData) {
     { buildId: data.id, buildName: build.name }
   );
 
-  // Revalidate all build planner routes
+  // Only revalidate necessary paths
   revalidatePath('/build-planner');
-  revalidatePath(`/build-planner/${data.slug || data.id}`);
   return data;
 }
 
@@ -191,52 +171,11 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  // Helper to check if string is a valid UUID
-  const isValidUUID = (str: string) => {
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    return uuidRegex.test(str);
-  };
-
-  let foundBuild;
-  
-  // Try by slug first
-  const { data: slugData, error: slugError } = await supabase
-    .from("builds")
-    .select()
-    .eq("slug", id)
-    .maybeSingle();
-  
-  if (!slugError && slugData) {
-    foundBuild = slugData;
-  }
-
-  // If not found by slug and input is a valid UUID, try by id
-  if (!foundBuild && isValidUUID(id)) {
-    const { data: idData, error: idError } = await supabase
-      .from("builds")
-      .select()
-      .eq("id", id)
-      .maybeSingle();
-    
-    if (!idError && idData) {
-      foundBuild = idData;
-    }
-  }
-
-  // If still no match or not the owner, fail
+  const foundBuild = await findBuild(supabase, id);
   if (!foundBuild || foundBuild.user_id !== user.id) {
     throw new Error("Build not found or unauthorized");
   }
 
-  // Store old paths for revalidation
-  const oldPaths = [
-    `/build-planner/${foundBuild.slug || foundBuild.id}`,
-    `/build-planner/${foundBuild.slug || foundBuild.id}/edit`,
-    `/build-planner/${foundBuild.id}`,
-    `/build-planner/${foundBuild.id}/edit`,
-  ];
-
-  // Generate new slug if name is being updated
   let updatedFields = { ...updates };
   if (updates.name) {
     const baseSlug = generateSlug(updates.name);
@@ -246,20 +185,13 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
   const { data, error } = await supabase
     .from("builds")
     .update(updatedFields)
-    .eq("id", foundBuild.id) // Always use ID for update
+    .eq("id", foundBuild.id)
     .select()
     .single();
 
-  if (error) {
-    console.error("Error updating build:", error);
-    throw new Error(`Failed to update build: ${error.message}`);
-  }
+  if (error) throw new Error(`Failed to update build: ${error.message}`);
+  if (!data) throw new Error("Failed to update build: No data returned");
 
-  if (!data) {
-    throw new Error("Failed to update build: No data returned");
-  }
-
-  // Log activity
   await logActivity(
     'build',
     'Updated build',
@@ -267,17 +199,9 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
     { buildId: id, updates }
   );
 
-  // Revalidate all possible paths
+  // Only revalidate current build path and list
   revalidatePath('/build-planner');
-  
-  // Revalidate old paths
-  oldPaths.forEach(path => revalidatePath(path));
-  
-  // Revalidate new paths
   revalidatePath(`/build-planner/${data.slug || data.id}`);
-  revalidatePath(`/build-planner/${data.slug || data.id}/edit`);
-  revalidatePath(`/build-planner/${data.id}`);
-  revalidatePath(`/build-planner/${data.id}/edit`);
   
   return data;
 }
@@ -288,39 +212,7 @@ export async function deleteBuild(id: string) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  // Helper to check if string is a valid UUID
-  const isValidUUID = (str: string) => {
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    return uuidRegex.test(str);
-  };
-
-  let foundBuild;
-  
-  // Try by slug first
-  const { data: slugData, error: slugError } = await supabase
-    .from("builds")
-    .select()
-    .eq("slug", id)
-    .maybeSingle();
-  
-  if (!slugError && slugData) {
-    foundBuild = slugData;
-  }
-
-  // If not found by slug and input is a valid UUID, try by id
-  if (!foundBuild && isValidUUID(id)) {
-    const { data: idData, error: idError } = await supabase
-      .from("builds")
-      .select()
-      .eq("id", id)
-      .maybeSingle();
-    
-    if (!idError && idData) {
-      foundBuild = idData;
-    }
-  }
-
-  // If still no match or not the owner, fail
+  const foundBuild = await findBuild(supabase, id);
   if (!foundBuild || foundBuild.user_id !== user.id) {
     throw new Error("Not authorized to delete this build");
   }
@@ -332,7 +224,6 @@ export async function deleteBuild(id: string) {
 
   if (error) throw error;
 
-  // Log activity
   await logActivity(
     'build',
     'Deleted build',
@@ -340,10 +231,8 @@ export async function deleteBuild(id: string) {
     { buildId: id }
   );
 
-  // Revalidate paths
+  // Only revalidate list path
   revalidatePath('/build-planner');
-  revalidatePath(`/build-planner/${foundBuild.slug || foundBuild.id}`);
-  revalidatePath(`/build-planner/${foundBuild.id}`);
   
   return true;
 }
