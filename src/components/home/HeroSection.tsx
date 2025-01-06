@@ -5,6 +5,7 @@ import { ArrowRight, ChevronsDown, ScrollIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Text } from "~/components/ui/Text";
+import { cn } from "~/utils/cn";
 
 interface HeroSectionProps {
   opacity: MotionValue<number>;
@@ -24,28 +25,17 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         <Image
           src="/poe2logonobg.png"
           alt="POE2 Logo"
-          className="
-            scale-100 sm:scale-[1.35]
-            -mb-[80px] sm:-mb-[120px]
-            pr-[6px]
-            filter
-            dark:invert
-            dark:brightness-125
-            dark:contrast-125
-            drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]
-            dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]
-            [mask-image:radial-gradient(circle,white_70%,transparent_100%)]
-            [mask-size:cover]
-            w-[85vw] max-w-[400px] sm:max-w-[600px]
-            h-auto
-          "
-          height={200}
-          width={400}
-          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 600px"
-          quality={90}
+          className={cn(
+            "pr-[6px] filter dark:invert dark:brightness-125 dark:contrast-125",
+            "drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]",
+            "sm:scale-[1.35] transition-transform duration-300",
+            "w-[85vw] max-w-[400px] sm:max-w-[600px] h-auto",
+            "-mb-[80px] sm:-mb-[120px]"
+          )}
+          width={600}
+          height={300}
           priority
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkLzYvLy02ODM4NjhEOC84REVMTFRNX2JiX3Vxd5SVtLe+ra3/2wBDARUXFx4aHR8fHbRDOEO0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+          sizes="(max-width: 640px) 85vw, 600px"
         />
       </div>
       <Text
