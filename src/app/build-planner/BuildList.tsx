@@ -3,8 +3,21 @@
 import { Suspense, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { BuildGrid } from "~/components/build-planner/BuildGrid";
-import { BuildListControls } from "~/components/build-planner/BuildListControls";
+import dynamic from 'next/dynamic';
+
+const BuildGrid = dynamic(() => import("~/components/build-planner/BuildGrid").then(mod => mod.BuildGrid), {
+  loading: () => (
+    <div className="grid gap-4 animate-pulse">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="h-48 bg-primary/5 rounded-lg" />
+      ))}
+    </div>
+  )
+});
+
+const BuildListControls = dynamic(() => import("~/components/build-planner/BuildListControls").then(mod => mod.BuildListControls), {
+  loading: () => <div className="h-16 bg-primary/5 animate-pulse rounded-lg" />
+});
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 

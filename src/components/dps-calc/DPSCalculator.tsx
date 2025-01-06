@@ -4,11 +4,27 @@ import { useDPSCalculator } from "~/hooks/useDPSCalculator";
 import { TEST_CASES } from "~/lib/test-cases";
 import type { GlobalSettings, WeaponInputs } from "~/hooks/useDPSCalculator";
 
-import { DPSCalculatorHeader } from "./DPSCalculatorHeader";
-import { GlobalSettingsPanel } from "./GlobalSettingsPanel";
-import { HistoryPanel } from "./HistoryPanel";
-import { ResultsPanel } from "./ResultsPanel";
-import { WeaponPanel } from "./WeaponPanel";
+import dynamic from 'next/dynamic';
+
+const DPSCalculatorHeader = dynamic(() => import("./DPSCalculatorHeader").then(mod => mod.DPSCalculatorHeader), {
+  loading: () => <div className="h-12 bg-primary/5 animate-pulse rounded-lg" />
+});
+
+const GlobalSettingsPanel = dynamic(() => import("./GlobalSettingsPanel").then(mod => mod.GlobalSettingsPanel), {
+  loading: () => <div className="h-24 bg-primary/5 animate-pulse rounded-lg" />
+});
+
+const HistoryPanel = dynamic(() => import("./HistoryPanel").then(mod => mod.HistoryPanel), {
+  loading: () => <div className="h-48 bg-primary/5 animate-pulse rounded-lg" />
+});
+
+const ResultsPanel = dynamic(() => import("./ResultsPanel").then(mod => mod.ResultsPanel), {
+  loading: () => <div className="h-32 bg-primary/5 animate-pulse rounded-lg" />
+});
+
+const WeaponPanel = dynamic(() => import("./WeaponPanel").then(mod => mod.WeaponPanel), {
+  loading: () => <div className="h-64 bg-primary/5 animate-pulse rounded-lg" />
+});
 
 // Ensure numeric values are valid
 const sanitizeNumber = (value: number | undefined): number => {

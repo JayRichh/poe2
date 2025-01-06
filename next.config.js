@@ -1,9 +1,13 @@
+const crypto = require('crypto');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   distDir: ".next",
   output: "standalone",
   trailingSlash: false,
+  poweredByHeader: false,
+  compress: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
     reactRemoveProperties: process.env.NODE_ENV === "production",
@@ -27,7 +31,6 @@ const nextConfig = {
       }
     ];
   },
-  // Optimize image handling
   images: {
     remotePatterns: [
       {
@@ -44,8 +47,8 @@ const nextConfig = {
       },
     ],
     formats: ["image/webp"],
-    minimumCacheTTL: 600, // Increased from 300 to 600
-    deviceSizes: [640, 828, 1200], // Optimized sizes
+    minimumCacheTTL: 600,
+    deviceSizes: [640, 828, 1200],
     imageSizes: [32, 48, 96, 128],
     dangerouslyAllowSVG: true,
   },
@@ -61,12 +64,93 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['@nivo/core', '@nivo/line', 'lucide-react'],
+    optimizePackageImports: [
+      '@nivo/core', 
+      '@nivo/line', 
+      '@nivo/bar',
+      '@nivo/pie',
+      'lucide-react',
+      '@uiw/react-md-editor',
+      'framer-motion'
+    ],
     serverActions: {
       bodySizeLimit: "2mb"
+    },
+    turbo: {
+      moduleIdStrategy: 'deterministic',
+      resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mdx'],
+      resolveAlias: {
+        // Add any module aliases if needed
+      }
     }
   },
-  // Move static security headers here
+  webpack: (config, { isServer, dev }) => {
+    if (!isServer && !dev) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 25000,
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          framework: {
+            chunks: 'all',
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            priority: 40,
+            enforce: true,
+            reuseExistingChunk: true
+          },
+          commons: {
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2,
+            priority: 20,
+            reuseExistingChunk: true
+          },
+          lib: {
+            test(module) {
+              return (
+                module.size() > 20000 &&
+                /node_modules[/\\]/.test(module.identifier()) &&
+                !/node_modules[/\\](@nivo|framer-motion|@uiw)/.test(module.identifier())
+              );
+            },
+            name(module) {
+              const hash = crypto.createHash('sha1');
+              hash.update(module.identifier());
+              return `lib-${hash.digest('hex').substring(0, 8)}`;
+            },
+            priority: 30,
+            minChunks: 1,
+            reuseExistingChunk: true
+          },
+          nivo: {
+            test: /[\\/]node_modules[\\/](@nivo)[\\/]/,
+            name: 'nivo-charts',
+            chunks: 'async',
+            priority: 35,
+            enforce: true
+          },
+          framerMotion: {
+            test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+            name: 'framer-motion',
+            chunks: 'async',
+            priority: 35,
+            enforce: true
+          },
+          mdEditor: {
+            test: /[\\/]node_modules[\\/](@uiw)[\\/]/,
+            name: 'md-editor',
+            chunks: 'async',
+            priority: 35,
+            enforce: true
+          }
+        }
+      };
+    }
+    return config;
+  },
   async headers() {
     return [
       {
@@ -103,7 +187,6 @@ const nextConfig = {
         ]
       },
       {
-        // Cache static assets longer
         source: '/_next/static/:path*',
         headers: [
           {
@@ -113,7 +196,6 @@ const nextConfig = {
         ]
       },
       {
-        // Cache images
         source: '/images/:path*',
         headers: [
           {
