@@ -20,45 +20,74 @@ const contributors = [
   { username: "jayrichh", avatar: "https://github.com/jayrichh.png" },
 ];
 
-const mainLinks = [
+type MainLink = {
+  id: string;
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+};
+
+type SimpleLink = {
+  id: string;
+  href: string;
+  label: string;
+};
+
+type FeatureLink = {
+  id: string;
+  href: string;
+  label: string;
+  description: string;
+};
+
+const mainLinks: MainLink[] = [
   {
+    id: "main-build-planner",
     href: "/build-planner",
     label: "Build Planner",
     icon: Wrench,
     description: "Plan and optimize your character builds",
   },
   {
+    id: "main-skill-tree",
     href: "/skill-tree",
     label: "Skill Tree",
     icon: Code,
     description: "Interactive skill tree visualization",
   },
   {
+    id: "main-guides",
     href: "/guides",
     label: "Guides",
     icon: BookOpen,
     description: "Community guides and tutorials",
   },
-  { href: "/news", label: "News", icon: FileText, description: "Latest updates and patch notes" },
+  {
+    id: "main-news",
+    href: "/news",
+    label: "News",
+    icon: FileText,
+    description: "Latest updates and patch notes",
+  },
 ];
 
-const calculatorLinks = [
-  { href: "/dps-calc", label: "DPS Calculator" },
-  { href: "/currency-calc", label: "Currency Calculator" },
-  { href: "/speed-calc", label: "Speed Calculator" },
+const calculatorLinks: SimpleLink[] = [
+  { id: "calc-all", href: "/calculators", label: "All Calculators" },
+  { id: "calc-dps", href: "/calculators/dps", label: "DPS Calculator" },
+  { id: "calc-speed", href: "/calculators/speed", label: "Speed Calculator" },
+  { id: "calc-currency", href: "/calculators/currency", label: "Currency Calculator" },
 ];
 
-const communityLinks = [
-  { href: "/profile", label: "Profile" },
-  { href: "/build-planner/import-export", label: "Share Builds" },
-  { href: "/news/patch-notes", label: "Patch Notes" },
+const communityLinks: SimpleLink[] = [
+  { id: "community-profile", href: "/profile", label: "Profile Settings" },
+  { id: "community-news", href: "/news/patch-notes", label: "Latest Patch Notes" },
+  { id: "community-guides", href: "/guides", label: "Build Guides" },
 ];
 
-const toolLinks = [
-  { href: "/build-planner/equipment", label: "Equipment Manager" },
-  { href: "/build-planner/skills", label: "Skills Configuration" },
-  { href: "/build-planner/stats", label: "Stats Analyzer" },
-  { href: "/build-planner/notes", label: "Build Notes" },
+const featureLinks: FeatureLink[] = [
+  { id: "feature-mechanics", href: "/mechanics", label: "Game Mechanics", description: "Learn core systems" },
+  { id: "feature-ascendancies", href: "/ascendancies", label: "Ascendancies", description: "Class guides & abilities" },
 ];
 
 export function Footer() {
@@ -232,11 +261,11 @@ export function Footer() {
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-2xl font-semibold tracking-tight">Tools & Utilities</h3>
+              <h3 className="text-2xl font-semibold tracking-tight">Features</h3>
               <div className="flex flex-col lg:items-end gap-4">
-                {toolLinks.map((link) => (
+                {featureLinks.map((link) => (
                   <Link
-                    key={link.href}
+                    key={link.id}
                     href={link.href}
                     className="text-lg text-muted-foreground hover:text-foreground transition-colors"
                   >

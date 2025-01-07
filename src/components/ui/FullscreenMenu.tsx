@@ -31,60 +31,101 @@ import { cn } from "../../utils/cn";
 import { Button } from "./Button";
 import { Text } from "./Text";
 
-const mainLinks = [
+type Feature = {
+  id: string;
+  label: string;
+  path: string;
+};
+
+type MainLink = {
+  id: string;
+  label: string;
+  path: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+  features: Feature[];
+};
+
+type QuickLink = {
+  id: string;
+  label: string;
+  path: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+const mainLinks: MainLink[] = [
   {
+    id: "build-planner",
     label: "Build Planner",
     path: "/build-planner",
     icon: Layout,
-    description: "Create, optimize and share your POE2 character builds",
+    description: "Plan and optimize your POE2 character builds with our comprehensive build planner",
     features: [
-      "Equipment Planning",
-      "Skill Gems",
-      "Build Notes",
-      "Stats Calculator",
-      "Build Sharing",
+      { id: "build-equipment", label: "Equipment", path: "/build-planner" },
+      { id: "build-gems", label: "Skill Gems", path: "/build-planner" },
+      { id: "build-stats", label: "Build Stats", path: "/build-planner" },
+      { id: "build-share", label: "Share Builds", path: "/build-planner" },
     ],
   },
   {
+    id: "mechanics",
     label: "Game Mechanics",
     path: "/mechanics",
     icon: Cog,
-    description: "Comprehensive guide to POE2's core game mechanics and systems",
-    features: ["Damage Types", "Status Effects", "Character Stats", "Combat Mechanics"],
+    description: "Master POE2's core systems with detailed mechanics guides and explanations",
+    features: [
+      { id: "mechanics-combat", label: "Combat", path: "/mechanics" },
+      { id: "mechanics-character", label: "Character", path: "/mechanics" },
+      { id: "mechanics-status", label: "Status Effects", path: "/mechanics" },
+      { id: "mechanics-damage", label: "Damage Types", path: "/mechanics" },
+    ],
   },
   {
+    id: "ascendancies",
     label: "Ascendancies",
     path: "/ascendancies",
     icon: Users,
-    description: "Explore POE2's unique ascendancy classes and their abilities",
-    features: ["Class Guides", "Build Suggestions", "Mechanics Overview", "Playstyle Analysis"],
+    description: "Discover and master POE2's unique ascendancy classes and their abilities",
+    features: [
+      { id: "ascendancies-guides", label: "Class Guides", path: "/ascendancies" },
+      { id: "ascendancies-builds", label: "Build Paths", path: "/ascendancies" },
+      { id: "ascendancies-abilities", label: "Abilities", path: "/ascendancies" },
+      { id: "ascendancies-playstyles", label: "Playstyles", path: "/ascendancies" },
+    ],
   },
   {
+    id: "skill-tree",
     label: "Skill Tree",
     path: "/skill-tree",
     icon: GitBranch,
-    description: "Interactive passive skill tree planner with advanced features",
-    features: ["Visual Tree Explorer", "Path Planning", "Build Integration", "Node Analysis"],
+    description: "Plan your character's passive skill tree with our interactive planner",
+    features: [
+      { id: "tree-explorer", label: "Tree Explorer", path: "/skill-tree" },
+      { id: "tree-planner", label: "Path Planner", path: "/skill-tree" },
+      { id: "tree-search", label: "Node Search", path: "/skill-tree" },
+      { id: "tree-export", label: "Build Export", path: "/skill-tree" },
+    ],
   },
   {
+    id: "calculators",
     label: "Calculators",
-    path: "/dps-calc",
+    path: "/calculators",
     icon: Calculator,
-    description: "Comprehensive set of calculators for POE2 mechanics and optimization",
+    description: "Optimize your build with our suite of specialized POE2 calculators",
     features: [
-      { label: "DPS Calculator", path: "/dps-calc" },
-      { label: "Speed Calculator", path: "/speed-calc" },
-      { label: "Currency Calculator", path: "/currency-calc" },
+      { id: "calc-dps", label: "DPS Calculator", path: "/calculators/dps" },
+      { id: "calc-speed", label: "Speed Calculator", path: "/calculators/speed" },
+      { id: "calc-currency", label: "Currency Calculator", path: "/calculators/currency" },
     ],
   },
 ];
 
-const quickLinks = [
-  { label: "Latest News", path: "/news", icon: Newspaper },
-  { label: "Guides", path: "/guides", icon: FileText },
-  { label: "Community Builds", path: "/build-planner", icon: Users },
-  { label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
-  { label: "Ascendancy Classes", path: "/ascendancies", icon: Users },
+const quickLinks: QuickLink[] = [
+  { id: "quick-news", label: "Latest News", path: "/news", icon: Newspaper },
+  { id: "quick-guides", label: "Guides", path: "/guides", icon: FileText },
+  { id: "quick-builds", label: "Community Builds", path: "/build-planner", icon: Users },
+  { id: "quick-patch-notes", label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
+  { id: "quick-ascendancies", label: "Ascendancy Classes", path: "/ascendancies", icon: Users },
 ];
 
 const themeOptions = [
@@ -246,8 +287,8 @@ function NavigationSection({
                     {Array.isArray(item.features) ? (
                       item.features.map((feature) => (
                         <button
-                          key={typeof feature === 'string' ? feature : feature.path}
-                          onClick={() => onNavigate(typeof feature === 'string' ? item.path : feature.path)}
+                          key={feature.id}
+                          onClick={() => onNavigate(feature.path)}
                           className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors"
                         >
                           {typeof feature === 'string' ? feature : feature.label}
@@ -274,7 +315,7 @@ function QuickLinksSection({ onNavigate }: { onNavigate: (path: string) => void 
           const Icon = item.icon;
           return (
             <motion.button
-              key={item.path}
+              key={item.id}
               custom={index}
               variants={animations.item}
               initial="hidden"

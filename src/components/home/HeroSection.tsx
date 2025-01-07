@@ -6,6 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Text } from "~/components/ui/Text";
 import { cn } from "~/utils/cn";
+import { useEffect, useState } from "react";
+
+const LOGO_DIMENSIONS = {
+  width: 1600,
+  height: 800,
+  sizes: "(max-width: 640px) 85vw, (max-width: 1024px) 800px, (max-width: 1280px) 1200px, (max-width: 1536px) 1400px, 1600px",
+  quality: 100,
+} as const;
 
 interface HeroSectionProps {
   opacity: MotionValue<number>;
@@ -19,33 +27,35 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       style={{ opacity, scale, y }}
       initial={{ opacity: 1, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col gap-10 min-h-[90vh] justify-center overflow-hidden"
+      className="flex flex-col min-h-[90vh] justify-center overflow-hidden"
     >
-      <div className="relative mx-auto pointer-events-none select-none -mt-24">
-        <Image
-          src="/poe2logonobg.png"
-          alt="POE2 Logo"
-          className={cn(
-            "pr-[6px] filter dark:invert dark:brightness-125 dark:contrast-125",
-            "drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]",
-            "transition-transform duration-300",
-            "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] h-auto",
-            "-mb-[80px] sm:-mb-[120px]"
-          )}
-          width={600}
-          height={300}
-          priority
-          quality={75}
-          sizes="(max-width: 640px) 85vw, 600px"
-        />
+      {/* Logo Section */}
+      <div className="relative mx-auto pointer-events-none select-none -mt-40">
+        <div className={cn(
+          "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1600px]",
+          "-mb-[80px] sm:-mb-[120px] lg:-mb-[160px] xl:-mb-[180px] 2xl:-mb-[200px]",
+          "transform-gpu hover:scale-[1.2] transition-transform duration-1000 ease-out"
+        )}>
+          <Image
+            src="/poe2logonobg.png"
+            alt="POE2 Logo"
+            className={cn(
+              "pr-[6px] filter dark:invert dark:brightness-125 dark:contrast-125",
+              "drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] dark:drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]",
+              "h-auto w-full"
+            )}
+            {...LOGO_DIMENSIONS}
+            priority
+          />
+        </div>
       </div>
       <Text
         variant="body-lg"
         color="secondary"
-        className="text-xl max-w-2xl mx-auto text-center leading-relaxed pb-6 px-4 sm:px-0"
+        className="max-w-2xl mx-auto text-center leading-relaxed -mt-32 mb-8 px-4 sm:px-0 relative after:absolute after:inset-0 after:-z-10 after:bg-gradient-to-b after:from-background/60 after:via-background/40 after:to-transparent after:blur-md text-shadow-[0_1px_2px_rgba(0,0,0,0.1)]"
       >
-        Community-driven tools for Path of Exile 2 players. Plan builds, calculate DPS, and optimize
-        gameplay.
+        Essential tools for Path of Exile 2. Create and share builds, calculate precise DPS, and master your
+        character optimization.
       </Text>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-full px-4 sm:px-0">
         <Link href="/build-planner" className="w-full sm:w-auto">
@@ -97,7 +107,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.9 }}
         transition={{ delay: 1, duration: 1 }}
-        className="flex flex-col items-center gap-2 mt-28 md:mt-40"
+        className="flex flex-col items-center gap-2 mt-auto pt-28 md:pt-40"
       >
         <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
           <ScrollIcon className="w-6 h-6 text-secondary" />

@@ -21,9 +21,30 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
   const supabase = createClient();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    if (url) downloadImage(url);
+    async function initializeAvatar() {
+      if (!url) {
+        setAvatarUrl(null);
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        await downloadImage(url);
+      } catch (error) {
+        console.error("Error initializing avatar:", error);
+        setHasError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    setIsLoading(true);
+    setHasError(false);
+    initializeAvatar();
   }, [url]);
 
   async function downloadImage(path: string) {
@@ -66,6 +87,24 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
       // Ensure we're using the current user's ID from the auth context
       const userId = user.id;
 
+      // List existing avatars for this user
+      const { data: existingFiles } = await supabase.storage
+        .from("avatars")
+        .list(undefined, {
+          search: userId
+        });
+
+      // Delete previous avatar if it exists
+      if (existingFiles && existingFiles.length > 0) {
+        const { error: deleteError } = await supabase.storage
+          .from("avatars")
+          .remove(existingFiles.map(file => file.name));
+          
+        if (deleteError) {
+          console.error("Error deleting previous avatar:", deleteError);
+        }
+      }
+
       const file = event.target.files[0];
       const fileExt = file.name.split(".").pop();
       // Use user ID as prefix for storage policy compliance
@@ -104,15 +143,22 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
   return (
     <div className={cn("relative group", className)}>
       <div className="relative rounded-full overflow-hidden" style={{ width: size, height: size }}>
-        {avatarUrl ? (
-          <Image
-            src={avatarUrl}
-            alt="Avatar"
-            className="object-cover"
-            fill
-            sizes={`${size}px`}
-            onError={() => setAvatarUrl(null)}
-          />
+        {isLoading ? (
+          <div className="w-full h-full bg-primary/5 animate-pulse" />
+        ) : avatarUrl && !hasError ? (
+          <div className="relative w-full h-full">
+            <Image
+              src={avatarUrl}
+              alt="Avatar"
+              className="object-cover"
+              fill
+              sizes={`${size}px`}
+              onError={() => {
+                setHasError(true);
+                setAvatarUrl(null);
+              }}
+            />
+          </div>
         ) : (
           <div className="w-full h-full bg-primary/10 flex items-center justify-center">
             {uploading ? (
@@ -122,7 +168,7 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
             ) : (
               <div className="flex flex-col items-center justify-center">
                 <Upload className="w-1/2 h-1/2 text-primary/40" />
-                {uid === user?.id && (
+                {uid === user?.id && !hasError && (
                   <span className="text-xs text-primary/60 mt-1">Upload Avatar</span>
                 )}
               </div>

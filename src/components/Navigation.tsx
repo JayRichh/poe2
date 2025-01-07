@@ -47,9 +47,10 @@ const primaryLinks: (NavItem | NavItemWithDropdown)[] = [
   {
     label: "Calculators",
     items: [
-      { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
-      { href: "/speed-calc", label: "Speed Calculator", icon: Calculator },
-      { href: "/currency-calc", label: "Currency Calculator", icon: Calculator },
+      { href: "/calculators", label: "All Calculators", icon: Calculator },
+      { href: "/calculators/dps", label: "DPS Calculator", icon: Calculator },
+      { href: "/calculators/speed", label: "Speed Calculator", icon: Calculator },
+      { href: "/calculators/currency", label: "Currency Calculator", icon: Calculator },
     ],
   },
   { href: "/mechanics", label: "Game Mechanics", icon: Cog },
@@ -187,25 +188,30 @@ export function Navigation() {
                         className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
                         disabled={authLoading}
                       >
-                        {authLoading ? (
-                          <Spinner size="sm" />
-                        ) : (
-                          <div className="flex items-center gap-2">
-                            <Avatar
-                              uid={user.id}
-                              url={user.user_metadata?.avatar_url}
-                              size={32}
-                              onUpload={async () => {
-                                await refreshSession();
-                              }}
-                              showUploadUI={false}
-                              className="border border-border/50"
-                            />
-                            <span className="max-w-[150px] truncate">
-                              {user.user_metadata?.name || user.email?.split("@")[0]}
-                            </span>
-                          </div>
-                        )}
+                        <div className="flex items-center gap-2">
+                          {authLoading ? (
+                            <>
+                              <div className="w-8 h-8 rounded-full bg-primary/5 animate-pulse" />
+                              <div className="w-24 h-4 bg-primary/5 animate-pulse rounded" />
+                            </>
+                          ) : (
+                            <>
+                              <Avatar
+                                uid={user.id}
+                                url={user.user_metadata?.avatar_url}
+                                size={32}
+                                onUpload={async () => {
+                                  await refreshSession();
+                                }}
+                                showUploadUI={false}
+                                className="border border-border/50"
+                              />
+                              <span className="max-w-[150px] truncate">
+                                {user.user_metadata?.name || user.email?.split("@")[0]}
+                              </span>
+                            </>
+                          )}
+                        </div>
                       </button>
                     }
                     items={[

@@ -34,19 +34,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/dps-calc`,
+      url: `${baseUrl}/calculators`,
+      lastModified: defaultDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/calculators/dps`,
       lastModified: defaultDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/speed-calc`,
+      url: `${baseUrl}/calculators/speed`,
       lastModified: defaultDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/currency-calc`,
+      url: `${baseUrl}/calculators/currency`,
       lastModified: defaultDate,
       changeFrequency: 'weekly',
       priority: 0.8,

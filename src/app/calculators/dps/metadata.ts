@@ -10,7 +10,7 @@ export async function generateMetadata(
     title: "POE2 DPS Calculator - Weapon & Skill Damage Calculator",
     description:
       "Advanced Path of Exile 2 DPS calculator with support for physical, elemental, and chaos damage. Compare weapons, calculate critical strikes, and optimize your character's damage output with real-time calculations.",
-    path: "/dps-calc",
+    path: "/calculators/dps",
     openGraph: {
       type: "website",
     },
@@ -44,8 +44,8 @@ export async function generateMetadata(
       },
       breadcrumbs: [
         { name: "Home", path: "/" },
-        { name: "Tools", path: "/tools" },
-        { name: "DPS Calculator", path: "/dps-calc" },
+        { name: "Calculators", path: "/calculators" },
+        { name: "DPS Calculator", path: "/calculators/dps" },
       ],
     },
   });
