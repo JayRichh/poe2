@@ -26,36 +26,40 @@ export async function generateMetadata(
     const news = await NewsService.getNewsById(id);
     if (!news) return {};
 
-    // Validate category if provided
-    if (category && news.category?.toLowerCase() !== category.toLowerCase()) {
-      return {};
+    // Validate type if category provided
+    if (category) {
+      const newsType = category.toLowerCase() === 'patch' ? 'patch-note' : 'announcement';
+      if (news.type !== newsType) {
+        return {};
+      }
     }
+
+    const newsType = news.type === 'patch-note' ? 'Patch Notes' : 'Announcements';
+    const newsPath = news.type === 'patch-note' ? `/news/patch-notes/${news.slug || news.id}` : `/news/${news.slug || news.id}`;
 
     return generateDynamicMetadata({ params: resolvedParams }, parent, {
       title: news.title,
-      description: news.description || `Read about ${news.title} on POE2 Tools`,
-      path: `/news/${news.id}`,
+      description: news.processedContent || news.content || `Read about ${news.title} on POE2 Tools`,
+      path: newsPath,
       openGraph: {
         type: "article",
-        publishedTime: news.publishedAt,
-        authors: ["POE2 Tools Team"],
+        publishedTime: news.date,
+        authors: [news.author],
       },
       schema: {
         type: "article",
         data: {
           ...news,
           author: {
-            name: "POE2 Tools Team",
+            name: news.author,
             url: "https://poe2.dev/about",
           },
         },
         breadcrumbs: [
           { name: "Home", path: "/" },
           { name: "News", path: "/news" },
-          ...(news.category
-            ? [{ name: news.category, path: `/news?category=${news.category.toLowerCase()}` }]
-            : []),
-          { name: news.title, path: `/news/${news.id}` },
+          { name: newsType, path: `/news?type=${news.type}` },
+          { name: news.title, path: newsPath },
         ],
       },
     });
