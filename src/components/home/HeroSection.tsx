@@ -30,10 +30,10 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       className="flex flex-col min-h-[90vh] justify-center overflow-hidden"
     >
       {/* Logo Section */}
-      <div className="relative mx-auto pointer-events-none select-none -mt-40">
+      <div className="relative mx-auto pointer-events-none select-none mt-20 sm:-mt-40">
         <div className={cn(
           "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1600px]",
-          "-mb-[80px] sm:-mb-[120px] lg:-mb-[160px] xl:-mb-[180px] 2xl:-mb-[200px]",
+          "-mb-[40px] sm:-mb-[120px] lg:-mb-[160px] xl:-mb-[180px] 2xl:-mb-[200px]",
           "transform-gpu hover:scale-[1.2] transition-transform duration-1000 ease-out"
         )}>
           <Image
@@ -52,7 +52,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       <Text
         variant="body-lg"
         color="secondary"
-        className="max-w-2xl mx-auto text-center leading-relaxed -mt-32 mb-8 px-4 sm:px-0 relative after:absolute after:inset-0 after:-z-10 after:bg-gradient-to-b after:from-background/60 after:via-background/40 after:to-transparent after:blur-md text-shadow-[0_1px_2px_rgba(0,0,0,0.1)]"
+        className="max-w-2xl mx-auto text-center leading-relaxed -mt-16 sm:-mt-32 mb-8 px-4 sm:px-0 relative after:absolute after:inset-0 after:-z-10 after:bg-gradient-to-b after:from-background/60 after:via-background/40 after:to-transparent after:blur-md text-shadow-[0_1px_2px_rgba(0,0,0,0.1)]"
       >
         Essential tools for Path of Exile 2. Create and share builds, calculate precise DPS, and master your
         character optimization.

@@ -13,6 +13,9 @@ import {
   Settings,
   User,
   Users,
+  Zap,
+  Timer,
+  Coins,
 } from "lucide-react";
 import { Avatar } from "./profile/Avatar";
 
@@ -42,25 +45,31 @@ type NavItemWithDropdown = {
 };
 
 const primaryLinks: (NavItem | NavItemWithDropdown)[] = [
-  { href: "/build-planner", label: "Build Planner", icon: Layout },
-  { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
   {
     label: "Calculators",
     items: [
       { href: "/calculators", label: "All Calculators", icon: Calculator },
-      { href: "/calculators/dps", label: "DPS Calculator", icon: Calculator },
-      { href: "/calculators/speed", label: "Speed Calculator", icon: Calculator },
-      { href: "/calculators/currency", label: "Currency Calculator", icon: Calculator },
+      { href: "/calculators/dps", label: "DPS Calculator", icon: Zap },
+      { href: "/calculators/speed", label: "Speed Calculator", icon: Timer },
+      { href: "/calculators/currency", label: "Currency Calculator", icon: Coins },
     ],
   },
-  { href: "/mechanics", label: "Game Mechanics", icon: Cog },
+  { href: "/news", label: "News", icon: Newspaper },
+  {
+    label: "Build Tools",
+    items: [
+      { href: "/build-planner", label: "Build Planner", icon: Layout },
+      { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
+    ],
+  },
 ];
 
 const secondaryLinks: NavItem[] = [
-  { href: "/news", label: "News", icon: Newspaper },
+  { href: "/mechanics", label: "Mechanics", icon: Cog },
   { href: "/guides", label: "Guides", icon: FileText },
   { href: "/ascendancies", label: "Ascendancies", icon: Users },
 ];
+
 
 export function Navigation() {
   const isVisible = useHeaderScroll();
@@ -92,22 +101,22 @@ export function Navigation() {
     <>
       <nav
         className={cn(
-          "fixed top-0 w-full transition-all duration-300 z-[50]",
+          "fixed top-0 w-full z-[50] transition-all duration-300",
           !isVisible ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <div className="absolute inset-0 bg-background/70 backdrop-blur-sm border-b border-border/40" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-lg" />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 sm:h-16">
             <div className="flex items-center">
-              <Link href="/" className="mr-8">
-                <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#F59E0B] via-[#FBBF24] to-[#F97316] font-bold text-xl">
+              <Link href="/" className="mr-12">
+                <span className="bg-clip-text text-transparent bg-gradient-to-l from-[#F59E0B] via-[#FBBF24] to-[#F97316] font-bold text-2xl">
                   POE2 Tools
                 </span>
               </Link>
 
               <div className="hidden lg:flex items-center">
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-10">
                   {primaryLinks.map((item) => {
                     if (isDropdownItem(item)) {
                       return (
@@ -115,14 +124,14 @@ export function Navigation() {
                           key={item.label}
                           trigger={
                             <button 
-                              className="text-[15px] font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2"
+                              className="text-base font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2.5 py-1"
                               aria-label={`${item.label} menu`}
                               aria-expanded="false"
                               aria-haspopup="true"
                             >
                               {item.label}
-                              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-60">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
                             </button>
                           }
@@ -133,7 +142,7 @@ export function Navigation() {
                           }))}
                           onChange={(value) => router.push(value)}
                           position="bottom-left"
-                          width={250}
+                          width={280}
                         />
                       );
                     }
@@ -158,7 +167,7 @@ export function Navigation() {
                   })}
                 </div>
 
-                <div className="flex items-center space-x-5 border-l border-foreground/10 ml-6 pl-6">
+                <div className="flex items-center space-x-8 border-l border-foreground/10 ml-10 pl-10">
                   {secondaryLinks.map(({ href, label }) => {
                     const isActive = pathname === href || pathname?.startsWith(`${href}/`);
                     return (
@@ -167,8 +176,8 @@ export function Navigation() {
                         href={href}
                         prefetch={false}
                         className={cn(
-                          "text-sm transition-colors duration-200",
-                          isActive ? "text-primary/90" : "text-foreground/60 hover:text-foreground/90"
+                          "text-[15px] transition-colors duration-200",
+                          isActive ? "text-primary/90" : "text-foreground/70 hover:text-foreground/90"
                         )}
                       >
                         {label}
@@ -250,7 +259,7 @@ export function Navigation() {
                 onClick={() => setIsMenuOpen(true)}
                 variant="ghost"
                 size="icon"
-                className="p-2 rounded-lg hover:bg-background-secondary/80 transition-colors"
+                className="p-2.5 rounded-lg hover:bg-background-secondary/80 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />

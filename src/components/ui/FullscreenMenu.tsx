@@ -17,6 +17,9 @@ import {
   User,
   Users,
   X,
+  Zap,
+  Timer,
+  Coins,
 } from "lucide-react";
 
 import * as React from "react";
@@ -35,6 +38,7 @@ type Feature = {
   id: string;
   label: string;
   path: string;
+  icon?: React.ComponentType<{ className?: string }>;
 };
 
 type MainLink = {
@@ -113,9 +117,9 @@ const mainLinks: MainLink[] = [
     icon: Calculator,
     description: "Optimize your build with our suite of specialized POE2 calculators",
     features: [
-      { id: "calc-dps", label: "DPS Calculator", path: "/calculators/dps" },
-      { id: "calc-speed", label: "Speed Calculator", path: "/calculators/speed" },
-      { id: "calc-currency", label: "Currency Calculator", path: "/calculators/currency" },
+      { id: "calc-dps", label: "DPS Calculator", path: "/calculators/dps", icon: Zap },
+      { id: "calc-speed", label: "Speed Calculator", path: "/calculators/speed", icon: Timer },
+      { id: "calc-currency", label: "Currency Calculator", path: "/calculators/currency", icon: Coins },
     ],
   },
 ];
@@ -289,9 +293,10 @@ function NavigationSection({
                         <button
                           key={feature.id}
                           onClick={() => onNavigate(feature.path)}
-                          className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors"
+                          className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors flex items-center gap-1.5"
                         >
-                          {typeof feature === 'string' ? feature : feature.label}
+                          {feature.icon && <feature.icon className="w-3 h-3" />}
+                          {feature.label}
                         </button>
                       ))
                     ) : null}
