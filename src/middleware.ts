@@ -1,8 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createMiddlewareClient } from "~/lib/supabase/actions";
+import { updateSession } from "./lib/supabase/middleware";
 
-const PROTECTED_ROUTES = ["/profile", "/build-planner/create", "/api/user", "/api/builds/private"];
-
+// Rate limits per endpoint (requests per 5 minutes)
 const RATE_LIMITS = {
   "/api/auth/login": 30,
   "/api/auth/signup": 10,
@@ -85,8 +84,8 @@ function handleCORS(request: NextRequest, response: NextResponse): void {
 }
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next();
-  
+  let response = NextResponse.next();
+
   try {
     // Handle CORS
     handleCORS(request, response);
@@ -104,29 +103,11 @@ export async function middleware(request: NextRequest) {
       response.headers.set(key, value);
     });
 
-    // Handle auth for protected routes
-    const needsAuth = PROTECTED_ROUTES.some(path => 
-      request.nextUrl.pathname.startsWith(path)
-    );
-
-    if (needsAuth) {
-      const supabase = createMiddlewareClient(request, response);
-      const { data: { session } } = await supabase.auth.getSession();
-
-      if (!session) {
-        const redirectUrl = new URL("/auth/login", request.url);
-        redirectUrl.searchParams.set("next", request.nextUrl.pathname);
-        return NextResponse.redirect(redirectUrl);
-      }
-      
-      if (request.nextUrl.pathname.startsWith("/api/")) {
-        request.headers.set("x-user-id", session.user.id);
-      }
-    }
+    // Update auth session and handle protected routes
+    response = await updateSession(request);
 
     // Add security headers for HTML responses
-    const acceptHeader = request.headers.get("accept") || "";
-    if (acceptHeader.includes("text/html")) {
+    if (request.headers.get("accept")?.includes("text/html")) {
       const securityHeaders = {
         "Content-Security-Policy": [
           "default-src 'self'",
@@ -162,10 +143,13 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
+     * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - public files (images, etc)
+     * - manifest files
      */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$|manifest\\.json|robots\\.txt|sitemap\\.xml).*)',
   ],
 };
