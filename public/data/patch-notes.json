@@ -1,5 +1,17 @@
 [
   {
+    "version": "0.1.0e Hotfix 7",
+    "date": "Jan 7, 2025, 1:24:52 AM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3683685",
+    "content": [
+      "Fixed a bug that could cause some characters to be disconnected, most notably when trying to use the Demon Form skill granted by the Demonic Possession Infernalist Ascendancy Passive Skill.",
+      "Fixed a visual bug with item deferral cost in Ritual.",
+      "Fixed a client crash."
+    ],
+    "author": "Kieren_GGG",
+    "lastBumped": "Last bumped on Jan 7, 2025, 10:46:58 AM"
+  },
+  {
     "version": "0.1.0e Hotfix 6",
     "date": "Jan 6, 2025, 6:03:40 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3682380",
@@ -7,7 +19,7 @@
       "Fixed a bug where allocating Chaos Inoculation would incorrectly count you as being on Low Life."
     ],
     "author": "Kieren_GGG",
-    "lastBumped": "Last bumped on Jan 6, 2025, 12:47:28 PM"
+    "lastBumped": "Last bumped on Jan 7, 2025, 10:33:19 AM"
   },
   {
     "version": "0.1.0e Hotfix 5",
@@ -17,7 +29,7 @@
       "You can no longer use the instance manager to create multiple instances of the Trial of the Sekhemas."
     ],
     "author": "Stacey_GGG",
-    "lastBumped": "Last bumped on Jan 6, 2025, 10:26:45 AM"
+    "lastBumped": "Last bumped on Jan 7, 2025, 1:25:50 AM"
   },
   {
     "version": "0.1.0e Hotfix 4",
