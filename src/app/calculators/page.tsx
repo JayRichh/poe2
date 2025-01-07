@@ -34,13 +34,13 @@ const calculators = [
 
 export default function CalculatorsPage() {
   return (
-    <Container className="py-6 md:py-8 min-w-[80vw]">
+    <Container className="py-6 md:py-8 min-w-[80vw] mt-4">
       <div className="mx-auto space-y-12">
         {/* Header */}
         <div className="mx-auto">
           <Text className="text-4xl font-bold tracking-tight mb-6">POE2 Calculators</Text>
           <Text className="text-xl text-muted-foreground leading-relaxed">
-            A comprehensive suite of calculators for Path of Exile 2. Analyze damage, speed, and currency
+            A suite of calculators for Path of Exile 2. Analyze damage, speed, and currency
             with detailed breakdowns and real-time calculations.
           </Text>
         </div>
