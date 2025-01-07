@@ -156,7 +156,7 @@ export function CalculatorsSection() {
           </Text>
         </div>
         
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 transition-transform duration-300 mx-2">
           {calculators.map((calc) => (
             <CalculatorCard key={calc.href} calc={calc} />
           ))}
