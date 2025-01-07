@@ -135,7 +135,7 @@ export function PatchNotesSection() {
   ];
 
   return (
-    <div className="space-y-16 py-24">
+    <div className="space-y-12 py-16">
       <div className="text-center space-y-4 flex flex-col pb-12">
         <Text
           variant="h1"

@@ -67,18 +67,15 @@ const mainLinks = [
     features: ["Visual Tree Explorer", "Path Planning", "Build Integration", "Node Analysis"],
   },
   {
-    label: "DPS Calculator",
+    label: "Calculators",
     path: "/dps-calc",
     icon: Calculator,
-    description: "Advanced damage calculator with comprehensive stat analysis",
-    features: ["Skill Damage", "Support Gems", "Equipment Effects", "DPS Optimization"],
-  },
-  {
-    label: "Currency Calculator",
-    path: "/currency-calc",
-    icon: Calculator,
-    description: "Convert between different Path of Exile 2 currency types",
-    features: ["Real-time Rates", "Conversion History", "Multiple Currencies", "Quick Calculations"],
+    description: "Comprehensive set of calculators for POE2 mechanics and optimization",
+    features: [
+      { label: "DPS Calculator", path: "/dps-calc" },
+      { label: "Speed Calculator", path: "/speed-calc" },
+      { label: "Currency Calculator", path: "/currency-calc" },
+    ],
   },
 ];
 
@@ -231,8 +228,7 @@ function NavigationSection({
               animate="visible"
               transition={{ delay: 0.4 + index * 0.1 }}
             >
-              <button
-                onClick={() => onNavigate(item.path)}
+              <div
                 className={cn(
                   "w-full p-4 rounded-xl border-2 text-left transition-all",
                   isActive
@@ -246,18 +242,21 @@ function NavigationSection({
                     <Text className="font-medium">{item.label}</Text>
                   </div>
                   <Text className="text-sm text-foreground/60">{item.description}</Text>
-                  <div className="flex flex-wrap gap-2">
-                    {item.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90"
-                      >
-                        {feature}
-                      </span>
-                    ))}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {Array.isArray(item.features) ? (
+                      item.features.map((feature) => (
+                        <button
+                          key={typeof feature === 'string' ? feature : feature.path}
+                          onClick={() => onNavigate(typeof feature === 'string' ? item.path : feature.path)}
+                          className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors"
+                        >
+                          {typeof feature === 'string' ? feature : feature.label}
+                        </button>
+                      ))
+                    ) : null}
                   </div>
                 </div>
-              </button>
+              </div>
             </motion.div>
           );
         })}

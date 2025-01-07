@@ -47,6 +47,7 @@ const primaryLinks: (NavItem | NavItemWithDropdown)[] = [
     label: "Calculators",
     items: [
       { href: "/dps-calc", label: "DPS Calculator", icon: Calculator },
+      { href: "/speed-calc", label: "Speed Calculator", icon: Calculator },
       { href: "/currency-calc", label: "Currency Calculator", icon: Calculator },
     ],
   },
@@ -130,7 +131,7 @@ export function Navigation() {
                           }))}
                           onChange={(value) => router.push(value)}
                           position="bottom-left"
-                          width={200}
+                          width={250}
                         />
                       );
                     }
