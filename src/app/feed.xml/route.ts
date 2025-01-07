@@ -12,9 +12,9 @@ export async function GET(request: Request) {
     ? allNews.filter(news => {
         switch(type) {
           case 'news':
-            return news.type !== 'patch';
+            return news.type === 'announcement';
           case 'patch':
-            return news.type === 'patch';
+            return news.type === 'patch-note';
           default:
             return true;
         }
@@ -29,7 +29,7 @@ export async function GET(request: Request) {
   // Generate news items XML
   const newsItems = filteredNews
     .map(news => {
-      const path = news.type === 'patch' 
+      const path = news.type === 'patch-note' 
         ? `/news/patch-notes/${news.slug || news.id}`
         : `/news/${news.slug || news.id}`;
       
@@ -38,9 +38,9 @@ export async function GET(request: Request) {
     <title>${news.title}</title>
     <link>${baseUrl}${path}</link>
     <guid isPermaLink="true">${baseUrl}${path}</guid>
-    <description><![CDATA[${news.description || news.title}]]></description>
-    <pubDate>${formatDate(news.publishedAt || news.date || new Date())}</pubDate>
-    <category>${news.category || 'News'}</category>
+    <description><![CDATA[${news.processedContent || news.content || news.title}]]></description>
+    <pubDate>${formatDate(news.date)}</pubDate>
+    <category>${news.type === 'patch-note' ? 'Patch Notes' : 'Announcements'}</category>
   </item>`;
     })
     .join('\n');
