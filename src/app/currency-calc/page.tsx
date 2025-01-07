@@ -7,7 +7,7 @@ import { Text } from "~/components/ui/Text";
 
 export default function CurrencyCalcPage() {
   return (
-    <Container className="py-6 md:py-8">
+    <Container className="py-6 md:py-8 min-w-[80vw]">
       <div className="mx-auto">
         {/* Header */}
         <div className="mx-auto mb-12 mt-12">
