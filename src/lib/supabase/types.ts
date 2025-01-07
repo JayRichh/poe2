@@ -67,6 +67,7 @@ export interface Database {
           id: string;
           email?: string;
           name?: string;
+          avatar_url?: string | null;
           poe_account?: POEAccountData | null;
           poe_refresh_token?: string | null;
           theme?: string;
@@ -79,6 +80,7 @@ export interface Database {
           id: string;
           email?: string;
           name?: string;
+          avatar_url?: string | null;
           poe_account?: POEAccountData | null;
           poe_refresh_token?: string | null;
           theme?: string;
@@ -91,6 +93,7 @@ export interface Database {
           id?: string;
           email?: string;
           name?: string;
+          avatar_url?: string | null;
           poe_account?: POEAccountData | null;
           poe_refresh_token?: string | null;
           theme?: string;

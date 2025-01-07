@@ -1,6 +1,7 @@
 "use client";
 
-import { Mail, User, XCircle } from "lucide-react";
+import { Mail, User, XCircle, Upload } from "lucide-react";
+import { Avatar } from "./Avatar";
 import { motion } from "framer-motion";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
@@ -15,9 +16,12 @@ interface ProfileFormProps {
   validationError?: string | null;
   submitError?: string | null;
   submitMessage?: string | null;
+  userId: string;
+  avatarUrl: string | null;
   onNameChange: (value: string) => void;
   onNameClear: () => void;
   onSubmit: (e: React.FormEvent) => void;
+  onAvatarUpload: (url: string) => Promise<void>;
 }
 
 export function ProfileForm({
@@ -28,9 +32,12 @@ export function ProfileForm({
   validationError,
   submitError,
   submitMessage,
+  userId,
+  avatarUrl,
   onNameChange,
   onNameClear,
   onSubmit,
+  onAvatarUpload,
 }: ProfileFormProps) {
   return (
     <form onSubmit={onSubmit} className="space-y-8">
@@ -39,6 +46,26 @@ export function ProfileForm({
         animate={{ opacity: 1, y: 0 }}
         className="grid gap-6"
       >
+        <div className="flex justify-center">
+          {userId ? (
+            <Avatar
+              uid={userId}
+              url={avatarUrl}
+              size={120}
+              onUpload={(url: string) => {
+                onAvatarUpload(url).catch(error => {
+                  console.error('Error in avatar upload:', error);
+                  throw error;
+                });
+              }}
+              className="border-4 border-background"
+            />
+          ) : (
+            <div className="w-[120px] h-[120px] rounded-full bg-primary/10 flex items-center justify-center">
+              <Upload className="w-1/2 h-1/2 text-primary/40" />
+            </div>
+          )}
+        </div>
         <FormField
           label="Email"
           icon={<Mail className="h-5 w-5 text-primary/60" />}

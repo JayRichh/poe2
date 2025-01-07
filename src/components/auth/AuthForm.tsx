@@ -4,7 +4,7 @@ import { AlertCircle, Lock, Mail } from "lucide-react";
 
 import { useState } from "react";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "~/components/ui/Button";
 import { Spinner } from "~/components/ui/Spinner";
@@ -19,6 +19,7 @@ interface AuthFormProps {
 }
 
 export function AuthForm({ type }: AuthFormProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const { refreshSession } = useAuth();
   const [email, setEmail] = useState("");
@@ -50,14 +51,15 @@ export function AuthForm({ type }: AuthFormProps) {
           throw new Error(data.error || "Failed to sign in");
         }
 
-        // Refresh the session state
-        await refreshSession();
-
         // Get the next URL from search params or default to home
         const next = searchParams.get("next") || "/";
 
-        // Use window.location for hard navigation to ensure clean state
-        window.location.href = next;
+        // Wait for session to be refreshed
+        await refreshSession();
+
+        // Use router for navigation to ensure client state updates
+        router.refresh();
+        router.push(next);
       } else if (type === "signup") {
         const response = await fetch("/api/auth/signup", {
           method: "POST",
@@ -116,13 +118,14 @@ export function AuthForm({ type }: AuthFormProps) {
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Mail className="h-5 w-5 text-primary/60" />
             </div>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Enter your email"
-              className={cn(
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+                autoComplete="username"
+                className={cn(
                 "pl-11 w-full h-12 rounded-xl",
                 "bg-background/95",
                 "border-2 border-border/50",
@@ -146,6 +149,7 @@ export function AuthForm({ type }: AuthFormProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Enter your password"
+                autoComplete={type === "login" ? "current-password" : "new-password"}
                 className={cn(
                   "pl-11 w-full h-12 rounded-xl",
                   "bg-background/95",

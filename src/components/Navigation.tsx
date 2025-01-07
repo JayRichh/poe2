@@ -14,6 +14,7 @@ import {
   User,
   Users,
 } from "lucide-react";
+import { Avatar } from "./profile/Avatar";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -65,7 +66,7 @@ export function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, loading: authLoading, error: authError, signOut } = useAuth();
+  const { user, loading: authLoading, error: authError, signOut, refreshSession } = useAuth();
 
   const handleProfileAction = async (value: string) => {
     switch (value) {
@@ -189,11 +190,22 @@ export function Navigation() {
                         {authLoading ? (
                           <Spinner size="sm" />
                         ) : (
-                          <User className="w-4 h-4" />
+                          <div className="flex items-center gap-2">
+                            <Avatar
+                              uid={user.id}
+                              url={user.user_metadata?.avatar_url}
+                              size={32}
+                              onUpload={async () => {
+                                await refreshSession();
+                              }}
+                              showUploadUI={false}
+                              className="border border-border/50"
+                            />
+                            <span className="max-w-[150px] truncate">
+                              {user.user_metadata?.name || user.email?.split("@")[0]}
+                            </span>
+                          </div>
                         )}
-                        <span className="max-w-[150px] truncate">
-                          {user.user_metadata?.name || user.email?.split("@")[0]}
-                        </span>
                       </button>
                     }
                     items={[
@@ -248,23 +260,30 @@ export function Navigation() {
         <Toast message={authError} type="error" isVisible={!!authError} onClose={() => {}} />
       )}
 
-      {!user && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
+      {!user && !authLoading && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
         <div className="fixed inset-0 z-[90] bg-background/95 backdrop-blur-sm flex items-center justify-center">
           <div className="max-w-md mx-auto p-8 rounded-xl bg-background border border-border/50 shadow-lg text-center space-y-6">
-            <User className="w-16 h-16 mx-auto text-primary" />
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold">Sign In Required</h2>
-              <p className="text-foreground/80">Sign in to access your profile and settings.</p>
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleSignIn}
-                className="w-full"
-                disabled={authLoading}
-              >
-                {authLoading ? <Spinner size="sm" /> : "Sign In"}
-              </Button>
-            </div>
+            {authLoading ? (
+              <div className="py-8">
+                <Spinner size="lg" />
+              </div>
+            ) : (
+              <>
+                <User className="w-16 h-16 mx-auto text-primary" />
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-bold">Sign In Required</h2>
+                  <p className="text-foreground/80">Sign in to access your profile and settings.</p>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={handleSignIn}
+                    className="w-full"
+                  >
+                    Sign In
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

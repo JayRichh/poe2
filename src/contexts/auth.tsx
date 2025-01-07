@@ -33,20 +33,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading: true,
     error: null,
   });
+  const [isInitialized, setIsInitialized] = useState(false);
   const router = useRouter();
   const client = createClient();
 
   const refreshSession = async () => {
     try {
-      const {
-        data: { session },
-        error,
-      } = await client.auth.getSession();
-      if (error) throw error;
+      // First get the session
+      const { data: { session }, error: sessionError } = await client.auth.getSession();
+      if (sessionError) throw sessionError;
+
+      // Then verify the user with getUser
+      const { data: { user }, error: userError } = await client.auth.getUser();
+      if (userError) throw userError;
 
       setState((prev) => ({
         ...prev,
-        user: session?.user || null,
+        user: user,
         loading: false,
         error: null,
       }));
@@ -78,11 +81,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    refreshSession();
+    const initialize = async () => {
+      await refreshSession();
+      setIsInitialized(true);
+    };
+    initialize();
 
     const {
       data: { subscription },
     } = client.auth.onAuthStateChange(async (event, session) => {
+      if (!isInitialized) return;
       if (event === "SIGNED_OUT") {
         setState((prev) => ({
           ...prev,
@@ -90,11 +98,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           loading: false,
           error: null,
         }));
-        window.location.href = "/";
-      } else if (session?.user) {
+        router.push("/");
+      } else if (session) {
+        // Verify user data when session changes
+        const { data: { user }, error: userError } = await client.auth.getUser();
+        if (userError) throw userError;
+        
         setState((prev) => ({
           ...prev,
-          user: session.user,
+          user: user,
           loading: false,
           error: null,
         }));

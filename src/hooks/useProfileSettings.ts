@@ -197,6 +197,48 @@ export function useProfileSettings() {
     }
   };
 
+  const handleAvatarUpload = async (url: string) => {
+    if (!user) return;
+    
+    try {
+      // Update user metadata
+      setSubmitError(null);
+      setSubmitMessage(null);
+
+      const response = await fetch('/api/user', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avatar_url: url })
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to update avatar');
+      }
+
+      const result = await response.json();
+      if (!result.success || !result.user) {
+        throw new Error('Failed to update avatar');
+      }
+
+      // Force a session refresh to get the updated user data
+      await refreshSession();
+      router.refresh(); // Refresh the page to update all components
+      setSubmitMessage("Avatar updated successfully");
+      
+      // Log activity
+      await logActivity(
+        'profile',
+        'Profile updated',
+        'Changed avatar image'
+      );
+    } catch (err) {
+      console.error("Error updating avatar:", err);
+      setSubmitError("Failed to update avatar");
+      throw err; // Re-throw to handle in the UI
+    }
+  };
+
   return {
     // User & Profile State
     user,
@@ -231,5 +273,6 @@ export function useProfileSettings() {
     refreshProfile,
     setShowPasswordForm,
     setNewPassword,
+    handleAvatarUpload,
   };
 }

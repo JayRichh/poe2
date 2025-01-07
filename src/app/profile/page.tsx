@@ -56,12 +56,23 @@ export default function ProfilePage() {
     refreshProfile,
     setShowPasswordForm,
     setNewPassword,
+    handleAvatarUpload,
   } = useProfileSettings();
 
   const [activeTab, setActiveTab] = useState<TabId>('overview');
 
-  if (!user) {
-    return null;
+  if (!user || !user.id) {
+    return (
+      <div className="min-h-screen bg-background pt-4">
+        <Container className="py-8">
+          <div className="text-center">
+            <Text className="text-lg text-foreground/60">
+              Please sign in to view your profile
+            </Text>
+          </div>
+        </Container>
+      </div>
+    );
   }
 
   return (
@@ -107,9 +118,12 @@ export default function ProfilePage() {
                   validationError={validationError}
                   submitError={submitError}
                   submitMessage={submitMessage}
+                  userId={user.id}
+                  avatarUrl={user.user_metadata?.avatar_url || null}
                   onNameChange={validateAndSetName}
                   onNameClear={clearName}
                   onSubmit={handleUpdateProfile}
+                  onAvatarUpload={handleAvatarUpload}
                 />
               </div>
               <div className="mt-12 space-y-8">

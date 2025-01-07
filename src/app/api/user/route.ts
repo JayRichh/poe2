@@ -3,6 +3,52 @@ import type { NextRequest } from "next/server";
 
 import { createMiddlewareClient } from "~/lib/supabase/actions";
 
+export async function PATCH(request: NextRequest) {
+  const response = new NextResponse();
+  const supabase = createMiddlewareClient(request, response);
+
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await request.json();
+    const { avatar_url } = body;
+
+    const { data: updateData, error: updateError } = await supabase.auth.updateUser({
+      data: { avatar_url }
+    });
+
+    if (updateError) throw updateError;
+
+    // Create a new response with the updated data
+    const jsonResponse = NextResponse.json({ 
+      success: true,
+      user: updateData.user
+    });
+
+    // Copy cookies from the middleware client response to the new response
+    const middlewareResponse = response.headers;
+    middlewareResponse.forEach((value, key) => {
+      if (key.toLowerCase() === "set-cookie") {
+        jsonResponse.headers.set(key, value);
+      }
+    });
+
+    return jsonResponse;
+  } catch (error) {
+    console.error("Update user error:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+
 export async function DELETE(request: NextRequest) {
   const response = new NextResponse();
   const supabase = createMiddlewareClient(request, response);
