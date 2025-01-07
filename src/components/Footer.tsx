@@ -34,24 +34,18 @@ const mainLinks = [
     description: "Interactive skill tree visualization",
   },
   {
-    href: "/dps-calc",
-    label: "DPS Calculator",
-    icon: Gamepad,
-    description: "Calculate and compare weapon damage",
-  },
-  {
-    href: "/currency-calc",
-    label: "Currency Calculator",
-    icon: Gamepad,
-    description: "Convert between different currency types",
-  },
-  {
     href: "/guides",
     label: "Guides",
     icon: BookOpen,
     description: "Community guides and tutorials",
   },
   { href: "/news", label: "News", icon: FileText, description: "Latest updates and patch notes" },
+];
+
+const calculatorLinks = [
+  { href: "/dps-calc", label: "DPS Calculator" },
+  { href: "/currency-calc", label: "Currency Calculator" },
+  { href: "/speed-calc", label: "Speed Calculator" },
 ];
 
 const communityLinks = [
@@ -146,9 +140,9 @@ export function Footer() {
           filter: blur(0);
         }
       `}</style>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="min-w-10xl mx-auto px-8 sm:px-10 lg:px-12 py-12">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Column - Main Links */}
           <div className="space-y-16">
             <div>
@@ -208,6 +202,21 @@ export function Footer() {
             </div>
 
             <div className="space-y-8">
+              <h3 className="text-2xl font-semibold tracking-tight">Calculators</h3>
+              <div className="flex flex-col lg:items-end gap-4">
+                {calculatorLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
               <h3 className="text-2xl font-semibold tracking-tight">Community</h3>
               <div className="flex flex-col lg:items-end gap-4">
                 {communityLinks.map((link) => (
@@ -240,7 +249,11 @@ export function Footer() {
         </div>
 
         {/* Contributors Section */}
-        <div className="mb-16">
+        
+
+        {/* Bottom Section */}
+        <div className="border-t border-border/5">
+        <div className="mb-16 w-1/2">
           <h2 className="text-2xl font-semibold tracking-tight mb-8">Contributors</h2>
           <div className="flex flex-wrap gap-4">
             {contributors.map((contributor) => (
@@ -270,9 +283,6 @@ export function Footer() {
             ))}
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div className="pt-16 border-t border-border/5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-sm text-muted-foreground">

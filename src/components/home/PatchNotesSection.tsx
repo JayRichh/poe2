@@ -7,28 +7,34 @@ import { PatchNotesCarousel } from "~/components/news/PatchNotesCarousel";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 import { NewsService } from "~/services/news-service";
-import type { PatchNote } from "~/types/news";
+import type { NewsPost, PatchNote } from "~/types/news";
 
 export function PatchNotesSection() {
   const [patchNotes, setPatchNotes] = useState<PatchNote[]>([]);
+  const [recentUpdates, setRecentUpdates] = useState<NewsPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadPatchNotes = async () => {
+    const loadData = async () => {
       try {
-        const response = await NewsService.getPatchNotes({ itemsPerPage: 5 });
-        if (response.items.length > 0) {
-          setPatchNotes(response.items);
-        } else {
-          console.warn("No patch notes found");
+        const [patchNotesResponse, recentUpdatesResponse] = await Promise.all([
+          NewsService.getPatchNotes({ itemsPerPage: 5 }),
+          NewsService.getLatestNews({ timeRange: '30d', itemsPerPage: 4 })
+        ]);
+
+        if (patchNotesResponse.items.length > 0) {
+          setPatchNotes(patchNotesResponse.items);
+        }
+        if (recentUpdatesResponse.items.length > 0) {
+          setRecentUpdates(recentUpdatesResponse.items);
         }
       } catch (error) {
-        console.error("Failed to load patch notes:", error);
+        console.error("Failed to load updates:", error);
       } finally {
         setLoading(false);
       }
     };
-    loadPatchNotes();
+    loadData();
   }, []);
 
   if (!patchNotes.length && !loading) {
@@ -68,70 +74,38 @@ export function PatchNotesSection() {
     );
   }
 
-  interface Update {
-    type: "event" | "community" | "guide" | "stream";
-    title: string;
-    date: string;
-    description: string;
-    tag: string;
-  }
-
-  const getUpdateIcon = (type: Update["type"]) => {
+  const getUpdateIcon = (type: NewsPost['type']) => {
     switch (type) {
-      case "event":
+      case "announcement":
         return Calendar;
-      case "community":
-        return Users;
-      case "guide":
+      case "patch-note":
         return BookOpen;
-      case "stream":
-        return Video;
+      default:
+        return Clock;
     }
   };
 
-  const getTagStyle = (type: Update["type"]) => {
+  const getTagStyle = (type: NewsPost['type']) => {
     switch (type) {
-      case "event":
+      case "announcement":
         return "bg-primary/10 text-primary border-primary/20";
-      case "community":
+      case "patch-note":
         return "bg-accent/10 text-accent border-accent/20";
-      case "guide":
+      default:
         return "bg-secondary/10 text-secondary border-secondary/20";
-      case "stream":
-        return "bg-damage-chaos-light/10 text-damage-chaos-light border-damage-chaos-light/20";
     }
   };
 
-  const recentUpdates: Update[] = [
-    {
-      type: "event",
-      title: "Season Launch Event",
-      date: "2024-03-15",
-      description: "Join us for the launch of the new season with exclusive rewards",
-      tag: "Upcoming",
-    },
-    {
-      type: "community",
-      title: "Community Challenge",
-      date: "2024-03-10",
-      description: "Complete special objectives to unlock community rewards",
-      tag: "Active",
-    },
-    {
-      type: "guide",
-      title: "New Player Guide",
-      date: "2024-03-08",
-      description: "Essential tips and tricks for new players",
-      tag: "Guide",
-    },
-    {
-      type: "stream",
-      title: "Developer Stream",
-      date: "2024-03-05",
-      description: "Q&A session with the development team",
-      tag: "VOD",
-    },
-  ];
+  const getTagText = (type: NewsPost['type']) => {
+    switch (type) {
+      case "announcement":
+        return "Announcement";
+      case "patch-note":
+        return "Patch Note";
+      default:
+        return "Update";
+    }
+  };
 
   return (
     <div className="space-y-12 py-16">
@@ -166,13 +140,14 @@ export function PatchNotesSection() {
               <Clock className="w-5 h-5 text-muted-foreground/60" />
             </div>
             <div className="space-y-4">
-              {recentUpdates.map((update, index) => {
+              {recentUpdates.map((update) => {
                 const Icon = getUpdateIcon(update.type);
                 const tagStyle = getTagStyle(update.type);
+                const tagText = getTagText(update.type);
 
                 return (
-                  <div key={index} className="group">
-                    <Link href="#" className="block">
+                  <div key={update.id} className="group">
+                    <Link href={NewsService.getNewsUrl(update)} className="block">
                       <div className="relative p-4 rounded-lg bg-background/50 hover:bg-background/80 transition-all border border-border/50 hover:border-border group-hover:shadow-md">
                         <div className="flex items-start gap-3">
                           <div className="mt-1">
@@ -186,11 +161,11 @@ export function PatchNotesSection() {
                               <span
                                 className={`shrink-0 px-2 py-1 text-xs rounded-full border ${tagStyle}`}
                               >
-                                {update.tag}
+                                {tagText}
                               </span>
                             </div>
                             <Text color="secondary" className="text-sm line-clamp-2 mb-2">
-                              {update.description}
+                              {update.processedContent}
                             </Text>
                             <div className="flex items-center gap-2">
                               <div className="w-1 h-1 rounded-full bg-border" />
