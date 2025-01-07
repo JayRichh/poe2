@@ -39,20 +39,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshSession = async () => {
     try {
-      // First get the session
-      const { data: { session }, error: sessionError } = await client.auth.getSession();
-      if (sessionError) throw sessionError;
-
-      // Then verify the user with getUser
-      const { data: { user }, error: userError } = await client.auth.getUser();
-      if (userError) throw userError;
-
-      setState((prev) => ({
-        ...prev,
-        user: user,
-        loading: false,
-        error: null,
-      }));
+      const { data: { session } } = await client.auth.getSession();
+      
+      if (session) {
+        const { data: { user }, error: userError } = await client.auth.getUser();
+        if (userError) throw userError;
+        
+        setState((prev) => ({
+          ...prev,
+          user: user,
+          loading: false,
+          error: null,
+        }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          user: null,
+          loading: false,
+          error: null,
+        }));
+      }
     } catch (error) {
       console.error("Session refresh error:", error);
       setState((prev) => ({
