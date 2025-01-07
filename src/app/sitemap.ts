@@ -155,24 +155,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Safely handle date parsing
     let lastMod = defaultDate;
     try {
-      if (news.publishedAt) {
-        lastMod = new Date(news.publishedAt);
-      } else if (news.date) {
-        lastMod = new Date(news.date);
-      }
+      lastMod = new Date(news.date);
     } catch (e) {
       console.error('Error parsing date:', e);
     }
 
-    const path = news.type === 'patch' 
+    const path = news.type === 'patch-note' 
       ? `/news/patch-notes/${news.slug || news.id}`
       : `/news/${news.slug || news.id}`;
     
     return {
       url: `${baseUrl}${path}`,
       lastModified: lastMod,
-      changeFrequency: news.type === 'patch' ? 'daily' : 'weekly',
-      priority: news.type === 'patch' ? 0.8 : 0.7,
+      changeFrequency: news.type === 'patch-note' ? 'daily' : 'weekly',
+      priority: news.type === 'patch-note' ? 0.8 : 0.7,
     };
   });
 

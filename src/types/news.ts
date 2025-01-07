@@ -1,36 +1,38 @@
-export interface NewsItem {
+export interface NewsPost {
   id: string;
   title: string;
-  slug: string; // Required for consistent URL handling
-  description?: string;
-  category?: string;
-  publishedAt?: string;
-  source?: string;
-  url?: string;
-  date?: string;
-  content?: string | string[];
-  type?: "news" | "patch" | "announcement";
-  redirectToSlug?: boolean; // Used internally for handling ID-based URLs
-}
-
-export interface PatchNoteSection {
-  title: string;
-  changes: string[];
-}
-
-export interface PatchNoteHotfix {
-  version: string;
   date: string;
-  changes: string[];
-}
-
-export interface PatchNote {
-  version: string;
-  date: string;
-  sections?: PatchNoteSection[];
-  hotfixes?: PatchNoteHotfix[];
-  content?: string[];
-  author?: string;
+  url: string;
+  content: string;
+  author: string;
   lastBumped?: string;
-  url?: string;
+  replies?: number;
+  lastReplyBy?: string;
+  lastReplyDate?: string;
+  type: 'announcement' | 'patch-note';
+  imageUrl?: string;
+  slug?: string;
+  processedContent?: string;
+  fullContent?: string;
+}
+
+export type PatchNote = NewsPost;
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  metadata: {
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+    itemsPerPage: number;
+  };
+}
+
+export interface NewsQueryParams {
+  page?: number;
+  itemsPerPage?: number;
+  category?: string;
+  source?: string;
+  timeRange?: string;
+  type?: 'announcement' | 'patch-note';
 }

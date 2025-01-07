@@ -1,13 +1,8 @@
-import { Suspense } from "react";
-
 import { notFound } from "next/navigation";
-
-import { NewsCard } from "~/components/news/NewsCard";
 import { NewsLayout } from "~/components/news/NewsLayout";
-import { PatchNotes } from "~/components/news/PatchNotes";
-import { Text } from "~/components/ui/Text";
-
+import { NewsContent } from "~/components/news/NewsContent";
 import { NewsService } from "~/services/news-service";
+import type { NewsPost, NewsQueryParams } from "~/types/news";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
@@ -18,6 +13,8 @@ interface PageProps {
         category?: string;
         source?: string;
         timeRange?: string;
+        page?: string;
+        itemsPerPage?: string;
       }>
     | undefined;
 }
@@ -28,94 +25,67 @@ export default async function NewsPage({ searchParams }: PageProps) {
   try {
     // Await searchParams before using
     const params = await searchParams;
-    const { category, source, timeRange } = params;
+    const { category, page, itemsPerPage, timeRange } = params;
 
-    const news = await NewsService.getLatestNews(category, source, timeRange);
+    // Convert pagination params
+    const queryParams: NewsQueryParams = {
+      page: page ? parseInt(page) : 1,
+      itemsPerPage: itemsPerPage ? parseInt(itemsPerPage) : 10,
+      timeRange
+    };
 
-    // If category is selected, show filtered view
-    if (category) {
-      const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-      return (
-        <NewsLayout
-          title={`${formattedCategory} News`}
-          description={`Latest ${formattedCategory.toLowerCase()} news and updates`}
-        >
-          <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
-            <Suspense
-              fallback={
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
-                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                  </div>
-                </div>
-              }
-            >
-              <div className="space-y-3">
-                {news.map((item) => (
-                  <NewsCard key={item.id} news={item} />
-                ))}
-              </div>
-            </Suspense>
-          </div>
-        </NewsLayout>
-      );
+    // Add type filter based on category
+    if (category === 'announcements') {
+      queryParams.type = 'announcement';
+    } else if (category === 'patch-notes') {
+      queryParams.type = 'patch-note';
     }
 
-    // Show full layout for main news page
-    const [patchNotes] = await Promise.all([NewsService.getPatchNotes()]);
-    const featuredNews = news.slice(0, 2);
-    const recentNews = news.slice(2);
+    // Get paginated news
+    const paginatedNews = await NewsService.getLatestNews(queryParams);
+
+    // Get featured items (latest from each category) only for main view
+    let featuredNews: NewsPost[] = [];
+    if (!category) {
+      const [announcements, patchNotes] = await Promise.all([
+        NewsService.getLatestNews({ 
+          type: 'announcement',
+          itemsPerPage: 1,
+          page: 1,
+          timeRange
+        }),
+        NewsService.getLatestNews({ 
+          type: 'patch-note',
+          itemsPerPage: 1,
+          page: 1,
+          timeRange
+        })
+      ]);
+      featuredNews = [
+        ...announcements.items,
+        ...patchNotes.items
+      ].filter(Boolean);
+    }
+
+    // Get category counts for tabs (respect timeRange filter)
+    const [announcementsCount, patchNotesCount] = await Promise.all([
+      NewsService.getLatestNews({ type: 'announcement', itemsPerPage: 1, timeRange }).then(r => r.metadata.totalItems),
+      NewsService.getLatestNews({ type: 'patch-note', itemsPerPage: 1, timeRange }).then(r => r.metadata.totalItems)
+    ]);
 
     return (
       <NewsLayout
         title="Latest News"
         description="Stay updated with the latest Path of Exile 2 news and announcements"
       >
-        <div className="space-y-8 px-4 sm:px-6 lg:px-8 py-4">
-          <Suspense
-            fallback={
-              <div className="text-center py-12">
-                <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                </div>
-              </div>
-            }
-          >
-            {/* Featured News */}
-            <div>
-              <Text variant="h3" className="mb-3">
-                Featured
-              </Text>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {featuredNews.map((item) => (
-                  <NewsCard key={item.id} news={item} variant="featured" />
-                ))}
-              </div>
-            </div>
-
-            {/* Recent News */}
-            <div>
-              <Text variant="h3" className="mb-3">
-                Recent Updates
-              </Text>
-              <div className="space-y-3">
-                {recentNews.map((item) => (
-                  <NewsCard key={item.id} news={item} />
-                ))}
-              </div>
-            </div>
-
-            {/* Patch Notes */}
-            <div>
-              <Text variant="h3" className="mb-3">
-                Patch Notes
-              </Text>
-              <div className="bg-card rounded-lg p-6 border border-border">
-                <PatchNotes patchNotes={patchNotes} />
-              </div>
-            </div>
-          </Suspense>
-        </div>
+        <NewsContent 
+          news={paginatedNews}
+          featuredNews={featuredNews}
+          categoryCounts={{
+            announcements: announcementsCount,
+            patchNotes: patchNotesCount
+          }}
+        />
       </NewsLayout>
     );
   } catch (error) {

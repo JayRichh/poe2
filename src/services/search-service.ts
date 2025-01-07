@@ -2,9 +2,9 @@
 
 import { mechanicsWithMeta } from "~/lib/mechanics/data";
 import { guidesWithMeta } from "~/lib/guides/data";
-import { MOCK_NEWS } from "~/data/mock-news";
 import { NewsService } from "~/services/news-service";
 import { ascendanciesWithMeta, type AscendancyWithMeta } from "~/lib/ascendancies/data";
+import type { NewsPost } from "~/types/news";
 
 export type SearchSection = 
   | "build-planner" 
@@ -174,26 +174,24 @@ export async function searchContent(
   // Search patch notes first for better item/skill search results
   if (!section || section === "patch-notes") {
     try {
-      const patchNotes = await NewsService.getPatchNotes();
-      const patchNoteResults = patchNotes
-        .map(note => {
-          const searchableContent = {
-            title: `Patch Notes ${note.version}`,
-            content: note.content || []
-          };
-
-          const matches = searchInContent(searchableContent, query);
+      const patchNotes = await NewsService.getPatchNotes({ itemsPerPage: Number.MAX_SAFE_INTEGER });
+      const patchNoteResults = patchNotes.items
+        .map((note: NewsPost) => {
+          // Extract text content from HTML for searching
+          const plainContent = note.content.replace(/<[^>]*>/g, ' ');
+          const matches = searchInContent({
+            title: note.title,
+            content: plainContent
+          }, query);
           if (matches.length === 0) return null;
 
           const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
-          const url = NewsService.getPatchNoteUrl(note);
-          
           return {
-            id: `patch-notes-${note.version}`,
-            title: `Patch Notes ${note.version}`,
-            description: matches[0].text,
+            id: `patch-notes-${note.id}`,
+            title: note.title,
+            description: plainContent.split('\n')[0], // First paragraph as description
             matches,
-            url,
+            url: NewsService.getNewsUrl(note),
             section: "patch-notes" as const,
             relevance: relevance * 1.5 // Boost patch notes relevance
           };
@@ -259,24 +257,34 @@ export async function searchContent(
 
   // Search news
   if (!section || section === "news") {
-    const newsResults = MOCK_NEWS
-      .map(news => {
-        const matches = searchInContent(news, query);
-        if (matches.length === 0) return null;
-        
-        const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
-        return {
-          id: `news-${news.id}`,
-          title: news.title,
-          description: news.description,
-          matches,
-          url: `/news/${news.slug}`,
-          section: "news" as const,
-          relevance
-        };
-      })
-      .filter((result): result is NonNullable<typeof result> => result !== null);
-    results.push(...newsResults);
+    try {
+      const allNews = await NewsService.getLatestNews({ itemsPerPage: Number.MAX_SAFE_INTEGER });
+      const newsResults = allNews.items
+        .map((news: NewsPost) => {
+          // Extract text content from HTML for searching
+          const plainContent = news.content.replace(/<[^>]*>/g, ' ');
+          const matches = searchInContent({
+            title: news.title,
+            content: plainContent
+          }, query);
+          if (matches.length === 0) return null;
+          
+          const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
+          return {
+            id: `news-${news.id}`,
+            title: news.title,
+            description: plainContent.split('\n')[0], // First paragraph as description
+            matches,
+            url: NewsService.getNewsUrl(news),
+            section: "news" as const,
+            relevance
+          };
+        })
+        .filter((result): result is NonNullable<typeof result> => result !== null);
+      results.push(...newsResults);
+    } catch (error) {
+      console.error("Error loading news for search:", error);
+    }
   }
 
   // Search ascendancies

@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
       title: news.title,
-      description: news.description,
+      description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title,
       openGraph: {
         title: news.title,
-        description: news.description,
+        description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title,
         type: 'article',
-        publishedTime: news.publishedAt || news.date,
-        modifiedTime: news.publishedAt || news.date,
+        publishedTime: news.date,
+        modifiedTime: news.date,
       },
     };
   } catch {
@@ -41,7 +41,7 @@ export default async function PatchNotePage({ params }: PageProps) {
   try {
     const { slug } = await params;
     const news = await NewsService.getNewsById(slug);
-    if (!news || news.type !== 'patch') notFound();
+    if (!news || news.type !== 'patch-note') notFound();
 
     const timeAgo = (date: string) => {
       const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -60,7 +60,10 @@ export default async function PatchNotePage({ params }: PageProps) {
     };
 
     return (
-      <NewsLayout title={news.title} description={news.description}>
+      <NewsLayout 
+        title={news.title} 
+        description={news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
             fallback={
@@ -73,40 +76,39 @@ export default async function PatchNotePage({ params }: PageProps) {
           >
             <article className="prose prose-invert max-w-none">
               <div className="flex items-center gap-4 text-sm text-foreground/60 mb-8">
-                <span className="text-primary font-medium">Patch Notes</span>
-                {news.publishedAt && (
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4" />
-                    {timeAgo(news.publishedAt)}
-                  </div>
-                )}
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  {timeAgo(news.date)}
+                </div>
                 <span className="text-foreground/40">•</span>
-                <span>Official</span>
+                <span>Patch Notes</span>
+                {news.replies && (
+                  <>
+                    <span className="text-foreground/40">•</span>
+                    <span>{news.replies} replies</span>
+                  </>
+                )}
               </div>
 
               <div className="space-y-6">
                 <Text variant="h1" className="!mt-0">
                   {news.title}
                 </Text>
-                {news.description && (
-                  <Text variant="body" color="secondary" className="text-lg">
-                    {news.description}
-                  </Text>
-                )}
 
-                {Array.isArray(news.content) && (
-                  <div className="mt-8 space-y-6">
-                    <div className="prose prose-invert max-w-none">
-                      <ul className="space-y-3 list-disc list-inside">
-                        {news.content.map((change, i) => (
-                          <li key={i} className="leading-relaxed text-foreground/80">
-                            {change}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                {news.imageUrl && (
+                  <div className="relative w-full h-64 mb-8">
+                    <img 
+                      src={news.imageUrl} 
+                      alt={news.title}
+                      className="object-cover w-full h-full rounded-lg"
+                    />
                   </div>
                 )}
+
+                <div 
+                  className="mt-8 prose prose-invert max-w-none"
+                  dangerouslySetInnerHTML={{ __html: news.content }}
+                />
 
                 {/* Back to Patch Notes Link */}
                 <div className="mt-12 pt-6 border-t border-border/30">

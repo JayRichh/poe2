@@ -1,135 +1,122 @@
 "use client";
 
-import { ArrowRight, Clock, ExternalLink } from "lucide-react";
-
-import { useMemo, useState } from "react";
-
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { useMemo } from "react";
 import Link from "next/link";
-
-import { cn } from "~/utils/cn";
+import Image from "next/image";
 import { NewsService } from "~/services/news-service";
-import { NewsItem } from "~/types/news";
+import { NewsPost } from "~/types/news";
 import { Text } from "../ui/Text";
+import { TimeAgo } from "../ui/TimeAgo";
 
 interface NewsCardProps {
-  news: NewsItem;
+  news: NewsPost;
   variant?: "featured" | "compact";
 }
 
 export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
-  const isExternalUrl = useMemo(() => news.url?.startsWith("http") ?? false, [news.url]);
-
-  const timeAgo = (date: string) => {
-    const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
-
-    let interval = seconds / 31536000;
-    if (interval > 1) return Math.floor(interval) + " years ago";
-    interval = seconds / 2592000;
-    if (interval > 1) return Math.floor(interval) + " months ago";
-    interval = seconds / 86400;
-    if (interval > 1) return Math.floor(interval) + " days ago";
-    interval = seconds / 3600;
-    if (interval > 1) return Math.floor(interval) + " hours ago";
-    interval = seconds / 60;
-    if (interval > 1) return Math.floor(interval) + " minutes ago";
-    return Math.floor(seconds) + " seconds ago";
-  };
+  const hasExternalUrl = useMemo(() => news.url?.startsWith("http") ?? false, [news.url]);
+  
+  const processedContent = useMemo(() => ({
+    __html: news.processedContent || ''
+  }), [news.processedContent]);
 
   if (variant === "featured") {
     return (
-      <Link
-        href={isExternalUrl ? (news.url ?? "#") : NewsService.getNewsUrl(news)}
-        target={isExternalUrl ? "_blank" : undefined}
-        rel={isExternalUrl ? "noopener noreferrer" : undefined}
-        className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm"
-      >
-        <div className="flex flex-col h-full p-6">
-          <div className="flex items-center justify-between mb-4">
-            {news.category && (
-              <span className="text-sm font-medium text-primary">{news.category}</span>
-            )}
-            <div className="flex items-center gap-1.5 text-sm text-foreground/60">
-              <Clock className="w-3.5 h-3.5" />
-              {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
-            </div>
-          </div>
+      <article className="group relative overflow-hidden rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 h-full backdrop-blur-sm">
+        <div className="flex flex-col h-full p-6 relative z-10">
+          <header className="flex items-center justify-between mb-4">
+            <span className="text-sm font-medium text-primary">
+              {news.type === "patch-note" ? "Patch Notes" : "Announcement"}
+            </span>
+            <TimeAgo date={news.date} />
+          </header>
 
-          <div className="flex-grow space-y-3">
-            <Text variant="h4" className="line-clamp-2">
+          {news.imageUrl && (
+            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+              <Image
+                src={news.imageUrl}
+                alt=""
+                fill
+                priority={true}
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          )}
+
+          <Link href={NewsService.getNewsUrl(news)} className="flex-grow block">
+            <Text variant="h4" className="line-clamp-2 mb-3">
               {news.title}
             </Text>
-            {news.type === "patch" ? (
-              <div className="space-y-2">
-                <Text variant="body" color="secondary" className="line-clamp-2">
-                  {news.description}
-                </Text>
-                {Array.isArray(news.content) && news.content.length > 0 && (
-                  <ul className="space-y-1 list-disc list-inside text-sm text-foreground/70">
-                    {news.content.slice(0, 3).map((change: string, i: number) => (
-                      <li key={i} className="line-clamp-1 leading-relaxed">
-                        {change}
-                      </li>
-                    ))}
-                    {news.content.length > 3 && (
-                      <Text color="secondary" className="text-sm">
-                        +{news.content.length - 3} more changes
-                      </Text>
-                    )}
-                  </ul>
-                )}
-              </div>
-            ) : (
-              <Text variant="body" color="secondary" className="line-clamp-3">
-                {news.description}
+            <p className="line-clamp-3 text-sm text-foreground/70">
+              {news.processedContent || news.content || ''}
+            </p>
+            {news.replies ? (
+              <Text color="secondary" className="text-sm mt-2">
+                {news.replies} replies
               </Text>
-            )}
-          </div>
+            ) : null}
+          </Link>
 
-          <div className="flex items-center text-sm text-primary font-medium pt-4">
-            Read More
-            {isExternalUrl ? (
-              <ExternalLink className="w-4 h-4 ml-1" />
-            ) : (
+          <footer className="flex items-center justify-between pt-4 mt-auto">
+            <Link href={NewsService.getNewsUrl(news)} className="flex items-center text-sm text-primary font-medium">
+              Read More
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            {hasExternalUrl && (
+              <a
+                href={news.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-foreground/80 hover:text-foreground/90 hover:bg-muted px-2 py-1 rounded-md transition-colors whitespace-nowrap flex-shrink-0"
+              >
+                View on Forum
+                <ExternalLink className="w-3 h-3" />
+              </a>
             )}
-          </div>
+          </footer>
         </div>
-        <div className="absolute inset-0 border border-primary/10 rounded-lg group-hover:border-primary/20 transition-colors" />
-      </Link>
+      </article>
     );
   }
 
   return (
-    <Link
-      href={isExternalUrl ? (news.url ?? "#") : NewsService.getNewsUrl(news)}
-      target={isExternalUrl ? "_blank" : undefined}
-      rel={isExternalUrl ? "noopener noreferrer" : undefined}
-      className="group block p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm"
-    >
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          {news.category && (
-            <span className="text-sm font-medium text-primary">{news.category}</span>
+    <article className="group relative p-4 rounded-lg border border-border bg-background/50 hover:bg-muted/50 transition-all duration-200 backdrop-blur-sm">
+      <header className="flex items-center justify-between mb-2">
+        <span className="text-sm font-medium text-primary">
+          {news.type === "patch-note" ? "Patch Notes" : "Announcement"}
+        </span>
+        <TimeAgo date={news.date} />
+      </header>
+
+      <div className="flex items-start gap-4">
+        <Link href={NewsService.getNewsUrl(news)} className="flex-grow min-w-0 block">
+          <Text variant="h4" className="line-clamp-1 mb-1.5">
+            {news.title}
+          </Text>
+          <p className="line-clamp-2 text-sm text-foreground/70">
+            {news.processedContent || news.content || ''}
+          </p>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          {hasExternalUrl && (
+            <a
+              href={news.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-foreground/80 hover:text-foreground/90 hover:bg-muted px-2 py-1 rounded-md transition-colors whitespace-nowrap flex-shrink-0"
+            >
+              View on Forum
+              <ExternalLink className="w-3 h-3" />
+            </a>
           )}
-          <div className="flex items-center gap-1.5 text-sm text-foreground/60">
-            <Clock className="w-3.5 h-3.5" />
-            {timeAgo(news.publishedAt || news.date || new Date().toISOString())}
-          </div>
-        </div>
-        <div className="flex items-start gap-4">
-          <div className="flex-grow space-y-1.5 min-w-0">
-            <Text variant="h4" className="line-clamp-1">
-              {news.title}
-            </Text>
-            <Text variant="body" color="secondary" className="line-clamp-2">
-              {news.description}
-            </Text>
-          </div>
-          <div className="flex-shrink-0 mt-1 text-primary">
+          <Link href={NewsService.getNewsUrl(news)} className="flex-shrink-0 mt-1 text-primary">
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </div>
+          </Link>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }

@@ -16,12 +16,11 @@ export function PatchNotesSection() {
   useEffect(() => {
     const loadPatchNotes = async () => {
       try {
-        const notes = await NewsService.getPatchNotes();
-        console.log("Loaded patch notes:", notes); // Debug log
-        if (Array.isArray(notes) && notes.length > 0) {
-          setPatchNotes(notes);
+        const response = await NewsService.getPatchNotes({ itemsPerPage: 5 });
+        if (response.items.length > 0) {
+          setPatchNotes(response.items);
         } else {
-          console.warn("No patch notes found or invalid format");
+          console.warn("No patch notes found");
         }
       } catch (error) {
         console.error("Failed to load patch notes:", error);
@@ -196,7 +195,11 @@ export function PatchNotesSection() {
                             <div className="flex items-center gap-2">
                               <div className="w-1 h-1 rounded-full bg-border" />
                               <Text color="secondary" className="text-xs">
-                                {new Date(update.date).toLocaleDateString()}
+                                {(() => {
+                                  const d = new Date(update.date);
+                                  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                                  return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+                                })()}
                               </Text>
                             </div>
                           </div>

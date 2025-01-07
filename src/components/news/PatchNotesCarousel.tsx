@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "~/components/ui/Button";
@@ -13,8 +13,16 @@ interface PatchNotesCarouselProps {
 }
 
 export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
+  const [mounted, setMounted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  // Format date in a stable way
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  };
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -48,14 +56,21 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
     });
   };
 
+  // Only start auto-advance after hydration
   useEffect(() => {
+    setMounted(true);
     const interval = setInterval(() => {
-      paginate(1);
+      if (mounted) {
+        paginate(1);
+      }
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [mounted]);
 
   const currentNote = patchNotes[currentIndex];
+
+  // Extract first section of content for preview
+  const previewContent = currentNote?.content?.split("<br><br>")[0]?.replace(/<h3>.*?<\/h3>/, '');
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-xl bg-card/95 backdrop-blur-sm border border-border/50 shadow-lg flex flex-col">
@@ -98,56 +113,41 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
                     variant="h3"
                     className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
                   >
-                    {currentNote.version}
+                    {currentNote.title}
                   </Text>
                   <Text
                     color="secondary"
                     className="text-sm bg-background/40 px-3 py-1 rounded-full"
                   >
-                    {new Date(currentNote.date).toLocaleDateString()}
+                    {formatDate(currentNote.date)}
                   </Text>
                 </div>
                 <div className="border-t border-border/50" />
               </div>
 
-              <div className="flex-1 overflow-y-auto space-y-5 pr-4 scrollbar-thin">
-                {currentNote.content?.slice(0, 5).map((change, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 group"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-primary/60 mt-2 flex-shrink-0 group-hover:bg-primary transition-colors" />
-                    <Text className="text-muted-foreground/90 group-hover:text-foreground transition-colors">
-                      {change}
-                    </Text>
+              <div className="flex-1 overflow-y-auto pr-4 scrollbar-thin">
+                {mounted ? (
+                  <div 
+                    className="prose prose-invert max-w-none prose-sm"
+                    dangerouslySetInnerHTML={{ __html: previewContent || '' }} 
+                  />
+                ) : (
+                  <div className="prose prose-invert max-w-none prose-sm">
+                    {previewContent?.replace(/<[^>]*>/g, '') || ''}
                   </div>
-                ))}
-                {currentNote.content && currentNote.content.length > 5 && (
-                  <div className="pt-2">
-                    <Text
-                      color="secondary"
-                      className="text-sm bg-background/30 px-3 py-1.5 rounded-full inline-block"
+                )}
+                {currentNote.url && (
+                  <div className="pt-4">
+                    <Link
+                      href={currentNote.url}
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-medium bg-background/30 px-3 py-1.5 rounded-full"
                     >
-                      +{currentNote.content.length - 5} more changes...
-                    </Text>
+                      Read more
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 )}
               </div>
-
-              {currentNote.url && (
-                <div className="pt-6 border-t border-border/50 mt-4">
-                  <a
-                    href={currentNote.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block"
-                  >
-                    <Button variant="secondary" size="sm">
-                      View Full Patch Notes
-                    </Button>
-                  </a>
-                </div>
-              )}
             </div>
           </motion.div>
         </AnimatePresence>

@@ -1,14 +1,21 @@
-import { savePatchNotes, scrapePatchNotes } from "./patch-notes-service";
+import { savePatchNotes, saveAnnouncements, scrapePatchNotes } from "./patch-notes-service";
 
 async function main() {
-  console.log("Starting patch notes scraper...");
+  console.log("Starting news scraper...");
 
   try {
-    const patchNotes = await scrapePatchNotes();
-    console.log(`Found ${patchNotes.length} patch notes`);
+    const allPosts = await scrapePatchNotes();
+    const announcements = allPosts.filter(post => post.type === 'announcement');
+    const patchNotes = allPosts.filter(post => post.type === 'patch-note');
+    
+    console.log(`Found ${announcements.length} announcements and ${patchNotes.length} patch notes`);
 
-    await savePatchNotes(patchNotes);
-    console.log("Patch notes saved successfully");
+    await Promise.all([
+      savePatchNotes(allPosts),
+      saveAnnouncements(allPosts)
+    ]);
+    
+    console.log("News posts saved successfully");
   } catch (error) {
     console.error("Error running scraper:", error);
     process.exit(1);

@@ -1,203 +1,300 @@
-import { MOCK_NEWS, MOCK_PATCH_NOTES } from "~/data/mock-news";
-import type { NewsItem, PatchNote } from "~/types/news";
+import type { NewsPost, PaginatedResponse, NewsQueryParams } from "~/types/news";
 import { generateSlug } from "~/utils/slug";
 
+function sanitizeForPreview(html: string): string {
+  if (!html) return '';
+  
+  // First remove the version number header (h3 tag)
+  html = html.replace(/<h3>[^<]*<\/h3>/, '');
+  
+  // Convert <br> and </li> to newlines for better text separation
+  html = html.replace(/<br\s*\/?>/g, '\n')
+    .replace(/<\/li>/g, '\n');
+  
+  // Remove all other HTML tags but keep text content
+  const text = html.replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  
+  // Decode HTML entities
+  return text
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
+function getFirstParagraph(content: string): string {
+  if (!content) return '';
+  
+  const text = sanitizeForPreview(content);
+  
+  // Split by newlines and get first meaningful content
+  const lines = text.split(/\n+/).map(line => line.trim()).filter(line => {
+    // Skip empty lines and version numbers
+    if (!line || line.match(/^\d+(\.\d+)*[a-z]?\s*(Hotfix|Update|Patch)\s*\d*$/i)) {
+      return false;
+    }
+    // Skip category headers
+    if (line.match(/^(General Improvements|Bug Fixes|Balance Changes|Improvements)/i)) {
+      return false;
+    }
+    return true;
+  });
+  
+  return lines[0] || '';
+}
+
+function removeDuplicateImages(content: string, imageUrl: string | undefined): string {
+  if (!imageUrl || !content) return content;
+  
+  // Remove any img tags that have the same src as imageUrl
+  const escapedImageUrl = imageUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const imgRegex = new RegExp(`<img[^>]*src=["']${escapedImageUrl}["'][^>]*>`, 'gi');
+  return content.replace(imgRegex, '');
+}
+
+function processNewsContent(news: NewsPost): NewsPost {
+  return {
+    ...news,
+    processedContent: getFirstParagraph(news.content),
+    fullContent: removeDuplicateImages(news.content, news.imageUrl)
+  };
+}
+
 export class NewsService {
-  static async getLatestNews(
-    category?: string,
-    source?: string,
-    timeRange?: string
-  ): Promise<NewsItem[]> {
-    // Simulating API call with Next.js 15 fetch caching
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  static async getLatestNews(params: NewsQueryParams = {}): Promise<PaginatedResponse<NewsPost>> {
+    const {
+      page = 1,
+      itemsPerPage = 10,
+      category,
+      source,
+      timeRange,
+      type
+    } = params;
 
-    let filteredNews = MOCK_NEWS;
+    let allNews = await this.getAllNews();
 
-    if (category) {
-      filteredNews = filteredNews.filter(
-        (news) => news.category?.toLowerCase() === category.toLowerCase()
-      );
-    }
-
-    if (source) {
-      filteredNews = filteredNews.filter(
-        (news) => news.source?.toLowerCase() === source.toLowerCase()
-      );
-    }
-
+    // Apply filters
     if (timeRange) {
       const now = new Date();
       const days = parseInt(timeRange.replace("d", ""));
       const cutoff = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
 
-      filteredNews = filteredNews.filter((news) => {
-        const newsDate = news.publishedAt ? new Date(news.publishedAt) : null;
-        return newsDate ? newsDate >= cutoff : false;
+      allNews = allNews.filter((news) => {
+        const newsDate = new Date(news.date);
+        return newsDate >= cutoff;
       });
     }
 
-    return filteredNews;
+    if (type) {
+      allNews = allNews.filter(news => news.type === type);
+    }
+
+    // Sort by date
+    allNews = allNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    // Calculate pagination
+    const totalItems = allNews.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    // Get paginated items and process content
+    const paginatedItems = allNews
+      .slice(startIndex, endIndex)
+      .map(post => processNewsContent(post));
+
+    return {
+      items: paginatedItems,
+      metadata: {
+        currentPage: page,
+        totalPages,
+        totalItems,
+        itemsPerPage
+      }
+    };
   }
 
-  static async getNewsById(idOrSlug: string): Promise<NewsItem | null> {
+  static async getNewsById(idOrSlug: string): Promise<NewsPost | null> {
     try {
-      // First try to find by slug in regular news
-      let newsItem = MOCK_NEWS.find((news) => news.slug === idOrSlug);
+      const allNews = await this.getAllNews();
       
-      // If not found by slug, try to find by ID (legacy support)
+      // Try to find by ID first
+      let newsItem = allNews.find((news) => news.id === idOrSlug);
+      
+      // If not found by ID, try slug
       if (!newsItem) {
-        newsItem = MOCK_NEWS.find((news) => news.id === idOrSlug);
+        newsItem = allNews.find((news) => news.slug === idOrSlug);
       }
       
-      if (newsItem) return newsItem;
-
-      // If not found in regular news, try patch notes
-      const patchNotes = await this.getPatchNotes();
-      const patchNote = patchNotes.find((note) => {
-        // Try both ID and slug match
-        const id = this.extractPatchNoteId(note);
-        const slug = this.generatePatchNoteSlug(note);
-        return id === idOrSlug || slug === idOrSlug;
-      });
-
-      if (patchNote) {
-        const newsItem = this.convertPatchNoteToNewsItem(patchNote);
-        // If accessed by ID, ensure we're using the slug
-        if (idOrSlug === this.extractPatchNoteId(patchNote)) {
-          newsItem.redirectToSlug = true;
-        }
-        return newsItem;
-      }
-
-      return null;
+      return newsItem ? processNewsContent(newsItem) : null;
     } catch (error) {
       console.error("Error getting news by ID:", error);
       return null;
     }
   }
 
-  private static ensureNewsSlug(news: NewsItem): NewsItem {
+  private static ensureNewsSlug(news: NewsPost): NewsPost {
     if (!news.slug) {
       news.slug = generateSlug(news.title);
     }
     return news;
   }
 
-  private static generatePatchNoteSlug(note: PatchNote): string {
-    const title = `Patch Notes ${note.version}`;
-    return generateSlug(title);
-  }
-
-  private static ensurePatchNoteSlug(note: PatchNote): string {
-    return this.generatePatchNoteSlug(note);
-  }
-
-  private static extractPatchNoteId(note: PatchNote): string {
-    if (note.url) {
-      // Extract numeric ID from URL (e.g., "view-thread/3650268" -> "3650268")
-      const match = note.url.match(/\/(\d+)(?:\/|$)/);
-      if (match) return match[1];
-    }
-    return generateSlug(note.version);
-  }
-
-  static getNewsUrl(news: NewsItem): string {
+  static getNewsUrl(news: NewsPost): string {
     const ensuredNews = this.ensureNewsSlug(news);
-    if (ensuredNews.type === "patch") {
+    if (ensuredNews.type === "patch-note") {
       return `/news/patch-notes/${ensuredNews.slug}`;
     }
     return `/news/${ensuredNews.slug}`;
   }
 
-  static getPatchNoteUrl(note: PatchNote): string {
-    return `/news/patch-notes/${this.ensurePatchNoteSlug(note)}`;
-  }
-
-  private static convertPatchNoteToNewsItem(note: PatchNote): NewsItem {
-    const id = this.extractPatchNoteId(note);
-    const slug = this.generatePatchNoteSlug(note);
-    
-    return {
-      id,
-      slug,
-      title: `Version ${note.version}`,
-      date: note.date,
-      description: note.content?.[0] || "",
-      category: "Patch Notes",
-      publishedAt: note.date,
-      source: "Official",
-      url: note.url,
-      content: note.content,
-      type: "patch" as const,
-    };
-  }
-
   static async getCategories(): Promise<string[]> {
-    // Simulating API call with Next.js 15 fetch caching
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    return Array.from(
-      new Set(
-        MOCK_NEWS.map((news) => news.category).filter(
-          (category): category is string => category !== undefined
-        )
-      )
-    );
+    return ["Announcements", "Patch Notes"];
   }
 
-  static async getPatchNotes(): Promise<PatchNote[]> {
+  static async getPatchNotes(params: NewsQueryParams = {}): Promise<PaginatedResponse<NewsPost>> {
     try {
+      const { page = 1, itemsPerPage = 10 } = params;
+      let data: NewsPost[] = [];
+
       // Server-side: Use Node's fs module
       if (typeof window === "undefined") {
         const fs = require("fs");
         const path = require("path");
         const filePath = path.join(process.cwd(), "public", "data", "patch-notes.json");
-        const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-        return data;
+        data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+      } else {
+        // Client-side: Use fetch
+        const response = await fetch("/data/patch-notes.json");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch patch notes (${response.status})`);
+        }
+        data = await response.json();
       }
 
-      // Client-side: Use fetch
-      const response = await fetch("/data/patch-notes.json");
-      if (!response.ok) {
-        throw new Error(`Failed to fetch patch notes (${response.status})`);
-      }
-      const data = await response.json();
-      return data;
+      // Ensure type is set
+      data = data.map(item => ({ ...item, type: 'patch-note' }));
+
+      // Sort by date
+      data = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+      // Calculate pagination
+      const totalItems = data.length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+
+      // Get paginated items and process content
+      const paginatedItems = data
+        .slice(startIndex, endIndex)
+        .map(post => this.ensureNewsSlug(post))
+        .map(post => processNewsContent(post));
+
+      return {
+        items: paginatedItems,
+        metadata: {
+          currentPage: page,
+          totalPages,
+          totalItems,
+          itemsPerPage
+        }
+      };
     } catch (error) {
       console.error("Error loading patch notes:", error);
-      return MOCK_PATCH_NOTES;
+      return {
+        items: [],
+        metadata: {
+          currentPage: 1,
+          totalPages: 0,
+          totalItems: 0,
+          itemsPerPage: params.itemsPerPage || 10
+        }
+      };
     }
   }
 
-  static async getAllNews(): Promise<NewsItem[]> {
-    const [news, patchNotes] = await Promise.all([
-      Promise.resolve(MOCK_NEWS),
-      this.getPatchNotes(),
-    ]);
+  static async getAnnouncements(params: NewsQueryParams = {}): Promise<PaginatedResponse<NewsPost>> {
+    try {
+      const { page = 1, itemsPerPage = 10 } = params;
+      let data: NewsPost[] = [];
 
-    const patchNewsItems = patchNotes.map((note) => {
-      const id = this.extractPatchNoteId(note);
-      const slug = this.generatePatchNoteSlug(note);
+      // Server-side: Use Node's fs module
+      if (typeof window === "undefined") {
+        const fs = require("fs");
+        const path = require("path");
+        const filePath = path.join(process.cwd(), "public", "data", "announcements.json");
+        data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+      } else {
+        // Client-side: Use fetch
+        const response = await fetch("/data/announcements.json");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch announcements (${response.status})`);
+        }
+        data = await response.json();
+      }
+
+      // Ensure type is set
+      data = data.map(item => ({ ...item, type: 'announcement' }));
+
+      // Sort by date
+      data = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+      // Calculate pagination
+      const totalItems = data.length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+
+      // Get paginated items and process content
+      const paginatedItems = data
+        .slice(startIndex, endIndex)
+        .map(post => this.ensureNewsSlug(post))
+        .map(post => processNewsContent(post));
 
       return {
-        id,
-        slug,
-        title: `Version ${note.version}`,
-        date: note.date,
-        description: `Patch ${note.version} - ${note.sections?.[0]?.changes[0] || note.content?.[0] || ""}`,
-        category: "Patch Notes",
-        publishedAt: note.date,
-        source: "Official",
-        url: note.url,
-        content: note.content,
-        type: "patch" as const,
+        items: paginatedItems,
+        metadata: {
+          currentPage: page,
+          totalPages,
+          totalItems,
+          itemsPerPage
+        }
       };
-    });
+    } catch (error) {
+      console.error("Error loading announcements:", error);
+      return {
+        items: [],
+        metadata: {
+          currentPage: 1,
+          totalPages: 0,
+          totalItems: 0,
+          itemsPerPage: params.itemsPerPage || 10
+        }
+      };
+    }
+  }
 
-    return [...news, ...patchNewsItems].sort((a, b) => {
-      const dateA = new Date(a.publishedAt || a.date || 0).getTime();
-      const dateB = new Date(b.publishedAt || b.date || 0).getTime();
-      return dateB - dateA;
-    });
+  static async getAllNews(): Promise<NewsPost[]> {
+    try {
+      // Get both patch notes and announcements
+      const [patchNotes, announcements] = await Promise.all([
+        this.getPatchNotes({ itemsPerPage: Number.MAX_SAFE_INTEGER }),
+        this.getAnnouncements({ itemsPerPage: Number.MAX_SAFE_INTEGER })
+      ]);
+
+      // Combine, sort, and process all news
+      const allNews = [...patchNotes.items, ...announcements.items]
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .map(post => processNewsContent(post));
+
+      return allNews;
+    } catch (error) {
+      console.error("Error loading all news:", error);
+      return [];
+    }
   }
 }

@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
       title: news.title,
-      description: news.description,
+      description: news.processedContent || news.title,
       openGraph: {
         title: news.title,
-        description: news.description,
+        description: news.processedContent || news.title,
         type: 'article',
-        publishedTime: news.publishedAt || news.date,
-        modifiedTime: news.publishedAt || news.date,
+        publishedTime: news.date,
+        modifiedTime: news.date,
       },
     };
   } catch {
@@ -44,7 +44,7 @@ export default async function NewsItemPage({ params }: PageProps) {
     if (!news) notFound();
     
     // Redirect patch notes to their dedicated route
-    if (news.type === 'patch') {
+    if (news.type === 'patch-note') {
       return redirect(`/news/patch-notes/${news.slug || news.id}`);
     }
 
@@ -65,7 +65,10 @@ export default async function NewsItemPage({ params }: PageProps) {
     };
 
     return (
-      <NewsLayout title={news.title} description={news.description}>
+      <NewsLayout 
+        title={news.title} 
+        description={news.processedContent || news.title}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
             fallback={
@@ -78,17 +81,16 @@ export default async function NewsItemPage({ params }: PageProps) {
           >
             <article className="prose prose-invert max-w-none">
               <div className="flex items-center gap-4 text-sm text-foreground/60 mb-8">
-                {news.category && <span className="text-primary font-medium">{news.category}</span>}
-                {news.publishedAt && (
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4" />
-                    {timeAgo(news.publishedAt)}
-                  </div>
-                )}
-                {news.source && (
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  {timeAgo(news.date)}
+                </div>
+                <span className="text-foreground/40">•</span>
+                <span>{news.type === 'announcement' ? 'Announcement' : 'Patch Note'}</span>
+                {news.replies && (
                   <>
                     <span className="text-foreground/40">•</span>
-                    <span>{news.source}</span>
+                    <span>{news.replies} replies</span>
                   </>
                 )}
               </div>
@@ -97,15 +99,20 @@ export default async function NewsItemPage({ params }: PageProps) {
                 <Text variant="h1" className="!mt-0">
                   {news.title}
                 </Text>
-                {news.description && (
-                  <Text variant="body" color="secondary" className="text-lg">
-                    {news.description}
-                  </Text>
+                {news.imageUrl && (
+                  <div className="relative w-full h-64 mb-8">
+                    <img 
+                      src={news.imageUrl} 
+                      alt={news.title}
+                      className="object-cover w-full h-full rounded-lg"
+                    />
+                  </div>
                 )}
 
-                {news.content && !Array.isArray(news.content) && (
-                  <div className="mt-8 prose prose-invert max-w-none">{news.content}</div>
-                )}
+                <div 
+                  className="mt-8 prose prose-invert max-w-none"
+                  dangerouslySetInnerHTML={{ __html: news.fullContent || news.content }}
+                />
 
                 {/* Back to News Link */}
                 <div className="mt-12 pt-6 border-t border-border/30">

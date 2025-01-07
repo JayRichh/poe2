@@ -12,7 +12,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const latestNews = await NewsService.getLatestNews();
-  const latestUpdate = latestNews.find((n) => n.category === "Update");
+  const latestUpdate = latestNews.items.find((n) => n.type === "announcement");
 
   const description = latestUpdate
     ? `Latest POE2 Update: ${latestUpdate.title}. Comprehensive Path of Exile 2 toolkit featuring an interactive build planner, skill tree calculator, DPS simulator, and character optimization tools.`
