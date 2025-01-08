@@ -21,3 +21,12 @@ npm run dev
 ```
 
 GoatCounter: [poe2.dev goat counts](https://poe2.goatcounter.com/)
+
+
+## Credits
+
+(API not available yet from GGG ?)
+- [POE2DB](https://poe2db.tw/) - Items and gem data 
+- [poe2-tree](https://github.com/marcoaaguiar/poe2-tree) - Skill tree knowledge and data
+- [SkillTree_TypeScript](https://github.com/EmmittJ/SkillTree_TypeScript) - Skill tree implementation
+- [Path of Exile Forums](https://www.pathofexile.com/forum) - Official patch notes and announcements

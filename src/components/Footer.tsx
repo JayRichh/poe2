@@ -206,6 +206,38 @@ export function Footer() {
                 ))}
               </div>
             </div>
+
+            {/* Contributors */}
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight mb-8">Contributors</h2>
+              <div className="flex flex-wrap gap-4">
+                {contributors.map((contributor) => (
+                  <motion.a
+                    key={contributor.username}
+                    href={`https://github.com/${contributor.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative group"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <motion.div
+                      className="absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-pink-600 to-purple-600 blur"
+                      initial={false}
+                      animate={{ opacity: 0 }}
+                      whileHover={{ opacity: 0.5 }}
+                    />
+                    <Image
+                      src={contributor.avatar}
+                      alt={contributor.username}
+                      width={40}
+                      height={40}
+                      className="rounded-full relative"
+                    />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Support & Community */}
@@ -283,43 +315,21 @@ export function Footer() {
                 ))}
               </div>
             </div>
+
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold tracking-tight">Data Sources</h3>
+              <div className="flex flex-col lg:items-end gap-4">
+                <a href="https://poe2db.tw/" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">POE2DB</a>
+                <a href="https://github.com/marcoaaguiar/poe2-tree" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">poe2-tree</a>
+                <a href="https://github.com/EmmittJ/SkillTree_TypeScript" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">SkillTree_TypeScript</a>
+                <a href="https://www.pathofexile.com/forum" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">POE Forums</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Contributors Section */}
-
         {/* Bottom Section */}
-        <div className="border-t border-border/5">
-          <div className="mb-16 w-1/2">
-            <h2 className="text-2xl font-semibold tracking-tight mb-8">Contributors</h2>
-            <div className="flex flex-wrap gap-4">
-              {contributors.map((contributor) => (
-                <motion.a
-                  key={contributor.username}
-                  href={`https://github.com/${contributor.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative group"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-pink-600 to-purple-600 blur"
-                    initial={false}
-                    animate={{ opacity: 0 }}
-                    whileHover={{ opacity: 0.5 }}
-                  />
-                  <Image
-                    src={contributor.avatar}
-                    alt={contributor.username}
-                    width={40}
-                    height={40}
-                    className="rounded-full relative"
-                  />
-                </motion.a>
-              ))}
-            </div>
-          </div>
+        <div className="border-t border-border/5 mt-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-sm text-muted-foreground">
