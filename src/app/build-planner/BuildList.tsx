@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
+import { useAuth } from "~/contexts/auth";
 import { useBuilds } from "~/hooks/useBuilds";
 
 import type { Build, VisibilityType } from "~/app/actions/server/builds";
@@ -49,14 +50,16 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const view = searchParams?.get("view") as "grid" | "list" | "grouped" | undefined;
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
-  const { builds, loading } = useBuilds({
+  const { user, loading: authLoading } = useAuth();
+  const { builds, loading: buildsLoading } = useBuilds({
     visibility: visibility as VisibilityType | "all",
     includeOwn: true,
   });
 
   // Memoize filtered and sorted builds
   const filteredBuilds = useMemo(() => {
-    const currentBuilds = builds.length > 0 ? builds : initialBuilds;
+    // During auth loading or no auth, only show public builds from initial data
+    const currentBuilds = authLoading || !user ? initialBuilds.filter(b => b.visibility === 'public') : (builds.length > 0 ? builds : initialBuilds);
     return currentBuilds
       .filter((build: Build) => {
         if (search && !build.name.toLowerCase().includes(search.toLowerCase())) {
@@ -113,7 +116,7 @@ export function BuildList({ initialBuilds }: BuildListProps) {
           </div>
         }
       >
-        {loading ? (
+        {buildsLoading || authLoading ? (
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />

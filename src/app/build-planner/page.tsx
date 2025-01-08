@@ -11,8 +11,7 @@ import { getBuilds } from "~/app/actions/server/builds";
 
 import { BuildList } from "./BuildList";
 
-// Cache public builds for 1 minute, revalidate on-demand for private/user builds
-export const revalidate = 60;
+export const revalidate = 0;
 
 async function getInitialBuilds(
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -24,8 +23,7 @@ async function getInitialBuilds(
   const options = {
     visibility: visibility as "all" | "public" | "private" | "unlisted",
     includeOwn: true,
-    // Cache public builds, but always fetch fresh private/user builds
-    cache: visibility === "public" ? "force-cache" : ("no-store" as RequestCache),
+    cache: "no-store" as RequestCache,
   };
 
   return getBuilds(options);

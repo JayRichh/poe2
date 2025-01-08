@@ -26,8 +26,7 @@ export function useBuilds(options?: BuildOptions) {
   } = useQuery({
     queryKey: [BUILDS_QUERY_KEY, options],
     queryFn: () => getBuilds(options),
-    enabled: !!user,
-    staleTime: 2000, // Consider data fresh for 2 seconds
+    staleTime: 0, 
   });
 
   // Create mutation

@@ -5,6 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { createClient } from "~/lib/supabase/client";
 
@@ -36,6 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(false);
   const router = useRouter();
   const client = createClient();
+  const queryClient = useQueryClient();
 
   const refreshSession = async () => {
     try {
@@ -110,6 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           error: null,
         }));
         router.push("/");
+        queryClient.invalidateQueries({ queryKey: ["builds"] });
       } else if (session) {
         // Verify user data when session changes
         const {
@@ -125,6 +128,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           error: null,
         }));
         router.refresh();
+        queryClient.invalidateQueries({ queryKey: ["builds"] });
       }
     });
 
