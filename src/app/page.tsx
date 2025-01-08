@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { CalculatorsSection } from "~/components/home/CalculatorsSection";
 import { FeaturesSection } from "~/components/home/FeaturesSection";
 import { GameSystemsSection } from "~/components/home/GameSystemsSection";
+import { ItemsSection } from "~/components/home/ItemsSection";
 import { HeroSection } from "~/components/home/HeroSection";
 import { PatchNotesSection } from "~/components/home/PatchNotesSection";
 import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
@@ -30,32 +31,36 @@ export default function HomePage() {
       </section>
 
       <ScrollToTopButton />
+      
+      <section className="w-full pb-12 flex justify-center">
+        <ItemsSection />
+      </section>
 
-      <section className="w-full py-32 flex justify-center">
+      <section className="w-full py-6 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl bg-opacity-100">
           <PatchNotesSection />
         </Container>
       </section>
 
-      <section className="w-full py-32 flex justify-center">
+      <section className="w-full py-6 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <CalculatorsSection />
         </Container>
       </section>
 
-      <section className="w-full py-32 flex justify-center">
+      <section className="w-full py-6 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <FeaturesSection />
         </Container>
       </section>
 
-      <section className="w-full py-32">
+      <section className="w-full py-6">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <GameSystemsSection />
         </Container>
       </section>
 
-      <section className="w-full py-32">
+      <section className="w-full py-6">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <SkillTreeSection />
         </Container>

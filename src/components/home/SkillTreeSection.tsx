@@ -38,7 +38,7 @@ const features: Feature[] = [
 
 export function SkillTreeSection() {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-16 min-h-[600px] py-32 pt-12">
+    <div className="flex flex-col lg:flex-row items-center gap-16 min-h-[600px] pt-12">
       <div className="flex-1 space-y-12">
         <div className="space-y-6">
           <div className="space-y-4">

@@ -43,7 +43,7 @@ export function PatchNotesSection() {
 
   if (!patchNotes.length && !loading) {
     return (
-      <div className="space-y-16">
+      <div className="">
         <div className="text-center space-y-4 flex flex-col pb-12">
           <Text
             variant="h1"
@@ -61,7 +61,7 @@ export function PatchNotesSection() {
 
   if (loading) {
     return (
-      <div className="space-y-16">
+      <div className="">
         <div className="text-center space-y-4 flex flex-col pb-12">
           <Text
             variant="h1"
@@ -112,7 +112,7 @@ export function PatchNotesSection() {
   };
 
   return (
-    <div className="space-y-12 py-16">
+    <div className="">
       <div className="text-center space-y-4 flex flex-col pb-12">
         <Text
           variant="h1"

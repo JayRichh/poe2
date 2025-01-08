@@ -65,7 +65,7 @@ export function GameSystemsSection() {
         {/* Mechanics Section */}
         <div className="space-y-8">
           <div className="space-y-4">
-            <Text variant="h2" className="text-4xl font-bold tracking-tight text-foreground">
+            <Text variant="h2" className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               Game Mechanics
             </Text>
             <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
@@ -113,7 +113,7 @@ export function GameSystemsSection() {
         {/* Ascendancy Section */}
         <div className="space-y-8">
           <div className="space-y-4">
-            <Text variant="h2" className="text-4xl font-bold tracking-tight text-foreground">
+            <Text variant="h2" className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               Ascendancy Classes
             </Text>
             <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
