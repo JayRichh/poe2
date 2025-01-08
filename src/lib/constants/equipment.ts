@@ -21,8 +21,8 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Rusted Sword",
     type_line: "Rusted Sword",
     properties: [
-      { name: "physical_damage", value: 6, display: "6-8 Physical Damage" },
-      { name: "attack_speed", value: 1.45, display: "1.45 Attacks per Second" }
+      { name: "physical_damage", value: 6, display: "6-8 Physical Damage", type: "physical" },
+      { name: "attack_speed", value: 1.45, display: "1.45 Attacks per Second", type: "speed" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" },
@@ -35,8 +35,8 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Splintered Shield",
     type_line: "Splintered Shield",
     properties: [
-      { name: "block", value: 4, display: "4% Block" },
-      { name: "armor", value: 3, display: "3 Armor" }
+      { name: "block", value: 4, display: "4% Block", type: "defence" },
+      { name: "armor", value: 3, display: "3 Armor", type: "defence" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" },
@@ -49,7 +49,7 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Rusted Coif",
     type_line: "Rusted Coif",
     properties: [
-      { name: "armor", value: 5, display: "5 Armor" }
+      { name: "armor", value: 5, display: "5 Armor", type: "defence" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" },
@@ -62,8 +62,8 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Tattered Robe",
     type_line: "Tattered Robe",
     properties: [
-      { name: "armor", value: 6, display: "6 Armor" },
-      { name: "energy_shield", value: 3, display: "3 Energy Shield" }
+      { name: "armor", value: 6, display: "6 Armor", type: "defence" },
+      { name: "energy_shield", value: 3, display: "3 Energy Shield", type: "defence" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" },
@@ -76,7 +76,7 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Ragged Gloves",
     type_line: "Ragged Gloves",
     properties: [
-      { name: "armor", value: 2, display: "2 Armor" }
+      { name: "armor", value: 2, display: "2 Armor", type: "defence" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" }
@@ -88,7 +88,7 @@ export const EQUIPMENT_DEFAULTS: Record<EquipmentSlot, EquipmentDefaults> = {
     base_type: "Worn Boots",
     type_line: "Worn Boots",
     properties: [
-      { name: "armor", value: 2, display: "2 Armor" }
+      { name: "armor", value: 2, display: "2 Armor", type: "defence" }
     ],
     requirements: [
       { name: "level", value: 1, display: "Level 1" }
