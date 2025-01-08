@@ -20,7 +20,7 @@ function ScrollingRow({
   speed?: number;
 }) {
   const x = useMotionValue(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true); // Start paused
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const direction = reverse ? 1 : -1;
@@ -36,6 +36,13 @@ function ScrollingRow({
       setContentWidth(totalWidth);
     }
   }, [items]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPaused(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     let frameId: number;
@@ -153,7 +160,7 @@ export function ItemCarousel({ topItems, bottomItems }: ItemCarouselProps) {
           <ScrollingRow items={topItems} />
         </div>
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={bottomItems} reverse  />
+          <ScrollingRow items={bottomItems} reverse />
         </div>
       </div>
     </div>
