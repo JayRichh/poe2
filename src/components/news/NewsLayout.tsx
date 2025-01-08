@@ -78,7 +78,7 @@ export function NewsLayout({ children, title, description, actions }: NewsLayout
             transition: "margin-left 0.3s ease",
           }}
         >
-          <div className={`h-full`}>{children}</div>
+          <div className="h-full px-4 sm:px-6 lg:px-8 py-6">{children}</div>
         </div>
       </div>
     </div>

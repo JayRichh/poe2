@@ -66,8 +66,7 @@ export default async function NewsItemPage({ params }: PageProps) {
 
     return (
       <NewsLayout 
-        title={news.title} 
-        description={news.processedContent || news.title}
+        title={news.title}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense

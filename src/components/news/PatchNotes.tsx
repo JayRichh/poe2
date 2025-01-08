@@ -24,22 +24,41 @@ function PatchNoteContent({ content }: { content: string }) {
   const [expanded, setExpanded] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const previewLimit = 1000;
-  const hasMore = content.length > previewLimit;
-
+  
   // Enable client-side features after hydration
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // For server-side rendering and initial client render
-  const initialContent = content.slice(0, previewLimit) + (hasMore ? "..." : "");
+  // Find a suitable breakpoint for the preview that doesn't cut HTML tags
+  const findBreakpoint = (text: string, limit: number) => {
+    const breakpoints = ['</p>', '</li>', '</ul>', '</ol>', '<br>', '<br/>', '<br />'];
+    let cutoff = limit;
+    
+    for (const bp of breakpoints) {
+      const pos = text.indexOf(bp, limit - 100);
+      if (pos !== -1 && pos < limit + 100) {
+        cutoff = pos + bp.length;
+        break;
+      }
+    }
+    return cutoff;
+  };
+
+  const cutoff = findBreakpoint(content, previewLimit);
+  const hasMore = content.length > cutoff;
+  const initialContent = hasMore ? content.slice(0, cutoff) + "..." : content;
 
   return (
     <div className="space-y-3">
       <div 
-        className="prose prose-sm max-w-none prose-invert"
+        className="prose prose-sm max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-4 prose-p:my-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-2 [&_br]:content-[''] [&_br]:block [&_br]:my-4"
         dangerouslySetInnerHTML={{ 
-          __html: isClient && expanded ? content : initialContent
+          __html: (isClient && expanded ? content : initialContent)
+            .replace(/\n/g, '<br/>')
+            .replace(/<br\/?>\s*<br\/?>/g, '</p><p>')
+            .replace(/<br\/?>\s*<(h[1-6]|ul|ol|li)/g, '<$1')
+            .replace(/<\/(h[1-6]|ul|ol|li)>\s*<br\/?>/g, '</$1>')
         }}
       />
       {hasMore && isClient && (

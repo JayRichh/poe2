@@ -49,9 +49,6 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
             <Text variant="h4" className="line-clamp-2 mb-3">
               {news.title}
             </Text>
-            <p className="line-clamp-3 text-sm text-foreground/70">
-              {news.processedContent || news.content || ''}
-            </p>
             {news.replies ? (
               <Text color="secondary" className="text-sm mt-2">
                 {news.replies} replies
@@ -95,9 +92,6 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
           <Text variant="h4" className="line-clamp-1 mb-1.5">
             {news.title}
           </Text>
-          <p className="line-clamp-2 text-sm text-foreground/70">
-            {news.processedContent || news.content || ''}
-          </p>
         </Link>
 
         <div className="flex items-center gap-2">

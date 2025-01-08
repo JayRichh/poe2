@@ -61,8 +61,7 @@ export default async function PatchNotePage({ params }: PageProps) {
 
     return (
       <NewsLayout 
-        title={news.title} 
-        description={news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title}
+        title={news.title}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
