@@ -477,14 +477,6 @@
           "tabSource": "Skill Gems Summary /226"
         },
         {
-          "name": "Spark",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/sparkskillgem.webp",
-          "url": "/us/Spark",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
           "name": "Frost Wall",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/frostwallskillgem.webp",
           "url": "/us/Frost_Wall",
@@ -1029,14 +1021,6 @@
           "tabSource": "Skill Gems Summary /226"
         },
         {
-          "name": "Skeletal Warrior",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/witchwarriorskillgem.webp",
-          "url": "/us/Skeletal_Warrior",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
           "name": "Grim Feast",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/witchgrimfeastskillgem.webp",
           "url": "/us/Grim_Feast",
@@ -1128,22 +1112,6 @@
           "name": "Withering Presence",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/witchwitheringpresenceskillgem.webp",
           "url": "/us/Withering_Presence",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
-          "name": "Ember Fusillade",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blazingclusterskillgem.webp",
-          "url": "/us/Ember_Fusillade",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
-          "name": "Lightning Bolt",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
-          "url": "/us/Lightning_Bolt",
           "category": "Skill Gems Summary /226",
           "modifiers": [],
           "tabSource": "Skill Gems Summary /226"
@@ -1605,14 +1573,6 @@
           "tabSource": "Skill Gems Summary /226"
         },
         {
-          "name": "Decompose",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
-          "url": "/us/Decompose",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
           "name": "Elemental Expression",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
           "url": "/us/Elemental_Expression",
@@ -1768,14 +1728,6 @@
           "name": "Cluster Grenade",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/clustergrenadeskillgem.webp",
           "url": "/us/Cluster_Grenade",
-          "category": "Skill Gems Summary /226",
-          "modifiers": [],
-          "tabSource": "Skill Gems Summary /226"
-        },
-        {
-          "name": "Blink",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blinkreservationskillgem.webp",
-          "url": "/us/Blink",
           "category": "Skill Gems Summary /226",
           "modifiers": [],
           "tabSource": "Skill Gems Summary /226"
@@ -18854,28 +18806,6 @@
           "tabSource": "Body Armours Item /145"
         },
         {
-          "name": "Tournament Mail",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/armours/bodyarmours/basetypes/bodystrdex01.webp",
-          "url": "/us/Tournament_Mail",
-          "category": "Body Armours Item /145",
-          "requirements": {
-            "level": 68
-          },
-          "modifiers": [],
-          "tabSource": "Body Armours Item /145"
-        },
-        {
-          "name": "Tournament Mail",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/armours/bodyarmours/basetypes/bodystrdex01.webp",
-          "url": "/us/Tournament_Mail",
-          "category": "Body Armours Item /145",
-          "requirements": {
-            "level": 68
-          },
-          "modifiers": [],
-          "tabSource": "Body Armours Item /145"
-        },
-        {
           "name": "Slayer Armour",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/armours/bodyarmours/basetypes/bodystrdex01.webp",
           "url": "/us/Slayer_Armour",
@@ -19687,28 +19617,6 @@
           "category": "Body Armours Item /145",
           "requirements": {
             "level": 65
-          },
-          "modifiers": [],
-          "tabSource": "Body Armours Item /145"
-        },
-        {
-          "name": "Expert Cloaked Mail",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/armours/bodyarmours/basetypes/bodystrdex04.webp",
-          "url": "/us/Expert_Cloaked_Mail",
-          "category": "Body Armours Item /145",
-          "requirements": {
-            "level": 70
-          },
-          "modifiers": [],
-          "tabSource": "Body Armours Item /145"
-        },
-        {
-          "name": "Expert Cloaked Mail",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/armours/bodyarmours/basetypes/bodystrdex04.webp",
-          "url": "/us/Expert_Cloaked_Mail",
-          "category": "Body Armours Item /145",
-          "requirements": {
-            "level": 70
           },
           "modifiers": [],
           "tabSource": "Body Armours Item /145"
@@ -22587,32 +22495,6 @@
           "tabSource": "Rings Unique /26"
         },
         {
-          "name": "Sekhemas Resolve",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/rings/uniques/emberheartseal.webp",
-          "url": "/us/Sekhemas_Resolve",
-          "category": "Rings Unique /26",
-          "modifiers": [
-            "(10–20)% increased Rarity of Items found",
-            "+(10–20) to all Attributes",
-            "Cold Resistance is unaffected by Area Penalties",
-            "You can only Socket Sapphire Jewels in this item"
-          ],
-          "tabSource": "Rings Unique /26"
-        },
-        {
-          "name": "Sekhemas Resolve",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/rings/uniques/emberheartseal.webp",
-          "url": "/us/Sekhemas_Resolve",
-          "category": "Rings Unique /26",
-          "modifiers": [
-            "(10–20)% increased Rarity of Items found",
-            "+(10–20) to all Attributes",
-            "Fire Resistance is unaffected by Area Penalties",
-            "You can only Socket Ruby Jewels in this item"
-          ],
-          "tabSource": "Rings Unique /26"
-        },
-        {
           "name": "Iron Ring",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/rings/basetypes/ironring.webp",
           "url": "/us/Iron_Ring",
@@ -24465,36 +24347,6 @@
           "tabSource": "Stackable Currency Item /39"
         },
         {
-          "name": "Bronze Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/sanctum/sanctumkeybronze.webp",
-          "url": "/us/Bronze_Key",
-          "category": "Stackable Currency Item /39",
-          "modifiers": [
-            "Used to open Bronze Caches within the Trials"
-          ],
-          "tabSource": "Stackable Currency Item /39"
-        },
-        {
-          "name": "Silver Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/sanctum/sanctumkeysilver.webp",
-          "url": "/us/Silver_Key",
-          "category": "Stackable Currency Item /39",
-          "modifiers": [
-            "Used to open Silver Caches within the Trials"
-          ],
-          "tabSource": "Stackable Currency Item /39"
-        },
-        {
-          "name": "Gold Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/sanctum/sanctumkeygold.webp",
-          "url": "/us/Gold_Key",
-          "category": "Stackable Currency Item /39",
-          "modifiers": [
-            "Used to open Gold Caches within the Trials"
-          ],
-          "tabSource": "Stackable Currency Item /39"
-        },
-        {
           "name": "Essence of the Body",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/essence/lifeessence.webp",
           "url": "/us/Essence_of_the_Body",
@@ -25355,26 +25207,6 @@
           "tabSource": "Essence Acronym"
         },
         {
-          "name": "Whispering Incubator",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/incubation/incubationessence.webp",
-          "url": "/us/Whispering_Incubator",
-          "category": "Essence Acronym",
-          "modifiers": [
-            "Adds an incubated Essence item to an equippable item\nItem drops after killing {0} monsters"
-          ],
-          "tabSource": "Essence Acronym"
-        },
-        {
-          "name": "Infused Incubator",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/incubation/incubationessence.webp",
-          "url": "/us/Infused_Incubator",
-          "category": "Essence Acronym",
-          "modifiers": [
-            "Adds an incubated Essence item to an equippable item\nItem drops after killing {0} monsters"
-          ],
-          "tabSource": "Essence Acronym"
-        },
-        {
           "name": "Crystalline Growths",
           "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/passives/atlastrees/essencenotable1.webp",
           "url": "/us/Crystalline_Growths",
@@ -25705,14 +25537,6 @@
           "name": "Flicker Strike",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/flickerstriketeleportskillgem.webp",
           "url": "/us/Flicker_Strike",
-          "category": "Supported Gem /139",
-          "modifiers": [],
-          "tabSource": "Supported Gem /139"
-        },
-        {
-          "name": "Spark",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/sparkskillgem.webp",
-          "url": "/us/Spark",
           "category": "Supported Gem /139",
           "modifiers": [],
           "tabSource": "Supported Gem /139"
@@ -26398,14 +26222,6 @@
           "tabSource": "Supported Gem /139"
         },
         {
-          "name": "Skeletal Warrior",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/witchwarriorskillgem.webp",
-          "url": "/us/Skeletal_Warrior",
-          "category": "Supported Gem /139",
-          "modifiers": [],
-          "tabSource": "Supported Gem /139"
-        },
-        {
           "name": "Scavenged Plating",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/scavengedplatingskillgem.webp",
           "url": "/us/Scavenged_Plating",
@@ -26662,14 +26478,6 @@
           "tabSource": "Supported Gem /139"
         },
         {
-          "name": "Decompose",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
-          "url": "/us/Decompose",
-          "category": "Supported Gem /139",
-          "modifiers": [],
-          "tabSource": "Supported Gem /139"
-        },
-        {
           "name": "Elemental Expression",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
           "url": "/us/Elemental_Expression",
@@ -26737,22 +26545,6 @@
           "name": "Gathering Storm",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/gatheringstormskillgem.webp",
           "url": "/us/Gathering_Storm",
-          "category": "Supported Gem /139",
-          "modifiers": [],
-          "tabSource": "Supported Gem /139"
-        },
-        {
-          "name": "Ember Fusillade",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blazingclusterskillgem.webp",
-          "url": "/us/Ember_Fusillade",
-          "category": "Supported Gem /139",
-          "modifiers": [],
-          "tabSource": "Supported Gem /139"
-        },
-        {
-          "name": "Lightning Bolt",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/gems/new/blankgem.webp",
-          "url": "/us/Lightning_Bolt",
           "category": "Supported Gem /139",
           "modifiers": [],
           "tabSource": "Supported Gem /139"
@@ -27514,62 +27306,6 @@
           "tabSource": "Endgame Maps /73"
         },
         {
-          "name": "Merchant's Campsite",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Merchants_Campsite",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Merchant's Campsite",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Merchants_Campsite",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Merchant's Campsite",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Merchants_Campsite",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Merchant's Campsite",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Merchants_Campsite",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Merchant's Campsite",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Merchants_Campsite",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Moment of Zen",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Moment_of_Zen",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
-          "name": "Moment of Zen",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
-          "url": "/us/Moment_of_Zen",
-          "category": "Endgame Maps /73",
-          "modifiers": [],
-          "tabSource": "Endgame Maps /73"
-        },
-        {
           "name": "Moment of Zen",
           "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
           "url": "/us/Moment_of_Zen",
@@ -27691,447 +27427,7 @@
         },
         {
           "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
-          "icon": "",
-          "url": "",
-          "category": "Endgame Corrupt Mods /11",
-          "modifiers": [],
-          "tabSource": "Endgame Corrupt Mods /11"
-        },
-        {
-          "name": "",
           "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/actsplayerlocation.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/areanodetown.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/areanodeunknown.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/areanode.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/areanodewaypoint.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/areanodewaypointvisited.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/actsquestlocation.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/travelnode.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentraremonster.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentraremonsterupgrade.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentraremonstersanctum.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentraremonsterultimatum.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentboss.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentbossupgrade.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentbosssanctum.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentbossultimatum.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentactboss.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentchest.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentbag.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentcamp.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentquestionmark.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/worldmap/worldmapcontentquestionmarkupgrade.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/areanode.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/areanodeaccessible.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/areanodecompleted.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/areanodefailed.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/areanodecorrupted.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/town.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/losttower.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/stargate.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/coppercitadel.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/ironcitadel.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/stonecitadel.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/monolith.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/currentlocation.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/maplegend/startinglocation.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentmapboss.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentirradiated.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentbreach.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentdelirium.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentexpedition.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentritual.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentcorruption.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontentuniquemap.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenthideout.webp",
-          "url": "",
-          "category": "Map Legends /46",
-          "modifiers": [],
-          "tabSource": "Map Legends /46"
-        },
-        {
-          "name": "",
-          "icon": "https://cdn.poe2db.tw/image/art/2dart/uiimages/ingame/atlasscreen/atlasiconcontent/atlasiconcontenttrader.webp",
           "url": "",
           "category": "Map Legends /46",
           "modifiers": [],
@@ -28281,73 +27577,9 @@
           "tabSource": "Map Fragments Item /143"
         },
         {
-          "name": "Sacrifice at Midnight",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaal01.webp",
-          "url": "/us/Sacrifice_at_Midnight",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Sacrifice at Dawn",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaal02.webp",
-          "url": "/us/Sacrifice_at_Dawn",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Sacrifice at Noon",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaal03.webp",
-          "url": "/us/Sacrifice_at_Noon",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Sacrifice at Dusk",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaal04.webp",
-          "url": "/us/Sacrifice_at_Dusk",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
           "name": "Sacrifice Set",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaalcomplete.webp",
           "url": "/us/Sacrifice_Set",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Mortal Rage",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ubervaal01.webp",
-          "url": "/us/Mortal_Rage",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Mortal Hope",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ubervaal02.webp",
-          "url": "/us/Mortal_Hope",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Mortal Ignorance",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ubervaal03.webp",
-          "url": "/us/Mortal_Ignorance",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Mortal Grief",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ubervaal04.webp",
-          "url": "/us/Mortal_Grief",
           "category": "Map Fragments Item /143",
           "modifiers": [],
           "tabSource": "Map Fragments Item /143"
@@ -28361,73 +27593,9 @@
           "tabSource": "Map Fragments Item /143"
         },
         {
-          "name": "Ebers Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/palecourt01.webp",
-          "url": "/us/Ebers_Key",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Yriels Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/palecourt02.webp",
-          "url": "/us/Yriels_Key",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Inyas Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/palecourt03.webp",
-          "url": "/us/Inyas_Key",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Volkuurs Key",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/palecourt04.webp",
-          "url": "/us/Volkuurs_Key",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
           "name": "Pale Court Set",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/palecourtcomplete.webp",
           "url": "/us/Pale_Court_Set",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Fragment of the Phoenix",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/atlasmaps/fragmentphoenix.webp",
-          "url": "/us/Fragment_of_the_Phoenix",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Fragment of the Minotaur",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/atlasmaps/fragmentminotaur.webp",
-          "url": "/us/Fragment_of_the_Minotaur",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Fragment of the Chimera",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/atlasmaps/fragmentchimera.webp",
-          "url": "/us/Fragment_of_the_Chimera",
-          "category": "Map Fragments Item /143",
-          "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Fragment of the Hydra",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/atlasmaps/fragmenthydra.webp",
-          "url": "/us/Fragment_of_the_Hydra",
           "category": "Map Fragments Item /143",
           "modifiers": [],
           "tabSource": "Map Fragments Item /143"
@@ -28558,16 +27726,6 @@
           "url": "/us/Crest_of_the_Elderslayers",
           "category": "Map Fragments Item /143",
           "modifiers": [],
-          "tabSource": "Map Fragments Item /143"
-        },
-        {
-          "name": "Divine Vessel",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/sinflaskempty.webp",
-          "url": "/us/Divine_Vessel",
-          "category": "Map Fragments Item /143",
-          "modifiers": [
-            "Unique Boss deals 10% increased Damage\nUnique Boss has 10% increased Attack and Cast Speed\nUnique Boss has 10% increased Life\nUnique Boss has 20% increased Area of Effect"
-          ],
           "tabSource": "Map Fragments Item /143"
         },
         {
@@ -29447,16 +28605,6 @@
           "tabSource": "Fragment Acronym"
         },
         {
-          "name": "Fragmented Incubator",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/currency/incubation/incubationfragments.webp",
-          "url": "/us/Fragmented_Incubator",
-          "category": "Fragment Acronym",
-          "modifiers": [
-            "Adds an incubated Fragment item to an equippable item\nItem drops after killing {0} monsters"
-          ],
-          "tabSource": "Fragment Acronym"
-        },
-        {
           "name": "Sacrifice at Dusk",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/vaal04.webp",
           "url": "/us/Sacrifice_at_Dusk",
@@ -29720,28 +28868,6 @@
           "tabSource": "Jewels Unique /11"
         },
         {
-          "name": "Grand Spectrum",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/jewels/uniques/grandspectrum_ruby.webp",
-          "url": "/us/Grand_Spectrum",
-          "category": "Jewels Unique /11",
-          "modifiers": [
-            "2% increased Spirit per socketed Grand Spectrum",
-            "number of stackable unique jewels [1]"
-          ],
-          "tabSource": "Jewels Unique /11"
-        },
-        {
-          "name": "Grand Spectrum",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/jewels/uniques/grandspectrum_ruby.webp",
-          "url": "/us/Grand_Spectrum",
-          "category": "Jewels Unique /11",
-          "modifiers": [
-            "+4% to all Elemental Resistances per socketed Grand Spectrum",
-            "number of stackable unique jewels [1]"
-          ],
-          "tabSource": "Jewels Unique /11"
-        },
-        {
           "name": "Megalomaniac",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/jewels/deliriumjewel.webp",
           "url": "/us/Megalomaniac",
@@ -29793,17 +28919,6 @@
           "category": "Jewels Unique /11",
           "modifiers": [
             "(0–100)% increased Effect of Jewel Socket Passive Skillscontaining Corrupted Magic Jewels"
-          ],
-          "tabSource": "Jewels Unique /11"
-        },
-        {
-          "name": "Megalomaniac",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/jewels/deliriumjewel.webp",
-          "url": "/us/Megalomaniac",
-          "category": "Jewels Unique /11",
-          "modifiers": [
-            "Allocates Random Notable Passive Skill",
-            "Allocates Random Notable Passive Skill"
           ],
           "tabSource": "Jewels Unique /11"
         },
@@ -30455,14 +29570,6 @@
       "name": "Inscribed Ultimatum",
       "url": "/Inscribed_Ultimatum",
       "items": [
-        {
-          "name": "Inscribed Ultimatum",
-          "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ultimatumtrialitem.webp",
-          "url": "/us/Inscribed_Ultimatum",
-          "category": "Inscribed Ultimatum Item /2",
-          "modifiers": [],
-          "tabSource": "Inscribed Ultimatum Item /2"
-        },
         {
           "name": "Inscribed Ultimatum",
           "icon": "https://cdn.poe2db.tw/image/art/2ditems/maps/ultimatumtrialitem.webp",

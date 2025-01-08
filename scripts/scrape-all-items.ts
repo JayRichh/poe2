@@ -226,46 +226,57 @@ async function scrapeModifiersFromTab(page: Page, tabId: string): Promise<ItemMo
 
 async function scrapeItemsFromTab(page: Page, tabId: string, tabName: string): Promise<ItemBase[]> {
   return page.evaluate(({ tabId, categoryName }) => {
-    const items: ItemBase[] = [];
-    const tabPane = document.querySelector(`#${tabId}.tab-pane.active.show`);
-    if (!tabPane) return items;
+    const items: ItemBase[] = []
+    const seen = new Set<string>()
+    const tabPane = document.querySelector(`#${tabId}.tab-pane.active.show`)
+    if (!tabPane) return items
 
-    const itemElements = tabPane.querySelectorAll(".d-flex.border.rounded");
-    
+    const itemElements = tabPane.querySelectorAll(".d-flex.border.rounded")
+
     itemElements.forEach(el => {
-      const linkEl = el.querySelector("a[data-hover]");
-      const url = linkEl?.getAttribute("href") || "";
-      const icon = el.querySelector("img")?.getAttribute("src") || "";
-      const name = linkEl?.textContent?.trim() || url.split('/').pop()?.replace(/_/g, ' ') || "";
+      const linkEl = el.querySelector("a[data-hover]")
+      const url = linkEl?.getAttribute("href") || ""
+      const icon = el.querySelector("img")?.getAttribute("src") || ""
+      const rawName = linkEl?.textContent?.trim() || url.split('/').pop()?.replace(/_/g, ' ') || ""
 
-      const reqText = el.querySelector(".requirements")?.textContent;
-      let level: number | undefined;
+      const reqText = el.querySelector(".requirements")?.textContent
+      let level: number | undefined
       if (reqText) {
-        const match = reqText.match(/Level (\d+)/);
-        if (match) level = parseInt(match[1], 10);
+        const match = reqText.match(/Level (\d+)/)
+        if (match) level = parseInt(match[1], 10)
       }
 
-      const skillEl = el.querySelector(".implicitMod a");
-      const skillIcon = el.querySelector(".implicitMod img");
-      let grantedSkill: ItemSkill | undefined;
+      // Handle potential distinct variations due to different granted skills
+      const skillEl = el.querySelector(".implicitMod a")
+      const skillIcon = el.querySelector(".implicitMod img")
+      let grantedSkill: ItemSkill | undefined
+      let skillSuffix = ""
       if (skillEl) {
+        const skillName = skillEl.textContent?.trim() || ""
+        skillSuffix = ` (${skillName})` // Use skill name in item key
         grantedSkill = {
-          name: skillEl.textContent?.trim() || "",
+          name: skillName,
           icon: skillIcon?.getAttribute("src") || "",
           url: skillEl.getAttribute("href") || "",
-        };
+        }
       }
+
+      // Build a unique key (name + url + skill suffix)
+      const uniqueKey = `${rawName}${url}${skillSuffix}`
+
+      // Skip pushing if we already have the same key
+      if (seen.has(uniqueKey)) return
+      seen.add(uniqueKey)
 
       const modifiers = Array.from(el.querySelectorAll(".explicitMod"))
         .map(mod => mod.textContent?.trim())
-        .filter((text): text is string => !!text);
+        .filter((text): text is string => !!text)
 
-      // Get description if available
-      const descEl = el.querySelector(".description");
-      const description = descEl?.textContent?.trim();
+      const descEl = el.querySelector(".description")
+      const description = descEl?.textContent?.trim()
 
       items.push({
-        name,
+        name: rawName,
         icon,
         url,
         category: categoryName,
@@ -274,11 +285,11 @@ async function scrapeItemsFromTab(page: Page, tabId: string, tabName: string): P
         modifiers,
         description,
         tabSource: categoryName,
-      });
-    });
+      })
+    })
 
-    return items;
-  }, { tabId, categoryName: tabName });
+    return items
+  }, { tabId, categoryName: tabName })
 }
 
 async function scrapeCategory(page: Page, categoryUrl: string): Promise<ItemCategory> {

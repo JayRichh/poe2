@@ -6,7 +6,9 @@ import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
 import { Button } from "~/components/ui/Button";
 import { Select } from "~/components/ui/Select";
-import { Plus, Save, AlertCircle } from "lucide-react";
+import { Plus, Save, AlertCircle, Search } from "lucide-react";
+import { EquipmentItemSelector } from "./EquipmentItemSelector";
+import type { ItemBase } from "~/types/itemTypes";
 import type { Database, Json, EquipmentSlot, ItemRarity } from "~/lib/supabase/types";
 import { useEquipmentManager } from "~/contexts/build";
 import { 
@@ -27,7 +29,8 @@ import {
   MAX_SOCKET_GROUPS
 } from "~/lib/constants/equipment";
 
-type Equipment = Database["public"]["Tables"]["equipment"]["Row"];
+import type { EquipmentWithUrl } from "~/types/equipment";
+type Equipment = EquipmentWithUrl;
 
 interface EquipmentManagerProps {
   buildId: string;
@@ -111,7 +114,7 @@ const ITEM_RARITIES: Array<{ value: ItemRarity; label: string }> = [
 export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) {
   const { equipment, isDirty, updateEquipment: setEquipmentState, saveBuild } = useEquipmentManager();
   const [activeSet, setActiveSet] = useState("default");
-  const [equipmentSets, setEquipmentSets] = useState<Equipment[]>(equipment);
+  const [equipmentSets, setEquipmentSets] = useState<EquipmentWithUrl[]>(equipment as EquipmentWithUrl[]);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -138,7 +141,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
     if (!canModify) return;
 
     const defaults = EQUIPMENT_DEFAULTS[EQUIPMENT_SLOTS[0].value];
-    const newSet: Equipment = {
+    const newSet: EquipmentWithUrl = {
       id: uuidv4(),
       build_id: buildId,
       name: `Set ${equipmentSets.length + 1}`,
@@ -187,7 +190,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
 
     const updatedSets = [...equipmentSets, newSet];
     setEquipmentSets(updatedSets);
-    setEquipmentState(updatedSets);
+    setEquipmentState(updatedSets as Equipment[]);
     setErrors({});
   };
 
@@ -237,7 +240,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
     });
     
     setEquipmentSets(updatedSets);
-    setEquipmentState(updatedSets);
+    setEquipmentState(updatedSets as Equipment[]);
     setErrors({});
   };
 
@@ -389,7 +392,36 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
                 )}
               </div>
             </div>
-            {/* Rest of the form fields remain the same */}
+            <div className="p-4 rounded-lg border border-border/50 bg-background/95">
+              <Text className="text-sm text-foreground/60 mb-4">
+                Select Item
+              </Text>
+              <EquipmentItemSelector
+                slot={set.slot}
+                selectedItemUrl={set.url}
+                onItemSelect={(item) => {
+                  handleUpdateSet(set.id, {
+                    name: item.name,
+                    base_type: item.category,
+                    type_line: item.name,
+                    icon: item.icon,
+                    url: item.url,
+                    item_level: item.requirements?.level || 1,
+                    requirements: item.requirements ? [
+                      {
+                        name: "level",
+                        value: item.requirements.level || 1,
+                        display: `Level ${item.requirements.level || 1}`
+                      }
+                    ] as RequirementJson[] : [],
+                    implicit_mods: item.modifiers || [],
+                    explicit_mods: [],
+                    crafted_mods: []
+                  });
+                }}
+                disabled={!canModify}
+              />
+            </div>
           </div>
         </div>
       ))}
