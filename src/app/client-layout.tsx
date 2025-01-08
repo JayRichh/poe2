@@ -13,6 +13,7 @@ import { GlobalSearch } from "~/components/shared/GlobalSearch";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
 import { WIPBanner } from "~/components/ui/WIPBanner";
+import { ScrollToTopButton } from "../components/home/ScrollToTopButton";
 
 import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
@@ -160,6 +161,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             {/* Footer */}
             <div className="relative z-10 mt-auto">
               <Footer />
+              <ScrollToTopButton />
             </div>
           </AuthProvider>
         </QueryProvider>

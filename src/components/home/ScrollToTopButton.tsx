@@ -16,7 +16,8 @@ const Portal = ({ children }: { children: React.ReactNode }) => {
     return () => setMounted(false);
   }, []);
 
-  return mounted ? createPortal(children, document.body) : null;
+  if (!mounted || typeof document === 'undefined') return null;
+  return createPortal(children, document.body);
 };
 
 export function ScrollToTopButton() {
@@ -44,11 +45,12 @@ export function ScrollToTopButton() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-10 right-10 z-[100]"
+            className="fixed bottom-10 right-10 z-[200]"
           >
             <Button
               onClick={scrollToTop}
               variant="secondary"
+              size="sm"
               className="flex items-center gap-2 bg-background/50 hover:bg-background/80 border-border/50 hover:border-accent/50 shadow-lg backdrop-blur-sm transition-all"
             >
               <ArrowUp className="w-4 h-4" />
