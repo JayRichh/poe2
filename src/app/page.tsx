@@ -7,8 +7,8 @@ import { useRef } from "react";
 import { CalculatorsSection } from "~/components/home/CalculatorsSection";
 import { FeaturesSection } from "~/components/home/FeaturesSection";
 import { GameSystemsSection } from "~/components/home/GameSystemsSection";
-import { ItemsSection } from "~/components/home/ItemsSection";
 import { HeroSection } from "~/components/home/HeroSection";
+import { ItemsSection } from "~/components/home/ItemsSection";
 import { PatchNotesSection } from "~/components/home/PatchNotesSection";
 import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
 import { SkillTreeSection } from "~/components/home/SkillTreeSection";
@@ -31,7 +31,7 @@ export default function HomePage() {
       </section>
 
       <ScrollToTopButton />
-      
+
       <section className="w-full pb-12 flex justify-center">
         <ItemsSection />
       </section>

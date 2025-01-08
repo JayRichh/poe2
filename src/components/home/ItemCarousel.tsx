@@ -1,5 +1,7 @@
 import { motion, useMotionValue } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
+
 import type { ItemBase } from "~/types/itemTypes";
 
 interface ItemCarouselProps {
@@ -68,21 +70,17 @@ function ScrollingRow({
           className="flex items-center gap-3 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/50 rounded-lg p-3 shadow-md min-w-[320px] transition-colors group"
         >
           <div className="w-20 h-20 relative flex-shrink-0 bg-background/30 rounded-lg p-1.5 group-hover:bg-background/50 transition-colors">
-            <img
-              src={item.icon}
-              alt={item.name}
-              className="w-full h-full object-contain"
-            />
+            <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col min-w-0">
             <p className="font-semibold truncate text-lg group-hover:text-primary transition-colors">
               {item.name}
             </p>
             <p className="text-sm text-muted-foreground truncate">
-              {item.modifiers?.[0]?.replace(/\d+/g, "").trim() || 
-               (item.description && !item.description.includes("Item /") ? 
-                 item.description.split(" ").slice(0, 4).join(" ") : 
-                 item.category)}
+              {item.modifiers?.[0]?.replace(/\d+/g, "").trim() ||
+                (item.description && !item.description.includes("Item /")
+                  ? item.description.split(" ").slice(0, 4).join(" ")
+                  : item.category)}
             </p>
           </div>
         </div>
