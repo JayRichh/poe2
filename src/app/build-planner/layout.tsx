@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Container } from "~/components/ui/Container";
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { ItemsProvider } from "~/components/providers/ItemsProvider";
+import { Container } from "~/components/ui/Container";
+
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [

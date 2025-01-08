@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { Search } from "lucide-react";
+
+import { useState } from "react";
+
 import { Text } from "~/components/ui/Text";
-import { useItemsForSlot, useItemSearch } from "~/hooks/useItems";
-import type { ItemBase } from "~/types/itemTypes";
-import type { EquipmentSlot } from "~/lib/supabase/types";
+
+import { useItemSearch, useItemsForSlot } from "~/hooks/useItems";
+
 import { CATEGORY_TO_SLOT } from "~/lib/constants/items";
+import type { EquipmentSlot } from "~/lib/supabase/types";
+import type { ItemBase } from "~/types/itemTypes";
 
 interface EquipmentItemSelectorProps {
   slot: EquipmentSlot;
@@ -19,14 +23,14 @@ export function EquipmentItemSelector({
   slot,
   onItemSelect,
   selectedItemUrl,
-  disabled
+  disabled,
 }: EquipmentItemSelectorProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const { data: slotItems = [] } = useItemsForSlot(slot);
   const { data: searchResults = [] } = useItemSearch(searchQuery);
 
   const filteredItems = searchQuery
-    ? searchResults.filter(item => {
+    ? searchResults.filter((item) => {
         const mappedSlot = CATEGORY_TO_SLOT[item.category];
         return mappedSlot === slot;
       })
@@ -56,8 +60,8 @@ export function EquipmentItemSelector({
             onClick={() => onItemSelect(item as ItemBase)}
             disabled={disabled}
             className={`w-full px-4 py-3 text-left hover:bg-accent/50 transition-colors flex items-center gap-3 ${
-              selectedItemUrl === item.url ? 'bg-accent' : ''
-            } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+              selectedItemUrl === item.url ? "bg-accent" : ""
+            } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             <img src={item.icon} alt="" className="w-8 h-8" />
             <div>
@@ -67,9 +71,7 @@ export function EquipmentItemSelector({
           </button>
         ))}
         {filteredItems.length === 0 && (
-          <div className="px-4 py-3 text-foreground/60 text-center">
-            No items found
-          </div>
+          <div className="px-4 py-3 text-foreground/60 text-center">No items found</div>
         )}
       </div>
     </div>

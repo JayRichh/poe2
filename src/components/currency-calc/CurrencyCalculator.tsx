@@ -1,18 +1,22 @@
 "use client";
 
-import { useCurrencyCalculator } from '~/hooks/useCurrencyCalculator';
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const CurrencyInputPanel = dynamic(() => import('./CurrencyInputPanel').then(mod => mod.CurrencyInputPanel), {
-  loading: () => <div className="h-32 bg-primary/5 animate-pulse rounded-lg" />
+import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
+
+const CurrencyInputPanel = dynamic(
+  () => import("./CurrencyInputPanel").then((mod) => mod.CurrencyInputPanel),
+  {
+    loading: () => <div className="h-32 bg-primary/5 animate-pulse rounded-lg" />,
+  }
+);
+
+const ResultsPanel = dynamic(() => import("./ResultsPanel").then((mod) => mod.ResultsPanel), {
+  loading: () => <div className="h-24 bg-primary/5 animate-pulse rounded-lg" />,
 });
 
-const ResultsPanel = dynamic(() => import('./ResultsPanel').then(mod => mod.ResultsPanel), {
-  loading: () => <div className="h-24 bg-primary/5 animate-pulse rounded-lg" />
-});
-
-const HistoryPanel = dynamic(() => import('./HistoryPanel').then(mod => mod.HistoryPanel), {
-  loading: () => <div className="h-48 bg-primary/5 animate-pulse rounded-lg" />
+const HistoryPanel = dynamic(() => import("./HistoryPanel").then((mod) => mod.HistoryPanel), {
+  loading: () => <div className="h-48 bg-primary/5 animate-pulse rounded-lg" />,
 });
 
 export function CurrencyCalculator() {

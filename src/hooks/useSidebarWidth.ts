@@ -21,12 +21,9 @@ export function useSidebarWidth() {
 
     const updateWidth = () => {
       const width = window.innerWidth;
-      const newWidth = width < MOBILE_BREAKPOINT 
-        ? 0 
-        : isCollapsed 
-          ? COLLAPSED_WIDTH 
-          : EXPANDED_WIDTH;
-      
+      const newWidth =
+        width < MOBILE_BREAKPOINT ? 0 : isCollapsed ? COLLAPSED_WIDTH : EXPANDED_WIDTH;
+
       if (newWidth !== sidebarWidth) {
         setSidebarWidth(newWidth);
       }
@@ -59,7 +56,7 @@ export function useSidebarWidth() {
       topOffset: "top-12 transition-all duration-300 ease-in-out",
       containerClasses: "px-4 sm:px-6 lg:px-8",
       headerPadding: "px-4",
-      isMobile: false
+      isMobile: false,
     };
   }
 
@@ -68,11 +65,11 @@ export function useSidebarWidth() {
     className: `${sidebarWidth === 0 ? "hidden md:block" : ""} transition-all duration-300 ease-in-out`,
     isCollapsed,
     toggleCollapse: () => setIsCollapsed((prev) => !prev),
-    topOffset: headerVisible 
-      ? "top-[104px] sm:top-[112px] transition-all duration-300 ease-in-out" 
+    topOffset: headerVisible
+      ? "top-[104px] sm:top-[112px] transition-all duration-300 ease-in-out"
       : "top-12 transition-all duration-300 ease-in-out",
     containerClasses: "px-4 sm:px-6 lg:px-8",
     headerPadding: isCollapsed ? "px-1.5" : "px-4",
-    isMobile: typeof window !== 'undefined' ? window.innerWidth < MOBILE_BREAKPOINT : false
+    isMobile: typeof window !== "undefined" ? window.innerWidth < MOBILE_BREAKPOINT : false,
   };
 }

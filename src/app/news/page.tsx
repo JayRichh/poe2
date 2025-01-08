@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
-import { NewsLayout } from "~/components/news/NewsLayout";
+
 import { NewsContent } from "~/components/news/NewsContent";
+import { NewsLayout } from "~/components/news/NewsLayout";
+
 import { NewsService } from "~/services/news-service";
 import type { NewsPost, NewsQueryParams } from "~/types/news";
 
@@ -31,14 +33,14 @@ export default async function NewsPage({ searchParams }: PageProps) {
     const queryParams: NewsQueryParams = {
       page: page ? parseInt(page) : 1,
       itemsPerPage: itemsPerPage ? parseInt(itemsPerPage) : 10,
-      timeRange
+      timeRange,
     };
 
     // Add type filter based on category
-    if (category === 'announcements') {
-      queryParams.type = 'announcement';
-    } else if (category === 'patch-notes') {
-      queryParams.type = 'patch-note';
+    if (category === "announcements") {
+      queryParams.type = "announcement";
+    } else if (category === "patch-notes") {
+      queryParams.type = "patch-note";
     }
 
     // Get paginated news
@@ -48,29 +50,30 @@ export default async function NewsPage({ searchParams }: PageProps) {
     let featuredNews: NewsPost[] = [];
     if (!category) {
       const [announcements, patchNotes] = await Promise.all([
-        NewsService.getLatestNews({ 
-          type: 'announcement',
+        NewsService.getLatestNews({
+          type: "announcement",
           itemsPerPage: 1,
           page: 1,
-          timeRange
+          timeRange,
         }),
-        NewsService.getLatestNews({ 
-          type: 'patch-note',
+        NewsService.getLatestNews({
+          type: "patch-note",
           itemsPerPage: 1,
           page: 1,
-          timeRange
-        })
+          timeRange,
+        }),
       ]);
-      featuredNews = [
-        ...announcements.items,
-        ...patchNotes.items
-      ].filter(Boolean);
+      featuredNews = [...announcements.items, ...patchNotes.items].filter(Boolean);
     }
 
     // Get category counts for tabs (respect timeRange filter)
     const [announcementsCount, patchNotesCount] = await Promise.all([
-      NewsService.getLatestNews({ type: 'announcement', itemsPerPage: 1, timeRange }).then(r => r.metadata.totalItems),
-      NewsService.getLatestNews({ type: 'patch-note', itemsPerPage: 1, timeRange }).then(r => r.metadata.totalItems)
+      NewsService.getLatestNews({ type: "announcement", itemsPerPage: 1, timeRange }).then(
+        (r) => r.metadata.totalItems
+      ),
+      NewsService.getLatestNews({ type: "patch-note", itemsPerPage: 1, timeRange }).then(
+        (r) => r.metadata.totalItems
+      ),
     ]);
 
     return (
@@ -78,12 +81,12 @@ export default async function NewsPage({ searchParams }: PageProps) {
         title="Latest News"
         description="Stay updated with the latest Path of Exile 2 news and announcements"
       >
-        <NewsContent 
+        <NewsContent
           news={paginatedNews}
           featuredNews={featuredNews}
           categoryCounts={{
             announcements: announcementsCount,
-            patchNotes: patchNotesCount
+            patchNotes: patchNotesCount,
           }}
         />
       </NewsLayout>

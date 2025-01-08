@@ -1,10 +1,12 @@
 "use client";
 
-import { Key, X, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
+import { Key, LogOut, X } from "lucide-react";
+
+import { FormField } from "~/components/shared/FormField";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import { FormField } from "~/components/shared/FormField";
+
 import { cn } from "~/utils/cn";
 
 interface SecuritySectionProps {
@@ -28,7 +30,7 @@ export function SecuritySection({
 }: SecuritySectionProps) {
   return (
     <div className="space-y-8">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col p-6 rounded-xl border-2 border-border/50 bg-background/95"
@@ -94,11 +96,7 @@ export function SecuritySection({
         )}
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
         <Button
           type="button"
           variant="destructive"

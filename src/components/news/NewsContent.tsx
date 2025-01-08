@@ -1,13 +1,18 @@
 "use client";
 
-import { Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { Suspense } from "react";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
 import { NewsCard } from "~/components/news/NewsCard";
 import { PatchNotes } from "~/components/news/PatchNotes";
 import { Text } from "~/components/ui/Text";
-import type { NewsPost, PaginatedResponse } from "~/types/news";
+
 import { cn } from "~/utils/cn";
+
+import type { NewsPost, PaginatedResponse } from "~/types/news";
 
 interface NewsContentProps {
   news: PaginatedResponse<NewsPost>;
@@ -18,11 +23,7 @@ interface NewsContentProps {
   };
 }
 
-export function NewsContent({ 
-  news,
-  featuredNews,
-  categoryCounts
-}: NewsContentProps) {
+export function NewsContent({ news, featuredNews, categoryCounts }: NewsContentProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get("category") || "";
@@ -78,9 +79,7 @@ export function NewsContent({
         )}
 
         {/* News Content */}
-        <div className="space-y-6">
-          {renderContent()}
-        </div>
+        <div className="space-y-6">{renderContent()}</div>
 
         {/* Pagination Controls */}
         {news.metadata.totalPages > 1 && (

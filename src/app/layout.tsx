@@ -14,7 +14,14 @@ const plexSans = IBM_Plex_Sans({
   display: "optional",
   preload: true,
   adjustFontFallback: true,
-  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+  fallback: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "sans-serif",
+  ],
 });
 
 const plexMono = IBM_Plex_Mono({

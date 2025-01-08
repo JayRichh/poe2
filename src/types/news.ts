@@ -9,7 +9,7 @@ export interface NewsPost {
   replies?: number;
   lastReplyBy?: string;
   lastReplyDate?: string;
-  type: 'announcement' | 'patch-note';
+  type: "announcement" | "patch-note";
   imageUrl?: string;
   slug?: string;
   processedContent?: string;
@@ -34,5 +34,5 @@ export interface NewsQueryParams {
   category?: string;
   source?: string;
   timeRange?: string;
-  type?: 'announcement' | 'patch-note';
+  type?: "announcement" | "patch-note";
 }

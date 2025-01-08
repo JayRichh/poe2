@@ -14,7 +14,7 @@ interface NewsPost {
   replies?: number;
   lastReplyBy?: string;
   lastReplyDate?: string;
-  type: 'announcement' | 'patch-note';
+  type: "announcement" | "patch-note";
   imageUrl?: string;
 }
 
@@ -69,7 +69,11 @@ interface PostContent {
   imageUrl?: string;
 }
 
-async function scrapeForumThreads(page: Page, forumId: string, type: 'announcement' | 'patch-note'): Promise<NewsPost[]> {
+async function scrapeForumThreads(
+  page: Page,
+  forumId: string,
+  type: "announcement" | "patch-note"
+): Promise<NewsPost[]> {
   const posts: NewsPost[] = [];
 
   try {
@@ -81,7 +85,7 @@ async function scrapeForumThreads(page: Page, forumId: string, type: 'announceme
     });
 
     console.log(`Scraping ${type} from forum ${forumId}...`);
-    const threads = await page.evaluate((postType: 'announcement' | 'patch-note') => {
+    const threads = (await page.evaluate((postType: "announcement" | "patch-note") => {
       const threadElements = document.querySelectorAll(".forumTable tbody tr");
       return Array.from(threadElements)
         .map((thread) => {
@@ -101,21 +105,21 @@ async function scrapeForumThreads(page: Page, forumId: string, type: 'announceme
             author: authorElement?.textContent?.trim() || "",
             replies: parseInt(repliesElement?.textContent || "0", 10),
             lastReplyBy: lastReplyByElement?.textContent?.trim(),
-            lastReplyDate: lastReplyDateElement?.textContent?.trim()
+            lastReplyDate: lastReplyDateElement?.textContent?.trim(),
           };
         })
         .filter((thread) => {
           const isStaffPost = !!thread.author;
           if (!isStaffPost) return false;
-          
+
           const title = thread.title.toLowerCase();
-          if (postType === 'patch-note') {
+          if (postType === "patch-note") {
             return isStaffPost && (title.includes("patch notes") || title.includes("hotfix"));
           }
           // For announcements, include all staff posts except patch notes/hotfixes
           return isStaffPost && !(title.includes("patch notes") || title.includes("hotfix"));
         });
-    }, type) as ThreadData[];
+    }, type)) as ThreadData[];
 
     for (const thread of threads) {
       if (!thread.url) continue;
@@ -128,8 +132,9 @@ async function scrapeForumThreads(page: Page, forumId: string, type: 'announceme
           });
         });
 
-        const { content, imageUrl } = await page.evaluate(() => {
-          const staffPost = document.querySelector("tr.newsPost") || document.querySelector("tr.staff");
+        const { content, imageUrl } = (await page.evaluate(() => {
+          const staffPost =
+            document.querySelector("tr.newsPost") || document.querySelector("tr.staff");
           if (!staffPost) return { content: "" };
 
           const contentElement = staffPost.querySelector(".content");
@@ -137,9 +142,9 @@ async function scrapeForumThreads(page: Page, forumId: string, type: 'announceme
 
           return {
             content: contentElement?.innerHTML || "",
-            imageUrl: imageElement?.src
+            imageUrl: imageElement?.src,
           };
-        }) as PostContent;
+        })) as PostContent;
 
         if (content) {
           posts.push({
@@ -153,7 +158,7 @@ async function scrapeForumThreads(page: Page, forumId: string, type: 'announceme
             lastReplyBy: thread.lastReplyBy,
             lastReplyDate: thread.lastReplyDate,
             type,
-            imageUrl
+            imageUrl,
           });
         }
       } catch (error) {
@@ -174,13 +179,13 @@ export async function scrapePatchNotes(): Promise<NewsPost[]> {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await setupPage(browser);
-  
+
   try {
     const announcements = await scrapeForumThreads(page, "2211", "announcement");
     const patchNotes = await scrapeForumThreads(page, "2212", "patch-note");
-    
+
     const allPosts = [...announcements, ...patchNotes];
-    
+
     // Sort by date, newest first
     return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } finally {
@@ -191,14 +196,14 @@ export async function scrapePatchNotes(): Promise<NewsPost[]> {
 export async function savePatchNotes(posts: NewsPost[]): Promise<void> {
   const projectRoot = path.resolve(__dirname, "..");
   const dataDir = path.join(projectRoot, "public", "data");
-  
+
   // Ensure data directory exists
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
   }
 
   // Filter and save patch notes
-  const patchNotes = posts.filter(post => post.type === 'patch-note');
+  const patchNotes = posts.filter((post) => post.type === "patch-note");
   const patchNotesPath = path.join(dataDir, "patch-notes.json");
   await fs.promises.writeFile(patchNotesPath, JSON.stringify(patchNotes, null, 2));
 }
@@ -206,14 +211,14 @@ export async function savePatchNotes(posts: NewsPost[]): Promise<void> {
 export async function saveAnnouncements(posts: NewsPost[]): Promise<void> {
   const projectRoot = path.resolve(__dirname, "..");
   const dataDir = path.join(projectRoot, "public", "data");
-  
+
   // Ensure data directory exists
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
   }
 
   // Filter and save announcements
-  const announcements = posts.filter(post => post.type === 'announcement');
+  const announcements = posts.filter((post) => post.type === "announcement");
   const announcementsPath = path.join(dataDir, "announcements.json");
   await fs.promises.writeFile(announcementsPath, JSON.stringify(announcements, null, 2));
 }

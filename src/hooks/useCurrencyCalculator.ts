@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useCallback, useMemo } from 'react';
-import type { CurrencyInputs, CurrencyResults } from '~/types/currency';
-import { groupCurrencies, type GroupedCurrency } from '~/lib/currencies/utils';
+import { useCallback, useMemo, useState } from "react";
+
+import { type GroupedCurrency, groupCurrencies } from "~/lib/currencies/utils";
+import type { CurrencyInputs, CurrencyResults } from "~/types/currency";
 
 export function useCurrencyCalculator() {
   const [inputs, setInputs] = useState<CurrencyInputs>({
     amount: 0,
-    fromCurrency: 'Chaos Orb',
-    toCurrency: 'Divine Orb',
+    fromCurrency: "Chaos Orb",
+    toCurrency: "Divine Orb",
   });
 
   const [results, setResults] = useState<CurrencyResults | null>(null);
@@ -24,9 +25,9 @@ export function useCurrencyCalculator() {
   const calculateConversion = useCallback(() => {
     try {
       setError(null);
-      const fromCurrency = allCurrencies.find(c => c.name === inputs.fromCurrency);
-      const toCurrency = allCurrencies.find(c => c.name === inputs.toCurrency);
-      
+      const fromCurrency = allCurrencies.find((c) => c.name === inputs.fromCurrency);
+      const toCurrency = allCurrencies.find((c) => c.name === inputs.toCurrency);
+
       // Validate currencies have values defined
       if (!fromCurrency?.value || !toCurrency?.value) {
         throw new Error("Cannot convert between these currencies - values not defined");
@@ -44,7 +45,7 @@ export function useCurrencyCalculator() {
 
       const fromRate = fromCurrency.value;
       const toRate = toCurrency.value;
-      
+
       // Calculate conversion: (amount * fromRate in chaos) / toRate in chaos
       // Calculate conversion through chaos values
       const totalChaosValue = inputs.amount * fromRate; // Convert source amount to chaos
@@ -52,11 +53,11 @@ export function useCurrencyCalculator() {
       const rate = fromRate / toRate; // How many target currency per 1 source currency
 
       // Log for debugging
-      console.log('Conversion details:', {
+      console.log("Conversion details:", {
         source: `${inputs.amount} ${inputs.fromCurrency} × ${fromRate} chaos = ${totalChaosValue} chaos`,
         target: `${totalChaosValue} chaos ÷ ${toRate} = ${convertedAmount.toFixed(2)} ${inputs.toCurrency}`,
         rate: `1 ${inputs.fromCurrency} = ${rate.toFixed(4)} ${inputs.toCurrency}`,
-        check: `${inputs.amount} × ${rate.toFixed(4)} = ${convertedAmount.toFixed(2)}`
+        check: `${inputs.amount} × ${rate.toFixed(4)} = ${convertedAmount.toFixed(2)}`,
       });
 
       const now = Date.now();
@@ -69,9 +70,8 @@ export function useCurrencyCalculator() {
         timestamp: now,
       };
 
-
       setResults(result);
-      setHistory(prev => [result, ...prev].slice(0, 10));
+      setHistory((prev) => [result, ...prev].slice(0, 10));
 
       return result;
     } catch (err) {
@@ -82,14 +82,14 @@ export function useCurrencyCalculator() {
   }, [inputs, allCurrencies]);
 
   const handleInputChange = useCallback((updates: Partial<CurrencyInputs>) => {
-    setInputs(prev => ({ ...prev, ...updates }));
+    setInputs((prev) => ({ ...prev, ...updates }));
   }, []);
 
   const reset = useCallback(() => {
     setInputs({
       amount: 0,
-      fromCurrency: 'Chaos Orb',
-      toCurrency: 'Divine Orb',
+      fromCurrency: "Chaos Orb",
+      toCurrency: "Divine Orb",
     });
     setResults(null);
   }, []);

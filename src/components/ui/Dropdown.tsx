@@ -1,7 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface DropdownItem {
@@ -84,38 +86,41 @@ export function Dropdown({
     return styles;
   }, [position, width, maxHeight]);
 
-  const handleKeyDown = useCallback((event: KeyboardEvent) => {
-    if (!isOpen) {
-      if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
-        event.preventDefault();
-        setIsOpen(true);
-        setActiveIndex(0);
-      }
-      return;
-    }
-
-    switch (event.key) {
-      case "ArrowDown":
-        event.preventDefault();
-        setActiveIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
-        break;
-      case "ArrowUp":
-        event.preventDefault();
-        setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
-        break;
-      case "Enter":
-      case " ":
-        event.preventDefault();
-        if (activeIndex >= 0 && !items[activeIndex].disabled) {
-          handleSelect(items[activeIndex].value);
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (!isOpen) {
+        if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
+          event.preventDefault();
+          setIsOpen(true);
+          setActiveIndex(0);
         }
-        break;
-      case "Escape":
-        event.preventDefault();
-        setIsOpen(false);
-        break;
-    }
-  }, [isOpen, items.length, activeIndex]);
+        return;
+      }
+
+      switch (event.key) {
+        case "ArrowDown":
+          event.preventDefault();
+          setActiveIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
+          break;
+        case "ArrowUp":
+          event.preventDefault();
+          setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
+          break;
+        case "Enter":
+        case " ":
+          event.preventDefault();
+          if (activeIndex >= 0 && !items[activeIndex].disabled) {
+            handleSelect(items[activeIndex].value);
+          }
+          break;
+        case "Escape":
+          event.preventDefault();
+          setIsOpen(false);
+          break;
+      }
+    },
+    [isOpen, items.length, activeIndex]
+  );
 
   useEffect(() => {
     if (isOpen && activeIndex >= 0 && menuRef.current) {
@@ -138,11 +143,14 @@ export function Dropdown({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSelect = useCallback((itemValue: string) => {
-    onChange?.(itemValue);
-    setIsOpen(false);
-    setActiveIndex(-1);
-  }, [onChange]);
+  const handleSelect = useCallback(
+    (itemValue: string) => {
+      onChange?.(itemValue);
+      setIsOpen(false);
+      setActiveIndex(-1);
+    },
+    [onChange]
+  );
 
   const handleTriggerClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -177,13 +185,13 @@ export function Dropdown({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={getPositionStyles()}
-  className={cn(
-    "absolute",
-    "bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/90",
-    "border border-border/50 rounded-lg shadow-xl",
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
-    "z-[100]"
-  )}
+            className={cn(
+              "absolute",
+              "bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/90",
+              "border border-border/50 rounded-lg shadow-xl",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
+              "z-[100]"
+            )}
             role="menu"
             aria-orientation="vertical"
             tabIndex={-1}
@@ -206,7 +214,9 @@ export function Dropdown({
                     "transition-all duration-150",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
                     "rounded-md",
-                    item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-primary/10 hover:text-primary",
+                    item.disabled
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-primary/10 hover:text-primary",
                     value === item.value && "text-primary font-medium bg-primary/5",
                     activeIndex === index && "bg-primary/10",
                     itemClassName,

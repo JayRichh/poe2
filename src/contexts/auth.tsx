@@ -39,12 +39,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshSession = async () => {
     try {
-      const { data: { session } } = await client.auth.getSession();
-      
+      const {
+        data: { session },
+      } = await client.auth.getSession();
+
       if (session) {
-        const { data: { user }, error: userError } = await client.auth.getUser();
+        const {
+          data: { user },
+          error: userError,
+        } = await client.auth.getUser();
         if (userError) throw userError;
-        
+
         setState((prev) => ({
           ...prev,
           user: user,
@@ -107,9 +112,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         router.push("/");
       } else if (session) {
         // Verify user data when session changes
-        const { data: { user }, error: userError } = await client.auth.getUser();
+        const {
+          data: { user },
+          error: userError,
+        } = await client.auth.getUser();
         if (userError) throw userError;
-        
+
         setState((prev) => ({
           ...prev,
           user: user,

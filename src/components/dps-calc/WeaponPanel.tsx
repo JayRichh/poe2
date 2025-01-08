@@ -116,23 +116,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Physical",
       color: "var(--damage-physical)",
       inputs: [
-        { 
-          key: "physicalMin", 
-          label: "Minimum", 
-          min: 0, 
-          max: 500, 
+        {
+          key: "physicalMin",
+          label: "Minimum",
+          min: 0,
+          max: 500,
           step: 5,
           relatedKey: "physicalMax",
-          tooltip: "Base physical damage minimum (0-500)" 
+          tooltip: "Base physical damage minimum (0-500)",
         },
-        { 
-          key: "physicalMax", 
-          label: "Maximum", 
-          min: 0, 
-          max: 800, 
+        {
+          key: "physicalMax",
+          label: "Maximum",
+          min: 0,
+          max: 800,
           step: 5,
           relatedKey: "physicalMin",
-          tooltip: "Base physical damage maximum (0-800)" 
+          tooltip: "Base physical damage maximum (0-800)",
         },
       ] as DamageInput[],
     },
@@ -141,23 +141,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Lightning",
       color: "var(--damage-lightning)",
       inputs: [
-        { 
-          key: "lightningMin", 
-          label: "Minimum", 
-          min: 0, 
-          max: 300, 
+        {
+          key: "lightningMin",
+          label: "Minimum",
+          min: 0,
+          max: 300,
           step: 2,
           relatedKey: "lightningMax",
-          tooltip: "Lightning damage minimum (0-300)" 
+          tooltip: "Lightning damage minimum (0-300)",
         },
-        { 
-          key: "lightningMax", 
-          label: "Maximum", 
-          min: 0, 
-          max: 600, 
+        {
+          key: "lightningMax",
+          label: "Maximum",
+          min: 0,
+          max: 600,
           step: 5,
           relatedKey: "lightningMin",
-          tooltip: "Lightning damage maximum (0-600)" 
+          tooltip: "Lightning damage maximum (0-600)",
         },
       ] as DamageInput[],
     },
@@ -166,23 +166,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Fire",
       color: "var(--damage-fire)",
       inputs: [
-        { 
-          key: "fireMin", 
-          label: "Minimum", 
-          min: 0, 
-          max: 300, 
+        {
+          key: "fireMin",
+          label: "Minimum",
+          min: 0,
+          max: 300,
           step: 2,
           relatedKey: "fireMax",
-          tooltip: "Fire damage minimum (0-300)" 
+          tooltip: "Fire damage minimum (0-300)",
         },
-        { 
-          key: "fireMax", 
-          label: "Maximum", 
-          min: 0, 
-          max: 600, 
+        {
+          key: "fireMax",
+          label: "Maximum",
+          min: 0,
+          max: 600,
           step: 5,
           relatedKey: "fireMin",
-          tooltip: "Fire damage maximum (0-600)" 
+          tooltip: "Fire damage maximum (0-600)",
         },
       ] as DamageInput[],
     },
@@ -191,23 +191,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Cold",
       color: "var(--damage-cold)",
       inputs: [
-        { 
-          key: "coldMin", 
-          label: "Minimum", 
-          min: 0, 
-          max: 300, 
+        {
+          key: "coldMin",
+          label: "Minimum",
+          min: 0,
+          max: 300,
           step: 2,
           relatedKey: "coldMax",
-          tooltip: "Cold damage minimum (0-300)" 
+          tooltip: "Cold damage minimum (0-300)",
         },
-        { 
-          key: "coldMax", 
-          label: "Maximum", 
-          min: 0, 
-          max: 600, 
+        {
+          key: "coldMax",
+          label: "Maximum",
+          min: 0,
+          max: 600,
           step: 5,
           relatedKey: "coldMin",
-          tooltip: "Cold damage maximum (0-600)" 
+          tooltip: "Cold damage maximum (0-600)",
         },
       ] as DamageInput[],
     },
@@ -216,23 +216,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       label: "Chaos",
       color: "var(--damage-chaos)",
       inputs: [
-        { 
-          key: "chaosMin", 
-          label: "Minimum", 
-          min: 0, 
-          max: 200, 
+        {
+          key: "chaosMin",
+          label: "Minimum",
+          min: 0,
+          max: 200,
           step: 2,
           relatedKey: "chaosMax",
-          tooltip: "Chaos damage minimum (0-200)" 
+          tooltip: "Chaos damage minimum (0-200)",
         },
-        { 
-          key: "chaosMax", 
-          label: "Maximum", 
-          min: 0, 
-          max: 400, 
+        {
+          key: "chaosMax",
+          label: "Maximum",
+          min: 0,
+          max: 400,
           step: 5,
           relatedKey: "chaosMin",
-          tooltip: "Chaos damage maximum (0-400)" 
+          tooltip: "Chaos damage maximum (0-400)",
         },
       ] as DamageInput[],
     },
@@ -271,23 +271,23 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
         <div className="px-4 py-3">
           <Text className="text-sm font-medium text-foreground-secondary mb-3">Base Damage</Text>
           {renderDamageInputs([
-            { 
-              key: "minBaseDmg", 
-              label: "Minimum", 
-              min: 0, 
-              max: 400, 
+            {
+              key: "minBaseDmg",
+              label: "Minimum",
+              min: 0,
+              max: 400,
               step: 5,
               relatedKey: "maxBaseDmg",
-              tooltip: "Base weapon damage minimum (0-400)" 
+              tooltip: "Base weapon damage minimum (0-400)",
             },
-            { 
-              key: "maxBaseDmg", 
-              label: "Maximum", 
-              min: 0, 
-              max: 600, 
+            {
+              key: "maxBaseDmg",
+              label: "Maximum",
+              min: 0,
+              max: 600,
               step: 5,
               relatedKey: "minBaseDmg",
-              tooltip: "Base weapon damage maximum (0-600)" 
+              tooltip: "Base weapon damage maximum (0-600)",
             },
           ])}
         </div>

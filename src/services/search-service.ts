@@ -1,16 +1,16 @@
 "use client";
 
-import { mechanicsWithMeta } from "~/lib/mechanics/data";
+import { type AscendancyWithMeta, ascendanciesWithMeta } from "~/lib/ascendancies/data";
 import { guidesWithMeta } from "~/lib/guides/data";
+import { mechanicsWithMeta } from "~/lib/mechanics/data";
 import { NewsService } from "~/services/news-service";
-import { ascendanciesWithMeta, type AscendancyWithMeta } from "~/lib/ascendancies/data";
 import type { NewsPost } from "~/types/news";
 
-export type SearchSection = 
-  | "build-planner" 
-  | "guides" 
-  | "news" 
-  | "mechanics" 
+export type SearchSection =
+  | "build-planner"
+  | "guides"
+  | "news"
+  | "mechanics"
   | "patch-notes"
   | "ascendancies"
   | "dps-calc"
@@ -34,53 +34,51 @@ interface SearchMatch {
 
 // Preprocess text for searching
 function preprocessText(text: string): string {
-  return text.toLowerCase()
+  return text
+    .toLowerCase()
     .trim()
-    .replace(/[^\w\s]/g, '')
-    .replace(/\s+/g, ' ');
+    .replace(/[^\w\s]/g, "")
+    .replace(/\s+/g, " ");
 }
 
 // Calculate relevance score based on match type and context
 function calculateRelevance(text: string, query: string, context?: string): number {
   const normalizedText = preprocessText(text);
   const normalizedQuery = preprocessText(query);
-  const queryWords = normalizedQuery.split(' ');
-  
+  const queryWords = normalizedQuery.split(" ");
+
   let score = 0;
-  
+
   // Exact match
   if (normalizedText === normalizedQuery) score += 100;
-  
   // Title/start match
   else if (normalizedText.startsWith(normalizedQuery)) score += 80;
-  
   // Contains full query
   else if (normalizedText.includes(normalizedQuery)) score += 60;
-  
   // Partial matches
   else {
     // Count matching words
-    const matchingWords = queryWords.filter(word => 
-      normalizedText.split(' ').some(textWord => {
+    const matchingWords = queryWords.filter((word) =>
+      normalizedText.split(" ").some((textWord) => {
         // Exact word match
         if (textWord === word) return true;
         // Fuzzy match (allow 1-2 character differences)
         return levenshteinDistance(textWord, word) <= 2;
       })
     );
-    
+
     score += matchingWords.length * 20;
   }
-  
+
   // Boost scores based on context
   if (context) {
     const normalizedContext = context.toLowerCase();
-    if (normalizedContext.includes('title')) score += 40;
-    if (normalizedContext.includes('patch')) score += 30;
-    if (normalizedContext.includes('item')) score += 25;
-    if (normalizedContext.includes('skill')) score += 20;
+    if (normalizedContext.includes("title")) score += 40;
+    if (normalizedContext.includes("patch")) score += 30;
+    if (normalizedContext.includes("item")) score += 25;
+    if (normalizedContext.includes("skill")) score += 20;
   }
-  
+
   return score;
 }
 
@@ -89,9 +87,9 @@ function levenshteinDistance(a: string, b: string): number {
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
 
-  const matrix = Array(b.length + 1).fill(null).map(() => 
-    Array(a.length + 1).fill(null)
-  );
+  const matrix = Array(b.length + 1)
+    .fill(null)
+    .map(() => Array(a.length + 1).fill(null));
 
   for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
   for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
@@ -112,34 +110,34 @@ function levenshteinDistance(a: string, b: string): number {
 
 function searchInContent(content: SearchableContent, query: string): SearchMatch[] {
   const matches: SearchMatch[] = [];
-  
+
   function addMatch(text: string | undefined, context?: string) {
     if (!text?.trim()) return;
-    
+
     const relevance = calculateRelevance(text, query, context);
     if (relevance > 0) {
       matches.push({ text, context, relevance });
     }
   }
-  
+
   // Search in title and description
-  addMatch(content.title, 'title');
-  addMatch(content.description, 'description');
-  
+  addMatch(content.title, "title");
+  addMatch(content.description, "description");
+
   // Search in content
   if (Array.isArray(content.content)) {
-    content.content.forEach(text => addMatch(text, 'content'));
-  } else if (typeof content.content === 'string') {
-    addMatch(content.content, 'content');
+    content.content.forEach((text) => addMatch(text, "content"));
+  } else if (typeof content.content === "string") {
+    addMatch(content.content, "content");
   }
-  
+
   // Search in sections
-  content.sections?.forEach(section => {
-    addMatch(section.title, 'section');
-    
+  content.sections?.forEach((section) => {
+    addMatch(section.title, "section");
+
     if (Array.isArray(section.content)) {
-      section.content.forEach(text => addMatch(text, section.title));
-    } else if (typeof section.content === 'string') {
+      section.content.forEach((text) => addMatch(text, section.title));
+    } else if (typeof section.content === "string") {
       addMatch(section.content, section.title);
     }
   });
@@ -178,22 +176,25 @@ export async function searchContent(
       const patchNoteResults = patchNotes.items
         .map((note: NewsPost) => {
           // Extract text content from HTML for searching
-          const plainContent = note.content.replace(/<[^>]*>/g, ' ');
-          const matches = searchInContent({
-            title: note.title,
-            content: plainContent
-          }, query);
+          const plainContent = note.content.replace(/<[^>]*>/g, " ");
+          const matches = searchInContent(
+            {
+              title: note.title,
+              content: plainContent,
+            },
+            query
+          );
           if (matches.length === 0) return null;
 
           const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
           return {
             id: `patch-notes-${note.id}`,
             title: note.title,
-            description: plainContent.split('\n')[0], // First paragraph as description
+            description: plainContent.split("\n")[0], // First paragraph as description
             matches,
             url: NewsService.getNewsUrl(note),
             section: "patch-notes" as const,
-            relevance: relevance * 1.5 // Boost patch notes relevance
+            relevance: relevance * 1.5, // Boost patch notes relevance
           };
         })
         .filter((result): result is NonNullable<typeof result> => result !== null);
@@ -206,14 +207,17 @@ export async function searchContent(
   // Search mechanics
   if (!section || section === "mechanics") {
     const mechanicsResults = mechanicsWithMeta
-      .map(mechanic => {
-        const matches = searchInContent({
-          title: mechanic.title,
-          description: mechanic.description,
-          sections: mechanic.sections
-        }, query);
+      .map((mechanic) => {
+        const matches = searchInContent(
+          {
+            title: mechanic.title,
+            description: mechanic.description,
+            sections: mechanic.sections,
+          },
+          query
+        );
         if (matches.length === 0) return null;
-        
+
         const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
         return {
           id: `mechanics-${mechanic.id}`,
@@ -222,7 +226,7 @@ export async function searchContent(
           matches,
           url: `/mechanics/${mechanic.id}`,
           section: "mechanics" as const,
-          relevance
+          relevance,
         };
       })
       .filter((result): result is NonNullable<typeof result> => result !== null);
@@ -232,23 +236,26 @@ export async function searchContent(
   // Search guides
   if (!section || section === "guides") {
     const guideResults = guidesWithMeta
-      .map(guide => {
-        const matches = searchInContent({
-          title: guide.title,
-          description: guide.description,
-          sections: guide.sections
-        }, query);
-        if (matches.length === 0) return null;
-        
-        const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
-          return {
-            id: `guides-${guide.id}`,
+      .map((guide) => {
+        const matches = searchInContent(
+          {
             title: guide.title,
             description: guide.description,
-            matches,
-            url: `/guides/${guide.id}`,
+            sections: guide.sections,
+          },
+          query
+        );
+        if (matches.length === 0) return null;
+
+        const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
+        return {
+          id: `guides-${guide.id}`,
+          title: guide.title,
+          description: guide.description,
+          matches,
+          url: `/guides/${guide.id}`,
           section: "guides" as const,
-          relevance
+          relevance,
         };
       })
       .filter((result): result is NonNullable<typeof result> => result !== null);
@@ -262,22 +269,25 @@ export async function searchContent(
       const newsResults = allNews.items
         .map((news: NewsPost) => {
           // Extract text content from HTML for searching
-          const plainContent = news.content.replace(/<[^>]*>/g, ' ');
-          const matches = searchInContent({
-            title: news.title,
-            content: plainContent
-          }, query);
+          const plainContent = news.content.replace(/<[^>]*>/g, " ");
+          const matches = searchInContent(
+            {
+              title: news.title,
+              content: plainContent,
+            },
+            query
+          );
           if (matches.length === 0) return null;
-          
+
           const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
           return {
             id: `news-${news.id}`,
             title: news.title,
-            description: plainContent.split('\n')[0], // First paragraph as description
+            description: plainContent.split("\n")[0], // First paragraph as description
             matches,
             url: NewsService.getNewsUrl(news),
             section: "news" as const,
-            relevance
+            relevance,
           };
         })
         .filter((result): result is NonNullable<typeof result> => result !== null);
@@ -291,18 +301,21 @@ export async function searchContent(
   if (!section || section === "ascendancies") {
     const ascendancyResults = ascendanciesWithMeta
       .map((ascendancy: AscendancyWithMeta) => {
-        const matches = searchInContent({
-          title: ascendancy.title,
-          description: ascendancy.description,
-          content: [
-            ascendancy.playstyle,
-            ...ascendancy.keyFeatures,
-            ...ascendancy.mechanics,
-            ...ascendancy.buildTypes
-          ]
-        }, query);
+        const matches = searchInContent(
+          {
+            title: ascendancy.title,
+            description: ascendancy.description,
+            content: [
+              ascendancy.playstyle,
+              ...ascendancy.keyFeatures,
+              ...ascendancy.mechanics,
+              ...ascendancy.buildTypes,
+            ],
+          },
+          query
+        );
         if (matches.length === 0) return null;
-        
+
         const relevance = matches.reduce((sum, match) => sum + match.relevance, 0);
         return {
           id: `ascendancies-${ascendancy.id}`,
@@ -311,7 +324,7 @@ export async function searchContent(
           matches,
           url: `/ascendancies/${ascendancy.id}`,
           section: "ascendancies" as const,
-          relevance
+          relevance,
         };
       })
       .filter((result): result is NonNullable<typeof result> => result !== null);
@@ -322,7 +335,8 @@ export async function searchContent(
   if (!section || section === "build-planner") {
     const buildPlannerContent = {
       title: "POE2 Build Planner",
-      description: "Plan and optimize your POE2 character builds with our comprehensive build planning tool",
+      description:
+        "Plan and optimize your POE2 character builds with our comprehensive build planning tool",
       content: [
         "Character build planning",
         "Skill gem configurations",
@@ -330,8 +344,8 @@ export async function searchContent(
         "Build optimization",
         "Save and share builds",
         "Build comparison",
-        "Character progression planning"
-      ]
+        "Character progression planning",
+      ],
     };
 
     const matches = searchInContent(buildPlannerContent, query);
@@ -344,7 +358,7 @@ export async function searchContent(
         matches,
         url: "/build-planner",
         section: "build-planner" as const,
-        relevance
+        relevance,
       });
     }
   }
@@ -361,8 +375,8 @@ export async function searchContent(
         "Skill point allocation",
         "Build optimization",
         "Character progression",
-        "Passive skills"
-      ]
+        "Passive skills",
+      ],
     };
 
     const matches = searchInContent(skillTreeContent, query);
@@ -375,7 +389,7 @@ export async function searchContent(
         matches,
         url: "/skill-tree",
         section: "skill-tree" as const,
-        relevance
+        relevance,
       });
     }
   }
@@ -384,7 +398,8 @@ export async function searchContent(
   if (!section || section === "dps-calc") {
     const dpsCalcContent = {
       title: "POE2 DPS Calculator",
-      description: "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types",
+      description:
+        "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types",
       content: [
         "Calculate weapon DPS",
         "Compare multiple weapons",
@@ -394,8 +409,8 @@ export async function searchContent(
         "Chaos damage calculations",
         "Manual weapon stat input",
         "Global damage modifiers",
-        "DPS comparison history"
-      ]
+        "DPS comparison history",
+      ],
     };
 
     const matches = searchInContent(dpsCalcContent, query);
@@ -408,7 +423,7 @@ export async function searchContent(
         matches,
         url: "/dps-calc",
         section: "dps-calc" as const,
-        relevance
+        relevance,
       });
     }
   }

@@ -1,7 +1,9 @@
 "use client";
 
 import { Edit2, MoreVertical, Trash2 } from "lucide-react";
+
 import { useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface ActionDropdownProps {
@@ -20,11 +22,11 @@ export function ActionDropdown({ onEdit, onDelete, disabled }: ActionDropdownPro
     }
   };
 
-  const handleAction = (action: 'edit' | 'delete') => (e: React.MouseEvent) => {
+  const handleAction = (action: "edit" | "delete") => (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsOpen(false);
-    if (action === 'edit') onEdit();
-    if (action === 'delete') onDelete();
+    if (action === "edit") onEdit();
+    if (action === "delete") onDelete();
   };
 
   return (
@@ -45,10 +47,7 @@ export function ActionDropdown({ onEdit, onDelete, disabled }: ActionDropdownPro
 
       {isOpen && (
         <>
-          <div 
-            className="fixed inset-0 z-30" 
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-30" onClick={() => setIsOpen(false)} />
           <div
             className={cn(
               "absolute right-0 mt-1 w-36 z-40",
@@ -57,7 +56,7 @@ export function ActionDropdown({ onEdit, onDelete, disabled }: ActionDropdownPro
             )}
           >
             <button
-              onClick={handleAction('edit')}
+              onClick={handleAction("edit")}
               className={cn(
                 "w-full px-3 py-2 text-sm",
                 "flex items-center gap-2",
@@ -69,7 +68,7 @@ export function ActionDropdown({ onEdit, onDelete, disabled }: ActionDropdownPro
               Edit Build
             </button>
             <button
-              onClick={handleAction('delete')}
+              onClick={handleAction("delete")}
               className={cn(
                 "w-full px-3 py-2 text-sm",
                 "flex items-center gap-2",

@@ -1,8 +1,10 @@
 "use client";
 
-import { CurrencyIcon } from './CurrencyIcon';
-import { useCurrencyCalculator } from '~/hooks/useCurrencyCalculator';
-import type { CurrencyResults } from '~/types/currency';
+import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
+
+import type { CurrencyResults } from "~/types/currency";
+
+import { CurrencyIcon } from "./CurrencyIcon";
 
 interface HistoryPanelProps {
   history: CurrencyResults[];
@@ -33,31 +35,40 @@ export function HistoryPanel({ history }: HistoryPanelProps) {
       <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
         {history.map((result, index) => {
           // Get currency info for each history entry
-          const fromCurrency = rates.find(r => r.name === result.fromCurrency) || {
+          const fromCurrency = rates.find((r) => r.name === result.fromCurrency) || {
             name: result.fromCurrency,
-            value: 0
+            value: 0,
           };
-          const toCurrency = rates.find(r => r.name === result.toCurrency) || {
+          const toCurrency = rates.find((r) => r.name === result.toCurrency) || {
             name: result.toCurrency,
-            value: 0
+            value: 0,
           };
           return (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="glass p-3 rounded-lg transition-all duration-200 hover:translate-x-1"
             >
               <div className="space-y-2">
                 {/* Main conversion */}
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-2 flex-1 min-w-0">
-                    <CurrencyIcon name={fromCurrency?.name || ''} size={24} />
+                    <CurrencyIcon name={fromCurrency?.name || ""} size={24} />
                     <div className="truncate">
                       <div className="flex items-baseline gap-1">
-                        <span className="text-sm font-medium numeric">{result.amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
+                        <span className="text-sm font-medium numeric">
+                          {result.amount.toLocaleString(undefined, {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0,
+                          })}
+                        </span>
                         <span className="text-xs text-muted-foreground">{fromCurrency?.name}</span>
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        {(result.amount * (fromCurrency?.value || 0)).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}c
+                        {(result.amount * (fromCurrency?.value || 0)).toLocaleString(undefined, {
+                          minimumFractionDigits: 0,
+                          maximumFractionDigits: 0,
+                        })}
+                        c
                       </div>
                     </div>
                   </div>
@@ -65,14 +76,23 @@ export function HistoryPanel({ history }: HistoryPanelProps) {
                     <div className="text-sm text-muted-foreground">→</div>
                   </div>
                   <div className="flex items-center gap-2 flex-1 min-w-0">
-                    <CurrencyIcon name={toCurrency?.name || ''} size={24} />
+                    <CurrencyIcon name={toCurrency?.name || ""} size={24} />
                     <div className="truncate">
                       <div className="flex items-baseline gap-1">
-                        <span className="text-sm font-medium numeric text-primary">{result.convertedAmount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</span>
+                        <span className="text-sm font-medium numeric text-primary">
+                          {result.convertedAmount.toLocaleString(undefined, {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
                         <span className="text-xs text-muted-foreground">{toCurrency?.name}</span>
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        {(result.convertedAmount * (toCurrency?.value || 0)).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}c
+                        {(result.convertedAmount * (toCurrency?.value || 0)).toLocaleString(
+                          undefined,
+                          { minimumFractionDigits: 0, maximumFractionDigits: 0 }
+                        )}
+                        c
                       </div>
                     </div>
                   </div>
@@ -80,7 +100,14 @@ export function HistoryPanel({ history }: HistoryPanelProps) {
 
                 {/* Rate and timestamp */}
                 <div className="flex items-center justify-between text-xs text-muted-foreground border-t border-border/40 pt-2">
-                  <div>1 {fromCurrency?.name} = {result.rate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {toCurrency?.name}</div>
+                  <div>
+                    1 {fromCurrency?.name} ={" "}
+                    {result.rate.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
+                    {toCurrency?.name}
+                  </div>
                   <div>{new Date(result.timestamp).toLocaleString()}</div>
                 </div>
               </div>

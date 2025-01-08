@@ -14,7 +14,7 @@ export function useHeaderScroll(threshold = 50) {
 
   useEffect(() => {
     if (!isMounted) return;
-    
+
     let ticking = false;
 
     const handleScroll = () => {

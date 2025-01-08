@@ -19,15 +19,15 @@ export async function PATCH(request: NextRequest) {
     const { avatar_url } = body;
 
     const { data: updateData, error: updateError } = await supabase.auth.updateUser({
-      data: { avatar_url }
+      data: { avatar_url },
     });
 
     if (updateError) throw updateError;
 
     // Create a new response with the updated data
-    const jsonResponse = NextResponse.json({ 
+    const jsonResponse = NextResponse.json({
       success: true,
-      user: updateData.user
+      user: updateData.user,
     });
 
     // Copy cookies from the middleware client response to the new response
@@ -47,7 +47,6 @@ export async function PATCH(request: NextRequest) {
     );
   }
 }
-
 
 export async function DELETE(request: NextRequest) {
   const response = new NextResponse();

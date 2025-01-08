@@ -1,16 +1,20 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
-import { useAuth } from "~/contexts/auth";
-import { usePOEAccount } from "~/hooks/usePOEAccount";
-import { validateName } from "~/utils/validation";
-import { updatePassword, updateProfile } from "~/app/actions/profile";
-import { BuildSettings, getBuildSettings, updateBuildSettings } from "~/app/actions/settings";
+
 import { useBuilds } from "~/hooks/useBuilds";
+import { usePOEAccount } from "~/hooks/usePOEAccount";
+
+import { validateName } from "~/utils/validation";
+
+import { updatePassword, updateProfile } from "~/app/actions/profile";
 import { logActivity } from "~/app/actions/server/activities";
+import { BuildSettings, getBuildSettings, updateBuildSettings } from "~/app/actions/settings";
+import { useAuth } from "~/contexts/auth";
 import type { Database } from "~/lib/supabase/types";
+import type { BuildSettingsUpdate, BuildVisibility, POEAccount, POEProfile } from "~/types/profile";
 
 type Build = Database["public"]["Tables"]["builds"]["Row"];
-import type { BuildVisibility, POEProfile, POEAccount, BuildSettingsUpdate } from "~/types/profile";
 
 export function useProfileSettings() {
   const router = useRouter();
@@ -26,14 +30,14 @@ export function useProfileSettings() {
   const [name, setName] = useState<string>("");
   const [isNewUser, setIsNewUser] = useState(false);
   const [setupProgress, setSetupProgress] = useState(0);
-  const { builds, loading: buildsLoading } = useBuilds({ 
-    visibility: "all", 
-    includeOwn: true 
+  const { builds, loading: buildsLoading } = useBuilds({
+    visibility: "all",
+    includeOwn: true,
   });
   const buildCount = builds.length;
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [autoSync, setAutoSync] = useState(false);
-  const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<BuildVisibility>('private');
+  const [defaultBuildVisibility, setDefaultBuildVisibility] = useState<BuildVisibility>("private");
   const [loading, setLoading] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -53,7 +57,7 @@ export function useProfileSettings() {
     let progress = 0;
     if (hasName) progress += 30;
     if (poeAccount?.connected) progress += 40;
-    if (defaultBuildVisibility !== 'private') progress += 30;
+    if (defaultBuildVisibility !== "private") progress += 30;
     setSetupProgress(progress);
     // Load initial settings
     loadSettings();
@@ -87,21 +91,21 @@ export function useProfileSettings() {
     try {
       const settings: BuildSettings = {
         autoSync: newSettings.autoSync ?? autoSync,
-        defaultVisibility: (newSettings.defaultVisibility ?? defaultBuildVisibility) as BuildVisibility,
+        defaultVisibility: (newSettings.defaultVisibility ??
+          defaultBuildVisibility) as BuildVisibility,
       };
       const result = await updateBuildSettings(settings);
       if (result.success) {
         if (newSettings.autoSync !== undefined) setAutoSync(newSettings.autoSync);
-        if (newSettings.defaultVisibility !== undefined) setDefaultBuildVisibility(newSettings.defaultVisibility);
+        if (newSettings.defaultVisibility !== undefined)
+          setDefaultBuildVisibility(newSettings.defaultVisibility);
         setSubmitMessage("Settings updated successfully");
-        
+
         // Log activity
-        await logActivity(
-          'settings',
-          'Updated settings',
-          'Changed build settings preferences',
-          { autoSync: settings.autoSync, defaultVisibility: settings.defaultVisibility }
-        );
+        await logActivity("settings", "Updated settings", "Changed build settings preferences", {
+          autoSync: settings.autoSync,
+          defaultVisibility: settings.defaultVisibility,
+        });
       } else {
         setSubmitError(result.error || "Failed to update settings");
       }
@@ -115,7 +119,7 @@ export function useProfileSettings() {
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Clear previous messages
     setSubmitError(null);
     setSubmitMessage(null);
@@ -136,14 +140,9 @@ export function useProfileSettings() {
       if (result.success) {
         setSubmitMessage("Profile updated successfully");
         await refreshSession();
-        
+
         // Log activity
-        await logActivity(
-          'profile',
-          'Profile updated',
-          'Changed display name',
-          { newName: name }
-        );
+        await logActivity("profile", "Profile updated", "Changed display name", { newName: name });
       } else {
         setSubmitError(result.error || "Failed to update profile");
       }
@@ -169,13 +168,9 @@ export function useProfileSettings() {
       setShowPasswordForm(false);
       setNewPassword("");
       await refreshSession();
-      
+
       // Log activity
-      await logActivity(
-        'settings',
-        'Security updated',
-        'Changed account password'
-      );
+      await logActivity("settings", "Security updated", "Changed account password");
     } catch (err) {
       console.error("Error updating password:", err);
       setSubmitError("Failed to update password");
@@ -199,39 +194,35 @@ export function useProfileSettings() {
 
   const handleAvatarUpload = async (url: string) => {
     if (!user) return;
-    
+
     try {
       // Update user metadata
       setSubmitError(null);
       setSubmitMessage(null);
 
-      const response = await fetch('/api/user', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ avatar_url: url })
+      const response = await fetch("/api/user", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ avatar_url: url }),
       });
-      
+
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || 'Failed to update avatar');
+        throw new Error(error.error || "Failed to update avatar");
       }
 
       const result = await response.json();
       if (!result.success || !result.user) {
-        throw new Error('Failed to update avatar');
+        throw new Error("Failed to update avatar");
       }
 
       // Force a session refresh to get the updated user data
       await refreshSession();
       router.refresh(); // Refresh the page to update all components
       setSubmitMessage("Avatar updated successfully");
-      
+
       // Log activity
-      await logActivity(
-        'profile',
-        'Profile updated',
-        'Changed avatar image'
-      );
+      await logActivity("profile", "Profile updated", "Changed avatar image");
     } catch (err) {
       console.error("Error updating avatar:", err);
       setSubmitError("Failed to update avatar");

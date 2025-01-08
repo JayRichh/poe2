@@ -120,7 +120,11 @@ export function ResultsPanel({ results }: ResultsPanelProps) {
                 <Text className="text-sm text-foreground-secondary">DPS Difference</Text>
               </div>
               <div className="text-sm text-foreground-secondary">
-                {dpsIncrease > 0 ? "Weapon 2 performs better" : dpsIncrease < 0 ? "Weapon 1 performs better" : "Equal performance"}
+                {dpsIncrease > 0
+                  ? "Weapon 2 performs better"
+                  : dpsIncrease < 0
+                    ? "Weapon 1 performs better"
+                    : "Equal performance"}
               </div>
             </div>
           </div>

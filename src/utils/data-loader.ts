@@ -1,9 +1,9 @@
 export async function loadJsonChunked<T>(url: string, chunkSize = 50): Promise<T> {
   const response = await fetch(url, {
     headers: {
-      'Accept-Encoding': 'gzip',
-      'Cache-Control': 'public, max-age=31536000, immutable'
-    }
+      "Accept-Encoding": "gzip",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
   });
 
   if (!response.ok) {
@@ -37,10 +37,10 @@ export function createDataLoader<T>(url: string) {
     },
     clearCache: () => {
       cachedData = null;
-    }
+    },
   };
 }
 
 // Create loaders for specific data files
-export const nodesLoader = createDataLoader<any>('/data/nodes.json');
-export const nodesDescLoader = createDataLoader<any>('/data/nodes_desc.json');
+export const nodesLoader = createDataLoader<any>("/data/nodes.json");
+export const nodesDescLoader = createDataLoader<any>("/data/nodes_desc.json");

@@ -2,16 +2,21 @@
 
 import { MotionValue, motion } from "framer-motion";
 import { ArrowRight, ChevronsDown, ScrollIcon } from "lucide-react";
+
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Text } from "~/components/ui/Text";
+
 import { cn } from "~/utils/cn";
-import { useEffect, useState } from "react";
 
 const LOGO_DIMENSIONS = {
   width: 1600,
   height: 800,
-  sizes: "(max-width: 640px) 85vw, (max-width: 1024px) 800px, (max-width: 1280px) 1200px, (max-width: 1536px) 1400px, 1600px",
+  sizes:
+    "(max-width: 640px) 85vw, (max-width: 1024px) 800px, (max-width: 1280px) 1200px, (max-width: 1536px) 1400px, 1600px",
   quality: 100,
 } as const;
 
@@ -31,11 +36,13 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
     >
       {/* Logo Section */}
       <div className="relative mx-auto pointer-events-none select-none mt-20 sm:-mt-40">
-        <div className={cn(
-          "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1600px]",
-          "-mb-[40px] sm:-mb-[120px] lg:-mb-[160px] xl:-mb-[180px] 2xl:-mb-[200px]",
-          "transform-gpu hover:scale-[1.2] transition-transform duration-1000 ease-out"
-        )}>
+        <div
+          className={cn(
+            "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1600px]",
+            "-mb-[40px] sm:-mb-[120px] lg:-mb-[160px] xl:-mb-[180px] 2xl:-mb-[200px]",
+            "transform-gpu hover:scale-[1.2] transition-transform duration-1000 ease-out"
+          )}
+        >
           <Image
             src="/poe2logonobg.png"
             alt="POE2 Logo"
@@ -54,8 +61,8 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         color="secondary"
         className="max-w-2xl mx-auto text-center leading-relaxed -mt-16 sm:-mt-32 mb-8 px-4 sm:px-0 relative after:absolute after:inset-0 after:-z-10 after:bg-gradient-to-b after:from-background/60 after:via-background/40 after:to-transparent after:blur-md text-shadow-[0_1px_2px_rgba(0,0,0,0.1)]"
       >
-        Essential tools for Path of Exile 2. Create and share builds, calculate precise DPS, and master your
-        character optimization.
+        Essential tools for Path of Exile 2. Create and share builds, calculate precise DPS, and
+        master your character optimization.
       </Text>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-full px-4 sm:px-0">
         <Link href="/build-planner" className="w-full sm:w-auto">

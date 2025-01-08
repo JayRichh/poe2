@@ -1,9 +1,12 @@
 "use client";
 
 import { Book } from "lucide-react";
-import { mechanicsWithMeta } from "~/lib/mechanics/data";
+
 import { IconMap } from "~/components/mechanics/IconMap";
+
 import { useSidebarWidth } from "~/hooks/useSidebarWidth";
+
+import { mechanicsWithMeta } from "~/lib/mechanics/data";
 
 export function MechanicsSidebar() {
   const { isCollapsed } = useSidebarWidth();
@@ -22,9 +25,7 @@ export function MechanicsSidebar() {
             <div className="flex-shrink-0">
               <Icon className="w-4 h-4 text-primary" />
             </div>
-            {!isCollapsed && (
-              <span className="text-sm truncate">{mechanic.title}</span>
-            )}
+            {!isCollapsed && <span className="text-sm truncate">{mechanic.title}</span>}
           </a>
         );
       })}

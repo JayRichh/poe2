@@ -1,4 +1,4 @@
-import { DPSCalc } from '../src/lib/calculations';
+import { DPSCalc } from "../src/lib/calculations";
 
 // Format number with K/M suffix
 const formatNumber = (num: number): string => {
@@ -18,7 +18,7 @@ const formatNumber = (num: number): string => {
 // NOOB Level (1-20): Grove Bow
 // A basic bow that a new player might use
 // Based on POE2 early game weapon scaling
-console.log('\n=== Test Case: NOOB Level (1-20) Grove Bow ===');
+console.log("\n=== Test Case: NOOB Level (1-20) Grove Bow ===");
 const noobTest = new DPSCalc({
   // Grove Bow - Basic early game bow
   weapon1MinBaseDmg: 5,
@@ -33,7 +33,7 @@ const noobTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Basic settings for new player
   attackSpeed: 1.4,
   attackSpeedIncrease: 0,
@@ -42,13 +42,13 @@ const noobTest = new DPSCalc({
   critDamage: 130,
   resPenetration: 0,
   bowDamage: 0,
-  
+
   // Minimal increases from early passives
   physicalDamageIncrease: 20,
   elementalDamageIncrease: 0,
   attackDamageIncrease: 10,
   projectileDamageIncrease: 0,
-  
+
   // No support gems yet
   martialTempo: false,
   primalArmament: false,
@@ -67,17 +67,21 @@ const noobTest = new DPSCalc({
 });
 
 const noobResults = noobTest.getResults();
-console.log('Total DPS:', formatNumber(noobResults.totalDpsWeapon1));
-console.log('\nDamage Breakdown:');
-console.log('Physical:', formatNumber(noobResults.finalPhysicalDamage), `(${noobResults.physicalDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('\nStats:');
-console.log('Attack Speed:', noobTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Crit Chance:', (noobResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (noobResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
+console.log("Total DPS:", formatNumber(noobResults.totalDpsWeapon1));
+console.log("\nDamage Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(noobResults.finalPhysicalDamage),
+  `(${noobResults.physicalDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log("\nStats:");
+console.log("Attack Speed:", noobTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Crit Chance:", (noobResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (noobResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");
 
 // MID Level (40-60): Storm Bow
 // A decent rare bow with elemental damage
-console.log('\n=== Test Case: MID Level (40-60) Storm Bow ===');
+console.log("\n=== Test Case: MID Level (40-60) Storm Bow ===");
 const midTest = new DPSCalc({
   // Storm Bow - Mid game rare bow
   weapon1MinBaseDmg: 20,
@@ -92,7 +96,7 @@ const midTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Mid-game settings
   attackSpeed: 1.5,
   attackSpeedIncrease: 15,
@@ -101,13 +105,13 @@ const midTest = new DPSCalc({
   critDamage: 180,
   resPenetration: 10,
   bowDamage: 15,
-  
+
   // Some passive tree progress
   physicalDamageIncrease: 80,
   elementalDamageIncrease: 40,
   attackDamageIncrease: 30,
   projectileDamageIncrease: 25,
-  
+
   // Basic support gems
   martialTempo: true,
   primalArmament: false,
@@ -126,18 +130,26 @@ const midTest = new DPSCalc({
 });
 
 const midResults = midTest.getResults();
-console.log('Total DPS:', formatNumber(midResults.totalDpsWeapon1));
-console.log('\nDamage Breakdown:');
-console.log('Physical:', formatNumber(midResults.finalPhysicalDamage), `(${midResults.physicalDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Lightning:', formatNumber(midResults.finalLightningDamage), `(${midResults.lightningDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('\nStats:');
-console.log('Attack Speed:', midTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Crit Chance:', (midResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (midResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
+console.log("Total DPS:", formatNumber(midResults.totalDpsWeapon1));
+console.log("\nDamage Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(midResults.finalPhysicalDamage),
+  `(${midResults.physicalDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Lightning:",
+  formatNumber(midResults.finalLightningDamage),
+  `(${midResults.lightningDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log("\nStats:");
+console.log("Attack Speed:", midTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Crit Chance:", (midResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (midResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");
 
 // MAX Level (80+): Tempest Bow
 // Endgame unique bow with full modifiers
-console.log('\n=== Test Case: MAX Level (80+) Tempest Bow ===');
+console.log("\n=== Test Case: MAX Level (80+) Tempest Bow ===");
 const maxTest = new DPSCalc({
   // Tempest Bow - Endgame unique
   weapon1MinBaseDmg: 50,
@@ -152,7 +164,7 @@ const maxTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Endgame settings
   attackSpeed: 1.7,
   attackSpeedIncrease: 45,
@@ -161,13 +173,13 @@ const maxTest = new DPSCalc({
   critDamage: 350,
   resPenetration: 30,
   bowDamage: 35,
-  
+
   // Full passive tree
   physicalDamageIncrease: 150,
   elementalDamageIncrease: 120,
   attackDamageIncrease: 80,
   projectileDamageIncrease: 65,
-  
+
   // All support gems
   martialTempo: true,
   primalArmament: true,
@@ -183,7 +195,7 @@ const maxTest = new DPSCalc({
   baseCritChance: 8,
   critChanceIncrease: 100,
   critMultiplier: 3.5,
-  
+
   // Status effects
   shock: true,
   shockMagnitude: 50,
@@ -194,19 +206,31 @@ const maxTest = new DPSCalc({
 });
 
 const maxResults = maxTest.getResults();
-console.log('Total DPS:', formatNumber(maxResults.totalDpsWeapon1));
-console.log('\nDamage Breakdown:');
-console.log('Physical:', formatNumber(maxResults.finalPhysicalDamage), `(${maxResults.physicalDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Lightning:', formatNumber(maxResults.finalLightningDamage), `(${maxResults.lightningDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Fire:', formatNumber(maxResults.finalFireDamage), `(${maxResults.fireDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('\nStats:');
-console.log('Attack Speed:', maxTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Crit Chance:', (maxResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (maxResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
-console.log('Projectiles:', 2);
+console.log("Total DPS:", formatNumber(maxResults.totalDpsWeapon1));
+console.log("\nDamage Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(maxResults.finalPhysicalDamage),
+  `(${maxResults.physicalDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Lightning:",
+  formatNumber(maxResults.finalLightningDamage),
+  `(${maxResults.lightningDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Fire:",
+  formatNumber(maxResults.finalFireDamage),
+  `(${maxResults.fireDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log("\nStats:");
+console.log("Attack Speed:", maxTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Crit Chance:", (maxResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (maxResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");
+console.log("Projectiles:", 2);
 
 // Test case 1: Basic Physical Weapon
-console.log('\n=== Test Case 1: Basic Physical Weapon ===');
+console.log("\n=== Test Case 1: Basic Physical Weapon ===");
 const basicPhysicalTest = new DPSCalc({
   // Weapon 1 - Basic Physical Bow
   weapon1MinBaseDmg: 100,
@@ -221,7 +245,7 @@ const basicPhysicalTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Global Settings
   attackSpeed: 1.2,
   attackSpeedIncrease: 20,
@@ -230,13 +254,13 @@ const basicPhysicalTest = new DPSCalc({
   critDamage: 150,
   resPenetration: 0,
   bowDamage: 22,
-  
+
   // Base increases
   physicalDamageIncrease: 43,
   elementalDamageIncrease: 0,
   attackDamageIncrease: 43,
   projectileDamageIncrease: 0,
-  
+
   // Support gems all disabled
   martialTempo: false,
   primalArmament: false,
@@ -254,17 +278,16 @@ const basicPhysicalTest = new DPSCalc({
   critMultiplier: 1.5,
 });
 
-
 const basicResults = basicPhysicalTest.getResults();
-console.log('Basic Physical DPS:', formatNumber(basicResults.totalDpsWeapon1));
-console.log('Physical Damage:', formatNumber(basicResults.finalPhysicalDamage));
-console.log('Attack Speed:', basicPhysicalTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Physical %:', basicResults.physicalDmgPercentWeapon1.toFixed(1) + '%');
-console.log('Crit Chance:', (basicResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (basicResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
+console.log("Basic Physical DPS:", formatNumber(basicResults.totalDpsWeapon1));
+console.log("Physical Damage:", formatNumber(basicResults.finalPhysicalDamage));
+console.log("Attack Speed:", basicPhysicalTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Physical %:", basicResults.physicalDmgPercentWeapon1.toFixed(1) + "%");
+console.log("Crit Chance:", (basicResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (basicResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");
 
 // Test case 2: Elemental Weapon with Status Effects
-console.log('\n=== Test Case 2: Elemental Weapon with Status Effects ===');
+console.log("\n=== Test Case 2: Elemental Weapon with Status Effects ===");
 const elementalTest = new DPSCalc({
   // Weapon 1 - Lightning Bow
   weapon1MinBaseDmg: 80,
@@ -279,7 +302,7 @@ const elementalTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Global Settings
   attackSpeed: 1.5,
   attackSpeedIncrease: 30,
@@ -288,19 +311,19 @@ const elementalTest = new DPSCalc({
   critDamage: 200,
   resPenetration: 20,
   bowDamage: 22,
-  
+
   // Status Effects
   shock: true,
   shockMagnitude: 40,
   electrocution: true,
   electrocutionDuration: 50,
-  
+
   // Base increases
   physicalDamageIncrease: 43,
   elementalDamageIncrease: 150,
   attackDamageIncrease: 43,
   projectileDamageIncrease: 75,
-  
+
   // Support gems
   lightningInfusion: true,
 
@@ -316,16 +339,16 @@ const elementalTest = new DPSCalc({
 });
 
 const elementalResults = elementalTest.getResults();
-console.log('Elemental DPS:', formatNumber(elementalResults.totalDpsWeapon1));
-console.log('Physical Damage:', formatNumber(elementalResults.finalPhysicalDamage));
-console.log('Lightning Damage:', formatNumber(elementalResults.finalLightningDamage));
-console.log('Physical %:', elementalResults.physicalDmgPercentWeapon1.toFixed(1) + '%');
-console.log('Lightning %:', elementalResults.lightningDmgPercentWeapon1.toFixed(1) + '%');
-console.log('Attack Speed:', elementalTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Shock Effect:', elementalResults.magnitudePercentWeapon1.toFixed(1) + '%');
+console.log("Elemental DPS:", formatNumber(elementalResults.totalDpsWeapon1));
+console.log("Physical Damage:", formatNumber(elementalResults.finalPhysicalDamage));
+console.log("Lightning Damage:", formatNumber(elementalResults.finalLightningDamage));
+console.log("Physical %:", elementalResults.physicalDmgPercentWeapon1.toFixed(1) + "%");
+console.log("Lightning %:", elementalResults.lightningDmgPercentWeapon1.toFixed(1) + "%");
+console.log("Attack Speed:", elementalTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Shock Effect:", elementalResults.magnitudePercentWeapon1.toFixed(1) + "%");
 
 // Test case 3: Full Configuration
-console.log('\n=== Test Case 3: Full Configuration with All Support Gems ===');
+console.log("\n=== Test Case 3: Full Configuration with All Support Gems ===");
 const fullConfigTest = new DPSCalc({
   // Weapon 1 - Hybrid Bow
   weapon1MinBaseDmg: 120,
@@ -340,7 +363,7 @@ const fullConfigTest = new DPSCalc({
   weapon1ColdMax: 15,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Global Settings
   attackSpeed: 1.8,
   attackSpeedIncrease: 50,
@@ -349,7 +372,7 @@ const fullConfigTest = new DPSCalc({
   critDamage: 250,
   resPenetration: 35,
   bowDamage: 22,
-  
+
   // Status Effects
   shock: true,
   shockMagnitude: 40,
@@ -357,13 +380,13 @@ const fullConfigTest = new DPSCalc({
   electrocutionDuration: 50,
   exposure: true,
   exposureMagnitude: 25,
-  
+
   // Base increases
   physicalDamageIncrease: 43,
   elementalDamageIncrease: 150,
   attackDamageIncrease: 43,
   projectileDamageIncrease: 75,
-  
+
   // All support gems enabled
   martialTempo: true,
   primalArmament: true,
@@ -382,20 +405,36 @@ const fullConfigTest = new DPSCalc({
 });
 
 const fullResults = fullConfigTest.getResults();
-console.log('Total DPS:', formatNumber(fullResults.totalDpsWeapon1));
-console.log('\nDamage Breakdown:');
-console.log('Physical:', formatNumber(fullResults.finalPhysicalDamage), `(${fullResults.physicalDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Lightning:', formatNumber(fullResults.finalLightningDamage), `(${fullResults.lightningDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Fire:', formatNumber(fullResults.finalFireDamage), `(${fullResults.fireDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Cold:', formatNumber(fullResults.finalColdDamage), `(${fullResults.coldDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('\nStats:');
-console.log('Attack Speed:', fullConfigTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Crit Chance:', (fullResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (fullResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
-console.log('Projectiles:', 2);
+console.log("Total DPS:", formatNumber(fullResults.totalDpsWeapon1));
+console.log("\nDamage Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(fullResults.finalPhysicalDamage),
+  `(${fullResults.physicalDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Lightning:",
+  formatNumber(fullResults.finalLightningDamage),
+  `(${fullResults.lightningDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Fire:",
+  formatNumber(fullResults.finalFireDamage),
+  `(${fullResults.fireDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Cold:",
+  formatNumber(fullResults.finalColdDamage),
+  `(${fullResults.coldDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log("\nStats:");
+console.log("Attack Speed:", fullConfigTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Crit Chance:", (fullResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (fullResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");
+console.log("Projectiles:", 2);
 
 // Test case 4: Weapon Comparison
-console.log('\n=== Test Case 4: Weapon Comparison ===');
+console.log("\n=== Test Case 4: Weapon Comparison ===");
 const comparisonTest = new DPSCalc({
   // Weapon 1 - Physical Focus
   weapon1MinBaseDmg: 100,
@@ -410,7 +449,7 @@ const comparisonTest = new DPSCalc({
   weapon1ColdMax: 0,
   weapon1ChaosMin: 0,
   weapon1ChaosMax: 0,
-  
+
   // Weapon 2 - Elemental Focus
   weapon2MinBaseDmg: 100,
   weapon2MaxBaseDmg: 150,
@@ -424,7 +463,7 @@ const comparisonTest = new DPSCalc({
   weapon2ColdMax: 15,
   weapon2ChaosMin: 0,
   weapon2ChaosMax: 0,
-  
+
   // Global Settings
   attackSpeed: 1.5,
   attackSpeedIncrease: 30,
@@ -433,19 +472,19 @@ const comparisonTest = new DPSCalc({
   critDamage: 200,
   resPenetration: 20,
   bowDamage: 22,
-  
+
   // Status Effects
   shock: true,
   shockMagnitude: 40,
   electrocution: true,
   electrocutionDuration: 50,
-  
+
   // Base increases
   physicalDamageIncrease: 43,
   elementalDamageIncrease: 150,
   attackDamageIncrease: 43,
   projectileDamageIncrease: 75,
-  
+
   // Support gems
   martialTempo: true,
   primalArmament: true,
@@ -470,21 +509,45 @@ const comparisonTest = new DPSCalc({
 });
 
 const comparisonResults = comparisonTest.getResults();
-console.log('Weapon 1 DPS:', formatNumber(comparisonResults.totalDpsWeapon1));
-console.log('Weapon 2 DPS:', formatNumber(comparisonResults.totalDpsWeapon2));
-console.log('DPS Increase:', (comparisonResults.dpsIncrease * 100).toFixed(1) + '%');
+console.log("Weapon 1 DPS:", formatNumber(comparisonResults.totalDpsWeapon1));
+console.log("Weapon 2 DPS:", formatNumber(comparisonResults.totalDpsWeapon2));
+console.log("DPS Increase:", (comparisonResults.dpsIncrease * 100).toFixed(1) + "%");
 
-console.log('\nWeapon 1 Breakdown:');
-console.log('Physical:', formatNumber(comparisonResults.finalPhysicalDamage), `(${comparisonResults.physicalDmgPercentWeapon1.toFixed(1)}%)`);
-console.log('Lightning:', formatNumber(comparisonResults.finalLightningDamage), `(${comparisonResults.lightningDmgPercentWeapon1.toFixed(1)}%)`);
+console.log("\nWeapon 1 Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(comparisonResults.finalPhysicalDamage),
+  `(${comparisonResults.physicalDmgPercentWeapon1.toFixed(1)}%)`
+);
+console.log(
+  "Lightning:",
+  formatNumber(comparisonResults.finalLightningDamage),
+  `(${comparisonResults.lightningDmgPercentWeapon1.toFixed(1)}%)`
+);
 
-console.log('\nWeapon 2 Breakdown:');
-console.log('Physical:', formatNumber(comparisonResults.finalPhysicalDamage2), `(${comparisonResults.physicalDmgPercentWeapon2.toFixed(1)}%)`);
-console.log('Lightning:', formatNumber(comparisonResults.finalLightningDamage2), `(${comparisonResults.lightningDmgPercentWeapon2.toFixed(1)}%)`);
-console.log('Fire:', formatNumber(comparisonResults.finalFireDamage2), `(${comparisonResults.fireDmgPercentWeapon2.toFixed(1)}%)`);
-console.log('Cold:', formatNumber(comparisonResults.finalColdDamage2), `(${comparisonResults.coldDmgPercentWeapon2.toFixed(1)}%)`);
+console.log("\nWeapon 2 Breakdown:");
+console.log(
+  "Physical:",
+  formatNumber(comparisonResults.finalPhysicalDamage2),
+  `(${comparisonResults.physicalDmgPercentWeapon2.toFixed(1)}%)`
+);
+console.log(
+  "Lightning:",
+  formatNumber(comparisonResults.finalLightningDamage2),
+  `(${comparisonResults.lightningDmgPercentWeapon2.toFixed(1)}%)`
+);
+console.log(
+  "Fire:",
+  formatNumber(comparisonResults.finalFireDamage2),
+  `(${comparisonResults.fireDmgPercentWeapon2.toFixed(1)}%)`
+);
+console.log(
+  "Cold:",
+  formatNumber(comparisonResults.finalColdDamage2),
+  `(${comparisonResults.coldDmgPercentWeapon2.toFixed(1)}%)`
+);
 
-console.log('\nStats:');
-console.log('Attack Speed:', comparisonTest.attacksPerSecond.toFixed(2), 'attacks/sec');
-console.log('Crit Chance:', (comparisonResults.critChanceWeapon1 * 100).toFixed(1) + '%');
-console.log('Crit Multiplier:', (comparisonResults.critMultiplierWeapon1 * 100).toFixed(0) + '%');
+console.log("\nStats:");
+console.log("Attack Speed:", comparisonTest.attacksPerSecond.toFixed(2), "attacks/sec");
+console.log("Crit Chance:", (comparisonResults.critChanceWeapon1 * 100).toFixed(1) + "%");
+console.log("Crit Multiplier:", (comparisonResults.critMultiplierWeapon1 * 100).toFixed(0) + "%");

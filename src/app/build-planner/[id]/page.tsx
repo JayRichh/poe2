@@ -1,8 +1,12 @@
 import { Suspense } from "react";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { BuildOverview } from "~/components/build-planner/BuildOverview";
+
 import { cn } from "~/utils/cn";
+
 import { getBuild } from "~/app/actions/server/builds";
 
 interface PageProps {

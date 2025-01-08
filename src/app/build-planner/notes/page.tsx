@@ -5,30 +5,29 @@ import { AlertCircle, Check, Save } from "lucide-react";
 
 import { useCallback, useEffect, useState } from "react";
 
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
-import dynamic from 'next/dynamic';
 import { NotesSections, Section } from "~/components/build-planner/notes/NotesSections";
 import { DEFAULT_SECTIONS } from "~/components/build-planner/notes/default-sections";
+import { Text } from "~/components/ui/Text";
 
 const DrawingCanvas = dynamic(
-  () => import("~/components/build-planner/notes/DrawingCanvas").then(mod => mod.DrawingCanvas),
+  () => import("~/components/build-planner/notes/DrawingCanvas").then((mod) => mod.DrawingCanvas),
   {
     loading: () => <div className="h-96 bg-muted/10 animate-pulse rounded-lg" />,
-    ssr: false
+    ssr: false,
   }
 );
 
 const NotesEditor = dynamic(
-  () => import("~/components/build-planner/notes/NotesEditor").then(mod => mod.NotesEditor),
+  () => import("~/components/build-planner/notes/NotesEditor").then((mod) => mod.NotesEditor),
   {
     loading: () => <div className="h-64 bg-muted/10 animate-pulse rounded-lg" />,
-    ssr: false
+    ssr: false,
   }
 );
-import { Text } from "~/components/ui/Text";
-
 
 export default function NotesPage() {
   const router = useRouter();

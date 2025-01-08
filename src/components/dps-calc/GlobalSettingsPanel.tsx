@@ -23,7 +23,7 @@ interface NumericSetting {
 }
 
 interface ToggleSetting {
-  key: keyof GlobalSettings | `supportGems.${keyof GlobalSettings['supportGems']}`;
+  key: keyof GlobalSettings | `supportGems.${keyof GlobalSettings["supportGems"]}`;
   label: string;
   tooltip: string;
 }
@@ -35,7 +35,10 @@ const sanitizeNumber = (value: number, min: number, max: number, step = 1): numb
 };
 
 export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelProps) {
-  const handleSupportGemChange = (gemName: keyof GlobalSettings['supportGems'], checked: boolean) => {
+  const handleSupportGemChange = (
+    gemName: keyof GlobalSettings["supportGems"],
+    checked: boolean
+  ) => {
     onChange({
       supportGems: {
         ...settings.supportGems,
@@ -56,9 +59,9 @@ export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelP
     }
   };
 
-  const handleToggleChange = (key: ToggleSetting['key'], checked: boolean) => {
-    if (key.startsWith('supportGems.')) {
-      const gemName = key.split('.')[1] as keyof GlobalSettings['supportGems'];
+  const handleToggleChange = (key: ToggleSetting["key"], checked: boolean) => {
+    if (key.startsWith("supportGems.")) {
+      const gemName = key.split(".")[1] as keyof GlobalSettings["supportGems"];
       handleSupportGemChange(gemName, checked);
     } else {
       const settingKey = key as keyof GlobalSettings;
@@ -158,11 +161,11 @@ export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelP
     },
   ];
 
-const supportGemSettings: ToggleSetting[] = [
-    { 
-      key: "supportGems.martialTempo", 
-      label: "Martial Tempo", 
-      tooltip: "Increases attack speed and damage" 
+  const supportGemSettings: ToggleSetting[] = [
+    {
+      key: "supportGems.martialTempo",
+      label: "Martial Tempo",
+      tooltip: "Increases attack speed and damage",
     },
     {
       key: "supportGems.primalArmament",
@@ -335,18 +338,20 @@ const supportGemSettings: ToggleSetting[] = [
 
         {/* Support Gems */}
         <div key="support" className="p-4">
-          <Text className="text-sm font-medium text-foreground-secondary mb-6">
-            Support Gems
-          </Text>
+          <Text className="text-sm font-medium text-foreground-secondary mb-6">Support Gems</Text>
           <div className="grid grid-cols-1 gap-2">
             {supportGemSettings.map(({ key, label, tooltip }) => (
               <Tooltip key={key} content={tooltip}>
                 <label className="flex items-center gap-2 cursor-pointer py-1.5 px-2.5 rounded-md hover:bg-background-secondary transition-colors">
                   <input
                     type="checkbox"
-                    checked={key.startsWith("supportGems.") 
-                      ? !!settings.supportGems[key.split(".")[1] as keyof typeof settings.supportGems]
-                      : !!settings[key as keyof typeof settings]}
+                    checked={
+                      key.startsWith("supportGems.")
+                        ? !!settings.supportGems[
+                            key.split(".")[1] as keyof typeof settings.supportGems
+                          ]
+                        : !!settings[key as keyof typeof settings]
+                    }
                     onChange={(e) => {
                       if (key.startsWith("supportGems.")) {
                         const gemName = key.split(".")[1] as keyof typeof settings.supportGems;
@@ -366,9 +371,7 @@ const supportGemSettings: ToggleSetting[] = [
 
         {/* Status Effects */}
         <div key="status" className="p-4 lg:col-span-2 xl:col-span-1">
-          <Text className="text-sm font-medium text-foreground-secondary mb-6">
-            Status Effects
-          </Text>
+          <Text className="text-sm font-medium text-foreground-secondary mb-6">Status Effects</Text>
           <div className="grid grid-cols-1 gap-2">
             {statusSettings.map(({ key, label, tooltip }) => (
               <Tooltip key={key} content={tooltip}>
@@ -376,7 +379,9 @@ const supportGemSettings: ToggleSetting[] = [
                   <input
                     type="checkbox"
                     checked={!!settings[key as keyof typeof settings]}
-                    onChange={(e) => handleToggleChange(key as keyof typeof settings, e.target.checked)}
+                    onChange={(e) =>
+                      handleToggleChange(key as keyof typeof settings, e.target.checked)
+                    }
                     className="h-4 w-4 rounded border-border bg-background checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary/25 transition-colors"
                   />
                   <Text className="text-sm font-medium truncate flex-grow">{label}</Text>

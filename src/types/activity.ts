@@ -1,4 +1,4 @@
-export type ActivityType = 'build' | 'profile' | 'settings' | 'connection';
+export type ActivityType = "build" | "profile" | "settings" | "connection";
 
 export interface Activity {
   id: string;

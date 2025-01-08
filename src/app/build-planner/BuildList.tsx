@@ -1,28 +1,36 @@
 "use client";
 
 import { Suspense, useMemo } from "react";
+
+import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import dynamic from 'next/dynamic';
-
-const BuildGrid = dynamic(() => import("~/components/build-planner/BuildGrid").then(mod => mod.BuildGrid), {
-  loading: () => (
-    <div className="grid gap-4 animate-pulse">
-      {[...Array(6)].map((_, i) => (
-        <div key={i} className="h-48 bg-primary/5 rounded-lg" />
-      ))}
-    </div>
-  )
-});
-
-const BuildListControls = dynamic(() => import("~/components/build-planner/BuildListControls").then(mod => mod.BuildListControls), {
-  loading: () => <div className="h-16 bg-primary/5 animate-pulse rounded-lg" />
-});
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
 import { useBuilds } from "~/hooks/useBuilds";
+
 import type { Build, VisibilityType } from "~/app/actions/server/builds";
+
+const BuildGrid = dynamic(
+  () => import("~/components/build-planner/BuildGrid").then((mod) => mod.BuildGrid),
+  {
+    loading: () => (
+      <div className="grid gap-4 animate-pulse">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-48 bg-primary/5 rounded-lg" />
+        ))}
+      </div>
+    ),
+  }
+);
+
+const BuildListControls = dynamic(
+  () => import("~/components/build-planner/BuildListControls").then((mod) => mod.BuildListControls),
+  {
+    loading: () => <div className="h-16 bg-primary/5 animate-pulse rounded-lg" />,
+  }
+);
 
 interface BuildListProps {
   initialBuilds: Build[];
@@ -41,9 +49,9 @@ export function BuildList({ initialBuilds }: BuildListProps) {
   const view = searchParams?.get("view") as "grid" | "list" | "grouped" | undefined;
   const groupBy = searchParams?.get("groupBy") as "poe_class" | "level" | "visibility" | undefined;
 
-  const { builds, loading } = useBuilds({ 
+  const { builds, loading } = useBuilds({
     visibility: visibility as VisibilityType | "all",
-    includeOwn: true 
+    includeOwn: true,
   });
 
   // Memoize filtered and sorted builds
@@ -119,10 +127,10 @@ export function BuildList({ initialBuilds }: BuildListProps) {
             </Text>
           </div>
         ) : (
-          <BuildGrid 
-            builds={paginatedBuilds} 
+          <BuildGrid
+            builds={paginatedBuilds}
             groupBy={effectiveGroupBy}
-            viewMode={view || "grid"} 
+            viewMode={view || "grid"}
           />
         )}
       </Suspense>

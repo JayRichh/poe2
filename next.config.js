@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,24 +15,24 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/index',
-        destination: '/',
+        source: "/index",
+        destination: "/",
         permanent: true,
       },
       {
-        source: '/builds/:path*',
-        destination: '/build-planner/:path*',
+        source: "/builds/:path*",
+        destination: "/build-planner/:path*",
         permanent: true,
       },
       {
-        source: '/rss',
-        destination: '/feed.xml',
+        source: "/rss",
+        destination: "/feed.xml",
         permanent: true,
-      }
+      },
     ];
   },
   images: {
-    remotePatterns: [ 
+    remotePatterns: [
       {
         protocol: "https",
         hostname: "jcumrdfiiuggbwuqcrer.supabase.co",
@@ -71,60 +71,60 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
   },
   modularizeImports: {
-    '@nivo/core': {
-      transform: '@nivo/core/dist/{{member}}',
-      preventFullImport: true
+    "@nivo/core": {
+      transform: "@nivo/core/dist/{{member}}",
+      preventFullImport: true,
     },
-    '@nivo/line': {
-      transform: '@nivo/line/dist/{{member}}',
-      preventFullImport: true
-    }
+    "@nivo/line": {
+      transform: "@nivo/line/dist/{{member}}",
+      preventFullImport: true,
+    },
   },
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
-      '@nivo/core', 
-      '@nivo/line', 
-      '@nivo/bar',
-      '@nivo/pie',
-      'lucide-react',
-      '@uiw/react-md-editor',
-      'framer-motion'
+      "@nivo/core",
+      "@nivo/line",
+      "@nivo/bar",
+      "@nivo/pie",
+      "lucide-react",
+      "@uiw/react-md-editor",
+      "framer-motion",
     ],
     serverActions: {
-      bodySizeLimit: "2mb"
+      bodySizeLimit: "2mb",
     },
     turbo: {
-      moduleIdStrategy: 'deterministic',
-      resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mdx'],
+      moduleIdStrategy: "deterministic",
+      resolveExtensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".mdx"],
       resolveAlias: {
         // Add any module aliases if needed
-      }
-    }
+      },
+    },
   },
   webpack: (config, { isServer, dev }) => {
     if (!isServer && !dev) {
       config.optimization.splitChunks = {
-        chunks: 'all',
+        chunks: "all",
         minSize: 20000,
-      maxSize: 20000,
+        maxSize: 20000,
         cacheGroups: {
           default: false,
           vendors: false,
           framework: {
-            chunks: 'all',
-            name: 'framework',
+            chunks: "all",
+            name: "framework",
             test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
             priority: 40,
             enforce: true,
-            reuseExistingChunk: true
+            reuseExistingChunk: true,
           },
           commons: {
-            name: 'commons',
-            chunks: 'all',
+            name: "commons",
+            chunks: "all",
             minChunks: 2,
             priority: 20,
-            reuseExistingChunk: true
+            reuseExistingChunk: true,
           },
           lib: {
             test(module) {
@@ -135,36 +135,36 @@ const nextConfig = {
               );
             },
             name(module) {
-              const hash = crypto.createHash('sha1');
+              const hash = crypto.createHash("sha1");
               hash.update(module.identifier());
-              return `lib-${hash.digest('hex').substring(0, 8)}`;
+              return `lib-${hash.digest("hex").substring(0, 8)}`;
             },
             priority: 30,
             minChunks: 1,
-            reuseExistingChunk: true
+            reuseExistingChunk: true,
           },
           nivo: {
             test: /[\\/]node_modules[\\/](@nivo)[\\/]/,
-            name: 'nivo-charts',
-            chunks: 'async',
+            name: "nivo-charts",
+            chunks: "async",
             priority: 35,
-            enforce: true
+            enforce: true,
           },
           framerMotion: {
             test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
-            name: 'framer-motion',
-            chunks: 'async',
+            name: "framer-motion",
+            chunks: "async",
             priority: 35,
-            enforce: true
+            enforce: true,
           },
           mdEditor: {
             test: /[\\/]node_modules[\\/](@uiw)[\\/]/,
-            name: 'md-editor',
-            chunks: 'async',
+            name: "md-editor",
+            chunks: "async",
             priority: 35,
-            enforce: true
-          }
-        }
+            enforce: true,
+          },
+        },
       };
     }
     return config;
@@ -172,76 +172,76 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
           },
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains'
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
           },
           {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          }
-        ]
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
+        ],
       },
       {
-        source: '/_next/static/:path*',
+        source: "/_next/static/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
       {
-        source: '/images/:path*',
+        source: "/images/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
-          }
-        ]
+            key: "Cache-Control",
+            value: "public, max-age=31536000, stale-while-revalidate=31536000",
+          },
+        ],
       },
       {
-        source: '/ascendancies/:path*',
+        source: "/ascendancies/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
-          }
-        ]
+            key: "Cache-Control",
+            value: "public, max-age=31536000, stale-while-revalidate=31536000",
+          },
+        ],
       },
       {
-        source: '/:path*.{jpg,jpeg,png,gif,webp,svg,ico}',
+        source: "/:path*.{jpg,jpeg,png,gif,webp,svg,ico}",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, stale-while-revalidate=31536000'
-          }
-        ]
-      }
+            key: "Cache-Control",
+            value: "public, max-age=31536000, stale-while-revalidate=31536000",
+          },
+        ],
+      },
     ];
-  }
+  },
 };
 
 module.exports = nextConfig;

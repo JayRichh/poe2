@@ -1,6 +1,7 @@
 "use client";
 
 import { RotateCcw, Save, Share2 } from "lucide-react";
+
 import { Button } from "~/components/ui/Button";
 import { Card } from "~/components/ui/Card";
 import { Select } from "~/components/ui/Select";
@@ -64,12 +65,7 @@ export function DPSCalculatorHeader({ onLoadTestCase, onReset }: DPSCalculatorHe
           </div>
 
           {/* Reset Button */}
-          <Button
-            variant="outline"
-            size="md"
-            onClick={onReset}
-            className="flex items-center gap-2"
-          >
+          <Button variant="outline" size="md" onClick={onReset} className="flex items-center gap-2">
             <RotateCcw className="h-4 w-4" />
             Reset All
           </Button>

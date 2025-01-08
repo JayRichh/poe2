@@ -1,9 +1,12 @@
 "use client";
 
 import { Clock, FileText, Megaphone, Newspaper } from "lucide-react";
+
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+
 import { cn } from "~/utils/cn";
+
 import { Text } from "../ui/Text";
 
 interface Category {
@@ -31,7 +34,7 @@ const categories: Category[] = [
     title: "Patch Notes",
     slug: "patch-notes",
     icon: FileText,
-  }
+  },
 ];
 
 const timeRanges = [

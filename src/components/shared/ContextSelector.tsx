@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useMemo, useState, useRef } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
-import { cn } from "~/utils/cn";
+import React, { useMemo, useRef, useState } from "react";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { Button } from "~/components/ui/Button";
+
+import { cn } from "~/utils/cn";
 
 type RouteSegment = {
   label: string;
@@ -62,8 +65,8 @@ export function ContextSelector() {
     }
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isOpen]);
 
@@ -81,11 +84,9 @@ export function ContextSelector() {
     for (let i = 1; i < segments.length; i++) {
       const segment = segments[i];
       currentPath += `/${segment}`;
-      
+
       // Handle dynamic segments (e.g., [id])
-      const label = segment.startsWith("[") 
-        ? segment.replace(/[\[\]]/g, "") 
-        : segment;
+      const label = segment.startsWith("[") ? segment.replace(/[\[\]]/g, "") : segment;
 
       result.push({
         label: label.charAt(0).toUpperCase() + label.slice(1),
@@ -104,10 +105,7 @@ export function ContextSelector() {
         <Button
           variant="ghost"
           size="sm"
-          className={cn(
-            "h-7 text-sm gap-1",
-            !currentContext.children && "pr-2"
-          )}
+          className={cn("h-7 text-sm gap-1", !currentContext.children && "pr-2")}
           onClick={(e) => {
             e.stopPropagation();
             setIsOpen(!isOpen);
@@ -115,17 +113,14 @@ export function ContextSelector() {
         >
           {currentContext.label}
           {currentContext.children && (
-            <ChevronDown 
-              className={cn(
-                "w-4 h-4 transition-transform duration-200",
-                isOpen && "rotate-180"
-              )} 
+            <ChevronDown
+              className={cn("w-4 h-4 transition-transform duration-200", isOpen && "rotate-180")}
             />
           )}
         </Button>
-        
+
         {currentContext.children && (
-          <div 
+          <div
             data-dropdown
             className={cn(
               "absolute top-full left-0 mt-1 w-48",
@@ -171,7 +166,7 @@ export function ContextSelector() {
           {breadcrumbs.slice(1).map((crumb, index) => (
             <React.Fragment key={crumb.path}>
               <ChevronRight className="w-3 h-3 text-muted-foreground" />
-              <Link 
+              <Link
                 href={crumb.path}
                 className={cn(
                   "text-sm text-muted-foreground hover:text-foreground transition-colors",

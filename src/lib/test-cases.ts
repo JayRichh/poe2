@@ -42,13 +42,13 @@ export const TEST_CASES = {
       critDamage: 130,
       resPenetration: 0,
       bowDamage: 0,
-      
+
       // Minimal increases from early passives
       physicalDamageIncrease: 20,
       elementalDamageIncrease: 0,
       attackDamageIncrease: 10,
       projectileDamageIncrease: 0,
-      
+
       // No support gems yet
       supportGems: {
         martialTempo: false,
@@ -56,7 +56,7 @@ export const TEST_CASES = {
         lightningInfusion: false,
         iceBite: false,
       },
-      
+
       // No status effects
       shock: false,
       shockMagnitude: 0,
@@ -66,7 +66,7 @@ export const TEST_CASES = {
       exposure: false,
       exposureMagnitude: 0,
       exposureDuration: 0,
-    }
+    },
   },
 
   mid: {
@@ -109,13 +109,13 @@ export const TEST_CASES = {
       critDamage: 180,
       resPenetration: 10,
       bowDamage: 15,
-      
+
       // Some passive tree progress
       physicalDamageIncrease: 80,
       elementalDamageIncrease: 40,
       attackDamageIncrease: 30,
       projectileDamageIncrease: 25,
-      
+
       // Basic support gems
       supportGems: {
         martialTempo: true,
@@ -123,7 +123,7 @@ export const TEST_CASES = {
         lightningInfusion: false,
         iceBite: false,
       },
-      
+
       // Basic status effects
       shock: true,
       shockMagnitude: 20,
@@ -133,7 +133,7 @@ export const TEST_CASES = {
       exposure: false,
       exposureMagnitude: 0,
       exposureDuration: 0,
-    }
+    },
   },
 
   max: {
@@ -176,13 +176,13 @@ export const TEST_CASES = {
       critDamage: 350,
       resPenetration: 30,
       bowDamage: 35,
-      
+
       // Full passive tree
       physicalDamageIncrease: 150,
       elementalDamageIncrease: 120,
       attackDamageIncrease: 80,
       projectileDamageIncrease: 65,
-      
+
       // All support gems
       supportGems: {
         martialTempo: true,
@@ -190,7 +190,7 @@ export const TEST_CASES = {
         lightningInfusion: true,
         iceBite: true,
       },
-      
+
       // Full status effects
       shock: true,
       shockMagnitude: 50,
@@ -200,7 +200,7 @@ export const TEST_CASES = {
       exposure: true,
       exposureMagnitude: 30,
       exposureDuration: 100,
-    }
+    },
   },
 
   physical: {
@@ -242,19 +242,19 @@ export const TEST_CASES = {
       critDamage: 150,
       resPenetration: 0,
       bowDamage: 22,
-      
+
       physicalDamageIncrease: 43,
       elementalDamageIncrease: 0,
       attackDamageIncrease: 43,
       projectileDamageIncrease: 0,
-      
+
       supportGems: {
         martialTempo: false,
         primalArmament: false,
         lightningInfusion: false,
         iceBite: false,
       },
-      
+
       shock: false,
       shockMagnitude: 0,
       shockDuration: 0,
@@ -263,7 +263,7 @@ export const TEST_CASES = {
       exposure: false,
       exposureMagnitude: 0,
       exposureDuration: 0,
-    }
+    },
   },
 
   elemental: {
@@ -305,19 +305,19 @@ export const TEST_CASES = {
       critDamage: 200,
       resPenetration: 20,
       bowDamage: 22,
-      
+
       physicalDamageIncrease: 43,
       elementalDamageIncrease: 150,
       attackDamageIncrease: 43,
       projectileDamageIncrease: 75,
-      
+
       supportGems: {
         martialTempo: false,
         primalArmament: false,
         lightningInfusion: true,
         iceBite: false,
       },
-      
+
       shock: true,
       shockMagnitude: 40,
       shockDuration: 100,
@@ -326,7 +326,7 @@ export const TEST_CASES = {
       exposure: false,
       exposureMagnitude: 0,
       exposureDuration: 0,
-    }
+    },
   },
 
   hybrid: {
@@ -368,19 +368,19 @@ export const TEST_CASES = {
       critDamage: 250,
       resPenetration: 35,
       bowDamage: 22,
-      
+
       physicalDamageIncrease: 43,
       elementalDamageIncrease: 150,
       attackDamageIncrease: 43,
       projectileDamageIncrease: 75,
-      
+
       supportGems: {
         martialTempo: true,
         primalArmament: true,
         lightningInfusion: true,
         iceBite: true,
       },
-      
+
       shock: true,
       shockMagnitude: 40,
       shockDuration: 100,
@@ -389,6 +389,6 @@ export const TEST_CASES = {
       exposure: true,
       exposureMagnitude: 25,
       exposureDuration: 100,
-    }
-  }
+    },
+  },
 } as const;

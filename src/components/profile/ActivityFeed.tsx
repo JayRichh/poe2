@@ -1,20 +1,24 @@
-import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Activity, Settings, User, GitBranch } from "lucide-react";
+import { Activity, GitBranch, Settings, User } from "lucide-react";
+
+import { useCallback, useRef } from "react";
+
 import { Text } from "~/components/ui/Text";
+
 import { useActivities } from "~/hooks/useActivities";
-import { ActivityType } from "~/types/activity";
+
 import { formatRelativeTime } from "~/lib/utils/time";
+import { ActivityType } from "~/types/activity";
 
 const getActivityIcon = (type: ActivityType) => {
   switch (type) {
-    case 'build':
+    case "build":
       return GitBranch;
-    case 'profile':
+    case "profile":
       return User;
-    case 'settings':
+    case "settings":
       return Settings;
-    case 'connection':
+    case "connection":
       return Activity;
   }
 };
@@ -23,24 +27,27 @@ export function ActivityFeed() {
   const { activities, loading, error, hasMore, loadMore } = useActivities();
   const observerTarget = useRef(null);
 
-  const intersectionObserver = useCallback((node: HTMLDivElement) => {
-    if (loading || !hasMore) return;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          loadMore();
-        }
-      },
-      { threshold: 0.5 }
-    );
+  const intersectionObserver = useCallback(
+    (node: HTMLDivElement) => {
+      if (loading || !hasMore) return;
 
-    if (node) observer.observe(node);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && hasMore) {
+            loadMore();
+          }
+        },
+        { threshold: 0.5 }
+      );
 
-    return () => {
-      if (node) observer.unobserve(node);
-    };
-  }, [loading, loadMore, hasMore]);
+      if (node) observer.observe(node);
+
+      return () => {
+        if (node) observer.unobserve(node);
+      };
+    },
+    [loading, loadMore, hasMore]
+  );
 
   if (error) {
     return (
@@ -65,7 +72,7 @@ export function ActivityFeed() {
     <div className="space-y-4">
       {activities.map((item, index) => {
         const Icon = getActivityIcon(item.type);
-        
+
         return (
           <motion.div
             key={item.id}
@@ -97,10 +104,12 @@ export function ActivityFeed() {
             <Text className="text-sm text-foreground/40">Loading more activities...</Text>
           )}
         </div>
-      ) : activities.length > 0 && (
-        <div className="py-4 text-center">
-          <Text className="text-sm text-foreground/40">No more activities to load</Text>
-        </div>
+      ) : (
+        activities.length > 0 && (
+          <div className="py-4 text-center">
+            <Text className="text-sm text-foreground/40">No more activities to load</Text>
+          </div>
+        )
       )}
     </div>
   );

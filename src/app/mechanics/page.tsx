@@ -1,6 +1,8 @@
 import { Book } from "lucide-react";
-import { mechanicsWithMeta } from "~/lib/mechanics/data";
+
 import { IconMap } from "~/components/mechanics/IconMap";
+
+import { mechanicsWithMeta } from "~/lib/mechanics/data";
 
 export default function MechanicsPage() {
   return (
@@ -11,7 +13,7 @@ export default function MechanicsPage() {
           <a
             key={mechanic.id}
             href={`/mechanics/${mechanic.id}`}
-              className="group flex flex-col p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-colors bg-card/50 hover:bg-card/80"
+            className="group flex flex-col p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-colors bg-card/50 hover:bg-card/80"
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 rounded-lg bg-primary/10">

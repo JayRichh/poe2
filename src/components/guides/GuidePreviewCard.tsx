@@ -1,6 +1,18 @@
 "use client";
 
-import { Activity, ArrowUp, Book, Box, Coins, Crosshair, Map, Shield, Sword, User, Zap } from "lucide-react";
+import {
+  Activity,
+  ArrowUp,
+  Book,
+  Box,
+  Coins,
+  Crosshair,
+  Map,
+  Shield,
+  Sword,
+  User,
+  Zap,
+} from "lucide-react";
 
 import React from "react";
 

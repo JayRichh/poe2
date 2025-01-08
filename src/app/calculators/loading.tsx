@@ -22,10 +22,10 @@ export default function Loading() {
                 <Skeleton className="h-9 w-9 rounded-lg" />
                 <Skeleton className="h-6 w-32" />
               </div>
-              
+
               <Skeleton className="h-4 w-full mb-2" />
               <Skeleton className="h-4 w-3/4 mb-6" />
-              
+
               <div className="mt-auto grid grid-cols-2 gap-2">
                 {[...Array(4)].map((_, j) => (
                   <Skeleton key={j} className="h-6 w-full rounded-md" />

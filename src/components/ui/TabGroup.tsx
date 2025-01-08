@@ -1,7 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+
+import { useEffect, useRef, useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface Tab {
@@ -102,9 +104,7 @@ export function TabGroup({
           </motion.div>
         </AnimatePresence>
       ) : (
-        <div className="relative">
-          {activeContent}
-        </div>
+        <div className="relative">{activeContent}</div>
       )}
     </div>
   );

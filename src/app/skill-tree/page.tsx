@@ -247,14 +247,14 @@ export default function SkillTreePage() {
                         className="hidden"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
-                        if (file) {
-                          const validation = validateFile(file);
-                          if (!validation.valid) {
-                            alert(validation.error);
-                            return;
+                          if (file) {
+                            const validation = validateFile(file);
+                            if (!validation.valid) {
+                              alert(validation.error);
+                              return;
+                            }
+                            handleImport(file);
                           }
-                          handleImport(file);
-                        }
                         }}
                       />
                     </label>

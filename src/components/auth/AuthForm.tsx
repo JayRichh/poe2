@@ -118,14 +118,14 @@ export function AuthForm({ type }: AuthFormProps) {
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Mail className="h-5 w-5 text-primary/60" />
             </div>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Enter your email"
-                autoComplete="username"
-                className={cn(
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+              autoComplete="username"
+              className={cn(
                 "pl-11 w-full h-12 rounded-xl",
                 "bg-background/95",
                 "border-2 border-border/50",

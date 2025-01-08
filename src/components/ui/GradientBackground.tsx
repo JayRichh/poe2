@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties } from "react";
+
 import { cn } from "~/utils/cn";
 
 export interface GradientBackgroundProps {

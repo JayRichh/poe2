@@ -1,4 +1,10 @@
-import type { ContentCategory, ContentIcon, BaseContent, ContentWithMeta, SectionKey } from "~/lib/shared/types";
+import type {
+  BaseContent,
+  ContentCategory,
+  ContentIcon,
+  ContentWithMeta,
+  SectionKey,
+} from "~/lib/shared/types";
 
 export const guides: Record<ContentCategory, BaseContent> = {
   gameplay: {
@@ -26,9 +32,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Character Stats",
         description: "Learn about core character statistics and mechanics",
         href: "/mechanics/character-stats",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   trading: {
     title: "Trading Tips",
@@ -66,9 +72,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Economy System",
         description: "Deep dive into POE2's economy and currency mechanics",
         href: "/mechanics/economy",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   "character-building": {
     title: "Character Building",
@@ -102,9 +108,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Character Stats",
         description: "Understanding core character statistics",
         href: "/mechanics/character-stats",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   equipment: {
     title: "Equipment & Crafting",
@@ -127,9 +133,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Economy Guide",
         description: "Learn about currency and crafting materials",
         href: "/mechanics/economy",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   combat: {
     title: "Combat Mechanics",
@@ -152,15 +158,15 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Damage Types",
         description: "Learn about different damage types and their interactions",
         href: "/mechanics/damage-types",
-        type: "mechanic"
+        type: "mechanic",
       },
       {
         title: "Status Effects",
         description: "Understanding status effects and ailments",
         href: "/mechanics/status-effects",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   "boss-fights": {
     title: "Boss Fight Mechanics",
@@ -183,9 +189,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Combat Mechanics",
         description: "Master core combat mechanics",
         href: "/mechanics/combat",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   progression: {
     title: "Character Progression",
@@ -207,9 +213,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Character Stats",
         description: "Understanding character statistics and scaling",
         href: "/mechanics/character-stats",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   mapping: {
     title: "Mapping Guide",
@@ -231,31 +237,31 @@ export const guides: Record<ContentCategory, BaseContent> = {
         title: "Economy Guide",
         description: "Learn about map investment and returns",
         href: "/mechanics/economy",
-        type: "mechanic"
-      }
-    ]
+        type: "mechanic",
+      },
+    ],
   },
   // Add stubs for other required categories
   "damage-types": {
     title: "Damage Types",
     description: "Damage type mechanics",
-    sections: []
+    sections: [],
   },
   "status-effects": {
     title: "Status Effects",
     description: "Status effect mechanics",
-    sections: []
+    sections: [],
   },
   "character-stats": {
     title: "Character Stats",
     description: "Character stat mechanics",
-    sections: []
+    sections: [],
   },
   economy: {
     title: "Economy",
     description: "Economy mechanics",
-    sections: []
-  }
+    sections: [],
+  },
 };
 
 const guideIconMap: Record<ContentCategory, ContentIcon> = {
@@ -270,13 +276,13 @@ const guideIconMap: Record<ContentCategory, ContentIcon> = {
   "damage-types": "Zap",
   "status-effects": "Activity",
   "character-stats": "User",
-  economy: "Coins"
+  economy: "Coins",
 };
 
 export const guidesWithMeta: ContentWithMeta[] = Object.entries(guides).map(([id, guide]) => ({
   ...guide,
   id: id as ContentCategory,
-  icon: guideIconMap[id as ContentCategory]
+  icon: guideIconMap[id as ContentCategory],
 }));
 
 // Organize guides by section

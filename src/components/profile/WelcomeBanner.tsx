@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { Text } from "~/components/ui/Text";
+
 import { cn } from "~/utils/cn";
+
 import { ProgressBar } from "./ProgressBar";
 
 interface WelcomeBannerProps {
@@ -12,9 +15,14 @@ interface WelcomeBannerProps {
   setupProgress: number;
 }
 
-export function WelcomeBanner({ name, isConnected, buildVisibility, setupProgress }: WelcomeBannerProps) {
+export function WelcomeBanner({
+  name,
+  isConnected,
+  buildVisibility,
+  setupProgress,
+}: WelcomeBannerProps) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="p-8 rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/10 to-primary/5 space-y-4 relative overflow-hidden"
@@ -34,7 +42,7 @@ export function WelcomeBanner({ name, isConnected, buildVisibility, setupProgres
             <li className={cn(isConnected ? "text-primary/60 line-through" : "")}>
               Connect your POE account to sync characters and builds
             </li>
-            <li className={cn(buildVisibility !== 'private' ? "text-primary/60 line-through" : "")}>
+            <li className={cn(buildVisibility !== "private" ? "text-primary/60 line-through" : "")}>
               Configure your build sharing preferences
             </li>
           </ul>

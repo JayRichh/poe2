@@ -1,11 +1,7 @@
-import { ContentLayout } from "~/components/shared/ContentLayout";
 import { MechanicsSidebar } from "~/components/mechanics/MechanicsSidebar";
+import { ContentLayout } from "~/components/shared/ContentLayout";
 
-export default function MechanicsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MechanicsLayout({ children }: { children: React.ReactNode }) {
   return (
     <ContentLayout
       title="Game Mechanics"

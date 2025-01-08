@@ -1,7 +1,7 @@
+import { PageLoading } from "~/components/shared/PageLoading";
 import { Card, CardContent } from "~/components/ui/Card";
 import { Container } from "~/components/ui/Container";
 import { Skeleton } from "~/components/ui/Skeleton";
-import { PageLoading } from "~/components/shared/PageLoading";
 
 export default function RootLoading() {
   return (

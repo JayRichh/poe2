@@ -1,9 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+
 import { useEffect, useState } from "react";
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { usePathname } from "next/navigation";
+
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
 
 const STORAGE_KEY = "beta-banner-seen";
@@ -15,9 +19,9 @@ export function WIPBanner() {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], [1, 0.5]);
 
-  const isHomePage = pathname === '/';
-  const isSkillTree = pathname === '/skill-tree';
-  const hasSubNav = ["/news", "/news/patch-notes", "/build-planner"].some(path => 
+  const isHomePage = pathname === "/";
+  const isSkillTree = pathname === "/skill-tree";
+  const hasSubNav = ["/news", "/news/patch-notes", "/build-planner"].some((path) =>
     pathname?.startsWith(path)
   );
 
@@ -37,16 +41,22 @@ export function WIPBanner() {
   }, []);
 
   return (
-    <div className={cn(
-      "fixed right-0 pointer-events-none z-[25]",
-      "transition-all duration-300",
-      isVisible 
-        ? hasSubNav 
-          ? "translate-y-24 sm:translate-y-28" 
-          : "translate-y-12 sm:translate-y-16"
-        : "translate-y-0",
-      isHomePage || isSkillTree ? "top-4 sm:top-4" : hasSubNav ? "top-12 sm:top-12" : "top-12 sm:top-12"
-    )}>
+    <div
+      className={cn(
+        "fixed right-0 pointer-events-none z-[25]",
+        "transition-all duration-300",
+        isVisible
+          ? hasSubNav
+            ? "translate-y-24 sm:translate-y-28"
+            : "translate-y-12 sm:translate-y-16"
+          : "translate-y-0",
+        isHomePage || isSkillTree
+          ? "top-4 sm:top-4"
+          : hasSubNav
+            ? "top-12 sm:top-12"
+            : "top-12 sm:top-12"
+      )}
+    >
       <motion.div
         initial={{ y: -50 }}
         animate={{ y: 0 }}

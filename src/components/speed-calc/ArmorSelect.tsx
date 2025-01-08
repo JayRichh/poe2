@@ -2,9 +2,11 @@
 
 import { Select } from "~/components/ui/Select";
 import { Text } from "~/components/ui/Text";
-import { Checkbox } from "../ui/Checkbox";
+
 import { ARMOR_TYPES } from "~/lib/constants/speed-calc";
 import type { CalculatorState } from "~/types/speed-calc";
+
+import { Checkbox } from "../ui/Checkbox";
 
 type ArmorModifierKey = keyof CalculatorState["armorModifiers"];
 
@@ -16,36 +18,39 @@ interface ArmorSelectProps {
 }
 
 export function ArmorSelect({ value, onChange, modifiers, onModifierChange }: ArmorSelectProps) {
-  const armorsByCategory = ARMOR_TYPES.reduce((acc, armor) => {
-    if (!acc.find(opt => opt.value === armor.category)) {
+  const armorsByCategory = ARMOR_TYPES.reduce(
+    (acc, armor) => {
+      if (!acc.find((opt) => opt.value === armor.category)) {
+        acc.push({
+          value: armor.category,
+          label: armor.category,
+          disabled: true,
+        });
+      }
+
       acc.push({
-        value: armor.category,
-        label: armor.category,
-        disabled: true,
+        value: armor.id,
+        label: armor.name,
       });
-    }
 
-    acc.push({
-      value: armor.id,
-      label: armor.name,
-    });
-
-    return acc;
-  }, [] as { value: string; label: string; disabled?: boolean }[]);
+      return acc;
+    },
+    [] as { value: string; label: string; disabled?: boolean }[]
+  );
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Text variant="body" weight="medium">Armor Type</Text>
-        <Select
-          value={value}
-          onChange={onChange}
-          options={armorsByCategory}
-        />
+        <Text variant="body" weight="medium">
+          Armor Type
+        </Text>
+        <Select value={value} onChange={onChange} options={armorsByCategory} />
       </div>
 
       <div className="space-y-2">
-        <Text variant="body" weight="medium">Armor Modifiers</Text>
+        <Text variant="body" weight="medium">
+          Armor Modifiers
+        </Text>
         <div className="space-y-3">
           <Checkbox
             id="armored-grace"

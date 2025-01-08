@@ -1,22 +1,23 @@
-export function formatDate(date: string | Date, format: 'short' | 'long' = 'short'): string {
-  const d = typeof date === 'string' ? new Date(date) : date;
-  
-  // Use UTC methods to ensure consistent rendering between server and client
-  const options: Intl.DateTimeFormatOptions = format === 'long' 
-    ? { 
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'UTC'
-      }
-    : {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        timeZone: 'UTC'
-      };
+export function formatDate(date: string | Date, format: "short" | "long" = "short"): string {
+  const d = typeof date === "string" ? new Date(date) : date;
 
-  return new Intl.DateTimeFormat('en-US', options).format(d);
+  // Use UTC methods to ensure consistent rendering between server and client
+  const options: Intl.DateTimeFormatOptions =
+    format === "long"
+      ? {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "UTC",
+        }
+      : {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          timeZone: "UTC",
+        };
+
+  return new Intl.DateTimeFormat("en-US", options).format(d);
 }
 
 export function timeAgo(date: string): string {

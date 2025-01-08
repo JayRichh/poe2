@@ -3,6 +3,7 @@
 import {
   Calculator,
   Cog,
+  Coins,
   FileText,
   GitBranch,
   Layout,
@@ -11,20 +12,24 @@ import {
   Menu,
   Newspaper,
   Settings,
+  Timer,
   User,
   Users,
   Zap,
-  Timer,
-  Coins,
 } from "lucide-react";
-import { Avatar } from "./profile/Avatar";
 
 import { useState } from "react";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
+
 import { useAuth } from "~/contexts/auth";
+
+import { Avatar } from "./profile/Avatar";
 import { Button } from "./ui/Button";
 import { Dropdown } from "./ui/Dropdown";
 import { FullscreenMenu } from "./ui/FullscreenMenu";
@@ -70,7 +75,6 @@ const secondaryLinks: NavItem[] = [
   { href: "/ascendancies", label: "Ascendancies", icon: Users },
 ];
 
-
 export function Navigation() {
   const isVisible = useHeaderScroll();
   const pathname = usePathname();
@@ -94,7 +98,7 @@ export function Navigation() {
   };
 
   const isDropdownItem = (item: NavItem | NavItemWithDropdown): item is NavItemWithDropdown => {
-    return !('href' in item) && 'items' in item;
+    return !("href" in item) && "items" in item;
   };
 
   return (
@@ -123,15 +127,28 @@ export function Navigation() {
                         <Dropdown
                           key={item.label}
                           trigger={
-                            <button 
+                            <button
                               className="text-base font-medium tracking-wide text-foreground/90 hover:text-primary transition-colors flex items-center gap-2.5 py-1"
                               aria-label={`${item.label} menu`}
                               aria-expanded="false"
                               aria-haspopup="true"
                             >
                               {item.label}
-                              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-60">
-                                <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <svg
+                                width="12"
+                                height="7"
+                                viewBox="0 0 12 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="opacity-60"
+                              >
+                                <path
+                                  d="M1 1L6 6L11 1"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
                               </svg>
                             </button>
                           }
@@ -147,7 +164,8 @@ export function Navigation() {
                       );
                     }
 
-                    const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+                    const isActive =
+                      pathname === item.href || pathname?.startsWith(`${item.href}/`);
                     return (
                       <Link
                         key={item.href}
@@ -177,7 +195,9 @@ export function Navigation() {
                         prefetch={false}
                         className={cn(
                           "text-[15px] transition-colors duration-200",
-                          isActive ? "text-primary/90" : "text-foreground/70 hover:text-foreground/90"
+                          isActive
+                            ? "text-primary/90"
+                            : "text-foreground/70 hover:text-foreground/90"
                         )}
                       >
                         {label}
@@ -247,11 +267,7 @@ export function Navigation() {
                   className="hidden lg:flex items-center gap-2 text-base font-medium"
                   disabled={authLoading}
                 >
-                  {authLoading ? (
-                    <Spinner size="sm" />
-                  ) : (
-                    <LogIn className="w-4 h-4" />
-                  )}
+                  {authLoading ? <Spinner size="sm" /> : <LogIn className="w-4 h-4" />}
                   Sign In
                 </Button>
               )}
@@ -288,12 +304,7 @@ export function Navigation() {
                 <div className="space-y-4">
                   <h2 className="text-2xl font-bold">Sign In Required</h2>
                   <p className="text-foreground/80">Sign in to access your profile and settings.</p>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    onClick={handleSignIn}
-                    className="w-full"
-                  >
+                  <Button variant="primary" size="lg" onClick={handleSignIn} className="w-full">
                     Sign In
                   </Button>
                 </div>

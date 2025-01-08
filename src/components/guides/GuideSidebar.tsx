@@ -1,29 +1,47 @@
 "use client";
 
 import { Book } from "lucide-react";
+
 import React from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { IconMap } from "~/components/mechanics/IconMap";
 import { Text } from "~/components/ui/Text";
 import { Tooltip } from "~/components/ui/Tooltip";
+
+import { useSidebarWidth } from "~/hooks/useSidebarWidth";
+
 import { cn } from "~/utils/cn";
+
 import { guidesBySection } from "~/lib/guides/data";
 import { sectionTitles } from "~/lib/shared/types";
-import { IconMap } from "~/components/mechanics/IconMap";
-import { useSidebarWidth } from "~/hooks/useSidebarWidth";
 
 export function GuideSidebar() {
   const { isCollapsed } = useSidebarWidth();
   const pathname = usePathname();
-  const currentCategory = pathname.split('/').pop();
+  const currentCategory = pathname.split("/").pop();
 
-  const NavLink = ({ href, icon: Icon, label, isActive }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string; isActive: boolean }) => {
+  const NavLink = ({
+    href,
+    icon: Icon,
+    label,
+    isActive,
+  }: {
+    href: string;
+    icon: React.ComponentType<{ className?: string }>;
+    label: string;
+    isActive: boolean;
+  }) => {
     const linkContent = (
       <div className={cn("flex items-center gap-3", isCollapsed && "justify-center w-full")}>
-        <Icon className={cn(
-          "w-5 h-5 transition-colors",
-          isActive ? "text-primary" : "text-foreground/70 group-hover:text-foreground"
-        )} />
+        <Icon
+          className={cn(
+            "w-5 h-5 transition-colors",
+            isActive ? "text-primary" : "text-foreground/70 group-hover:text-foreground"
+          )}
+        />
         {!isCollapsed && <span>{label}</span>}
       </div>
     );
@@ -33,8 +51,8 @@ export function GuideSidebar() {
         href={href}
         className={cn(
           "group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors relative",
-          isActive 
-            ? "bg-primary/10 text-primary hover:bg-primary/20" 
+          isActive
+            ? "bg-primary/10 text-primary hover:bg-primary/20"
             : "text-foreground/70 hover:bg-muted/50 hover:text-foreground"
         )}
       >
@@ -54,12 +72,7 @@ export function GuideSidebar() {
   return (
     <div className={cn("p-2", isCollapsed && "w-[60px]")}>
       <div className="space-y-1">
-        <NavLink
-          href="/guides"
-          icon={Book}
-          label="All Guides"
-          isActive={!currentCategory}
-        />
+        <NavLink href="/guides" icon={Book} label="All Guides" isActive={!currentCategory} />
 
         {/* Render sections */}
         {Object.entries(guidesBySection).map(([sectionKey, guides]) => (

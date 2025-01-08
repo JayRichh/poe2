@@ -9,11 +9,11 @@ interface ProgressBarProps {
   className?: string;
 }
 
-export function ProgressBar({ 
-  progress, 
-  label, 
-  showPercentage = true, 
-  className = "" 
+export function ProgressBar({
+  progress,
+  label,
+  showPercentage = true,
+  className = "",
 }: ProgressBarProps) {
   return (
     <div className={`space-y-1 ${className}`}>
@@ -24,8 +24,8 @@ export function ProgressBar({
         </div>
       )}
       <div className="h-1 bg-border/50 rounded-full overflow-hidden">
-        <div 
-          className="h-full bg-primary transition-all duration-500" 
+        <div
+          className="h-full bg-primary transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
       </div>

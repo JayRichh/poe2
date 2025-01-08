@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import type { Database, VisibilityType } from "~/lib/supabase/types";
+
 import type { BuildVisibility } from "~/app/actions/settings";
+import type { Database, VisibilityType } from "~/lib/supabase/types";
 
 type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
 
 // Helper to convert database visibility to application visibility
 function toAppVisibility(visibility: VisibilityType | undefined): BuildVisibility {
-  return (visibility === 'private' || visibility === 'unlisted') ? visibility : 'private';
+  return visibility === "private" || visibility === "unlisted" ? visibility : "private";
 }
 
 type POEClass = "duelist" | "marauder" | "ranger" | "scion" | "shadow" | "templar" | "witch";
@@ -70,7 +72,8 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
     }
   };
 
-  const inputClassName = "w-full h-12 rounded-lg bg-background/95 border border-border/50 px-4 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors hover:bg-background/80";
+  const inputClassName =
+    "w-full h-12 rounded-lg bg-background/95 border border-border/50 px-4 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors hover:bg-background/80";
   const selectClassName = inputClassName + " appearance-none";
 
   return (
@@ -142,7 +145,9 @@ export function BuildForm({ initialBuild, onSubmit }: BuildFormProps) {
             >
               <option value="private">Private - Only visible to you</option>
               <option value="unlisted">Unlisted - Accessible via direct link</option>
-              <option value="unlisted" disabled>Public - Visible to everyone (Coming Soon)</option>
+              <option value="unlisted" disabled>
+                Public - Visible to everyone (Coming Soon)
+              </option>
             </select>
             <div className="text-xs text-foreground/60 mt-1">
               Public builds are temporarily disabled pending development

@@ -1,5 +1,5 @@
-import { ContentLayout } from "~/components/shared/ContentLayout";
 import { GuideSidebar } from "~/components/guides/GuideSidebar";
+import { ContentLayout } from "~/components/shared/ContentLayout";
 
 export default function GuidesLayout({ children }: { children: React.ReactNode }) {
   return (

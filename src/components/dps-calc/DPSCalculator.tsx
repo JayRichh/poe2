@@ -1,29 +1,36 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { useDPSCalculator } from "~/hooks/useDPSCalculator";
-import { TEST_CASES } from "~/lib/test-cases";
 import type { GlobalSettings, WeaponInputs } from "~/hooks/useDPSCalculator";
 
-import dynamic from 'next/dynamic';
+import { TEST_CASES } from "~/lib/test-cases";
 
-const DPSCalculatorHeader = dynamic(() => import("./DPSCalculatorHeader").then(mod => mod.DPSCalculatorHeader), {
-  loading: () => <div className="h-12 bg-primary/5 animate-pulse rounded-lg" />
+const DPSCalculatorHeader = dynamic(
+  () => import("./DPSCalculatorHeader").then((mod) => mod.DPSCalculatorHeader),
+  {
+    loading: () => <div className="h-12 bg-primary/5 animate-pulse rounded-lg" />,
+  }
+);
+
+const GlobalSettingsPanel = dynamic(
+  () => import("./GlobalSettingsPanel").then((mod) => mod.GlobalSettingsPanel),
+  {
+    loading: () => <div className="h-24 bg-primary/5 animate-pulse rounded-lg" />,
+  }
+);
+
+const HistoryPanel = dynamic(() => import("./HistoryPanel").then((mod) => mod.HistoryPanel), {
+  loading: () => <div className="h-48 bg-primary/5 animate-pulse rounded-lg" />,
 });
 
-const GlobalSettingsPanel = dynamic(() => import("./GlobalSettingsPanel").then(mod => mod.GlobalSettingsPanel), {
-  loading: () => <div className="h-24 bg-primary/5 animate-pulse rounded-lg" />
+const ResultsPanel = dynamic(() => import("./ResultsPanel").then((mod) => mod.ResultsPanel), {
+  loading: () => <div className="h-32 bg-primary/5 animate-pulse rounded-lg" />,
 });
 
-const HistoryPanel = dynamic(() => import("./HistoryPanel").then(mod => mod.HistoryPanel), {
-  loading: () => <div className="h-48 bg-primary/5 animate-pulse rounded-lg" />
-});
-
-const ResultsPanel = dynamic(() => import("./ResultsPanel").then(mod => mod.ResultsPanel), {
-  loading: () => <div className="h-32 bg-primary/5 animate-pulse rounded-lg" />
-});
-
-const WeaponPanel = dynamic(() => import("./WeaponPanel").then(mod => mod.WeaponPanel), {
-  loading: () => <div className="h-64 bg-primary/5 animate-pulse rounded-lg" />
+const WeaponPanel = dynamic(() => import("./WeaponPanel").then((mod) => mod.WeaponPanel), {
+  loading: () => <div className="h-64 bg-primary/5 animate-pulse rounded-lg" />,
 });
 
 // Ensure numeric values are valid
@@ -69,14 +76,14 @@ export function DPSCalculator() {
   } = useDPSCalculator();
 
   // Handle loading test cases
-    const handleLoadTestCase = (testCase: string) => {
-      if (testCase in TEST_CASES) {
-        const config = TEST_CASES[testCase as keyof typeof TEST_CASES];
-        setWeapon1(config.weapon1);
-        setWeapon2(config.weapon2);
-        setSettings(config.settings);
-      }
-    };
+  const handleLoadTestCase = (testCase: string) => {
+    if (testCase in TEST_CASES) {
+      const config = TEST_CASES[testCase as keyof typeof TEST_CASES];
+      setWeapon1(config.weapon1);
+      setWeapon2(config.weapon2);
+      setSettings(config.settings);
+    }
+  };
 
   // Handle resetting calculator
   const handleReset = () => {

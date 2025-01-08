@@ -1,10 +1,14 @@
+import { Suspense } from "react";
+
 import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { Suspense } from "react";
-import { getServerClient } from "~/app/_actions/supabase";
+
 import { Container } from "~/components/ui/Container";
-import { EditBuildForm } from "./EditBuildForm";
+
+import { getServerClient } from "~/app/_actions/supabase";
 import { getBuild } from "~/app/actions/server/builds";
+
+import { EditBuildForm } from "./EditBuildForm";
 
 interface PageProps {
   params: Promise<{ id: string }>;

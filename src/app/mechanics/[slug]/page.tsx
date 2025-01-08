@@ -1,12 +1,16 @@
 "use client";
 
-import { notFound } from "next/navigation";
-import { use } from "react";
-import { mechanics } from "~/lib/mechanics/data";
-import { ContentRenderer } from "~/components/shared/ContentRenderer";
-import type { ContentCategory } from "~/lib/shared/types";
 import { motion } from "framer-motion";
+
+import { use } from "react";
+
+import { notFound } from "next/navigation";
+
+import { ContentRenderer } from "~/components/shared/ContentRenderer";
 import { Text } from "~/components/ui/Text";
+
+import { mechanics } from "~/lib/mechanics/data";
+import type { ContentCategory } from "~/lib/shared/types";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,15 +25,15 @@ export default function MechanicPage({ params }: PageProps) {
   }
 
   return (
-    <ContentRenderer 
+    <ContentRenderer
       sections={[
         {
           title: mechanic.title,
           content: mechanic.sections[0]?.content || [mechanic.description],
           subsections: mechanic.sections[0]?.subsections || [],
-          image: mechanic.sections[0]?.image
+          image: mechanic.sections[0]?.image,
         },
-        ...mechanic.sections.slice(1)
+        ...mechanic.sections.slice(1),
       ]}
       relatedContent={mechanic.relatedContent}
     />

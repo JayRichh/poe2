@@ -1,18 +1,20 @@
 "use client";
 
 import { Suspense, useEffect } from "react";
+
+import { EquipmentManager } from "~/components/build-planner/EquipmentManager";
+import { ErrorBoundary } from "~/components/shared/ErrorBoundary";
 import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
-import { EquipmentManager } from "~/components/build-planner/EquipmentManager";
-import { useBuild } from "~/contexts/build";
-import { ErrorBoundary } from "~/components/shared/ErrorBoundary";
+
 import { useAuth } from "~/contexts/auth";
+import { useBuild } from "~/contexts/build";
 
 export default function EquipmentPage() {
   const { user } = useAuth();
   const build = useBuild();
-  
-  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
+
+  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== "public");
 
   useEffect(() => {
     if (!canModify) {

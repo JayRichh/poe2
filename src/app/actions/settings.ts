@@ -3,11 +3,10 @@
 import { revalidatePath } from "next/cache";
 
 import { getServerClient } from "~/app/_actions/supabase";
-
 import type { Database, VisibilityType } from "~/lib/supabase/types";
 
 // Application currently only supports these types
-export type BuildVisibility = Exclude<VisibilityType, 'public'>;
+export type BuildVisibility = Exclude<VisibilityType, "public">;
 
 export type BuildSettings = {
   defaultVisibility: BuildVisibility;
@@ -16,18 +15,20 @@ export type BuildSettings = {
 
 // Type guard to ensure visibility is supported
 function isValidVisibility(visibility: VisibilityType): visibility is BuildVisibility {
-  return visibility === 'private' || visibility === 'unlisted';
+  return visibility === "private" || visibility === "unlisted";
 }
 
 // Type to ensure database compatibility
-type DatabaseBuildSettings = Database['public']['Tables']['profiles']['Row']['build_settings'];
+type DatabaseBuildSettings = Database["public"]["Tables"]["profiles"]["Row"]["build_settings"];
 
 export type SettingsUpdateResponse = {
   success: boolean;
   error?: string;
 };
 
-export async function updateBuildSettings(settings: BuildSettings): Promise<SettingsUpdateResponse> {
+export async function updateBuildSettings(
+  settings: BuildSettings
+): Promise<SettingsUpdateResponse> {
   const supabase = await getServerClient();
 
   const {
@@ -82,15 +83,15 @@ export async function getBuildSettings(): Promise<BuildSettings | null> {
   if (data.build_settings) {
     const dbSettings = data.build_settings as DatabaseBuildSettings;
     if (!dbSettings) return null;
-    
+
     const visibility = dbSettings.defaultVisibility;
-    
+
     // Convert database settings to application settings
     const settings: BuildSettings = {
-      defaultVisibility: isValidVisibility(visibility) ? visibility : 'unlisted',
-      autoSync: dbSettings.autoSync
+      defaultVisibility: isValidVisibility(visibility) ? visibility : "unlisted",
+      autoSync: dbSettings.autoSync,
     };
-    
+
     return settings;
   }
   return null;

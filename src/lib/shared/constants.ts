@@ -8,5 +8,5 @@ export const sectionLabels: Record<SearchSection, string> = {
   "patch-notes": "Patch Notes",
   ascendancies: "Ascendancies",
   "dps-calc": "DPS Calculator",
-  "skill-tree": "Skill Tree"
+  "skill-tree": "Skill Tree",
 };

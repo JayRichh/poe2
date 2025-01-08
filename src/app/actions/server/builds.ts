@@ -2,10 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
-import { getServerClient } from "~/app/_actions/supabase";
+
 import { generateSlug } from "~/utils/slug";
-import { logActivity } from "./activities";
+
+import { getServerClient } from "~/app/_actions/supabase";
 import type { Database } from "~/lib/supabase/types";
+
+import { logActivity } from "./activities";
 
 export type Build = Database["public"]["Tables"]["builds"]["Row"];
 export type BuildInsert = Database["public"]["Tables"]["builds"]["Insert"];
@@ -40,7 +43,7 @@ async function findBuild(supabase: any, idOrSlug: string, selectQuery = "*") {
     .select(selectQuery)
     .eq("slug", idOrSlug)
     .maybeSingle();
-  
+
   if (!slugError && slugData) {
     return slugData;
   }
@@ -52,7 +55,7 @@ async function findBuild(supabase: any, idOrSlug: string, selectQuery = "*") {
       .select(selectQuery)
       .eq("id", idOrSlug)
       .maybeSingle();
-    
+
     if (!idError && idData) {
       return idData;
     }
@@ -65,7 +68,9 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations | n
   const supabase = await getServerClient();
 
   try {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     const query = `
       id,
@@ -103,11 +108,17 @@ export async function getBuild(idOrSlug: string): Promise<BuildWithRelations | n
   }
 }
 
-export async function getBuilds({ visibility = "all", includeOwn = false, cache = "default" }: BuildOptions = {}) {
+export async function getBuilds({
+  visibility = "all",
+  includeOwn = false,
+  cache = "default",
+}: BuildOptions = {}) {
   const supabase = await getServerClient();
-  
+
   // Get current user if authenticated
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   let query = supabase.from("builds").select("*");
 
@@ -129,8 +140,7 @@ export async function getBuilds({ visibility = "all", includeOwn = false, cache 
   }
 
   // Cache headers are handled by Next.js page config
-  const { data, error } = await query
-    .order("created_at", { ascending: false });
+  const { data, error } = await query.order("created_at", { ascending: false });
 
   if (error) throw error;
   return data || [];
@@ -138,8 +148,10 @@ export async function getBuilds({ visibility = "all", includeOwn = false, cache 
 
 export async function createBuild(build: CreateBuildData) {
   const supabase = await getServerClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
   const baseSlug = generateSlug(build.name);
@@ -154,21 +166,23 @@ export async function createBuild(build: CreateBuildData) {
   if (error) throw error;
 
   await logActivity(
-    'build',
-    'Created new build',
-    `Started a new ${build.poe_class || ''} build template`,
+    "build",
+    "Created new build",
+    `Started a new ${build.poe_class || ""} build template`,
     { buildId: data.id, buildName: build.name }
   );
 
   // Only revalidate necessary paths
-  revalidatePath('/build-planner');
+  revalidatePath("/build-planner");
   return data;
 }
 
 export async function updateBuild(id: string, updates: UpdateBuildData) {
   const supabase = await getServerClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
   const foundBuild = await findBuild(supabase, id);
@@ -192,24 +206,24 @@ export async function updateBuild(id: string, updates: UpdateBuildData) {
   if (error) throw new Error(`Failed to update build: ${error.message}`);
   if (!data) throw new Error("Failed to update build: No data returned");
 
-  await logActivity(
-    'build',
-    'Updated build',
-    `Made changes to ${foundBuild.name}`,
-    { buildId: id, updates }
-  );
+  await logActivity("build", "Updated build", `Made changes to ${foundBuild.name}`, {
+    buildId: id,
+    updates,
+  });
 
   // Only revalidate current build path and list
-  revalidatePath('/build-planner');
+  revalidatePath("/build-planner");
   revalidatePath(`/build-planner/${data.slug || data.id}`);
-  
+
   return data;
 }
 
 export async function deleteBuild(id: string) {
   const supabase = await getServerClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
   const foundBuild = await findBuild(supabase, id);
@@ -217,22 +231,14 @@ export async function deleteBuild(id: string) {
     throw new Error("Not authorized to delete this build");
   }
 
-  const { error } = await supabase
-    .from("builds")
-    .delete()
-    .eq("id", foundBuild.id);
+  const { error } = await supabase.from("builds").delete().eq("id", foundBuild.id);
 
   if (error) throw error;
 
-  await logActivity(
-    'build',
-    'Deleted build',
-    `Removed ${foundBuild.name}`,
-    { buildId: id }
-  );
+  await logActivity("build", "Deleted build", `Removed ${foundBuild.name}`, { buildId: id });
 
   // Only revalidate list path
-  revalidatePath('/build-planner');
-  
+  revalidatePath("/build-planner");
+
   return true;
 }

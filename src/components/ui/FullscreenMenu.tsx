@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   Calculator,
   Cog,
+  Coins,
   FileText,
   GitBranch,
   Layout,
@@ -14,12 +15,11 @@ import {
   Newspaper,
   Settings,
   Sun,
+  Timer,
   User,
   Users,
   X,
   Zap,
-  Timer,
-  Coins,
 } from "lucide-react";
 
 import * as React from "react";
@@ -63,7 +63,8 @@ const mainLinks: MainLink[] = [
     label: "Build Planner",
     path: "/build-planner",
     icon: Layout,
-    description: "Plan and optimize your POE2 character builds with our comprehensive build planner",
+    description:
+      "Plan and optimize your POE2 character builds with our comprehensive build planner",
     features: [
       { id: "build-equipment", label: "Equipment", path: "/build-planner" },
       { id: "build-gems", label: "Skill Gems", path: "/build-planner" },
@@ -119,7 +120,12 @@ const mainLinks: MainLink[] = [
     features: [
       { id: "calc-dps", label: "DPS Calculator", path: "/calculators/dps", icon: Zap },
       { id: "calc-speed", label: "Speed Calculator", path: "/calculators/speed", icon: Timer },
-      { id: "calc-currency", label: "Currency Calculator", path: "/calculators/currency", icon: Coins },
+      {
+        id: "calc-currency",
+        label: "Currency Calculator",
+        path: "/calculators/currency",
+        icon: Coins,
+      },
     ],
   },
 ];
@@ -288,18 +294,18 @@ function NavigationSection({
                   </div>
                   <Text className="text-sm text-foreground/60">{item.description}</Text>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {Array.isArray(item.features) ? (
-                      item.features.map((feature) => (
-                        <button
-                          key={feature.id}
-                          onClick={() => onNavigate(feature.path)}
-                          className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors flex items-center gap-1.5"
-                        >
-                          {feature.icon && <feature.icon className="w-3 h-3" />}
-                          {feature.label}
-                        </button>
-                      ))
-                    ) : null}
+                    {Array.isArray(item.features)
+                      ? item.features.map((feature) => (
+                          <button
+                            key={feature.id}
+                            onClick={() => onNavigate(feature.path)}
+                            className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors flex items-center gap-1.5"
+                          >
+                            {feature.icon && <feature.icon className="w-3 h-3" />}
+                            {feature.label}
+                          </button>
+                        ))
+                      : null}
                   </div>
                 </div>
               </div>

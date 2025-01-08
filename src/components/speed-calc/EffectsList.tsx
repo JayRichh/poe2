@@ -1,8 +1,9 @@
 "use client";
 
 import { Card } from "~/components/ui/Card";
-import { Text } from "~/components/ui/Text";
 import { Checkbox } from "~/components/ui/Checkbox";
+import { Text } from "~/components/ui/Text";
+
 import { EFFECTS } from "~/lib/constants/speed-calc";
 import type { CalculatorState } from "~/types/speed-calc";
 
@@ -18,7 +19,9 @@ export function EffectsList({ effects, onToggleEffect, isRanged }: EffectsListPr
       <div className="space-y-8">
         {/* All Phases Effects */}
         <Card className="p-6">
-          <Text variant="h4" className="mb-4">Affects All Phases</Text>
+          <Text variant="h4" className="mb-4">
+            Affects All Phases
+          </Text>
           <div className="space-y-2">
             {EFFECTS.ALL_PHASES.map((effect) => (
               <Checkbox
@@ -35,7 +38,9 @@ export function EffectsList({ effects, onToggleEffect, isRanged }: EffectsListPr
 
         {/* Recovery and Reload Effects */}
         <Card className="p-6">
-          <Text variant="h4" className="mb-4">Affects Recovery and Reload</Text>
+          <Text variant="h4" className="mb-4">
+            Affects Recovery and Reload
+          </Text>
           <div className="space-y-2">
             {EFFECTS.RECOVERY_AND_RELOAD.map((effect) => (
               <Checkbox
@@ -54,7 +59,9 @@ export function EffectsList({ effects, onToggleEffect, isRanged }: EffectsListPr
       <div className="space-y-8">
         {/* Reload Effects */}
         <Card className="p-6">
-          <Text variant="h4" className="mb-4">Affects Reload</Text>
+          <Text variant="h4" className="mb-4">
+            Affects Reload
+          </Text>
           <div className="space-y-3">
             {EFFECTS.RELOAD.map((effect) => (
               <Checkbox

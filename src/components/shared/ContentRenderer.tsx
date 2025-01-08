@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 import { Text } from "~/components/ui/Text";
+
 import type { ContentSection, RelatedContent } from "~/lib/shared/types";
 
 interface ContentRendererProps {
@@ -17,14 +20,14 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
     <div className="w-full min-h-0 overflow-y-auto">
       <div className="max-w-6xl mx-auto space-y-12 pb-12">
         {/* Main Content */}
-        <motion.div 
+        <motion.div
           className="space-y-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           {sections.map((section, index) => (
-            <motion.section 
+            <motion.section
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +47,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
               <div className="grid gap-8 lg:grid-cols-2 min-h-0">
                 <div className="prose prose-invert max-w-none min-h-0">
                   {section.content.map((text, i) => (
-                    <motion.p 
+                    <motion.p
                       key={i}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
@@ -74,7 +77,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
               {section.subsections && (
                 <div className="mt-16 grid gap-12">
                   {section.subsections.map((subsection, subIndex) => (
-                    <motion.div 
+                    <motion.div
                       key={subIndex}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +92,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
                       <div className="grid gap-8 lg:grid-cols-2 min-h-0">
                         <div className="prose prose-invert max-w-none min-h-0">
                           {subsection.content.map((text, i) => (
-                            <motion.p 
+                            <motion.p
                               key={i}
                               initial={{ opacity: 0 }}
                               whileInView={{ opacity: 1 }}
@@ -124,7 +127,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
 
         {/* Related Content */}
         {relatedContent && relatedContent.length > 0 && (
-          <motion.section 
+          <motion.section
             className="mt-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,12 +138,8 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
             </Text>
             <div className="grid gap-6 sm:grid-cols-2">
               {relatedContent.map((content, index) => (
-                <Link
-                  key={index}
-                  href={content.href}
-                  className="group"
-                >
-                  <motion.div 
+                <Link key={index} href={content.href} className="group">
+                  <motion.div
                     className="bg-background rounded-xl border border-border/50 overflow-hidden p-6
                              hover:border-primary/50 transition-all duration-300"
                     whileHover={{ y: -2, scale: 1.01 }}
@@ -148,9 +147,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
                     <Text className="font-semibold text-lg group-hover:text-primary transition-colors">
                       {content.title}
                     </Text>
-                    <Text className="mt-2 text-sm text-foreground/70">
-                      {content.description}
-                    </Text>
+                    <Text className="mt-2 text-sm text-foreground/70">{content.description}</Text>
                     <div className="flex items-center gap-2 mt-4 text-xs text-primary uppercase tracking-wider">
                       <span>{content.type === "guide" ? "Guide" : "Game Mechanic"}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

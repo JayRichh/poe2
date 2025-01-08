@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { cn } from "~/utils/cn";
 
 interface Tab<T extends string> {
@@ -16,7 +17,12 @@ interface TabControlProps<T extends string> {
   className?: string;
 }
 
-export function TabControl<T extends string>({ tabs, activeTab, onChange, className }: TabControlProps<T>) {
+export function TabControl<T extends string>({
+  tabs,
+  activeTab,
+  onChange,
+  className,
+}: TabControlProps<T>) {
   return (
     <div className={cn("relative", className)}>
       <div className="flex items-center gap-1 p-1 rounded-lg bg-background/95 border border-border/50">

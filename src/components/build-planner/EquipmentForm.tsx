@@ -1,13 +1,17 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { Search } from "lucide-react";
+
+import { useMemo, useState } from "react";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import { Search } from "lucide-react";
-import type { Database } from "~/lib/supabase/types";
-import { useItemsForSlot, useItemSearch } from "~/hooks/useItems";
-import type { ItemBase } from "~/types/itemTypes";
+
+import { useItemSearch, useItemsForSlot } from "~/hooks/useItems";
+
 import { CATEGORY_TO_SLOT } from "~/lib/constants/items";
+import type { Database } from "~/lib/supabase/types";
+import type { ItemBase } from "~/types/itemTypes";
 
 type Equipment = Database["public"]["Tables"]["equipment"]["Row"];
 type EquipmentInsert = Database["public"]["Tables"]["equipment"]["Insert"];
@@ -32,7 +36,7 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
 
   const filteredItems = useMemo(() => {
     if (searchQuery) {
-      return searchResults.filter(item => {
+      return searchResults.filter((item) => {
         const mappedSlot = CATEGORY_TO_SLOT[item.category];
         return mappedSlot === slot;
       });
@@ -148,55 +152,53 @@ export function EquipmentForm({ buildId, initialEquipment, onSubmit }: Equipment
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-4">
-          <div className="relative">
-            <Text className="text-sm text-foreground/60 mb-2">Search Items</Text>
+          <div className="space-y-4">
             <div className="relative">
+              <Text className="text-sm text-foreground/60 mb-2">Search Items</Text>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for items..."
+                  className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 pl-10 pr-4"
+                />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40" />
+              </div>
+            </div>
+
+            <div className="max-h-60 overflow-y-auto border-2 border-border/50 rounded-xl">
+              {filteredItems.map((item) => (
+                <button
+                  key={item.url}
+                  onClick={() => handleItemSelect(item)}
+                  className={`w-full px-4 py-3 text-left hover:bg-accent/50 transition-colors flex items-center gap-3 ${
+                    selectedItem?.url === item.url ? "bg-accent" : ""
+                  }`}
+                >
+                  <img src={item.icon} alt="" className="w-8 h-8" />
+                  <div>
+                    <div className="font-medium">{item.name}</div>
+                    <div className="text-sm text-foreground/60">{item.category}</div>
+                  </div>
+                </button>
+              ))}
+              {filteredItems.length === 0 && (
+                <div className="px-4 py-3 text-foreground/60 text-center">No items found</div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Text className="text-sm text-foreground/60">Base Type</Text>
               <input
                 type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for items..."
-                className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 pl-10 pr-4"
+                value={baseType}
+                onChange={(e) => setBaseType(e.target.value)}
+                placeholder="Enter base type"
+                className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 px-4"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40" />
             </div>
           </div>
-
-          <div className="max-h-60 overflow-y-auto border-2 border-border/50 rounded-xl">
-            {filteredItems.map((item) => (
-              <button
-                key={item.url}
-                onClick={() => handleItemSelect(item)}
-                className={`w-full px-4 py-3 text-left hover:bg-accent/50 transition-colors flex items-center gap-3 ${
-                  selectedItem?.url === item.url ? 'bg-accent' : ''
-                }`}
-              >
-                <img src={item.icon} alt="" className="w-8 h-8" />
-                <div>
-                  <div className="font-medium">{item.name}</div>
-                  <div className="text-sm text-foreground/60">{item.category}</div>
-                </div>
-              </button>
-            ))}
-            {filteredItems.length === 0 && (
-              <div className="px-4 py-3 text-foreground/60 text-center">
-                No items found
-              </div>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <Text className="text-sm text-foreground/60">Base Type</Text>
-            <input
-              type="text"
-              value={baseType}
-              onChange={(e) => setBaseType(e.target.value)}
-              placeholder="Enter base type"
-              className="w-full h-12 rounded-xl bg-background/95 border-2 border-border/50 px-4"
-            />
-          </div>
-        </div>
 
           <div className="space-y-2">
             <Text className="text-sm text-foreground/60">Item Level</Text>

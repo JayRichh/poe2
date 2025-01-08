@@ -1,6 +1,8 @@
 import { Book } from "lucide-react";
-import { guidesWithMeta } from "~/lib/guides/data";
+
 import { IconMap } from "~/components/mechanics/IconMap";
+
+import { guidesWithMeta } from "~/lib/guides/data";
 
 export default function GuidesPage() {
   return (

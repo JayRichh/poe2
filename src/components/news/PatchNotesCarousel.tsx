@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
+
 import { useEffect, useState } from "react";
+
+import Link from "next/link";
 
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
@@ -20,13 +22,26 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
   // Format date in a stable way
   const formatDate = (date: string) => {
     const d = new Date(date);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
   };
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 0,
     }),
     center: {
@@ -36,7 +51,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? '100%' : '-100%',
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
     }),
   };
@@ -70,7 +85,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
   const currentNote = patchNotes[currentIndex];
 
   // Extract first section of content for preview
-  const previewContent = currentNote?.content?.split("<br><br>")[0]?.replace(/<h3>.*?<\/h3>/, '');
+  const previewContent = currentNote?.content?.split("<br><br>")[0]?.replace(/<h3>.*?<\/h3>/, "");
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-xl bg-card/95 backdrop-blur-sm border border-border/50 shadow-lg flex flex-col">
@@ -127,13 +142,13 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
 
               <div className="flex-1 overflow-y-auto pr-4 scrollbar-thin">
                 {mounted ? (
-                  <div 
+                  <div
                     className="prose prose-invert max-w-none prose-sm"
-                    dangerouslySetInnerHTML={{ __html: previewContent || '' }} 
+                    dangerouslySetInnerHTML={{ __html: previewContent || "" }}
                   />
                 ) : (
                   <div className="prose prose-invert max-w-none prose-sm">
-                    {previewContent?.replace(/<[^>]*>/g, '') || ''}
+                    {previewContent?.replace(/<[^>]*>/g, "") || ""}
                   </div>
                 )}
                 {currentNote.url && (

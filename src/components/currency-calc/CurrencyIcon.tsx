@@ -12,7 +12,7 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
   // Generate unique visual properties based on the currency name
   const visualProps = useMemo(() => {
     // Hash the name to get consistent values
-    const hash = name.split('').reduce((acc, char) => {
+    const hash = name.split("").reduce((acc, char) => {
       return char.charCodeAt(0) + ((acc << 5) - acc);
     }, 0);
 
@@ -29,7 +29,7 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
       distilled: [163, 84, 163], // Pink base for distilled emotions
     };
 
-    const type = Object.keys(baseColors).find(t => name.toLowerCase().includes(t)) || "orb";
+    const type = Object.keys(baseColors).find((t) => name.toLowerCase().includes(t)) || "orb";
     const baseColor = baseColors[type as keyof typeof baseColors];
 
     // Modify the base color using the hash
@@ -37,7 +37,7 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
 
     // Generate deterministic patterns based on name hash
     const getStableNumber = (shift: number, mod: number) => {
-      const shiftedHash = (hash >> shift) & 0xFFFFFFFF; // Ensure 32-bit integer
+      const shiftedHash = (hash >> shift) & 0xffffffff; // Ensure 32-bit integer
       return Math.abs(shiftedHash % mod);
     };
 
@@ -46,8 +46,8 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
       const angle = getStableNumber(i * 4, 360);
       const radius = 8 + getStableNumber(i * 3, 8);
       // Ensure the path coordinates are fixed by rounding to 3 decimal places
-      const x = Math.round(radius * Math.cos(angle * Math.PI / 180) * 1000) / 1000;
-      const y = Math.round(radius * Math.sin(angle * Math.PI / 180) * 1000) / 1000;
+      const x = Math.round(radius * Math.cos((angle * Math.PI) / 180) * 1000) / 1000;
+      const y = Math.round(radius * Math.sin((angle * Math.PI) / 180) * 1000) / 1000;
       return { x, y };
     });
 
@@ -64,7 +64,7 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
     >
       {/* Background */}
       <circle cx="20" cy="20" r="18" fill="#1a1a1a" />
-      
+
       {/* Base shape with gradient */}
       <defs>
         <radialGradient id={`grad-${name}`} cx="30%" cy="30%" r="70%">
@@ -73,7 +73,7 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
         </radialGradient>
       </defs>
       <circle cx="20" cy="20" r="16" fill={`url(#grad-${name})`} />
-      
+
       {/* Deterministic patterns */}
       {visualProps.patterns.map((pattern, i) => (
         <path
@@ -84,10 +84,10 @@ export function CurrencyIcon({ name, size = 40, className = "" }: CurrencyIconPr
           opacity="0.6"
         />
       ))}
-      
+
       {/* Highlight effect */}
       <circle cx="15" cy="15" r="5" fill="white" opacity="0.15" />
-      
+
       {/* Border with glow */}
       <circle cx="20" cy="20" r="18" fill="none" stroke={visualProps.color} strokeWidth="1.5" />
     </svg>

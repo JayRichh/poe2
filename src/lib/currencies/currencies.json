@@ -1,794 +1,794 @@
 [
-    {
-        "name": "Albino Rhoa Feather",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/albino_rhoa_feather_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Albino+Rhoa+Feather",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "Shift click to unstack."
-    },
-    {
-        "name": "Alchemy Shard",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/alchemy_shard_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Alchemy+Shard",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "A stack of 10 shards becomes an Orb of Alchemy  Shift click to unstack."
-    },
-    {
-        "name": "Arcanist's Etcher",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/arcanists_etcher_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Arcanist's+Etcher",
-        "stack_size": "1/20",
-        "description": "Improves the quality of a wand, staff or sceptre",
-        "uses": "Right click this item then left click a wand, staff or sceptre to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Armourer's Scrap",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/armourers_scrap_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Armourer's+Scrap",
-        "stack_size": "1/20",
-        "description": "Improves the quality of an armour",
-        "uses": "Right click this item then left click an armour to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Artificer's Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/artificers_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Artificer's+Orb",
-        "stack_size": "1/20",
-        "description": "Adds a Rune Socket to a Martial Weapon or Armour",
-        "uses": "Right click this item then left click a Martial Weapon or Armour to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Artificer's Shard",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/artificers_shard_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Artificer's+Shard",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "A stack of 10 shards becomes an Artificer's Orb.  Shift click to unstack."
-    },
-    {
-        "name": "Black Scythe Artifact",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/black_scythe_artifact_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Black+Scythe+Artifact",
-        "stack_size": "1/20",
-        "description": "",
-        "uses": "These can be used to trade with Tujen.  Shift click to unstack."
-    },
-    {
-        "name": "Blacksmith's Whetstone",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/blacksmith's_whetstone_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Blacksmith's+Whetstone",
-        "stack_size": "1/20",
-        "description": "Improves the quality of a martial weapon",
-        "uses": "Right click this item then left click a martial weapon to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Broken Circle Artifact",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/broken_circle_artifact_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Broken+Circle+Artifact",
-        "stack_size": "1/20",
-        "description": "",
-        "uses": "These can be used to trade with Gwennen.  Shift click to unstack."
-    },
-    {
-        "name": "Bronze Key",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/bronze_key_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Bronze+Key",
-        "stack_size": "",
-        "description": "Used to open Bronze Caches within the Trials",
-        "uses": ""
-    },
-    {
-        "name": "Chance Shard",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chance_shard_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Chance+Shard",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "A stack of 10 shards becomes an Orb of Chance.  Shift click to unstack."
-    },
-    {
-        "name": "Chaos Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chaos_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Chaos+Orb",
-        "stack_size": "1/20",
-        "description": "Removes a random modifier and augments a Rare item with a new random modifier",
-        "uses": "Right click this item then left click a rare item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Divine Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/divine_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Divine+Orb",
-        "stack_size": "1/10",
-        "description": "Randomises the numeric values of modifiers on an item",
-        "uses": "Right click this item then left click an item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Exalted Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/exalted_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Exalted+Orb",
-        "stack_size": "1/20",
-        "description": "Augments a Rare item with a new random modifier",
-        "uses": "Right click this item then left click a rare item to apply it. Rare items can have up to six random modifiers.  Shift click to unstack."
-    },
-    {
-        "name": "Exotic Coinage",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/exotic_coinage_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Exotic+Coinage",
-        "stack_size": "1/20",
-        "description": "",
-        "uses": "These can be brought to Tujen, Gwennen or Rog to refresh their vendor inventory.  Shift click to unstack."
-    },
-    {
-        "name": "Gemcutter's Prism",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gemcutters_prism_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Gemcutter's+Prism",
-        "stack_size": "1/20",
-        "description": "Improves the quality of a skill gem",
-        "uses": "Right click this item then left click a skill gem to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Glassblower's Bauble",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/glassblowers_bauble_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Glassblower's+Bauble",
-        "stack_size": "1/20",
-        "description": "Improves the quality of a flask",
-        "uses": "Right click this item then left click a flask to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Gold",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gold_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Gold",
-        "stack_size": "1/5000",
-        "description": "Can be spent at Vendors.",
-        "uses": "Shift click to unstack."
-    },
-    {
-        "name": "Gold Key",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gold_key_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Gold+Key",
-        "stack_size": "",
-        "description": "Used to open Gold Caches within the Trials",
-        "uses": ""
-    },
-    {
-        "name": "Greater Jeweller's Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Jeweller's+Orb",
-        "stack_size": "1/20",
-        "description": "Adds a Support Gem Socket to a Skill Gem with 3 Support Gem Sockets",
-        "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Lesser Jeweller's Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/lesser_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Lesser+Jeweller's+Orb",
-        "stack_size": "1/20",
-        "description": "Adds a Support Gem Socket to a Skill Gem with 2 Support Gem Sockets",
-        "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Mirror of Kalandra",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/mirror_of_kalandra_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Mirror+of+Kalandra",
-        "stack_size": "1/10",
-        "description": "Creates a Mirrored copy of an item",
-        "uses": "Right click this item then left click an equipable non-unique item to apply it. Mirrored copies cannot be modified.  Shift click to unstack."
-    },
-    {
-        "name": "Orb of Alchemy",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_alchemy_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Alchemy",
-        "stack_size": "1/20",
-        "description": "Upgrades a Normal item to a Rare item with 4 modifiers",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Orb of Annulment",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_annulment_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Annulment",
-        "stack_size": "1/20",
-        "description": "Removes a random modifier from an item",
-        "uses": "Right click this item then left click on a magic or rare item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Orb of Augmentation",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_augmentation_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Augmentation",
-        "stack_size": "1/30",
-        "description": "Augments a Magic item with a new random modifier",
-        "uses": "Right click this item then left click a magic item to apply it. Magic items can have up to two random modifiers.  Shift click to unstack."
-    },
-    {
-        "name": "Orb of Chance",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_chance_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Chance",
-        "stack_size": "1/10",
-        "description": "Unpredictably either upgrades a Normal item to Unique rarity or destroys it",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Orb of Transmutation",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_transmutation_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Transmutation",
-        "stack_size": "1/40",
-        "description": "Upgrades a Normal item to a Magic item with 1 modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Order Artifact",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/order_artifact_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Order+Artifact",
-        "stack_size": "1/20",
-        "description": "",
-        "uses": "These can be used to trade with Rog.  Shift click to unstack."
-    },
-    {
-        "name": "Perfect Jeweller's Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/perfect_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Perfect+Jeweller's+Orb",
-        "stack_size": "1/20",
-        "description": "Adds a Support Gem Socket to a Skill Gem with 4 Support Gem Sockets",
-        "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Regal Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/regal_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Regal+Orb",
-        "stack_size": "1/20",
-        "description": "Upgrades a Magic item to a Rare item, adding 1 modifier",
-        "uses": "Right click this item then left click a magic item to apply it. Current modifiers are retained and a new one is added.  Shift click to unstack."
-    },
-    {
-        "name": "Regal Shard",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/regal_shard_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Regal+Shard",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "A stack of 10 shards becomes a Regal Orb.  Shift click to unstack."
-    },
-    {
-        "name": "Scroll of Wisdom",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/scroll_of_wisdom_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Scroll+of+Wisdom",
-        "stack_size": "1/40",
-        "description": "Identifies an item",
-        "uses": "Right click this item then left click an unidentified item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Silver Key",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/silver_key_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Silver+Key",
-        "stack_size": "",
-        "description": "Used to open Silver Caches within the Trials",
-        "uses": ""
-    },
-    {
-        "name": "Sun Artifact",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/sun_artifact_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Sun+Artifact",
-        "stack_size": "1/20",
-        "description": "",
-        "uses": "These can be used to trade with Dannig.  Shift click to unstack."
-    },
-    {
-        "name": "Transmutation Shard",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/transmutation_shard_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Transmutation+Shard",
-        "stack_size": "1/10",
-        "description": "",
-        "uses": "A stack of 10 shards becomes an Orb of Transmutation  Shift click to unstack."
-    },
-    {
-        "name": "Vaal Orb",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/vaal_orb_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Vaal+Orb",
-        "stack_size": "1/20",
-        "description": "Modifies an item unpredictably and Corrupts it",
-        "uses": "Right click this item then left click an item to corrupt it. Corrupted items cannot be modified again.  Shift click to unstack."
-    },
-    {
-        "name": "Adaptive Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/adaptive_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Adaptive+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Attribute modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Carapace Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/carapace_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Carapace+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Defence modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Chayula's Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chayulas_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Chayula's+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Chaos modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Esh's Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/eshs_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Esh's+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Lightning modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Flesh Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/flesh_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Flesh+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Life modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Neural Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/neural_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Neural+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Mana modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Reaver Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/reaver_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Reaver+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Attack modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Sibilant Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/sibilant_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Sibilant+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Caster modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Skittering Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/skittering_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Skittering+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Speed modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Tul's Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/tuls_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Tul's+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Cold modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Uul-Netol's Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/uul-netols_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Uul-Netol's+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Physical modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Xoph's Catalyst",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/xophs_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Xoph's+Catalyst",
-        "stack_size": "1/10",
-        "description": "Adds quality that enhances Fire modifiers on a ring or amulet",
-        "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Despair",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_despair_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Despair",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Disgust",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_disgust_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Disgust",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Envy",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_envy_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Envy",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Fear",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_fear_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Fear",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Greed",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_greed_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Greed",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Guilt",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_guilt_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Guilt",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Ire",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_ire_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Ire",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Isolation",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_isolation_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Isolation",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Paranoia",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_paranoia_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Paranoia",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Distilled Suffering",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_suffering_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Suffering",
-        "stack_size": "1/10",
-        "description": "Can be combined with other Distilled Emotions to Instil Amulets",
-        "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Battle",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_battle_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Battle",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Attack modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Electricity",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_electricity_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Electricity",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Lightning modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Enhancement",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_enhancement_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Enhancement",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Defence modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Flames",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_flames_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Flames",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Fire modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Haste",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_haste_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Haste",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Speed modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Ice",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_ice_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Ice",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Cold modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Ruin",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_ruin_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Ruin",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Chaos modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Sorcery",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_sorcery_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Sorcery",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Caster modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of Torment",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_torment_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Torment",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Physical modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of the Body",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_body_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Body",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Life modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of the Infinite",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_infinite_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Infinite",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Attribute modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Essence of the Mind",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_mind_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Mind",
-        "stack_size": "1/10",
-        "description": "Upgrades a normal item to Magic with one Mana modifier",
-        "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Battle",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_battle_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Battle",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Attack modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Electricity",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_electricity_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Electricity",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Lightning modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Enhancement",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_enhancement_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Enhancement",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Defence modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Flames",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_flames_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Flames",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Fire modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Haste",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_haste_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Haste",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one speed modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Ice",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_ice_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Ice",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Cold modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Ruin",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_ruin_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Ruin",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Chaos modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Sorcery",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_sorcery_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Sorcery",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Caster modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of Torment",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_torment_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Torment",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Physical modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of the Body",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_body_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Body",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Life modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of the Infinite",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_infinite_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Infinite",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Attribute modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Greater Essence of the Mind",
-        "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_mind_items_path_of_exile_2_wiki_guide_100px.png",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Mind",
-        "stack_size": "1/10",
-        "description": "Upgrades a Magic item to a Rare item with one Mana modifier",
-        "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
-    },
-    {
-        "name": "Omen of Amelioration",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Amelioration",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
-    },
-    {
-        "name": "Omen of Corruption",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Corruption",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Dextral Alchemy",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Alchemy",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Dextral Annulment",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Annulment",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Dextral Coronation",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Coronation",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Dextral Erasure",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Erasure",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Dextral Exaltation",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Exaltation",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Greater Annulment",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Greater+Annulment",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Greater Exaltation",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Greater+Exaltation",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Refreshment",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Refreshment",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
-    },
-    {
-        "name": "Omen of Resurgence",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Resurgence",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
-    },
-    {
-        "name": "Omen of Sinistral Alchemy",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Alchemy",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Sinistral Annulment",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Annulment",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Sinistral Coronation",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Coronation",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Sinistral Erasure",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Erasure",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Sinistral Exaltation",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Exaltation",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    },
-    {
-        "name": "Omen of Whittling",
-        "image_url": "",
-        "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Whittling",
-        "stack_size": "",
-        "description": "",
-        "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
-    }
+  {
+    "name": "Albino Rhoa Feather",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/albino_rhoa_feather_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Albino+Rhoa+Feather",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "Shift click to unstack."
+  },
+  {
+    "name": "Alchemy Shard",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/alchemy_shard_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Alchemy+Shard",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "A stack of 10 shards becomes an Orb of Alchemy  Shift click to unstack."
+  },
+  {
+    "name": "Arcanist's Etcher",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/arcanists_etcher_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Arcanist's+Etcher",
+    "stack_size": "1/20",
+    "description": "Improves the quality of a wand, staff or sceptre",
+    "uses": "Right click this item then left click a wand, staff or sceptre to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Armourer's Scrap",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/armourers_scrap_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Armourer's+Scrap",
+    "stack_size": "1/20",
+    "description": "Improves the quality of an armour",
+    "uses": "Right click this item then left click an armour to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Artificer's Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/artificers_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Artificer's+Orb",
+    "stack_size": "1/20",
+    "description": "Adds a Rune Socket to a Martial Weapon or Armour",
+    "uses": "Right click this item then left click a Martial Weapon or Armour to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Artificer's Shard",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/artificers_shard_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Artificer's+Shard",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "A stack of 10 shards becomes an Artificer's Orb.  Shift click to unstack."
+  },
+  {
+    "name": "Black Scythe Artifact",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/black_scythe_artifact_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Black+Scythe+Artifact",
+    "stack_size": "1/20",
+    "description": "",
+    "uses": "These can be used to trade with Tujen.  Shift click to unstack."
+  },
+  {
+    "name": "Blacksmith's Whetstone",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/blacksmith's_whetstone_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Blacksmith's+Whetstone",
+    "stack_size": "1/20",
+    "description": "Improves the quality of a martial weapon",
+    "uses": "Right click this item then left click a martial weapon to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Broken Circle Artifact",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/broken_circle_artifact_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Broken+Circle+Artifact",
+    "stack_size": "1/20",
+    "description": "",
+    "uses": "These can be used to trade with Gwennen.  Shift click to unstack."
+  },
+  {
+    "name": "Bronze Key",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/bronze_key_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Bronze+Key",
+    "stack_size": "",
+    "description": "Used to open Bronze Caches within the Trials",
+    "uses": ""
+  },
+  {
+    "name": "Chance Shard",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chance_shard_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Chance+Shard",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "A stack of 10 shards becomes an Orb of Chance.  Shift click to unstack."
+  },
+  {
+    "name": "Chaos Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chaos_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Chaos+Orb",
+    "stack_size": "1/20",
+    "description": "Removes a random modifier and augments a Rare item with a new random modifier",
+    "uses": "Right click this item then left click a rare item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Divine Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/divine_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Divine+Orb",
+    "stack_size": "1/10",
+    "description": "Randomises the numeric values of modifiers on an item",
+    "uses": "Right click this item then left click an item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Exalted Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/exalted_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Exalted+Orb",
+    "stack_size": "1/20",
+    "description": "Augments a Rare item with a new random modifier",
+    "uses": "Right click this item then left click a rare item to apply it. Rare items can have up to six random modifiers.  Shift click to unstack."
+  },
+  {
+    "name": "Exotic Coinage",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/exotic_coinage_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Exotic+Coinage",
+    "stack_size": "1/20",
+    "description": "",
+    "uses": "These can be brought to Tujen, Gwennen or Rog to refresh their vendor inventory.  Shift click to unstack."
+  },
+  {
+    "name": "Gemcutter's Prism",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gemcutters_prism_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Gemcutter's+Prism",
+    "stack_size": "1/20",
+    "description": "Improves the quality of a skill gem",
+    "uses": "Right click this item then left click a skill gem to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Glassblower's Bauble",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/glassblowers_bauble_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Glassblower's+Bauble",
+    "stack_size": "1/20",
+    "description": "Improves the quality of a flask",
+    "uses": "Right click this item then left click a flask to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Gold",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gold_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Gold",
+    "stack_size": "1/5000",
+    "description": "Can be spent at Vendors.",
+    "uses": "Shift click to unstack."
+  },
+  {
+    "name": "Gold Key",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/gold_key_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Gold+Key",
+    "stack_size": "",
+    "description": "Used to open Gold Caches within the Trials",
+    "uses": ""
+  },
+  {
+    "name": "Greater Jeweller's Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Jeweller's+Orb",
+    "stack_size": "1/20",
+    "description": "Adds a Support Gem Socket to a Skill Gem with 3 Support Gem Sockets",
+    "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Lesser Jeweller's Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/lesser_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Lesser+Jeweller's+Orb",
+    "stack_size": "1/20",
+    "description": "Adds a Support Gem Socket to a Skill Gem with 2 Support Gem Sockets",
+    "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Mirror of Kalandra",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/mirror_of_kalandra_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Mirror+of+Kalandra",
+    "stack_size": "1/10",
+    "description": "Creates a Mirrored copy of an item",
+    "uses": "Right click this item then left click an equipable non-unique item to apply it. Mirrored copies cannot be modified.  Shift click to unstack."
+  },
+  {
+    "name": "Orb of Alchemy",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_alchemy_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Alchemy",
+    "stack_size": "1/20",
+    "description": "Upgrades a Normal item to a Rare item with 4 modifiers",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Orb of Annulment",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_annulment_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Annulment",
+    "stack_size": "1/20",
+    "description": "Removes a random modifier from an item",
+    "uses": "Right click this item then left click on a magic or rare item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Orb of Augmentation",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_augmentation_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Augmentation",
+    "stack_size": "1/30",
+    "description": "Augments a Magic item with a new random modifier",
+    "uses": "Right click this item then left click a magic item to apply it. Magic items can have up to two random modifiers.  Shift click to unstack."
+  },
+  {
+    "name": "Orb of Chance",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_chance_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Chance",
+    "stack_size": "1/10",
+    "description": "Unpredictably either upgrades a Normal item to Unique rarity or destroys it",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Orb of Transmutation",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/orb_of_transmutation_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Orb+of+Transmutation",
+    "stack_size": "1/40",
+    "description": "Upgrades a Normal item to a Magic item with 1 modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Order Artifact",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/order_artifact_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Order+Artifact",
+    "stack_size": "1/20",
+    "description": "",
+    "uses": "These can be used to trade with Rog.  Shift click to unstack."
+  },
+  {
+    "name": "Perfect Jeweller's Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/perfect_jewellers_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Perfect+Jeweller's+Orb",
+    "stack_size": "1/20",
+    "description": "Adds a Support Gem Socket to a Skill Gem with 4 Support Gem Sockets",
+    "uses": "Right click this item then left click a Skill Gem to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Regal Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/regal_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Regal+Orb",
+    "stack_size": "1/20",
+    "description": "Upgrades a Magic item to a Rare item, adding 1 modifier",
+    "uses": "Right click this item then left click a magic item to apply it. Current modifiers are retained and a new one is added.  Shift click to unstack."
+  },
+  {
+    "name": "Regal Shard",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/regal_shard_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Regal+Shard",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "A stack of 10 shards becomes a Regal Orb.  Shift click to unstack."
+  },
+  {
+    "name": "Scroll of Wisdom",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/scroll_of_wisdom_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Scroll+of+Wisdom",
+    "stack_size": "1/40",
+    "description": "Identifies an item",
+    "uses": "Right click this item then left click an unidentified item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Silver Key",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/silver_key_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Silver+Key",
+    "stack_size": "",
+    "description": "Used to open Silver Caches within the Trials",
+    "uses": ""
+  },
+  {
+    "name": "Sun Artifact",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/sun_artifact_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Sun+Artifact",
+    "stack_size": "1/20",
+    "description": "",
+    "uses": "These can be used to trade with Dannig.  Shift click to unstack."
+  },
+  {
+    "name": "Transmutation Shard",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/transmutation_shard_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Transmutation+Shard",
+    "stack_size": "1/10",
+    "description": "",
+    "uses": "A stack of 10 shards becomes an Orb of Transmutation  Shift click to unstack."
+  },
+  {
+    "name": "Vaal Orb",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/vaal_orb_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Vaal+Orb",
+    "stack_size": "1/20",
+    "description": "Modifies an item unpredictably and Corrupts it",
+    "uses": "Right click this item then left click an item to corrupt it. Corrupted items cannot be modified again.  Shift click to unstack."
+  },
+  {
+    "name": "Adaptive Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/adaptive_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Adaptive+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Attribute modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Carapace Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/carapace_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Carapace+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Defence modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Chayula's Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/chayulas_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Chayula's+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Chaos modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Esh's Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/eshs_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Esh's+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Lightning modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Flesh Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/flesh_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Flesh+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Life modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Neural Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/neural_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Neural+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Mana modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Reaver Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/reaver_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Reaver+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Attack modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Sibilant Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/sibilant_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Sibilant+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Caster modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Skittering Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/skittering_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Skittering+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Speed modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Tul's Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/tuls_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Tul's+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Cold modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Uul-Netol's Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/uul-netols_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Uul-Netol's+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Physical modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Xoph's Catalyst",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/xophs_catalyst_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Xoph's+Catalyst",
+    "stack_size": "1/10",
+    "description": "Adds quality that enhances Fire modifiers on a ring or amulet",
+    "uses": "Right click this item then left click a ring or amulet to apply it. The maximum quality is 20%.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Despair",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_despair_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Despair",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Disgust",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_disgust_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Disgust",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Envy",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_envy_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Envy",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Fear",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_fear_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Fear",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Greed",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_greed_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Greed",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Guilt",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_guilt_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Guilt",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Ire",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_ire_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Ire",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Isolation",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_isolation_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Isolation",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Paranoia",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_paranoia_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Paranoia",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Distilled Suffering",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/distilled_suffering_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Distilled+Suffering",
+    "stack_size": "1/10",
+    "description": "Can be combined with other Distilled Emotions to Instil Amulets",
+    "uses": "Right click this item to open the Instilling window.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Battle",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_battle_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Battle",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Attack modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Electricity",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_electricity_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Electricity",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Lightning modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Enhancement",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_enhancement_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Enhancement",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Defence modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Flames",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_flames_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Flames",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Fire modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Haste",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_haste_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Haste",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Speed modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Ice",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_ice_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Ice",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Cold modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Ruin",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_ruin_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Ruin",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Chaos modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Sorcery",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_sorcery_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Sorcery",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Caster modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of Torment",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_torment_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+Torment",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Physical modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of the Body",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_body_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Body",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Life modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of the Infinite",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_infinite_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Infinite",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Attribute modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Essence of the Mind",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/essence_of_the_mind_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Essence+of+the+Mind",
+    "stack_size": "1/10",
+    "description": "Upgrades a normal item to Magic with one Mana modifier",
+    "uses": "Right click this item then left click a normal item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Battle",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_battle_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Battle",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Attack modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Electricity",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_electricity_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Electricity",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Lightning modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Enhancement",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_enhancement_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Enhancement",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Defence modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Flames",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_flames_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Flames",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Fire modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Haste",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_haste_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Haste",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one speed modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Ice",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_ice_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Ice",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Cold modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Ruin",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_ruin_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Ruin",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Chaos modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Sorcery",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_sorcery_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Sorcery",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Caster modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of Torment",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_torment_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+Torment",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Physical modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of the Body",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_body_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Body",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Life modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of the Infinite",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_infinite_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Infinite",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Attribute modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Greater Essence of the Mind",
+    "image_url": "https://pathofexile2.wiki.fextralife.com/file/Path-of-Exile-2/greater_essence_of_the_mind_items_path_of_exile_2_wiki_guide_100px.png",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Greater+Essence+of+the+Mind",
+    "stack_size": "1/10",
+    "description": "Upgrades a Magic item to a Rare item with one Mana modifier",
+    "uses": "Right click this item then left click a magic item to apply it.  Shift click to unstack."
+  },
+  {
+    "name": "Omen of Amelioration",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Amelioration",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
+  },
+  {
+    "name": "Omen of Corruption",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Corruption",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Dextral Alchemy",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Alchemy",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Dextral Annulment",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Annulment",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Dextral Coronation",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Coronation",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Dextral Erasure",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Erasure",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Dextral Exaltation",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Dextral+Exaltation",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Greater Annulment",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Greater+Annulment",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Greater Exaltation",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Greater+Exaltation",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Refreshment",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Refreshment",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
+  },
+  {
+    "name": "Omen of Resurgence",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Resurgence",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered. Only one Omen can be triggered from combat in each instance."
+  },
+  {
+    "name": "Omen of Sinistral Alchemy",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Alchemy",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Sinistral Annulment",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Annulment",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Sinistral Coronation",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Coronation",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Sinistral Erasure",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Erasure",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Sinistral Exaltation",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Sinistral+Exaltation",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  },
+  {
+    "name": "Omen of Whittling",
+    "image_url": "",
+    "currency_url": "https://pathofexile2.wiki.fextralife.com/Omen+of+Whittling",
+    "stack_size": "",
+    "description": "",
+    "uses": "Right click this item in your inventory to set it to be active. This item is consumed when triggered."
+  }
 ]

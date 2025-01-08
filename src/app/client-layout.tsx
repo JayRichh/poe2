@@ -1,23 +1,23 @@
 "use client";
 
-import { Suspense, useMemo, useEffect } from "react";
-import { WIPBanner } from "~/components/ui/WIPBanner";
-import { usePathname } from "next/navigation";
+import { Suspense, useEffect, useMemo } from "react";
 
 import { ThemeProvider } from "next-themes";
-import { cn } from "~/utils/cn";
-import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+import { usePathname } from "next/navigation";
 
 import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
 import { QueryProvider } from "~/components/providers/QueryProvider";
+import { ContextSelector } from "~/components/shared/ContextSelector";
+import { GlobalSearch } from "~/components/shared/GlobalSearch";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
-import { GlobalSearch } from "~/components/shared/GlobalSearch";
-import { ContextSelector } from "~/components/shared/ContextSelector";
+import { WIPBanner } from "~/components/ui/WIPBanner";
 
 import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
+import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 
+import { cn } from "~/utils/cn";
 import { shimmer, toBase64 } from "~/utils/image";
 
 import { AuthProvider } from "~/contexts/auth";
@@ -61,10 +61,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     };
 
     // Load GoatCounter script
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.async = true;
-    script.src = '//gc.zgo.at/count.js';
-    script.dataset.goatcounter = 'https://poe2.goatcounter.com/count';
+    script.src = "//gc.zgo.at/count.js";
+    script.dataset.goatcounter = "https://poe2.goatcounter.com/count";
     document.head.appendChild(script);
 
     // Track initial page view
@@ -83,16 +83,16 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       });
     }
   }, [pathname]);
-  
+
   // Check if current route has sub-navigation
   const hasSubNav = useMemo(() => {
-    return ["/news", "/news/patch-notes", "/build-planner"].some(path => 
+    return ["/news", "/news/patch-notes", "/build-planner"].some((path) =>
       pathname.startsWith(path)
     );
   }, [pathname]);
 
-  const isHomePage = pathname === '/';
-  const isSkillTree = pathname ==='/skill-tree'
+  const isHomePage = pathname === "/";
+  const isSkillTree = pathname === "/skill-tree";
 
   return (
     <SearchProvider>
@@ -118,14 +118,14 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </div>
 
             {/* Context Selector & Global Search */}
-            {(!isHomePage && !isSkillTree) && (
+            {!isHomePage && !isSkillTree && (
               <div
                 className={cn(
                   "fixed top-0 left-0 right-0 z-[40]",
                   "transition-transform duration-300",
-                  isVisible 
-                    ? hasSubNav 
-                      ? "translate-y-24 sm:translate-y-28" 
+                  isVisible
+                    ? hasSubNav
+                      ? "translate-y-24 sm:translate-y-28"
                       : "translate-y-12 sm:translate-y-16"
                     : "translate-y-0"
                 )}
@@ -146,14 +146,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             )}
 
             {/* Main content */}
-            <main className={cn(
-              "flex-1 relative z-[20]",
-              isHomePage
-                ? "mt-16 sm:mt-20"
-                : hasSubNav 
-                  ? "mt-[6.5rem]"
-                  : "mt-[4rem]"
-            )}>
+            <main
+              className={cn(
+                "flex-1 relative z-[20]",
+                isHomePage ? "mt-16 sm:mt-20" : hasSubNav ? "mt-[6.5rem]" : "mt-[4rem]"
+              )}
+            >
               <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]">
                 <Suspense fallback={<MainContentLoading />}>{children}</Suspense>
               </div>

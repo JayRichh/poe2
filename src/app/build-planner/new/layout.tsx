@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+
 import { getServerClient } from "~/app/_actions/supabase";
 
 interface LayoutProps {
@@ -8,10 +9,12 @@ interface LayoutProps {
 export default async function NewBuildLayout({ children }: LayoutProps) {
   // Get current user
   const supabase = await getServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   if (!user) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   return children;

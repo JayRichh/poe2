@@ -1,10 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { LoadingOverlay } from "~/components/ui/LoadingOverlay";
+
+import { useRouter } from "next/navigation";
+
 import { BuildForm } from "~/components/build-planner/BuildForm";
+import { LoadingOverlay } from "~/components/ui/LoadingOverlay";
+
 import { handleBuildSubmit } from "~/app/actions/server/build-form";
 import type { BuildFormData } from "~/app/actions/server/build-form";
 import { useBuild } from "~/contexts/build";
@@ -19,73 +22,76 @@ export function EditBuildForm({ id }: EditBuildFormProps) {
   const [error, setError] = useState<string | null>(null);
   const build = useBuild();
 
-  const handleSubmit = useCallback(async (formData: Partial<BuildFormData>) => {
-    if (isSubmitting) {
-      return { success: false, buildId: id, error: "Submission in progress" };
-    }
-    
-    setIsSubmitting(true);
-    setError(null);
+  const handleSubmit = useCallback(
+    async (formData: Partial<BuildFormData>) => {
+      if (isSubmitting) {
+        return { success: false, buildId: id, error: "Submission in progress" };
+      }
 
-    try {
-      const result = await handleBuildSubmit(id, formData);
+      setIsSubmitting(true);
+      setError(null);
 
-      if (result.success) {
-        const newPath = `/build-planner/${result.buildId}`;
-        
-        // Show loading overlay during transition
-        const loadingRoot = document.createElement('div');
-        loadingRoot.id = 'loading-overlay-root';
-        document.body.appendChild(loadingRoot);
+      try {
+        const result = await handleBuildSubmit(id, formData);
 
-        const root = createRoot(loadingRoot);
-        root.render(<LoadingOverlay message="Saving changes..." fullScreen />);
+        if (result.success) {
+          const newPath = `/build-planner/${result.buildId}`;
 
-        // Cleanup function to remove overlay
-        const cleanup = () => {
-          try {
-            root.unmount();
-            loadingRoot.remove();
-          } catch (e) {
-            console.error('Error cleaning up loading overlay:', e);
-          }
+          // Show loading overlay during transition
+          const loadingRoot = document.createElement("div");
+          loadingRoot.id = "loading-overlay-root";
+          document.body.appendChild(loadingRoot);
+
+          const root = createRoot(loadingRoot);
+          root.render(<LoadingOverlay message="Saving changes..." fullScreen />);
+
+          // Cleanup function to remove overlay
+          const cleanup = () => {
+            try {
+              root.unmount();
+              loadingRoot.remove();
+            } catch (e) {
+              console.error("Error cleaning up loading overlay:", e);
+            }
+          };
+
+          // Set timeout to cleanup if navigation fails
+          const timeoutId = setTimeout(cleanup, 5000);
+
+          // Wait for server-side revalidation to complete
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          // Navigate after revalidation
+          router.replace(newPath);
+
+          return result;
+        }
+
+        setError(result.error || "Failed to save build");
+        return {
+          success: false,
+          buildId: id,
+          error: result.error || "Failed to save build",
         };
-
-        // Set timeout to cleanup if navigation fails
-        const timeoutId = setTimeout(cleanup, 5000);
-
-        // Wait for server-side revalidation to complete
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Navigate after revalidation
-        router.replace(newPath);
-        
-        return result;
+      } catch (error) {
+        console.error("Error submitting build:", error);
+        const errorMessage = error instanceof Error ? error.message : "Failed to save build";
+        setError(errorMessage);
+        return {
+          success: false,
+          buildId: id,
+          error: errorMessage,
+        };
+      } finally {
+        // Only reset submitting state if there was an error
+        // Keep it during successful navigation
+        if (error) {
+          setIsSubmitting(false);
+        }
       }
-
-      setError(result.error || "Failed to save build");
-      return { 
-        success: false, 
-        buildId: id, 
-        error: result.error || "Failed to save build" 
-      };
-    } catch (error) {
-      console.error("Error submitting build:", error);
-      const errorMessage = error instanceof Error ? error.message : "Failed to save build";
-      setError(errorMessage);
-      return { 
-        success: false, 
-        buildId: id, 
-        error: errorMessage
-      };
-    } finally {
-      // Only reset submitting state if there was an error
-      // Keep it during successful navigation
-      if (error) {
-        setIsSubmitting(false);
-      }
-    }
-  }, [id, isSubmitting, router]);
+    },
+    [id, isSubmitting, router]
+  );
 
   return (
     <div className="relative">
@@ -95,10 +101,7 @@ export function EditBuildForm({ id }: EditBuildFormProps) {
           {error}
         </div>
       )}
-      <BuildForm 
-        initialBuild={build}
-        onSubmit={handleSubmit}
-      />
+      <BuildForm initialBuild={build} onSubmit={handleSubmit} />
     </div>
   );
 }

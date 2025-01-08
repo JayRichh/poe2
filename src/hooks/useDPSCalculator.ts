@@ -25,19 +25,19 @@ export interface GlobalSettings {
   attackSpeedIncrease: number;
   totalSkillProjectiles: number;
   damageMultiplier: number;
-  
+
   // Critical Strike
   critChance: number;
   critDamage: number;
   resPenetration: number;
-  
+
   // Damage Modifiers
   bowDamage: number;
   physicalDamageIncrease: number;
   elementalDamageIncrease: number;
   attackDamageIncrease: number;
   projectileDamageIncrease: number;
-  
+
   // Support Gems
   supportGems: {
     martialTempo: boolean;
@@ -45,7 +45,7 @@ export interface GlobalSettings {
     lightningInfusion: boolean;
     iceBite: boolean;
   };
-  
+
   // Status Effects
   shock: boolean;
   shockMagnitude: number;
@@ -85,27 +85,27 @@ const defaultSettings: GlobalSettings = {
   attackSpeedIncrease: 0,
   totalSkillProjectiles: 1,
   damageMultiplier: 1.0,
-  
+
   // Critical Strike
   critChance: 5,
   critDamage: 150,
   resPenetration: 0,
-  
+
   // Damage Modifiers
   bowDamage: 22, // 22% from CSV
   physicalDamageIncrease: 0,
   elementalDamageIncrease: 0,
   attackDamageIncrease: 0,
   projectileDamageIncrease: 0,
-  
+
   // Support Gems
   supportGems: {
     martialTempo: false,
     primalArmament: false,
     lightningInfusion: false,
-    iceBite: false
+    iceBite: false,
   },
-  
+
   // Status Effects
   shock: false,
   shockMagnitude: 48, // From CSV
@@ -114,7 +114,7 @@ const defaultSettings: GlobalSettings = {
   electrocutionDuration: 20, // From CSV
   exposure: false,
   exposureMagnitude: 100, // From CSV
-  exposureDuration: 100 // From CSV
+  exposureDuration: 100, // From CSV
 };
 
 const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));

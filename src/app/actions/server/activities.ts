@@ -11,27 +11,29 @@ export async function logActivity(
   metadata?: any
 ) {
   const supabase = await getServerClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
-  const { error } = await supabase
-    .from("activities")
-    .insert({
-      user_id: user.id,
-      type,
-      title,
-      description,
-      metadata
-    });
+  const { error } = await supabase.from("activities").insert({
+    user_id: user.id,
+    type,
+    title,
+    description,
+    metadata,
+  });
 
   if (error) throw error;
 }
 
 export async function getRecentActivities(limit = 10, offset = 0): Promise<Activity[]> {
   const supabase = await getServerClient();
-  
-  const { data: { user } } = await supabase.auth.getUser();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("Not authenticated");
 
   // Get one extra item to determine if there are more

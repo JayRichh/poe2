@@ -88,9 +88,9 @@ export async function generateMetadata(
   ];
 
   // Get the current path from params
-  const path = params.path ? `/${[params.path].flat().join('/')}` : '';
+  const path = params.path ? `/${[params.path].flat().join("/")}` : "";
   // Get the hostname from the request if available, fallback to poe2.dev
-  const canonicalPath = path.replace(/\/$/, ''); // Remove trailing slash
+  const canonicalPath = path.replace(/\/$/, ""); // Remove trailing slash
   const baseUrl = "https://poe2.dev"; // Always use non-www version
 
   return {
@@ -211,9 +211,9 @@ export async function generateMetadata(
         "application/rss+xml": [
           {
             url: "https://poe2.dev/feed.xml",
-            title: "POE2 Tools Updates"
-          }
-        ]
+            title: "POE2 Tools Updates",
+          },
+        ],
       },
     },
     verification: {

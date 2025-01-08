@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sword, Gauge, Coins } from "lucide-react";
+import { Coins, Gauge, Sword } from "lucide-react";
+
 import Link from "next/link";
+
 import { Text } from "~/components/ui/Text";
 
 type Calculator = {
@@ -19,7 +21,8 @@ const calculators: Calculator[] = [
   {
     href: "/dps-calc",
     title: "DPS Calculator",
-    description: "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types. Input weapon stats and modifiers to see the total DPS.",
+    description:
+      "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types. Input weapon stats and modifiers to see the total DPS.",
     icon: Sword,
     features: [
       "Weapon comparison",
@@ -33,7 +36,8 @@ const calculators: Calculator[] = [
   {
     href: "/speed-calc",
     title: "Speed Calculator",
-    description: "Calculate attack speed, recovery time, and reload time for different weapons and equipment combinations. Compare dual-wielding setups.",
+    description:
+      "Calculate attack speed, recovery time, and reload time for different weapons and equipment combinations. Compare dual-wielding setups.",
     icon: Gauge,
     features: [
       "Attack speed analysis",
@@ -47,7 +51,8 @@ const calculators: Calculator[] = [
   {
     href: "/currency-calc",
     title: "Currency Calculator",
-    description: "Track exchange rates and analyze market data for optimal trading. Convert between different currency types with real-time rate updates.",
+    description:
+      "Track exchange rates and analyze market data for optimal trading. Convert between different currency types with real-time rate updates.",
     icon: Coins,
     features: [
       "Exchange rate tracking",
@@ -109,9 +114,7 @@ function CalculatorCard({ calc }: { calc: Calculator }) {
             </Text>
           </div>
 
-          <Text className="mb-8 text-base text-foreground-secondary">
-            {calc.description}
-          </Text>
+          <Text className="mb-8 text-base text-foreground-secondary">{calc.description}</Text>
 
           <div className="mb-8 flex flex-wrap gap-2">
             {calc.badges.map((badge, i) => (
@@ -128,9 +131,7 @@ function CalculatorCard({ calc }: { calc: Calculator }) {
             {calc.features.map((feature, i) => (
               <div key={i} className="flex items-center gap-3 text-base">
                 <span className={`h-1.5 w-1.5 rounded-full ${colors.text}`} />
-                <span className={`text-foreground-secondary ${colors.hover}`}>
-                  {feature}
-                </span>
+                <span className={`text-foreground-secondary ${colors.hover}`}>{feature}</span>
               </div>
             ))}
           </div>
@@ -155,7 +156,7 @@ export function CalculatorsSection() {
             Frame-perfect calculations and real-time analysis tools for Path of Exile 2
           </Text>
         </div>
-        
+
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 transition-transform duration-300 mx-2">
           {calculators.map((calc) => (
             <CalculatorCard key={calc.href} calc={calc} />

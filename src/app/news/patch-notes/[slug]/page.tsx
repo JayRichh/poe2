@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
       title: news.title,
-      description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title,
+      description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title,
       openGraph: {
         title: news.title,
-        description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, '') || news.title,
-        type: 'article',
+        description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title,
+        type: "article",
         publishedTime: news.date,
         modifiedTime: news.date,
       },
@@ -41,7 +41,7 @@ export default async function PatchNotePage({ params }: PageProps) {
   try {
     const { slug } = await params;
     const news = await NewsService.getNewsById(slug);
-    if (!news || news.type !== 'patch-note') notFound();
+    if (!news || news.type !== "patch-note") notFound();
 
     const timeAgo = (date: string) => {
       const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -60,9 +60,7 @@ export default async function PatchNotePage({ params }: PageProps) {
     };
 
     return (
-      <NewsLayout 
-        title={news.title}
-      >
+      <NewsLayout title={news.title}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
             fallback={
@@ -96,15 +94,15 @@ export default async function PatchNotePage({ params }: PageProps) {
 
                 {news.imageUrl && (
                   <div className="relative w-full h-64 mb-8">
-                    <img 
-                      src={news.imageUrl} 
+                    <img
+                      src={news.imageUrl}
                       alt={news.title}
                       className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
                 )}
 
-                <div 
+                <div
                   className="mt-8 prose prose-invert max-w-none"
                   dangerouslySetInnerHTML={{ __html: news.content }}
                 />

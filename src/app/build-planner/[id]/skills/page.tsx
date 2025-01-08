@@ -1,48 +1,49 @@
 "use client";
 
 import { Suspense } from "react";
+
+import { SkillGemManager } from "~/components/build-planner/SkillGemManager";
 import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
-import { SkillGemManager } from "~/components/build-planner/SkillGemManager";
-import { useBuild } from "~/contexts/build";
-import { useAuth } from "~/contexts/auth";
-import { createSkillGem, updateSkillGem, deleteSkillGem } from "~/app/actions/server/skill-gems";
+
+import { createSkillGem, deleteSkillGem, updateSkillGem } from "~/app/actions/server/skill-gems";
 import type { SkillGem } from "~/app/actions/server/skill-gems";
+import { useAuth } from "~/contexts/auth";
+import { useBuild } from "~/contexts/build";
 
 export default function SkillsPage() {
   const { user } = useAuth();
   const build = useBuild();
-  
-  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== 'public');
+
+  const canModify = Boolean(user && build.user_id === user.id && build.visibility !== "public");
 
   const handleSkillGemsUpdate = async (newGems: SkillGem[]) => {
     if (!canModify) return;
-    
+
     try {
       const currentGems = build.skill_gems || [];
-      
+
       // Find gems to delete
       const gemsToDelete = currentGems.filter(
-        current => !newGems.find(gem => gem.id === current.id)
+        (current) => !newGems.find((gem) => gem.id === current.id)
       );
 
       // Find gems to create
       const gemsToCreate = newGems.filter(
-        gem => !gem.id || !currentGems.find(current => current.id === gem.id)
+        (gem) => !gem.id || !currentGems.find((current) => current.id === gem.id)
       );
 
       // Find gems to update
       const gemsToUpdate = newGems.filter(
-        gem => gem.id && currentGems.find(current => current.id === gem.id)
+        (gem) => gem.id && currentGems.find((current) => current.id === gem.id)
       );
 
       // Execute operations
       await Promise.all([
-        ...gemsToDelete.map(gem => deleteSkillGem(gem.id, build.id)),
-        ...gemsToCreate.map(gem => createSkillGem({ ...gem, build_id: build.id })),
-        ...gemsToUpdate.map(gem => updateSkillGem(gem.id, gem))
+        ...gemsToDelete.map((gem) => deleteSkillGem(gem.id, build.id)),
+        ...gemsToCreate.map((gem) => createSkillGem({ ...gem, build_id: build.id })),
+        ...gemsToUpdate.map((gem) => updateSkillGem(gem.id, gem)),
       ]);
-
     } catch (error) {
       console.error("Error updating skill gems:", error);
     }
@@ -56,11 +57,7 @@ export default function SkillsPage() {
           Configure your build&apos;s skill gems and socket links
         </Text>
 
-        <Suspense
-          fallback={
-            <div className="h-48 animate-pulse rounded-xl bg-foreground/5" />
-          }
-        >
+        <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-foreground/5" />}>
           <SkillGemManager
             buildId={build.id}
             gems={build.skill_gems}

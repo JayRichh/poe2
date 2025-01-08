@@ -1,15 +1,16 @@
 "use client";
 
-import { CurrencyIcon } from './CurrencyIcon';
-import type { CurrencyInputs } from '~/types/currency';
-import type { GroupedCurrency, CurrencyGroup } from '~/lib/currencies/utils';
+import type { CurrencyGroup, GroupedCurrency } from "~/lib/currencies/utils";
+import type { CurrencyInputs } from "~/types/currency";
+
+import { CurrencyIcon } from "./CurrencyIcon";
 
 const GROUP_LABELS: Record<CurrencyGroup, string> = {
-  basic: 'Basic Currency',
-  catalysts: 'Catalysts',
-  distilled: 'Distilled Emotions',
-  essences: 'Essences',
-  omens: 'Omens',
+  basic: "Basic Currency",
+  catalysts: "Catalysts",
+  distilled: "Distilled Emotions",
+  essences: "Essences",
+  omens: "Omens",
 };
 
 interface CurrencyInputPanelProps {
@@ -27,10 +28,14 @@ export function CurrencyInputPanel({
   onChange,
   onCalculate,
   onReset,
-  error
+  error,
 }: CurrencyInputPanelProps) {
-  const fromCurrency = groupedCurrencies.basic.find(c => c.name === inputs.fromCurrency);
-  const isValid = inputs.amount > 0 && inputs.fromCurrency && inputs.toCurrency && inputs.fromCurrency !== inputs.toCurrency;
+  const fromCurrency = groupedCurrencies.basic.find((c) => c.name === inputs.fromCurrency);
+  const isValid =
+    inputs.amount > 0 &&
+    inputs.fromCurrency &&
+    inputs.toCurrency &&
+    inputs.fromCurrency !== inputs.toCurrency;
   const getValidationMessage = () => {
     if (!inputs.amount || inputs.amount <= 0) return "Enter an amount greater than 0";
     if (!inputs.fromCurrency) return "Select source currency";
@@ -58,7 +63,7 @@ export function CurrencyInputPanel({
                 <option value="Vaal Orb">Vaal Orb</option>
               </optgroup>
               {Object.entries(groupedCurrencies)
-                .filter(([group]) => group !== 'basic')
+                .filter(([group]) => group !== "basic")
                 .map(([group, currencies]) => (
                   <optgroup key={group} label={group.charAt(0).toUpperCase() + group.slice(1)}>
                     {currencies.map((currency) => (
@@ -67,10 +72,12 @@ export function CurrencyInputPanel({
                       </option>
                     ))}
                   </optgroup>
-              ))}
+                ))}
               <optgroup label="Other Basic">
                 {groupedCurrencies.basic
-                  .filter(c => !['Chaos Orb', 'Divine Orb', 'Exalted Orb', 'Vaal Orb'].includes(c.name))
+                  .filter(
+                    (c) => !["Chaos Orb", "Divine Orb", "Exalted Orb", "Vaal Orb"].includes(c.name)
+                  )
                   .map((currency) => (
                     <option key={currency.name} value={currency.name}>
                       {currency.name}
@@ -79,8 +86,18 @@ export function CurrencyInputPanel({
               </optgroup>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-foreground/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-4 h-4 text-foreground/60"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -107,8 +124,18 @@ export function CurrencyInputPanel({
               ))}
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-              <svg className="w-4 h-4 text-foreground/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-4 h-4 text-foreground/60"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -124,9 +151,7 @@ export function CurrencyInputPanel({
               Worth {(inputs.amount * fromCurrency.value).toFixed(0)} chaos
             </span>
           ) : inputs.fromCurrency ? (
-            <span className="text-sm text-error/80">
-              No rate available
-            </span>
+            <span className="text-sm text-error/80">No rate available</span>
           ) : null}
         </div>
         <input
@@ -142,11 +167,7 @@ export function CurrencyInputPanel({
 
       {/* Validation & Actions */}
       <div className="space-y-3">
-        {error && (
-          <div className="p-3 text-sm text-error bg-error/10 rounded-lg">
-            {error}
-          </div>
-        )}
+        {error && <div className="p-3 text-sm text-error bg-error/10 rounded-lg">{error}</div>}
         {!error && !isValid && (
           <div className="p-3 text-sm text-muted-foreground bg-background-secondary/50 rounded-lg">
             {getValidationMessage()}
@@ -161,10 +182,7 @@ export function CurrencyInputPanel({
           >
             Calculate
           </button>
-          <button
-            onClick={onReset}
-            className="btn-ghost rounded-lg px-4 py-2 text-sm"
-          >
+          <button onClick={onReset} className="btn-ghost rounded-lg px-4 py-2 text-sm">
             Reset
           </button>
         </div>

@@ -1,7 +1,9 @@
 "use client";
 
 import { Check } from "lucide-react";
+
 import { forwardRef } from "react";
+
 import { cn } from "~/utils/cn";
 
 interface CheckboxProps {

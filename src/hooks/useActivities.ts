@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useAuth } from '~/contexts/auth';
-import { Activity } from '~/types/activity';
-import { getRecentActivities } from '~/app/actions/server/activities';
+import { useCallback, useEffect, useState } from "react";
 
-const CACHE_KEY = 'recent_activities';
+import { getRecentActivities } from "~/app/actions/server/activities";
+import { useAuth } from "~/contexts/auth";
+import { Activity } from "~/types/activity";
+
+const CACHE_KEY = "recent_activities";
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 const INITIAL_FETCH_LIMIT = 5;
 
@@ -29,7 +30,7 @@ export function useActivities() {
       if (cached) {
         const { data, timestamp }: CachedActivities = JSON.parse(cached);
         const age = Date.now() - timestamp;
-        
+
         if (age < CACHE_DURATION) {
           setActivities(data);
           setHasMore(data.length >= INITIAL_FETCH_LIMIT);
@@ -44,14 +45,16 @@ export function useActivities() {
       setHasMore(data.length >= INITIAL_FETCH_LIMIT);
 
       // Update cache
-      localStorage.setItem(CACHE_KEY, JSON.stringify({
-        data,
-        timestamp: Date.now()
-      }));
-
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({
+          data,
+          timestamp: Date.now(),
+        })
+      );
     } catch (err) {
-      console.error('Error loading activities:', err);
-      setError('Failed to load activities');
+      console.error("Error loading activities:", err);
+      setError("Failed to load activities");
     } finally {
       setLoading(false);
     }
@@ -65,16 +68,15 @@ export function useActivities() {
       setLoading(true);
       const currentCount = activities.length;
       const newData = await getRecentActivities(INITIAL_FETCH_LIMIT, currentCount);
-      
+
       if (newData.length < INITIAL_FETCH_LIMIT) {
         setHasMore(false);
       }
 
-      setActivities(prev => [...prev, ...newData]);
-
+      setActivities((prev) => [...prev, ...newData]);
     } catch (err) {
-      console.error('Error loading more activities:', err);
-      setError('Failed to load more activities');
+      console.error("Error loading more activities:", err);
+      setError("Failed to load more activities");
     } finally {
       setLoading(false);
     }
@@ -91,6 +93,6 @@ export function useActivities() {
     error,
     hasMore,
     loadMore,
-    refresh: loadActivities
+    refresh: loadActivities,
   };
 }

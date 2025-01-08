@@ -5,7 +5,10 @@ interface LoadingOverlayProps {
   fullScreen?: boolean;
 }
 
-export function LoadingOverlay({ message = "Loading...", fullScreen = false }: LoadingOverlayProps) {
+export function LoadingOverlay({
+  message = "Loading...",
+  fullScreen = false,
+}: LoadingOverlayProps) {
   const baseClasses = "bg-background/80 backdrop-blur-sm flex items-center justify-center z-50";
   const positionClasses = fullScreen ? "fixed inset-0" : "absolute inset-0";
 

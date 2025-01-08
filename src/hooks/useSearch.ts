@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { searchContent, type SearchOptions, type SearchResult } from "~/services/search-service";
+
+import { type SearchOptions, type SearchResult, searchContent } from "~/services/search-service";
 
 export function useSearchQuery(query: string, options?: SearchOptions) {
   return useQuery<SearchResult[]>({

@@ -1,12 +1,15 @@
 "use client";
 
-import { Mail, User, XCircle, Upload } from "lucide-react";
-import { Avatar } from "./Avatar";
 import { motion } from "framer-motion";
+import { Mail, Upload, User, XCircle } from "lucide-react";
+
+import { FormField } from "~/components/shared/FormField";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import { FormField } from "~/components/shared/FormField";
+
 import { cn } from "~/utils/cn";
+
+import { Avatar } from "./Avatar";
 
 interface ProfileFormProps {
   email: string;
@@ -41,7 +44,7 @@ export function ProfileForm({
 }: ProfileFormProps) {
   return (
     <form onSubmit={onSubmit} className="space-y-8">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="grid gap-6"
@@ -53,8 +56,8 @@ export function ProfileForm({
               url={avatarUrl}
               size={120}
               onUpload={(url: string) => {
-                onAvatarUpload(url).catch(error => {
-                  console.error('Error in avatar upload:', error);
+                onAvatarUpload(url).catch((error) => {
+                  console.error("Error in avatar upload:", error);
                   throw error;
                 });
               }}
@@ -66,10 +69,7 @@ export function ProfileForm({
             </div>
           )}
         </div>
-        <FormField
-          label="Email"
-          icon={<Mail className="h-5 w-5 text-primary/60" />}
-        >
+        <FormField label="Email" icon={<Mail className="h-5 w-5 text-primary/60" />}>
           <div className="relative">
             <input
               type="email"
@@ -103,12 +103,14 @@ export function ProfileForm({
               type="text"
               value={name}
               onChange={(e) => onNameChange(e.target.value)}
-              placeholder={isNewUser ? "Choose a display name to get started" : "Enter your display name"}
+              placeholder={
+                isNewUser ? "Choose a display name to get started" : "Enter your display name"
+              }
               className={cn(
                 "pl-11 pr-10 w-full h-12 rounded-xl",
                 "bg-background/95",
                 "border-2",
-                validationError 
+                validationError
                   ? "border-destructive/50 focus:border-destructive/50 focus:ring-2 focus:ring-destructive/20"
                   : "border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
                 "placeholder:text-foreground/40"
@@ -127,7 +129,7 @@ export function ProfileForm({
         </FormField>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -146,9 +148,9 @@ export function ProfileForm({
         )}
 
         <div className="flex justify-center">
-          <Button 
-            type="submit" 
-            variant="primary" 
+          <Button
+            type="submit"
+            variant="primary"
             disabled={loading || !!validationError || !name.trim()}
           >
             {loading ? "Saving..." : isNewUser ? "Complete Profile Setup" : "Save Changes"}

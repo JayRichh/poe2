@@ -148,7 +148,7 @@ code[class*="language-"] {
   }
 
   .glass-hover {
-    @apply hover:bg-background hover:bg-opacity-[0.98] transition-all duration-200 hover:border-border/60 hover:shadow-md;
+    @apply transition-all duration-200 hover:border-border/60 hover:bg-background hover:bg-opacity-[0.98] hover:shadow-md;
   }
 
   .text-balance {

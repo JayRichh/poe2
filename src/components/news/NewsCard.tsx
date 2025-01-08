@@ -1,11 +1,15 @@
 "use client";
 
 import { ArrowRight, ExternalLink } from "lucide-react";
+
 import { useMemo } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
+import Link from "next/link";
+
 import { NewsService } from "~/services/news-service";
 import { NewsPost } from "~/types/news";
+
 import { Text } from "../ui/Text";
 import { TimeAgo } from "../ui/TimeAgo";
 
@@ -16,10 +20,13 @@ interface NewsCardProps {
 
 export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
   const hasExternalUrl = useMemo(() => news.url?.startsWith("http") ?? false, [news.url]);
-  
-  const processedContent = useMemo(() => ({
-    __html: news.processedContent || ''
-  }), [news.processedContent]);
+
+  const processedContent = useMemo(
+    () => ({
+      __html: news.processedContent || "",
+    }),
+    [news.processedContent]
+  );
 
   if (variant === "featured") {
     return (
@@ -57,7 +64,10 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
           </Link>
 
           <footer className="flex items-center justify-between pt-4 mt-auto">
-            <Link href={NewsService.getNewsUrl(news)} className="flex items-center text-sm text-primary font-medium">
+            <Link
+              href={NewsService.getNewsUrl(news)}
+              className="flex items-center text-sm text-primary font-medium"
+            >
               Read More
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -66,7 +76,7 @@ export function NewsCard({ news, variant = "compact" }: NewsCardProps) {
                 href={news.url}
                 target="_blank"
                 rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-foreground/80 hover:text-foreground/90 hover:bg-muted px-2 py-1 rounded-md transition-colors whitespace-nowrap flex-shrink-0"
+                className="inline-flex items-center gap-1 text-xs text-foreground/80 hover:text-foreground/90 hover:bg-muted px-2 py-1 rounded-md transition-colors whitespace-nowrap flex-shrink-0"
               >
                 View on Forum
                 <ExternalLink className="w-3 h-3" />

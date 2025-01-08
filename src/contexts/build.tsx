@@ -1,10 +1,16 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
+
 import type { BuildWithRelations } from "~/app/actions/server/builds";
-import type { Equipment, EquipmentInsert, UpdateEquipmentParams } from "~/app/actions/server/equipment";
-import { createEquipment, updateEquipment, deleteEquipment } from "~/app/actions/server/equipment";
+import type {
+  Equipment,
+  EquipmentInsert,
+  UpdateEquipmentParams,
+} from "~/app/actions/server/equipment";
+import { createEquipment, deleteEquipment, updateEquipment } from "~/app/actions/server/equipment";
 
 interface BuildContextType {
   build: BuildWithRelations;
@@ -16,10 +22,10 @@ interface BuildContextType {
 
 const BuildContext = createContext<BuildContextType | null>(null);
 
-export function BuildProvider({ 
-  children, 
-  build: initialBuild 
-}: { 
+export function BuildProvider({
+  children,
+  build: initialBuild,
+}: {
   children: React.ReactNode;
   build: BuildWithRelations;
 }) {
@@ -38,48 +44,50 @@ export function BuildProvider({
 
     try {
       const currentEquipment = build.equipment || [];
-      
+
       // Find items to delete
       const itemsToDelete = currentEquipment.filter(
-        current => !equipment.find(item => item.id === current.id)
+        (current) => !equipment.find((item) => item.id === current.id)
       );
 
       // Find items to create
       const itemsToCreate = equipment.filter(
-        item => !item.id || !currentEquipment.find(current => current.id === item.id)
+        (item) => !item.id || !currentEquipment.find((current) => current.id === item.id)
       );
 
       // Find items to update
       const itemsToUpdate = equipment.filter(
-        item => item.id && currentEquipment.find(current => current.id === item.id)
+        (item) => item.id && currentEquipment.find((current) => current.id === item.id)
       );
 
       // Execute operations
       await Promise.all([
-        ...itemsToDelete.map(item => deleteEquipment(item.id!)),
-        ...itemsToCreate.map(item => createEquipment({ 
-          ...item, 
-          build_id: build.id,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        } as EquipmentInsert)),
-        ...itemsToUpdate.map(item => {
+        ...itemsToDelete.map((item) => deleteEquipment(item.id!)),
+        ...itemsToCreate.map((item) =>
+          createEquipment({
+            ...item,
+            build_id: build.id,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          } as EquipmentInsert)
+        ),
+        ...itemsToUpdate.map((item) => {
           const { id, created_at, updated_at, build_id, ...updates } = item;
           const params: UpdateEquipmentParams = {
             id: id!,
             updates: {
               ...updates,
-              updated_at: new Date().toISOString()
-            }
+              updated_at: new Date().toISOString(),
+            },
           };
           return updateEquipment(params);
-        })
+        }),
       ]);
 
       setIsDirty(false);
       router.refresh();
     } catch (error) {
-      console.error('Failed to save equipment:', error);
+      console.error("Failed to save equipment:", error);
       throw error;
     }
   };
@@ -90,13 +98,15 @@ export function BuildProvider({
   }, [build.id, build.slug, router]);
 
   return (
-    <BuildContext.Provider value={{ 
-      build, 
-      equipment,
-      isDirty,
-      setEquipmentState,
-      saveBuild
-    }}>
+    <BuildContext.Provider
+      value={{
+        build,
+        equipment,
+        isDirty,
+        setEquipmentState,
+        saveBuild,
+      }}
+    >
       {children}
     </BuildContext.Provider>
   );
@@ -119,7 +129,7 @@ export function useEquipmentManager() {
     equipment: context.equipment,
     isDirty: context.isDirty,
     updateEquipment: context.setEquipmentState,
-    saveBuild: context.saveBuild
+    saveBuild: context.saveBuild,
   };
 }
 
@@ -134,7 +144,7 @@ export function BuildErrorBoundary({ error }: { error: Error }) {
           {isNotFound ? "Build Not Found" : "Error Loading Build"}
         </h1>
         <p className="text-foreground/60 mb-6">
-          {isNotFound 
+          {isNotFound
             ? "The build you're looking for doesn't exist or you don't have permission to view it."
             : error.message || "There was a problem loading this build."}
         </p>
@@ -146,7 +156,7 @@ export function BuildErrorBoundary({ error }: { error: Error }) {
             Go Back
           </button>
           <button
-            onClick={() => router.push('/build-planner')}
+            onClick={() => router.push("/build-planner")}
             className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
           >
             View All Builds

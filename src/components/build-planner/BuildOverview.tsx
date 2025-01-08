@@ -1,20 +1,24 @@
 "use client";
 
-import { useAuth } from "~/contexts/auth";
-import { useRouter } from "next/navigation";
 import { useMemo } from "react";
+
+import { useRouter } from "next/navigation";
+
 import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
-import { BuildActions } from "./BuildActions";
+
+import { useAuth } from "~/contexts/auth";
 import { useBuild } from "~/contexts/build";
+
+import { BuildActions } from "./BuildActions";
 
 export function BuildOverview() {
   const { user } = useAuth();
   const router = useRouter();
   const build = useBuild();
 
-  const canModify = useMemo(() => 
-    Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
+  const canModify = useMemo(
+    () => Boolean(user && build.user_id === user.id && build.visibility !== "public"),
     [user, build.user_id, build.visibility]
   );
 
@@ -32,9 +36,9 @@ export function BuildOverview() {
           )}
         </div>
         <div className="relative z-10">
-          <BuildActions 
-            build={build} 
-            canModify={canModify} 
+          <BuildActions
+            build={build}
+            canModify={canModify}
             onActionComplete={handleActionComplete}
           />
         </div>

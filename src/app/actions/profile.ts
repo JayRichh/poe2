@@ -2,9 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 
-import { getServerClient } from "~/app/_actions/supabase";
-
 import { validateName } from "~/utils/validation";
+
+import { getServerClient } from "~/app/_actions/supabase";
 
 export type ProfileUpdateResponse = {
   success: boolean;

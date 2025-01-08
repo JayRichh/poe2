@@ -13,8 +13,8 @@ export default function CurrencyCalcPage() {
         <div className="mx-auto mb-12 mt-12">
           <Text className="text-4xl font-bold tracking-tight mb-6">POE2 Currency Calculator</Text>
           <Text className="text-xl text-muted-foreground leading-relaxed">
-            Convert between different Path of Exile 2 currency types with real-time rates. Compare values,
-            track conversion history, and calculate exchange rates for all currency types.
+            Convert between different Path of Exile 2 currency types with real-time rates. Compare
+            values, track conversion history, and calculate exchange rates for all currency types.
           </Text>
           <div className="flex items-center gap-2 mt-4">
             <span className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
@@ -39,8 +39,8 @@ export default function CurrencyCalcPage() {
           <div className="max-w-7xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Currency Reference</h2>
             <p className="text-lg text-muted-foreground">
-              Comprehensive list of all Path of Exile 2 currencies, their values, and usage information.
-              Hover over items to see detailed usage instructions.
+              Comprehensive list of all Path of Exile 2 currencies, their values, and usage
+              information. Hover over items to see detailed usage instructions.
             </p>
           </div>
           <CurrencyGrid />

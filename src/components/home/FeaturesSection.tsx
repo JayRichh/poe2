@@ -115,7 +115,10 @@ export function FeaturesSection() {
                     className="w-10 h-10 text-gray-900 dark:text-white opacity-80 group-hover:opacity-100 transition-all duration-200"
                   />
                 </div>
-                <Text variant="h3" className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+                <Text
+                  variant="h3"
+                  className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white"
+                >
                   {feature.title}
                 </Text>
                 <ul className="space-y-3 text-gray-700 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">

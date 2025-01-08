@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
+
+import { useEffect, useState } from "react";
 
 interface TimeAgoProps {
   date: string;
@@ -11,7 +12,20 @@ export function TimeAgo({ date }: TimeAgoProps) {
   // Format date in a stable way for initial SSR render
   const formatStableDate = (date: string) => {
     const d = new Date(date);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
   };
 

@@ -1,9 +1,12 @@
 import { ChevronLeft } from "lucide-react";
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { PatchNotes } from "~/components/news/PatchNotes";
 import { Text } from "~/components/ui/Text";
+
 import { NewsService } from "~/services/news-service";
 import type { NewsQueryParams } from "~/types/news";
 
@@ -25,12 +28,12 @@ export default async function PatchNotesPage({ searchParams }: PageProps) {
   try {
     // Await searchParams before using
     const params = await searchParams;
-    
+
     // Convert pagination params
     const queryParams: NewsQueryParams = {
       page: params.page ? parseInt(params.page) : 1,
       itemsPerPage: params.itemsPerPage ? parseInt(params.itemsPerPage) : 10,
-      type: 'patch-note'
+      type: "patch-note",
     };
 
     const patchNotes = await NewsService.getPatchNotes(queryParams);

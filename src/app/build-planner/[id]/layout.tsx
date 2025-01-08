@@ -1,21 +1,23 @@
+import { User } from "@supabase/supabase-js";
+
 import { Suspense } from "react";
+
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
+import { LoadingOverlay } from "~/components/ui/LoadingOverlay";
 import { Text } from "~/components/ui/Text";
 
+import { getServerClient } from "~/app/_actions/supabase";
 import { getBuild } from "~/app/actions/server/builds";
 import { BuildErrorBoundary } from "~/contexts/build";
-import { LoadingOverlay } from "~/components/ui/LoadingOverlay";
-import { ClientBuildProvider } from "./ClientBuildProvider";
-import { getServerClient } from "~/app/_actions/supabase";
 import type { Database } from "~/lib/supabase/types";
 
-type Build = Database["public"]["Tables"]["builds"]["Row"];
+import { ClientBuildProvider } from "./ClientBuildProvider";
 
-import { User } from "@supabase/supabase-js";
+type Build = Database["public"]["Tables"]["builds"]["Row"];
 
 interface BuildNavProps {
   build: Build;
@@ -26,7 +28,7 @@ interface BuildNavProps {
 function BuildNav({ build, currentPath, user }: BuildNavProps) {
   const pathBase = build.slug || build.id;
   const canEdit = user && build.user_id === user.id;
-  
+
   const links = [
     { href: `/build-planner/${pathBase}`, label: "Overview" },
     ...(canEdit ? [{ href: `/build-planner/${pathBase}/edit`, label: "Edit" }] : []),
@@ -80,15 +82,17 @@ interface BuildPlannerLayoutProps {
 export default async function BuildPlannerLayout({ children, params }: BuildPlannerLayoutProps) {
   // Check auth first
   const supabase = await getServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   // Await params before using
   const { id } = await params;
 
   // Get build data
   const { data: build, error } = await getBuild(id).then(
-    build => ({ data: build, error: null }),
-    error => ({ data: null, error })
+    (build) => ({ data: build, error: null }),
+    (error) => ({ data: null, error })
   );
 
   // Handle loading and error states
@@ -120,29 +124,29 @@ export default async function BuildPlannerLayout({ children, params }: BuildPlan
 
   // Get current path for nav and edit check
   const pathBase = build.slug || build.id;
-  const childrenStr = String(children || '');
-  const isEditPage = childrenStr.includes('EditBuildForm') || childrenStr.includes('edit/page');
-  
+  const childrenStr = String(children || "");
+  const isEditPage = childrenStr.includes("EditBuildForm") || childrenStr.includes("edit/page");
+
   // Determine current path based on children content
   let currentPath = `/build-planner/${pathBase}`;
   if (isEditPage) {
     currentPath = `/build-planner/${pathBase}/edit`;
     // Check auth for edit page
     if (!user) {
-      redirect('/auth/login');
+      redirect("/auth/login");
     }
     if (build.user_id !== user.id) {
-      redirect('/build-planner');
+      redirect("/build-planner");
     }
-  } else if (childrenStr.includes('equipment')) {
+  } else if (childrenStr.includes("equipment")) {
     currentPath = `/build-planner/${pathBase}/equipment`;
-  } else if (childrenStr.includes('skills')) {
+  } else if (childrenStr.includes("skills")) {
     currentPath = `/build-planner/${pathBase}/skills`;
-  } else if (childrenStr.includes('stats')) {
+  } else if (childrenStr.includes("stats")) {
     currentPath = `/build-planner/${pathBase}/stats`;
-  } else if (childrenStr.includes('notes')) {
+  } else if (childrenStr.includes("notes")) {
     currentPath = `/build-planner/${pathBase}/notes`;
-  } else if (childrenStr.includes('import-export')) {
+  } else if (childrenStr.includes("import-export")) {
     currentPath = `/build-planner/${pathBase}/import-export`;
   }
 
@@ -164,9 +168,7 @@ export default async function BuildPlannerLayout({ children, params }: BuildPlan
 
   return (
     <div className="min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)] p-4">
-      <ClientBuildProvider build={build}>
-        {content}
-      </ClientBuildProvider>
+      <ClientBuildProvider build={build}>{content}</ClientBuildProvider>
     </div>
   );
 }

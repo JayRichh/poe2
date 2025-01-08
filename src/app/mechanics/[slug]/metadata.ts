@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import { mechanics } from "~/lib/mechanics/data";
 import type { ContentCategory } from "~/lib/shared/types";
 
@@ -7,7 +8,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-
   try {
     const { slug } = await params;
     const mechanic = mechanics[slug as ContentCategory];
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: `${mechanic.title} - POE2 Game Mechanics`,
         description: mechanic.description,
-        type: 'article',
+        type: "article",
       },
     };
   } catch (error) {

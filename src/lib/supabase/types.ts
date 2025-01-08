@@ -1,6 +1,6 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
-export type ActivityType = 'build' | 'profile' | 'settings' | 'connection';
+export type ActivityType = "build" | "profile" | "settings" | "connection";
 
 export type BuildSettings = {
   defaultVisibility: VisibilityType;

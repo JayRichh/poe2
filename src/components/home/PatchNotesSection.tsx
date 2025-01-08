@@ -1,11 +1,15 @@
 "use client";
 
 import { ArrowRight, BookOpen, Calendar, Clock, Users, Video } from "lucide-react";
+
 import { useEffect, useState } from "react";
+
 import Link from "next/link";
+
 import { PatchNotesCarousel } from "~/components/news/PatchNotesCarousel";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+
 import { NewsService } from "~/services/news-service";
 import type { NewsPost, PatchNote } from "~/types/news";
 
@@ -19,7 +23,7 @@ export function PatchNotesSection() {
       try {
         const [patchNotesResponse, recentUpdatesResponse] = await Promise.all([
           NewsService.getPatchNotes({ itemsPerPage: 5 }),
-          NewsService.getLatestNews({ timeRange: '30d', itemsPerPage: 4 })
+          NewsService.getLatestNews({ timeRange: "30d", itemsPerPage: 4 }),
         ]);
 
         if (patchNotesResponse.items.length > 0) {
@@ -74,7 +78,7 @@ export function PatchNotesSection() {
     );
   }
 
-  const getUpdateIcon = (type: NewsPost['type']) => {
+  const getUpdateIcon = (type: NewsPost["type"]) => {
     switch (type) {
       case "announcement":
         return Calendar;
@@ -85,7 +89,7 @@ export function PatchNotesSection() {
     }
   };
 
-  const getTagStyle = (type: NewsPost['type']) => {
+  const getTagStyle = (type: NewsPost["type"]) => {
     switch (type) {
       case "announcement":
         return "bg-primary/10 text-primary border-primary/20";
@@ -96,7 +100,7 @@ export function PatchNotesSection() {
     }
   };
 
-  const getTagText = (type: NewsPost['type']) => {
+  const getTagText = (type: NewsPost["type"]) => {
     switch (type) {
       case "announcement":
         return "Announcement";
@@ -172,7 +176,20 @@ export function PatchNotesSection() {
                               <Text color="secondary" className="text-xs">
                                 {(() => {
                                   const d = new Date(update.date);
-                                  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                                  const months = [
+                                    "Jan",
+                                    "Feb",
+                                    "Mar",
+                                    "Apr",
+                                    "May",
+                                    "Jun",
+                                    "Jul",
+                                    "Aug",
+                                    "Sep",
+                                    "Oct",
+                                    "Nov",
+                                    "Dec",
+                                  ];
                                   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
                                 })()}
                               </Text>

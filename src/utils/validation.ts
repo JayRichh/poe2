@@ -1,7 +1,7 @@
 export const NAME_MIN_LENGTH = 2;
 export const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-export const ALLOWED_FILE_TYPES = ['application/json', 'text/plain'];
-export const ALLOWED_FILE_EXTENSIONS = ['.json', '.txt'];
+export const ALLOWED_FILE_TYPES = ["application/json", "text/plain"];
+export const ALLOWED_FILE_EXTENSIONS = [".json", ".txt"];
 export const NAME_MAX_LENGTH = 50;
 export const NAME_PATTERN = /^[a-zA-Z0-9\s_-]+$/;
 
@@ -19,18 +19,18 @@ export function validateFile(file: File): ValidationResult {
     return { valid: false, error: "File size must not exceed 2MB" };
   }
 
-  const fileExtension = `.${file.name.split('.').pop()?.toLowerCase()}`;
+  const fileExtension = `.${file.name.split(".").pop()?.toLowerCase()}`;
   if (!ALLOWED_FILE_EXTENSIONS.includes(fileExtension)) {
-    return { 
-      valid: false, 
-      error: `Invalid file type. Allowed types: ${ALLOWED_FILE_EXTENSIONS.join(', ')}` 
+    return {
+      valid: false,
+      error: `Invalid file type. Allowed types: ${ALLOWED_FILE_EXTENSIONS.join(", ")}`,
     };
   }
 
   if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-    return { 
-      valid: false, 
-      error: `Invalid content type. Allowed types: ${ALLOWED_FILE_TYPES.join(', ')}` 
+    return {
+      valid: false,
+      error: `Invalid content type. Allowed types: ${ALLOWED_FILE_TYPES.join(", ")}`,
     };
   }
 
@@ -40,12 +40,12 @@ export function validateFile(file: File): ValidationResult {
 export function sanitizeFileName(fileName: string): string {
   // Remove any path traversal attempts and dangerous characters
   const sanitized = fileName
-    .replace(/[^a-zA-Z0-9._-]/g, '')  // Only allow alphanumeric, dots, underscores, and hyphens
-    .replace(/\.{2,}/g, '.')          // Remove consecutive dots
-    .replace(/^\.+|\.+$/g, '');       // Remove leading/trailing dots
-    
+    .replace(/[^a-zA-Z0-9._-]/g, "") // Only allow alphanumeric, dots, underscores, and hyphens
+    .replace(/\.{2,}/g, ".") // Remove consecutive dots
+    .replace(/^\.+|\.+$/g, ""); // Remove leading/trailing dots
+
   if (!sanitized) {
-    return 'unnamed_file';
+    return "unnamed_file";
   }
   return sanitized;
 }
@@ -64,7 +64,10 @@ export function validateName(name: string): ValidationResult {
   }
 
   if (!NAME_PATTERN.test(name)) {
-    return { valid: false, error: "Name can only contain letters, numbers, spaces, underscores and hyphens" };
+    return {
+      valid: false,
+      error: "Name can only contain letters, numbers, spaces, underscores and hyphens",
+    };
   }
 
   return { valid: true };

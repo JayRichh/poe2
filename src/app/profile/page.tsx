@@ -1,29 +1,32 @@
 "use client";
 
+import { ArrowRight, GitBranch, Plus, Settings, Shield, User } from "lucide-react";
+
 import { useState } from "react";
+
 import Link from "next/link";
-import { ArrowRight, Plus, Settings, User, GitBranch, Shield } from "lucide-react";
-import { Container } from "~/components/ui/Container";
-import { Text } from "~/components/ui/Text";
+
+import { ActivityFeed } from "~/components/profile/ActivityFeed";
+import { BuildSettingsSection } from "~/components/profile/BuildSettingsSection";
+import { BuildsOverview } from "~/components/profile/BuildsOverview";
+import { ConnectionsSection } from "~/components/profile/ConnectionsSection";
+import { ProfileForm } from "~/components/profile/ProfileForm";
+import { SecuritySection } from "~/components/profile/SecuritySection";
+import { WelcomeBanner } from "~/components/profile/WelcomeBanner";
 import { Button } from "~/components/ui/Button";
+import { Container } from "~/components/ui/Container";
 import { TabControl } from "~/components/ui/TabControl";
+import { Text } from "~/components/ui/Text";
+
 import { useProfileSettings } from "~/hooks/useProfileSettings";
 
-import { WelcomeBanner } from "~/components/profile/WelcomeBanner";
-import { ProfileForm } from "~/components/profile/ProfileForm";
-import { ConnectionsSection } from "~/components/profile/ConnectionsSection";
-import { BuildSettingsSection } from "~/components/profile/BuildSettingsSection";
-import { SecuritySection } from "~/components/profile/SecuritySection";
-import { BuildsOverview } from "~/components/profile/BuildsOverview";
-import { ActivityFeed } from "~/components/profile/ActivityFeed";
-
-type TabId = 'overview' | 'builds' | 'settings' | 'security';
+type TabId = "overview" | "builds" | "settings" | "security";
 
 const tabs: Array<{ id: TabId; label: string; icon: React.ReactNode }> = [
-  { id: 'overview', label: 'Profile', icon: <User className="w-4 h-4" /> },
-  { id: 'builds', label: 'My Builds', icon: <GitBranch className="w-4 h-4" /> },
-  { id: 'settings', label: 'Preferences', icon: <Settings className="w-4 h-4" /> },
-  { id: 'security', label: 'Security', icon: <Shield className="w-4 h-4" /> },
+  { id: "overview", label: "Profile", icon: <User className="w-4 h-4" /> },
+  { id: "builds", label: "My Builds", icon: <GitBranch className="w-4 h-4" /> },
+  { id: "settings", label: "Preferences", icon: <Settings className="w-4 h-4" /> },
+  { id: "security", label: "Security", icon: <Shield className="w-4 h-4" /> },
 ];
 
 export default function ProfilePage() {
@@ -59,16 +62,14 @@ export default function ProfilePage() {
     handleAvatarUpload,
   } = useProfileSettings();
 
-  const [activeTab, setActiveTab] = useState<TabId>('overview');
+  const [activeTab, setActiveTab] = useState<TabId>("overview");
 
   if (!user || !user.id) {
     return (
       <div className="min-h-screen bg-background pt-4">
         <Container className="py-8">
           <div className="text-center">
-            <Text className="text-lg text-foreground/60">
-              Please sign in to view your profile
-            </Text>
+            <Text className="text-lg text-foreground/60">Please sign in to view your profile</Text>
           </div>
         </Container>
       </div>
@@ -99,15 +100,15 @@ export default function ProfilePage() {
 
         {/* Tab Navigation */}
         <TabControl<TabId>
-          tabs={tabs} 
-          activeTab={activeTab} 
-          onChange={(id) => setActiveTab(id)} 
+          tabs={tabs}
+          activeTab={activeTab}
+          onChange={(id) => setActiveTab(id)}
           className="mb-8"
         />
 
         {/* Tab Content */}
         <div className="mt-6">
-          {activeTab === 'overview' && (
+          {activeTab === "overview" && (
             <div className="space-y-8">
               <div className="max-w-2xl mx-auto">
                 <ProfileForm
@@ -135,13 +136,13 @@ export default function ProfilePage() {
                   <div className="p-6 rounded-xl border-2 border-border/50 bg-background/95">
                     <Text className="text-sm text-foreground/60">Templates</Text>
                     <Text className="text-3xl font-medium mt-1">
-                      {builds.filter(b => b.is_template).length}
+                      {builds.filter((b) => b.is_template).length}
                     </Text>
                   </div>
                   <div className="p-6 rounded-xl border-2 border-border/50 bg-background/95">
                     <Text className="text-sm text-foreground/60">Public Builds</Text>
                     <Text className="text-3xl font-medium mt-1">
-                      {builds.filter(b => b.visibility === 'public').length}
+                      {builds.filter((b) => b.visibility === "public").length}
                     </Text>
                   </div>
                 </div>
@@ -168,8 +169,8 @@ export default function ProfilePage() {
 
                     <div className="space-y-3">
                       {builds.slice(0, 3).map((build) => (
-                        <Link 
-                          key={build.id} 
+                        <Link
+                          key={build.id}
                           href={`/build-planner/${build.slug || build.id}`}
                           className="block p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
                         >
@@ -200,7 +201,7 @@ export default function ProfilePage() {
             </div>
           )}
 
-          {activeTab === 'builds' && (
+          {activeTab === "builds" && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <Text className="text-xl font-medium">Your Builds</Text>
@@ -222,8 +223,8 @@ export default function ProfilePage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {builds.map((build) => (
-                  <Link 
-                    key={build.id} 
+                  <Link
+                    key={build.id}
                     href={`/build-planner/${build.slug || build.id}`}
                     className="block p-4 rounded-xl border border-border/50 bg-background/95 hover:border-primary/50 hover:bg-muted/30 transition-all"
                   >
@@ -246,7 +247,7 @@ export default function ProfilePage() {
             </div>
           )}
 
-          {activeTab === 'settings' && (
+          {activeTab === "settings" && (
             <div className="space-y-8 max-w-3xl mx-auto">
               <ConnectionsSection
                 isNewUser={isNewUser}
@@ -268,7 +269,7 @@ export default function ProfilePage() {
             </div>
           )}
 
-          {activeTab === 'security' && (
+          {activeTab === "security" && (
             <div className="max-w-xl mx-auto">
               <SecuritySection
                 loading={loading}

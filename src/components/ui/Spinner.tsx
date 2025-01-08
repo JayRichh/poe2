@@ -38,9 +38,7 @@ export function SpinnerDemo() {
     <div className="space-y-8">
       {/* Different sizes */}
       <div className="space-y-4">
-        <div className="text-sm font-medium text-foreground-secondary">
-          Different Sizes
-        </div>
+        <div className="text-sm font-medium text-foreground-secondary">Different Sizes</div>
         <div className="flex items-center gap-4">
           <Spinner size="sm" />
           <Spinner size="md" />
@@ -50,9 +48,7 @@ export function SpinnerDemo() {
 
       {/* Different variants */}
       <div className="space-y-4">
-        <div className="text-sm font-medium text-foreground-secondary">
-          Different Variants
-        </div>
+        <div className="text-sm font-medium text-foreground-secondary">Different Variants</div>
         <div className="flex items-center gap-4">
           <Spinner variant="default" />
           <Spinner variant="primary" />

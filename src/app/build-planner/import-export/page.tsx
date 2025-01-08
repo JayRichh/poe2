@@ -3,13 +3,14 @@
 import { AlertCircle, Check, Clipboard, Code, FileUp, Link2 } from "lucide-react";
 
 import { useCallback, useState } from "react";
-import { validateFile } from "~/utils/validation";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Input } from "~/components/ui/Input";
 import { Text } from "~/components/ui/Text";
+
+import { validateFile } from "~/utils/validation";
 
 const EXPORT_OPTIONS = [
   { id: "all", name: "Everything", description: "Export all build data" },

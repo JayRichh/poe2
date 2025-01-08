@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "~/utils/cn";
 import { Text } from "~/components/ui/Text";
+
+import { cn } from "~/utils/cn";
 
 interface FormFieldProps {
   label: string;
@@ -20,15 +21,13 @@ export function FormField({
   hint,
   icon,
   children,
-  className
+  className,
 }: FormFieldProps) {
   return (
     <div className={cn("space-y-2", className)}>
       <div className="flex items-center justify-between">
         <Text className="text-sm text-foreground/60">{label}</Text>
-        {required && (
-          <Text className="text-xs text-destructive">Required</Text>
-        )}
+        {required && <Text className="text-xs text-destructive">Required</Text>}
       </div>
       <div className="relative">
         {icon && (

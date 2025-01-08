@@ -28,18 +28,22 @@ export async function generateMetadata(
 
     // Validate type if category provided
     if (category) {
-      const newsType = category.toLowerCase() === 'patch' ? 'patch-note' : 'announcement';
+      const newsType = category.toLowerCase() === "patch" ? "patch-note" : "announcement";
       if (news.type !== newsType) {
         return {};
       }
     }
 
-    const newsType = news.type === 'patch-note' ? 'Patch Notes' : 'Announcements';
-    const newsPath = news.type === 'patch-note' ? `/news/patch-notes/${news.slug || news.id}` : `/news/${news.slug || news.id}`;
+    const newsType = news.type === "patch-note" ? "Patch Notes" : "Announcements";
+    const newsPath =
+      news.type === "patch-note"
+        ? `/news/patch-notes/${news.slug || news.id}`
+        : `/news/${news.slug || news.id}`;
 
     return generateDynamicMetadata({ params: resolvedParams }, parent, {
       title: news.title,
-      description: news.processedContent || news.content || `Read about ${news.title} on POE2 Tools`,
+      description:
+        news.processedContent || news.content || `Read about ${news.title} on POE2 Tools`,
       path: newsPath,
       openGraph: {
         type: "article",

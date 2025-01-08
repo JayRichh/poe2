@@ -1,11 +1,11 @@
 "use client";
 
+import { BuildForm } from "~/components/build-planner/BuildForm";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
-import { BuildForm } from "~/components/build-planner/BuildForm";
-import { useAuth } from "~/contexts/auth";
 import { handleNewBuildSubmit } from "~/app/actions/server/build-form";
+import { useAuth } from "~/contexts/auth";
 import type { Database } from "~/lib/supabase/types";
 
 type BuildFormData = Omit<Database["public"]["Tables"]["builds"]["Insert"], "user_id">;
@@ -29,7 +29,7 @@ export default function NewBuildPage() {
             <Button
               variant="link"
               className="px-1 text-sm font-semibold"
-              onClick={() => window.location.href = "/auth/login"}
+              onClick={() => (window.location.href = "/auth/login")}
             >
               sign in
             </Button>{" "}
@@ -38,7 +38,7 @@ export default function NewBuildPage() {
         </div>
       )}
 
-      <BuildForm 
+      <BuildForm
         onSubmit={handleSubmit}
         initialBuild={{
           visibility: "private",

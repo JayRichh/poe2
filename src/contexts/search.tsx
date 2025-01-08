@@ -1,9 +1,11 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode, useMemo } from "react";
+import { type ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
+
 import { usePathname } from "next/navigation";
-import type { SearchSection } from "~/services/search-service";
+
 import { sectionLabels } from "~/lib/shared/constants";
+import type { SearchSection } from "~/services/search-service";
 
 type SearchMode = "all" | "section";
 
@@ -42,32 +44,33 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const currentSection = useMemo(() => {
     const section = pathname.split("/")[1];
     if (!section || section === "") return "home";
-    
+
     // Handle nested routes
     if (section === "news" && pathname.includes("patch-notes")) {
       return "patch-notes" as SearchSection;
     }
-    
+
     // Validate section is a valid SearchSection
-    return (Object.keys(sectionLabels).includes(section) ? section : "home") as SearchSection | "home";
+    return (Object.keys(sectionLabels).includes(section) ? section : "home") as
+      | SearchSection
+      | "home";
   }, [pathname]);
 
-  const contextValue = useMemo<SearchContextType>(() => ({
-    query,
-    setQuery,
-    currentSection,
-    isSearching,
-    setIsSearching,
-    searchMode,
-    setSearchMode,
-    resetSearch
-  }), [query, currentSection, isSearching, searchMode]);
-
-  return (
-    <SearchContext.Provider value={contextValue}>
-      {children}
-    </SearchContext.Provider>
+  const contextValue = useMemo<SearchContextType>(
+    () => ({
+      query,
+      setQuery,
+      currentSection,
+      isSearching,
+      setIsSearching,
+      searchMode,
+      setSearchMode,
+      resetSearch,
+    }),
+    [query, currentSection, isSearching, searchMode]
   );
+
+  return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>;
 }
 
 export function useSearch() {

@@ -1,13 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { memo, useMemo } from "react";
-import { useAuth } from "~/contexts/auth";
+
+import Link from "next/link";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
-import { BuildActions } from "./BuildActions";
 
 import type { Build } from "~/app/actions/server/builds";
+import { useAuth } from "~/contexts/auth";
+
+import { BuildActions } from "./BuildActions";
+
 type GroupByKey = "poe_class" | "level" | "visibility";
 
 interface BuildGridProps {
@@ -29,8 +33,8 @@ function getGroupKey(build: Build, key: GroupByKey): string {
 
 const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
   const { user } = useAuth();
-  const canModify = useMemo(() => 
-    Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
+  const canModify = useMemo(
+    () => Boolean(user && build.user_id === user.id && build.visibility !== "public"),
     [user, build.user_id, build.visibility]
   );
 
@@ -41,11 +45,15 @@ const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
       {/* Visibility Badge */}
-      <div 
+      <div
         className={`absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize text-white shadow-sm
-          ${build.visibility === 'public' ? 'bg-green-500' : 
-            build.visibility === 'unlisted' ? 'bg-yellow-500' : 
-            'bg-red-500'}`}
+          ${
+            build.visibility === "public"
+              ? "bg-green-500"
+              : build.visibility === "unlisted"
+                ? "bg-yellow-500"
+                : "bg-red-500"
+          }`}
       >
         {build.visibility}
       </div>
@@ -98,8 +106,8 @@ const BuildCard = memo(function BuildCard({ build }: { build: Build }) {
 
 const BuildListItem = memo(function BuildListItem({ build }: { build: Build }) {
   const { user } = useAuth();
-  const canModify = useMemo(() => 
-    Boolean(user && build.user_id === user.id && build.visibility !== 'public'),
+  const canModify = useMemo(
+    () => Boolean(user && build.user_id === user.id && build.visibility !== "public"),
     [user, build.user_id, build.visibility]
   );
 
@@ -110,13 +118,17 @@ const BuildListItem = memo(function BuildListItem({ build }: { build: Build }) {
       aria-label={`${build.name} build for ${build.poe_class || "Any Class"}`}
     >
       {/* Visibility Badge */}
-      <div className="absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize"
+      <div
+        className="absolute -top-2 -right-2 px-2 py-1 rounded-lg text-xs font-medium capitalize"
         style={{
-          backgroundColor: build.visibility === 'public' ? 'rgb(34 197 94)' : // green-500
-                          build.visibility === 'unlisted' ? 'rgb(234 179 8)' : // yellow-500
-                          'rgb(239 68 68)', // red-500
-          color: '#fff',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          backgroundColor:
+            build.visibility === "public"
+              ? "rgb(34 197 94)" // green-500
+              : build.visibility === "unlisted"
+                ? "rgb(234 179 8)" // yellow-500
+                : "rgb(239 68 68)", // red-500
+          color: "#fff",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
         }}
       >
         {build.visibility}
@@ -155,7 +167,11 @@ const BuildListItem = memo(function BuildListItem({ build }: { build: Build }) {
   );
 });
 
-export const BuildGrid = memo(function BuildGrid({ builds, groupBy, viewMode = "grid" }: BuildGridProps) {
+export const BuildGrid = memo(function BuildGrid({
+  builds,
+  groupBy,
+  viewMode = "grid",
+}: BuildGridProps) {
   // Memoize grouped builds
   const groupedBuilds = useMemo(() => {
     if (!groupBy) return null;

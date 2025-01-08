@@ -1,20 +1,21 @@
 import { MetadataRoute } from "next";
 import { NextResponse } from "next/server";
+
 import { NewsService } from "~/services/news-service";
 
 export async function GET(request: Request) {
   const baseUrl = "https://poe2.dev";
   const { searchParams } = new URL(request.url);
-  const type = searchParams.get('type');
-  
+  const type = searchParams.get("type");
+
   const allNews = await NewsService.getAllNews();
-  const filteredNews = type 
-    ? allNews.filter(news => {
-        switch(type) {
-          case 'news':
-            return news.type === 'announcement';
-          case 'patch':
-            return news.type === 'patch-note';
+  const filteredNews = type
+    ? allNews.filter((news) => {
+        switch (type) {
+          case "news":
+            return news.type === "announcement";
+          case "patch":
+            return news.type === "patch-note";
           default:
             return true;
         }
@@ -28,11 +29,12 @@ export async function GET(request: Request) {
 
   // Generate news items XML
   const newsItems = filteredNews
-    .map(news => {
-      const path = news.type === 'patch-note' 
-        ? `/news/patch-notes/${news.slug || news.id}`
-        : `/news/${news.slug || news.id}`;
-      
+    .map((news) => {
+      const path =
+        news.type === "patch-note"
+          ? `/news/patch-notes/${news.slug || news.id}`
+          : `/news/${news.slug || news.id}`;
+
       return `
   <item>
     <title>${news.title}</title>
@@ -40,10 +42,10 @@ export async function GET(request: Request) {
     <guid isPermaLink="true">${baseUrl}${path}</guid>
     <description><![CDATA[${news.processedContent || news.content || news.title}]]></description>
     <pubDate>${formatDate(news.date)}</pubDate>
-    <category>${news.type === 'patch-note' ? 'Patch Notes' : 'Announcements'}</category>
+    <category>${news.type === "patch-note" ? "Patch Notes" : "Announcements"}</category>
   </item>`;
     })
-    .join('\n');
+    .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" 
@@ -52,7 +54,7 @@ export async function GET(request: Request) {
   xmlns:dc="http://purl.org/dc/elements/1.1/"
 >
 <channel>
-  <title>POE2 Tools - ${type ? `${type.charAt(0).toUpperCase() + type.slice(1)} Feed` : 'All Updates'}</title>
+  <title>POE2 Tools - ${type ? `${type.charAt(0).toUpperCase() + type.slice(1)} Feed` : "All Updates"}</title>
   <link>${baseUrl}</link>
   <description>Latest news, patch notes, and updates for Path of Exile 2 tools including build planner, DPS calculator, and skill tree planner.</description>
   <language>en</language>

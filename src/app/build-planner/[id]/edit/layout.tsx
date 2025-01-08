@@ -1,23 +1,24 @@
-import { redirect } from "next/navigation";
-import { getServerClient } from "~/app/_actions/supabase";
 import { Suspense } from "react";
+
+import { redirect } from "next/navigation";
+
+import { getServerClient } from "~/app/_actions/supabase";
 
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{ id: string }>;
 }
 
-export default async function EditBuildLayout({
-  children,
-  params,
-}: LayoutProps) {
+export default async function EditBuildLayout({ children, params }: LayoutProps) {
   const { id } = await params;
   // Check authentication only - build fetch is handled by parent layout and page
   const supabase = await getServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   if (!user) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   return (

@@ -174,10 +174,10 @@ export function BuildListControls() {
           <Select
             value={searchParams?.get("groupBy") ?? ""}
             onChange={(value: string) => {
-              const query = createQueryString({ 
+              const query = createQueryString({
                 groupBy: value || undefined,
                 // Force grouped view when grouping is selected
-                view: value ? "grouped" : undefined
+                view: value ? "grouped" : undefined,
               });
               router.push(`?${query}`);
             }}

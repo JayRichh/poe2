@@ -1,7 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 import type { EquipmentSlot } from "~/lib/supabase/types";
-import type { ItemBase, ItemModifier } from "~/types/itemTypes";
 import { itemsService } from "~/services/items-service";
+import type { ItemBase, ItemModifier } from "~/types/itemTypes";
 
 const ITEMS_QUERY_KEY = ["items"] as const;
 

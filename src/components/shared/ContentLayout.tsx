@@ -1,10 +1,13 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import { ReactNode } from "react";
+
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
+
 import { useSidebarWidth } from "~/hooks/useSidebarWidth";
 
 interface ContentLayoutProps {
@@ -15,7 +18,13 @@ interface ContentLayoutProps {
   sidebar: ReactNode;
 }
 
-export function ContentLayout({ children, title, description, actions, sidebar }: ContentLayoutProps) {
+export function ContentLayout({
+  children,
+  title,
+  description,
+  actions,
+  sidebar,
+}: ContentLayoutProps) {
   const sidebarState = useSidebarWidth();
 
   return (
@@ -42,10 +51,10 @@ export function ContentLayout({ children, title, description, actions, sidebar }
         {/* Sidebar */}
         <div
           className={`sticky top-[7.5rem] border-r border-border/50 bg-background/80 backdrop-blur-sm ${sidebarState.className}`}
-          style={{ 
+          style={{
             width: sidebarState.width,
-            height: 'calc(100vh - 7.5rem)',
-            overflowY: 'auto'
+            height: "calc(100vh - 7.5rem)",
+            overflowY: "auto",
           }}
         >
           <div className="h-full">

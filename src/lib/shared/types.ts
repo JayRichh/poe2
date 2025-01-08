@@ -28,10 +28,10 @@ export interface BaseContent {
   relatedContent?: RelatedContent[];
 }
 
-export type ContentCategory = 
+export type ContentCategory =
   | "gameplay"
   | "trading"
-  | "boss-fights" 
+  | "boss-fights"
   | "character-building"
   | "equipment"
   | "combat"
@@ -42,9 +42,9 @@ export type ContentCategory =
   | "character-stats"
   | "economy";
 
-export type ContentIcon = 
+export type ContentIcon =
   | "Book"
-  | "Coins" 
+  | "Coins"
   | "Sword"
   | "Shield"
   | "User"

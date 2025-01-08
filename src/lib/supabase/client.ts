@@ -12,7 +12,7 @@ export const createClient = () => {
         detectSessionInUrl: true,
         persistSession: true,
         autoRefreshToken: true,
-      storage: typeof window !== "undefined" ? window.localStorage : undefined,
+        storage: typeof window !== "undefined" ? window.localStorage : undefined,
       },
       cookies: {
         getAll() {

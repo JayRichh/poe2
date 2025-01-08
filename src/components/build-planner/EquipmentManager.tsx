@@ -1,35 +1,39 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { AlertCircle, Plus, Save, Search } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
-import { Card } from "~/components/ui/Card";
-import { Text } from "~/components/ui/Text";
+
+import { useEffect, useState } from "react";
+
 import { Button } from "~/components/ui/Button";
+import { Card } from "~/components/ui/Card";
 import { Select } from "~/components/ui/Select";
-import { Plus, Save, AlertCircle, Search } from "lucide-react";
-import { EquipmentItemSelector } from "./EquipmentItemSelector";
-import type { ItemBase } from "~/types/itemTypes";
-import type { Database, Json, EquipmentSlot, ItemRarity } from "~/lib/supabase/types";
+import { Text } from "~/components/ui/Text";
+
 import { useEquipmentManager } from "~/contexts/build";
-import { 
-  type PropertyJson, 
-  type SocketJson, 
-  type InfluenceJson,
-  type RequirementJson,
-  isPropertyJson,
-  isSocketJson,
-  isInfluenceJson,
-  formatPropertyDisplay
-} from "~/types/equipment";
 import {
   EQUIPMENT_DEFAULTS,
+  MAX_SOCKETS,
+  MAX_SOCKET_GROUPS,
   RARITY_COLORS,
   getQuickModsForSlot,
-  MAX_SOCKETS,
-  MAX_SOCKET_GROUPS
 } from "~/lib/constants/equipment";
-
+import type { Database, EquipmentSlot, ItemRarity, Json } from "~/lib/supabase/types";
+import {
+  type InfluenceJson,
+  type PropertyJson,
+  type RequirementJson,
+  type SocketJson,
+  formatPropertyDisplay,
+  isInfluenceJson,
+  isPropertyJson,
+  isSocketJson,
+} from "~/types/equipment";
 import type { EquipmentWithUrl } from "~/types/equipment";
+import type { ItemBase } from "~/types/itemTypes";
+
+import { EquipmentItemSelector } from "./EquipmentItemSelector";
+
 type Equipment = EquipmentWithUrl;
 
 interface EquipmentManagerProps {
@@ -37,7 +41,7 @@ interface EquipmentManagerProps {
   canModify: boolean;
 }
 
-type InfluenceType = typeof INFLUENCE_TYPES[number];
+type InfluenceType = (typeof INFLUENCE_TYPES)[number];
 
 const INFLUENCE_TYPES = [
   "None",
@@ -46,75 +50,82 @@ const INFLUENCE_TYPES = [
   "Crusader",
   "Redeemer",
   "Hunter",
-  "Warlord"
+  "Warlord",
 ] as const;
 
 const SOCKET_COLORS = ["R", "G", "B", "W", "A", "DV"] as const;
 
 const EQUIPMENT_SLOTS: Array<{ value: EquipmentSlot; label: string; defaultMods?: string[] }> = [
-  { 
-    value: "mainhand", 
+  {
+    value: "mainhand",
     label: "Main Hand",
-    defaultMods: ["+10% Physical Damage", "+5 to Weapon Range"]
+    defaultMods: ["+10% Physical Damage", "+5 to Weapon Range"],
   },
-  { 
-    value: "offhand", 
+  {
+    value: "offhand",
     label: "Off Hand",
-    defaultMods: ["+5% Block Chance", "+10% Physical Damage"]
+    defaultMods: ["+5% Block Chance", "+10% Physical Damage"],
   },
-  { 
-    value: "helm", 
+  {
+    value: "helm",
     label: "Helm",
-    defaultMods: ["+30 to maximum Life", "+20% to Fire Resistance"]
+    defaultMods: ["+30 to maximum Life", "+20% to Fire Resistance"],
   },
-  { 
-    value: "body", 
+  {
+    value: "body",
     label: "Body Armor",
-    defaultMods: ["+50 to maximum Life", "+10% to all Elemental Resistances"]
+    defaultMods: ["+50 to maximum Life", "+10% to all Elemental Resistances"],
   },
-  { 
-    value: "gloves", 
+  {
+    value: "gloves",
     label: "Gloves",
-    defaultMods: ["+20 to maximum Life", "+15% increased Attack Speed"]
+    defaultMods: ["+20 to maximum Life", "+15% increased Attack Speed"],
   },
-  { 
-    value: "boots", 
+  {
+    value: "boots",
     label: "Boots",
-    defaultMods: ["+20 to maximum Life", "20% increased Movement Speed"]
+    defaultMods: ["+20 to maximum Life", "20% increased Movement Speed"],
   },
-  { 
-    value: "amulet", 
+  {
+    value: "amulet",
     label: "Amulet",
-    defaultMods: ["+20 to all Attributes", "+15% to all Elemental Resistances"]
+    defaultMods: ["+20 to all Attributes", "+15% to all Elemental Resistances"],
   },
-  { 
-    value: "ring1", 
+  {
+    value: "ring1",
     label: "Ring 1",
-    defaultMods: ["+15 to all Attributes", "+10% to all Elemental Resistances"]
+    defaultMods: ["+15 to all Attributes", "+10% to all Elemental Resistances"],
   },
-  { 
-    value: "ring2", 
+  {
+    value: "ring2",
     label: "Ring 2",
-    defaultMods: ["+15 to all Attributes", "+10% to all Elemental Resistances"]
+    defaultMods: ["+15 to all Attributes", "+10% to all Elemental Resistances"],
   },
-  { 
-    value: "belt", 
+  {
+    value: "belt",
     label: "Belt",
-    defaultMods: ["+25 to maximum Life", "+15% to all Elemental Resistances"]
-  }
+    defaultMods: ["+25 to maximum Life", "+15% to all Elemental Resistances"],
+  },
 ];
 
 const ITEM_RARITIES: Array<{ value: ItemRarity; label: string }> = [
   { value: "Normal", label: "Normal" },
   { value: "Magic", label: "Magic" },
   { value: "Rare", label: "Rare" },
-  { value: "Unique", label: "Unique" }
+  { value: "Unique", label: "Unique" },
 ];
 
 export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) {
-  const { equipment, isDirty, updateEquipment: setEquipmentState, saveBuild } = useEquipmentManager();
+  const {
+    equipment,
+    isDirty,
+    updateEquipment: setEquipmentState,
+    saveBuild,
+  } = useEquipmentManager();
   const [activeSet, setActiveSet] = useState("default");
-  const [equipmentSets, setEquipmentSets] = useState<EquipmentWithUrl[]>(equipment as EquipmentWithUrl[]);
+  const [equipmentSets, setEquipmentSets] = useState<EquipmentWithUrl[]>(
+    equipment as EquipmentWithUrl[]
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -123,7 +134,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
 
   const validateSet = (set: Equipment): string[] => {
     const errors: string[] = [];
-    
+
     if (!set.name?.trim()) {
       errors.push("Name is required");
     }
@@ -133,7 +144,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
     if (!set.base_type?.trim()) {
       errors.push("Base type is required");
     }
-    
+
     return errors;
   };
 
@@ -150,28 +161,29 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
       type_line: defaults.type_line,
       width: 1,
       height: 1,
-      icon: '',
+      icon: "",
       rarity: "Normal",
       identified: true,
       corrupted: false,
       item_level: 1,
       sockets: [],
       properties: [
-        { 
-          name: "quality", 
-          value: 0, 
+        {
+          name: "quality",
+          value: 0,
           display: "0%",
-          type: "quality"
+          type: "quality",
         } as PropertyJson,
-        ...defaults.properties.map(prop => ({
+        ...(defaults.properties.map((prop) => ({
           ...prop,
-          type: prop.name
-        })) as PropertyJson[]
+          type: prop.name,
+        })) as PropertyJson[]),
       ] as Json[],
-      requirements: defaults.requirements.map(req => ({
+      requirements: defaults.requirements.map((req) => ({
         name: req.name,
         value: req.value,
-        display: req.name === 'level' ? `Level ${req.value}` : `${req.value} ${req.name.toUpperCase()}`
+        display:
+          req.name === "level" ? `Level ${req.value}` : `${req.value} ${req.name.toUpperCase()}`,
       })) as RequirementJson[],
       implicit_mods: defaults.implicitMods,
       explicit_mods: [],
@@ -179,9 +191,9 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
       influences: null,
       frame_type: 0,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
+      updated_at: new Date().toISOString(),
     };
-    
+
     const validationErrors = validateSet(newSet);
     if (validationErrors.length > 0) {
       setErrors({ [newSet.id]: validationErrors.join(", ") });
@@ -197,12 +209,12 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
   const handleUpdateSet = (setId: string, updates: Partial<Equipment>) => {
     if (!canModify) return;
 
-    const updatedSets = equipmentSets.map(set => {
+    const updatedSets = equipmentSets.map((set) => {
       if (set.id === setId) {
-        const newSet = { 
+        const newSet = {
           ...set,
           ...updates,
-          updated_at: new Date().toISOString()
+          updated_at: new Date().toISOString(),
         };
 
         // Validate the updated set
@@ -219,7 +231,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
               return {
                 ...p,
                 display: formatPropertyDisplay(p),
-                type: p.name // Ensure type is set
+                type: p.name, // Ensure type is set
               } as Json;
             }
             return p;
@@ -227,18 +239,19 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
         }
 
         // Ensure influences is properly formatted
-        if ('influences' in updates) {
-          newSet.influences = updates.influences === null || 
-            (typeof updates.influences === 'object' && Object.keys(updates.influences).length === 0)
-            ? null 
-            : updates.influences;
+        if ("influences" in updates) {
+          newSet.influences =
+            updates.influences === null ||
+            (typeof updates.influences === "object" && Object.keys(updates.influences).length === 0)
+              ? null
+              : updates.influences;
         }
 
         return newSet;
       }
       return set;
     });
-    
+
     setEquipmentSets(updatedSets);
     setEquipmentState(updatedSets as Equipment[]);
     setErrors({});
@@ -248,7 +261,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
     if (!canModify) return;
 
     const defaults = EQUIPMENT_DEFAULTS[slot];
-    const currentSet = equipmentSets.find(s => s.id === setId);
+    const currentSet = equipmentSets.find((s) => s.id === setId);
     if (!currentSet) return;
 
     handleUpdateSet(setId, {
@@ -257,23 +270,24 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
       type_line: defaults.type_line,
       // Keep quality property but update other properties based on slot
       properties: [
-        ...(currentSet.properties || []).filter((p: Json) => 
-          isPropertyJson(p) && p.name === 'quality'
+        ...(currentSet.properties || []).filter(
+          (p: Json) => isPropertyJson(p) && p.name === "quality"
         ),
-        ...defaults.properties.map(prop => ({
+        ...(defaults.properties.map((prop) => ({
           ...prop,
-          type: prop.name
-        })) as PropertyJson[]
+          type: prop.name,
+        })) as PropertyJson[]),
       ] as Json[],
-      requirements: defaults.requirements.map(req => ({
+      requirements: defaults.requirements.map((req) => ({
         name: req.name,
         value: req.value,
-        display: req.name === 'level' ? `Level ${req.value}` : `${req.value} ${req.name.toUpperCase()}`
+        display:
+          req.name === "level" ? `Level ${req.value}` : `${req.value} ${req.name.toUpperCase()}`,
       })) as RequirementJson[],
       implicit_mods: defaults.implicitMods,
       explicit_mods: [],
       // Reset mods when changing slots
-      crafted_mods: []
+      crafted_mods: [],
     });
   };
 
@@ -283,8 +297,8 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
     // Validate all sets before saving
     let hasErrors = false;
     const allErrors: Record<string, string> = {};
-    
-    equipmentSets.forEach(set => {
+
+    equipmentSets.forEach((set) => {
       const validationErrors = validateSet(set);
       if (validationErrors.length > 0) {
         hasErrors = true;
@@ -301,8 +315,8 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
       await saveBuild();
       setErrors({});
     } catch (error) {
-      console.error('Failed to save equipment:', error);
-      setErrors({ save: 'Failed to save changes. Please try again.' });
+      console.error("Failed to save equipment:", error);
+      setErrors({ save: "Failed to save changes. Please try again." });
     }
   };
 
@@ -312,12 +326,7 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
         <Text className="text-xl font-semibold">Equipment Sets</Text>
         <div className="flex gap-2">
           {isDirty && (
-            <Button
-              variant="default"
-              onClick={handleSave}
-              disabled={!canModify}
-              className="gap-2"
-            >
+            <Button variant="default" onClick={handleSave} disabled={!canModify} className="gap-2">
               <Save className="h-4 w-4" />
               Save Changes
             </Button>
@@ -347,18 +356,13 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
             onClick={() => setActiveSet(set.id)}
           >
             {set.name}
-            {errors[set.id] && (
-              <AlertCircle className="h-4 w-4 ml-2 text-red-500" />
-            )}
+            {errors[set.id] && <AlertCircle className="h-4 w-4 ml-2 text-red-500" />}
           </Button>
         ))}
       </div>
 
       {equipmentSets.map((set) => (
-        <div 
-          key={set.id}
-          className={activeSet === set.id ? "block" : "hidden"}
-        >
+        <div key={set.id} className={activeSet === set.id ? "block" : "hidden"}>
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 rounded-lg border border-border/50 bg-background/95">
@@ -370,11 +374,9 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
                   value={set.name}
                   onChange={(e) => handleUpdateSet(set.id, { name: e.target.value })}
                   disabled={!canModify}
-                  className={`w-full px-3 py-2 rounded-md border ${errors.name ? 'border-red-500' : 'border-border/50'} bg-background ${!canModify ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`w-full px-3 py-2 rounded-md border ${errors.name ? "border-red-500" : "border-border/50"} bg-background ${!canModify ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-                {errors.name && (
-                  <Text className="text-sm text-red-500 mt-1">{errors.name}</Text>
-                )}
+                {errors.name && <Text className="text-sm text-red-500 mt-1">{errors.name}</Text>}
               </div>
               <div className="p-4 rounded-lg border border-border/50 bg-background/95">
                 <Text className="text-sm text-foreground/60 mb-2">
@@ -387,15 +389,11 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
                   placeholder="Select slot"
                   disabled={!canModify}
                 />
-                {errors.slot && (
-                  <Text className="text-sm text-red-500 mt-1">{errors.slot}</Text>
-                )}
+                {errors.slot && <Text className="text-sm text-red-500 mt-1">{errors.slot}</Text>}
               </div>
             </div>
             <div className="p-4 rounded-lg border border-border/50 bg-background/95">
-              <Text className="text-sm text-foreground/60 mb-4">
-                Select Item
-              </Text>
+              <Text className="text-sm text-foreground/60 mb-4">Select Item</Text>
               <EquipmentItemSelector
                 slot={set.slot}
                 selectedItemUrl={set.url}
@@ -407,16 +405,18 @@ export function EquipmentManager({ buildId, canModify }: EquipmentManagerProps) 
                     icon: item.icon,
                     url: item.url,
                     item_level: item.requirements?.level || 1,
-                    requirements: item.requirements ? [
-                      {
-                        name: "level",
-                        value: item.requirements.level || 1,
-                        display: `Level ${item.requirements.level || 1}`
-                      }
-                    ] as RequirementJson[] : [],
+                    requirements: item.requirements
+                      ? ([
+                          {
+                            name: "level",
+                            value: item.requirements.level || 1,
+                            display: `Level ${item.requirements.level || 1}`,
+                          },
+                        ] as RequirementJson[])
+                      : [],
                     implicit_mods: item.modifiers || [],
                     explicit_mods: [],
-                    crafted_mods: []
+                    crafted_mods: [],
                   });
                 }}
                 disabled={!canModify}

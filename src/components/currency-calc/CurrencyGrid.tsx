@@ -1,9 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import { CurrencyIcon } from "./CurrencyIcon";
+
 import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
+
 import { CurrencyGroup } from "~/lib/currencies/utils";
+
+import { CurrencyIcon } from "./CurrencyIcon";
 
 const GROUP_LABELS: Record<CurrencyGroup, { title: string; description: string }> = {
   basic: {
@@ -54,8 +57,8 @@ export function CurrencyGrid() {
                 <div className="flex items-start gap-4 h-[72px]">
                   <div className="relative w-12 h-12 flex-shrink-0">
                     {currency.image_url ? (
-                      <img 
-                        src={currency.image_url} 
+                      <img
+                        src={currency.image_url}
                         alt={currency.name}
                         className="w-full h-full object-contain"
                       />

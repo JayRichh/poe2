@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Zap, Users, Swords, Activity } from "lucide-react";
+import { Activity, ArrowUpRight, Swords, Users, Zap } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
@@ -63,14 +65,12 @@ export function GameSystemsSection() {
         {/* Mechanics Section */}
         <div className="space-y-8">
           <div className="space-y-4">
-            <Text
-              variant="h2"
-              className="text-4xl font-bold tracking-tight text-foreground"
-            >
+            <Text variant="h2" className="text-4xl font-bold tracking-tight text-foreground">
               Game Mechanics
             </Text>
             <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
-              Master Path of Exile 2's deep gameplay systems and mechanics to create powerful builds and dominate the endgame.
+              Master Path of Exile 2's deep gameplay systems and mechanics to create powerful builds
+              and dominate the endgame.
             </Text>
           </div>
 
@@ -87,9 +87,7 @@ export function GameSystemsSection() {
                   <Text className="text-lg font-semibold group-hover:text-primary transition-colors">
                     {feature.title}
                   </Text>
-                  <Text className="text-sm text-foreground/80">
-                    {feature.description}
-                  </Text>
+                  <Text className="text-sm text-foreground/80">{feature.description}</Text>
                 </div>
               </div>
             ))}
@@ -115,45 +113,38 @@ export function GameSystemsSection() {
         {/* Ascendancy Section */}
         <div className="space-y-8">
           <div className="space-y-4">
-            <Text
-              variant="h2"
-              className="text-4xl font-bold tracking-tight text-foreground"
-            >
+            <Text variant="h2" className="text-4xl font-bold tracking-tight text-foreground">
               Ascendancy Classes
             </Text>
             <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
-              Discover and master 12 unique class specializations, each with their own powerful abilities and playstyles.
+              Discover and master 12 unique class specializations, each with their own powerful
+              abilities and playstyles.
             </Text>
           </div>
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 rounded-xl blur-xl" />
             <div className="relative grid grid-cols-3 gap-2 p-2 rounded-xl bg-card/30 border border-border/50">
-              {[
-                "acolyte",
-                "bloodmage",
-                "chronomancer",
-                "deadeye",
-                "infernalist",
-                "titan",
-              ].map((className, i) => (
-                <div
-                  key={className}
-                  className="aspect-square relative rounded-lg overflow-hidden group"
-                >
-                  <Image
-                    src={`/ascendancies/${className}.webp`}
-                    alt={`${className.charAt(0).toUpperCase() + className.slice(1)} class preview`}
-                    width={200}
-                    height={200}
-                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 150px, 200px"
-                    quality={50}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                </div>
-              ))}
+              {["acolyte", "bloodmage", "chronomancer", "deadeye", "infernalist", "titan"].map(
+                (className, i) => (
+                  <div
+                    key={className}
+                    className="aspect-square relative rounded-lg overflow-hidden group"
+                  >
+                    <Image
+                      src={`/ascendancies/${className}.webp`}
+                      alt={`${className.charAt(0).toUpperCase() + className.slice(1)} class preview`}
+                      width={200}
+                      height={200}
+                      sizes="(max-width: 640px) 33vw, (max-width: 1024px) 150px, 200px"
+                      quality={50}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -170,9 +161,7 @@ export function GameSystemsSection() {
                   <Text className="text-lg font-semibold group-hover:text-foreground transition-colors">
                     {feature.title}
                   </Text>
-                  <Text className="text-sm text-foreground/80">
-                    {feature.description}
-                  </Text>
+                  <Text className="text-sm text-foreground/80">{feature.description}</Text>
                 </div>
               </div>
             ))}

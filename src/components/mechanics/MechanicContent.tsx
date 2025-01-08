@@ -19,7 +19,7 @@ export function MechanicContent({ sections }: MechanicContentProps) {
           <Text variant="h2" className="text-2xl font-bold">
             {section.title}
           </Text>
-          
+
           <div className="space-y-4 text-foreground/90">
             {section.content.map((text, i) => (
               <p key={i} className="leading-relaxed">

@@ -30,31 +30,23 @@ export interface EquipmentWithUrl extends Equipment {
 }
 
 export function isPropertyJson(json: unknown): json is PropertyJson {
-  if (typeof json !== 'object' || json === null) return false;
-  return (
-    'name' in json &&
-    'value' in json &&
-    'display' in json &&
-    'type' in json
-  );
+  if (typeof json !== "object" || json === null) return false;
+  return "name" in json && "value" in json && "display" in json && "type" in json;
 }
 
 export function isSocketJson(json: unknown): json is SocketJson {
-  if (typeof json !== 'object' || json === null) return false;
-  return (
-    'group' in json &&
-    'attr' in json
-  );
+  if (typeof json !== "object" || json === null) return false;
+  return "group" in json && "attr" in json;
 }
 
 export function isInfluenceJson(json: unknown): json is InfluenceJson {
-  if (typeof json !== 'object' || json === null) return false;
-  return Object.values(json).every(v => typeof v === 'boolean');
+  if (typeof json !== "object" || json === null) return false;
+  return Object.values(json).every((v) => typeof v === "boolean");
 }
 
 export function formatPropertyDisplay(property: PropertyJson): string {
   switch (property.type) {
-    case 'quality':
+    case "quality":
       return `${property.value}%`;
     default:
       return property.value.toString();

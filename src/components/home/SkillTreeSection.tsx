@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+
 import { shimmer, toBase64 } from "~/utils/image";
 
 interface Feature {

@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { createClient } from "~/lib/supabase/client";
-import { cn } from "~/utils/cn";
 import { Upload } from "lucide-react";
+
+import React, { useEffect, useState } from "react";
+
+import Image from "next/image";
+
+import { cn } from "~/utils/cn";
+
 import { useAuth } from "~/contexts/auth";
+import { createClient } from "~/lib/supabase/client";
 
 interface AvatarProps {
   uid: string;
@@ -16,7 +20,14 @@ interface AvatarProps {
   showUploadUI?: boolean;
 }
 
-export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI = true }: AvatarProps) {
+export function Avatar({
+  uid,
+  url,
+  size = 40,
+  onUpload,
+  className,
+  showUploadUI = true,
+}: AvatarProps) {
   const { user } = useAuth();
   const supabase = createClient();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -55,16 +66,16 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
       }
 
       // If it's already a full URL, use it directly
-      if (path.startsWith('http')) {
+      if (path.startsWith("http")) {
         setAvatarUrl(path);
         return;
       }
 
       // Otherwise treat it as a filename and get the URL
-      const { data: { publicUrl } } = supabase.storage
-        .from("avatars")
-        .getPublicUrl(path);
-      
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("avatars").getPublicUrl(path);
+
       setAvatarUrl(publicUrl);
     } catch (error) {
       console.error("Error getting avatar URL:", error);
@@ -88,18 +99,16 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
       const userId = user.id;
 
       // List existing avatars for this user
-      const { data: existingFiles } = await supabase.storage
-        .from("avatars")
-        .list(undefined, {
-          search: userId
-        });
+      const { data: existingFiles } = await supabase.storage.from("avatars").list(undefined, {
+        search: userId,
+      });
 
       // Delete previous avatar if it exists
       if (existingFiles && existingFiles.length > 0) {
         const { error: deleteError } = await supabase.storage
           .from("avatars")
-          .remove(existingFiles.map(file => file.name));
-          
+          .remove(existingFiles.map((file) => file.name));
+
         if (deleteError) {
           console.error("Error deleting previous avatar:", deleteError);
         }
@@ -110,30 +119,28 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
       // Use user ID as prefix for storage policy compliance
       const filePath = `${userId}_${new Date().getTime()}.${fileExt}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from("avatars")
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: true
-        });
+      const { error: uploadError } = await supabase.storage.from("avatars").upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: true,
+      });
 
       if (uploadError) {
-        if (uploadError.message.includes('security')) {
-          throw new Error('Permission denied. Please ensure you are logged in.');
+        if (uploadError.message.includes("security")) {
+          throw new Error("Permission denied. Please ensure you are logged in.");
         }
         throw uploadError;
       }
 
       // Store just the filename in metadata, not the full URL
-      if (typeof onUpload === 'function') {
+      if (typeof onUpload === "function") {
         await onUpload(filePath);
       } else {
-        console.error('onUpload is not a function');
+        console.error("onUpload is not a function");
       }
     } catch (error: any) {
       console.error("Error uploading avatar:", error);
       const errorMessage = error?.message || "Error uploading avatar. Please try again.";
-      console.error('Error uploading avatar:', errorMessage);
+      console.error("Error uploading avatar:", errorMessage);
       alert(errorMessage);
     } finally {
       setUploading(false);
@@ -176,7 +183,7 @@ export function Avatar({ uid, url, size = 40, onUpload, className, showUploadUI 
           </div>
         )}
       </div>
-      
+
       {showUploadUI && (
         <label
           className={cn(

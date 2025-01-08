@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       openGraph: {
         title: news.title,
         description: news.processedContent || news.title,
-        type: 'article',
+        type: "article",
         publishedTime: news.date,
         modifiedTime: news.date,
       },
@@ -42,9 +42,9 @@ export default async function NewsItemPage({ params }: PageProps) {
     const { slug } = await params;
     const news = await NewsService.getNewsById(slug);
     if (!news) notFound();
-    
+
     // Redirect patch notes to their dedicated route
-    if (news.type === 'patch-note') {
+    if (news.type === "patch-note") {
       return redirect(`/news/patch-notes/${news.slug || news.id}`);
     }
 
@@ -65,9 +65,7 @@ export default async function NewsItemPage({ params }: PageProps) {
     };
 
     return (
-      <NewsLayout 
-        title={news.title}
-      >
+      <NewsLayout title={news.title}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
             fallback={
@@ -85,7 +83,7 @@ export default async function NewsItemPage({ params }: PageProps) {
                   {timeAgo(news.date)}
                 </div>
                 <span className="text-foreground/40">•</span>
-                <span>{news.type === 'announcement' ? 'Announcement' : 'Patch Note'}</span>
+                <span>{news.type === "announcement" ? "Announcement" : "Patch Note"}</span>
                 {news.replies && (
                   <>
                     <span className="text-foreground/40">•</span>
@@ -100,15 +98,15 @@ export default async function NewsItemPage({ params }: PageProps) {
                 </Text>
                 {news.imageUrl && (
                   <div className="relative w-full h-64 mb-8">
-                    <img 
-                      src={news.imageUrl} 
+                    <img
+                      src={news.imageUrl}
                       alt={news.title}
                       className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
                 )}
 
-                <div 
+                <div
                   className="mt-8 prose prose-invert max-w-none"
                   dangerouslySetInnerHTML={{ __html: news.fullContent || news.content }}
                 />

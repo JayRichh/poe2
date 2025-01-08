@@ -1,15 +1,20 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Command } from "cmdk";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ChevronUp, Loader2, Search as SearchIcon, X } from "lucide-react";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import { useRouter } from "next/navigation";
+
 import { Button } from "~/components/ui/Button";
-import { searchContent, type SearchResult, type SearchSection } from "~/services/search-service";
-import { sectionLabels } from "~/lib/shared/constants";
-import { useSearch } from "~/contexts/search";
+
 import { cn } from "~/utils/cn";
+
+import { useSearch } from "~/contexts/search";
+import { sectionLabels } from "~/lib/shared/constants";
+import { type SearchResult, type SearchSection, searchContent } from "~/services/search-service";
 
 const dropdownVariants = {
   hidden: { opacity: 0, y: -4, scaleY: 0.98 },
@@ -17,19 +22,26 @@ const dropdownVariants = {
     opacity: 1,
     y: 0,
     scaleY: 1,
-    transition: { duration: 0.15, ease: "easeOut" }
+    transition: { duration: 0.15, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     y: -4,
     scaleY: 0.98,
-    transition: { duration: 0.1, ease: "easeIn" }
-  }
+    transition: { duration: 0.1, ease: "easeIn" },
+  },
 };
 
 export function GlobalSearch() {
   const router = useRouter();
-  const { query, setQuery, currentSection, searchMode, setSearchMode, setIsSearching: setContextIsSearching } = useSearch();
+  const {
+    query,
+    setQuery,
+    currentSection,
+    searchMode,
+    setSearchMode,
+    setIsSearching: setContextIsSearching,
+  } = useSearch();
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [isSearching, setIsSearching] = useState(false);
@@ -51,11 +63,11 @@ export function GlobalSearch() {
       if (isOpen && searchResults.length > 0) {
         if (e.key === "ArrowDown") {
           e.preventDefault();
-          setSelectedIndex(prev => prev < searchResults.length - 1 ? prev + 1 : 0);
+          setSelectedIndex((prev) => (prev < searchResults.length - 1 ? prev + 1 : 0));
         }
         if (e.key === "ArrowUp") {
           e.preventDefault();
-          setSelectedIndex(prev => prev > 0 ? prev - 1 : searchResults.length - 1);
+          setSelectedIndex((prev) => (prev > 0 ? prev - 1 : searchResults.length - 1));
         }
         if (e.key === "Enter" && selectedIndex >= 0) {
           e.preventDefault();
@@ -81,10 +93,11 @@ export function GlobalSearch() {
       setContextIsSearching(true);
       try {
         const results = await searchContent(query, {
-          section: searchMode === "section" && currentSection !== "home" 
-            ? currentSection as SearchResult["section"] 
-            : undefined,
-          limit: 10
+          section:
+            searchMode === "section" && currentSection !== "home"
+              ? (currentSection as SearchResult["section"])
+              : undefined,
+          limit: 10,
         });
         setSearchResults(results);
       } catch {
@@ -105,10 +118,13 @@ export function GlobalSearch() {
     inputRef.current?.blur();
   }, [setQuery]);
 
-  const handleSelect = useCallback((url: string) => {
-    router.push(url);
-    setTimeout(handleClose, 100);
-  }, [router, handleClose]);
+  const handleSelect = useCallback(
+    (url: string) => {
+      router.push(url);
+      setTimeout(handleClose, 100);
+    },
+    [router, handleClose]
+  );
 
   const handleFocus = useCallback(() => setIsOpen(true), []);
 
@@ -125,12 +141,15 @@ export function GlobalSearch() {
     return () => document.removeEventListener("mousedown", handleMouseDown);
   }, [isOpen, handleClose]);
 
-  const handleBlur = useCallback((e: React.FocusEvent) => {
-    const relatedTarget = e.relatedTarget as HTMLElement;
-    if (!relatedTarget || !componentRef.current?.contains(relatedTarget)) {
-      handleClose();
-    }
-  }, [handleClose]);
+  const handleBlur = useCallback(
+    (e: React.FocusEvent) => {
+      const relatedTarget = e.relatedTarget as HTMLElement;
+      if (!relatedTarget || !componentRef.current?.contains(relatedTarget)) {
+        handleClose();
+      }
+    },
+    [handleClose]
+  );
 
   return (
     <div className="relative" ref={componentRef}>
@@ -144,7 +163,7 @@ export function GlobalSearch() {
         >
           <div className="flex items-center px-3 py-2">
             <div className="flex items-center gap-2 flex-1">
-              <SearchIcon 
+              <SearchIcon
                 className={cn(
                   "h-4 w-4 shrink-0",
                   isOpen ? "text-primary" : "text-muted-foreground"
@@ -163,10 +182,9 @@ export function GlobalSearch() {
                     searchMode === "all" ? "text-primary" : "text-muted-foreground"
                   )}
                 >
-                  {searchMode === "all" || !sectionLabels[currentSection as SearchSection] 
-                    ? "All" 
-                    : sectionLabels[currentSection as SearchSection]
-                  }
+                  {searchMode === "all" || !sectionLabels[currentSection as SearchSection]
+                    ? "All"
+                    : sectionLabels[currentSection as SearchSection]}
                 </Button>
                 <Command.Input
                   ref={inputRef}
@@ -188,7 +206,9 @@ export function GlobalSearch() {
                   onValueChange={setQuery}
                   aria-expanded={isOpen}
                   aria-controls="search-results"
-                  aria-activedescendant={selectedIndex >= 0 ? `result-${searchResults[selectedIndex].id}` : undefined}
+                  aria-activedescendant={
+                    selectedIndex >= 0 ? `result-${searchResults[selectedIndex].id}` : undefined
+                  }
                 />
               </div>
             </div>
@@ -240,9 +260,7 @@ export function GlobalSearch() {
                     variants={dropdownVariants}
                     className="py-1"
                   >
-                    <div className="px-2 py-1.5 text-xs text-muted-foreground">
-                      Quick Search
-                    </div>
+                    <div className="px-2 py-1.5 text-xs text-muted-foreground">Quick Search</div>
                     <Command.Item
                       className={cn(
                         "flex items-center gap-2 px-2 py-1.5",
@@ -308,11 +326,13 @@ export function GlobalSearch() {
                           >
                             <div className="flex items-center justify-between gap-4">
                               <span className="font-medium truncate">{result.title}</span>
-                              <span className={cn(
-                                "text-xs px-2 py-0.5 rounded-full",
-                                "bg-primary/5 text-primary",
-                                "whitespace-nowrap"
-                              )}>
+                              <span
+                                className={cn(
+                                  "text-xs px-2 py-0.5 rounded-full",
+                                  "bg-primary/5 text-primary",
+                                  "whitespace-nowrap"
+                                )}
+                              >
                                 {sectionLabels[result.section]}
                               </span>
                             </div>

@@ -1,6 +1,6 @@
 import { WEAPON_CATEGORIES } from "~/lib/constants/speed-calc";
 
-export type WeaponCategory = typeof WEAPON_CATEGORIES[keyof typeof WEAPON_CATEGORIES];
+export type WeaponCategory = (typeof WEAPON_CATEGORIES)[keyof typeof WEAPON_CATEGORIES];
 
 export interface Weapon {
   id: string;

@@ -301,35 +301,24 @@
     {
       "family": "increased Spell Damage",
       "type": "prefix",
-      "tags": [
-        "damage",
-        "caster"
-      ],
+      "tags": ["damage", "caster"],
       "tiers": [
         {
           "name": "Spell",
           "level": 80,
-          "stats": [
-            "# % increased Spell Damage"
-          ]
+          "stats": ["# % increased Spell Damage"]
         }
       ]
     },
     {
       "family": "increased Spell Damage to maximum Mana",
       "type": "prefix",
-      "tags": [
-        "mana",
-        "damage",
-        "caster"
-      ],
+      "tags": ["mana", "damage", "caster"],
       "tiers": [
         {
           "name": "Spell",
           "level": 79,
-          "stats": [
-            "# % increased Spell Damage # to maximum Mana"
-          ]
+          "stats": ["# % increased Spell Damage # to maximum Mana"]
         },
         {
           "name": "Fire",
@@ -348,9 +337,7 @@
         {
           "name": "Gain",
           "level": 80,
-          "stats": [
-            "Gain # % of Damage as Extra Fire Damage"
-          ]
+          "stats": ["Gain # % of Damage as Extra Fire Damage"]
         }
       ]
     },
@@ -362,9 +349,7 @@
         {
           "name": "Gain",
           "level": 80,
-          "stats": [
-            "Gain # % of Damage as Extra Cold Damage"
-          ]
+          "stats": ["Gain # % of Damage as Extra Cold Damage"]
         }
       ]
     },
@@ -376,25 +361,19 @@
         {
           "name": "Gain",
           "level": 80,
-          "stats": [
-            "Gain # % of Damage as Extra Lightning Damage"
-          ]
+          "stats": ["Gain # % of Damage as Extra Lightning Damage"]
         }
       ]
     },
     {
       "family": "attribute to Intelligence",
       "type": "suffix",
-      "tags": [
-        "attribute"
-      ],
+      "tags": ["attribute"],
       "tiers": [
         {
           "name": "Intelligence",
           "level": 74,
-          "stats": [
-            "attribute # to Intelligence"
-          ]
+          "stats": ["attribute # to Intelligence"]
         }
       ]
     },
@@ -406,9 +385,7 @@
         {
           "name": "Attribute",
           "level": 60,
-          "stats": [
-            "# % reduced Attribute Requirements"
-          ]
+          "stats": ["# % reduced Attribute Requirements"]
         },
         {
           "name": "Spell",
@@ -422,50 +399,36 @@
     {
       "family": "increased Critical Hit Chance for Spells",
       "type": "suffix",
-      "tags": [
-        "caster",
-        "critical"
-      ],
+      "tags": ["caster", "critical"],
       "tiers": [
         {
           "name": "Critical Hit Chance",
           "level": 76,
-          "stats": [
-            "# % increased Critical Hit Chance for Spells"
-          ]
+          "stats": ["# % increased Critical Hit Chance for Spells"]
         }
       ]
     },
     {
       "family": "increased Critical Spell Damage Bonus",
       "type": "suffix",
-      "tags": [
-        "caster",
-        "critical"
-      ],
+      "tags": ["caster", "critical"],
       "tiers": [
         {
           "name": "Critical Spell Damage Bonus",
           "level": 73,
-          "stats": [
-            "# % increased Critical Spell Damage Bonus"
-          ]
+          "stats": ["# % increased Critical Spell Damage Bonus"]
         }
       ]
     },
     {
       "family": "mana increased Mana Regeneration Rate increased Light Radius",
       "type": "suffix",
-      "tags": [
-        "mana"
-      ],
+      "tags": ["mana"],
       "tiers": [
         {
           "name": "Light Radius",
           "level": 30,
-          "stats": [
-            "mana # % increased Mana Regeneration Rate # % increased Light Radius"
-          ]
+          "stats": ["mana # % increased Mana Regeneration Rate # % increased Light Radius"]
         }
       ]
     },
@@ -477,9 +440,7 @@
         {
           "name": "Ignite",
           "level": 75,
-          "stats": [
-            "# % increased chance to Ignite"
-          ]
+          "stats": ["# % increased chance to Ignite"]
         }
       ]
     },
@@ -491,9 +452,7 @@
         {
           "name": "Freeze",
           "level": 75,
-          "stats": [
-            "# % increased Freeze Buildup"
-          ]
+          "stats": ["# % increased Freeze Buildup"]
         }
       ]
     },
@@ -505,9 +464,7 @@
         {
           "name": "Shock",
           "level": 75,
-          "stats": [
-            "# % increased chance to Shock"
-          ]
+          "stats": ["# % increased chance to Shock"]
         }
       ]
     }

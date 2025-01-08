@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Lock, Link2, RefreshCw } from "lucide-react";
+import { Globe, Link2, Lock, RefreshCw } from "lucide-react";
+
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
+
 import { cn } from "~/utils/cn";
-import type { BuildVisibility, BuildSettingsUpdate } from "~/types/profile";
+
+import type { BuildSettingsUpdate, BuildVisibility } from "~/types/profile";
 
 interface VisibilityOption {
-  id: BuildVisibility | 'public';
+  id: BuildVisibility | "public";
   label: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
@@ -25,9 +28,9 @@ interface BuildSettingsSectionProps {
 }
 
 const publicOption = {
-  id: 'public' as const,
-  label: 'Public',
-  description: 'Visible to everyone in build listings',
+  id: "public" as const,
+  label: "Public",
+  description: "Visible to everyone in build listings",
   icon: Globe,
   disabled: true,
   comingSoon: true,
@@ -36,17 +39,17 @@ const publicOption = {
 const visibilityOptions: VisibilityOption[] = [
   publicOption,
   {
-    id: 'unlisted',
-    label: 'Unlisted',
-    description: 'Share with direct links only',
+    id: "unlisted",
+    label: "Unlisted",
+    description: "Share with direct links only",
     icon: Link2,
     disabled: false,
     comingSoon: false,
   },
   {
-    id: 'private',
-    label: 'Private',
-    description: 'Only visible to you',
+    id: "private",
+    label: "Private",
+    description: "Only visible to you",
     icon: Lock,
     disabled: false,
     comingSoon: false,
@@ -83,12 +86,14 @@ export function BuildSettingsSection({
                 whileHover={!option.disabled ? { scale: 1.01 } : undefined}
                 className={cn(
                   "relative p-4 rounded-xl border-2 transition-colors",
-                  isActive 
-                    ? "border-primary/50 bg-primary/5" 
-                    : "border-border/50 bg-background/95",
+                  isActive ? "border-primary/50 bg-primary/5" : "border-border/50 bg-background/95",
                   option.disabled ? "opacity-50" : "cursor-pointer"
                 )}
-                onClick={() => !option.disabled && option.id !== 'public' && onSettingsUpdate({ defaultVisibility: option.id })}
+                onClick={() =>
+                  !option.disabled &&
+                  option.id !== "public" &&
+                  onSettingsUpdate({ defaultVisibility: option.id })
+                }
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
@@ -103,9 +108,7 @@ export function BuildSettingsSection({
                         </span>
                       )}
                     </div>
-                    <Text className="text-sm text-foreground/60 mt-1">
-                      {option.description}
-                    </Text>
+                    <Text className="text-sm text-foreground/60 mt-1">{option.description}</Text>
                   </div>
                   {isActive && (
                     <div className="flex-shrink-0">
@@ -142,10 +145,7 @@ export function BuildSettingsSection({
               disabled={settingsLoading}
               className="gap-2"
             >
-              <RefreshCw className={cn(
-                "w-4 h-4",
-                autoSync && "animate-spin"
-              )} />
+              <RefreshCw className={cn("w-4 h-4", autoSync && "animate-spin")} />
               {autoSync ? "Enabled" : "Disabled"}
             </Button>
           </div>

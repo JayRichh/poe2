@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+
+import { Button } from "~/components/ui/Button";
 import { Card } from "~/components/ui/Card";
 import { Text } from "~/components/ui/Text";
-import { Button } from "~/components/ui/Button";
+
 import type { Database } from "~/lib/supabase/types";
 
 type SkillGem = Database["public"]["Tables"]["skill_gems"]["Row"];
@@ -35,11 +37,11 @@ interface SkillGemManagerProps {
 
 const MAX_SOCKETS = 8;
 const EMPTY_SOCKET: EmptySocket = {
-  id: '',
+  id: "",
   color: undefined,
   group: 0,
   index: 0,
-  gem: undefined
+  gem: undefined,
 };
 
 export function SkillGemManager({ buildId, gems = [], onUpdate }: SkillGemManagerProps) {
@@ -50,7 +52,7 @@ export function SkillGemManager({ buildId, gems = [], onUpdate }: SkillGemManage
       color: gem.color,
       gem,
       group: gem.socket_group || 0,
-      index: gem.socket_index || index
+      index: gem.socket_index || index,
     }));
 
     // Add empty sockets up to MAX_SOCKETS
@@ -59,7 +61,7 @@ export function SkillGemManager({ buildId, gems = [], onUpdate }: SkillGemManage
         ...EMPTY_SOCKET,
         id: `socket-${initialSockets.length}`,
         group: Math.floor(initialSockets.length / 2),
-        index: initialSockets.length
+        index: initialSockets.length,
       };
       initialSockets.push(emptySocket);
     }
@@ -68,34 +70,37 @@ export function SkillGemManager({ buildId, gems = [], onUpdate }: SkillGemManage
   });
 
   const handleUpdateSocket = (socketId: string, updates: Partial<GemSocket>) => {
-    const updatedSockets = sockets.map(socket => {
+    const updatedSockets = sockets.map((socket) => {
       if (socket.id === socketId) {
         return { ...socket, ...updates };
       }
       return socket;
     });
-    
+
     setSockets(updatedSockets);
-    
+
     // Extract and update gems
     const updatedGems = updatedSockets
       .filter((socket): socket is FilledSocket => socket.gem !== undefined)
-      .map(socket => ({
+      .map((socket) => ({
         ...socket.gem,
         socket_group: socket.group,
-        socket_index: socket.index
+        socket_index: socket.index,
       }));
-      
+
     onUpdate?.(updatedGems);
   };
 
   // Group sockets for linked display
-  const socketGroups = sockets.reduce((groups, socket) => {
-    const group = groups[socket.group] || [];
-    group[socket.index % 2] = socket;
-    groups[socket.group] = group;
-    return groups;
-  }, {} as Record<number, GemSocket[]>);
+  const socketGroups = sockets.reduce(
+    (groups, socket) => {
+      const group = groups[socket.group] || [];
+      group[socket.index % 2] = socket;
+      groups[socket.group] = group;
+      return groups;
+    },
+    {} as Record<number, GemSocket[]>
+  );
 
   return (
     <Card className="p-6">
@@ -114,8 +119,8 @@ export function SkillGemManager({ buildId, gems = [], onUpdate }: SkillGemManage
                 key={socket.id}
                 className={`
                   w-12 h-12 rounded-full flex items-center justify-center
-                  ${socket.color ? `bg-${socket.color.toLowerCase()}-500/20` : 'bg-foreground/10'}
-                  ${socket.gem ? 'border-2 border-primary/50' : 'border border-border/50'}
+                  ${socket.color ? `bg-${socket.color.toLowerCase()}-500/20` : "bg-foreground/10"}
+                  ${socket.gem ? "border-2 border-primary/50" : "border border-border/50"}
                 `}
               >
                 {socket.gem ? (

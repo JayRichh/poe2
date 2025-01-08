@@ -1,8 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createBuild, updateBuild, type CreateBuildData } from "./builds";
+
 import type { Database } from "~/lib/supabase/types";
+
+import { type CreateBuildData, createBuild, updateBuild } from "./builds";
 
 type VisibilityType = Database["public"]["Enums"]["visibility_type"];
 
@@ -14,7 +16,9 @@ export interface BuildFormResponse {
   error?: string;
 }
 
-export async function handleNewBuildSubmit(formData: Partial<BuildFormData>): Promise<BuildFormResponse> {
+export async function handleNewBuildSubmit(
+  formData: Partial<BuildFormData>
+): Promise<BuildFormResponse> {
   try {
     if (!formData.name) {
       return { success: false, buildId: "", error: "Build name is required" };
@@ -23,7 +27,7 @@ export async function handleNewBuildSubmit(formData: Partial<BuildFormData>): Pr
     // Transform partial form data to required CreateBuildData
     // Ensure visibility is either private or unlisted
     const visibility: VisibilityType = formData.visibility === "unlisted" ? "unlisted" : "private";
-    
+
     const buildData: CreateBuildData = {
       name: formData.name,
       description: formData.description || "",
@@ -44,22 +48,25 @@ export async function handleNewBuildSubmit(formData: Partial<BuildFormData>): Pr
     }
 
     // Revalidate paths
-    revalidatePath('/build-planner');
+    revalidatePath("/build-planner");
     revalidatePath(`/build-planner/${newBuild.slug || newBuild.id}`);
     revalidatePath(`/build-planner/${newBuild.id}`);
-    
+
     return { success: true, buildId: newBuild.slug || newBuild.id };
   } catch (error) {
     console.error("Error in handleNewBuildSubmit:", error);
-    return { 
-      success: false, 
-      buildId: "", 
-      error: error instanceof Error ? error.message : "Failed to create build" 
+    return {
+      success: false,
+      buildId: "",
+      error: error instanceof Error ? error.message : "Failed to create build",
     };
   }
 }
 
-export async function handleBuildSubmit(buildId: string, formData: Partial<BuildFormData>): Promise<BuildFormResponse> {
+export async function handleBuildSubmit(
+  buildId: string,
+  formData: Partial<BuildFormData>
+): Promise<BuildFormResponse> {
   try {
     if (!formData.name) {
       return { success: false, buildId, error: "Build name is required" };
@@ -85,7 +92,7 @@ export async function handleBuildSubmit(buildId: string, formData: Partial<Build
     }
 
     // Revalidate all possible paths
-    revalidatePath('/build-planner');
+    revalidatePath("/build-planner");
     revalidatePath(`/build-planner/${buildId}`);
     revalidatePath(`/build-planner/${buildId}/edit`);
     revalidatePath(`/build-planner/${updatedBuild.id}`);
@@ -96,15 +103,15 @@ export async function handleBuildSubmit(buildId: string, formData: Partial<Build
     }
 
     // Wait for revalidation
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     return { success: true, buildId: updatedBuild.slug || updatedBuild.id };
   } catch (error) {
     console.error("Error in handleBuildSubmit:", error);
-    return { 
-      success: false, 
-      buildId, 
-      error: error instanceof Error ? error.message : "Failed to update build" 
+    return {
+      success: false,
+      buildId,
+      error: error instanceof Error ? error.message : "Failed to update build",
     };
   }
 }
