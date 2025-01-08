@@ -18,23 +18,102 @@ import {
   Zap,
 } from "lucide-react";
 
-import { useState } from "react";
-
+import { memo, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
-
 import { cn } from "~/utils/cn";
-
 import { useAuth } from "~/contexts/auth";
-
 import { Avatar } from "./profile/Avatar";
 import { Button } from "./ui/Button";
 import { Dropdown } from "./ui/Dropdown";
 import { FullscreenMenu } from "./ui/FullscreenMenu";
 import { Spinner } from "./ui/Spinner";
 import { Toast } from "./ui/Toast";
+
+const MemoizedAvatar = memo(Avatar);
+
+const ProfileSection = memo(function ProfileSection({ 
+  user, 
+  loading, 
+  onSignIn, 
+  onProfileAction,
+  refreshSession 
+}: {
+  user: any;
+  loading: boolean;
+  onSignIn: () => void;
+  onProfileAction: (value: string) => void;
+  refreshSession: () => Promise<void>;
+}) {
+  if (user) {
+    return (
+      <div className="hidden lg:block">
+        <Dropdown
+          trigger={
+            <button
+              className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+              disabled={loading}
+            >
+              <div className="flex items-center gap-2">
+                {loading ? (
+                  <>
+                    <div className="w-8 h-8 rounded-full bg-primary/5 animate-pulse" />
+                    <div className="w-24 h-4 bg-primary/5 animate-pulse rounded" />
+                  </>
+                ) : (
+                  <>
+                    <MemoizedAvatar
+                      uid={user.id}
+                      url={user.user_metadata?.avatar_url}
+                      size={32}
+                      onUpload={async () => {
+                        await refreshSession();
+                      }}
+                      showUploadUI={false}
+                      className="border border-border/50"
+                    />
+                    <span className="max-w-[150px] truncate">
+                      {user.user_metadata?.name || user.email?.split("@")[0]}
+                    </span>
+                  </>
+                )}
+              </div>
+            </button>
+          }
+          items={[
+            {
+              label: "Go to Profile",
+              value: "profile",
+              icon: <Settings className="w-4 h-4" />,
+            },
+            {
+              label: "Sign Out",
+              value: "signout",
+              icon: <LogOut className="w-4 h-4" />,
+            },
+          ]}
+          onChange={onProfileAction}
+          position="bottom-left"
+          width={180}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <Button
+      onClick={onSignIn}
+      variant="ghost"
+      className="hidden lg:flex items-center gap-2 text-base font-medium"
+      disabled={loading}
+    >
+      {loading ? <Spinner size="sm" /> : <LogIn className="w-4 h-4" />}
+      Sign In
+    </Button>
+  );
+});
+
 
 const PROTECTED_ROUTES = ["/profile"];
 
@@ -209,68 +288,13 @@ export function Navigation() {
             </div>
 
             <div className="flex items-center gap-4">
-              {user ? (
-                <div className="hidden lg:block">
-                  <Dropdown
-                    trigger={
-                      <button
-                        className="flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors"
-                        disabled={authLoading}
-                      >
-                        <div className="flex items-center gap-2">
-                          {authLoading ? (
-                            <>
-                              <div className="w-8 h-8 rounded-full bg-primary/5 animate-pulse" />
-                              <div className="w-24 h-4 bg-primary/5 animate-pulse rounded" />
-                            </>
-                          ) : (
-                            <>
-                              <Avatar
-                                uid={user.id}
-                                url={user.user_metadata?.avatar_url}
-                                size={32}
-                                onUpload={async () => {
-                                  await refreshSession();
-                                }}
-                                showUploadUI={false}
-                                className="border border-border/50"
-                              />
-                              <span className="max-w-[150px] truncate">
-                                {user.user_metadata?.name || user.email?.split("@")[0]}
-                              </span>
-                            </>
-                          )}
-                        </div>
-                      </button>
-                    }
-                    items={[
-                      {
-                        label: "Go to Profile",
-                        value: "profile",
-                        icon: <Settings className="w-4 h-4" />,
-                      },
-                      {
-                        label: "Sign Out",
-                        value: "signout",
-                        icon: <LogOut className="w-4 h-4" />,
-                      },
-                    ]}
-                    onChange={handleProfileAction}
-                    position="bottom-left"
-                    width={180}
-                  />
-                </div>
-              ) : (
-                <Button
-                  onClick={handleSignIn}
-                  variant="ghost"
-                  className="hidden lg:flex items-center gap-2 text-base font-medium"
-                  disabled={authLoading}
-                >
-                  {authLoading ? <Spinner size="sm" /> : <LogIn className="w-4 h-4" />}
-                  Sign In
-                </Button>
-              )}
+              <ProfileSection
+                user={user}
+                loading={authLoading}
+                onSignIn={handleSignIn}
+                onProfileAction={handleProfileAction}
+                refreshSession={refreshSession}
+              />
               <Button
                 onClick={() => setIsMenuOpen(true)}
                 variant="ghost"

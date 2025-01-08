@@ -1,13 +1,9 @@
 "use client";
 
 import { Upload } from "lucide-react";
-
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import Image from "next/image";
-
 import { cn } from "~/utils/cn";
-
 import { useAuth } from "~/contexts/auth";
 import { createClient } from "~/lib/supabase/client";
 
@@ -30,58 +26,14 @@ export function Avatar({
 }: AvatarProps) {
   const { user } = useAuth();
   const supabase = createClient();
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    async function initializeAvatar() {
-      if (!url) {
-        setAvatarUrl(null);
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        await downloadImage(url);
-      } catch (error) {
-        console.error("Error initializing avatar:", error);
-        setHasError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    setIsLoading(true);
-    setHasError(false);
-    initializeAvatar();
-  }, [url]);
-
-  async function downloadImage(path: string) {
-    try {
-      if (!path) {
-        setAvatarUrl(null);
-        return;
-      }
-
-      // If it's already a full URL, use it directly
-      if (path.startsWith("http")) {
-        setAvatarUrl(path);
-        return;
-      }
-
-      // Otherwise treat it as a filename and get the URL
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("avatars").getPublicUrl(path);
-
-      setAvatarUrl(publicUrl);
-    } catch (error) {
-      console.error("Error getting avatar URL:", error);
-      setAvatarUrl(null);
-    }
-  }
+  const avatarUrl = url
+    ? url.startsWith("http")
+      ? url
+      : supabase.storage.from("avatars").getPublicUrl(url).data.publicUrl
+    : null;
 
   const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     try {
@@ -95,15 +47,12 @@ export function Avatar({
         throw new Error("Please sign in to upload an avatar.");
       }
 
-      // Ensure we're using the current user's ID from the auth context
       const userId = user.id;
 
-      // List existing avatars for this user
       const { data: existingFiles } = await supabase.storage.from("avatars").list(undefined, {
         search: userId,
       });
 
-      // Delete previous avatar if it exists
       if (existingFiles && existingFiles.length > 0) {
         const { error: deleteError } = await supabase.storage
           .from("avatars")
@@ -116,7 +65,6 @@ export function Avatar({
 
       const file = event.target.files[0];
       const fileExt = file.name.split(".").pop();
-      // Use user ID as prefix for storage policy compliance
       const filePath = `${userId}_${new Date().getTime()}.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage.from("avatars").upload(filePath, file, {
@@ -131,7 +79,6 @@ export function Avatar({
         throw uploadError;
       }
 
-      // Store just the filename in metadata, not the full URL
       if (typeof onUpload === "function") {
         await onUpload(filePath);
       } else {
@@ -150,9 +97,7 @@ export function Avatar({
   return (
     <div className={cn("relative group", className)}>
       <div className="relative rounded-full overflow-hidden" style={{ width: size, height: size }}>
-        {isLoading ? (
-          <div className="w-full h-full bg-primary/5 animate-pulse" />
-        ) : avatarUrl && !hasError ? (
+        {avatarUrl && !hasError ? (
           <div className="relative w-full h-full">
             <Image
               src={avatarUrl}
@@ -160,10 +105,9 @@ export function Avatar({
               className="object-cover"
               fill
               sizes={`${size}px`}
-              onError={() => {
-                setHasError(true);
-                setAvatarUrl(null);
-              }}
+              priority
+              onError={() => setHasError(true)}
+              loading="eager"
             />
           </div>
         ) : (
