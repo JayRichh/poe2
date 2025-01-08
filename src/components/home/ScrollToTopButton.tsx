@@ -16,7 +16,7 @@ const Portal = ({ children }: { children: React.ReactNode }) => {
     return () => setMounted(false);
   }, []);
 
-  if (!mounted || typeof document === 'undefined') return null;
+  if (!mounted || typeof document === "undefined") return null;
   return createPortal(children, document.body);
 };
 

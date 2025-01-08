@@ -2,6 +2,9 @@ import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { ItemBase } from "~/types/itemTypes";
 
+// Global cache for failed image URLs
+const failedImageCache = new Set<string>();
+
 interface ItemCarouselProps {
   topItems: ItemBase[];
   bottomItems: ItemBase[];
@@ -10,7 +13,7 @@ interface ItemCarouselProps {
 function ScrollingRow({
   items,
   reverse = false,
-  speed = 1,
+  speed = 0.5,
 }: {
   items: ItemBase[];
   reverse?: boolean;
@@ -19,10 +22,10 @@ function ScrollingRow({
   const x = useMotionValue(0);
   const [paused, setPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [imgError, setImgError] = useState<Record<string, boolean>>({});
   const [contentWidth, setContentWidth] = useState(0);
   const direction = reverse ? 1 : -1;
   const resetRef = useRef(false);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   // Calculate content width on mount and item changes
   useEffect(() => {
@@ -49,25 +52,28 @@ function ScrollingRow({
 
       if (!paused) {
         let newVal = x.get() + direction * (speed * (dt / 16.6667));
-        const resetThreshold = contentWidth + 32; // Add one gap width as buffer
-        
-        // Reset position when scrolled past content width plus buffer
+        const resetThreshold = contentWidth;
+
         if (reverse) {
+          // For reverse direction (bottom row)
           if (newVal >= 0 && !resetRef.current) {
-            newVal = -contentWidth;
+            newVal = -resetThreshold;
             resetRef.current = true;
-          } else if (newVal < -contentWidth) {
+          } else if (newVal < -resetThreshold) {
+            newVal = 0;
             resetRef.current = false;
           }
         } else {
+          // For forward direction (top row)
           if (newVal <= -resetThreshold && !resetRef.current) {
             newVal = 0;
             resetRef.current = true;
-          } else if (newVal > -contentWidth) {
+          } else if (newVal > 0) {
+            newVal = -resetThreshold;
             resetRef.current = false;
           }
         }
-        
+
         x.set(newVal);
       }
       frameId = requestAnimationFrame(animate);
@@ -78,11 +84,13 @@ function ScrollingRow({
   }, [paused, reverse, contentWidth, speed, x, direction]);
 
   const handleImageError = (itemUrl: string) => {
-    setImgError(prev => ({ ...prev, [itemUrl]: true }));
+    failedImageCache.add(itemUrl);
+    setFailedImages(new Set(failedImageCache));
   };
 
-  // Create four sets of items for smoother scrolling
-  const displayItems = [...items, ...items, ...items, ...items];
+  // Filter out items with failed images and create four sets for smoother scrolling
+  const validItems = items.filter(item => !failedImageCache.has(item.icon));
+  const displayItems = [...validItems, ...validItems, ...validItems, ...validItems];
 
   return (
     <motion.div
@@ -103,18 +111,20 @@ function ScrollingRow({
           className="flex items-center gap-3 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/50 rounded-lg p-3 shadow-md min-w-[320px] transition-colors group"
         >
           <div className="w-20 h-20 relative flex-shrink-0 bg-background/30 rounded-lg p-1.5 group-hover:bg-background/50 transition-colors">
-            {imgError[item.url] ? (
-              <img 
-                src="/icon.svg" 
-                alt="Fallback Icon" 
-                className="w-full h-full object-contain opacity-50"
-              />
+            {failedImages.has(item.icon) ? (
+              <div className="w-full h-full flex items-center justify-center opacity-50">
+                <img 
+                  src="/icon.svg" 
+                  alt="Fallback Icon" 
+                  className="w-12 h-12"
+                />
+              </div>
             ) : (
               <img 
                 src={item.icon} 
                 alt={item.name} 
                 className="w-full h-full object-contain"
-                onError={() => handleImageError(item.url)}
+                onError={() => handleImageError(item.icon)}
               />
             )}
           </div>
@@ -140,10 +150,10 @@ export function ItemCarousel({ topItems, bottomItems }: ItemCarouselProps) {
     <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-gradient-to-br from-background/50 to-background/30 backdrop-blur py-12 border-y border-border/10">
       <div className="relative space-y-12">
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={topItems} speed={1} />
+          <ScrollingRow items={topItems} />
         </div>
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={bottomItems} reverse speed={1} />
+          <ScrollingRow items={bottomItems} reverse  />
         </div>
       </div>
     </div>

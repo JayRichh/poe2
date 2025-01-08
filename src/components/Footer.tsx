@@ -319,10 +319,38 @@ export function Footer() {
             <div className="space-y-8">
               <h3 className="text-2xl font-semibold tracking-tight">Data Sources</h3>
               <div className="flex flex-col lg:items-end gap-4">
-                <a href="https://poe2db.tw/" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">POE2DB</a>
-                <a href="https://github.com/marcoaaguiar/poe2-tree" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">poe2-tree</a>
-                <a href="https://github.com/EmmittJ/SkillTree_TypeScript" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">SkillTree_TypeScript</a>
-                <a href="https://www.pathofexile.com/forum" target="_blank" rel="noopener noreferrer" className="text-lg text-muted-foreground hover:text-foreground transition-colors">POE Forums</a>
+                <a
+                  href="https://poe2db.tw/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  POE2DB
+                </a>
+                <a
+                  href="https://github.com/marcoaaguiar/poe2-tree"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  poe2-tree
+                </a>
+                <a
+                  href="https://github.com/EmmittJ/SkillTree_TypeScript"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  SkillTree_TypeScript
+                </a>
+                <a
+                  href="https://www.pathofexile.com/forum"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  POE Forums
+                </a>
               </div>
             </div>
           </div>

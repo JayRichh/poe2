@@ -13,7 +13,6 @@ import { GlobalSearch } from "~/components/shared/GlobalSearch";
 import { GradientBackground } from "~/components/ui/GradientBackground";
 import { Spinner } from "~/components/ui/Spinner";
 import { WIPBanner } from "~/components/ui/WIPBanner";
-import { ScrollToTopButton } from "../components/home/ScrollToTopButton";
 
 import { useDefaultDarkMode } from "~/hooks/useDefaultDarkMode";
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
@@ -23,6 +22,8 @@ import { shimmer, toBase64 } from "~/utils/image";
 
 import { AuthProvider } from "~/contexts/auth";
 import { SearchProvider } from "~/contexts/search";
+
+import { ScrollToTopButton } from "../components/home/ScrollToTopButton";
 
 function NavigationLoading() {
   return (

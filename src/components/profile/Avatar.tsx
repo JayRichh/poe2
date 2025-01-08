@@ -1,9 +1,13 @@
 "use client";
 
 import { Upload } from "lucide-react";
+
 import React, { useState } from "react";
+
 import Image from "next/image";
+
 import { cn } from "~/utils/cn";
+
 import { useAuth } from "~/contexts/auth";
 import { createClient } from "~/lib/supabase/client";
 

@@ -1,7 +1,9 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+
 import { useEffect, useState } from "react";
+
 import { cn } from "~/utils/cn";
 
 export function ScrollToTop() {

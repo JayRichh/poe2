@@ -19,11 +19,16 @@ import {
 } from "lucide-react";
 
 import { memo, useState } from "react";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
+
 import { cn } from "~/utils/cn";
+
 import { useAuth } from "~/contexts/auth";
+
 import { Avatar } from "./profile/Avatar";
 import { Button } from "./ui/Button";
 import { Dropdown } from "./ui/Dropdown";
@@ -33,12 +38,12 @@ import { Toast } from "./ui/Toast";
 
 const MemoizedAvatar = memo(Avatar);
 
-const ProfileSection = memo(function ProfileSection({ 
-  user, 
-  loading, 
-  onSignIn, 
+const ProfileSection = memo(function ProfileSection({
+  user,
+  loading,
+  onSignIn,
   onProfileAction,
-  refreshSession 
+  refreshSession,
 }: {
   user: any;
   loading: boolean;
@@ -113,7 +118,6 @@ const ProfileSection = memo(function ProfileSection({
     </Button>
   );
 });
-
 
 const PROTECTED_ROUTES = ["/profile"];
 
