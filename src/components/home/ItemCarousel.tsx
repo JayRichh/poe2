@@ -1,7 +1,5 @@
 import { motion, useMotionValue } from "framer-motion";
-
 import { useEffect, useRef, useState } from "react";
-
 import type { ItemBase } from "~/types/itemTypes";
 
 interface ItemCarouselProps {
@@ -9,39 +7,67 @@ interface ItemCarouselProps {
   bottomItems: ItemBase[];
 }
 
-// Individual row that manually animates via requestAnimationFrame
 function ScrollingRow({
   items,
   reverse = false,
-  scrollWidth = 4000,
-  speed = 40,
+  speed = 1,
 }: {
   items: ItemBase[];
   reverse?: boolean;
-  scrollWidth?: number;
   speed?: number;
 }) {
   const x = useMotionValue(0);
   const [paused, setPaused] = useState(false);
-  const direction = reverse ? 1 : -1;
   const containerRef = useRef<HTMLDivElement>(null);
+  const [imgError, setImgError] = useState<Record<string, boolean>>({});
+  const [contentWidth, setContentWidth] = useState(0);
+  const direction = reverse ? 1 : -1;
+  const resetRef = useRef(false);
+
+  // Calculate content width on mount and item changes
+  useEffect(() => {
+    if (containerRef.current) {
+      const itemWidth = 320; // min-w-[320px]
+      const gap = 32; // gap-8 (2rem = 32px)
+      const totalWidth = items.length * (itemWidth + gap);
+      setContentWidth(totalWidth);
+    }
+  }, [items]);
 
   useEffect(() => {
     let frameId: number;
     let lastTime = performance.now();
 
     function animate(time: number) {
+      if (!containerRef.current || contentWidth === 0) {
+        frameId = requestAnimationFrame(animate);
+        return;
+      }
+
       const dt = time - lastTime;
       lastTime = time;
 
       if (!paused) {
         let newVal = x.get() + direction * (speed * (dt / 16.6667));
-        // Loop back when scrolled past half of scrollWidth
-        if (reverse && newVal > 0) {
-          newVal = -scrollWidth / 2;
-        } else if (!reverse && newVal < -scrollWidth / 2) {
-          newVal = 0;
+        const resetThreshold = contentWidth + 32; // Add one gap width as buffer
+        
+        // Reset position when scrolled past content width plus buffer
+        if (reverse) {
+          if (newVal >= 0 && !resetRef.current) {
+            newVal = -contentWidth;
+            resetRef.current = true;
+          } else if (newVal < -contentWidth) {
+            resetRef.current = false;
+          }
+        } else {
+          if (newVal <= -resetThreshold && !resetRef.current) {
+            newVal = 0;
+            resetRef.current = true;
+          } else if (newVal > -contentWidth) {
+            resetRef.current = false;
+          }
         }
+        
         x.set(newVal);
       }
       frameId = requestAnimationFrame(animate);
@@ -49,12 +75,19 @@ function ScrollingRow({
 
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
-  }, [paused, reverse, scrollWidth, speed, x, direction]);
+  }, [paused, reverse, contentWidth, speed, x, direction]);
+
+  const handleImageError = (itemUrl: string) => {
+    setImgError(prev => ({ ...prev, [itemUrl]: true }));
+  };
+
+  // Create four sets of items for smoother scrolling
+  const displayItems = [...items, ...items, ...items, ...items];
 
   return (
     <motion.div
       ref={containerRef}
-      className="flex gap-8 absolute left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] w-[100vw] px-6 will-change-transform"
+      className="flex gap-8 absolute left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] w-[100vw] px-6"
       style={{
         x,
         transform: "translate3d(0,0,0)",
@@ -64,13 +97,26 @@ function ScrollingRow({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {[...items, ...items].map((item, index) => (
+      {displayItems.map((item, index) => (
         <div
           key={`${item.url}-${index}`}
           className="flex items-center gap-3 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/50 rounded-lg p-3 shadow-md min-w-[320px] transition-colors group"
         >
           <div className="w-20 h-20 relative flex-shrink-0 bg-background/30 rounded-lg p-1.5 group-hover:bg-background/50 transition-colors">
-            <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
+            {imgError[item.url] ? (
+              <img 
+                src="/icon.svg" 
+                alt="Fallback Icon" 
+                className="w-full h-full object-contain opacity-50"
+              />
+            ) : (
+              <img 
+                src={item.icon} 
+                alt={item.name} 
+                className="w-full h-full object-contain"
+                onError={() => handleImageError(item.url)}
+              />
+            )}
           </div>
           <div className="flex flex-col min-w-0">
             <p className="font-semibold truncate text-lg group-hover:text-primary transition-colors">
@@ -94,10 +140,10 @@ export function ItemCarousel({ topItems, bottomItems }: ItemCarouselProps) {
     <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-gradient-to-br from-background/50 to-background/30 backdrop-blur py-12 border-y border-border/10">
       <div className="relative space-y-12">
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={topItems} scrollWidth={4000} speed={1} />
+          <ScrollingRow items={topItems} speed={1} />
         </div>
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={bottomItems} reverse scrollWidth={4000} speed={1} />
+          <ScrollingRow items={bottomItems} reverse speed={1} />
         </div>
       </div>
     </div>
