@@ -1,0 +1,515 @@
+{
+  "name": "Staves",
+  "url": "/Staves",
+  "items": [
+    {
+      "name": "Dusk Vigil",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/uniques/duskvigil.webp",
+      "url": "/us/Dusk_Vigil",
+      "category": "Staves Unique /5",
+      "grantedSkill": {
+        "name": "Firebolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/fireballskillstaff.webp",
+        "url": "/us/Firebolt"
+      },
+      "modifiers": [
+        "(60–80)% increased Spell Damage",
+        "Gain (5–10) Life per Enemy Killed",
+        "25% increased Mana Regeneration Rate",
+        "Trigger Ember Fusillade Skill on casting a Spell"
+      ],
+      "tabSource": "Staves Unique /5"
+    },
+    {
+      "name": "Taryns Shiver",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/uniques/tarynsshiver.webp",
+      "url": "/us/Taryns_Shiver",
+      "category": "Staves Unique /5",
+      "grantedSkill": {
+        "name": "Freezing Shards",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/freezingshardsstaff.webp",
+        "url": "/us/Freezing_Shards"
+      },
+      "modifiers": [
+        "(80–120)% increased Cold Damage",
+        "(10–20)% increased Cast Speed",
+        "100% increased Freeze Buildup",
+        "Enemies Frozen by you take 50% increased Damage"
+      ],
+      "tabSource": "Staves Unique /5"
+    },
+    {
+      "name": "Earthbound",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/uniques/earthbound.webp",
+      "url": "/us/Earthbound",
+      "category": "Staves Unique /5",
+      "grantedSkill": {
+        "name": "Lightning Bolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/lightningboltskillstaff.webp",
+        "url": "/us/Lightning_Bolt"
+      },
+      "modifiers": [
+        "(80–120)% increased Lightning Damage",
+        "(10–20)% increased Cast Speed",
+        "(20–30)% increased Mana Regeneration Rate",
+        "Trigger Spark Skill on killing a Shocked Enemy"
+      ],
+      "tabSource": "Staves Unique /5"
+    },
+    {
+      "name": "The Searing Touch",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/uniques/searingtouch.webp",
+      "url": "/us/The_Searing_Touch",
+      "category": "Staves Unique /5",
+      "grantedSkill": {
+        "name": "Living Bomb",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/livingbombweaponskill.webp",
+        "url": "/us/Living_Bomb"
+      },
+      "modifiers": [
+        "(80–120)% increased Fire Damage",
+        "(10–20)% increased Cast Speed",
+        "100% increased chance to Ignite",
+        "100% increased Magnitude of Ignite you inflict"
+      ],
+      "tabSource": "Staves Unique /5"
+    },
+    {
+      "name": "The Burden of Shadows",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/uniques/burdenofshadows.webp",
+      "url": "/us/The_Burden_of_Shadows",
+      "category": "Staves Unique /5",
+      "grantedSkill": {
+        "name": "Sigil of Power",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/sigilofpowerweaponskill.webp",
+        "url": "/us/Sigil_of_Power"
+      },
+      "modifiers": [
+        "(20–30)% increased Cast Speed",
+        "Skill Mana Costs Converted to Life Costs",
+        "Skills gain 1% of Damage as Chaos Damage per 3 Life Cost"
+      ],
+      "tabSource": "Staves Unique /5"
+    },
+    {
+      "name": "Ashen Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Ashen_Staff",
+      "category": "Staves Item /13",
+      "grantedSkill": {
+        "name": "Firebolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/fireballskillstaff.webp",
+        "url": "/us/Firebolt"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Gelid Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff02.webp",
+      "url": "/us/Gelid_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 2
+      },
+      "grantedSkill": {
+        "name": "Freezing Shards",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/freezingshardsstaff.webp",
+        "url": "/us/Freezing_Shards"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Voltaic Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff03.webp",
+      "url": "/us/Voltaic_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 2
+      },
+      "grantedSkill": {
+        "name": "Lightning Bolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/lightningboltskillstaff.webp",
+        "url": "/us/Lightning_Bolt"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Spriggan Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff04.webp",
+      "url": "/us/Spriggan_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 11
+      },
+      "grantedSkill": {
+        "name": "Firebolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/fireballskillstaff.webp",
+        "url": "/us/Firebolt"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Pyrophyte Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff05.webp",
+      "url": "/us/Pyrophyte_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 16
+      },
+      "grantedSkill": {
+        "name": "Living Bomb",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/livingbombweaponskill.webp",
+        "url": "/us/Living_Bomb"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Chiming Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff06.webp",
+      "url": "/us/Chiming_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 25
+      },
+      "grantedSkill": {
+        "name": "Sigil of Power",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/sigilofpowerweaponskill.webp",
+        "url": "/us/Sigil_of_Power"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Rending Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Rending_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 33
+      },
+      "grantedSkill": {
+        "name": "Soulrend",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/soulrend.webp",
+        "url": "/us/Soulrend"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Reaping Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Reaping_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 38
+      },
+      "grantedSkill": {
+        "name": "Reap",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/bloodreap.webp",
+        "url": "/us/Reap"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Icicle Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Icicle_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 45
+      },
+      "grantedSkill": {
+        "name": "Firebolt",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/fireballskillstaff.webp",
+        "url": "/us/Firebolt"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Roaring Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Roaring_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 49
+      },
+      "grantedSkill": {
+        "name": "Unleash",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/unleashskillstaff.webp",
+        "url": "/us/Unleash"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Paralysing Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Paralysing_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 52
+      },
+      "grantedSkill": {
+        "name": "Shock Nova",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/shocknova.webp",
+        "url": "/us/Shock_Nova"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Cleric Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Cleric_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 56
+      },
+      "grantedSkill": {
+        "name": "Consecrate",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/bufficons/consecrated.webp",
+        "url": "/us/Consecrate"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    },
+    {
+      "name": "Dark Staff",
+      "icon": "https://cdn.poe2db.tw/image/art/2ditems/weapons/twohandweapons/staves/basetypes/staff01.webp",
+      "url": "/us/Dark_Staff",
+      "category": "Staves Item /13",
+      "requirements": {
+        "level": 65
+      },
+      "grantedSkill": {
+        "name": "Dark Pact",
+        "icon": "https://cdn.poe2db.tw/image/art/2dart/skillicons/skeletalchains.webp",
+        "url": "/us/Dark_Pact"
+      },
+      "modifiers": [],
+      "tabSource": "Staves Item /13"
+    }
+  ],
+  "modifiers": [
+    {
+      "family": "increased Spell Damage",
+      "type": "prefix",
+      "tags": [
+        "damage",
+        "caster"
+      ],
+      "tiers": [
+        {
+          "name": "Spell",
+          "level": 80,
+          "stats": [
+            "# % increased Spell Damage"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased Spell Damage to maximum Mana",
+      "type": "prefix",
+      "tags": [
+        "mana",
+        "damage",
+        "caster"
+      ],
+      "tiers": [
+        {
+          "name": "Spell",
+          "level": 79,
+          "stats": [
+            "# % increased Spell Damage # to maximum Mana"
+          ]
+        },
+        {
+          "name": "Fire",
+          "level": 81,
+          "stats": [
+            "# % increased Fire Damage # % increased Cold Damage # % increased Lightning Damage # % increased Chaos Damage # % increased Spell Physical Damage"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Gain of Damage as Extra Fire Damage",
+      "type": "prefix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Gain",
+          "level": 80,
+          "stats": [
+            "Gain # % of Damage as Extra Fire Damage"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Gain of Damage as Extra Cold Damage",
+      "type": "prefix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Gain",
+          "level": 80,
+          "stats": [
+            "Gain # % of Damage as Extra Cold Damage"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Gain of Damage as Extra Lightning Damage",
+      "type": "prefix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Gain",
+          "level": 80,
+          "stats": [
+            "Gain # % of Damage as Extra Lightning Damage"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "attribute to Intelligence",
+      "type": "suffix",
+      "tags": [
+        "attribute"
+      ],
+      "tiers": [
+        {
+          "name": "Intelligence",
+          "level": 74,
+          "stats": [
+            "attribute # to Intelligence"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "reduced Attribute Requirements",
+      "type": "suffix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Attribute",
+          "level": 60,
+          "stats": [
+            "# % reduced Attribute Requirements"
+          ]
+        },
+        {
+          "name": "Spell",
+          "level": 81,
+          "stats": [
+            "# to Level of all Spell Skills # to Level of all Fire Spell Skills # to Level of all Cold Spell Skills # to Level of all Lightning Spell Skills # to Level of all Chaos Spell Skills # to Level of all Physical Spell Skills"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased Critical Hit Chance for Spells",
+      "type": "suffix",
+      "tags": [
+        "caster",
+        "critical"
+      ],
+      "tiers": [
+        {
+          "name": "Critical Hit Chance",
+          "level": 76,
+          "stats": [
+            "# % increased Critical Hit Chance for Spells"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased Critical Spell Damage Bonus",
+      "type": "suffix",
+      "tags": [
+        "caster",
+        "critical"
+      ],
+      "tiers": [
+        {
+          "name": "Critical Spell Damage Bonus",
+          "level": 73,
+          "stats": [
+            "# % increased Critical Spell Damage Bonus"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "mana increased Mana Regeneration Rate increased Light Radius",
+      "type": "suffix",
+      "tags": [
+        "mana"
+      ],
+      "tiers": [
+        {
+          "name": "Light Radius",
+          "level": 30,
+          "stats": [
+            "mana # % increased Mana Regeneration Rate # % increased Light Radius"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased chance to Ignite",
+      "type": "suffix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Ignite",
+          "level": 75,
+          "stats": [
+            "# % increased chance to Ignite"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased Freeze Buildup",
+      "type": "suffix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Freeze",
+          "level": 75,
+          "stats": [
+            "# % increased Freeze Buildup"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "increased chance to Shock",
+      "type": "suffix",
+      "tags": [],
+      "tiers": [
+        {
+          "name": "Shock",
+          "level": 75,
+          "stats": [
+            "# % increased chance to Shock"
+          ]
+        }
+      ]
+    }
+  ]
+}

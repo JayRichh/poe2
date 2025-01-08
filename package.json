@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "scrape:notes": "ts-node --project scripts/tsconfig.json src/scripts/scrape-patch-notes.ts",
+    "scrape:items": "ts-node --project scripts/tsconfig.json src/scripts/scrape-all-items.ts",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
