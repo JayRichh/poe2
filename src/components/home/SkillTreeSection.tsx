@@ -87,7 +87,7 @@ export function SkillTreeSection() {
       </div>
 
       <div className="flex-1 relative group/image">
-        <div className="relative w-full h-[600px] max-w-xl mx-auto">
+        <div className="relative w-full h-auto max-w-xl mx-auto">
           <motion.div
             className="absolute inset-0 -m-2 rounded-full bg-gradient-to-br from-primary/15 via-accent/15 to-secondary/15 blur-xl opacity-40"
             animate={{
@@ -114,13 +114,14 @@ export function SkillTreeSection() {
                   <Image
                     src="/skill-tree.png"
                     alt="POE2 Skill Tree Preview"
-                    fill
+                    height={400}
+                    width={400}
                     quality={60}
                     loading="lazy"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 800px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                    className="object-cover object-center scale-[1.15] group-hover/image:scale-110 transition-all duration-700"
+                    className="object-cover object-center w-full h-auto scale-[1.15] group-hover/image:scale-110 transition-all duration-700"
                     onError={(event) => {
                       const target = event.target as HTMLImageElement;
                       target.style.display = "none";
