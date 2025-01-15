@@ -151,14 +151,30 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public files (images, etc)
-     * - manifest files
+     * Match specific routes that need middleware:
+     * - Root pages
+     * - Auth pages
+     * - Build planner root (but not subroutes)
+     * - Other top-level pages
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$|manifest\\.json|robots\\.txt|sitemap\\.xml).*)",
+    "/",
+    "/auth/:path*",
+    "/build-planner",
+    "/guides/:path*",
+    "/news/:path*",
+    "/mechanics/:path*",
+    "/profile",
+    "/terms",
+    "/privacy",
+    
+    /*
+     * Exclude:
+     * - API routes
+     * - Static assets
+     * - Build planner subroutes
+     * - Image files
+     * - Manifest files
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|build-planner/.*|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$|manifest\\.json|robots\\.txt|sitemap\\.xml).*)",
   ],
 };
