@@ -9,11 +9,15 @@ export async function POST(request: NextRequest) {
     const response = new NextResponse();
     const supabase = createMiddlewareClient(request, response);
 
+    const baseUrl = process.env.NODE_ENV === "production" 
+      ? "https://poe2.dev"
+      : request.nextUrl.origin;
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
-        emailRedirectTo: `${request.nextUrl.origin}/api/auth/callback`,
+        emailRedirectTo: `${baseUrl}/api/auth/callback`,
         data: {
           email_verified: false,
         },

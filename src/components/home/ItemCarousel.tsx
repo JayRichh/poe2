@@ -2,7 +2,6 @@ import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { ItemBase } from "~/types/itemTypes";
 
-// Global cache for failed image URLs
 const failedImageCache = new Set<string>();
 
 interface ItemCarouselProps {
@@ -20,20 +19,27 @@ function ScrollingRow({
   speed?: number;
 }) {
   const x = useMotionValue(0);
-  const [paused, setPaused] = useState(true); // Start paused
+  const [paused, setPaused] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const direction = reverse ? 1 : -1;
-  const resetRef = useRef(false);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
-  // Calculate content width on mount and item changes
   useEffect(() => {
     if (containerRef.current) {
-      const itemWidth = 320; // min-w-[320px]
-      const gap = 32; // gap-8 (2rem = 32px)
+      const itemWidth = 320;
+      const gap = 32;
       const totalWidth = items.length * (itemWidth + gap);
       setContentWidth(totalWidth);
+      setViewportWidth(window.innerWidth);
+
+      const handleResize = () => {
+        setViewportWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }
   }, [items]);
 
@@ -59,25 +65,15 @@ function ScrollingRow({
 
       if (!paused) {
         let newVal = x.get() + direction * (speed * (dt / 16.6667));
-        const resetThreshold = contentWidth;
+        const itemSetWidth = contentWidth / 6;
 
         if (reverse) {
-          // For reverse direction (bottom row)
-          if (newVal >= 0 && !resetRef.current) {
-            newVal = -resetThreshold;
-            resetRef.current = true;
-          } else if (newVal < -resetThreshold) {
-            newVal = 0;
-            resetRef.current = false;
+          if (newVal >= itemSetWidth) {
+            newVal = -itemSetWidth * 4;
           }
         } else {
-          // For forward direction (top row)
-          if (newVal <= -resetThreshold && !resetRef.current) {
-            newVal = 0;
-            resetRef.current = true;
-          } else if (newVal > 0) {
-            newVal = -resetThreshold;
-            resetRef.current = false;
+          if (newVal <= -itemSetWidth * 5) {
+            newVal = -itemSetWidth;
           }
         }
 
@@ -95,9 +91,8 @@ function ScrollingRow({
     setFailedImages(new Set(failedImageCache));
   };
 
-  // Filter out items with failed images and create four sets for smoother scrolling
   const validItems = items.filter(item => !failedImageCache.has(item.icon));
-  const displayItems = [...validItems, ...validItems, ...validItems, ...validItems];
+  const displayItems = [...validItems, ...validItems, ...validItems, ...validItems, ...validItems, ...validItems];
 
   return (
     <motion.div
@@ -108,6 +103,7 @@ function ScrollingRow({
         transform: "translate3d(0,0,0)",
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden",
+        willChange: "transform",
       }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
