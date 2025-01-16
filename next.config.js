@@ -31,17 +31,17 @@ const nextConfig = {
       },
       {
         source: "/dps-calc",
-        destination: "/calculators/dps-calc",
+        destination: "/calculators/dps",
         permanent: true,
       },
       {
         source: "/currency-calc",
-        destination: "/calculators/currency-calc",
+        destination: "/calculators/currency",
         permanent: true,
       },
       {
         source: "/speed-calc",
-        destination: "/calculators/speed-calc",
+        destination: "/calculators/speed",
         permanent: true,
       },
     ];
