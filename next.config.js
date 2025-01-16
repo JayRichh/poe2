@@ -29,6 +29,21 @@ const nextConfig = {
         destination: "/feed.xml",
         permanent: true,
       },
+      {
+        source: "/dps-calc",
+        destination: "/calculators/dps-calc",
+        permanent: true,
+      },
+      {
+        source: "/currency-calc",
+        destination: "/calculators/currency-calc",
+        permanent: true,
+      },
+      {
+        source: "/speed-calc",
+        destination: "/calculators/speed-calc",
+        permanent: true,
+      },
     ];
   },
   images: {
