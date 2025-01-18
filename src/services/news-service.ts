@@ -165,8 +165,8 @@ export class NewsService {
         const filePath = path.join(process.cwd(), "public", "data", "patch-notes.json");
         data = JSON.parse(fs.readFileSync(filePath, "utf8"));
       } else {
-        // Client-side: Use fetch
-        const response = await fetch("/data/patch-notes.json");
+        // Client-side: Use fetch with cache-busting
+        const response = await fetch(`/data/patch-notes.json?_=${Date.now()}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch patch notes (${response.status})`);
         }
@@ -229,7 +229,7 @@ export class NewsService {
         data = JSON.parse(fs.readFileSync(filePath, "utf8"));
       } else {
         // Client-side: Use fetch
-        const response = await fetch("/data/announcements.json");
+        const response = await fetch(`/data/announcements.json?_=${Date.now()}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch announcements (${response.status})`);
         }

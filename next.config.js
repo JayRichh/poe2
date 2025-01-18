@@ -191,6 +191,17 @@ const nextConfig = {
         headers: [
           { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
           { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
+        source: "/data/:path*",
+        headers: [
+          { key: "Cache-Control", value: "no-store, must-revalidate" },
+        ],
+      },
+      {
+        source: "/:path*((?!data/).)*",
+        headers: [
           { key: "Cache-Control", value: "public, max-age=31536000" },
         ],
       },
