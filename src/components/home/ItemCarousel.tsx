@@ -7,6 +7,12 @@ import type { ItemBase } from "~/types/itemTypes";
 
 const failedImageCache = new Set<string>();
 
+const getProxiedImageUrl = (url: string): string => {
+  return url.includes('cdn.poe2db.tw')
+    ? `/api/proxy/image?url=${encodeURIComponent(url)}`
+    : url;
+};
+
 const preloadImage = (url: string): Promise<boolean> => {
   return new Promise((resolve) => {
     if (failedImageCache.has(url)) {
@@ -20,7 +26,7 @@ const preloadImage = (url: string): Promise<boolean> => {
       failedImageCache.add(url);
       resolve(false);
     };
-    img.src = url;
+    img.src = getProxiedImageUrl(url);
   });
 };
 
@@ -127,6 +133,7 @@ function ScrollingRow({
     setFailedImages(new Set(failedImageCache));
     setValidItems(current => current.filter(item => item.icon !== itemUrl));
   };
+
   const displayItems = [...validItems, ...validItems, ...validItems, ...validItems];
 
   return (
@@ -151,25 +158,25 @@ function ScrollingRow({
           <div className="w-20 h-20 relative flex-shrink-0 bg-background/30 rounded-lg p-1.5 group-hover:bg-background/50 transition-colors">
             {failedImages.has(item.icon) ? (
               <div className="w-full h-full flex items-center justify-center opacity-50">
-              <Image 
-                src="/icon.svg" 
-                alt="Fallback Icon"
-                width={48}
-                height={48}
-                className="w-12 h-12"
-                priority
-              />
+                <Image 
+                  src="/icon.svg" 
+                  alt="Fallback Icon"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12"
+                  priority
+                />
               </div>
             ) : (
               <Image
-                src={item.icon}
+                src={getProxiedImageUrl(item.icon)}
                 alt={item.name}
                 width={80}
                 height={80}
                 className="w-full h-full object-contain"
                 onError={() => handleImageError(item.icon)}
                 loading="eager"
-                unoptimized={item.icon.includes('cdn.poe2db.tw')}
+                unoptimized={false}
               />
             )}
           </div>
