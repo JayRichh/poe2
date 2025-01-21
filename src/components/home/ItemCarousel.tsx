@@ -107,34 +107,12 @@ function ScrollingRow({
     return () => cancelAnimationFrame(frameId);
   }, [paused, reverse, contentWidth, speed, x, direction]);
 
-  const [validItems, setValidItems] = useState<ItemBase[]>([]);
-
-  useEffect(() => {
-    let mounted = true;
-
-    const checkImages = async () => {
-      const validItemsList = [];
-      for (const item of items) {
-        if (mounted && await preloadImage(item.icon)) {
-          validItemsList.push(item);
-        }
-      }
-      if (mounted) {
-        setValidItems(validItemsList);
-      }
-    };
-
-    checkImages();
-    return () => { mounted = false; };
-  }, [items]);
-
   const handleImageError = (itemUrl: string) => {
     failedImageCache.add(itemUrl);
     setFailedImages(new Set(failedImageCache));
-    setValidItems(current => current.filter(item => item.icon !== itemUrl));
   };
 
-  const displayItems = [...validItems, ...validItems, ...validItems, ...validItems];
+  const displayItems = [...items, ...items, ...items, ...items];
 
   return (
     <motion.div
@@ -168,16 +146,28 @@ function ScrollingRow({
                 />
               </div>
             ) : (
-              <Image
-                src={getProxiedImageUrl(item.icon)}
-                alt={item.name}
-                width={80}
-                height={80}
-                className="w-full h-full object-contain"
-                onError={() => handleImageError(item.icon)}
-                loading="eager"
-                unoptimized={false}
-              />
+              <div className="w-full h-full relative">
+                <Image
+                  src={getProxiedImageUrl(item.icon)}
+                  alt={item.name}
+                  width={80}
+                  height={80}
+                  className={`w-full h-full object-contain transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-0' : 'opacity-100'}`}
+                  onError={() => handleImageError(item.icon)}
+                  loading="eager"
+                  unoptimized={false}
+                />
+                <div className={`absolute inset-0 flex items-center justify-center bg-background/30 transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-100' : 'opacity-0'}`}>
+                  <Image 
+                    src="/icon.svg" 
+                    alt="Loading"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12"
+                    priority
+                  />
+                </div>
+              </div>
             )}
           </div>
           <div className="flex flex-col min-w-0">
