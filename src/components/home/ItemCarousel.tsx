@@ -2,9 +2,27 @@
 
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import type { ItemBase } from "~/types/itemTypes";
 
 const failedImageCache = new Set<string>();
+
+const preloadImage = (url: string): Promise<boolean> => {
+  return new Promise((resolve) => {
+    if (failedImageCache.has(url)) {
+      resolve(false);
+      return;
+    }
+
+    const img = new window.Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => {
+      failedImageCache.add(url);
+      resolve(false);
+    };
+    img.src = url;
+  });
+};
 
 interface ItemCarouselProps {
   topItems: ItemBase[];
@@ -28,17 +46,15 @@ function ScrollingRow({
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    if (items.length === 0) return;
+    
     const itemWidth = 320;
     const gap = 32;
     const singleSetWidth = items.length * (itemWidth + gap);
     setContentWidth(singleSetWidth);
 
-    // Initialize position based on direction
-    if (reverse) {
-      x.set(-singleSetWidth * 2);
-    } else {
-      x.set(-singleSetWidth);
-    }
+    const initialX = reverse ? -singleSetWidth * 2 : -singleSetWidth;
+    x.set(initialX);
   }, [items, x, reverse]);
 
   useEffect(() => {
@@ -65,7 +81,6 @@ function ScrollingRow({
         const delta = direction * (speed * (dt / 16.6667));
         let newX = currentX + delta;
 
-        // Seamless loop logic
         if (reverse) {
           if (newX > -contentWidth) {
             newX = -contentWidth * 3;
@@ -86,13 +101,32 @@ function ScrollingRow({
     return () => cancelAnimationFrame(frameId);
   }, [paused, reverse, contentWidth, speed, x, direction]);
 
+  const [validItems, setValidItems] = useState<ItemBase[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const checkImages = async () => {
+      const validItemsList = [];
+      for (const item of items) {
+        if (mounted && await preloadImage(item.icon)) {
+          validItemsList.push(item);
+        }
+      }
+      if (mounted) {
+        setValidItems(validItemsList);
+      }
+    };
+
+    checkImages();
+    return () => { mounted = false; };
+  }, [items]);
+
   const handleImageError = (itemUrl: string) => {
     failedImageCache.add(itemUrl);
     setFailedImages(new Set(failedImageCache));
+    setValidItems(current => current.filter(item => item.icon !== itemUrl));
   };
-
-  const validItems = items.filter(item => !failedImageCache.has(item.icon));
-  // Use 4 sets for smoother transitions
   const displayItems = [...validItems, ...validItems, ...validItems, ...validItems];
 
   return (
@@ -117,18 +151,25 @@ function ScrollingRow({
           <div className="w-20 h-20 relative flex-shrink-0 bg-background/30 rounded-lg p-1.5 group-hover:bg-background/50 transition-colors">
             {failedImages.has(item.icon) ? (
               <div className="w-full h-full flex items-center justify-center opacity-50">
-                <img 
-                  src="/icon.svg" 
-                  alt="Fallback Icon" 
-                  className="w-12 h-12"
-                />
+              <Image 
+                src="/icon.svg" 
+                alt="Fallback Icon"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+                priority
+              />
               </div>
             ) : (
-              <img 
-                src={item.icon} 
-                alt={item.name} 
+              <Image
+                src={item.icon}
+                alt={item.name}
+                width={80}
+                height={80}
                 className="w-full h-full object-contain"
                 onError={() => handleImageError(item.icon)}
+                loading="eager"
+                unoptimized={item.icon.includes('cdn.poe2db.tw')}
               />
             )}
           </div>
