@@ -7,14 +7,10 @@ import type { ItemBase } from "~/types/itemTypes";
 
 const failedImageCache = new Set<string>();
 
-const shouldProxyImage = (url: string): boolean => {
-  if (!url) return false;
-  return url.includes('cdn.poe2db.tw') || url.includes('pathofexile2.wiki.fextralife.com');
-};
-
 const getProxiedImageUrl = (url: string): string => {
-  if (!url) return '/icon.svg';
-  return shouldProxyImage(url) ? `/api/proxy/image?url=${encodeURIComponent(url)}` : url;
+  return url.includes('cdn.poe2db.tw')
+    ? `/api/proxy/image?url=${encodeURIComponent(url)}`
+    : url;
 };
 
 const preloadImage = (url: string): Promise<boolean> => {
@@ -158,9 +154,8 @@ function ScrollingRow({
                   height={80}
                   className={`w-full h-full object-contain transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-0' : 'opacity-100'}`}
                   onError={() => handleImageError(item.icon)}
-                  loading={shouldProxyImage(item.icon) ? "eager" : "lazy"}
-                  priority={shouldProxyImage(item.icon)}
-                  unoptimized={shouldProxyImage(item.icon)}
+                  loading="eager"
+                  unoptimized={false}
                 />
                 <div className={`absolute inset-0 flex items-center justify-center bg-background/30 transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-100' : 'opacity-0'}`}>
                   <Image 
