@@ -1,7 +1,6 @@
 "use client";
 
 import { useScroll, useTransform } from "framer-motion";
-
 import { useRef } from "react";
 
 import { CalculatorsSection } from "~/components/home/CalculatorsSection";
@@ -12,6 +11,7 @@ import { ItemsSection } from "~/components/home/ItemsSection";
 import { PatchNotesSection } from "~/components/home/PatchNotesSection";
 import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
 import { SkillTreeSection } from "~/components/home/SkillTreeSection";
+import { BuildsPreviewSection } from "~/components/home/BuildsPreviewSection";
 import { Container } from "~/components/ui/Container";
 
 export default function HomePage() {
@@ -34,6 +34,10 @@ export default function HomePage() {
 
       <section className="w-full pb-12 flex justify-center">
         <ItemsSection />
+      </section>
+
+      <section className="w-full py-6 flex justify-center">
+        <BuildsPreviewSection />
       </section>
 
       <section className="w-full py-6 flex justify-center">

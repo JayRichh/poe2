@@ -16,6 +16,7 @@ import {
   User,
   Users,
   Zap,
+  BarChart,
 } from "lucide-react";
 
 import { memo, useState } from "react";
@@ -136,18 +137,17 @@ const primaryLinks: (NavItem | NavItemWithDropdown)[] = [
   {
     label: "Calculators",
     items: [
-      { href: "/calculators", label: "All Calculators", icon: Calculator },
       { href: "/calculators/dps", label: "DPS Calculator", icon: Zap },
       { href: "/calculators/speed", label: "Speed Calculator", icon: Timer },
       { href: "/calculators/currency", label: "Currency Calculator", icon: Coins },
     ],
   },
-  { href: "/news", label: "News", icon: Newspaper },
+  { href: "/builds", label: "Statistics", icon: BarChart },
   {
-    label: "Build Tools",
+    label: "Builds",
     items: [
-      { href: "/build-planner", label: "Build Planner", icon: Layout },
       { href: "/skill-tree", label: "Skill Tree", icon: GitBranch },
+      { href: "/build-planner", label: "Build Planner", icon: Layout },
     ],
   },
 ];
@@ -156,6 +156,7 @@ const secondaryLinks: NavItem[] = [
   { href: "/mechanics", label: "Mechanics", icon: Cog },
   { href: "/guides", label: "Guides", icon: FileText },
   { href: "/ascendancies", label: "Ascendancies", icon: Users },
+  { href: "/news", label: "News", icon: Newspaper },
 ];
 
 export function Navigation() {
@@ -238,7 +239,7 @@ export function Navigation() {
                           items={item.items.map((subItem) => ({
                             label: subItem.label,
                             value: subItem.href,
-                            icon: <subItem.icon />,
+                            icon: <subItem.icon  />,
                           }))}
                           onChange={(value) => router.push(value)}
                           position="bottom-left"

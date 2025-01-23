@@ -21,6 +21,13 @@ const nextConfig = {
       },
       {
         source: "/builds/:path*",
+        has: [
+          {
+            type: "query",
+            key: "path",
+            value: "(?!^$)",
+          },
+        ],
         destination: "/build-planner/:path*",
         permanent: true,
       },
@@ -91,23 +98,9 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     dangerouslyAllowSVG: true,
   },
-  modularizeImports: {
-    "@nivo/core": {
-      transform: "@nivo/core/dist/{{member}}",
-      preventFullImport: true,
-    },
-    "@nivo/line": {
-      transform: "@nivo/line/dist/{{member}}",
-      preventFullImport: true,
-    },
-  },
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: [
-      "@nivo/core",
-      "@nivo/line",
-      "@nivo/bar",
-      "@nivo/pie",
+      optimizePackageImports: [
       "lucide-react",
       "@uiw/react-md-editor",
       "framer-motion",

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
+  BarChart,
   BookOpen,
   Code,
   Coffee,
@@ -47,6 +48,13 @@ const mainLinks: MainLink[] = [
     label: "Build Planner",
     icon: Wrench,
     description: "Plan and optimize your character builds",
+  },
+  {
+    id: "main-builds",
+    href: "/builds",
+    label: "Statistics",
+    icon: BarChart,
+    description: "View build statistics and analytics",
   },
   {
     id: "main-skill-tree",

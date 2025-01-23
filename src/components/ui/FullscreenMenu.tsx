@@ -70,6 +70,7 @@ const mainLinks: MainLink[] = [
       { id: "build-gems", label: "Skill Gems", path: "/build-planner" },
       { id: "build-stats", label: "Build Stats", path: "/build-planner" },
       { id: "build-share", label: "Share Builds", path: "/build-planner" },
+      { id: "build-ladder", label: "Ladder Stats", path: "/builds" },
     ],
   },
   {
