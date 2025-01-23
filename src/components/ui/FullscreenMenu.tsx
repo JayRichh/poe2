@@ -135,6 +135,7 @@ const quickLinks: QuickLink[] = [
   { id: "quick-news", label: "Latest News", path: "/news", icon: Newspaper },
   { id: "quick-guides", label: "Guides", path: "/guides", icon: FileText },
   { id: "quick-builds", label: "Community Builds", path: "/build-planner", icon: Users },
+  { id: "quick-ladder", label: "Ladder Stats", path: "/builds", icon: GitBranch },
   { id: "quick-patch-notes", label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
   { id: "quick-ascendancies", label: "Ascendancy Classes", path: "/ascendancies", icon: Users },
 ];
