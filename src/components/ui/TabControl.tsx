@@ -24,8 +24,9 @@ export function TabControl<T extends string>({
   className,
 }: TabControlProps<T>) {
   return (
-    <div className={cn("relative", className)}>
-      <div className="flex items-center gap-1 p-1 rounded-lg bg-background/95 border border-border/50">
+    <div className={cn("relative w-full", className)}>
+      {/* Desktop Tabs */}
+      <div className="hidden md:flex items-center gap-1 p-1 rounded-lg bg-background/95 border border-border/50">
         {tabs.map((tab) => {
           const isActive = tab.id === activeTab;
           return (
@@ -50,6 +51,21 @@ export function TabControl<T extends string>({
             </button>
           );
         })}
+      </div>
+
+      {/* Mobile Dropdown */}
+      <div className="md:hidden w-full">
+        <select
+          value={activeTab}
+          onChange={(e) => onChange(e.target.value as T)}
+          className="w-full px-4 py-2 rounded-lg bg-background/95 border border-border/50 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
+        >
+          {tabs.map((tab) => (
+            <option key={tab.id} value={tab.id}>
+              {tab.label}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

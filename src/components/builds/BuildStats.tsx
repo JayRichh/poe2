@@ -13,7 +13,7 @@ interface ChartDataPoint {
 interface ComparisonDataPoint {
   class: string;
   tooltipValue: string;
-  [key: string]: string | number; // Allow dynamic keys for ladder counts
+  [key: string]: string | number;
 }
 
 import { LadderSelector } from "./LadderSelector";
@@ -89,6 +89,7 @@ export function BuildStats() {
   const [selectedLadder, setSelectedLadder] = useState<string>("overall");
   const [showPercentage, setShowPercentage] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [overview, setOverview] = useState<StatsOverview>({
     totalPlayers: 0,
     topClass: { name: "", count: 0, percentage: 0 },
@@ -97,6 +98,15 @@ export function BuildStats() {
     top3Classes: [],
     hardcoreRatio: 0
   });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     fetch("/data/ladder-stats.json")
@@ -167,7 +177,7 @@ export function BuildStats() {
     tooltipValue: `${item.count} players (${item.percentage.toFixed(1)}%)`
   }));
 
-  const ladderComparisonData: ComparisonDataPoint[] = currentData.distribution.slice(0, 5).map(item => {
+  const ladderComparisonData: ComparisonDataPoint[] = currentData.distribution.slice(0, isMobile ? 3 : 5).map(item => {
     const classData: ComparisonDataPoint = {
       class: item.className,
       tooltipValue: `${item.count} players (${item.percentage.toFixed(1)}%)`,
@@ -196,11 +206,11 @@ export function BuildStats() {
       >
         <Text 
           variant="h2"
-          className="tracking-tight mb-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+          className="tracking-tight mb-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent text-center"
         >
           Top 1000 Class Distribution
         </Text>
-        <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-6">
+        <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-6 text-center px-4">
           Analyze class preferences and meta trends among top 1000 players in each ladder
         </Text>
         <LadderSelector
@@ -210,7 +220,7 @@ export function BuildStats() {
         />
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -286,12 +296,17 @@ export function BuildStats() {
             Show {showPercentage ? "Count" : "Percentage"}
           </button>
         </div>
-        <div style={{ height: 400 }}>
+        <div className="h-[300px] md:h-[400px]">
           <ResponsiveBar
             data={chartData}
             keys={[showPercentage ? "percentage" : "count"]}
             indexBy="class"
-            margin={{ top: 50, right: 50, bottom: 80, left: 80 }}
+            margin={{
+              top: 30,
+              right: isMobile ? 30 : 50,
+              bottom: isMobile ? 100 : 80,
+              left: isMobile ? 60 : 80
+            }}
             padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
@@ -306,10 +321,10 @@ export function BuildStats() {
             axisBottom={{
               tickSize: 5,
               tickPadding: 5,
-              tickRotation: -45,
+              tickRotation: isMobile ? -65 : -45,
               legend: "Character Class",
               legendPosition: "middle",
-              legendOffset: 65,
+              legendOffset: isMobile ? 85 : 65,
             }}
             axisLeft={{
               tickSize: 5,
@@ -317,14 +332,14 @@ export function BuildStats() {
               tickRotation: 0,
               legend: showPercentage ? "Player Distribution (%)" : "Player Count",
               legendPosition: "middle",
-              legendOffset: -60,
+              legendOffset: -50,
             }}
             enableGridY={true}
             gridYValues={5}
-            labelSkipWidth={12}
-            labelSkipHeight={12}
+            labelSkipWidth={isMobile ? 0 : 12}
+            labelSkipHeight={isMobile ? 0 : 12}
             labelTextColor="hsl(var(--background))"
-            label={d => String(d.value) + (showPercentage ? '%' : '')}
+            label={isMobile ? undefined : d => String(d.value) + (showPercentage ? '%' : '')}
             role="application"
             ariaLabel="Class distribution chart"
             barAriaLabel={({ indexValue, value }) => 
@@ -346,18 +361,23 @@ export function BuildStats() {
 
       {selectedLadder === "overall" && (
         <ChartContainer 
-          title="Top 5 Classes Across Ladders" 
+          title="Top Classes Across Ladders" 
           chartId="ladder-comparison"
           description="Comparison of top classes among the top 1000 players in each ladder type"
         >
-          <div style={{ height: 400 }}>
+          <div className="h-[300px] md:h-[400px]">
             <ResponsiveBar
               data={ladderComparisonData}
               keys={ladderKeys}
               indexBy="class"
               groupMode="grouped"
-              margin={{ top: 50, right: 130, bottom: 80, left: 80 }}
-              padding={0.3}
+              margin={{
+                top: 30,
+                right: isMobile ? 30 : 130,
+                bottom: isMobile ? 100 : 80,
+                left: isMobile ? 60 : 80
+              }}
+              padding={0.2}
               valueScale={{ type: "linear" }}
               indexScale={{ type: "band", round: true }}
               colors={gradientColors}
@@ -371,10 +391,10 @@ export function BuildStats() {
               axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: -45,
+                tickRotation: isMobile ? -65 : -45,
                 legend: "Character Class",
                 legendPosition: "middle",
-                legendOffset: 65,
+                legendOffset: isMobile ? 85 : 65,
               }}
               axisLeft={{
                 tickSize: 5,
@@ -382,15 +402,15 @@ export function BuildStats() {
                 tickRotation: 0,
                 legend: "Player Count",
                 legendPosition: "middle",
-                legendOffset: -60,
+                legendOffset: -50,
               }}
               enableGridY={true}
               gridYValues={5}
-              labelSkipWidth={12}
-              labelSkipHeight={12}
+              labelSkipWidth={isMobile ? 0 : 12}
+              labelSkipHeight={isMobile ? 0 : 12}
               labelTextColor="hsl(var(--background))"
-              label={d => String(d.data[d.id as keyof ComparisonDataPoint])}
-              legends={[
+              label={isMobile ? undefined : d => String(d.data[d.id as keyof ComparisonDataPoint])}
+              legends={isMobile ? [] : [
                 {
                   dataFrom: "keys",
                   anchor: "bottom-right",
