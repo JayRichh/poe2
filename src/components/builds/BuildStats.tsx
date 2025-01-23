@@ -198,10 +198,10 @@ export function BuildStats() {
           variant="h2"
           className="tracking-tight mb-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
         >
-          Class Distribution
+          Top 1000 Class Distribution
         </Text>
         <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-6">
-          Analyze player class preferences and meta trends across different ladders
+          Analyze class preferences and meta trends among top 1000 players in each ladder
         </Text>
         <LadderSelector
           selectedLadder={selectedLadder}
@@ -274,9 +274,9 @@ export function BuildStats() {
       </div>
 
       <ChartContainer 
-        title="Detailed Distribution" 
-        chartId="class-distribution"
-        description="Distribution of character classes across the selected ladder"
+          title="Top 1000 Distribution" 
+          chartId="class-distribution"
+          description="Distribution of character classes among top 1000 players in the selected ladder"
       >
         <div className="flex justify-end mb-4">
           <button
@@ -348,7 +348,7 @@ export function BuildStats() {
         <ChartContainer 
           title="Top 5 Classes Across Ladders" 
           chartId="ladder-comparison"
-          description="Comparison of top classes across different ladder types"
+          description="Comparison of top classes among the top 1000 players in each ladder type"
         >
           <div style={{ height: 400 }}>
             <ResponsiveBar
