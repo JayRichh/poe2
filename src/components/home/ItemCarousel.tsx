@@ -5,44 +5,23 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { ItemBase } from "~/types/itemTypes";
 
-const failedImageCache = new Set<string>();
-
-const getProxiedImageUrl = (url: string): string => {
-  return url.includes('cdn.poe2db.tw')
-    ? `/api/proxy/image?url=${encodeURIComponent(url)}`
-    : url;
-};
-
-const preloadImage = (url: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    if (failedImageCache.has(url)) {
-      resolve(false);
-      return;
-    }
-
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => {
-      failedImageCache.add(url);
-      resolve(false);
-    };
-    img.src = getProxiedImageUrl(url);
-  });
-};
-
 interface ItemCarouselProps {
   topItems: ItemBase[];
   bottomItems: ItemBase[];
 }
 
+const failedImageCache = new Set<string>();
+
 function ScrollingRow({
   items,
   reverse = false,
   speed = 0.5,
+  getLocalImageUrl,
 }: {
   items: ItemBase[];
   reverse?: boolean;
   speed?: number;
+  getLocalImageUrl: (url: string) => string;
 }) {
   const x = useMotionValue(0);
   const [paused, setPaused] = useState(true);
@@ -148,7 +127,7 @@ function ScrollingRow({
             ) : (
               <div className="w-full h-full relative">
                 <Image
-                  src={getProxiedImageUrl(item.icon)}
+                  src={getLocalImageUrl(item.icon)}
                   alt={item.name}
                   width={80}
                   height={80}
@@ -188,14 +167,37 @@ function ScrollingRow({
 }
 
 export function ItemCarousel({ topItems, bottomItems }: ItemCarouselProps) {
+  const [imageUrlMapping, setImageUrlMapping] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const loadImageMapping = async () => {
+      try {
+        const response = await fetch('/data/item-image-mapping.json');
+        if (response.ok) {
+          const mapping = await response.json();
+          setImageUrlMapping(mapping);
+        }
+      } catch (error) {
+        console.error('Failed to load image mapping:', error);
+      }
+    };
+    loadImageMapping();
+  }, []);
+
+  const getLocalImageUrl = (url: string): string => {
+    if (url.includes('cdn.poe2db.tw')) {
+      return imageUrlMapping[url] || url;
+    }
+    return url;
+  };
   return (
     <div className="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-gradient-to-br from-background/50 to-background/30 backdrop-blur py-12 border-y border-border/10">
       <div className="relative space-y-12">
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={topItems} />
+          <ScrollingRow items={topItems} getLocalImageUrl={getLocalImageUrl} />
         </div>
         <div className="relative h-[120px] overflow-hidden">
-          <ScrollingRow items={bottomItems} reverse />
+          <ScrollingRow items={bottomItems} reverse getLocalImageUrl={getLocalImageUrl} />
         </div>
       </div>
     </div>
