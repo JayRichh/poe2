@@ -122,6 +122,7 @@ function ScrollingRow({
                   height={48}
                   className="w-12 h-12"
                   priority
+                  unoptimized={true}
                 />
               </div>
             ) : (
@@ -134,7 +135,7 @@ function ScrollingRow({
                   className={`w-full h-full object-contain transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-0' : 'opacity-100'}`}
                   onError={() => handleImageError(item.icon)}
                   loading="eager"
-                  unoptimized={false}
+                  unoptimized={true}
                 />
                 <div className={`absolute inset-0 flex items-center justify-center bg-background/30 transition-opacity duration-200 ${failedImages.has(item.icon) ? 'opacity-100' : 'opacity-0'}`}>
                   <Image 
@@ -144,6 +145,7 @@ function ScrollingRow({
                     height={48}
                     className="w-12 h-12"
                     priority
+                    unoptimized={true}
                   />
                 </div>
               </div>
