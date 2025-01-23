@@ -95,9 +95,11 @@ export async function generateMetadata(
 
   return {
     metadataBase: new URL(baseUrl),
+    applicationName: "POE2 Tools",
+    generator: "POE2 Tools",
     title: {
       template: "%s | POE2 Tools",
-      default: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+      default: "POE2 Tools | Path of Exile 2 Build Planning & Tools",
     },
     description,
     keywords: [
@@ -177,7 +179,7 @@ export async function generateMetadata(
     },
     manifest: "/manifest.json",
     openGraph: {
-      title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+      title: "POE2 Tools | Path of Exile 2 Build Planning & Tools",
       description,
       type: "website",
       locale: "en_US",
@@ -201,7 +203,7 @@ export async function generateMetadata(
     },
     twitter: {
       card: "summary",
-      title: "POE2 Tools - Path of Exile 2 Build Planning & Tools",
+      title: "POE2 Tools | Path of Exile 2 Build Planning & Tools",
       description,
       images: ["/android-chrome-512x512.png"],
       creator: "@poe2tools",
@@ -217,7 +219,7 @@ export async function generateMetadata(
       },
     },
     verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
     },
     robots: {
       index: true,
@@ -231,6 +233,7 @@ export async function generateMetadata(
     },
     other: {
       "schema:WebApplication": JSON.stringify(schemaData),
+      "google-name": "POE2 Tools",
     },
   };
 }
