@@ -35,7 +35,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       className="flex flex-col min-h-[90vh] justify-center overflow-hidden"
     >
       {/* Logo Section */}
-      <div className="relative mx-auto pointer-events-none select-none mt-20 sm:-mt-40">
+      <div className="relative mx-auto pointer-events-none select-none mt-0 sm:-mt-60">
         <div
           className={cn(
             "w-[85vw] sm:w-auto max-w-[400px] sm:max-w-[600px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1600px]",

@@ -1,14 +1,27 @@
 [
   {
+    "id": "3707604",
+    "title": "0.1.1b Patch Notes (restartless)",
+    "date": "Jan 23, 2025, 9:53:56 PM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3707604",
+    "content": "<h3>0.1.1b Patch Notes</h3><br>\n<ul>\n<li>Added a new client command line option which sends us additional debug information (API markers, NVIDIA Nsight Aftermath, and DRED) from DirectX 12 client crashes. If you're experiencing a large number of crashes and using DirectX 12, then temporarily enabling this will assist us in identifying the cause. This can be enabled by adding \"--ex-crash-report\" to your Path of Exile 2 command line arguments/launch options.</li>\n<li>Fixed a bug where on rare occasions Zarokh, the Temporal could kill all targets of the hourglass time trial skill without giving a chance to avoid it.</li>\n<li>Fixed a bug where Una was not playing the audio for her song selections.</li>\n<li>Fixed a client crash related to checkpoint UI.</li>\n<li>Fixed an instance crash.</li>\n</ul><br>\n<br>\nThis patch has been deployed without restarting the servers. You will need to restart your client to receive the client changes in this patch.",
+    "author": "Kieren_GGG",
+    "replies": 120,
+    "lastReplyBy": "mordy009#1409",
+    "lastReplyDate": "Jan 24, 2025, 9:58:09 AM",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
     "id": "3704595",
     "title": "0.1.1 Hotfix 4",
     "date": "Jan 21, 2025, 1:36:52 AM",
     "url": "https://www.pathofexile.com/forum/view-thread/3704595",
     "content": "<h3>0.1.1 Hotfix 4</h3><br>\n<ul>\n<li>Fixed a bug where trading was not calculating the amount of free space correctly when using the Titan Inventory Expansion.</li>\n</ul>",
     "author": "Kieren_GGG",
-    "replies": 56,
-    "lastReplyBy": "aalbero#3452",
-    "lastReplyDate": "Jan 23, 2025, 11:09:41 AM",
+    "replies": 74,
+    "lastReplyBy": "Pkay#0596",
+    "lastReplyDate": "Jan 23, 2025, 11:27:23 PM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
   },
@@ -349,18 +362,5 @@
     "lastReplyDate": "Dec 20, 2024, 8:19:13 PM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
-  },
-  {
-    "id": "3601143",
-    "title": "0.1.0 Hotfix 8",
-    "date": "Dec 8, 2024, 7:54:48 AM",
-    "url": "https://www.pathofexile.com/forum/view-thread/3601143",
-    "content": "<h3>0.1.0 Hotfix 8</h3><br>\n<ul>\n<li>Fixed a client crash that could occur when using the DirectX12 renderer.</li>\n<li>Reduced the damage of Magnetic Salvos explosions by approximately by 40%.</li>\n</ul><br>\nThis patch has been deployed without restarting the servers. You will need to restart your client to receive the client changes in this patch.",
-    "author": "Jeff_GGG",
-    "replies": 60,
-    "lastReplyBy": "Maynasty#5354",
-    "lastReplyDate": "Jan 18, 2025, 1:09:18 AM",
-    "type": "patch-note",
-    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjowLCJzaXplIjoiYXZhdGFyIn1d/1cbf9cc398/Path_of_Exile_Gallery_Image.jpg"
   }
 ]
