@@ -105,7 +105,7 @@ function calculateDistribution(entries: LadderEntry[]): ClassDistribution[] {
     .map(([className, count]) => ({
       className,
       count,
-      percentage: (count / total) * 100,
+      percentage: Math.round(((count / total) * 100) * 10) / 10,
     }))
     .sort((a, b) => b.count - a.count);
 
