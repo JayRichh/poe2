@@ -97,26 +97,32 @@ export function Slider({
 
   return (
     <div className={cn("flex flex-col gap-1 w-full", className)}>
-      {(label || showValue) && (
-        <div className="flex items-center justify-between gap-2 min-h-[1.5rem] w-full">
-          {label && (
-            <span className="text-sm font-medium text-foreground truncate flex-grow">{label}</span>
+      {/* Fixed height container for labels */}
+      <div className="h-6 flex items-center justify-between gap-2 w-full">
+        {label ? (
+          <span className="text-sm font-medium text-foreground truncate flex-grow">{label}</span>
+        ) : (
+          <span className="flex-grow" />
+        )}
+        {/* Always render value container to maintain layout */}
+        <span 
+          className={cn(
+            "text-sm font-medium tabular-nums tracking-tight w-12 text-right",
+            showValue ? "text-foreground/70" : "opacity-0"
           )}
-          {showValue && (
-            <span className="text-sm font-medium text-foreground/70 tabular-nums tracking-tight shrink-0">
-              {value.toFixed(step < 1 ? 1 : 0)}
-            </span>
-          )}
-        </div>
-      )}
+        >
+          {value.toFixed(step < 1 ? 1 : 0)}
+        </span>
+      </div>
 
-      <div
+      <div 
         ref={trackRef}
         onMouseDown={handleMouseDown}
         className={cn(
           "relative h-8 flex items-center cursor-pointer",
           "group touch-none select-none"
         )}
+        style={{ contentVisibility: 'auto' }}
       >
         <div className="absolute inset-0 flex items-center">
           <div className="w-full h-2 rounded-full bg-background-secondary">
