@@ -1,14 +1,40 @@
 [
   {
+    "id": "3724779",
+    "title": "0.1.1d Hotfix",
+    "date": "Feb 18, 2025, 4:16:48 AM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3724779",
+    "content": "<h3>0.1.1d Hotfix</h3><br>\n<ul>\n<li>Fixed 2 client crashes related to Stash Tab UI.</li>\n</ul><br>\nThis hotfix has been deployed without restarting the realm, restart your client to receive the fix.",
+    "author": "Kieren_GGG",
+    "replies": 38,
+    "lastReplyBy": "jollyjewbagel#4794",
+    "lastReplyDate": "Feb 19, 2025, 5:14:33 AM",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "3723866",
+    "title": "0.1.1d Patch Notes",
+    "date": "Feb 16, 2025, 11:40:12 PM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3723866",
+    "content": "<h3>0.1.1d Patch Notes</h3><br>\n<ul>\n<li>Enabled the Map Stash Tab. In Path of Exile 2 this has 6 sub-stashes for each tier of Waystone. Each sub-stash can hold 96 Waystones, totalling 576 Waystones that can be stored for each tier. You can change the name and colour for each sub-stash, and individually set each of them to public in order to list your items on the Trade website. You can check out a preview of this stash tab <a href=\"https://www.pathofexile.com/forum/view-thread/3723891\">here</a>!</li>\n<li>Made an adjustment to improve the performance on Xbox.</li>\n<li>Enabled the Havenwood Cloak cosmetic microtransaction for use in Path of Exile 2.</li>\n<li>Fixed a bug where Strength, Dexterity and Intelligence values on the Passive Skill Tree were visually displaying the wrong attribute value when using a controller.</li>\n<li>Fixed a bug where online item filters could sometimes fail to load when logging in on consoles.</li>\n<li>Fixed a bug affecting Xbox players where their settings could be lost when switching between playing on Path of Exile 1 and Path of Exile 2.</li>\n<li>Fixed an issue where 16:10 was not a supported aspect ratio when using a controller.</li>\n<li>Fixed an issue that could prevent Supporter Pack upgrade options displaying on console.</li>\n<li>Fixed an instance crash.</li>\n<li>Fixed a client crash.</li>\n</ul>",
+    "author": "Stacey_GGG",
+    "replies": 450,
+    "lastReplyBy": "Phoenixotica#6095",
+    "lastReplyDate": "Feb 19, 2025, 12:08:40 AM",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjo1NzIsInNpemUiOiJhdmF0YXIifV0/da0980dacf/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
     "id": "3721134",
     "title": "0.1.1c Hotfix 1",
     "date": "Feb 10, 2025, 10:39:12 PM",
     "url": "https://www.pathofexile.com/forum/view-thread/3721134",
     "content": "<h3>0.1.1c Hotfix 1</h3><br>\n<ul>\n<li>Fixed an Instance Crash.</li>\n<li>Meta Gems will no longer trigger in town areas.</li>\n</ul>",
     "author": "Jeff_GGG",
-    "replies": 49,
-    "lastReplyBy": "Vendetta#0327",
-    "lastReplyDate": "Feb 12, 2025, 8:15:56 AM",
+    "replies": 74,
+    "lastReplyBy": "573r30#7391",
+    "lastReplyDate": "Feb 18, 2025, 4:06:22 PM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjowLCJzaXplIjoiYXZhdGFyIn1d/1cbf9cc398/Path_of_Exile_Gallery_Image.jpg"
   },
@@ -19,9 +45,9 @@
     "url": "https://www.pathofexile.com/forum/view-thread/3717308",
     "content": "<h3>0.1.1c Patch Notes</h3><br>\nThis patch adds respawn support for more endgame content and support for renaming characters through the website, as well as other improvements and bug fixes.<br>\n<br>\n<strong>Improvements and Changes</strong><br>\n<br>\n<ul>\n<li>Added up to five respawn attempts for the Twisted Domain area, based on the area difficulty. If the Breach Domain is completed but you die during the Xesht, We Who Are One boss fight, you will revive at the entrance to the boss arena. If you die before completing the Breach Domain, you will revive at the start of the domain. Repeated attempts of the domain will result in no experience from monsters.</li>\n<li>Added up to five respawn attempts for the Olroth, Origin of the Fall boss fight, based on the fight difficulty.</li>\n<li>Added up to five respawn attempts for the Crux of Nothingness area, based on the area difficulty. If you die before killing The King of the Mists, reviving will place you inside the boss arena and begin the fight again.</li>\n<li>Respawns can only be triggered by the person who put in the Expedition Logbook, Breachstone or An Audience with the King, and everyone in your party will be respawned at the same time.</li>\n<li>Added more checkpoints to several Map areas and improved the placement of some checkpoints.</li>\n<li>Added the \"/ResetAtlas\" chat command which can only be used to reset your Atlas when it's in a bricked state (no available maps).</li>\n<li>Added Minimap Icons for Strongboxes.</li>\n<li>Minimap Icons for League mechanics now remain visible regardless of how far away you travel from them, making it easier to return to them later.</li>\n<li>Hitting inanimate objects, such as Ice Crystals, Tempest Bell or Vine Arrow plants, can no longer cause your trigger skills to generate energy.</li>\n<li>Vine Arrow plants no longer take damage from hits, and therefore no longer cause your on-hit effects and similar stats to take effect.</li>\n<li>Minions can now briefly squeeze through smaller gaps if they've failed to move for a short period.</li>\n<li>Channelled skills which scale their costs with attack/cast speed modifiers now explicitly describe this.</li>\n<li>Unused stats in the skill and character menu interfaces are no longer displayed.</li>\n<li>The Stun Threshold tooltip now provides more information on stun mechanics.</li>\n<li>Added customisable targeting behaviour settings when using a controller. These can be viewed and selected in the bind skills menu.</li>\n<li>Added Charms to the controller HUD.</li>\n<li>Added a setting to display advanced item information when inspecting items while using a controller.</li>\n<li>Added dedicated keybinds for confirming choices in various interfaces when using a controller, such as opening a Map in the Map Device, or starting a Trial at the Relic Altar.</li>\n<li>Increased font size of text in various locations when using a controller.</li>\n<li>Improved item navigation when using a controller.</li>\n<li>Improved targeting behaviour for ranged attacks when using a controller.</li>\n<li>Improved targeting behaviour for Offering skills when using a controller.</li>\n<li>Made further changes to reduce the aggressive targeting of Tempest Bell when using a controller.</li>\n<li>Reverted the change from the 0.1.1 patch that allowed you to pick up items and interact with some objects while performing other actions due to issues it introduced.</li>\n<li>You can now change the name of your Path of Exile 2 characters, or swap the names of two of your characters. You can access this through the <a href=\"https://www.pathofexile.com/my-account\">My Account</a> page on the website after the patch is deployed.</li>\n<li>Enabled the following existing cosmetic microtransactions for use in Path of Exile 2: Exile's Pilfering Ring, Exile's Pedometer Ring, Evertree Map Devices, Timekeeper's Map Devices, Peddler's Rain Hideout Decorations, Octoparasite Pets.</li>\n<li>Continued to incrementally improve the sound, art, effects and environments.</li>\n</ul><br>\n<strong>Bug Fixes</strong><br>\n<br>\n<ul>\n<li>Fixed a bug where you could lose access to the Map Device when migrating out of a Solo Self-found League.</li>\n<li>Fixed a bug where Zarokh, the Temporal could continue using his spinning lightning skill after death or while heavily stunned.</li>\n<li>Fixed a bug where Zarokh, the Temporal's spinning lightning beam skill was not able to hit victims hiding in the corners of the arena.</li>\n<li>Fixed a bug where players could remain immune to damage after the expiry of a stolen Proximal Tangibility monster modifier.</li>\n<li>Fixed a bug where on-death elemental explosions from Rare Monster minions would fail to render their telegraph if the corpse was destroyed on hit, such as by shattering the monster.</li>\n<li>Fixed a bug where the Twin Threats Atlas Passive Skill could sometimes duplicate monsters incorrectly, resulting in monsters that could not be damaged.</li>\n<li>Fixed a bug that would prevent kills with Damage over Time being assigned correctly to players, most notably any death to poison or bleeding while the monster still had Energy Shield at the time of death.</li>\n<li>Fixed a bug where it was possible to snapshot increases to the level of Elemental Skills using the Collapsing Horizon Unique Quaterstaff.</li>\n<li>Fixed a bug where parts of the Atlas could fail to render if they were far away from your most recent map.</li>\n<li>Fixed a bug where attempting to equip a weapon with a full inventory when using a controller could lose the previously equipped weapon.</li>\n<li>Fixed some wonky checkpoints in the Steaming Springs and Blooming Fields Map areas.</li>\n<li>Fixed a bug where The Trialmaster could use his time stop skill and vanish during his fight.</li>\n<li>Fixed a rare bug where certain quest items were not dropping for some players correctly.</li>\n<li>Fixed a bug where the Chimeral Inscribed Ultimatum quest item dropped by Xyclucian, the Chimera could disappear if you tried to pick it up while your inventory was full.</li>\n<li>Fixed a bug where Persistent Buffs would be removed upon reaching the maximum overflowed Life with the Couture of Crimson Unique Body Armour equipped.</li>\n<li>Fixed a bug which caused Direct Minions to cause summoned Ancestral Totems to stop using their skills until resummoned.</li>\n<li>Fixed a bug where Black Strider's web mortar impacts could not be blocked or avoided by dodge roll.</li>\n<li>Fixed a bug where Withering Presence's frequency and duration values would display as double their actual values in the skill information panel while the skill was active.</li>\n<li>Fixed a bug where the Crystalline Potential Gemling Legionnaire Ascendancy Passive Skill would cause un-equipped ammo to be set to 0 upon entering a new area.</li>\n<li>Fixed an issue in couch co-op where one player was able to interact with the Map Device but not open a Map due to them not being the party leader. In couch co-op, Map owners are now made to be the party leader.</li>\n<li>Fixed various couch co-op bugs where player 2 would open user interface elements of player 1, such as the Endgame Map.</li>\n<li>Fixed a bug in couch co-op where player 2 was not able to perform fast-travelling between checkpoints.</li>\n<li>Fixed an issue where you could not view the benefits from Quality on Gems when using a controller.</li>\n<li>Fixed a bug where the \"you have died\" screen could persist after being revived in the Arbiter of Ash Boss fight when using a controller.</li>\n<li>Fixed a bug where charges were not orbiting the Planetary Orb Character Effect microtransactions correctly. </li>\n<li>Fixed several client and instance crashes. This includes a potential fix for the crash affecting players on Windows 24H2.</li>\n</ul>",
     "author": "Kieren_GGG",
-    "replies": 493,
-    "lastReplyBy": "SKT_Whiskas#4494",
-    "lastReplyDate": "Feb 12, 2025, 2:12:44 AM",
+    "replies": 494,
+    "lastReplyBy": "Makoinfused1234#2091",
+    "lastReplyDate": "Feb 14, 2025, 5:53:59 PM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
   },
@@ -349,31 +375,5 @@
     "lastReplyDate": "Jan 11, 2025, 11:01:03 AM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
-  },
-  {
-    "id": "3617298",
-    "title": "0.1.0c Hotfix 2",
-    "date": "Dec 11, 2024, 6:24:59 AM",
-    "url": "https://www.pathofexile.com/forum/view-thread/3617298",
-    "content": "<h3>0.1.0c Hotfix 2</h3><br>\n<ul>\n<li>Demon form now has a minimum of 1 life lost per second, per stack.</li>\n</ul>",
-    "author": "Jeff_GGG",
-    "replies": 118,
-    "lastReplyBy": "DeadAngel69#5772",
-    "lastReplyDate": "Jan 22, 2025, 6:13:56 AM",
-    "type": "patch-note",
-    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjowLCJzaXplIjoiYXZhdGFyIn1d/1cbf9cc398/Path_of_Exile_Gallery_Image.jpg"
-  },
-  {
-    "id": "3612268",
-    "title": "0.1.0c Hotfix 1",
-    "date": "Dec 10, 2024, 8:56:01 AM",
-    "url": "https://www.pathofexile.com/forum/view-thread/3612268",
-    "content": "<h3>0.1.0c Hotfix 1</h3><br>\n<ul>\n<li>Summon Raging Spirits now only summons 5 Raging Spirits per cast at all levels. The tooltip display will be updated in a future restart patch.</li>\n<li>Summon Raging Spirits can no longer be spawned from triggered Fire Skills. </li>\n</ul>",
-    "author": "Jeff_GGG",
-    "replies": 290,
-    "lastReplyBy": "ponebolezney#5412",
-    "lastReplyDate": "Dec 12, 2024, 10:21:24 AM",
-    "type": "patch-note",
-    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjowLCJzaXplIjoiYXZhdGFyIn1d/1cbf9cc398/Path_of_Exile_Gallery_Image.jpg"
   }
 ]

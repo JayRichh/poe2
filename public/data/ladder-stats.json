@@ -1,53 +1,53 @@
 {
-  "timestamp": "2025-02-12T10:57:32.920Z",
+  "timestamp": "2025-02-19T08:48:15.287Z",
   "ladders": {
     "Standard": {
       "total": 1000,
       "distribution": [
         {
           "className": "Stormweaver",
-          "count": 357,
-          "percentage": 35.699999999999996
+          "count": 333,
+          "percentage": 33.300000000000004
         },
         {
           "className": "Gemling Legionnaire",
-          "count": 186,
-          "percentage": 18.6
+          "count": 187,
+          "percentage": 18.7
         },
         {
           "className": "Invoker",
-          "count": 158,
-          "percentage": 15.8
+          "count": 167,
+          "percentage": 16.7
         },
         {
           "className": "Infernalist",
-          "count": 103,
-          "percentage": 10.299999999999999
+          "count": 109,
+          "percentage": 10.9
         },
         {
           "className": "Blood Mage",
-          "count": 77,
-          "percentage": 7.7
+          "count": 79,
+          "percentage": 7.9
         },
         {
           "className": "Deadeye",
-          "count": 55,
-          "percentage": 5.5
+          "count": 59,
+          "percentage": 5.8999999999999995
         },
         {
           "className": "Chronomancer",
-          "count": 17,
-          "percentage": 1.7000000000000002
-        },
-        {
-          "className": "Pathfinder",
-          "count": 13,
-          "percentage": 1.3
+          "count": 16,
+          "percentage": 1.6
         },
         {
           "className": "Titan",
-          "count": 12,
-          "percentage": 1.2
+          "count": 14,
+          "percentage": 1.4000000000000001
+        },
+        {
+          "className": "Pathfinder",
+          "count": 14,
+          "percentage": 1.4000000000000001
         },
         {
           "className": "Witchhunter",
@@ -61,8 +61,13 @@
         },
         {
           "className": "Warbringer",
-          "count": 5,
-          "percentage": 0.5
+          "count": 4,
+          "percentage": 0.4
+        },
+        {
+          "className": "Witch",
+          "count": 1,
+          "percentage": 0.1
         }
       ]
     },
@@ -70,64 +75,64 @@
       "total": 1000,
       "distribution": [
         {
-          "className": "Invoker",
-          "count": 261,
-          "percentage": 26.1
+          "className": "Infernalist",
+          "count": 272,
+          "percentage": 27.200000000000003
         },
         {
-          "className": "Infernalist",
-          "count": 247,
-          "percentage": 24.7
+          "className": "Invoker",
+          "count": 255,
+          "percentage": 25.5
         },
         {
           "className": "Stormweaver",
-          "count": 223,
-          "percentage": 22.3
+          "count": 214,
+          "percentage": 21.4
         },
         {
           "className": "Gemling Legionnaire",
-          "count": 106,
-          "percentage": 10.6
+          "count": 134,
+          "percentage": 13.4
         },
         {
           "className": "Deadeye",
-          "count": 50,
-          "percentage": 5
+          "count": 36,
+          "percentage": 3.5999999999999996
         },
         {
           "className": "Pathfinder",
-          "count": 40,
-          "percentage": 4
+          "count": 31,
+          "percentage": 3.1
         },
         {
           "className": "Titan",
-          "count": 22,
-          "percentage": 2.1999999999999997
-        },
-        {
-          "className": "Chronomancer",
-          "count": 19,
-          "percentage": 1.9
+          "count": 21,
+          "percentage": 2.1
         },
         {
           "className": "Blood Mage",
-          "count": 16,
-          "percentage": 1.6
+          "count": 14,
+          "percentage": 1.4000000000000001
         },
         {
-          "className": "Warbringer",
-          "count": 6,
-          "percentage": 0.6
+          "className": "Chronomancer",
+          "count": 14,
+          "percentage": 1.4000000000000001
         },
         {
           "className": "Witchhunter",
-          "count": 6,
-          "percentage": 0.6
+          "count": 4,
+          "percentage": 0.4
+        },
+        {
+          "className": "Warbringer",
+          "count": 3,
+          "percentage": 0.3
         },
         {
           "className": "Acolyte of Chayula",
-          "count": 3,
-          "percentage": 0.3
+          "count": 1,
+          "percentage": 0.1
         },
         {
           "className": "Witch",
@@ -141,38 +146,38 @@
       "distribution": [
         {
           "className": "Invoker",
-          "count": 300,
-          "percentage": 30
+          "count": 306,
+          "percentage": 30.599999999999998
         },
         {
           "className": "Stormweaver",
-          "count": 287,
-          "percentage": 28.7
+          "count": 282,
+          "percentage": 28.199999999999996
         },
         {
           "className": "Gemling Legionnaire",
-          "count": 122,
-          "percentage": 12.2
+          "count": 124,
+          "percentage": 12.4
         },
         {
           "className": "Deadeye",
-          "count": 93,
-          "percentage": 9.3
+          "count": 94,
+          "percentage": 9.4
         },
         {
           "className": "Infernalist",
-          "count": 86,
-          "percentage": 8.6
+          "count": 87,
+          "percentage": 8.7
         },
         {
           "className": "Pathfinder",
-          "count": 33,
-          "percentage": 3.3000000000000003
+          "count": 34,
+          "percentage": 3.4000000000000004
         },
         {
           "className": "Titan",
-          "count": 30,
-          "percentage": 3
+          "count": 26,
+          "percentage": 2.6
         },
         {
           "className": "Blood Mage",
@@ -181,8 +186,8 @@
         },
         {
           "className": "Acolyte of Chayula",
-          "count": 10,
-          "percentage": 1
+          "count": 9,
+          "percentage": 0.8999999999999999
         },
         {
           "className": "Warbringer",
@@ -191,8 +196,8 @@
         },
         {
           "className": "Chronomancer",
-          "count": 6,
-          "percentage": 0.6
+          "count": 5,
+          "percentage": 0.5
         },
         {
           "className": "Witchhunter",
@@ -206,43 +211,43 @@
       "distribution": [
         {
           "className": "Invoker",
-          "count": 251,
-          "percentage": 25.1
+          "count": 252,
+          "percentage": 25.2
         },
         {
           "className": "Infernalist",
-          "count": 217,
-          "percentage": 21.7
+          "count": 222,
+          "percentage": 22.2
         },
         {
           "className": "Stormweaver",
-          "count": 154,
-          "percentage": 15.4
+          "count": 153,
+          "percentage": 15.299999999999999
         },
         {
           "className": "Pathfinder",
-          "count": 110,
-          "percentage": 11
+          "count": 108,
+          "percentage": 10.8
         },
         {
           "className": "Deadeye",
-          "count": 80,
-          "percentage": 8
+          "count": 82,
+          "percentage": 8.200000000000001
         },
         {
           "className": "Gemling Legionnaire",
-          "count": 56,
-          "percentage": 5.6000000000000005
+          "count": 60,
+          "percentage": 6
         },
         {
           "className": "Titan",
-          "count": 51,
-          "percentage": 5.1
+          "count": 48,
+          "percentage": 4.8
         },
         {
           "className": "Blood Mage",
-          "count": 37,
-          "percentage": 3.6999999999999997
+          "count": 35,
+          "percentage": 3.5000000000000004
         },
         {
           "className": "Warbringer",
@@ -250,14 +255,14 @@
           "percentage": 1.5
         },
         {
-          "className": "Acolyte of Chayula",
-          "count": 14,
-          "percentage": 1.4000000000000001
+          "className": "Chronomancer",
+          "count": 12,
+          "percentage": 1.2
         },
         {
-          "className": "Chronomancer",
-          "count": 13,
-          "percentage": 1.3
+          "className": "Acolyte of Chayula",
+          "count": 11,
+          "percentage": 1.0999999999999999
         },
         {
           "className": "Witchhunter",
@@ -272,68 +277,68 @@
     "distribution": [
       {
         "className": "Stormweaver",
-        "count": 1021,
-        "percentage": 25.525
+        "count": 982,
+        "percentage": 24.55
       },
       {
         "className": "Invoker",
-        "count": 970,
-        "percentage": 24.25
+        "count": 980,
+        "percentage": 24.5
       },
       {
         "className": "Infernalist",
-        "count": 653,
-        "percentage": 16.325
+        "count": 690,
+        "percentage": 17.25
       },
       {
         "className": "Gemling Legionnaire",
-        "count": 470,
-        "percentage": 11.75
+        "count": 505,
+        "percentage": 12.625
       },
       {
         "className": "Deadeye",
-        "count": 278,
-        "percentage": 6.950000000000001
+        "count": 271,
+        "percentage": 6.775
       },
       {
         "className": "Pathfinder",
-        "count": 196,
-        "percentage": 4.9
+        "count": 187,
+        "percentage": 4.675
       },
       {
         "className": "Blood Mage",
-        "count": 153,
-        "percentage": 3.8249999999999997
+        "count": 151,
+        "percentage": 3.775
       },
       {
         "className": "Titan",
-        "count": 115,
-        "percentage": 2.875
+        "count": 109,
+        "percentage": 2.725
       },
       {
         "className": "Chronomancer",
-        "count": 55,
-        "percentage": 1.375
+        "count": 47,
+        "percentage": 1.175
       },
       {
         "className": "Warbringer",
-        "count": 35,
-        "percentage": 0.8750000000000001
+        "count": 31,
+        "percentage": 0.775
       },
       {
         "className": "Acolyte of Chayula",
-        "count": 34,
-        "percentage": 0.8500000000000001
+        "count": 28,
+        "percentage": 0.7000000000000001
       },
       {
         "className": "Witchhunter",
-        "count": 19,
-        "percentage": 0.475
+        "count": 17,
+        "percentage": 0.42500000000000004
       },
       {
         "className": "Witch",
-        "count": 1,
-        "percentage": 0.025
+        "count": 2,
+        "percentage": 0.05
       }
     ]
   }
