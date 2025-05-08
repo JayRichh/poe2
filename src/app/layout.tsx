@@ -44,18 +44,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         {/* <link rel="preload" href="/skill-tree.png" as="image" type="image/png" /> */}
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
         />
-        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
+        <meta
+          name="msvalidate.01"
+          content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION}
+        />
         <meta
           name="yandex-verification"
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
-        <meta name="google-adsense-account" content="ca-pub-3287461191996714">
+        <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
         <ClientLayout>{children}</ClientLayout>
