@@ -55,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           name="yandex-verification"
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
+        <meta name="google-adsense-account" content="ca-pub-3287461191996714">
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
         <ClientLayout>{children}</ClientLayout>
