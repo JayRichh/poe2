@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
-
 import { updateSession } from "./lib/supabase/middleware";
+
+/* ─────────────────────────  CONFIG  ────────────────────────── */
 
 const RATE_LIMITS: Record<string, number> = {
   "/api/auth/login": 30,
@@ -24,10 +24,9 @@ const ALLOWED_ORIGINS = [
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : null,
 ].filter(Boolean) as string[];
 
-const requestCounts = new Map<
-  string,
-  { count: number; timestamp: number }
->();
+const requestCounts = new Map<string, { count: number; timestamp: number }>();
+
+/* ─────────────────────  HELPERS (unchanged)  ─────────────────── */
 
 function getRateLimit(path: string) {
   return (
@@ -77,7 +76,10 @@ function handleCORS(request: NextRequest, res: NextResponse) {
     res.headers.set("Access-Control-Allow-Origin", origin);
 
   if (request.method === "OPTIONS") {
-    res.headers.set("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.headers.set(
+      "Access-Control-Allow-Methods",
+      "GET,POST,PUT,DELETE,OPTIONS"
+    );
     res.headers.set(
       "Access-Control-Allow-Headers",
       "Content-Type, Authorization, X-CSRF-Token"
@@ -87,32 +89,44 @@ function handleCORS(request: NextRequest, res: NextResponse) {
   res.headers.set("Access-Control-Allow-Credentials", "true");
 }
 
-export async function middleware(request: NextRequest) {
-  const nonce = crypto.randomBytes(16).toString("base64"); // new per-request nonce
+/* ────────────────────────  MIDDLEWARE  ──────────────────────── */
 
-  // OPTIONS pre-flight handled first
+export async function middleware(request: NextRequest) {
+  // Edge-compatible nonce (no Node import!)
+  const nonce = crypto.randomUUID(); // v4 UUID, 122 bits random :contentReference[oaicite:1]{index=1}
+
   let response = NextResponse.next();
+
+  // CORS pre-flight
   handleCORS(request, response);
   if (request.method === "OPTIONS") return response;
 
-  // Rate-limit API + dynamic routes
+  // Rate-limit
   const { allowed, headers } = checkRateLimit(request);
-  if (!allowed)
+  if (!allowed) {
     return new NextResponse("Too Many Requests", {
       status: 429,
       headers: { ...headers, "Retry-After": headers["X-RateLimit-Reset"] },
     });
+  }
 
-  // Auth/session handling (Supabase)
-  response = await updateSession(request);
+  // Session (Supabase) — surrounded with try/catch so failures don’t 500 the edge
+  try {
+    response = await updateSession(request);
+  } catch {
+    response = NextResponse.next();
+  }
 
+  // Apply rate-limit headers
   Object.entries(headers).forEach(([k, v]) => response.headers.set(k, v));
-  response.headers.set("x-nonce", nonce); // expose nonce to server components
 
+  // Expose nonce for App Router
+  response.headers.set("x-nonce", nonce);
+
+  // CSP for HTML
   if (request.headers.get("accept")?.includes("text/html")) {
     const csp = [
       "object-src 'none'",
-      // main fix → pass nonce, allow strict-dynamic, https/http fallback
       `script-src 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:`,
       "base-uri 'none'",
     ].join("; ");
@@ -121,6 +135,8 @@ export async function middleware(request: NextRequest) {
 
   return response;
 }
+
+/* ───────────────────────  MATCHER  ──────────────────────── */
 
 export const config = {
   matcher: [
