@@ -43,12 +43,13 @@ const plexMono = IBM_Plex_Mono({
   ],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const nonce = headers().get("x-nonce") ?? "";
+  const nonce =
+    (await headers()).get("x-nonce")?.toString() ?? "";
 
   return (
     <html
@@ -59,11 +60,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
@@ -77,6 +80,7 @@ export default function RootLayout({
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
         <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
+
         <Script
           nonce={nonce}
           async
