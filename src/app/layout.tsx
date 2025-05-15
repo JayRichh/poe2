@@ -1,4 +1,5 @@
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import Script from "next/script";
 
 import { generateMetadata } from "../config/metadata";
 import { viewport } from "../config/viewport";
@@ -49,7 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* <link rel="preload" href="/skill-tree.png" as="image" type="image/png" /> */}
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
@@ -63,8 +63,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
         <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
-     crossorigin="anonymous"></script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
         <ClientLayout>{children}</ClientLayout>
