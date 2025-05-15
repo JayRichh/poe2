@@ -1,4 +1,5 @@
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { headers } from "next/headers";
 import Script from "next/script";
 
 import { generateMetadata } from "../config/metadata";
@@ -32,10 +33,23 @@ const plexMono = IBM_Plex_Mono({
   display: "optional",
   preload: true,
   adjustFontFallback: true,
-  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "monospace",
+  ],
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const nonce = headers().get("x-nonce") ?? "";
+
   return (
     <html
       lang="en"
@@ -64,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
         <Script
+          nonce={nonce}
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
           crossOrigin="anonymous"
