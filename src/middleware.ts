@@ -118,21 +118,23 @@ export async function middleware(request: NextRequest) {
     // Add security headers for HTML responses
     if (request.headers.get("accept")?.includes("text/html")) {
       const securityHeaders = {
-        "Content-Security-Policy": [
-          "default-src 'self'",
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com *.vercel.live vercel.live",
-          "style-src 'self' 'unsafe-inline'",
-          "img-src 'self' data: https: blob: *.fextralife.com",
-          "font-src 'self' data:",
-          "connect-src 'self' https: wss:",
-          "frame-ancestors 'none'",
-          "base-uri 'self'",
-          "form-action 'self'",
-          "worker-src 'self' blob:",
-          "manifest-src 'self'",
-          "upgrade-insecure-requests",
-        ].join("; "),
-      };
+  "Content-Security-Policy": [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' gc.zgo.at *.goatcounter.com *.vercel.live vercel.live https://pagead2.googlesyndication.com https://*.googlesyndication.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https: blob: *.fextralife.com https://*.googlesyndication.com",
+    "font-src 'self' data:",
+    "connect-src 'self' https: wss: https://*.googlesyndication.com",
+    "frame-src https://*.google.com https://*.googlesyndication.com",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "worker-src 'self' blob:",
+    "manifest-src 'self'",
+    "upgrade-insecure-requests",
+  ].join("; "),
+};
+
 
       Object.entries(securityHeaders).forEach(([key, value]) => {
         response.headers.set(key, value);
