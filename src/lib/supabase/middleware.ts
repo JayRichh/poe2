@@ -1,16 +1,21 @@
-import { type CookieOptions, createServerClient } from "@supabase/ssr";
+// Supabase middleware disabled
+// import { type CookieOptions, createServerClient } from "@supabase/ssr";
+// import type { Database } from "./types";
 
 import { type NextRequest, NextResponse } from "next/server";
 
-import type { Database } from "./types";
-
 export async function updateSession(request: NextRequest) {
+  // Supabase authentication middleware disabled - just pass through
   let response = NextResponse.next({
     request: {
       headers: request.headers,
     },
   });
 
+  // All authentication checks disabled - allow all routes
+  return response;
+
+  /* Original Supabase middleware code commented out:
   const supabase = createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -91,4 +96,5 @@ export async function updateSession(request: NextRequest) {
   }
 
   return response;
+  */
 }

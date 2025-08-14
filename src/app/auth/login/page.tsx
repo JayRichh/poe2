@@ -11,18 +11,19 @@ export default function LoginPage() {
       <Container className="max-w-md py-12">
         <div className="space-y-8">
           <div className="flex flex-col w-full">
-            <Text className="text-3xl text-center font-bold">Welcome Back</Text>
-            <Text className="text-foreground/60 text-center mt-2">Sign in to your account</Text>
+            <Text className="text-3xl text-center font-bold">Authentication Temporarily Disabled</Text>
+            <Text className="text-foreground/60 text-center mt-2">
+              Sign in is currently unavailable. Please enjoy the site without authentication.
+            </Text>
           </div>
 
           <Alert variant="info" className="text-sm">
-            POE2 Tools is actively being developed with new features added daily.
-            <br></br>Thanks have a great day :&#41;
+            Authentication features are temporarily disabled. All tools and features are available without signing in.
           </Alert>
 
-          <AuthForm type="login" />
+          {/* <AuthForm type="login" /> */}
 
-          <div className="space-y-4 text-center">
+          {/* <div className="space-y-4 text-center">
             <div>
               <Text className="text-sm text-foreground/60">
                 Don&apos;t have an account?{" "}
@@ -42,7 +43,7 @@ export default function LoginPage() {
                 Forgot your password?
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>

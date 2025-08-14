@@ -1,8 +1,12 @@
-import { createBrowserClient } from "@supabase/ssr";
-
-import type { Database } from "./types";
+// Supabase client temporarily disabled
+// import { createBrowserClient } from "@supabase/ssr";
+// import type { Database } from "./types";
 
 export const createClient = () => {
+  // Return null client when Supabase is disabled
+  return null as any;
+  
+  /* Original Supabase client code commented out:
   const client = createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -39,4 +43,5 @@ export const createClient = () => {
   );
 
   return client;
+  */
 };

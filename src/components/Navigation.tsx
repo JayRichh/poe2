@@ -293,13 +293,13 @@ export function Navigation() {
             </div>
 
             <div className="flex items-center gap-4">
-              <ProfileSection
+              {/* <ProfileSection
                 user={user}
                 loading={authLoading}
                 onSignIn={handleSignIn}
                 onProfileAction={handleProfileAction}
                 refreshSession={refreshSession}
-              />
+              /> */}
               <Button
                 onClick={() => setIsMenuOpen(true)}
                 variant="ghost"
@@ -320,7 +320,7 @@ export function Navigation() {
         <Toast message={authError} type="error" isVisible={!!authError} onClose={() => {}} />
       )}
 
-      {!user && !authLoading && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
+      {/* {!user && !authLoading && PROTECTED_ROUTES.some((route) => pathname?.startsWith(route)) && (
         <div className="fixed inset-0 z-[90] bg-background/95 backdrop-blur-sm flex items-center justify-center">
           <div className="max-w-md mx-auto p-8 rounded-xl bg-background border border-border/50 shadow-lg text-center space-y-6">
             {authLoading ? (
@@ -341,7 +341,7 @@ export function Navigation() {
             )}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }

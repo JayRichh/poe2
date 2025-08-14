@@ -11,19 +11,19 @@ export default function SignUpPage() {
       <Container className="max-w-md py-12">
         <div className="space-y-8">
           <div className="flex flex-col w-full">
-            <Text className="text-3xl text-center font-bold">Create Account</Text>
+            <Text className="text-3xl text-center font-bold">Authentication Temporarily Disabled</Text>
             <Text className="text-foreground/60 text-center mt-2">
-              Join POE2 Tools to get started
+              Account creation is currently unavailable. Please enjoy the site without authentication.
             </Text>
           </div>
 
           <Alert variant="info" className="text-sm">
-            Site is very much WIP but constantly developing new features and improvements daily!
+            Authentication features are temporarily disabled. All tools and features are available without signing in.
           </Alert>
 
-          <AuthForm type="signup" />
+          {/* <AuthForm type="signup" /> */}
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <Text className="text-sm text-foreground/60">
               Already have an account?{" "}
               <Link
@@ -33,7 +33,7 @@ export default function SignUpPage() {
                 Sign in
               </Link>
             </Text>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>

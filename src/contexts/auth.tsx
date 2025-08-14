@@ -7,7 +7,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 
-import { createClient } from "~/lib/supabase/client";
+// import { createClient } from "~/lib/supabase/client";
 
 type AuthState = {
   user: User | null;
@@ -31,111 +31,38 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
     user: null,
-    loading: true,
+    loading: false,
     error: null,
   });
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(true);
   const router = useRouter();
-  const client = createClient();
+  // const client = createClient();
   const queryClient = useQueryClient();
 
   const refreshSession = async () => {
-    try {
-      const {
-        data: { session },
-      } = await client.auth.getSession();
-
-      if (session) {
-        const {
-          data: { user },
-          error: userError,
-        } = await client.auth.getUser();
-        if (userError) throw userError;
-
-        setState((prev) => ({
-          ...prev,
-          user: user,
-          loading: false,
-          error: null,
-        }));
-      } else {
-        setState((prev) => ({
-          ...prev,
-          user: null,
-          loading: false,
-          error: null,
-        }));
-      }
-    } catch (error) {
-      console.error("Session refresh error:", error);
-      setState((prev) => ({
-        ...prev,
-        user: null,
-        loading: false,
-        error: error instanceof Error ? error.message : "Session refresh failed",
-      }));
-    }
+    // Supabase client disabled - always return no user
+    setState((prev) => ({
+      ...prev,
+      user: null,
+      loading: false,
+      error: null,
+    }));
   };
 
   const signOut = async () => {
-    try {
-      await client.auth.signOut();
-      setState((prev) => ({ ...prev, user: null, error: null }));
-      window.location.href = "/";
-    } catch (error) {
-      console.error("Sign out error:", error);
-      setState((prev) => ({
-        ...prev,
-        user: null,
-        error: error instanceof Error ? error.message : "Sign out failed",
-      }));
-      window.location.href = "/";
-    }
+    // Supabase client disabled - just clear state and redirect
+    setState((prev) => ({ ...prev, user: null, error: null }));
+    window.location.href = "/";
   };
 
   useEffect(() => {
+    // Supabase client disabled - just initialize with no user
     const initialize = async () => {
       await refreshSession();
       setIsInitialized(true);
     };
     initialize();
-
-    const {
-      data: { subscription },
-    } = client.auth.onAuthStateChange(async (event, session) => {
-      if (!isInitialized) return;
-      if (event === "SIGNED_OUT") {
-        setState((prev) => ({
-          ...prev,
-          user: null,
-          loading: false,
-          error: null,
-        }));
-        router.push("/");
-        queryClient.invalidateQueries({ queryKey: ["builds"] });
-      } else if (session) {
-        // Verify user data when session changes
-        const {
-          data: { user },
-          error: userError,
-        } = await client.auth.getUser();
-        if (userError) throw userError;
-
-        setState((prev) => ({
-          ...prev,
-          user: user,
-          loading: false,
-          error: null,
-        }));
-        router.refresh();
-        queryClient.invalidateQueries({ queryKey: ["builds"] });
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [client.auth, router]);
+  }, [router]);
 
   return (
     <AuthContext.Provider value={{ ...state, signOut, refreshSession }}>

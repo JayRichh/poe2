@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --watch index.ts"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "lint": {
+    "include": ["**/*.ts"],
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "include": ["**/*.ts"],
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "singleQuote": true
+  },
+  "importMap": "./import_map.json"
+}

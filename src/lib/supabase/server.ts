@@ -1,11 +1,15 @@
-import { type CookieOptions, createServerClient } from "@supabase/ssr";
-
-import type { Database } from "./types";
+// Supabase server client temporarily disabled
+// import { type CookieOptions, createServerClient } from "@supabase/ssr";
+// import type { Database } from "./types";
 
 export const createClient = (cookieStore: {
   get: (name: string) => { value: string } | undefined;
   set: (opts: { name: string; value: string } & CookieOptions) => void;
 }) => {
+  // Return null client when Supabase is disabled
+  return null as any;
+  
+  /* Original server client code commented out:
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -23,4 +27,5 @@ export const createClient = (cookieStore: {
       },
     }
   );
+  */
 };
