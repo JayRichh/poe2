@@ -1,4 +1,6 @@
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { headers } from "next/headers";
+import Script from "next/script";
 
 import { generateMetadata } from "../config/metadata";
 import { viewport } from "../config/viewport";
@@ -31,10 +33,24 @@ const plexMono = IBM_Plex_Mono({
   display: "optional",
   preload: true,
   adjustFontFallback: true,
-  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "monospace",
+  ],
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const nonce =
+    (await headers()).get("x-nonce")?.toString() ?? "";
+
   return (
     <html
       lang="en"
@@ -44,12 +60,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* <link rel="preload" href="/skill-tree.png" as="image" type="image/png" /> */}
+
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
@@ -63,6 +80,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
         <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
+
+        <Script
+          nonce={nonce}
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
         <ClientLayout>{children}</ClientLayout>
