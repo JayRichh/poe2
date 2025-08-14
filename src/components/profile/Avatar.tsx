@@ -9,7 +9,7 @@ import Image from "next/image";
 import { cn } from "~/utils/cn";
 
 import { useAuth } from "~/contexts/auth";
-import { createClient } from "~/lib/supabase/client";
+// import { createClient } from "~/lib/supabase/client";
 
 interface AvatarProps {
   uid: string;
@@ -29,17 +29,19 @@ export function Avatar({
   showUploadUI = true,
 }: AvatarProps) {
   const { user } = useAuth();
-  const supabase = createClient();
+  // const supabase = createClient();
   const [uploading, setUploading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  const avatarUrl = url
-    ? url.startsWith("http")
-      ? url
-      : supabase.storage.from("avatars").getPublicUrl(url).data.publicUrl
-    : null;
+  // Avatar functionality disabled when Supabase is disabled
+  const avatarUrl = url && url.startsWith("http") ? url : null;
 
   const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+    // Avatar upload disabled when Supabase is disabled
+    console.log("Avatar upload temporarily disabled");
+    return;
+
+    /* Original upload code commented out:
     try {
       setUploading(true);
 
@@ -60,7 +62,7 @@ export function Avatar({
       if (existingFiles && existingFiles.length > 0) {
         const { error: deleteError } = await supabase.storage
           .from("avatars")
-          .remove(existingFiles.map((file) => file.name));
+          .remove(existingFiles.map((file: any) => file.name));
 
         if (deleteError) {
           console.error("Error deleting previous avatar:", deleteError);
@@ -96,6 +98,7 @@ export function Avatar({
     } finally {
       setUploading(false);
     }
+    */
   };
 
   return (
