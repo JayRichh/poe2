@@ -1,7 +1,7 @@
 // For node-fetch v3, we need to use ESM import
 import fetch from 'node-fetch';
 // import dotenv from 'dotenv';
-import { DOMParser } from 'linkedom';
+// import { DOMParser } from 'linkedom';
 
 // Load environment variables from .env.local if available
 // dotenv.config({ path: '.env.local' });
