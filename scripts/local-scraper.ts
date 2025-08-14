@@ -1,10 +1,10 @@
 // For node-fetch v3, we need to use ESM import
 import fetch from 'node-fetch';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import { DOMParser } from 'linkedom';
 
 // Load environment variables from .env.local if available
-dotenv.config({ path: '.env.local' });
+// dotenv.config({ path: '.env.local' });
 
 // We'll make these optional since we're not saving to Supabase in this local version
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
