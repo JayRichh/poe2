@@ -53,24 +53,24 @@ export function SearchResults({
   return (
     <div className="space-y-4">
       {!searchTerm ? (
-        <div className="text-gray-400 text-center p-4">Enter a search term to find nodes</div>
+        <div className="text-foreground-secondary text-center p-4">Enter a search term to find nodes</div>
       ) : results.length === 0 ? (
-        <div className="text-gray-400 text-center p-4">
+        <div className="text-foreground-secondary text-center p-4">
           No nodes found matching &quot;{searchTerm}&quot;
           {isRegexSearch && <div className="text-sm">(using regex)</div>}
         </div>
       ) : (
         <>
           {/* Search Info */}
-          <div className="sticky top-0 bg-gray-900 p-2 border-b border-gray-700 z-10">
+          <div className="sticky top-0 bg-background p-2 border-b border-border z-10">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-foreground-secondary">
                 Found {results.length} {results.length === 1 ? "node" : "nodes"}
               </span>
               <select
                 value={groupBy}
                 onChange={(e) => setGroupBy(e.target.value as GroupBy)}
-                className="bg-gray-800 text-sm rounded border border-gray-700 px-2 py-1"
+                className="bg-accent text-foreground text-sm rounded border border-border px-2 py-1"
               >
                 <option value="type">Group by Type</option>
                 <option value="ascendancy">Group by Ascendancy</option>
@@ -83,8 +83,8 @@ export function SearchResults({
           <div className="space-y-6">
             {Object.entries(groupedResults).map(([group, nodes]) => (
               <div key={group} className="space-y-2">
-                <div className="sticky top-12 bg-gray-800/95 backdrop-blur-sm p-2 rounded-t border-b border-gray-700 z-10">
-                  <h3 className="font-semibold">
+                <div className="sticky top-12 bg-accent/95 backdrop-blur-sm p-2 rounded-t border-b border-border z-10">
+                  <h3 className="font-semibold text-foreground">
                     {group} ({nodes.length})
                   </h3>
                 </div>

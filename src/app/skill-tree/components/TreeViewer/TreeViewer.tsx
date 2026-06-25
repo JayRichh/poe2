@@ -15,6 +15,7 @@ import {
   calculateInitialPanOffset,
   calculateZoomPanOffset,
   clampPanOffsets,
+  searchNodes,
 } from "../../utils/treeUtils";
 import { TreeNode } from "./TreeNode";
 import { TreeNodeTooltip } from "./TreeNodeTooltip";
@@ -72,8 +73,8 @@ export function TreeViewer({
   showSkillDetails = true,
 }: TreeViewerProps) {
   const [hoveredNode, setHoveredNode] = useState<TreeNodeData | null>(null);
-  const [searchResults, setSearchResults] = useState<Set<string>>(new Set());
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [scale, setScale] = useState(() => {
     try {
       const saved = localStorage.getItem("skill-tree-scale");
@@ -254,6 +255,27 @@ export function TreeViewer({
     };
   }, [handleMouseMove, handleMouseUp, handleWheel]);
 
+  // Track container size in state so culling recomputes on resize/zoom/pan.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const updateSize = () => {
+      setContainerSize({ width: container.clientWidth, height: container.clientHeight });
+    };
+    updateSize();
+
+    const observer = new ResizeObserver(updateSize);
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  // Wire in-tree search highlighting: derive the matching node ids from the term.
+  const searchResults = useMemo(
+    () => (treeData ? searchNodes(treeData.nodes, searchTerm, isRegexSearch) : new Set<string>()),
+    [treeData, searchTerm, isRegexSearch]
+  );
+
   const filteredNodes = useMemo(() => {
     if (!treeData) return [];
     return Object.values(treeData.nodes).filter(
@@ -262,12 +284,15 @@ export function TreeViewer({
   }, [treeData, selectedAscendancy]);
 
   const visibleNodes = useMemo(() => {
-    if (!containerRef.current || !imageRef.current || !hasLoaded) return filteredNodes;
-    const containerRect = containerRef.current.getBoundingClientRect();
+    if (!hasLoaded || containerSize.width === 0) return filteredNodes;
+    const containerRect = {
+      width: containerSize.width,
+      height: containerSize.height,
+    } as DOMRect;
     return filteredNodes.filter((node) =>
       isNodeInViewport(node, containerRect, imageSize, scale, panOffset)
     );
-  }, [filteredNodes, scale, panOffset, hasLoaded, imageSize]);
+  }, [filteredNodes, scale, panOffset, hasLoaded, imageSize, containerSize]);
 
   if (!treeData) return null;
 

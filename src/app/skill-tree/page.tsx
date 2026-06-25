@@ -13,7 +13,8 @@ import {
   Upload,
 } from "lucide-react";
 
-import { shimmer, toBase64 } from "~/utils/image";
+import { useMemo } from "react";
+
 import { validateFile } from "~/utils/validation";
 
 import { Filters } from "./components/Sidebar/Filters";
@@ -21,6 +22,7 @@ import { NodeDetails } from "./components/Sidebar/NodeDetails";
 import { StatsPanel } from "./components/Sidebar/StatsPanel";
 import { TreeViewer } from "./components/TreeViewer/TreeViewer";
 import { useSkillTree } from "./hooks/useSkillTree";
+import { searchNodes } from "./utils/treeUtils";
 
 export default function SkillTreePage() {
   const {
@@ -74,6 +76,27 @@ export default function SkillTreePage() {
     handleImport,
     getShareLink,
   } = useSkillTree();
+
+  // Compute the actual matching nodes once and pass that to the sidebar,
+  // instead of handing it every node in the tree.
+  const searchResults = useMemo(() => {
+    if (!treeData || !searchTerm) return [];
+    const matchedIds = searchNodes(treeData.nodes, searchTerm, isRegexSearch);
+    return Object.values(treeData.nodes).filter((node) => matchedIds.has(node.id));
+  }, [treeData, searchTerm, isRegexSearch]);
+
+  // Derive the ascendancy filter list from the loaded tree data where possible,
+  // falling back to nothing extra when data is unavailable.
+  const ascendancies = useMemo(() => {
+    if (!treeData) return undefined;
+    const names = new Set<string>();
+    for (const node of Object.values(treeData.nodes)) {
+      if (node.ascendancy) {
+        names.add(node.ascendancy.charAt(0).toUpperCase() + node.ascendancy.slice(1));
+      }
+    }
+    return ["None", ...Array.from(names).sort()];
+  }, [treeData]);
 
   if (error) {
     return (
@@ -146,7 +169,8 @@ export default function SkillTreePage() {
                 onShowKeywordDetailsChange={setShowKeywordDetails}
                 showSkillDetails={showSkillDetails}
                 onShowSkillDetailsChange={setShowSkillDetails}
-                searchResults={treeData ? Object.values(treeData.nodes) : []}
+                searchResults={searchResults}
+                ascendancies={ascendancies}
                 allocatedNodes={allocatedNodes}
                 onNodeClick={(node) => {
                   setSelectedNode(node);
@@ -160,6 +184,17 @@ export default function SkillTreePage() {
 
         {/* Tree Viewer Container */}
         <div className="flex-1 min-w-0 relative">
+          {/* Data staleness badge */}
+          <div className="absolute top-4 left-4 z-50">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm"
+              title="Skill tree data reflects an early-access beta snapshot and may be out of date."
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-gem-ruby" />
+              Data: 0.5.x (beta tree)
+            </span>
+          </div>
+
           {/* Tree Viewer */}
           <TreeViewer
             treeData={treeData}

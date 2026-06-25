@@ -74,7 +74,7 @@ export function NodeDetails({
                     />
                   )}
                   <div>
-                    <h4 className="font-semibold text-cyan-200">{skill.name}</h4>
+                    <h4 className="font-semibold text-gem-sapphire">{skill.name}</h4>
                     <p
                       className="text-sm text-muted-foreground mt-1"
                       dangerouslySetInnerHTML={{

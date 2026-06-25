@@ -31,12 +31,14 @@ interface FiltersProps {
   showSkillDetails: boolean;
   onShowSkillDetailsChange: (show: boolean) => void;
   searchResults: TreeNodeData[];
+  ascendancies?: string[];
   allocatedNodes: Set<string>;
   onNodeClick: (node: TreeNodeData) => void;
   onNodeHover: (node: TreeNodeData | null) => void;
 }
 
-const ASCENDANCIES = [
+// Fallback list used until tree data is available to derive the roster from.
+const DEFAULT_ASCENDANCIES = [
   "None",
   "Acolyte",
   "Bloodmage",
@@ -50,7 +52,7 @@ const ASCENDANCIES = [
   "Titan",
   "Warbringer",
   "Witchhunter",
-] as const;
+];
 
 export function Filters({
   selectedAscendancy,
@@ -76,11 +78,13 @@ export function Filters({
   showSkillDetails,
   onShowSkillDetailsChange,
   searchResults,
+  ascendancies,
   allocatedNodes,
   onNodeClick,
   onNodeHover,
 }: FiltersProps) {
   const [activeTab, setActiveTab] = useState<"filters" | "search">("filters");
+  const ascendancyList = ascendancies && ascendancies.length > 0 ? ascendancies : DEFAULT_ASCENDANCIES;
 
   return (
     <div className="h-full flex flex-col">
@@ -116,7 +120,7 @@ export function Filters({
           <div>
             <h3 className="text-lg font-bold mb-3">Ascendancy</h3>
             <div className="grid grid-cols-2 gap-2">
-              {ASCENDANCIES.map((ascendancy) => (
+              {ascendancyList.map((ascendancy) => (
                 <button
                   key={ascendancy}
                   onClick={() => onAscendancyChange(ascendancy)}

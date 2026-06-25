@@ -51,7 +51,9 @@ export function StatsPanel({ treeData, allocatedNodes, className = "" }: StatsPa
   }, [stats]);
 
   if (stats.length === 0) {
-    return <div className={`text-gray-400 text-center p-4 ${className}`}>No stats to display</div>;
+    return (
+      <div className={`text-foreground-secondary text-center p-4 ${className}`}>No stats to display</div>
+    );
   }
 
   return (
@@ -66,14 +68,14 @@ export function StatsPanel({ treeData, allocatedNodes, className = "" }: StatsPa
               {categoryStats.map(([stat, value]) => (
                 <div
                   key={stat}
-                  className="flex justify-between items-center bg-gray-800 rounded-lg p-2"
+                  className="flex justify-between items-center bg-accent rounded-lg p-2"
                 >
-                  <span className="text-sm capitalize">
+                  <span className="text-sm capitalize text-foreground">
                     {stat.replace(/([A-Z])/g, " $1").trim()}
                   </span>
                   <span
                     className={`text-sm font-medium
-                    ${value > 0 ? "text-green-400" : value < 0 ? "text-red-400" : "text-gray-400"}`}
+                    ${value > 0 ? "text-gem-emerald" : value < 0 ? "text-gem-ruby" : "text-foreground-secondary"}`}
                   >
                     {formatStatValue(value, stat)}
                   </span>
@@ -85,10 +87,10 @@ export function StatsPanel({ treeData, allocatedNodes, className = "" }: StatsPa
       })}
 
       {/* Total allocated nodes */}
-      <div className="border-t border-gray-700 pt-4">
+      <div className="border-t border-border pt-4">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium">Total Allocated Nodes</span>
-          <span className="text-sm text-blue-400">{allocatedNodes.size}</span>
+          <span className="text-sm font-medium text-foreground">Total Allocated Nodes</span>
+          <span className="text-sm text-primary">{allocatedNodes.size}</span>
         </div>
       </div>
     </div>
@@ -104,7 +106,11 @@ export function StatTooltip({ stat, value }: StatTooltipProps) {
   return (
     <div className="flex items-center gap-2 text-sm">
       <span className="capitalize">{stat.replace(/([A-Z])/g, " $1").trim()}</span>
-      <span className={value > 0 ? "text-green-400" : value < 0 ? "text-red-400" : "text-gray-400"}>
+      <span
+        className={
+          value > 0 ? "text-gem-emerald" : value < 0 ? "text-gem-ruby" : "text-foreground-secondary"
+        }
+      >
         {formatStatValue(value, stat)}
       </span>
     </div>

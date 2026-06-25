@@ -79,7 +79,7 @@ const SkillList = memo(function SkillList({ skills }: { skills: TreeNodeData["sk
           key={index}
           className={cn(
             "hidden md:grid bg-[#0f0f0f] w-[400px] border-2 border-[#595343]",
-            "p-[10px] text-cyan-200 gap-2 font-fontin"
+            "p-[10px] text-cyan-200 gap-2"
           )}
           role="complementary"
           aria-label={`Skill: ${skill.name}`}
@@ -111,7 +111,7 @@ const KeywordList = memo(function KeywordList({
           key={index}
           className={cn(
             "hidden md:grid bg-[#0f0f0f] w-[400px] border-2 border-[#595343]",
-            "p-[10px] text-orange-200 gap-2 font-fontin"
+            "p-[10px] text-orange-200 gap-2"
           )}
           role="complementary"
           aria-label={`Keyword: ${keyword.name}`}

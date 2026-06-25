@@ -194,8 +194,13 @@ function getSearchRegex(searchTerm: string, isRegexSearch: boolean): RegExp {
   return regex;
 }
 
+// Minimal structural shape searchNodes needs — keeps it compatible with both
+// the `data.ts` and `types/tree.ts` TreeNodeData definitions (which only differ
+// in their NodeType union, irrelevant to searching name/description).
+type SearchableNode = Pick<TreeNodeData, "id" | "name" | "description">;
+
 export function searchNodes(
-  nodes: Record<string, TreeNodeData>,
+  nodes: Record<string, SearchableNode>,
   searchTerm: string,
   isRegexSearch: boolean
 ): Set<string> {
