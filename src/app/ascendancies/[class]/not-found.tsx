@@ -19,7 +19,7 @@ export default function AscendancyClassNotFound() {
           <Link href="/ascendancies">
             <Button variant="primary">View All Classes</Button>
           </Link>
-          <Link href="/guides?category=character-building">
+          <Link href="/guides/character-building">
             <Button variant="ghost">Character Guides</Button>
           </Link>
         </div>

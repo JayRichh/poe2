@@ -76,14 +76,14 @@ export function GuideSidebar() {
 
         {/* Render sections */}
         {Object.entries(guidesBySection).map(([sectionKey, guides]) => (
-          <div key={sectionKey} className="mt-6">
+          <div key={sectionKey} className={(guides?.length ?? 0) === 0 ? "hidden" : "mt-6"}>
             {!isCollapsed && (
               <Text className="px-3 py-2 text-xs font-medium text-foreground/50 uppercase tracking-wider">
                 {sectionTitles[sectionKey as keyof typeof sectionTitles]}
               </Text>
             )}
             <div className="space-y-1 mt-2">
-              {guides.map((guide) => {
+              {guides?.map((guide) => {
                 const isActive = currentCategory === guide.id;
                 const Icon = IconMap[guide.icon] || Book;
                 return (

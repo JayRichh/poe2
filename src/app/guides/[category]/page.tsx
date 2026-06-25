@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ContentRenderer } from "~/components/shared/ContentRenderer";
@@ -27,16 +28,27 @@ export default async function GuidePage({ params }: PageProps) {
   );
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
   const guide = guides[category as ContentCategory];
 
   if (!guide) {
-    return {};
+    return {
+      title: "Guide Not Found",
+      description: "The requested Path of Exile 2 guide could not be found.",
+    };
   }
 
   return {
     title: guide.title,
     description: guide.description,
+    alternates: {
+      canonical: `/guides/${category}`,
+    },
+    openGraph: {
+      title: guide.title,
+      description: guide.description,
+      type: "article",
+    },
   };
 }

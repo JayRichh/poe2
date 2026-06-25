@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,12 +7,48 @@ import { Card } from "~/components/ui/Card";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 
-import { type AscendancyClass, ascendancies } from "~/lib/ascendancies/data";
+import {
+  POE2_DATA_VERSION,
+  type AscendancyClass,
+  ascendancies,
+  ascendanciesWithMeta,
+  baseClasses,
+} from "~/lib/ascendancies/data";
 
 interface PageProps {
   params: Promise<{
     class: string;
   }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { class: classParam } = await params;
+  const ascendancyClass = classParam as AscendancyClass;
+  const ascendancy = ascendancies[ascendancyClass];
+
+  if (!ascendancy) {
+    return {
+      title: "Ascendancy Not Found",
+      description: "The requested Path of Exile 2 ascendancy class could not be found.",
+    };
+  }
+
+  const title = `${ascendancy.title} Ascendancy`;
+  const description = `${ascendancy.description} Learn about ${ascendancy.title}'s playstyle, key features, mechanics, and optimal builds in Path of Exile 2.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/ascendancies/${ascendancyClass}`,
+    },
+    openGraph: {
+      title: `${ascendancy.title} Ascendancy · POE2`,
+      description,
+      type: "article",
+      images: [`/ascendancies/${ascendancyClass}.webp`],
+    },
+  };
 }
 
 export default async function AscendancyPage({ params }: PageProps) {
@@ -23,21 +60,34 @@ export default async function AscendancyPage({ params }: PageProps) {
     notFound();
   }
 
+  const meta = ascendanciesWithMeta.find((a) => a.id === ascendancyClass);
+  const base = baseClasses[ascendancy.baseClass];
+
   return (
     <Container className="py-8">
       <div className="space-y-8">
-        <div className="relative h-64 w-full overflow-hidden rounded-xl">
-          <Image
-            src={`/ascendancies/${ascendancyClass}.webp`}
-            alt={ascendancy.title}
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="relative h-64 w-full overflow-hidden rounded-xl bg-muted/40">
+          {meta?.image && (
+            <Image
+              src={meta.image}
+              alt={ascendancy.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute bottom-0 left-0 p-8">
-            <Text variant="h1" className="text-4xl font-bold mb-2">
-              {ascendancy.title}
+            <div className="flex flex-wrap items-center gap-3 mb-2">
+              <Text variant="h1" className="text-4xl font-bold">
+                {ascendancy.title}
+              </Text>
+              <span className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90">
+                Data: {POE2_DATA_VERSION}
+              </span>
+            </div>
+            <Text className="text-sm text-foreground/70 mb-2">
+              {base.name} · {base.attributes} · Added {ascendancy.introduced}
             </Text>
             <Text className="text-lg text-foreground/90 max-w-2xl">{ascendancy.description}</Text>
           </div>
@@ -100,15 +150,15 @@ export default async function AscendancyPage({ params }: PageProps) {
                 Getting Started
               </Text>
               <div className="space-y-4">
-                <Link href="/build-planner/new" className="block group">
+                <Link href="/build-planner" className="block group">
                   <Card className="p-4 border-border/50 transition-colors hover:border-primary">
-                    <Text className="font-medium">Create a Build</Text>
+                    <Text className="font-medium">Plan a Build</Text>
                     <Text className="text-sm text-foreground/70">
                       Plan your {ascendancy.title} build using our build planner
                     </Text>
                   </Card>
                 </Link>
-                <Link href="/guides?category=character-building" className="block group">
+                <Link href="/guides/character-building" className="block group">
                   <Card className="p-4 border-border/50 transition-colors hover:border-primary">
                     <Text className="font-medium">View Guides</Text>
                     <Text className="text-sm text-foreground/70">

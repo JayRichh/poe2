@@ -6,7 +6,13 @@ import type {
   SectionKey,
 } from "~/lib/shared/types";
 
-export const guides: Record<ContentCategory, BaseContent> = {
+// Data verified against PoE2 0.5.x ("Return of the Ancients"). See
+// docs/poe2-2026-reference.md. Note: the "game mechanics" reference categories
+// (damage-types, status-effects, character-stats, economy) live under /mechanics
+// and are intentionally NOT duplicated here as empty guide stubs.
+export const GUIDES_DATA_VERSION = "0.5.x";
+
+export const guides: Partial<Record<ContentCategory, BaseContent>> = {
   gameplay: {
     title: "Gameplay Tips",
     description: "Essential gameplay tips and tricks for new POE2 players",
@@ -43,9 +49,9 @@ export const guides: Record<ContentCategory, BaseContent> = {
       {
         title: "Currency & Trading Basics",
         content: [
-          "Save Exalted Orbs (EX) during campaign - they're the primary trading currency",
-          "Use official POE2 trade site at pathofexile.com/trade2 for non-stackable items",
-          "Use Currency Exchange Market through Alva for stackable currency trading",
+          "Save Exalted Orbs (EX) during the campaign - they're a primary trading currency",
+          "Use the official PoE2 trade site at pathofexile.com/trade/search/poe2 for items",
+          "Use the in-game Currency Exchange for stackable currency trading",
           "Buy premium stash tabs to list items - required for selling",
           "Set up a proper loot filter to identify valuable drops efficiently",
           "Don't ignore 'small' currency - they add up significantly over time",
@@ -81,24 +87,25 @@ export const guides: Record<ContentCategory, BaseContent> = {
     description: "Essential information about building and developing your character",
     sections: [
       {
-        title: "Defense Mechanics",
+        title: "Defense & Attributes",
         content: [
-          "Health nodes are mostly replaced by strength attribute nodes",
-          "1 strength now gives 2 maximum life (4x more than POE1)",
-          "Choose strength for attribute nodes when traveling the tree",
-          "Use The Hooded One to respec individual attribute nodes in town",
-          "Slows apply to action speed and provide significant defensive layer",
-          "Slows are 70% effective on rare mobs and 50% on bosses",
+          "In PoE2 each point of Strength grants +2 Maximum Life (a flat bonus, not a percentage)",
+          "Dexterity grants +5 Accuracy Rating per point and does NOT grant Evasion",
+          "Intelligence grants +2 Mana per point and does NOT grant Energy Shield",
+          "Spirit is a separate resource that pays reservations for auras, heralds and persistent minions",
+          "Travel the passive tree through Strength nodes when you need more life",
+          "Use The Hooded One to respec passives in town",
+          "Slows apply to action speed and provide a significant defensive layer",
         ],
       },
       {
         title: "Ascendancy Guide",
         content: [
-          "First ascendancy comes from Act 2 Trial of the Sekhemas",
-          "Second ascendancy from Act 3 The Temple of Chaos",
-          "Monster level 38 trial items don't count for second ascendancy",
+          "First ascendancy comes from the Act 2 Trial of the Sekhemas",
+          "Second ascendancy comes from the Trial of Chaos",
+          "Each base class has 2-3 ascendancies; there are 8 base classes and 22 ascendancies in 0.5.x",
           "Ascendancy choices cannot be changed after selection",
-          "Blood Mage: Avoid Sanguimancy node early without proper setup",
+          "Blood Mage: avoid the Sanguimancy node early without proper life-cost setup",
           "Blood Mage Sanguimancy can be refunded at The Hooded One if needed",
         ],
       },
@@ -119,12 +126,12 @@ export const guides: Record<ContentCategory, BaseContent> = {
       {
         title: "Gear Sockets & Runes",
         content: [
-          "Gloves/Boots/Helmets/Body armours/Weapons can have rune sockets",
-          "Runes provide powerful stats like 12% elemental res or 25 max life",
-          "Use Artificer's orbs to add sockets to items",
-          "Salvage quality gear for armourers scraps",
-          "Salvage socketed gear for artificier's shards (10 for an orb)",
-          "First guaranteed 4-link from Orok Campfire chest in Act 3",
+          "Armour pieces and weapons can have rune sockets for stat runes",
+          "Runes provide powerful stats like elemental resistance or maximum life",
+          "Skills come from Uncut Skill Gems; supports link into a skill's support sockets",
+          "Use Jeweller's Orbs to add support sockets to a skill (max 5: Lesser=3, Greater=4, Perfect=5)",
+          "Support gems carry tiers gated by your Uncut Support Gem level (1-3); the one-copy-per-character limit was removed in 0.3.0",
+          "Salvage quality/socketed gear at the salvage bench for crafting shards",
         ],
       },
     ],
@@ -202,9 +209,10 @@ export const guides: Record<ContentCategory, BaseContent> = {
         content: [
           "Don't rush side quests - return when stronger if needed",
           "Overlevel zones for smoother progression",
-          "Focus on core defensive stats early game",
-          "Get your first 4-link from Orok Campfire in Act 3",
-          "Complete resistance-boosting side quests before Cruel mode",
+          "Focus on core defensive stats (capped resistances and life) early game",
+          "The campaign is 4 Acts plus 3 Interludes - the old 'Cruel' replay was removed in 0.3.0",
+          "Grab resistance and skill-point side quests as you progress each Act",
+          "After the campaign and Interludes you unlock the Atlas and endgame Waystones (~level 65)",
         ],
       },
     ],
@@ -224,47 +232,27 @@ export const guides: Record<ContentCategory, BaseContent> = {
       {
         title: "Map Management",
         content: [
-          "Save T16 maps for +2 waystones (corrupted + irradiated)",
-          "Level 20 gems drop at area level 82+",
-          "Running blue T15 maps is fine for efficiency",
-          "Don't waste time over-rolling maps",
-          "Run Citadels with no negative mods for safety",
+          "Waystones are your map keys, ranging Tier I-XVI (T16 only via corrupting a T15)",
+          "As of 0.5.0 Waystones must be identified before they can be run",
+          "Use Precursor Towers to reveal the Atlas and apply Tablets to nearby maps",
+          "The Atlas Passive Tree has 300+ nodes and can be freely re-allocated",
+          "Don't waste currency over-rolling low-tier maps",
+          "Run Citadels carefully - they lead toward pinnacle bosses",
         ],
       },
     ],
     relatedContent: [
       {
         title: "Economy Guide",
-        description: "Learn about map investment and returns",
+        description: "Learn about currency, crafting and trading",
         href: "/mechanics/economy",
         type: "mechanic",
       },
     ],
   },
-  // Add stubs for other required categories
-  "damage-types": {
-    title: "Damage Types",
-    description: "Damage type mechanics",
-    sections: [],
-  },
-  "status-effects": {
-    title: "Status Effects",
-    description: "Status effect mechanics",
-    sections: [],
-  },
-  "character-stats": {
-    title: "Character Stats",
-    description: "Character stat mechanics",
-    sections: [],
-  },
-  economy: {
-    title: "Economy",
-    description: "Economy mechanics",
-    sections: [],
-  },
 };
 
-const guideIconMap: Record<ContentCategory, ContentIcon> = {
+const guideIconMap: Partial<Record<ContentCategory, ContentIcon>> = {
   gameplay: "Book",
   trading: "Coins",
   "boss-fights": "Sword",
@@ -273,20 +261,20 @@ const guideIconMap: Record<ContentCategory, ContentIcon> = {
   combat: "Crosshair",
   progression: "ArrowUp",
   mapping: "Map",
-  "damage-types": "Zap",
-  "status-effects": "Activity",
-  "character-stats": "User",
-  economy: "Coins",
 };
 
-export const guidesWithMeta: ContentWithMeta[] = Object.entries(guides).map(([id, guide]) => ({
+export const guidesWithMeta: ContentWithMeta[] = (
+  Object.entries(guides) as [ContentCategory, BaseContent][]
+).map(([id, guide]) => ({
   ...guide,
-  id: id as ContentCategory,
-  icon: guideIconMap[id as ContentCategory],
+  id,
+  icon: guideIconMap[id] ?? "Book",
 }));
 
-// Organize guides by section
-export const guidesBySection: Record<SectionKey, ContentWithMeta[]> = {
+// Organize guides by section. The "game_mechanics" group was removed because it
+// only ever held empty stub categories that duplicate /mechanics. Reference
+// content (damage types, status effects, stats, economy) lives under /mechanics.
+export const guidesBySection: Partial<Record<SectionKey, ContentWithMeta[]>> = {
   getting_started: guidesWithMeta.filter((g) => ["gameplay", "character-building"].includes(g.id)),
   combat_equipment: guidesWithMeta.filter((g) =>
     ["combat", "equipment", "boss-fights"].includes(g.id)
@@ -294,8 +282,4 @@ export const guidesBySection: Record<SectionKey, ContentWithMeta[]> = {
   progression_economy: guidesWithMeta.filter((g) =>
     ["progression", "trading", "mapping"].includes(g.id)
   ),
-  game_mechanics: guidesWithMeta.filter((g) =>
-    ["damage-types", "status-effects", "character-stats", "economy"].includes(g.id)
-  ),
-  additional: [],
 };
