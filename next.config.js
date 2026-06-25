@@ -8,12 +8,12 @@ const nextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
   compress: true,
-  // Ignore TypeScript and ESLint errors during build to ensure deployment succeeds
+  // Fail the build on TypeScript or ESLint errors (CI gate enforces correctness).
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
@@ -106,8 +106,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
   },
   experimental: {
-    optimizeCss: true,
-      optimizePackageImports: [
+    // `optimizeCss` was removed: it pulls in the deprecated `critters` package.
+    // Not worth a new (beasties) dependency for this site's CSS surface.
+    optimizePackageImports: [
       "lucide-react",
       "@uiw/react-md-editor",
       "framer-motion",
