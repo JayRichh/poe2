@@ -95,6 +95,8 @@ export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelP
             max={max}
             step={step}
             value={currentValue}
+            showValue={false}
+            ariaLabel={label}
             onChange={(value: number) => handleSliderChange(key, value, min, max, step)}
           />
         </div>
@@ -258,25 +260,16 @@ export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelP
       min: 15,
       max: 50,
       step: 5,
-      tooltip: "Shock effect magnitude (15-50%)",
-      formatValue: (value) => `${value}%`,
-    },
-    {
-      key: "shockDuration",
-      label: "Shock Duration",
-      min: 20,
-      max: 200,
-      step: 10,
-      tooltip: "Shock effect duration (20-200%)",
+      tooltip: "Increased damage taken by shocked enemies (15-50%)",
       formatValue: (value) => `${value}%`,
     },
     {
       key: "electrocutionDuration",
-      label: "Electrocution Duration",
+      label: "Electrocution More Damage",
       min: 20,
       max: 100,
       step: 5,
-      tooltip: "Electrocution effect duration (20-100%)",
+      tooltip: "More damage to electrocuted enemies (20-100%)",
       formatValue: (value) => `${value}%`,
     },
     {
@@ -285,16 +278,7 @@ export function GlobalSettingsPanel({ settings, onChange }: GlobalSettingsPanelP
       min: 10,
       max: 40,
       step: 5,
-      tooltip: "Exposure effect magnitude (10-40%)",
-      formatValue: (value) => `${value}%`,
-    },
-    {
-      key: "exposureDuration",
-      label: "Exposure Duration",
-      min: 50,
-      max: 200,
-      step: 10,
-      tooltip: "Exposure effect duration (50-200%)",
+      tooltip: "Increased elemental damage taken via exposure (10-40%)",
       formatValue: (value) => `${value}%`,
     },
   ];

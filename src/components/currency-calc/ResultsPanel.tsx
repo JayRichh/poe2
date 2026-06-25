@@ -1,17 +1,16 @@
 "use client";
 
-import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
-
+import type { GroupedCurrency } from "~/lib/currencies/utils";
 import type { CurrencyResults } from "~/types/currency";
 
 import { CurrencyIcon } from "./CurrencyIcon";
 
 interface ResultsPanelProps {
   results: CurrencyResults;
+  rates: GroupedCurrency[];
 }
 
-export function ResultsPanel({ results }: ResultsPanelProps) {
-  const { rates } = useCurrencyCalculator();
+export function ResultsPanel({ results, rates }: ResultsPanelProps) {
   const fromCurrency = rates.find((r) => r.name === results.fromCurrency);
   const toCurrency = rates.find((r) => r.name === results.toCurrency);
   return (

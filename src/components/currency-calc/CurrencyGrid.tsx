@@ -2,9 +2,7 @@
 
 import { useMemo } from "react";
 
-import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
-
-import { CurrencyGroup } from "~/lib/currencies/utils";
+import { CurrencyGroup, groupCurrencies } from "~/lib/currencies/utils";
 
 import { CurrencyIcon } from "./CurrencyIcon";
 
@@ -32,7 +30,7 @@ const GROUP_LABELS: Record<CurrencyGroup, { title: string; description: string }
 };
 
 export function CurrencyGrid() {
-  const { groupedCurrencies } = useCurrencyCalculator();
+  const groupedCurrencies = useMemo(() => groupCurrencies(), []);
 
   return (
     <div className="space-y-24">

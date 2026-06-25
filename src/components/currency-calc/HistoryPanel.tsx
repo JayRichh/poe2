@@ -1,17 +1,16 @@
 "use client";
 
-import { useCurrencyCalculator } from "~/hooks/useCurrencyCalculator";
-
+import type { GroupedCurrency } from "~/lib/currencies/utils";
 import type { CurrencyResults } from "~/types/currency";
 
 import { CurrencyIcon } from "./CurrencyIcon";
 
 interface HistoryPanelProps {
   history: CurrencyResults[];
+  rates: GroupedCurrency[];
 }
 
-export function HistoryPanel({ history }: HistoryPanelProps) {
-  const { rates } = useCurrencyCalculator();
+export function HistoryPanel({ history, rates }: HistoryPanelProps) {
   if (history.length === 0) {
     return (
       <div className="glass p-6 space-y-4">

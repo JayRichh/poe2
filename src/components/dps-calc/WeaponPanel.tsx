@@ -102,6 +102,8 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
               max={input.max}
               step={input.step}
               value={currentValue}
+              showValue={false}
+              ariaLabel={input.label}
               onChange={(value: number) => handleSliderChange(input.key, value, input)}
             />
           </div>
@@ -268,28 +270,11 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
       </div>
 
       <div className="divide-y divide-border/60">
-        <div className="px-4 py-3">
-          <Text className="text-sm font-medium text-foreground-secondary mb-3">Base Damage</Text>
-          {renderDamageInputs([
-            {
-              key: "minBaseDmg",
-              label: "Minimum",
-              min: 0,
-              max: 400,
-              step: 5,
-              relatedKey: "maxBaseDmg",
-              tooltip: "Base weapon damage minimum (0-400)",
-            },
-            {
-              key: "maxBaseDmg",
-              label: "Maximum",
-              min: 0,
-              max: 600,
-              step: 5,
-              relatedKey: "minBaseDmg",
-              tooltip: "Base weapon damage maximum (0-600)",
-            },
-          ])}
+        <div className="px-4 py-2">
+          <Text className="text-xs text-foreground-secondary">
+            Enter the weapon&apos;s per-type damage rolls below. Total base damage is the sum of all
+            damage types.
+          </Text>
         </div>
 
         <div className="pt-3">

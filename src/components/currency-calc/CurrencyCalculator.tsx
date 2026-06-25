@@ -24,6 +24,7 @@ export function CurrencyCalculator() {
     inputs,
     results,
     history,
+    rates,
     groupedCurrencies,
     handleInputChange,
     calculateConversion,
@@ -50,7 +51,7 @@ export function CurrencyCalculator() {
             onReset={reset}
             error={error}
           />
-          {results && <ResultsPanel results={results} />}
+          {results && <ResultsPanel results={results} rates={rates} />}
         </div>
 
         <div className="lg:border-l border-border/60 bg-muted/10 backdrop-blur-sm p-6">
@@ -60,7 +61,7 @@ export function CurrencyCalculator() {
               Recent currency conversions and their rates
             </p>
           </div>
-          <HistoryPanel history={history} />
+          <HistoryPanel history={history} rates={rates} />
         </div>
       </div>
     </div>

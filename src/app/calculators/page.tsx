@@ -25,13 +25,13 @@ const calculators = [
   {
     name: "Speed Calculator",
     description:
-      "Analyze movement and attack speed mechanics for optimal character performance. Calculate action speed with various modifiers.",
+      "Compute effective movement speed and attack/cast speed. Increased/reduced modifiers stack additively (base × (1 + sum %)); enter your own base values and slows as reductions.",
     href: "/calculators/speed",
     features: [
       "Movement speed",
       "Attack/cast speed",
-      "Action speed modifiers",
-      "Buff calculations",
+      "Additive % stacking",
+      "Slow/chill reductions",
     ],
     color: "from-blue-500/10 to-cyan-500/10",
     textColor: "text-blue-500",

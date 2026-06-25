@@ -1,197 +1,117 @@
 import { useCallback, useMemo, useState } from "react";
 
-import { ARMOR_TYPES, EFFECTS, WEAPONS } from "~/lib/constants/speed-calc";
-import type { CalculatorState, SpeedResult, Weapon } from "~/types/speed-calc";
+import {
+  computeActionSpeed,
+  computeMovementSpeed,
+  type ActionSpeedResult,
+  type MovementSpeedResult,
+} from "~/lib/speed";
+import type { ModifierRow, SpeedCalculatorState } from "~/types/speed-calc";
 
-const DEFAULT_STATE: CalculatorState = {
-  mainhand: "sword",
-  offhand: "nothing",
-  armor: "naked",
-  dexterity: 10,
-  athletics: 0,
-  effects: {
-    allPhases: [],
-    recoveryAndReload: [],
-    reload: [],
-  },
-  armorModifiers: {
-    armoredGrace: false,
-    cutthroatCosmo: false,
-    nalvi: false,
-  },
+let idSeq = 0;
+const nextId = () => `mod-${idSeq++}`;
+
+/**
+ * Default modifiers are illustrative COMMON SOURCES (boots %, a skill bonus, a
+ * chill as a reduction) — labels and magnitudes are fully user-editable. They
+ * are NOT claimed as authoritative 0.5.x base numbers; the reference doc does
+ * not publish those, so the user supplies their own values.
+ */
+const DEFAULT_STATE: SpeedCalculatorState = {
+  baseRunSpeed: 100,
+  movementModifiers: [
+    { id: nextId(), label: "Boots — movement speed", percent: 30 },
+    { id: nextId(), label: "Skill / passive bonus", percent: 10 },
+    { id: nextId(), label: "Chill (reduction)", percent: -25 },
+  ],
+  baseAps: 1.5,
+  actionLabel: "attack",
+  attackIncreasedModifiers: [
+    { id: nextId(), label: "Gloves — increased attack speed", percent: 15 },
+    { id: nextId(), label: "Passive tree", percent: 10 },
+  ],
 };
 
-export function useSpeedCalculator() {
-  const [state, setState] = useState<CalculatorState>(DEFAULT_STATE);
+type ModifierBucket = "movementModifiers" | "attackIncreasedModifiers";
 
-  const mainhandWeapon = useMemo(
-    () => WEAPONS.find((w) => w.id === state.mainhand),
-    [state.mainhand]
+export interface UseSpeedCalculator {
+  state: SpeedCalculatorState;
+  movement: MovementSpeedResult;
+  action: ActionSpeedResult;
+  setBaseRunSpeed: (v: number) => void;
+  setBaseAps: (v: number) => void;
+  setActionLabel: (v: "attack" | "cast") => void;
+  addModifier: (bucket: ModifierBucket) => void;
+  updateModifier: (bucket: ModifierBucket, id: string, patch: Partial<ModifierRow>) => void;
+  removeModifier: (bucket: ModifierBucket, id: string) => void;
+}
+
+export function useSpeedCalculator(): UseSpeedCalculator {
+  const [state, setState] = useState<SpeedCalculatorState>(DEFAULT_STATE);
+
+  const movement = useMemo(
+    () =>
+      computeMovementSpeed({
+        baseRunSpeed: state.baseRunSpeed,
+        modifiers: state.movementModifiers,
+      }),
+    [state.baseRunSpeed, state.movementModifiers]
   );
 
-  const offhandWeapon = useMemo(() => WEAPONS.find((w) => w.id === state.offhand), [state.offhand]);
+  const action = useMemo(
+    () =>
+      computeActionSpeed({
+        baseAps: state.baseAps,
+        increasedModifiers: state.attackIncreasedModifiers,
+      }),
+    [state.baseAps, state.attackIncreasedModifiers]
+  );
 
-  const armor = useMemo(() => ARMOR_TYPES.find((a) => a.id === state.armor), [state.armor]);
-
-  const isDualWielding = useMemo(() => {
-    if (!mainhandWeapon || !offhandWeapon) return false;
-    return offhandWeapon.category !== "Shields" && offhandWeapon.category !== "Empty Hand";
-  }, [mainhandWeapon, offhandWeapon]);
-
-  const isTwoHanded = useMemo(() => {
-    if (!mainhandWeapon) return false;
-    return mainhandWeapon.category.startsWith("Two-Handed");
-  }, [mainhandWeapon]);
-
-  const calculateSpeedResult = useCallback((): SpeedResult => {
-    if (!mainhandWeapon || !armor)
-      return {
-        mainhand: { attack: 0 },
-        total: 0,
-        dexModifier: 1,
-        armorPenalty: 0,
-      };
-
-    // Calculate DEX modifier
-    const dexModifier = 1 + (state.dexterity - 10) / 33.3;
-
-    // Calculate armor penalty and modifiers
-    let armorPenalty = armor.recoveryPenalty;
-    if (state.armorModifiers.armoredGrace) armorPenalty -= 0.1;
-    if (state.armorModifiers.cutthroatCosmo) armorPenalty -= 0.1;
-    if (state.armorModifiers.nalvi) armorPenalty -= 0.08;
-    armorPenalty = Math.max(0, armorPenalty);
-
-    // Calculate effect multipliers
-    const allPhasesMultiplier = state.effects.allPhases.reduce((acc, effectId) => {
-      const effect = EFFECTS.ALL_PHASES.find((e) => e.id === effectId);
-      if (!effect) return acc;
-      if (effect.rangedOnly && !isRangedWeapon(mainhandWeapon)) return acc;
-      return acc * effect.value;
-    }, 1);
-
-    const recoveryReloadMultiplier = state.effects.recoveryAndReload.reduce((acc, effectId) => {
-      const effect = EFFECTS.RECOVERY_AND_RELOAD.find((e) => e.id === effectId);
-      if (!effect) return acc;
-      if (effect.rangedOnly && !isRangedWeapon(mainhandWeapon)) return acc;
-      if (effect.athleticsBonus) {
-        return acc * (1 + effect.athleticsBonus * state.athletics);
-      }
-      return acc * effect.value;
-    }, 1);
-
-    const reloadMultiplier = state.effects.reload.reduce((acc, effectId) => {
-      const effect = EFFECTS.RELOAD.find((e) => e.id === effectId);
-      if (!effect) return acc;
-      if (effect.rangedOnly && !isRangedWeapon(mainhandWeapon)) return acc;
-      return acc * effect.value;
-    }, 1);
-
-    // Calculate mainhand speeds
-    const mainhandResult = {
-      attack: mainhandWeapon.attackDuration || 0,
-      recovery: mainhandWeapon.recoveryDuration,
-      reload: mainhandWeapon.reloadDuration,
-    };
-
-    // Apply modifiers
-    if (mainhandResult.attack) {
-      mainhandResult.attack /= dexModifier * allPhasesMultiplier;
-    }
-    if (mainhandResult.recovery) {
-      mainhandResult.recovery /=
-        dexModifier * allPhasesMultiplier * recoveryReloadMultiplier * (1 - armorPenalty);
-      if (isDualWielding) mainhandResult.recovery *= 0.7; // Dual wielding penalty
-    }
-    if (mainhandResult.reload) {
-      mainhandResult.reload /=
-        dexModifier *
-        allPhasesMultiplier *
-        recoveryReloadMultiplier *
-        reloadMultiplier *
-        (1 - armorPenalty);
-      if (isDualWielding) mainhandResult.reload *= 0.7; // Dual wielding penalty
-    }
-
-    // Calculate offhand speeds if dual wielding
-    let offhandResult;
-    if (isDualWielding && offhandWeapon) {
-      offhandResult = {
-        attack: offhandWeapon.attackDuration || 0,
-        recovery: offhandWeapon.recoveryDuration,
-        reload: offhandWeapon.reloadDuration,
-      };
-
-      if (offhandResult.attack) {
-        offhandResult.attack /= dexModifier * allPhasesMultiplier;
-      }
-      if (offhandResult.recovery) {
-        offhandResult.recovery /=
-          dexModifier * allPhasesMultiplier * recoveryReloadMultiplier * (1 - armorPenalty);
-        offhandResult.recovery *= 0.7; // Dual wielding penalty
-      }
-      if (offhandResult.reload) {
-        offhandResult.reload /=
-          dexModifier *
-          allPhasesMultiplier *
-          recoveryReloadMultiplier *
-          reloadMultiplier *
-          (1 - armorPenalty);
-        offhandResult.reload *= 0.7; // Dual wielding penalty
-      }
-    }
-
-    // Calculate total frames
-    const delay = isTwoHanded ? 5 : 4;
-    let total = delay + mainhandResult.attack;
-    if (mainhandResult.recovery) total += mainhandResult.recovery;
-    if (mainhandResult.reload) total += mainhandResult.reload;
-    if (offhandResult) {
-      total += delay + offhandResult.attack;
-      if (offhandResult.recovery) total += offhandResult.recovery;
-      if (offhandResult.reload) total += offhandResult.reload;
-    }
-
-    return {
-      mainhand: mainhandResult,
-      ...(offhandResult && { offhand: offhandResult }),
-      total,
-      dexModifier,
-      armorPenalty,
-    };
-  }, [state, mainhandWeapon, offhandWeapon, armor, isDualWielding, isTwoHanded]);
-
-  const result = useMemo(() => calculateSpeedResult(), [calculateSpeedResult]);
-
-  const updateState = useCallback((updates: Partial<CalculatorState>) => {
-    setState((prev) => ({ ...prev, ...updates }));
+  const setBaseRunSpeed = useCallback((v: number) => {
+    setState((prev) => ({ ...prev, baseRunSpeed: v }));
   }, []);
 
-  const toggleEffect = useCallback(
-    (category: keyof CalculatorState["effects"], effectId: string) => {
+  const setBaseAps = useCallback((v: number) => {
+    setState((prev) => ({ ...prev, baseAps: v }));
+  }, []);
+
+  const setActionLabel = useCallback((v: "attack" | "cast") => {
+    setState((prev) => ({ ...prev, actionLabel: v }));
+  }, []);
+
+  const addModifier = useCallback((bucket: ModifierBucket) => {
+    setState((prev) => ({
+      ...prev,
+      [bucket]: [...prev[bucket], { id: nextId(), label: "New modifier", percent: 0 }],
+    }));
+  }, []);
+
+  const updateModifier = useCallback(
+    (bucket: ModifierBucket, id: string, patch: Partial<ModifierRow>) => {
       setState((prev) => ({
         ...prev,
-        effects: {
-          ...prev.effects,
-          [category]: prev.effects[category].includes(effectId)
-            ? prev.effects[category].filter((id) => id !== effectId)
-            : [...prev.effects[category], effectId],
-        },
+        [bucket]: prev[bucket].map((m) => (m.id === id ? { ...m, ...patch } : m)),
       }));
     },
     []
   );
 
+  const removeModifier = useCallback((bucket: ModifierBucket, id: string) => {
+    setState((prev) => ({
+      ...prev,
+      [bucket]: prev[bucket].filter((m) => m.id !== id),
+    }));
+  }, []);
+
   return {
     state,
-    result,
-    updateState,
-    toggleEffect,
-    isDualWielding,
-    isTwoHanded,
+    movement,
+    action,
+    setBaseRunSpeed,
+    setBaseAps,
+    setActionLabel,
+    addModifier,
+    updateModifier,
+    removeModifier,
   };
-}
-
-function isRangedWeapon(weapon: Weapon) {
-  return weapon.category === "One-Handed Ranged" || weapon.category === "Two-Handed Ranged";
 }

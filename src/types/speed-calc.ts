@@ -1,61 +1,18 @@
-import { WEAPON_CATEGORIES } from "~/lib/constants/speed-calc";
+import type { SpeedModifier } from "~/lib/speed";
 
-export type WeaponCategory = (typeof WEAPON_CATEGORIES)[keyof typeof WEAPON_CATEGORIES];
-
-export interface Weapon {
+/** A modifier row in the UI: a label the user can edit plus a percent value. */
+export interface ModifierRow extends SpeedModifier {
+  /** Stable id for list rendering / updates. */
   id: string;
-  name: string;
-  category: WeaponCategory;
-  attackDuration?: number;
-  recoveryDuration?: number;
-  reloadDuration?: number;
 }
 
-export interface ArmorType {
-  id: string;
-  name: string;
-  recoveryPenalty: number;
-  category: string;
-}
+export interface SpeedCalculatorState {
+  /** Movement-speed inputs. */
+  baseRunSpeed: number;
+  movementModifiers: ModifierRow[];
 
-export interface Effect {
-  id: string;
-  name: string;
-  value: number;
-  rangedOnly?: boolean;
-  athleticsBonus?: number;
-}
-
-export interface SpeedResult {
-  mainhand: {
-    attack: number;
-    recovery?: number;
-    reload?: number;
-  };
-  offhand?: {
-    attack: number;
-    recovery?: number;
-    reload?: number;
-  };
-  total: number;
-  dexModifier: number;
-  armorPenalty: number;
-}
-
-export interface CalculatorState {
-  mainhand: string;
-  offhand: string;
-  armor: string;
-  dexterity: number;
-  athletics: number;
-  effects: {
-    allPhases: string[];
-    recoveryAndReload: string[];
-    reload: string[];
-  };
-  armorModifiers: {
-    armoredGrace: boolean;
-    cutthroatCosmo: boolean;
-    nalvi: boolean;
-  };
+  /** Attack/cast-speed inputs. */
+  baseAps: number;
+  actionLabel: "attack" | "cast";
+  attackIncreasedModifiers: ModifierRow[];
 }

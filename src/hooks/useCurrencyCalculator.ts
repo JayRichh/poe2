@@ -2,8 +2,12 @@
 
 import { useCallback, useMemo, useState } from "react";
 
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { type GroupedCurrency, groupCurrencies } from "~/lib/currencies/utils";
 import type { CurrencyInputs, CurrencyResults } from "~/types/currency";
+
+// Persisted via the shared useLocalStorage hook (SSR-safe, try/catch, cross-tab sync).
+const HISTORY_KEY = "poe2:currency-history";
 
 export function useCurrencyCalculator() {
   const [inputs, setInputs] = useState<CurrencyInputs>({
@@ -13,7 +17,7 @@ export function useCurrencyCalculator() {
   });
 
   const [results, setResults] = useState<CurrencyResults | null>(null);
-  const [history, setHistory] = useState<CurrencyResults[]>([]);
+  const [history, setHistory] = useLocalStorage<CurrencyResults[]>(HISTORY_KEY, []);
 
   const groupedCurrencies = useMemo(() => groupCurrencies(), []);
   const allCurrencies = useMemo(() => {
@@ -28,9 +32,14 @@ export function useCurrencyCalculator() {
       const fromCurrency = allCurrencies.find((c) => c.name === inputs.fromCurrency);
       const toCurrency = allCurrencies.find((c) => c.name === inputs.toCurrency);
 
-      // Validate currencies have values defined
-      if (!fromCurrency?.value || !toCurrency?.value) {
-        throw new Error("Cannot convert between these currencies - values not defined");
+      // Validate currencies exist and have a reference price (un-priced
+      // currencies have value 0 and cannot be converted — say so clearly).
+      if (!fromCurrency || !toCurrency) {
+        throw new Error("Currency not found");
+      }
+      if (!fromCurrency.value || !toCurrency.value) {
+        const unpriced = !fromCurrency.value ? fromCurrency.name : toCurrency.name;
+        throw new Error(`No reference price for ${unpriced}. Pick a currency shown with a chaos value.`);
       }
 
       // Validate amount
@@ -51,14 +60,6 @@ export function useCurrencyCalculator() {
       const totalChaosValue = inputs.amount * fromRate; // Convert source amount to chaos
       const convertedAmount = totalChaosValue / toRate; // Convert chaos to target currency
       const rate = fromRate / toRate; // How many target currency per 1 source currency
-
-      // Log for debugging
-      console.log("Conversion details:", {
-        source: `${inputs.amount} ${inputs.fromCurrency} × ${fromRate} chaos = ${totalChaosValue} chaos`,
-        target: `${totalChaosValue} chaos ÷ ${toRate} = ${convertedAmount.toFixed(2)} ${inputs.toCurrency}`,
-        rate: `1 ${inputs.fromCurrency} = ${rate.toFixed(4)} ${inputs.toCurrency}`,
-        check: `${inputs.amount} × ${rate.toFixed(4)} = ${convertedAmount.toFixed(2)}`,
-      });
 
       const now = Date.now();
       const result: CurrencyResults = {
@@ -94,6 +95,8 @@ export function useCurrencyCalculator() {
     setResults(null);
   }, []);
 
+  const clearHistory = useCallback(() => setHistory([]), []);
+
   return {
     inputs,
     results,
@@ -103,6 +106,7 @@ export function useCurrencyCalculator() {
     handleInputChange,
     calculateConversion,
     reset,
+    clearHistory,
     error,
   };
 }

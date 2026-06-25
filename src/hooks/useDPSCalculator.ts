@@ -5,8 +5,6 @@ import { DPSCalc } from "~/lib/calculations";
 import { useLocalStorage } from "./useLocalStorage";
 
 export interface WeaponInputs {
-  minBaseDmg: number;
-  maxBaseDmg: number;
   physicalMin: number;
   physicalMax: number;
   lightningMin: number;
@@ -49,12 +47,10 @@ export interface GlobalSettings {
   // Status Effects
   shock: boolean;
   shockMagnitude: number;
-  shockDuration: number;
   electrocution: boolean;
   electrocutionDuration: number;
   exposure: boolean;
   exposureMagnitude: number;
-  exposureDuration: number;
 }
 
 export interface DPSState {
@@ -65,8 +61,6 @@ export interface DPSState {
 }
 
 const defaultWeapon: WeaponInputs = {
-  minBaseDmg: 0,
-  maxBaseDmg: 0,
   physicalMin: 0,
   physicalMax: 0,
   lightningMin: 0,
@@ -109,12 +103,10 @@ const defaultSettings: GlobalSettings = {
   // Status Effects
   shock: false,
   shockMagnitude: 48, // From CSV
-  shockDuration: 100, // From CSV
   electrocution: false,
   electrocutionDuration: 20, // From CSV
   exposure: false,
   exposureMagnitude: 100, // From CSV
-  exposureDuration: 100, // From CSV
 };
 
 const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
@@ -125,8 +117,6 @@ const sanitizeNumber = (value: number): number => {
 };
 
 const sanitizeWeapon = (weapon: WeaponInputs): WeaponInputs => ({
-  minBaseDmg: sanitizeNumber(weapon.minBaseDmg),
-  maxBaseDmg: sanitizeNumber(weapon.maxBaseDmg),
   physicalMin: sanitizeNumber(weapon.physicalMin),
   physicalMax: sanitizeNumber(weapon.physicalMax),
   lightningMin: sanitizeNumber(weapon.lightningMin),
@@ -163,11 +153,7 @@ export function useDPSCalculator() {
     const sanitizedSettings = sanitizeSettings(settings);
 
     const calc = new DPSCalc({
-      // Weapon 1 Base Stats
-      weapon1MinBaseDmg: sanitizedWeapon1.minBaseDmg,
-      weapon1MaxBaseDmg: sanitizedWeapon1.maxBaseDmg,
-      weapon1MinBase: sanitizedWeapon1.minBaseDmg,
-      weapon1MaxBase: sanitizedWeapon1.maxBaseDmg,
+      // Weapon 1 per-type damage (min + max; engine averages them)
       weapon1PhysicalMin: sanitizedWeapon1.physicalMin,
       weapon1PhysicalMax: sanitizedWeapon1.physicalMax,
       weapon1LightningMin: sanitizedWeapon1.lightningMin,
@@ -179,11 +165,7 @@ export function useDPSCalculator() {
       weapon1ChaosMin: sanitizedWeapon1.chaosMin,
       weapon1ChaosMax: sanitizedWeapon1.chaosMax,
 
-      // Weapon 2 Base Stats
-      weapon2MinBaseDmg: sanitizedWeapon2.minBaseDmg,
-      weapon2MaxBaseDmg: sanitizedWeapon2.maxBaseDmg,
-      weapon2MinBase: sanitizedWeapon2.minBaseDmg,
-      weapon2MaxBase: sanitizedWeapon2.maxBaseDmg,
+      // Weapon 2 per-type damage (min + max; engine averages them)
       weapon2PhysicalMin: sanitizedWeapon2.physicalMin,
       weapon2PhysicalMax: sanitizedWeapon2.physicalMax,
       weapon2LightningMin: sanitizedWeapon2.lightningMin,
@@ -195,57 +177,41 @@ export function useDPSCalculator() {
       weapon2ChaosMin: sanitizedWeapon2.chaosMin,
       weapon2ChaosMax: sanitizedWeapon2.chaosMax,
 
-      // Global Settings
+      // Attack settings
       attackSpeed: sanitizedSettings.attackSpeed,
       attackSpeedIncrease: sanitizedSettings.attackSpeedIncrease,
       totalSkillProjectiles: sanitizedSettings.totalSkillProjectiles,
-      damageMultiplier: sanitizedSettings.damageMultiplier,
-      damageMultiplierWeapon1: sanitizedSettings.damageMultiplier,
-      damageMultiplierWeapon2: sanitizedSettings.damageMultiplier,
 
-      // Critical Strike Settings
+      // Global "more" damage multiplier (raw factor: 1.0x = no-op)
+      damageMultiplier: sanitizedSettings.damageMultiplier,
+
+      // Critical strike
       critChance: sanitizedSettings.critChance,
       critDamage: sanitizedSettings.critDamage,
-      critMultiplier: sanitizedSettings.critDamage / 100,
-      critMultiplier2: sanitizedSettings.critDamage / 100,
-      baseCritChance: sanitizedSettings.critChance,
-      baseCritChance2: sanitizedSettings.critChance,
-      critChanceIncrease: 0,
-      critChanceIncrease2: 0,
 
-      // Resistance and Status Effects
+      // Resistance penetration
       resPenetration: sanitizedSettings.resPenetration,
-      physicalDmgPercent: 0,
-      attacksPerSecond: sanitizedSettings.attackSpeed,
 
-      // Status Effects
+      // Increased-damage buckets (additive)
+      bowDamage: sanitizedSettings.bowDamage,
+      physicalDamageIncrease: sanitizedSettings.physicalDamageIncrease,
+      elementalDamageIncrease: sanitizedSettings.elementalDamageIncrease,
+      attackDamageIncrease: sanitizedSettings.attackDamageIncrease,
+      projectileDamageIncrease: sanitizedSettings.projectileDamageIncrease,
+
+      // Status effects
       shock: sanitizedSettings.shock,
       shockMagnitude: sanitizedSettings.shockMagnitude,
-      shockDuration: sanitizedSettings.shockDuration,
       electrocution: sanitizedSettings.electrocution,
       electrocutionDuration: sanitizedSettings.electrocutionDuration,
       exposure: sanitizedSettings.exposure,
       exposureMagnitude: sanitizedSettings.exposureMagnitude,
-      exposureDuration: sanitizedSettings.exposureDuration,
 
-      // Support Gems
+      // Support gems ("more" damage)
       lightningInfusion: sanitizedSettings.supportGems.lightningInfusion,
       primalArmament: sanitizedSettings.supportGems.primalArmament,
       iceBite: sanitizedSettings.supportGems.iceBite,
       martialTempo: sanitizedSettings.supportGems.martialTempo,
-
-      // Damage Modifiers
-      bowDamage: sanitizedSettings.bowDamage,
-
-      // New Physical Calculations
-      newPhysicalMinWeapon1: sanitizedWeapon1.physicalMin,
-      newPhysicalMaxWeapon1: sanitizedWeapon1.physicalMax,
-      newPhysicalMinWeapon2: sanitizedWeapon2.physicalMin,
-      newPhysicalMaxWeapon2: sanitizedWeapon2.physicalMax,
-
-      // Other Skill Damage
-      otherSkillDmgWeapon1: 0,
-      otherSkillDmgWeapon2: 0,
     });
 
     const newResults = calc.getResults();

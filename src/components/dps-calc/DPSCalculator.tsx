@@ -87,9 +87,7 @@ export function DPSCalculator() {
 
   // Handle resetting calculator
   const handleReset = () => {
-    setWeapon1({
-      minBaseDmg: 0,
-      maxBaseDmg: 0,
+    const emptyWeapon: WeaponInputs = {
       physicalMin: 0,
       physicalMax: 0,
       lightningMin: 0,
@@ -100,21 +98,9 @@ export function DPSCalculator() {
       coldMax: 0,
       chaosMin: 0,
       chaosMax: 0,
-    });
-    setWeapon2({
-      minBaseDmg: 0,
-      maxBaseDmg: 0,
-      physicalMin: 0,
-      physicalMax: 0,
-      lightningMin: 0,
-      lightningMax: 0,
-      fireMin: 0,
-      fireMax: 0,
-      coldMin: 0,
-      coldMax: 0,
-      chaosMin: 0,
-      chaosMax: 0,
-    });
+    };
+    setWeapon1({ ...emptyWeapon });
+    setWeapon2({ ...emptyWeapon });
     setSettings({
       attackSpeed: 1.0,
       attackSpeedIncrease: 0,
@@ -136,12 +122,10 @@ export function DPSCalculator() {
       },
       shock: false,
       shockMagnitude: 0,
-      shockDuration: 0,
       electrocution: false,
       electrocutionDuration: 0,
       exposure: false,
       exposureMagnitude: 0,
-      exposureDuration: 0,
     });
   };
 

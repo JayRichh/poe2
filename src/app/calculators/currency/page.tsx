@@ -11,22 +11,23 @@ export default function CurrencyCalcPage() {
       <div className="mx-auto">
         {/* Header */}
         <div className="mx-auto mb-12 mt-12">
-          <Text className="text-4xl font-bold tracking-tight mb-6">POE2 Currency Calculator</Text>
-          <Text className="text-xl text-muted-foreground leading-relaxed">
-            Convert between different Path of Exile 2 currency types with real-time rates. Compare
-            values, track conversion history, and calculate exchange rates for all currency types.
+          <Text className="text-4xl font-bold tracking-tight mb-6">PoE2 Currency Calculator</Text>
+          <Text className="text-xl text-foreground-secondary leading-relaxed">
+            Convert between Path of Exile 2 currencies using chaos-denominated reference ratios.
+            Compare values, keep a conversion history, and browse the full currency reference below.
           </Text>
-          <div className="flex items-center gap-2 mt-4">
+          <div className="flex flex-wrap items-center gap-2 mt-4">
             <span className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-              Manual Mode
+              Approximate ratios
             </span>
-            <span className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full relative group">
-              <span>Live Data Import</span>
-              <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded-full">
-                Soon
-              </span>
+            <span className="px-3 py-1 text-sm font-medium bg-background-secondary text-foreground-secondary rounded-full">
+              Data: 0.1.x · not live prices
             </span>
           </div>
+          <p className="mt-3 text-sm text-foreground-secondary/80">
+            Note: PoE2 currency values shift every league. These are static reference ratios, not
+            real-time market prices — treat them as rough guidance.
+          </p>
         </div>
 
         {/* Calculator Section */}

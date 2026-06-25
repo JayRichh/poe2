@@ -1,5 +1,7 @@
 // components/ui/Slider.tsx
-import { useEffect, useRef } from "react";
+"use client";
+
+import { useId, useMemo } from "react";
 
 import { cn } from "~/utils/cn";
 
@@ -10,10 +12,27 @@ interface SliderProps {
   defaultValue?: number;
   value?: number;
   onChange?: (value: number) => void;
+  /** When true (default) the current value is rendered next to the label. */
   showValue?: boolean;
+  /** Optional formatter for the displayed value (only used when showValue). */
+  formatValue?: (value: number) => string;
   label?: string;
+  /** Accessible label when no visible `label` text is provided. */
+  ariaLabel?: string;
+  /** id of an external element that labels this slider. */
+  ariaLabelledby?: string;
   className?: string;
+  disabled?: boolean;
 }
+
+const snap = (raw: number, min: number, max: number, step: number): number => {
+  if (step <= 0) return Math.min(Math.max(raw, min), max);
+  const stepped = Math.round((raw - min) / step) * step + min;
+  // Guard against floating point drift from fractional steps (e.g. 0.05).
+  const decimals = (step.toString().split(".")[1] || "").length;
+  const rounded = decimals > 0 ? Number(stepped.toFixed(decimals)) : stepped;
+  return Math.min(Math.max(rounded, min), max);
+};
 
 export function Slider({
   min = 0,
@@ -23,140 +42,105 @@ export function Slider({
   value: controlledValue,
   onChange,
   showValue = true,
+  formatValue,
   label,
+  ariaLabel,
+  ariaLabelledby,
   className,
+  disabled = false,
 }: SliderProps) {
   const isControlled = controlledValue !== undefined;
-  const trackRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
+  const generatedId = useId();
+  const labelId = label ? `${generatedId}-label` : undefined;
 
-  const value = isControlled ? controlledValue : (defaultValue ?? min);
+  const rawValue = isControlled ? controlledValue : (defaultValue ?? min);
+  const value = snap(rawValue, min, max, step);
 
-  const updateValue = (clientX: number) => {
-    if (!trackRef.current) return;
-
-    const rect = trackRef.current.getBoundingClientRect();
-    const percentage = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
-    const rawValue = min + percentage * (max - min);
-    const steppedValue = Math.round(rawValue / step) * step;
-    const clampedValue = Math.min(Math.max(steppedValue, min), max);
-
-    onChange?.(clampedValue);
+  const emit = (next: number) => {
+    const snapped = snap(next, min, max, step);
+    if (snapped !== value) onChange?.(snapped);
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    isDragging.current = true;
-    updateValue(e.clientX);
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    emit(Number(e.target.value));
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging.current) return;
-    updateValue(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup", handleMouseUp);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    let newValue = value;
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Native range already handles Arrow (±step), PageUp/Down, Home, End.
+    // We only augment Shift+Arrow for a 10× step jump and keep everything snapped.
+    if (!e.shiftKey) return;
+    let next = value;
     switch (e.key) {
       case "ArrowRight":
       case "ArrowUp":
-        newValue = Math.min(value + step, max);
+        next = value + step * 10;
         break;
       case "ArrowLeft":
       case "ArrowDown":
-        newValue = Math.max(value - step, min);
-        break;
-      case "Home":
-        newValue = min;
-        break;
-      case "End":
-        newValue = max;
+        next = value - step * 10;
         break;
       default:
         return;
     }
-    onChange?.(newValue);
+    e.preventDefault();
+    emit(next);
   };
 
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, []);
+  const percentage = max > min ? ((value - min) / (max - min)) * 100 : 0;
+  const decimals = (step.toString().split(".")[1] || "").length;
+  const displayValue = formatValue
+    ? formatValue(value)
+    : value.toFixed(step < 1 ? Math.max(decimals, 1) : 0);
 
-  const percentage = ((value - min) / (max - min)) * 100;
+  const trackStyle = useMemo(
+    () => ({
+      background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${percentage}%, hsl(var(--background-secondary)) ${percentage}%, hsl(var(--background-secondary)) 100%)`,
+    }),
+    [percentage]
+  );
 
   return (
-    <div className={cn("flex flex-col gap-1 w-full", className)}>
-      {/* Fixed height container for labels */}
-      <div className="h-6 flex items-center justify-between gap-2 w-full">
-        {label ? (
-          <span className="text-sm font-medium text-foreground truncate flex-grow">{label}</span>
-        ) : (
-          <span className="flex-grow" />
-        )}
-        {/* Always render value container to maintain layout */}
-        <span 
-          className={cn(
-            "text-sm font-medium tabular-nums tracking-tight w-12 text-right",
-            showValue ? "text-foreground/70" : "opacity-0"
+    <div className={cn("flex w-full flex-col gap-1", className)}>
+      {(label || showValue) && (
+        <div className="flex h-6 w-full items-center justify-between gap-2">
+          {label ? (
+            <span
+              id={labelId}
+              className="flex-grow truncate text-sm font-medium text-foreground"
+            >
+              {label}
+            </span>
+          ) : (
+            <span className="flex-grow" />
           )}
-        >
-          {value.toFixed(step < 1 ? 1 : 0)}
-        </span>
-      </div>
-
-      <div 
-        ref={trackRef}
-        onMouseDown={handleMouseDown}
-        className={cn(
-          "relative h-8 flex items-center cursor-pointer",
-          "group touch-none select-none"
-        )}
-        style={{ contentVisibility: 'auto' }}
-      >
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full h-2 rounded-full bg-background-secondary">
-            <div
-              className="absolute h-full rounded-full bg-primary transition-all"
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
+          {showValue && (
+            <span className="w-16 text-right text-sm font-medium tabular-nums tracking-tight text-foreground/70">
+              {displayValue}
+            </span>
+          )}
         </div>
+      )}
 
-        <div
-          role="slider"
-          tabIndex={0}
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={value}
-          onKeyDown={handleKeyDown}
-          className={cn(
-            "absolute h-4 w-4 rounded-full bg-primary",
-            "border-2 border-background",
-            "shadow-sm shadow-black/10",
-            "transition-shadow duration-200",
-            "focus-visible:outline-none focus-visible:ring-2",
-            "focus-visible:ring-ring focus-visible:ring-offset-2",
-            "hover:shadow-md hover:shadow-black/20",
-            "cursor-grab active:cursor-grabbing"
-          )}
-          style={{
-            left: `${percentage}%`,
-            transform: `translateX(-50%)`,
-            touchAction: "none",
-          }}
-        />
-      </div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        disabled={disabled}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        aria-label={!label ? ariaLabel : undefined}
+        aria-labelledby={labelId ?? ariaLabelledby}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-valuetext={displayValue}
+        className={cn(
+          "dps-slider my-2 disabled:cursor-not-allowed disabled:opacity-50"
+        )}
+        style={trackStyle}
+      />
     </div>
   );
 }
