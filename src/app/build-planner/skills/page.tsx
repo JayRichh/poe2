@@ -2,14 +2,14 @@
 
 import { Search } from "lucide-react";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Input } from "~/components/ui/Input";
 import { Text } from "~/components/ui/Text";
 
-import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
+import { useBuildSection } from "~/lib/build-planner/useBuildSection";
 
 const SKILL_GROUPS = [
   { name: "Attack Skills", count: 0 },
@@ -45,8 +45,6 @@ export default function SkillsPage() {
     )
   );
 
-  const [saved, setSaved] = useState(false);
-
   const handleSearch = useCallback(
     debounce((value: string) => {
       setIsSearching(false);
@@ -54,17 +52,9 @@ export default function SkillsPage() {
     []
   );
 
-  useEffect(() => {
-    const active = getActiveBuild();
-    const data = active?.data.skills as Record<string, GemSlot[]> | undefined;
-    if (data) setGemSlots(data);
-  }, []);
+  const { save, saved } = useBuildSection<Record<string, GemSlot[]>>("skills", setGemSlots);
 
-  const handleSave = () => {
-    upsertActiveBuild("skills", gemSlots);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-  };
+  const handleSave = () => save(gemSlots);
 
   return (
     <BuildPlannerLayout

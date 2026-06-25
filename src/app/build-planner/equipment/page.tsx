@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
-import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
+import { useBuildSection } from "~/lib/build-planner/useBuildSection";
 
 const EQUIPMENT_SLOTS = [
   "Weapon",
@@ -32,24 +32,13 @@ export default function EquipmentPage() {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null);
   const [selectedInventorySlot, setSelectedInventorySlot] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [saved, setSaved] = useState(false);
 
-  // Hydrate from the active build (if any).
-  useEffect(() => {
-    const active = getActiveBuild();
-    const data = active?.data.equipment as EquipmentState | undefined;
-    if (data) {
-      setSelectedSlot(data.selectedSlot ?? null);
-      setSelectedInventorySlot(data.selectedInventorySlot ?? null);
-    }
-  }, []);
+  const { save, saved } = useBuildSection<EquipmentState>("equipment", (data) => {
+    setSelectedSlot(data.selectedSlot ?? null);
+    setSelectedInventorySlot(data.selectedInventorySlot ?? null);
+  });
 
-  const handleSave = () => {
-    const state: EquipmentState = { selectedSlot, selectedInventorySlot };
-    upsertActiveBuild("equipment", state);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-  };
+  const handleSave = () => save({ selectedSlot, selectedInventorySlot });
 
   const handleDragStart = (
     e: React.DragEvent,

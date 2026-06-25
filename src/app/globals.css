@@ -18,8 +18,8 @@ code[class*="language-"] {
   /*
    * Gilded-grimdark identity — PoE2's world, not a generic dark theme.
    * Obsidian ground, aged gold, dried crimson, bone text. The site is
-   * dark-first: :root and .dark carry the same palette so the identity
-   * holds regardless of the theme toggle. Gem-socket vars (ruby/emerald/
+   * dark-first, so the palette lives once on :root and the .dark class
+   * (set on <html>) simply inherits it. Gem-socket vars (ruby/emerald/
    * sapphire = STR/DEX/INT) are the functional data accents for the tools.
    */
   :root {
@@ -45,38 +45,6 @@ code[class*="language-"] {
     --surface: 40 12% 11%;
     --surface-foreground: 44 30% 86%;
     --radius: 0.5rem;
-    --gem-ruby: 358 73% 59%;
-    --gem-emerald: 153 55% 41%;
-    --gem-sapphire: 218 88% 63%;
-    --damage-physical: rgb(206, 200, 188);
-    --damage-lightning: rgb(255, 221, 102);
-    --damage-fire: rgb(232, 86, 70);
-    --damage-cold: rgb(96, 168, 230);
-    --damage-chaos: rgb(190, 120, 240);
-  }
-
-  .dark {
-    --background: 40 14% 5%;
-    --background-secondary: 40 12% 9%;
-    --foreground: 44 30% 86%;
-    --foreground-secondary: 42 12% 60%;
-    --border: 40 10% 18%;
-    --border-secondary: 43 40% 30%;
-    --brand: 43 54% 52%;
-    --primary: 43 54% 52%;
-    --primary-foreground: 40 14% 6%;
-    --accent: 0 60% 50%;
-    --accent-foreground: 44 30% 92%;
-    --secondary: 150 46% 42%;
-    --secondary-foreground: 40 14% 6%;
-    --success: 150 48% 44%;
-    --success-foreground: 40 14% 6%;
-    --warning: 38 82% 54%;
-    --warning-foreground: 40 14% 6%;
-    --error: 0 65% 52%;
-    --error-foreground: 44 30% 96%;
-    --surface: 40 12% 11%;
-    --surface-foreground: 44 30% 86%;
     --gem-ruby: 358 73% 59%;
     --gem-emerald: 153 55% 41%;
     --gem-sapphire: 218 88% 63%;
