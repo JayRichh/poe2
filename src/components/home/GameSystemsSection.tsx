@@ -9,6 +9,8 @@ import Link from "next/link";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
+import { POE2_ROSTER } from "./poe2-timeline";
+
 interface SystemFeature {
   icon: typeof Zap;
   title: string;
@@ -36,8 +38,8 @@ const mechanicsFeatures: SystemFeature[] = [
 const ascendancyFeatures: SystemFeature[] = [
   {
     icon: Users,
-    title: "12 Unique Classes",
-    description: "Each with distinct playstyles and abilities",
+    title: `${POE2_ROSTER.ascendanciesLive} Ascendancies`,
+    description: `Across ${POE2_ROSTER.classesLive} live base classes, each with distinct playstyles`,
   },
   {
     icon: Swords,
@@ -67,7 +69,7 @@ export function GameSystemsSection() {
           <div className="space-y-4">
             <Text
               variant="h2"
-              className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+              className="font-display tracking-tight text-gilded"
             >
               Game Mechanics
             </Text>
@@ -118,21 +120,22 @@ export function GameSystemsSection() {
           <div className="space-y-4">
             <Text
               variant="h2"
-              className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+              className="font-display tracking-tight text-gilded"
             >
               Ascendancy Classes
             </Text>
             <Text className="text-lg leading-relaxed max-w-xl text-foreground/90">
-              Discover and master 12 unique class specializations, each with their own powerful
-              abilities and playstyles.
+              Discover and master {POE2_ROSTER.ascendanciesLive} ascendancies across{" "}
+              {POE2_ROSTER.classesLive} live base classes, each with their own powerful abilities and
+              playstyles.
             </Text>
           </div>
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 rounded-xl blur-xl" />
             <div className="relative grid grid-cols-3 gap-2 p-2 rounded-xl bg-card/30 border border-border/50">
-              {["acolyte", "bloodmage", "chronomancer", "deadeye", "infernalist", "titan"].map(
-                (className, i) => (
+              {["stormweaver", "invoker", "infernalist", "deadeye", "gemling", "titan"].map(
+                (className) => (
                   <div
                     key={className}
                     className="aspect-square relative rounded-lg overflow-hidden group"

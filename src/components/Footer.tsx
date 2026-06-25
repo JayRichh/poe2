@@ -1,125 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  BarChart,
-  BookOpen,
-  Code,
-  Coffee,
-  FileText,
-  Gamepad,
-  Github,
-  Users,
-  Wrench,
-} from "lucide-react";
+import { ArrowUpRight, Coffee, Github } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import {
+  BUILD_LINKS,
+  CALCULATOR_LINKS,
+  CONTENT_LINKS,
+  EXTERNAL_LINKS,
+  type NavLink,
+} from "~/config/nav";
+
 const contributors = [{ username: "jayrichh", avatar: "https://github.com/jayrichh.png" }];
 
-type MainLink = {
-  id: string;
-  href: string;
-  label: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-};
+// Primary footer column: the headline tools, drawn from the shared config.
+const mainLinks: NavLink[] = [...BUILD_LINKS, ...CONTENT_LINKS.filter((l) => l.id !== "ascendancies")];
 
-type SimpleLink = {
-  id: string;
-  href: string;
-  label: string;
-};
+const calculatorLinks: NavLink[] = CALCULATOR_LINKS;
 
-type FeatureLink = {
-  id: string;
-  href: string;
-  label: string;
-  description: string;
-};
-
-const mainLinks: MainLink[] = [
-  {
-    id: "main-build-planner",
-    href: "/build-planner",
-    label: "Build Planner",
-    icon: Wrench,
-    description: "Plan and optimize your character builds",
-  },
-  {
-    id: "main-builds",
-    href: "/builds",
-    label: "Statistics",
-    icon: BarChart,
-    description: "View build statistics and analytics",
-  },
-  {
-    id: "main-skill-tree",
-    href: "/skill-tree",
-    label: "Skill Tree",
-    icon: Code,
-    description: "Interactive skill tree visualization",
-  },
-  {
-    id: "main-guides",
-    href: "/guides",
-    label: "Guides",
-    icon: BookOpen,
-    description: "Community guides and tutorials",
-  },
-  {
-    id: "main-news",
-    href: "/news",
-    label: "News",
-    icon: FileText,
-    description: "Latest updates and patch notes",
-  },
-];
-
-const calculatorLinks: SimpleLink[] = [
-  { id: "calc-all", href: "/calculators", label: "All Calculators" },
-  { id: "calc-dps", href: "/calculators/dps", label: "DPS Calculator" },
-  { id: "calc-speed", href: "/calculators/speed", label: "Speed Calculator" },
-  { id: "calc-currency", href: "/calculators/currency", label: "Currency Calculator" },
-];
-
-const communityLinks: SimpleLink[] = [
-  { id: "community-profile", href: "/profile", label: "Profile Settings" },
-  { id: "community-news", href: "/news/patch-notes", label: "Latest Patch Notes" },
-  { id: "community-guides", href: "/guides", label: "Build Guides" },
-];
-
-const featureLinks: FeatureLink[] = [
-  {
-    id: "feature-mechanics",
-    href: "/mechanics",
-    label: "Game Mechanics",
-    description: "Learn core systems",
-  },
-  {
-    id: "feature-ascendancies",
-    href: "/ascendancies",
-    label: "Ascendancies",
-    description: "Class guides & abilities",
-  },
-];
+const featureLinks: NavLink[] = CONTENT_LINKS.filter((l) =>
+  ["mechanics", "ascendancies"].includes(l.id)
+);
 
 export function Footer() {
   const pathname = usePathname();
 
-  const isVisible =
-    pathname === "/" ||
-    pathname === "/analytics" ||
-    pathname === "/gifts" ||
-    pathname.startsWith("/build-planner");
+  const isVisible = pathname === "/" || pathname.startsWith("/build-planner");
 
   if (!isVisible) return null;
 
   return (
-    <footer className="mt-auto border-t border-border/10 z-10 min-h-screen bg-gradient-to-b from-background to-background/95">
+    <footer className="mt-auto border-t border-border/10 z-10 bg-gradient-to-b from-background to-background/95">
       <style jsx>{`
         @keyframes steam {
           0% {
@@ -167,7 +82,7 @@ export function Footer() {
           top: -2px;
           width: 3px;
           height: 3px;
-          background: rgb(245, 158, 11);
+          background: hsl(var(--primary));
           border-radius: 50%;
           opacity: 0;
           filter: blur(0.5px);
@@ -182,7 +97,7 @@ export function Footer() {
         }
         .group:hover .coffee-icon::before,
         .group:hover .coffee-icon::after {
-          background: rgb(245, 158, 11);
+          background: hsl(var(--primary));
           filter: blur(0);
         }
       `}</style>
@@ -257,7 +172,7 @@ export function Footer() {
               </p>
               <div className="flex lg:justify-end gap-4">
                 <a
-                  href="https://ko-fi.com/C0C217U6Z6"
+                  href={EXTERNAL_LINKS.kofi}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/5 backdrop-blur-sm border border-accent/20 hover:border-accent/40 text-foreground/70 hover:text-foreground/90 transition-all hover:shadow-accent/10 group"
@@ -268,7 +183,7 @@ export function Footer() {
                   Buy us a coffee
                 </a>
                 <a
-                  href="https://github.com/jayrichh/poe2"
+                  href={EXTERNAL_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 hover:bg-background/80 text-foreground/70 hover:text-foreground/90 transition-all group"
@@ -295,22 +210,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-2xl font-semibold tracking-tight">Community</h3>
-              <div className="flex flex-col lg:items-end gap-4">
-                {communityLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <h3 className="text-2xl font-semibold tracking-tight">Features</h3>
+              <h3 className="text-2xl font-semibold tracking-tight">Reference</h3>
               <div className="flex flex-col lg:items-end gap-4">
                 {featureLinks.map((link) => (
                   <Link
@@ -327,38 +227,17 @@ export function Footer() {
             <div className="space-y-8">
               <h3 className="text-2xl font-semibold tracking-tight">Data Sources</h3>
               <div className="flex flex-col lg:items-end gap-4">
-                <a
-                  href="https://poe2db.tw/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  POE2DB
-                </a>
-                <a
-                  href="https://github.com/marcoaaguiar/poe2-tree"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  poe2-tree
-                </a>
-                <a
-                  href="https://github.com/EmmittJ/SkillTree_TypeScript"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  SkillTree_TypeScript
-                </a>
-                <a
-                  href="https://www.pathofexile.com/forum"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  POE Forums
-                </a>
+                {EXTERNAL_LINKS.dataSources.map((source) => (
+                  <a
+                    key={source.id}
+                    href={source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {source.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>

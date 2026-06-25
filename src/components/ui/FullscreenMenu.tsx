@@ -1,26 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Calculator,
-  Cog,
-  Coins,
-  FileText,
-  GitBranch,
-  Layout,
-  LogIn,
-  LogOut,
-  Monitor,
-  Moon,
-  Newspaper,
-  Settings,
-  Sun,
-  Timer,
-  User,
-  Users,
-  X,
-  Zap,
-} from "lucide-react";
+import { Monitor, Moon, Sun, X } from "lucide-react";
 
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -28,117 +9,11 @@ import { createPortal } from "react-dom";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 
-import { useAuth } from "~/contexts/auth";
+import { NAV_GROUPS, QUICK_LINKS } from "~/config/nav";
 
 import { cn } from "../../utils/cn";
 import { Button } from "./Button";
 import { Text } from "./Text";
-
-type Feature = {
-  id: string;
-  label: string;
-  path: string;
-  icon?: React.ComponentType<{ className?: string }>;
-};
-
-type MainLink = {
-  id: string;
-  label: string;
-  path: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-  features: Feature[];
-};
-
-type QuickLink = {
-  id: string;
-  label: string;
-  path: string;
-  icon: React.ComponentType<{ className?: string }>;
-};
-
-const mainLinks: MainLink[] = [
-  {
-    id: "build-planner",
-    label: "Build Planner",
-    path: "/build-planner",
-    icon: Layout,
-    description:
-      "Plan and optimize your POE2 character builds with our comprehensive build planner",
-    features: [
-      { id: "build-equipment", label: "Equipment", path: "/build-planner" },
-      { id: "build-gems", label: "Skill Gems", path: "/build-planner" },
-      { id: "build-stats", label: "Build Stats", path: "/build-planner" },
-      { id: "build-share", label: "Share Builds", path: "/build-planner" },
-      { id: "build-ladder", label: "Ladder Stats", path: "/builds" },
-    ],
-  },
-  {
-    id: "mechanics",
-    label: "Game Mechanics",
-    path: "/mechanics",
-    icon: Cog,
-    description: "Master POE2's core systems with detailed mechanics guides and explanations",
-    features: [
-      { id: "mechanics-combat", label: "Combat", path: "/mechanics" },
-      { id: "mechanics-character", label: "Character", path: "/mechanics" },
-      { id: "mechanics-status", label: "Status Effects", path: "/mechanics" },
-      { id: "mechanics-damage", label: "Damage Types", path: "/mechanics" },
-    ],
-  },
-  {
-    id: "ascendancies",
-    label: "Ascendancies",
-    path: "/ascendancies",
-    icon: Users,
-    description: "Discover and master POE2's unique ascendancy classes and their abilities",
-    features: [
-      { id: "ascendancies-guides", label: "Class Guides", path: "/ascendancies" },
-      { id: "ascendancies-builds", label: "Build Paths", path: "/ascendancies" },
-      { id: "ascendancies-abilities", label: "Abilities", path: "/ascendancies" },
-      { id: "ascendancies-playstyles", label: "Playstyles", path: "/ascendancies" },
-    ],
-  },
-  {
-    id: "skill-tree",
-    label: "Skill Tree",
-    path: "/skill-tree",
-    icon: GitBranch,
-    description: "Plan your character's passive skill tree with our interactive planner",
-    features: [
-      { id: "tree-explorer", label: "Tree Explorer", path: "/skill-tree" },
-      { id: "tree-planner", label: "Path Planner", path: "/skill-tree" },
-      { id: "tree-search", label: "Node Search", path: "/skill-tree" },
-      { id: "tree-export", label: "Build Export", path: "/skill-tree" },
-    ],
-  },
-  {
-    id: "calculators",
-    label: "Calculators",
-    path: "/calculators",
-    icon: Calculator,
-    description: "Optimize your build with our suite of specialized POE2 calculators",
-    features: [
-      { id: "calc-dps", label: "DPS Calculator", path: "/calculators/dps", icon: Zap },
-      { id: "calc-speed", label: "Speed Calculator", path: "/calculators/speed", icon: Timer },
-      {
-        id: "calc-currency",
-        label: "Currency Calculator",
-        path: "/calculators/currency",
-        icon: Coins,
-      },
-    ],
-  },
-];
-
-const quickLinks: QuickLink[] = [
-  { id: "quick-news", label: "Latest News", path: "/news", icon: Newspaper },
-  { id: "quick-guides", label: "Guides", path: "/guides", icon: FileText },
-  { id: "quick-builds", label: "Community Builds", path: "/build-planner", icon: Users },
-  { id: "quick-ladder", label: "Ladder Stats", path: "/builds", icon: GitBranch },
-  { id: "quick-patch-notes", label: "Patch Notes", path: "/news/patch-notes", icon: FileText },
-  { id: "quick-ascendancies", label: "Ascendancy Classes", path: "/ascendancies", icon: Users },
-];
 
 const themeOptions = [
   { label: "Light", value: "light", icon: Sun },
@@ -189,74 +64,6 @@ const animations = {
   },
 };
 
-function SignInSection({ onNavigate }: { onNavigate: (path: string) => void }) {
-  return (
-    <motion.div
-      variants={animations.item}
-      initial="hidden"
-      animate="visible"
-      className="p-4 rounded-xl border border-border/50 bg-background/95"
-    >
-      <div className="flex items-center justify-between">
-        <Text className="text-sm text-foreground/60">Continue where you left off</Text>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => onNavigate("/auth/login")}
-          className="flex items-center gap-2 text-foreground/70 hover:text-foreground"
-        >
-          <LogIn className="h-4 w-4" />
-          <span className="text-sm">Sign in</span>
-        </Button>
-      </div>
-    </motion.div>
-  );
-}
-
-function UserProfile({
-  user,
-  onSignOut,
-  onNavigate,
-}: {
-  user: any;
-  onSignOut: () => void;
-  onNavigate: (path: string) => void;
-}) {
-  return (
-    <motion.div
-      variants={animations.item}
-      initial="hidden"
-      animate="visible"
-      className="p-4 rounded-xl border border-border/50 bg-background/95"
-    >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <User className="h-4 w-4 text-foreground/70" />
-          <Text className="text-sm text-foreground/70">{user.email}</Text>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => onNavigate("/profile")}
-            className="text-foreground/70 hover:text-foreground"
-          >
-            <Settings className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onSignOut}
-            className="text-foreground/70 hover:text-foreground"
-          >
-            <LogOut className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 function NavigationSection({
   pathname,
   onNavigate,
@@ -268,13 +75,13 @@ function NavigationSection({
     <div className="space-y-6">
       <Text className="text-lg font-medium">Tools & Features</Text>
       <div className="grid gap-6">
-        {mainLinks.map((item, index) => {
-          const isActive = pathname === item.path;
-          const Icon = item.icon;
+        {NAV_GROUPS.map((group, index) => {
+          const isActive = group.href ? pathname.startsWith(group.href) : false;
+          const Icon = group.icon;
 
           return (
             <motion.div
-              key={item.path}
+              key={group.id}
               custom={index}
               variants={animations.item}
               initial="hidden"
@@ -292,22 +99,25 @@ function NavigationSection({
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Icon className="h-5 w-5" />
-                    <Text className="font-medium">{item.label}</Text>
+                    <Text className="font-medium">{group.label}</Text>
                   </div>
-                  <Text className="text-sm text-foreground/60">{item.description}</Text>
+                  {group.description && (
+                    <Text className="text-sm text-foreground/60">{group.description}</Text>
+                  )}
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {Array.isArray(item.features)
-                      ? item.features.map((feature) => (
-                          <button
-                            key={feature.id}
-                            onClick={() => onNavigate(feature.path)}
-                            className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors flex items-center gap-1.5"
-                          >
-                            {feature.icon && <feature.icon className="w-3 h-3" />}
-                            {feature.label}
-                          </button>
-                        ))
-                      : null}
+                    {group.items.map((item) => {
+                      const ItemIcon = item.icon;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => onNavigate(item.href)}
+                          className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90 hover:bg-primary/20 transition-colors flex items-center gap-1.5"
+                        >
+                          <ItemIcon className="w-3 h-3" />
+                          {item.label}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -324,7 +134,7 @@ function QuickLinksSection({ onNavigate }: { onNavigate: (path: string) => void 
     <div className="space-y-4">
       <Text className="text-lg font-medium">Quick Links</Text>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {quickLinks.map((item, index) => {
+        {QUICK_LINKS.map((item, index) => {
           const Icon = item.icon;
           return (
             <motion.button
@@ -334,7 +144,7 @@ function QuickLinksSection({ onNavigate }: { onNavigate: (path: string) => void 
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.6 + index * 0.1 }}
-              onClick={() => onNavigate(item.path)}
+              onClick={() => onNavigate(item.href)}
               className="p-4 rounded-xl border-2 border-border/50 bg-background/95 hover:border-primary/50 transition-all"
             >
               <div className="flex flex-col items-center gap-2">
@@ -355,7 +165,6 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
   const [mounted, setMounted] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
   const { theme, setTheme } = useTheme();
-  const { user, signOut } = useAuth();
 
   React.useEffect(() => {
     setMounted(true);
@@ -381,12 +190,6 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
   const handleNavigation = (path: string) => {
     onClose();
     router.push(path);
-  };
-
-  const handleSignOut = async () => {
-    await signOut();
-    onClose();
-    router.push("/auth/login");
   };
 
   if (!mounted) return null;
@@ -447,14 +250,6 @@ export function FullscreenMenu({ isOpen, onClose }: { isOpen: boolean; onClose: 
               <div className="space-y-12">
                 <NavigationSection pathname={pathname} onNavigate={handleNavigation} />
                 <QuickLinksSection onNavigate={handleNavigation} />
-                {!user && <SignInSection onNavigate={handleNavigation} />}
-                {user && (
-                  <UserProfile
-                    user={user}
-                    onSignOut={handleSignOut}
-                    onNavigate={handleNavigation}
-                  />
-                )}
               </div>
 
               <div className="space-y-8">

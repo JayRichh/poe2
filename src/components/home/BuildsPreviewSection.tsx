@@ -1,142 +1,156 @@
-import { motion } from "framer-motion";
-import Link from "next/link";
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { ResponsiveLine } from "@nivo/line";
+
+import { useEffect, useState } from "react";
+
+import Link from "next/link";
+
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
-import { chartTheme } from "~/components/ui/ChartContainer";
+
+interface ClassDistribution {
+  className: string;
+  count: number;
+  percentage: number;
+}
+
+interface LadderStats {
+  timestamp?: string;
+  overall?: { total: number; distribution: ClassDistribution[] };
+}
+
+function formatAsOf(timestamp?: string): string | null {
+  if (!timestamp) return null;
+  const d = new Date(timestamp);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
 
 export function BuildsPreviewSection() {
-  const previewStats = [
-    { label: "Infernalist Players", value: "32.4%", subtext: "Most Popular Class" },
-    { label: "Average Level", value: "95", subtext: "End-game Builds" },
-    { label: "Hardcore Ratio", value: "18.5%", subtext: "HC + HC SSF" },
-    { label: "Unique Builds", value: "2.5K+", subtext: "Build Diversity" },
-  ];
+  const reduceMotion = useReducedMotion() ?? false;
+  const [stats, setStats] = useState<LadderStats | null>(null);
+  const [error, setError] = useState(false);
 
-  const lineData = [
-    {
-      id: "Active Builds",
-      data: [
-        { x: "Dec 15", y: 850 },
-        { x: "Dec 22", y: 1450 },
-        { x: "Dec 29", y: 1850 },
-        { x: "Jan 5", y: 2100 },
-        { x: "Jan 12", y: 2350 },
-        { x: "Jan 19", y: 2500 },
-      ],
-    },
-  ];
+  useEffect(() => {
+    let active = true;
+    fetch("/data/ladder-stats.json")
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to load ladder stats (${res.status})`);
+        return res.json();
+      })
+      .then((data: LadderStats) => {
+        if (active) setStats(data);
+      })
+      .catch(() => {
+        if (active) setError(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const distribution = stats?.overall?.distribution ?? [];
+  const top = distribution.slice(0, 6);
+  const max = top.length ? Math.max(...top.map((d) => d.percentage)) : 0;
+  const asOf = formatAsOf(stats?.timestamp);
+
+  const Heading = (
+    <>
+      <div className="mb-3 flex items-center gap-3">
+        <div className="rule-gold w-10 shrink-0" aria-hidden />
+        <Text className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/90">
+          Ladder snapshot
+        </Text>
+      </div>
+      <Text variant="h2" className="font-display tracking-tight text-gilded">
+        What the ladder is playing
+      </Text>
+      <Text variant="body-lg" color="secondary" className="mt-3 max-w-2xl leading-relaxed">
+        Ascendancy distribution across the tracked top ladders.
+        {asOf ? (
+          <>
+            {" "}
+            <span className="text-foreground-secondary">Snapshot as of {asOf}.</span>
+          </>
+        ) : null}
+      </Text>
+    </>
+  );
 
   return (
     <div className="w-full overflow-hidden py-16 md:py-24">
       <Container className="max-w-7xl px-6 md:px-8 lg:px-10">
-        <Text
-          variant="h3"
-          className="tracking-tight mb-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-        >
-          Build Analytics
-        </Text>
-        <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-12">
-          Discover trending builds, analyze class distributions, and find your next character.
-        </Text>
+        {Heading}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {previewStats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="p-4 rounded-lg bg-background/95 border border-border/50"
-            >
-              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {stat.value}
-              </div>
-              <div className="text-sm font-medium text-foreground/80">{stat.label}</div>
-              <div className="text-xs text-foreground/60">{stat.subtext}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="h-[160px] mb-12">
-          <ResponsiveLine
-            data={lineData}
-            margin={{ top: 30, right: 5, bottom: 40, left: 5 }}
-            xScale={{ type: "point" }}
-            yScale={{
-              type: "linear",
-              min: 500,
-              max: 3000,
-            }}
-            curve="monotoneX"
-            axisTop={null}
-            axisRight={null}
-            axisBottom={{
-              tickSize: 0,
-              tickPadding: 12,
-              tickRotation: -25,
-            }}
-            axisLeft={{
-              tickSize: 0,
-              tickPadding: 12,
-              tickValues: 5,
-              format: value => `${Number(value).toLocaleString()}`,
-            }}
-            enablePoints={true}
-            pointSize={8}
-            pointColor="hsl(var(--background))"
-            pointBorderWidth={2}
-            pointBorderColor="hsl(var(--primary))"
-            enableGridX={true}
-            gridXValues={6}
-            enableGridY={true}
-            gridYValues={5}
-            colors={["hsl(var(--primary))"]}
-            theme={{
-              ...chartTheme,
-              grid: {
-                line: {
-                  stroke: "hsl(var(--border))",
-                  strokeWidth: 1,
-                  strokeOpacity: 0.5,
-                },
-              },
-              crosshair: {
-                line: {
-                  stroke: "hsl(var(--primary))",
-                  strokeWidth: 1,
-                  strokeOpacity: 0.35,
-                },
-              },
-            }}
-            lineWidth={2}
-            enableArea={true}
-            areaBaselineValue={500}
-            areaOpacity={0.1}
-            isInteractive={true}
-            useMesh={true}
-            enableSlices="x"
-            crosshairType="x"
-            role="presentation"
-            tooltip={({ point }) => (
-              <div className="bg-background/95 border border-border/50 p-3 rounded-md shadow-lg">
-                <div className="text-sm font-medium text-foreground/80">{String(point.data.x)}</div>
-                <div className="text-base font-semibold text-foreground">
-                  {Number(point.data.y).toLocaleString()} builds
+        {error ? (
+          <div className="mt-10 rounded-xl border border-border/50 bg-background/80 p-8 text-center">
+            <Text className="font-medium text-foreground">Ladder data is unavailable right now.</Text>
+            <Text color="secondary" className="mt-1 text-sm">
+              View the full statistics page for class distribution and trends.
+            </Text>
+          </div>
+        ) : !stats ? (
+          <div className="mt-10 space-y-3" aria-hidden>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-9 animate-pulse rounded-lg bg-card/50" />
+            ))}
+          </div>
+        ) : top.length === 0 ? (
+          <div className="mt-10 rounded-xl border border-border/50 bg-background/80 p-8 text-center">
+            <Text className="font-medium text-foreground">No ladder distribution recorded.</Text>
+            <Text color="secondary" className="mt-1 text-sm">
+              Check the statistics page for the latest snapshot.
+            </Text>
+          </div>
+        ) : (
+          <div className="mt-10 space-y-3">
+            {top.map((entry, index) => {
+              const width = max > 0 ? (entry.percentage / max) * 100 : 0;
+              const isLeader = index === 0;
+              return (
+                <div key={entry.className} className="flex items-center gap-4">
+                  <div className="w-40 shrink-0 truncate text-sm font-medium text-foreground/90 sm:w-48">
+                    {isLeader && (
+                      <span className="mr-2 rounded-sm bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                        Top
+                      </span>
+                    )}
+                    {entry.className}
+                  </div>
+                  <div className="relative h-7 flex-1 overflow-hidden rounded-md bg-background-secondary/60">
+                    <motion.div
+                      initial={reduceMotion ? false : { width: 0 }}
+                      whileInView={reduceMotion ? undefined : { width: `${width}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: Math.min(index * 0.06, 0.3) }}
+                      style={reduceMotion ? { width: `${width}%` } : undefined}
+                      className={
+                        isLeader
+                          ? "h-full rounded-md bg-gradient-to-r from-primary/80 to-primary"
+                          : "h-full rounded-md bg-border-secondary/80"
+                      }
+                    />
+                  </div>
+                  <div className="numeric w-14 shrink-0 text-right text-sm font-semibold text-foreground">
+                    {entry.percentage.toFixed(1)}%
+                  </div>
                 </div>
-              </div>
-            )}
-          />
-        </div>
+              );
+            })}
+          </div>
+        )}
 
-        <Link 
-          href="/builds"
-          className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
-        >
-          <span className="text-lg font-medium text-primary">View Build Analytics</span>
-          <ArrowRight className="w-5 h-5 text-primary transition-transform group-hover:translate-x-1" />
-        </Link>
+        <div className="mt-10">
+          <Link
+            href="/builds"
+            className="group inline-flex items-center gap-2 rounded-lg bg-primary/10 px-6 py-3 transition-colors hover:bg-primary/20"
+          >
+            <span className="text-lg font-medium text-primary">View full statistics</span>
+            <ArrowRight className="h-5 w-5 text-primary transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </Container>
     </div>
   );

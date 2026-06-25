@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BookOpen, Calendar, Clock, Users, Video } from "lucide-react";
+import { ArrowRight, BookOpen, Calendar, Clock } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
@@ -21,9 +21,12 @@ export function PatchNotesSection() {
   useEffect(() => {
     const loadData = async () => {
       try {
+        // Latest-N rather than a 30-day wall-clock window: against an archive of
+        // older patches a fixed real-time window leaves this panel permanently
+        // empty. Newest items, however old, are still "the latest updates."
         const [patchNotesResponse, recentUpdatesResponse] = await Promise.all([
           NewsService.getPatchNotes({ itemsPerPage: 5 }),
-          NewsService.getLatestNews({ timeRange: "30d", itemsPerPage: 4 }),
+          NewsService.getLatestNews({ itemsPerPage: 4 }),
         ]);
 
         if (patchNotesResponse.items.length > 0) {
@@ -44,16 +47,22 @@ export function PatchNotesSection() {
   if (!patchNotes.length && !loading) {
     return (
       <div className="">
-        <div className="text-center space-y-4 flex flex-col pb-12">
-          <Text
-            variant="h1"
-            className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-          >
+        <div className="text-center space-y-4 flex flex-col pb-8">
+          <Text variant="h2" align="center" className="font-display tracking-tight text-gilded">
             Latest Updates
           </Text>
-          <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
-            No patch notes available at the moment. Check back soon for updates.
+        </div>
+        <div className="mx-auto max-w-xl rounded-xl border border-border/50 bg-background/80 p-10 text-center">
+          <Text className="font-medium text-foreground">No patch notes loaded yet.</Text>
+          <Text color="secondary" className="mt-1 text-sm leading-relaxed">
+            Patch notes will appear here once the news data is available.
           </Text>
+          <Link href="/news" className="mt-6 inline-block">
+            <Button variant="secondary" size="lg" className="flex items-center gap-2 px-6 py-3">
+              Browse the news archive
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -63,10 +72,7 @@ export function PatchNotesSection() {
     return (
       <div className="">
         <div className="text-center space-y-4 flex flex-col pb-12">
-          <Text
-            variant="h1"
-            className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-          >
+          <Text variant="h2" align="center" className="font-display tracking-tight text-gilded">
             Latest Updates
           </Text>
           <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
@@ -114,10 +120,7 @@ export function PatchNotesSection() {
   return (
     <div className="">
       <div className="text-center space-y-4 flex flex-col pb-12">
-        <Text
-          variant="h1"
-          className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-        >
+        <Text variant="h2" align="center" className="font-display tracking-tight text-gilded">
           Latest Updates
         </Text>
         <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
@@ -144,6 +147,13 @@ export function PatchNotesSection() {
               <Clock className="w-5 h-5 text-muted-foreground/60" />
             </div>
             <div className="space-y-4">
+              {recentUpdates.length === 0 && (
+                <div className="rounded-lg border border-border/50 bg-background/50 p-6 text-center">
+                  <Text color="secondary" className="text-sm">
+                    No recent updates to show right now.
+                  </Text>
+                </div>
+              )}
               {recentUpdates.map((update) => {
                 const Icon = getUpdateIcon(update.type);
                 const tagStyle = getTagStyle(update.type);

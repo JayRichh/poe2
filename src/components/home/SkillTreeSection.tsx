@@ -42,10 +42,7 @@ export function SkillTreeSection() {
       <div className="flex-1 space-y-12">
         <div className="space-y-6">
           <div className="space-y-4">
-            <Text
-              variant="h1"
-              className="text-5xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-            >
+            <Text variant="h2" className="font-display tracking-tight text-gilded">
               Interactive Skill Tree
             </Text>
             <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed max-w-xl">

@@ -19,7 +19,7 @@ type Calculator = {
 
 const calculators: Calculator[] = [
   {
-    href: "/dps-calc",
+    href: "/calculators/dps",
     title: "DPS Calculator",
     description:
       "Compare weapons and calculate DPS increases with detailed breakdowns of all damage types. Input weapon stats and modifiers to see the total DPS.",
@@ -30,11 +30,11 @@ const calculators: Calculator[] = [
       "Equipment modifiers",
       "Build optimization",
     ],
-    badges: ["Manual Mode", "Live Data Import"],
-    theme: "red",
+    badges: ["Manual Mode"],
+    theme: "accent",
   },
   {
-    href: "/speed-calc",
+    href: "/calculators/speed",
     title: "Speed Calculator",
     description:
       "Calculate attack speed, recovery time, and reload time for different weapons and equipment combinations. Compare dual-wielding setups.",
@@ -45,53 +45,54 @@ const calculators: Calculator[] = [
       "Dual wielding support",
       "Equipment impact",
     ],
-    badges: ["Frame-Accurate", "Real-Time Updates"],
-    theme: "blue",
+    badges: ["Build Tool"],
+    theme: "secondary",
   },
   {
-    href: "/currency-calc",
+    href: "/calculators/currency",
     title: "Currency Calculator",
     description:
-      "Track exchange rates and analyze market data for optimal trading. Convert between different currency types with real-time rate updates.",
+      "Reference orb values and convert between currency types using approximate ratios. League prices reset every few months — check the trade site for live rates.",
     icon: Coins,
     features: [
-      "Exchange rate tracking",
-      "Market data analysis",
+      "Orb reference grid",
+      "Ratio conversions",
       "Trade calculations",
-      "Value optimization",
+      "Value comparison",
     ],
-    badges: ["Live Rates", "Market Analysis"],
-    theme: "yellow",
+    badges: ["Reference"],
+    theme: "primary",
   },
 ];
 
+// Map card themes onto the gilded-grimdark design tokens instead of raw palette utilities.
 const themeColors = {
-  red: {
-    bg: "bg-red-500/5",
-    hoverBg: "hover:bg-red-500/10",
-    border: "border-red-500/20",
-    text: "text-red-500",
-    icon: "text-red-500",
-    badge: "bg-red-500/10 text-red-400",
-    hover: "group-hover:text-red-400",
+  accent: {
+    bg: "bg-accent/5",
+    hoverBg: "hover:bg-accent/10",
+    border: "border-accent/25",
+    text: "text-accent",
+    icon: "text-accent",
+    badge: "bg-accent/10 text-accent",
+    hover: "group-hover:text-accent",
   },
-  blue: {
-    bg: "bg-blue-500/5",
-    hoverBg: "hover:bg-blue-500/10",
-    border: "border-blue-500/20",
-    text: "text-blue-500",
-    icon: "text-blue-500",
-    badge: "bg-blue-500/10 text-blue-400",
-    hover: "group-hover:text-blue-400",
+  secondary: {
+    bg: "bg-secondary/5",
+    hoverBg: "hover:bg-secondary/10",
+    border: "border-secondary/25",
+    text: "text-secondary",
+    icon: "text-secondary",
+    badge: "bg-secondary/10 text-secondary",
+    hover: "group-hover:text-secondary",
   },
-  yellow: {
-    bg: "bg-yellow-500/5",
-    hoverBg: "hover:bg-yellow-500/10",
-    border: "border-yellow-500/20",
-    text: "text-yellow-500",
-    icon: "text-yellow-500",
-    badge: "bg-yellow-500/10 text-yellow-400",
-    hover: "group-hover:text-yellow-400",
+  primary: {
+    bg: "bg-primary/5",
+    hoverBg: "hover:bg-primary/10",
+    border: "border-primary/25",
+    text: "text-primary",
+    icon: "text-primary",
+    badge: "bg-primary/10 text-primary",
+    hover: "group-hover:text-primary",
   },
 };
 
@@ -146,14 +147,11 @@ export function CalculatorsSection() {
     <section className="relative overflow-hidden">
       <div className="space-y-12 py-16 w-full mx-auto">
         <div className="text-center space-y-4 flex flex-col pb-12">
-          <Text
-            variant="h1"
-            className="text-4xl font-bold w-full tracking-tight bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
-          >
+          <Text variant="h2" align="center" className="font-display tracking-tight text-gilded">
             Technical Calculators
           </Text>
           <Text variant="body-lg" color="secondary" className="text-lg leading-relaxed">
-            Frame-perfect calculations and real-time analysis tools for Path of Exile 2
+            Plan damage, speed, and currency for Path of Exile 2
           </Text>
         </div>
 

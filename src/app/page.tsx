@@ -1,36 +1,57 @@
-"use client";
+import dynamic from "next/dynamic";
 
-import { useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-
-import { CalculatorsSection } from "~/components/home/CalculatorsSection";
-import { FeaturesSection } from "~/components/home/FeaturesSection";
-import { GameSystemsSection } from "~/components/home/GameSystemsSection";
-import { HeroSection } from "~/components/home/HeroSection";
-import { ItemsSection } from "~/components/home/ItemsSection";
-import { PatchNotesSection } from "~/components/home/PatchNotesSection";
-import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
-import { SkillTreeSection } from "~/components/home/SkillTreeSection";
-import { BuildsPreviewSection } from "~/components/home/BuildsPreviewSection";
 import { Container } from "~/components/ui/Container";
 
+import { HeroSectionWrapper } from "~/components/home/HeroSectionWrapper";
+import { ScrollToTopButton } from "~/components/home/ScrollToTopButton";
+
+// Heavy / animation-laden sections are lazy client islands so framer-motion and
+// @nivo stay out of the initial home bundle. The page shell itself is a server
+// component; only the interactive bits hydrate.
+const sectionFallback = <div className="w-full h-[320px] animate-pulse rounded-xl bg-card/40" />;
+
+const UpdateTimeline = dynamic(
+  () => import("~/components/home/UpdateTimeline").then((m) => m.UpdateTimeline),
+  { loading: () => sectionFallback }
+);
+const ItemsSection = dynamic(
+  () => import("~/components/home/ItemsSection").then((m) => m.ItemsSection),
+  { loading: () => sectionFallback }
+);
+const BuildsPreviewSection = dynamic(
+  () => import("~/components/home/BuildsPreviewSection").then((m) => m.BuildsPreviewSection),
+  { loading: () => sectionFallback }
+);
+const PatchNotesSection = dynamic(
+  () => import("~/components/home/PatchNotesSection").then((m) => m.PatchNotesSection),
+  { loading: () => sectionFallback }
+);
+const CalculatorsSection = dynamic(
+  () => import("~/components/home/CalculatorsSection").then((m) => m.CalculatorsSection),
+  { loading: () => sectionFallback }
+);
+const GameSystemsSection = dynamic(
+  () => import("~/components/home/GameSystemsSection").then((m) => m.GameSystemsSection),
+  { loading: () => sectionFallback }
+);
+const SkillTreeSection = dynamic(
+  () => import("~/components/home/SkillTreeSection").then((m) => m.SkillTreeSection),
+  { loading: () => sectionFallback }
+);
+
 export default function HomePage() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, 10]);
-
   return (
-    <div ref={containerRef} className="flex flex-col items-center w-full relative min-h-screen">
+    <div className="flex flex-col items-center w-full relative min-h-screen">
       <section className="w-full pt-12 sm:pt-24 flex justify-center">
         <Container className="flex flex-col items-center text-center max-w-5xl">
-          <HeroSection opacity={opacity} scale={scale} y={y} />
+          <HeroSectionWrapper />
         </Container>
       </section>
 
       <ScrollToTopButton />
+
+      {/* Signature pivot: the update timeline leads the showcase. */}
+      <UpdateTimeline />
 
       <section className="w-full pb-12 flex justify-center">
         <ItemsSection />
@@ -49,12 +70,6 @@ export default function HomePage() {
       <section className="w-full py-6 flex justify-center">
         <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
           <CalculatorsSection />
-        </Container>
-      </section>
-
-      <section className="w-full py-6 flex justify-center">
-        <Container className="px-6 md:px-8 lg:px-10 max-w-7xl">
-          <FeaturesSection />
         </Container>
       </section>
 
