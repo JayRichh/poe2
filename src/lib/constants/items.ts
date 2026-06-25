@@ -1,4 +1,4 @@
-import type { EquipmentSlot } from "~/lib/supabase/types";
+import type { EquipmentSlot } from "~/types/items";
 
 export const CATEGORY_TO_SLOT: Record<string, EquipmentSlot> = {
   // One Handed Weapons

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { EquipmentSlot } from "~/lib/supabase/types";
+import type { EquipmentSlot } from "~/types/items";
 import { itemsService } from "~/services/items-service";
 import type { ItemBase } from "~/types/itemTypes";
 

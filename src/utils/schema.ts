@@ -4,26 +4,62 @@ type SchemaContext = {
   siteImage: string;
 };
 
-export function generateWebsiteSchema(context: SchemaContext) {
+/**
+ * Minimal site identity accepted by the site-wide schemas. Compatible with both
+ * the legacy `SchemaContext` ({ siteUrl, siteName }) and the `SITE` config
+ * object ({ url, name }).
+ */
+type SiteIdentity = {
+  name?: string;
+  url?: string;
+  siteName?: string;
+  siteUrl?: string;
+};
+
+function resolveIdentity(site: SiteIdentity) {
+  return {
+    name: site.name ?? site.siteName ?? "PoE2 Tools",
+    url: site.url ?? site.siteUrl ?? "https://poe2.dev",
+  };
+}
+
+/**
+ * Organization schema for the publisher. Linked from the WebSite schema via
+ * `@id` so search engines treat them as one entity graph.
+ */
+export function generateOrganizationSchema(site: SiteIdentity) {
+  const { name, url } = resolveIdentity(site);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${url}#organization`,
+    name,
+    url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${url}/icon.svg`,
+    },
+  };
+}
+
+/**
+ * WebSite schema. No SearchAction — the site has no general search endpoint
+ * (the old target `/build-planner?q=` did not exist).
+ */
+export function generateWebsiteSchema(site: SiteIdentity) {
+  const { name, url } = resolveIdentity(site);
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: context.siteName,
-    url: context.siteUrl,
+    "@id": `${url}#website`,
+    name,
+    url,
     description:
-      "Comprehensive Path of Exile 2 toolkit for build planning, DPS calculations, and character optimization",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${context.siteUrl}/build-planner?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
+      "A Path of Exile 2 toolkit for build planning, skill-tree exploration, DPS and currency calculations, and patch tracking.",
+    publisher: {
+      "@id": `${url}#organization`,
     },
-    applicationCategory: "Game Tools",
-    keywords: "path of exile 2, poe2, build planner, dps calculator, skill tree",
-    creator: {
-      "@type": "Organization",
-      name: "POE2 Tools Team",
-      url: context.siteUrl,
-    },
+    inLanguage: "en-US",
   };
 }
 

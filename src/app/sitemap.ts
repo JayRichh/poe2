@@ -1,177 +1,78 @@
 import type { MetadataRoute } from "next";
 
+import { SITE } from "~/config/metadata";
 import { ascendanciesWithMeta } from "~/lib/ascendancies/data";
 import { guides } from "~/lib/guides/data";
 import { mechanics } from "~/lib/mechanics/data";
 import { NewsService } from "~/services/news-service";
 
-type SitemapEntry = {
-  url: string;
-  lastModified: Date;
-  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-  priority: number;
-};
+type Entry = MetadataRoute.Sitemap[number];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://poe2.dev";
-  const defaultDate = new Date();
+  const baseUrl = SITE.url;
+  // Build timestamp: honest "as of last deploy" for static/tool pages.
+  const buildDate = new Date();
 
-  // Get all news items including patch notes
-  const allNews = await NewsService.getAllNews();
+  const staticRoutes: Entry[] = [
+    { url: baseUrl, lastModified: buildDate, changeFrequency: "weekly", priority: 1.0 },
 
-  const routes: SitemapEntry[] = [
-    // Core pages
-    {
-      url: baseUrl,
-      lastModified: defaultDate,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    // Tools
-    {
-      url: `${baseUrl}/build-planner`,
-      lastModified: defaultDate,
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/calculators`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/calculators/dps`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/calculators/speed`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/calculators/currency`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/builds`,
-      lastModified: defaultDate,
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/skill-tree`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    // Content pages
-    {
-      url: `${baseUrl}/news`,
-      lastModified: defaultDate,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/news/patch-notes`,
-      lastModified: defaultDate,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/mechanics`,
-      lastModified: defaultDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/ascendancies`,
-      lastModified: defaultDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Legal & Info pages
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: defaultDate,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: defaultDate,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    // Build planner sections
-    {
-      url: `${baseUrl}/build-planner/equipment`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/build-planner/skills`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/build-planner/stats`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/build-planner/notes`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/build-planner/import-export`,
-      lastModified: defaultDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
+    // Tools — static client tools; content changes only on patch/deploy.
+    { url: `${baseUrl}/build-planner`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/build-planner/equipment`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/build-planner/skills`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/build-planner/stats`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/build-planner/notes`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/build-planner/import-export`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
+
+    { url: `${baseUrl}/calculators`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/calculators/dps`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/calculators/speed`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/calculators/currency`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+
+    { url: `${baseUrl}/builds`, lastModified: buildDate, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/skill-tree`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.8 },
+
+    // Content
+    { url: `${baseUrl}/news`, lastModified: buildDate, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/news/patch-notes`, lastModified: buildDate, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/guides`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/mechanics`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/ascendancies`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.7 },
+
+    // Legal / info — effectively static.
+    { url: `${baseUrl}/privacy`, lastModified: buildDate, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${baseUrl}/terms`, lastModified: buildDate, changeFrequency: "yearly", priority: 0.2 },
   ];
 
-  // Add mechanics pages
-  const mechanicsRoutes: SitemapEntry[] = Object.keys(mechanics).map((slug) => ({
+  // Mechanics detail pages.
+  const mechanicsRoutes: Entry[] = Object.keys(mechanics).map((slug) => ({
     url: `${baseUrl}/mechanics/${slug}`,
-    lastModified: defaultDate,
+    lastModified: buildDate,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
-  // Add guide pages
-  const guideRoutes: SitemapEntry[] = Object.keys(guides).map((slug) => ({
-    url: `${baseUrl}/guides?category=${slug}`,
-    lastModified: defaultDate,
-    changeFrequency: "weekly",
-    priority: 0.7,
+  // Guide categories — clean path URLs (route is /guides/[category]).
+  const guideRoutes: Entry[] = Object.keys(guides).map((slug) => ({
+    url: `${baseUrl}/guides/${slug}`,
+    lastModified: buildDate,
+    changeFrequency: "monthly",
+    priority: 0.6,
   }));
 
-  // Add news pages with proper routing
-  const newsRoutes: SitemapEntry[] = allNews.map((news) => {
-    // Safely handle date parsing
-    let lastMod = defaultDate;
-    try {
-      lastMod = new Date(news.date);
-    } catch (e) {
-      console.error("Error parsing date:", e);
-    }
+  // Ascendancy detail pages — route is /ascendancies/[class].
+  const ascendancyRoutes: Entry[] = ascendanciesWithMeta.map((ascendancy) => ({
+    url: `${baseUrl}/ascendancies/${ascendancy.id}`,
+    lastModified: buildDate,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  // News + patch-note articles — real publish dates.
+  const allNews = await NewsService.getAllNews();
+  const newsRoutes: Entry[] = allNews.map((news) => {
+    const parsed = news.date ? new Date(news.date) : buildDate;
+    const lastModified = Number.isNaN(parsed.getTime()) ? buildDate : parsed;
 
     const path =
       news.type === "patch-note"
@@ -180,19 +81,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return {
       url: `${baseUrl}${path}`,
-      lastModified: lastMod,
-      changeFrequency: news.type === "patch-note" ? "daily" : "weekly",
-      priority: news.type === "patch-note" ? 0.8 : 0.7,
+      lastModified,
+      // Published articles rarely change after release.
+      changeFrequency: "yearly",
+      priority: news.type === "patch-note" ? 0.6 : 0.5,
     };
   });
 
-  // Add ascendancy pages
-  const ascendancyRoutes: SitemapEntry[] = ascendanciesWithMeta.map((ascendancy) => ({
-    url: `${baseUrl}/ascendancies/${ascendancy.id}`,
-    lastModified: defaultDate,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  return [...routes, ...mechanicsRoutes, ...guideRoutes, ...newsRoutes, ...ascendancyRoutes];
+  return [
+    ...staticRoutes,
+    ...mechanicsRoutes,
+    ...guideRoutes,
+    ...ascendancyRoutes,
+    ...newsRoutes,
+  ];
 }

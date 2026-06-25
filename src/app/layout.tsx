@@ -1,8 +1,8 @@
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Cinzel, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
 import Script from "next/script";
 
-import { generateMetadata } from "../config/metadata";
+import { generateMetadata, getSiteJsonLd } from "../config/metadata";
 import { viewport } from "../config/viewport";
 import ClientLayout from "./client-layout";
 import "./globals.css";
@@ -43,6 +43,16 @@ const plexMono = IBM_Plex_Mono({
   ],
 });
 
+// Carved, Trajan-esque display face — PoE2's gothic/arcane lineage.
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+  preload: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -51,11 +61,13 @@ export default async function RootLayout({
   const nonce =
     (await headers()).get("x-nonce")?.toString() ?? "";
 
+  const jsonLd = getSiteJsonLd();
+
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plexSans.variable} ${plexMono.variable} h-full`}
+      className={`${plexSans.variable} ${plexMono.variable} ${cinzel.variable} dark h-full`}
     >
       <head>
         <link rel="preconnect" href="https://poe2.dev" />
@@ -86,6 +98,13 @@ export default async function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
           crossOrigin="anonymous"
+        />
+
+        {/* Site-wide structured data (Organization + WebSite) as real JSON-LD. */}
+        <script
+          type="application/ld+json"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
