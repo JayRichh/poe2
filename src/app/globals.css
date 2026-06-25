@@ -15,63 +15,76 @@ code[class*="language-"] {
 }
 
 @layer base {
+  /*
+   * Gilded-grimdark identity — PoE2's world, not a generic dark theme.
+   * Obsidian ground, aged gold, dried crimson, bone text. The site is
+   * dark-first: :root and .dark carry the same palette so the identity
+   * holds regardless of the theme toggle. Gem-socket vars (ruby/emerald/
+   * sapphire = STR/DEX/INT) are the functional data accents for the tools.
+   */
   :root {
-    --background: 0 0% 99%;
-    --background-secondary: 0 0% 96%;
-    --foreground: 0 0% 12%;
-    --foreground-secondary: 0 0% 45%;
-    --border: 0 0% 88%;
-    --border-secondary: 45 80% 85%;
-    --brand: 45 80% 55%;
-    --primary: 45 80% 55%;
-    --primary-foreground: 0 0% 12%;
-    --accent: 30 70% 55%;
-    --accent-foreground: 0 0% 12%;
-    --secondary: 145 55% 45%;
-    --secondary-foreground: 0 0% 12%;
-    --success: 145 55% 45%;
-    --success-foreground: 0 0% 98%;
-    --warning: 38 95% 50%;
-    --warning-foreground: 0 0% 12%;
-    --error: 348 75% 48%;
-    --error-foreground: 0 0% 98%;
-    --surface: 0 0% 98%;
-    --surface-foreground: 0 0% 12%;
+    --background: 40 14% 5%;
+    --background-secondary: 40 12% 9%;
+    --foreground: 44 30% 86%;
+    --foreground-secondary: 42 12% 60%;
+    --border: 40 10% 18%;
+    --border-secondary: 43 40% 30%;
+    --brand: 43 54% 52%;
+    --primary: 43 54% 52%;
+    --primary-foreground: 40 14% 6%;
+    --accent: 0 60% 50%;
+    --accent-foreground: 44 30% 92%;
+    --secondary: 150 46% 42%;
+    --secondary-foreground: 40 14% 6%;
+    --success: 150 48% 44%;
+    --success-foreground: 40 14% 6%;
+    --warning: 38 82% 54%;
+    --warning-foreground: 40 14% 6%;
+    --error: 0 65% 52%;
+    --error-foreground: 44 30% 96%;
+    --surface: 40 12% 11%;
+    --surface-foreground: 44 30% 86%;
     --radius: 0.5rem;
-    --damage-physical: rgb(180, 180, 180);
-    --damage-lightning: rgb(255, 215, 0);
-    --damage-fire: rgb(255, 50, 50);
-    --damage-cold: rgb(50, 150, 255);
-    --damage-chaos: rgb(180, 90, 255);
+    --gem-ruby: 358 73% 59%;
+    --gem-emerald: 153 55% 41%;
+    --gem-sapphire: 218 88% 63%;
+    --damage-physical: rgb(206, 200, 188);
+    --damage-lightning: rgb(255, 221, 102);
+    --damage-fire: rgb(232, 86, 70);
+    --damage-cold: rgb(96, 168, 230);
+    --damage-chaos: rgb(190, 120, 240);
   }
 
   .dark {
-    --background: 0 0% 15%;
-    --background-secondary: 0 0% 20%;
-    --foreground: 0 0% 96%;
-    --foreground-secondary: 0 0% 75%;
-    --border: 0 0% 28%;
-    --border-secondary: 45 80% 30%;
-    --brand: 45 80% 55%;
-    --primary: 45 80% 55%;
-    --primary-foreground: 0 0% 12%;
-    --accent: 30 70% 55%;
-    --accent-foreground: 0 0% 12%;
-    --secondary: 145 55% 45%;
-    --secondary-foreground: 0 0% 98%;
-    --success: 145 55% 45%;
-    --success-foreground: 0 0% 98%;
-    --warning: 38 95% 50%;
-    --warning-foreground: 0 0% 12%;
-    --error: 348 75% 48%;
-    --error-foreground: 0 0% 98%;
-    --surface: 0 0% 20%;
-    --surface-foreground: 0 0% 96%;
-    --damage-physical: rgb(200, 200, 200);
-    --damage-lightning: rgb(255, 225, 50);
-    --damage-fire: rgb(255, 80, 80);
-    --damage-cold: rgb(80, 180, 255);
-    --damage-chaos: rgb(200, 120, 255);
+    --background: 40 14% 5%;
+    --background-secondary: 40 12% 9%;
+    --foreground: 44 30% 86%;
+    --foreground-secondary: 42 12% 60%;
+    --border: 40 10% 18%;
+    --border-secondary: 43 40% 30%;
+    --brand: 43 54% 52%;
+    --primary: 43 54% 52%;
+    --primary-foreground: 40 14% 6%;
+    --accent: 0 60% 50%;
+    --accent-foreground: 44 30% 92%;
+    --secondary: 150 46% 42%;
+    --secondary-foreground: 40 14% 6%;
+    --success: 150 48% 44%;
+    --success-foreground: 40 14% 6%;
+    --warning: 38 82% 54%;
+    --warning-foreground: 40 14% 6%;
+    --error: 0 65% 52%;
+    --error-foreground: 44 30% 96%;
+    --surface: 40 12% 11%;
+    --surface-foreground: 44 30% 86%;
+    --gem-ruby: 358 73% 59%;
+    --gem-emerald: 153 55% 41%;
+    --gem-sapphire: 218 88% 63%;
+    --damage-physical: rgb(206, 200, 188);
+    --damage-lightning: rgb(255, 221, 102);
+    --damage-fire: rgb(232, 86, 70);
+    --damage-cold: rgb(96, 168, 230);
+    --damage-chaos: rgb(190, 120, 240);
   }
 }
 
@@ -86,16 +99,23 @@ code[class*="language-"] {
       "kern",
       "liga" 1,
       "calt" 1;
+    /* Faint torch-glow from above — depth without noise. */
+    background-image: radial-gradient(
+      120% 80% at 50% -10%,
+      hsl(43 45% 22% / 0.18),
+      transparent 60%
+    );
+    background-attachment: fixed;
   }
 
   h1 {
-    @apply mb-6 text-4xl font-bold tracking-tight text-shadow-sm;
-    letter-spacing: -0.02em;
+    @apply mb-6 font-display text-4xl font-bold text-shadow-sm;
+    letter-spacing: 0.01em;
   }
 
   h2 {
-    @apply mb-4 text-2xl font-semibold tracking-tight text-shadow-sm;
-    letter-spacing: -0.015em;
+    @apply mb-4 font-display text-2xl font-semibold text-shadow-sm;
+    letter-spacing: 0.01em;
   }
 
   h3 {
@@ -151,6 +171,15 @@ code[class*="language-"] {
     @apply transition-all duration-200 hover:border-border/60 hover:bg-background hover:bg-opacity-[0.98] hover:shadow-md;
   }
 
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -170,6 +199,28 @@ code[class*="language-"] {
   .text-title {
     @apply text-lg font-semibold tracking-tight;
     letter-spacing: -0.015em;
+  }
+
+  /* Gilded gradient for hero/display text — the one bold flourish. */
+  .text-gilded {
+    @apply gradient-text;
+    background-image: linear-gradient(
+      180deg,
+      hsl(43 60% 72%) 0%,
+      hsl(43 56% 52%) 55%,
+      hsl(40 50% 38%) 100%
+    );
+  }
+
+  /* Hairline gold rule — structural divider that reads as inlay, not chrome. */
+  .rule-gold {
+    height: 1px;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      hsl(43 50% 45% / 0.6) 50%,
+      transparent
+    );
   }
 
   .transition-smooth {
