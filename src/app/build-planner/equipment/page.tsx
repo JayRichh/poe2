@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
-import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
+
+import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
 
 const EQUIPMENT_SLOTS = [
   "Weapon",
@@ -22,10 +23,33 @@ const EQUIPMENT_SLOTS = [
 
 type EquipmentSlot = (typeof EQUIPMENT_SLOTS)[number];
 
+interface EquipmentState {
+  selectedSlot: EquipmentSlot | null;
+  selectedInventorySlot: number | null;
+}
+
 export default function EquipmentPage() {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null);
   const [selectedInventorySlot, setSelectedInventorySlot] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  // Hydrate from the active build (if any).
+  useEffect(() => {
+    const active = getActiveBuild();
+    const data = active?.data.equipment as EquipmentState | undefined;
+    if (data) {
+      setSelectedSlot(data.selectedSlot ?? null);
+      setSelectedInventorySlot(data.selectedInventorySlot ?? null);
+    }
+  }, []);
+
+  const handleSave = () => {
+    const state: EquipmentState = { selectedSlot, selectedInventorySlot };
+    upsertActiveBuild("equipment", state);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
 
   const handleDragStart = (
     e: React.DragEvent,
@@ -57,14 +81,11 @@ export default function EquipmentPage() {
       description="Manage your character's equipment and inventory"
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
-            Import
+          <Button variant="outline" size="sm" onClick={() => (window.location.href = "/build-planner/import-export")}>
+            Import / Export
           </Button>
-          <Button variant="outline" size="sm">
-            Export
-          </Button>
-          <Button variant="primary" size="sm">
-            Save
+          <Button variant="primary" size="sm" onClick={handleSave}>
+            {saved ? "Saved!" : "Save"}
           </Button>
         </div>
       }

@@ -20,7 +20,6 @@ import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
 import { shimmer, toBase64 } from "~/utils/image";
 
-import { AuthProvider } from "~/contexts/auth";
 import { SearchProvider } from "~/contexts/search";
 
 import { ScrollToTopButton } from "../components/home/ScrollToTopButton";
@@ -105,7 +104,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         disableTransitionOnChange
       >
         <QueryProvider>
-          <AuthProvider>
+          <>
             <WIPBanner />
             {/* Background gradient */}
             <div className="fixed inset-0 z-[5] pointer-events-none">
@@ -164,7 +163,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               <Footer />
               <ScrollToTopButton />
             </div>
-          </AuthProvider>
+          </>
         </QueryProvider>
       </ThemeProvider>
     </SearchProvider>

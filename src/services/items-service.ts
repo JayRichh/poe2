@@ -1,5 +1,5 @@
 import { CATEGORY_TO_SLOT } from "~/lib/constants/items";
-import type { EquipmentSlot } from "~/lib/supabase/types";
+import type { EquipmentSlot } from "~/types/items";
 import type { AllItemData, ItemBase, ItemCategory, ItemModifier } from "~/types/itemTypes";
 
 class ItemsService {

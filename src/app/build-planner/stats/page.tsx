@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
-import { Container } from "~/components/ui/Container";
 import { Select } from "~/components/ui/Select";
 import { Text } from "~/components/ui/Text";
+
+import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
 
 const STAT_GROUPS = [
   {
@@ -63,6 +64,19 @@ export default function StatsPage() {
     Dexterity: { value: 0, points: 0 },
     Intelligence: { value: 0, points: 0 },
   });
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    const active = getActiveBuild();
+    const data = active?.data.stats as Record<string, StatAllocation> | undefined;
+    if (data) setAllocation(data);
+  }, []);
+
+  const handleSave = () => {
+    upsertActiveBuild("stats", allocation);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
 
   const handleAllocation = (stat: string, change: number) => {
     if (change > 0 && availablePoints <= 0) return;
@@ -103,8 +117,8 @@ export default function StatsPage() {
           >
             Reset
           </Button>
-          <Button variant="primary" size="sm">
-            Save
+          <Button variant="primary" size="sm" onClick={handleSave}>
+            {saved ? "Saved!" : "Save"}
           </Button>
         </div>
       }

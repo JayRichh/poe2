@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { ItemsProvider } from "~/components/providers/ItemsProvider";
 import { Container } from "~/components/ui/Container";
 
 import { useHeaderScroll } from "~/hooks/useHeaderScroll";
@@ -11,7 +10,6 @@ import { useHeaderScroll } from "~/hooks/useHeaderScroll";
 import { cn } from "~/utils/cn";
 
 const subNavLinks = [
-  { href: "/build-planner", label: "Overview" },
   { href: "/build-planner/equipment", label: "Equipment" },
   { href: "/build-planner/skills", label: "Skills" },
   { href: "/build-planner/stats", label: "Stats" },
@@ -24,8 +22,7 @@ export default function BuildPlannerLayout({ children }: { children: React.React
   const isVisible = useHeaderScroll();
 
   return (
-    <ItemsProvider>
-      <div className="min-h-screen pt-12">
+    <div className="min-h-screen pt-12">
         <div
           className={cn(
             "fixed top-12 sm:top-16 left-0 right-0 h-12 bg-background/95 backdrop-blur-md border-b border-border/50 z-20 transition-all duration-300",
@@ -33,7 +30,7 @@ export default function BuildPlannerLayout({ children }: { children: React.React
           )}
         >
           <Container size="xl" noPadding>
-            <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
+            <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8 overflow-x-auto no-scrollbar">
               {subNavLinks.map(({ href, label }) => {
                 const isActive =
                   pathname === href || (href !== "/build-planner" && pathname?.startsWith(href));
@@ -59,6 +56,5 @@ export default function BuildPlannerLayout({ children }: { children: React.React
         </div>
         {children}
       </div>
-    </ItemsProvider>
   );
 }

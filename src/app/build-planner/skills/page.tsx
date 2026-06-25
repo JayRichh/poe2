@@ -2,13 +2,14 @@
 
 import { Search } from "lucide-react";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
 import { Button } from "~/components/ui/Button";
-import { Container } from "~/components/ui/Container";
 import { Input } from "~/components/ui/Input";
 import { Text } from "~/components/ui/Text";
+
+import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
 
 const SKILL_GROUPS = [
   { name: "Attack Skills", count: 0 },
@@ -44,6 +45,8 @@ export default function SkillsPage() {
     )
   );
 
+  const [saved, setSaved] = useState(false);
+
   const handleSearch = useCallback(
     debounce((value: string) => {
       setIsSearching(false);
@@ -51,20 +54,33 @@ export default function SkillsPage() {
     []
   );
 
+  useEffect(() => {
+    const active = getActiveBuild();
+    const data = active?.data.skills as Record<string, GemSlot[]> | undefined;
+    if (data) setGemSlots(data);
+  }, []);
+
+  const handleSave = () => {
+    upsertActiveBuild("skills", gemSlots);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
   return (
     <BuildPlannerLayout
       title="Skills"
       description="Configure your character's skills and gem setup"
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
-            Import
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => (window.location.href = "/build-planner/import-export")}
+          >
+            Import / Export
           </Button>
-          <Button variant="outline" size="sm">
-            Export
-          </Button>
-          <Button variant="primary" size="sm">
-            Save
+          <Button variant="primary" size="sm" onClick={handleSave}>
+            {saved ? "Saved!" : "Save"}
           </Button>
         </div>
       }

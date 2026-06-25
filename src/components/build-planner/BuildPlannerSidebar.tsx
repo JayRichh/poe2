@@ -6,7 +6,6 @@ import {
   ChevronDown,
   ChevronRight,
   FileText,
-  Layout,
   Share2,
   Sword,
 } from "lucide-react";
@@ -33,7 +32,6 @@ const navigation: NavItem[] = [
   {
     label: "Build Core",
     items: [
-      { label: "Passive Tree", href: "/build-planner", icon: <Layout className="w-4 h-4" /> },
       { label: "Equipment", href: "/build-planner/equipment", icon: <Sword className="w-4 h-4" /> },
       { label: "Skills", href: "/build-planner/skills", icon: <Book className="w-4 h-4" /> },
     ],

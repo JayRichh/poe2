@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { itemsService } from '../src/services/items-service';
-import type { EquipmentSlot } from '../src/lib/supabase/types';
+import type { EquipmentSlot } from '../src/types/items';
 
 const IMAGES_DIR = path.join(process.cwd(), 'public/items');
 const URL_MAPPING_PATH = path.join(process.cwd(), 'public/data/item-image-mapping.json');

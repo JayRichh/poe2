@@ -1,16 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { updateSession } from "./lib/supabase/middleware";
 
 /* ─────────────────────────  CONFIG  ────────────────────────── */
 
 const RATE_LIMITS: Record<string, number> = {
-  "/api/auth/login": 30,
-  "/api/auth/signup": 10,
-  "/api/auth/reset-password": 5,
-  "/api/auth/refresh-token": 100,
   "/api/builds/": 300,
   "/api/search/": 200,
-  "/api/user/": 100,
   "/api/webhooks/": 1000,
   "/api/revalidate/": 50,
   "/api/": 500,
@@ -110,13 +104,6 @@ export async function middleware(request: NextRequest) {
     });
   }
 
-  // Session (Supabase) — surrounded with try/catch so failures don’t 500 the edge
-  try {
-    response = await updateSession(request);
-  } catch {
-    response = NextResponse.next();
-  }
-
   // Apply rate-limit headers
   Object.entries(headers).forEach(([k, v]) => response.headers.set(k, v));
 
@@ -141,12 +128,10 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/auth/:path*",
     "/build-planner",
     "/guides/:path*",
     "/news/:path*",
     "/mechanics/:path*",
-    "/profile",
     "/terms",
     "/privacy",
     "/((?!api|_next/static|_next/image|favicon.ico|build-planner/.*|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$|manifest\\.json|robots\\.txt|sitemap\\.xml|icon\\.svg).*)",

@@ -13,6 +13,8 @@ import { NotesSections, Section } from "~/components/build-planner/notes/NotesSe
 import { DEFAULT_SECTIONS } from "~/components/build-planner/notes/default-sections";
 import { Text } from "~/components/ui/Text";
 
+import { getActiveBuild, upsertActiveBuild } from "~/lib/build-planner/storage";
+
 const DrawingCanvas = dynamic(
   () => import("~/components/build-planner/notes/DrawingCanvas").then((mod) => mod.DrawingCanvas),
   {
@@ -31,13 +33,7 @@ const NotesEditor = dynamic(
 
 export default function NotesPage() {
   const router = useRouter();
-  const [sections, setSections] = useState<Section[]>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("build-notes");
-      return saved ? JSON.parse(saved) : DEFAULT_SECTIONS;
-    }
-    return DEFAULT_SECTIONS;
-  });
+  const [sections, setSections] = useState<Section[]>(DEFAULT_SECTIONS);
 
   const [activeSection, setActiveSection] = useState<string>("overview");
   const [isSaving, setIsSaving] = useState(false);
@@ -50,7 +46,7 @@ export default function NotesPage() {
     debounce((newSections: Section[]) => {
       setIsSaving(true);
       try {
-        localStorage.setItem("build-notes", JSON.stringify(newSections));
+        upsertActiveBuild("notes", newSections);
         setFeedback({ type: "success", message: "Changes saved" });
         setError(null);
       } catch (error) {
@@ -92,15 +88,13 @@ export default function NotesPage() {
     );
   };
 
+  // Hydrate from the active build's notes — centralized storage shared with
+  // equipment/skills/stats so JSON export and share URLs include notes.
   useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "build-notes" && e.newValue) {
-        setSections(JSON.parse(e.newValue));
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    const active = getActiveBuild();
+    if (active?.data.notes) {
+      setSections(active.data.notes as Section[]);
+    }
   }, []);
 
   return (
@@ -149,10 +143,10 @@ export default function NotesPage() {
             <Text className="text-sm font-medium text-foreground/70 px-1 mb-2">Quick Links</Text>
             <div className="space-y-1">
               {[
-                { name: "Passive Tree", path: "/build-planner" },
                 { name: "Equipment", path: "/build-planner/equipment" },
                 { name: "Skills", path: "/build-planner/skills" },
                 { name: "Stats", path: "/build-planner/stats" },
+                { name: "Import/Export", path: "/build-planner/import-export" },
               ].map((link) => (
                 <button
                   key={link.path}
