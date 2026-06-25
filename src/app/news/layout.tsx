@@ -33,7 +33,7 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <Container size="xl" noPadding>
-          <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8">
+          <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8 overflow-x-auto no-scrollbar">
             {subNavLinks.map(({ href, label }) => {
               const isActive =
                 href === "/news"

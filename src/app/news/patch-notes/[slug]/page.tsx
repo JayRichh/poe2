@@ -21,12 +21,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const news = await NewsService.getNewsById(slug);
     if (!news) return {};
 
+    const description = news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title;
     return {
       title: news.title,
-      description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title,
+      description,
+      alternates: {
+        canonical: `/news/patch-notes/${news.slug || news.id}`,
+      },
       openGraph: {
         title: news.title,
-        description: news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title,
+        description,
         type: "article",
         publishedTime: news.date,
         modifiedTime: news.date,

@@ -35,7 +35,25 @@ export function NewsContent({ news, featuredNews, categoryCounts }: NewsContentP
     router.push(`/news?${params.toString()}`);
   };
 
+  const isEmpty = news.items.length === 0;
+
+  const emptyState = (
+    <div className="rounded-lg border border-border bg-card p-8 text-center">
+      <Text variant="h4" className="mb-2">
+        No news for this filter
+      </Text>
+      <Text className="text-sm text-foreground/60">
+        Nothing matches the current category or time range. Try widening the filter or selecting
+        &ldquo;All Time&rdquo;.
+      </Text>
+    </div>
+  );
+
   const renderContent = () => {
+    if (isEmpty) {
+      return emptyState;
+    }
+
     if (currentCategory === "patch-notes") {
       return (
         <div className="bg-card rounded-lg p-6 border border-border">

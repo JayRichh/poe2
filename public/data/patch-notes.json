@@ -1,5 +1,45 @@
 [
   {
+    "id": "3932540",
+    "title": "0.5.0 Patch Notes - Return of the Ancients",
+    "date": "May 29, 2026, 8:00:00 PM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3932540",
+    "content": "<h3>0.5.0 Return of the Ancients</h3><br>\nThe Runes of Aldur league and the final Early Access update before 1.0. Headline changes:<br>\n<ul>\n<li>Two new ascendancies: <strong>Martial Artist</strong> (Monk) and <strong>Spirit Walker</strong> (Huntress).</li>\n<li>Runes of Aldur league introducing Verisium <strong>Runeforging</strong> and the new <strong>Runic Ward</strong> defence layer.</li>\n<li>Massive endgame overhaul: the <strong>Precursor Fortress</strong>, a reworked <strong>300+ node Atlas passive tree</strong> with per-mechanic sub-trees, <strong>Masters of the Atlas</strong>, and the new pinnacle boss <strong>Arbiter of Divinity</strong> (plus two new Citadels).</li>\n<li>~30 new endgame map areas; Waystones must now be identified before use.</li>\n<li>13 new Alloy currencies; Greater/Perfect orb tiers made rarer; defence and energy-shield recharge rebalancing; a per-hit ~40k leech-input cap.</li>\n</ul><br>\nSee the official forum thread for the complete notes.",
+    "author": "Path of Exile",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "poe2-0-4-0",
+    "title": "0.4.0 Patch Notes - The Last of the Druids",
+    "date": "Dec 12, 2025, 8:00:00 PM",
+    "url": "https://maxroll.gg/poe2/news/patch-0-4-0-the-last-of-the-druids-reveal-summary",
+    "content": "<h3>0.4.0 The Last of the Druids</h3><br>\nThe Fate of the Vaal league. Headline changes:<br>\n<ul>\n<li>New base class: the <strong>Druid</strong> (Strength/Intelligence shapeshifter - Bear/Wolf/Wyvern forms) with two ascendancies, Shaman and Oracle.</li>\n<li>Fate of the Vaal temple-building league.</li>\n<li>Endgame rebalancing across Abyss, Waystone crafting, and monster density.</li>\n</ul>",
+    "author": "Path of Exile",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "poe2-0-3-0",
+    "title": "0.3.0 Patch Notes - The Third Edict",
+    "date": "Aug 29, 2025, 8:00:00 PM",
+    "url": "https://maxroll.gg/poe2/news/0-3-0-patch-notes-the-third-edict",
+    "content": "<h3>0.3.0 The Third Edict</h3><br>\nThe Rise of the Abyssals league, the first full challenge league. Headline changes:<br>\n<ul>\n<li><strong>Act 4</strong> plus three Interludes, <strong>replacing the Cruel difficulty</strong> playthrough.</li>\n<li>Abyss / Desecration crafting league mechanic.</li>\n<li>Support-gem <strong>tier overhaul</strong>: removes the one-copy-per-character limit and adds drop-only Lineage support gems.</li>\n<li>Asynchronous trade; sprinting added for all classes.</li>\n</ul>",
+    "author": "Path of Exile",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "3740562",
+    "title": "0.2.0 Patch Notes - Dawn of the Hunt",
+    "date": "Apr 4, 2025, 8:00:00 PM",
+    "url": "https://www.pathofexile.com/forum/view-thread/3740562",
+    "content": "<h3>0.2.0 Dawn of the Hunt</h3><br>\nThe first major content update after Early Access launch. Headline changes:<br>\n<ul>\n<li>New base class: the <strong>Huntress</strong> (spear + buckler).</li>\n<li>Five new ascendancies across existing classes.</li>\n<li>100+ new support gems and 100+ new unique items.</li>\n<li>New endgame additions: Azmerian Wisps, Recombinators, and Fracturing Orbs.</li>\n</ul>",
+    "author": "Path of Exile",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
     "id": "3729362",
     "title": "0.1.0e Hotfix 2",
     "date": "Feb 27, 2025, 4:46:02 AM",
@@ -375,5 +415,15 @@
     "lastReplyDate": "Dec 16, 2024, 6:32:46 AM",
     "type": "patch-note",
     "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjowLCJzaXplIjoiYXZhdGFyIn1d/1cbf9cc398/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "poe2-0-1-0",
+    "title": "0.1.0 - Early Access Launch",
+    "date": "Dec 6, 2024, 8:00:00 PM",
+    "url": "https://en.wikipedia.org/wiki/Path_of_Exile_2",
+    "content": "<h3>0.1.0 Early Access Launch</h3><br>\nPath of Exile 2 entered Early Access. Headline content:<br>\n<ul>\n<li>6 base classes and 12 ascendancies.</li>\n<li>Acts 1-3 campaign (originally replayed on Cruel difficulty).</li>\n<li>Atlas / Waystone endgame.</li>\n<li>Record-breaking launch for Grinding Gear Games.</li>\n</ul>",
+    "author": "Path of Exile",
+    "type": "patch-note",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
   }
 ]

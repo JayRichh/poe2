@@ -162,16 +162,46 @@ async function scrapeForumThreads(
           });
         }
       } catch (error) {
+        // Per-thread failure: log and skip this one thread, but keep going so a
+        // single bad thread does not abort the whole run.
         console.error(`Error processing thread ${thread.url}:`, error);
         continue;
       }
     }
   } catch (error) {
-    console.error(`Error scraping ${type}:`, error);
+    // Fail loud: a top-level scrape failure (wrong forum ID, markup change,
+    // network/timeout) must surface, not silently return an empty list that the
+    // caller would happily write over good data.
+    console.error(`Error scraping ${type} from forum ${forumId}:`, error);
+    throw new Error(
+      `Failed to scrape ${type} from forum ${forumId}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
   }
 
   return posts;
 }
+
+// TODO(poe2-source): These forum IDs (2211 = News, 2212 = Patch Notes) are the
+// Path of Exile *1* forum sections. Path of Exile 2 has its own forum sections,
+// but their numeric IDs are not confirmed in the project reference doc and could
+// not be reliably verified, so they are NOT hardcoded here to avoid scraping the
+// wrong (PoE1) data.
+//
+// Manual process until a PoE2 source is confirmed:
+//   1. Browse https://www.pathofexile.com/forum and locate the PoE2 "News" and
+//      "Patch Notes" sub-forums; note the numeric ID in each section's URL
+//      (.../forum/view-forum/<ID>).
+//   2. Set POE2_ANNOUNCEMENTS_FORUM_ID and POE2_PATCHNOTES_FORUM_ID env vars,
+//      or replace the fallback IDs below, and re-run the scraper.
+//   3. Verify the scraped titles look like PoE2 versions (0.x.y) before
+//      committing the regenerated public/data/*.json.
+// Note: the canonical major-version entries in public/data/patch-notes.json are
+// currently curated by hand from docs/poe2-2026-reference.md; this scraper is
+// intended to supplement them once a verified PoE2 source exists.
+const ANNOUNCEMENTS_FORUM_ID = process.env.POE2_ANNOUNCEMENTS_FORUM_ID ?? "2211";
+const PATCHNOTES_FORUM_ID = process.env.POE2_PATCHNOTES_FORUM_ID ?? "2212";
 
 export async function scrapePatchNotes(): Promise<NewsPost[]> {
   const browser = await puppeteer.launch({
@@ -181,8 +211,8 @@ export async function scrapePatchNotes(): Promise<NewsPost[]> {
   const page = await setupPage(browser);
 
   try {
-    const announcements = await scrapeForumThreads(page, "2211", "announcement");
-    const patchNotes = await scrapeForumThreads(page, "2212", "patch-note");
+    const announcements = await scrapeForumThreads(page, ANNOUNCEMENTS_FORUM_ID, "announcement");
+    const patchNotes = await scrapeForumThreads(page, PATCHNOTES_FORUM_ID, "patch-note");
 
     const allPosts = [...announcements, ...patchNotes];
 

@@ -74,7 +74,6 @@ interface StatsOverview {
     count: number;
     percentage: number;
   };
-  averageLevel: number;
   uniqueClasses: number;
   top3Classes: Array<{
     name: string;
@@ -93,7 +92,6 @@ export function BuildStats() {
   const [overview, setOverview] = useState<StatsOverview>({
     totalPlayers: 0,
     topClass: { name: "", count: 0, percentage: 0 },
-    averageLevel: 0,
     uniqueClasses: 0,
     top3Classes: [],
     hardcoreRatio: 0
@@ -151,7 +149,6 @@ export function BuildStats() {
         count: topClass.count,
         percentage: topClass.percentage,
       },
-      averageLevel: 95,
       uniqueClasses: uniqueClassCount,
       top3Classes: top3,
       hardcoreRatio
@@ -210,9 +207,19 @@ export function BuildStats() {
         >
           Top 1000 Class Distribution
         </Text>
-        <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-6 text-center px-4">
+        <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed mb-2 text-center px-4">
           Analyze class preferences and meta trends among top 1000 players in each ladder
         </Text>
+        {stats?.timestamp && (
+          <Text variant="body-sm" className="text-sm text-muted-foreground/70 mb-6 text-center px-4">
+            Ladder snapshot as of{" "}
+            {new Date(stats.timestamp).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </Text>
+        )}
         <LadderSelector
           selectedLadder={selectedLadder}
           onSelect={setSelectedLadder}

@@ -23,27 +23,19 @@ export default function BuildsPage() {
               POE2 Meta Builds & Class Statistics
             </Text>
             <Text variant="body-lg" className="text-xl text-muted-foreground leading-relaxed">
-              Discover the most powerful and popular Path of Exile 2 builds based on real-time analysis of top 1000 players.
-              Updated daily with latest meta trends and performance statistics.
+              Class distribution among the top 1000 players in each ladder, drawn from a saved ladder
+              snapshot. See the snapshot date below for how current this data is.
             </Text>
             <div className="flex flex-wrap gap-2 text-sm">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 className="px-2 py-1 bg-background/95 border border-border/50 rounded"
               >
-                Updated {new Date().toLocaleDateString()}
+                Ladder Snapshot
               </motion.span>
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="px-2 py-1 bg-background/95 border border-border/50 rounded"
-              >
-                Live Ladder Data
-              </motion.span>
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
@@ -60,11 +52,11 @@ export default function BuildsPage() {
             transition={{ delay: 0.2 }}
             className="p-6 rounded-lg bg-background/95 border border-border/50"
           >
-            <Text variant="h3" className="mb-4">Current Meta Overview</Text>
+            <Text variant="h3" className="mb-4">Class Distribution Snapshot</Text>
             <Text variant="body" className="text-muted-foreground">
-              The Path of Exile 2 meta continues to evolve, with certain builds emerging as top performers across all leagues.
-              Our analysis shows strong preferences for Lightning-based Stormweaver builds, Minion-focused Infernalist setups,
-              and high-sustain Bleed Witchhunter configurations.
+              The charts below show which ascendancies were most represented among the top 1000
+              players when this ladder snapshot was captured. The Path of Exile 2 meta shifts every
+              league, so treat older snapshots as a historical record rather than the current meta.
             </Text>
           </motion.section>
 

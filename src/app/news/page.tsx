@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { NewsContent } from "~/components/news/NewsContent";
@@ -5,6 +6,22 @@ import { NewsLayout } from "~/components/news/NewsLayout";
 
 import { NewsService } from "~/services/news-service";
 import type { NewsPost, NewsQueryParams } from "~/types/news";
+
+export const metadata: Metadata = {
+  title: "News & Updates",
+  description:
+    "Stay updated with the latest Path of Exile 2 news, patch notes, community announcements, event schedules, and marketplace updates affecting builds, skills, and mechanics.",
+  alternates: {
+    canonical: "/news",
+  },
+  openGraph: {
+    title: "POE2 News & Updates",
+    description:
+      "The Path of Exile 2 news hub: latest updates, patch notes, and community announcements.",
+    type: "website",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
@@ -67,20 +84,25 @@ export default async function NewsPage({ searchParams }: PageProps) {
     }
 
     // Get category counts for tabs (respect timeRange filter)
-    const [announcementsCount, patchNotesCount] = await Promise.all([
+    const [announcementsCount, patchNotesCount, dataAsOf] = await Promise.all([
       NewsService.getLatestNews({ type: "announcement", itemsPerPage: 1, timeRange }).then(
         (r) => r.metadata.totalItems
       ),
       NewsService.getLatestNews({ type: "patch-note", itemsPerPage: 1, timeRange }).then(
         (r) => r.metadata.totalItems
       ),
+      NewsService.getDataAsOf(),
     ]);
 
+    const asOfLabel = dataAsOf
+      ? `Path of Exile 2 news archive — latest entry as of ${new Date(dataAsOf).toLocaleDateString(
+          "en-US",
+          { year: "numeric", month: "long", day: "numeric" }
+        )}`
+      : "Path of Exile 2 news and announcements";
+
     return (
-      <NewsLayout
-        title="Latest News"
-        description="Stay updated with the latest Path of Exile 2 news and announcements"
-      >
+      <NewsLayout title="News" description={asOfLabel}>
         <NewsContent
           news={paginatedNews}
           featuredNews={featuredNews}

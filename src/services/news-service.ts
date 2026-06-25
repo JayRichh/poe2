@@ -2,6 +2,38 @@ import { generateSlug } from "~/utils/slug";
 
 import type { NewsPost, NewsQueryParams, PaginatedResponse } from "~/types/news";
 
+export interface MajorVersionGroup {
+  /** Major.minor version label, e.g. "0.5.0". "0.1.x" groups all 0.1 hotfixes. */
+  version: string;
+  /** League / update codename, when known. */
+  codename?: string;
+  /** Newest post date within the group (ISO-parseable string). */
+  latestDate: string;
+  posts: NewsPost[];
+}
+
+/**
+ * Known major-version codenames, keyed by the `0.x` series.
+ * Sourced from docs/poe2-2026-reference.md section 1.
+ */
+const VERSION_CODENAMES: Record<string, string> = {
+  "0.5": "Return of the Ancients",
+  "0.4": "The Last of the Druids",
+  "0.3": "The Third Edict",
+  "0.2": "Dawn of the Hunt",
+  "0.1": "Early Access",
+};
+
+/**
+ * Derive the `0.x` major-version series from a post title, e.g.
+ * "0.5.0 Patch Notes - ..." -> "0.5", "0.1.1e Hotfix" -> "0.1".
+ * Returns "Other" when no version number can be parsed.
+ */
+export function getMajorVersion(title: string): string {
+  const match = title.match(/\b(\d+)\.(\d+)/);
+  return match ? `${match[1]}.${match[2]}` : "Other";
+}
+
 function sanitizeForPreview(html: string): string {
   if (!html) return "";
 
@@ -74,24 +106,28 @@ export class NewsService {
 
     let allNews = await this.getAllNews();
 
-    // Apply filters
-    if (timeRange) {
-      const now = new Date();
-      const days = parseInt(timeRange.replace("d", ""));
-      const cutoff = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
+    // Sort by date (newest first) up front so the time-window filter can be
+    // measured relative to the newest available entry rather than wall-clock now.
+    allNews = allNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-      allNews = allNews.filter((news) => {
-        const newsDate = new Date(news.date);
-        return newsDate >= cutoff;
-      });
+    // Apply filters.
+    // The time-window filter is DATA-RELATIVE: it measures back from the most
+    // recent entry, not from `Date.now()`. Because the content is a dated
+    // archive (latest entry can be months/years old), a wall-clock window would
+    // silently hide everything. Anchoring to the newest entry keeps "Last 7/30
+    // days" meaningful for an archive.
+    if (timeRange && allNews.length > 0) {
+      const days = parseInt(timeRange.replace("d", ""));
+      if (!Number.isNaN(days) && days > 0) {
+        const anchor = new Date(allNews[0].date).getTime();
+        const cutoff = anchor - days * 24 * 60 * 60 * 1000;
+        allNews = allNews.filter((news) => new Date(news.date).getTime() >= cutoff);
+      }
     }
 
     if (type) {
       allNews = allNews.filter((news) => news.type === type);
     }
-
-    // Sort by date
-    allNews = allNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     // Calculate pagination
     const totalItems = allNews.length;
@@ -295,5 +331,50 @@ export class NewsService {
       console.error("Error loading all news:", error);
       return [];
     }
+  }
+
+  /**
+   * The date of the most recent news/patch-note entry, for honest
+   * "Latest update (as of ...)" labelling. Returns null when there is no data.
+   */
+  static async getDataAsOf(): Promise<string | null> {
+    const all = await this.getAllNews();
+    if (all.length === 0) return null;
+    // getAllNews already returns newest-first.
+    return all[0].date;
+  }
+
+  /**
+   * Group patch notes by major `0.x` version (newest first), attaching the
+   * known league/update codename. Powers the major-update timeline on /news.
+   */
+  static async getMajorVersionGroups(): Promise<MajorVersionGroup[]> {
+    const { items } = await this.getPatchNotes({ itemsPerPage: Number.MAX_SAFE_INTEGER });
+
+    const byVersion = new Map<string, NewsPost[]>();
+    for (const post of items) {
+      const version = getMajorVersion(post.title);
+      const bucket = byVersion.get(version);
+      if (bucket) {
+        bucket.push(post);
+      } else {
+        byVersion.set(version, [post]);
+      }
+    }
+
+    const groups: MajorVersionGroup[] = Array.from(byVersion.entries()).map(([version, posts]) => {
+      const sorted = [...posts].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+      return {
+        version,
+        codename: VERSION_CODENAMES[version],
+        latestDate: sorted[0]?.date ?? "",
+        posts: sorted,
+      };
+    });
+
+    // Newest version series first.
+    return groups.sort((a, b) => new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime());
   }
 }

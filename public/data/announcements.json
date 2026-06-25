@@ -1,5 +1,45 @@
 [
   {
+    "id": "ann-0-5-0",
+    "title": "0.5.0 Return of the Ancients - Now Live",
+    "date": "May 29, 2026, 8:00:00 PM",
+    "url": "https://maxroll.gg/poe2/news/0-5-0-patch-notes-return-of-the-ancients",
+    "content": "<h2>Return of the Ancients</h2><br>\nThe Runes of Aldur league is live - the final Early Access update before the 1.0 full launch (targeted late 2026, after ExileCon Nov 7-8 2026). New ascendancies Martial Artist and Spirit Walker, the new Runic Ward defence layer via Verisium Runeforging, and a rebuilt endgame: Precursor Fortress, a 300+ node Atlas tree, Masters of the Atlas, and the Arbiter of Divinity pinnacle boss.",
+    "author": "Path of Exile",
+    "type": "announcement",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "ann-0-4-0",
+    "title": "0.4.0 The Last of the Druids - Now Live",
+    "date": "Dec 12, 2025, 8:00:00 PM",
+    "url": "https://www.poe2wiki.net/wiki/Fate_of_the_Vaal_league",
+    "content": "<h2>The Last of the Druids</h2><br>\nThe Fate of the Vaal league introduces the Druid - PoE2's first Strength/Intelligence shapeshifter, with Bear, Wolf, and Wyvern forms and two ascendancies (Shaman, Oracle). Includes a temple-building league mechanic and endgame rebalancing.",
+    "author": "Path of Exile",
+    "type": "announcement",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "ann-0-3-0",
+    "title": "0.3.0 The Third Edict - Now Live",
+    "date": "Aug 29, 2025, 8:00:00 PM",
+    "url": "https://maxroll.gg/poe2/news/0-3-0-patch-notes-the-third-edict",
+    "content": "<h2>The Third Edict</h2><br>\nThe Rise of the Abyssals league - the first full challenge league. Adds Act 4 and three Interludes that replace the Cruel playthrough, Abyss/Desecration crafting, a support-gem tier overhaul (no more one-copy-per-character limit, new Lineage supports), asynchronous trade, and sprinting for all classes.",
+    "author": "Path of Exile",
+    "type": "announcement",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
+    "id": "ann-0-2-0",
+    "title": "0.2.0 Dawn of the Hunt - Now Live",
+    "date": "Apr 4, 2025, 8:00:00 PM",
+    "url": "https://maxroll.gg/poe2/news/patch-0-2-0-dawn-of-the-hunt-reveal-megapost",
+    "content": "<h2>Dawn of the Hunt</h2><br>\nThe first major content update after Early Access. Adds the Huntress class (spear + buckler), five new ascendancies, 100+ new support gems and 100+ new uniques, plus endgame additions including Azmerian Wisps, Recombinators, and Fracturing Orbs.",
+    "author": "Path of Exile",
+    "type": "announcement",
+    "imageUrl": "https://web.poecdn.com/gen/image/WzAsMSx7ImlkIjoyNCwic2l6ZSI6ImF2YXRhciJ9XQ/217ae4d1ca/Path_of_Exile_Gallery_Image.jpg"
+  },
+  {
     "id": "3642235",
     "title": "Path of Exile 2: Upcoming Changes and Improvements",
     "date": "Dec 16, 2024, 10:11:50 PM",

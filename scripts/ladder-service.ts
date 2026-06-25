@@ -32,12 +32,31 @@ interface LadderStats {
   };
 }
 
-const LADDER_URLS = {
-  Standard: "https://pathofexile2.com/ladder/Standard",
-  Hardcore: "https://pathofexile2.com/ladder/Hardcore",
-  SSF: "https://pathofexile2.com/ladder/Solo%2520Self-Found",
-  "HC SSF": "https://pathofexile2.com/ladder/Hardcore%2520SSF",
+// TODO(poe2-source): The ladder host/path below is NOT a confirmed live source.
+// `pathofexile2.com/ladder/<league>` could not be verified as scrapeable.
+// Before relying on this scraper, confirm the correct PoE2 ladder endpoint
+// (e.g. the official pathofexile.com/api/ladders JSON API with the current PoE2
+// league names) and update LADDER_BASE_URL / the league list.
+//
+// Encoding: league names with spaces must be encoded EXACTLY ONCE. The previous
+// values used "%2520" (an already-encoded "%20"), i.e. they were double-encoded
+// — the server would have received a literal "%20" in the name. We now keep the
+// raw league names and call encodeURIComponent() so each name is encoded once.
+const LADDER_BASE_URL = "https://pathofexile2.com/ladder";
+
+const LADDER_LEAGUES: Record<string, string> = {
+  Standard: "Standard",
+  Hardcore: "Hardcore",
+  SSF: "Solo Self-Found",
+  "HC SSF": "Hardcore SSF",
 };
+
+const LADDER_URLS: Record<string, string> = Object.fromEntries(
+  Object.entries(LADDER_LEAGUES).map(([label, league]) => [
+    label,
+    `${LADDER_BASE_URL}/${encodeURIComponent(league)}`,
+  ])
+);
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 2000;
@@ -88,7 +107,12 @@ async function scrapeLadder(page: Page, url: string): Promise<LadderEntry[]> {
 
     entries.push(...rows);
   } catch (error) {
+    // Fail loud: surface the failure instead of returning [] silently, which
+    // would let the caller overwrite good data with an empty/partial snapshot.
     console.error(`Error scraping ladder ${url}:`, error);
+    throw new Error(
+      `Failed to scrape ladder ${url}: ${error instanceof Error ? error.message : String(error)}`
+    );
   }
 
   return entries;
