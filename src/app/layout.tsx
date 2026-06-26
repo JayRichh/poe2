@@ -91,7 +91,7 @@ export default async function RootLayout({
           name="yandex-verification"
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
         />
-        <meta name="google-adsense-account" content="ca-pub-3287461191996714" />
+        <meta name="google-adsense-account" content="ca-pub-6508832218947221" />
 
         <Script
           nonce={nonce}
