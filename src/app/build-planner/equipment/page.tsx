@@ -1,210 +1,101 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { BuildPlannerLayout } from "~/components/build-planner/BuildPlannerLayout";
+import { EquipmentDoll } from "~/components/equipment/EquipmentDoll";
+import { ItemEditor } from "~/components/equipment/ItemEditor";
+import { StatsLedger } from "~/components/equipment/StatsLedger";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
 import { useBuildSection } from "~/lib/build-planner/useBuildSection";
+import { aggregateEquipment } from "~/lib/equipment/aggregate";
+import { EQUIPMENT_SLOTS } from "~/lib/equipment/slots";
+import type { EquipmentSlotId, EquipmentState, EquippedItem } from "~/types/equipment";
 
-const EQUIPMENT_SLOTS = [
-  "Weapon",
-  "Off-Hand",
-  "Helmet",
-  "Body Armour",
-  "Gloves",
-  "Boots",
-  "Amulet",
-  "Ring 1",
-  "Ring 2",
-  "Belt",
-] as const;
+const VALID_SLOTS = new Set<EquipmentSlotId>(EQUIPMENT_SLOTS.map((s) => s.id));
 
-type EquipmentSlot = (typeof EQUIPMENT_SLOTS)[number];
-
-interface EquipmentState {
-  selectedSlot: EquipmentSlot | null;
-  selectedInventorySlot: number | null;
+/** Trust nothing from storage / a shared link: keep only well-formed slots. */
+function sanitizeState(data: unknown): EquipmentState {
+  if (!data || typeof data !== "object") return {};
+  const out: EquipmentState = {};
+  for (const [key, value] of Object.entries(data as Record<string, unknown>)) {
+    if (
+      VALID_SLOTS.has(key as EquipmentSlotId) &&
+      value &&
+      typeof value === "object" &&
+      Array.isArray((value as { mods?: unknown }).mods)
+    ) {
+      out[key as EquipmentSlotId] = value as EquippedItem;
+    }
+  }
+  return out;
 }
 
 export default function EquipmentPage() {
-  const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null);
-  const [selectedInventorySlot, setSelectedInventorySlot] = useState<number | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const [items, setItems] = useState<EquipmentState>({});
+  const [selected, setSelected] = useState<EquipmentSlotId>("weapon");
 
   const { save, saved } = useBuildSection<EquipmentState>("equipment", (data) => {
-    setSelectedSlot(data.selectedSlot ?? null);
-    setSelectedInventorySlot(data.selectedInventorySlot ?? null);
+    setItems(sanitizeState(data));
   });
 
-  const handleSave = () => save({ selectedSlot, selectedInventorySlot });
+  const aggregate = useMemo(() => aggregateEquipment(items), [items]);
+  const selectedDef = EQUIPMENT_SLOTS.find((s) => s.id === selected) ?? EQUIPMENT_SLOTS[0];
+  const equippedCount = Object.keys(items).length;
 
-  const handleDragStart = (
-    e: React.DragEvent,
-    type: "equipment" | "inventory",
-    id: string | number
-  ) => {
-    e.dataTransfer.setData("text/plain", JSON.stringify({ type, id }));
-    setIsDragging(true);
-  };
+  const setItem = (slot: EquipmentSlotId, item: EquippedItem) =>
+    setItems((prev) => ({ ...prev, [slot]: item }));
 
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: React.DragEvent, type: "equipment" | "inventory", id: string | number) => {
-    e.preventDefault();
-    const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-    // Handle item swapping logic here
-    setIsDragging(false);
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
+  const clearItem = (slot: EquipmentSlotId) =>
+    setItems((prev) => {
+      const next = { ...prev };
+      delete next[slot];
+      return next;
+    });
 
   return (
     <BuildPlannerLayout
       title="Equipment"
-      description="Manage your character's equipment and inventory"
+      description="Assemble your character's gear — each slot lights up by rarity and feeds the aggregated stats."
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" onClick={() => (window.location.href = "/build-planner/import-export")}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => (window.location.href = "/build-planner/import-export")}
+          >
             Import / Export
           </Button>
-          <Button variant="primary" size="sm" onClick={handleSave}>
+          <Button variant="primary" size="sm" onClick={() => save(items)}>
             {saved ? "Saved!" : "Save"}
           </Button>
         </div>
       }
-      sidebar={
-        <div className="p-4 space-y-4">
-          <Text className="font-medium">Equipment Slots</Text>
-          <div className="space-y-2">
-            {EQUIPMENT_SLOTS.map((slot) => (
-              <button
-                key={slot}
-                onClick={() => setSelectedSlot(slot)}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, "equipment", slot)}
-                draggable
-                onDragStart={(e) => handleDragStart(e, "equipment", slot)}
-                onDragEnd={handleDragEnd}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 ${
-                  selectedSlot === slot
-                    ? "bg-primary/10 text-primary hover:bg-primary/20"
-                    : "hover:bg-muted/50"
-                } ${isDragging ? "opacity-50" : ""}`}
-                aria-selected={selectedSlot === slot}
-                role="tab"
-                tabIndex={0}
-              >
-                {slot}
-              </button>
-            ))}
-          </div>
-
-          <div className="border-t border-border/50 my-4" />
-
-          <Text className="font-medium">Inventory</Text>
-          <div
-            className="grid grid-cols-12 gap-1 p-2 rounded-lg border border-border/50"
-            role="grid"
-            aria-label="Inventory grid"
-          >
-            {Array.from({ length: 60 }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedInventorySlot(i)}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, "inventory", i)}
-                draggable
-                onDragStart={(e) => handleDragStart(e, "inventory", i)}
-                onDragEnd={handleDragEnd}
-                className={`aspect-square rounded border transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 ${
-                  selectedInventorySlot === i
-                    ? "border-primary bg-primary/10 hover:bg-primary/20"
-                    : "border-border/50 hover:border-primary/50 hover:bg-muted/30"
-                } ${isDragging ? "opacity-50" : ""}`}
-                role="gridcell"
-                aria-selected={selectedInventorySlot === i}
-                aria-label={`Inventory slot ${i + 1}`}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  const col = i % 12;
-                  const row = Math.floor(i / 12);
-
-                  switch (e.key) {
-                    case "ArrowRight":
-                      if (col < 11) setSelectedInventorySlot(i + 1);
-                      break;
-                    case "ArrowLeft":
-                      if (col > 0) setSelectedInventorySlot(i - 1);
-                      break;
-                    case "ArrowDown":
-                      if (row < 4) setSelectedInventorySlot(i + 12);
-                      break;
-                    case "ArrowUp":
-                      if (row > 0) setSelectedInventorySlot(i - 12);
-                      break;
-                  }
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      }
     >
-      <div className="grid grid-cols-2 gap-8">
-        {/* Character Preview */}
-        <div className="aspect-[3/4] rounded-lg border-2 border-dashed border-border/50 flex items-center justify-center">
-          <Text className="text-foreground/40">Character Preview</Text>
+      <div className="mx-auto max-w-7xl p-4 sm:p-6 md:p-8">
+        <div className="mb-4 flex items-center justify-between">
+          <Text className="text-sm text-foreground-secondary">
+            {equippedCount === 0
+              ? "Select a slot to equip your first item."
+              : `${equippedCount} of ${EQUIPMENT_SLOTS.length} slots equipped`}
+          </Text>
         </div>
 
-        {/* Equipment Stats */}
-        <div className="space-y-6">
-          <div
-            className={`p-4 rounded-lg border transition-colors ${
-              selectedSlot || selectedInventorySlot !== null
-                ? "border-primary/50 bg-primary/5"
-                : "border-border/50"
-            }`}
-          >
-            <Text className="font-medium">Selected Item</Text>
-            <Text className="text-sm text-foreground/60 mt-2">
-              {selectedSlot
-                ? `Viewing ${selectedSlot} slot`
-                : selectedInventorySlot !== null
-                  ? `Viewing inventory slot ${selectedInventorySlot + 1}`
-                  : "Select an equipment slot or inventory item to view its details"}
-            </Text>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_minmax(320px,380px)]">
+          <div className="space-y-6">
+            <EquipmentDoll items={items} selected={selected} onSelect={setSelected} />
+            <ItemEditor
+              slotLabel={selectedDef.label}
+              item={items[selected]}
+              onChange={(item) => setItem(selected, item)}
+              onClear={() => clearItem(selected)}
+            />
           </div>
 
-          <div className="p-4 rounded-lg border border-border/50 space-y-4">
-            <Text className="font-medium">Equipment Stats</Text>
-            <div className="space-y-2">
-              {["Armour", "Evasion", "Energy Shield", "Block Chance", "Movement Speed"].map(
-                (stat) => (
-                  <div key={stat} className="flex items-center justify-between">
-                    <Text className="text-sm text-foreground/60">{stat}</Text>
-                    <Text className="text-sm">0</Text>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-
-          <div className="p-4 rounded-lg border border-border/50 space-y-4">
-            <Text className="font-medium">Requirements</Text>
-            <div className="space-y-2">
-              {["Level", "Strength", "Dexterity", "Intelligence"].map((req) => (
-                <div key={req} className="flex items-center justify-between">
-                  <Text className="text-sm text-foreground/60">{req}</Text>
-                  <Text className="text-sm">0</Text>
-                </div>
-              ))}
-            </div>
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <StatsLedger aggregate={aggregate} />
           </div>
         </div>
       </div>
