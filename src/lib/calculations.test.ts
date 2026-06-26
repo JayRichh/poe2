@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest";
 
-import { DPSCalc, computeDamageDps } from "~/lib/calculations";
+import {
+  applyArmour,
+  applyResistance,
+  armourDamageReduction,
+  computeAilmentDps,
+  computeDamageDps,
+  DPSCalc,
+  effectiveResistance,
+} from "~/lib/calculations";
 
 /**
  * DPS ENGINE SPEC — the PoE2 damage model the engine must satisfy.
@@ -219,5 +227,96 @@ describe("DPSCalc — engine integration", () => {
     );
     // w1 = 100, w2 = 200 => +100%
     expect(calc.dpsIncrease).toBeCloseTo(1.0, 6);
+  });
+});
+
+/**
+ * VERIFIED PoE2 0.5.x EXTENSIONS — ailment DoT channel, resistance ordering,
+ * and armour DR. Separate from the hit pipeline above (those 20 tests are the
+ * frozen contract; these only exercise the new pure functions).
+ */
+describe("computeAilmentDps — damaging-ailment DoT channel", () => {
+  it("ignite = 20% of the hit's fire damage per second", () => {
+    expect(computeAilmentDps("ignite", { hit: { fire: 1000 } })).toBeCloseTo(200, 6);
+  });
+
+  it("ignite ignores non-fire hit damage", () => {
+    expect(computeAilmentDps("ignite", { hit: { physical: 1000, chaos: 500 } })).toBe(0);
+  });
+
+  it("bleed = 15% of the hit's physical damage per second", () => {
+    expect(computeAilmentDps("bleed", { hit: { physical: 1000 } })).toBeCloseTo(150, 6);
+  });
+
+  it("bleed doubles while the target is moving / aggravated", () => {
+    expect(computeAilmentDps("bleed", { hit: { physical: 1000 }, moving: true })).toBeCloseTo(
+      300,
+      6
+    );
+  });
+
+  it("poison = 20% of the hit's combined physical + chaos damage per second", () => {
+    expect(computeAilmentDps("poison", { hit: { physical: 600, chaos: 400 } })).toBeCloseTo(200, 6);
+  });
+
+  it("scales by increased magnitude additively, then more multiplicatively", () => {
+    // base 200 × (1 + 0.50) × 1.2 = 360
+    const dps = computeAilmentDps("ignite", {
+      hit: { fire: 1000 },
+      increasedMagnitudePercents: [30, 20],
+      morePercents: [20],
+    });
+    expect(dps).toBeCloseTo(360, 6);
+  });
+});
+
+describe("effectiveResistance / applyResistance — penetration ordering", () => {
+  it("subtracts exposure and curses (which may drive resistance below 0)", () => {
+    expect(effectiveResistance({ baseResist: 30, exposure: 25, curse: 10 })).toBe(-5);
+  });
+
+  it("penetration only reduces still-positive resistance and is floored at 0", () => {
+    // 40 base, 50 pen -> 0 (never negative)
+    expect(effectiveResistance({ baseResist: 40, penetration: 50 })).toBe(0);
+  });
+
+  it("penetration does NOT apply once resistance is already at/below 0", () => {
+    // exposure takes 20 -> -10; penetration must not push it further negative
+    expect(effectiveResistance({ baseResist: 10, exposure: 20, penetration: 75 })).toBe(-10);
+  });
+
+  it("applyResistance: 75% res halves... no, leaves 25% of the damage", () => {
+    expect(applyResistance(1000, { baseResist: 75 })).toBeCloseTo(250, 6);
+  });
+
+  it("applyResistance: negative resistance amplifies damage above 100%", () => {
+    // -20% res => ×1.2
+    expect(applyResistance(1000, { baseResist: 0, exposure: 20 })).toBeCloseTo(1200, 6);
+  });
+});
+
+describe("armourDamageReduction / applyArmour — hit-size scaling", () => {
+  it("DR = Armour / (Armour + C × rawPhysHit)", () => {
+    // 1000 armour, 100 hit, C=10 => 1000 / (1000 + 1000) = 0.5
+    expect(armourDamageReduction(1000, 100)).toBeCloseTo(0.5, 6);
+  });
+
+  it("mitigates small hits far more than large hits", () => {
+    const small = armourDamageReduction(5000, 50);
+    const large = armourDamageReduction(5000, 5000);
+    expect(small).toBeGreaterThan(large);
+  });
+
+  it("is hard-capped at 90% reduction", () => {
+    expect(armourDamageReduction(1_000_000, 1)).toBe(0.9);
+  });
+
+  it("zero armour or zero hit yields no reduction", () => {
+    expect(armourDamageReduction(0, 100)).toBe(0);
+    expect(armourDamageReduction(1000, 0)).toBe(0);
+  });
+
+  it("applyArmour: 50% DR halves the physical hit", () => {
+    expect(applyArmour(100, 1000)).toBeCloseTo(50, 6);
   });
 });

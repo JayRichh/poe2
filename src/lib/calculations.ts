@@ -79,6 +79,114 @@ export function computeDamageDps(params: DamagePipelineParams): number {
   return hitDps * critFactor;
 }
 
+/* ───────────────────────────────────────────────────────────────────────────
+ * Verified PoE2 0.5.x extensions (additive — do not touch the pipeline above).
+ *
+ * These are independent, pure functions encoding mechanics confirmed against
+ * current (mid-2026, 0.5.x "Return of the Ancients") sources:
+ *   - Damaging ailments are a SEPARATE damage-over-time channel: they do NOT
+ *     crit and are NOT hits. Magnitude is a % of the inflicting hit's
+ *     pre-mitigation typed damage, then scaled only by ailment-magnitude / more
+ *     mods. Duration affects total damage, not DPS.
+ *   - Resistance: damageTaken = dmg × (1 − effRes/100). Exposure/curses subtract
+ *     first and MAY drive resistance below 0; penetration applies LAST, only
+ *     while resistance is still positive, and is floored at 0 (it can never make
+ *     resistance negative — exposure/curses are the only sub-0 path).
+ *   - Armour: physical DR = Armour / (Armour + C × rawPhysHit), hard-capped at
+ *     90%. C is a tunable constant (~10, medium confidence) exposed as a param.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/** Damaging ailment kinds modelled as a parallel DoT channel. */
+export type AilmentKind = "ignite" | "bleed" | "poison";
+
+/** Base ailment magnitude as a fraction of the relevant hit damage, per second. */
+export const AILMENT_BASE_MAGNITUDE: Record<AilmentKind, number> = {
+  ignite: 0.2, // 20% of the hit's FIRE damage / s, base 4s, non-stacking
+  bleed: 0.15, // 15% of the hit's PHYSICAL damage / s, base 5s
+  poison: 0.2, // 20% of the hit's (PHYSICAL + CHAOS) damage / s as chaos, base 2s
+};
+
+export interface AilmentParams {
+  /** Pre-mitigation typed damage of the inflicting hit. */
+  hit: { physical?: number; fire?: number; chaos?: number };
+  /** "increased" ailment / DoT magnitude % (summed additively). */
+  increasedMagnitudePercents?: number[];
+  /** "more" ailment / DoT multipliers in % (applied multiplicatively). */
+  morePercents?: number[];
+  /** Bleed deals double while the target is moving or the bleed is aggravated. */
+  moving?: boolean;
+}
+
+/**
+ * Damage-per-second of a single damaging ailment, before enemy resistance.
+ * Magnitude is locked from the inflicting hit; only ailment-magnitude / more
+ * mods scale it afterward (never the hit's increased/more buckets).
+ */
+export function computeAilmentDps(kind: AilmentKind, params: AilmentParams): number {
+  const { hit, increasedMagnitudePercents = [], morePercents = [], moving = false } = params;
+  const phys = Math.max(0, hit.physical ?? 0);
+  const fire = Math.max(0, hit.fire ?? 0);
+  const chaos = Math.max(0, hit.chaos ?? 0);
+
+  const source =
+    kind === "ignite" ? fire : kind === "bleed" ? phys : /* poison */ phys + chaos;
+  if (source <= 0) return 0;
+
+  let dps = source * AILMENT_BASE_MAGNITUDE[kind];
+  if (kind === "bleed" && moving) dps *= 2;
+
+  const sumIncreased = increasedMagnitudePercents.reduce((s, p) => s + p, 0);
+  dps *= 1 + sumIncreased / 100;
+  dps = morePercents.reduce((acc, p) => acc * (1 + p / 100), dps);
+  return Math.max(0, dps);
+}
+
+export interface ResistanceParams {
+  /** Enemy base resistance to this damage type, in %. */
+  baseResist: number;
+  /** Resistance reduction from Exposure (%) — may push resistance below 0. */
+  exposure?: number;
+  /** Resistance reduction from curses (%) — may push resistance below 0. */
+  curse?: number;
+  /** Penetration (%) — applied LAST; only reduces still-positive resistance, floored at 0. */
+  penetration?: number;
+}
+
+/**
+ * Effective enemy resistance after exposure/curses (which can go negative) and
+ * THEN penetration (floored at 0; cannot drive resistance negative).
+ */
+export function effectiveResistance(p: ResistanceParams): number {
+  const { baseResist, exposure = 0, curse = 0, penetration = 0 } = p;
+  let res = baseResist - exposure - curse;
+  if (penetration > 0 && res > 0) {
+    res = Math.max(0, res - penetration);
+  }
+  return res;
+}
+
+/** Elemental/chaos damage actually taken after resistance. */
+export function applyResistance(damage: number, p: ResistanceParams): number {
+  return Math.max(0, damage) * (1 - effectiveResistance(p) / 100);
+}
+
+/**
+ * Physical damage reduction from enemy armour with PoE2's hit-size scaling:
+ *   DR = Armour / (Armour + C × rawPhysHit), hard-capped at 90%.
+ * Big hits are mitigated proportionally less than small hits.
+ */
+export function armourDamageReduction(armour: number, rawPhysHit: number, c = 10): number {
+  const a = Math.max(0, armour);
+  const hit = Math.max(0, rawPhysHit);
+  if (a <= 0 || hit <= 0) return 0;
+  return Math.min(a / (a + c * hit), 0.9);
+}
+
+/** Physical damage actually taken after enemy armour. */
+export function applyArmour(rawPhysHit: number, armour: number, c = 10): number {
+  return Math.max(0, rawPhysHit) * (1 - armourDamageReduction(armour, rawPhysHit, c));
+}
+
 type InputMap = { [key: string]: number | boolean | string };
 
 const num = (v: number | boolean | string | undefined): number => {

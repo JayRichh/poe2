@@ -86,7 +86,9 @@ const defaultSettings: GlobalSettings = {
   resPenetration: 0,
 
   // Damage Modifiers
-  bowDamage: 22, // 22% from CSV
+  // bowDamage is applied to ALL weapons (no weapon-type gating yet), so a
+  // non-zero default silently inflated every comparison — start neutral.
+  bowDamage: 0,
   physicalDamageIncrease: 0,
   elementalDamageIncrease: 0,
   attackDamageIncrease: 0,
@@ -100,13 +102,14 @@ const defaultSettings: GlobalSettings = {
     iceBite: false,
   },
 
-  // Status Effects
+  // Status Effects — defaults must be valid on their slider's range/step or the
+  // displayed thumb value desyncs from the value the engine actually uses.
   shock: false,
-  shockMagnitude: 48, // From CSV
+  shockMagnitude: 20, // verified PoE2: shock = +20% increased damage taken
   electrocution: false,
-  electrocutionDuration: 20, // From CSV
+  electrocutionDuration: 20,
   exposure: false,
-  exposureMagnitude: 100, // From CSV
+  exposureMagnitude: 30, // valid within the 10-40 slider range
 };
 
 const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));

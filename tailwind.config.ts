@@ -89,6 +89,18 @@ const config: Config = {
           DEFAULT: "hsl(var(--surface))",
           foreground: "hsl(var(--surface-foreground))",
         },
+        // Aliases for the conventional shadcn token names used across the app.
+        // Without these, `text-muted-foreground` / `bg-muted` / `bg-card` are
+        // undefined utilities (no-ops) — which silently flattened the entire
+        // site's text hierarchy and left several card surfaces unfilled.
+        muted: {
+          DEFAULT: "hsl(var(--background-secondary))",
+          foreground: "hsl(var(--foreground-secondary))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
+        },
         damage: {
           physical: {
             DEFAULT: "hsl(0,0%,80%)",

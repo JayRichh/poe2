@@ -32,7 +32,7 @@ const variantClasses: Record<TextVariant, string> = {
 const colorClasses = {
   default: "text-foreground",
   primary: "text-primary",
-  secondary: "text-muted-foreground",
+  secondary: "text-foreground-secondary",
   success: "text-success",
   error: "text-error",
 };

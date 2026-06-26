@@ -52,11 +52,14 @@ const sanitizeWeaponUpdates = (updates: Partial<WeaponInputs>): Partial<WeaponIn
 
 const sanitizeSettingsUpdates = (updates: Partial<GlobalSettings>): Partial<GlobalSettings> => {
   const result: Partial<GlobalSettings> = {};
+  // The nested supportGems object would be dropped by the scalar loop below,
+  // so toggling a support gem never reached state — pass it through first.
+  if (updates.supportGems && typeof updates.supportGems === "object") {
+    result.supportGems = updates.supportGems;
+  }
   for (const [key, value] of Object.entries(updates)) {
-    if (key in updates) {
-      if (typeof value === "boolean" || (typeof value === "number" && !isNaN(value))) {
-        (result as any)[key] = value;
-      }
+    if (typeof value === "boolean" || (typeof value === "number" && !isNaN(value))) {
+      (result as any)[key] = value;
     }
   }
   return result;

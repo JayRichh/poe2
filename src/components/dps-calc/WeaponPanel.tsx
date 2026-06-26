@@ -6,7 +6,6 @@ import { Card } from "~/components/ui/Card";
 import { Slider } from "~/components/ui/Slider";
 import { TabGroup } from "~/components/ui/TabGroup";
 import { Text } from "~/components/ui/Text";
-import { Tooltip } from "~/components/ui/Tooltip";
 
 import type { WeaponInputs } from "~/hooks/useDPSCalculator";
 
@@ -246,22 +245,20 @@ export function WeaponPanel({ weapon, onChange, label, percentages }: WeaponPane
         <div className="flex items-center justify-between">
           <Text className="text-lg font-semibold tracking-tight">{label}</Text>
           {clientPercentages && (
-            <div className="flex items-center gap-1">
+            <div
+              className="flex h-2 w-28 overflow-hidden rounded-full bg-background-secondary"
+              role="img"
+              aria-label="Damage composition by type"
+            >
               {damageTypes.map(({ id, color }) => {
                 const value = clientPercentages[id as keyof typeof clientPercentages];
                 return value > 0 ? (
-                  <Tooltip
+                  <div
                     key={id}
-                    content={`${id.charAt(0).toUpperCase() + id.slice(1)}: ${value.toFixed(1)}%`}
-                  >
-                    <div
-                      className="h-2 rounded-full transition-all duration-200"
-                      style={{
-                        width: `${Math.max(Math.min(value, 100) / 3, 8)}px`,
-                        backgroundColor: color,
-                      }}
-                    />
-                  </Tooltip>
+                    className="h-full transition-[width] duration-300 ease-out"
+                    style={{ width: `${value}%`, backgroundColor: color }}
+                    title={`${id.charAt(0).toUpperCase() + id.slice(1)}: ${value.toFixed(1)}%`}
+                  />
                 ) : null;
               })}
             </div>
