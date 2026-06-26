@@ -1,6 +1,17 @@
 "use client";
 
-import { AlertCircle, Check, Clipboard, Download, Link2, Trash2, Upload } from "lucide-react";
+import {
+  AlertCircle,
+  Check,
+  Clipboard,
+  Copy,
+  Download,
+  Link2,
+  Pencil,
+  Trash2,
+  Upload,
+  X,
+} from "lucide-react";
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -18,10 +29,12 @@ import {
 } from "~/lib/build-planner/share";
 import {
   deleteBuild,
+  duplicateBuild,
   getActiveBuild,
   getActiveBuildId,
   importBuild,
   listBuilds,
+  renameBuild,
   setActiveBuildId,
 } from "~/lib/build-planner/storage";
 import type { PlannerBuild } from "~/lib/build-planner/types";
@@ -35,6 +48,8 @@ export default function ImportExportPage() {
   const [shareUrl, setShareUrl] = useState("");
   const [dragActive, setDragActive] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
 
   const refresh = useCallback(() => {
     setBuilds(listBuilds());
@@ -170,6 +185,33 @@ export default function ImportExportPage() {
     flash({ type: "success", message: `Deleted "${name}"` });
   };
 
+  const startRename = (build: PlannerBuild) => {
+    setEditingId(build.id);
+    setEditName(build.name);
+  };
+
+  const cancelRename = () => {
+    setEditingId(null);
+    setEditName("");
+  };
+
+  const commitRename = () => {
+    if (editingId) {
+      const saved = renameBuild(editingId, editName);
+      if (saved) flash({ type: "success", message: `Renamed to "${saved.name}"` });
+    }
+    cancelRename();
+    refresh();
+  };
+
+  const duplicate = (id: string) => {
+    const copy = duplicateBuild(id);
+    if (copy) {
+      refresh();
+      flash({ type: "success", message: `Duplicated as "${copy.name}"` });
+    }
+  };
+
   return (
     <BuildPlannerLayout
       title="Import / Export"
@@ -179,15 +221,15 @@ export default function ImportExportPage() {
         {feedback && (
           <div
             className={`p-4 rounded-lg flex items-center gap-2 ${
-              feedback.type === "success" ? "bg-emerald-500/10" : "bg-red-500/10"
+              feedback.type === "success" ? "bg-success/10" : "bg-error/10"
             }`}
           >
             {feedback.type === "success" ? (
-              <Check className="h-5 w-5 text-emerald-500" />
+              <Check className="h-5 w-5 text-success" />
             ) : (
-              <AlertCircle className="h-5 w-5 text-red-500" />
+              <AlertCircle className="h-5 w-5 text-error" />
             )}
-            <Text className={feedback.type === "success" ? "text-emerald-500" : "text-red-500"}>
+            <Text className={feedback.type === "success" ? "text-success" : "text-error"}>
               {feedback.message}
             </Text>
           </div>
@@ -300,35 +342,87 @@ export default function ImportExportPage() {
                       : "border-border/50 hover:bg-muted/30"
                   }`}
                 >
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <Text className="font-medium truncate">{build.name}</Text>
-                      {build.id === activeId && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                          Active
-                        </span>
-                      )}
-                    </div>
-                    <Text className="text-xs text-foreground/50">
-                      Updated {new Date(build.updatedAt).toLocaleString()}
-                    </Text>
-                  </div>
-                  <div className="flex items-center gap-2 flex-shrink-0">
-                    {build.id !== activeId && (
-                      <Button variant="ghost" size="sm" onClick={() => makeActive(build.id)}>
-                        Set Active
-                      </Button>
+                  <div className="min-w-0 flex-1">
+                    {editingId === build.id ? (
+                      <div className="flex items-center gap-2">
+                        <Input
+                          value={editName}
+                          onChange={(e) => setEditName(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") commitRename();
+                            if (e.key === "Escape") cancelRename();
+                          }}
+                          autoFocus
+                          aria-label="Build name"
+                          className="h-8"
+                        />
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={commitRename}
+                          aria-label="Save name"
+                        >
+                          <Check className="h-4 w-4 text-success" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={cancelRename}
+                          aria-label="Cancel rename"
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2">
+                          <Text className="font-medium truncate">{build.name}</Text>
+                          {build.id === activeId && (
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                              Active
+                            </span>
+                          )}
+                        </div>
+                        <Text className="text-xs text-foreground/50">
+                          Updated {new Date(build.updatedAt).toLocaleString()}
+                        </Text>
+                      </>
                     )}
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => remove(build.id, build.name)}
-                      aria-label={`Delete ${build.name}`}
-                      className="text-red-500 hover:text-red-600"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
                   </div>
+                  {editingId !== build.id && (
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      {build.id !== activeId && (
+                        <Button variant="ghost" size="sm" onClick={() => makeActive(build.id)}>
+                          Set Active
+                        </Button>
+                      )}
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => startRename(build)}
+                        aria-label={`Rename ${build.name}`}
+                      >
+                        <Pencil className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => duplicate(build.id)}
+                        aria-label={`Duplicate ${build.name}`}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => remove(build.id, build.name)}
+                        aria-label={`Delete ${build.name}`}
+                        className="text-error hover:text-error/80"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

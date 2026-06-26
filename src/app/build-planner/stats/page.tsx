@@ -200,7 +200,7 @@ export default function StatsPage() {
                         {stat.value}
                       </Text>
                       {stat.bonus > 0 && (
-                        <Text className="text-sm text-emerald-500">+{stat.bonus}</Text>
+                        <Text className="text-sm text-success">+{stat.bonus}</Text>
                       )}
                     </div>
                   </div>
@@ -308,7 +308,7 @@ export default function StatsPage() {
               </div>
               <div className="h-2 rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full bg-red-500 transition-all duration-300 w-0"
+                  className="h-full bg-error transition-all duration-300 w-0"
                   role="progressbar"
                   aria-valuenow={0}
                   aria-valuemin={0}
@@ -327,7 +327,7 @@ export default function StatsPage() {
               </div>
               <div className="h-2 rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full bg-blue-500 transition-all duration-300 w-0"
+                  className="h-full bg-gem-sapphire transition-all duration-300 w-0"
                   role="progressbar"
                   aria-valuenow={0}
                   aria-valuemin={0}

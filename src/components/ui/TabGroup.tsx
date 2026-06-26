@@ -56,6 +56,7 @@ export function TabGroup({
   const activeTab = isControlled ? controlledValue : localValue;
   const activeContent = tabs.find((tab) => tab.id === activeTab)?.content;
   const styles = variants[variant];
+  const tablistRef = useRef<HTMLDivElement>(null);
 
   // Enable animations only after hydration
   useEffect(() => {
@@ -69,24 +70,63 @@ export function TabGroup({
     onChange?.(tabId);
   };
 
+  // Roving arrow-key navigation across the tablist (Left/Right/Home/End).
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+    if (!keys.includes(e.key)) return;
+    e.preventDefault();
+    const currentIndex = tabs.findIndex((t) => t.id === activeTab);
+    let nextIndex = currentIndex;
+    if (e.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    if (e.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+    if (e.key === "Home") nextIndex = 0;
+    if (e.key === "End") nextIndex = tabs.length - 1;
+    const next = tabs[nextIndex];
+    if (!next) return;
+    handleTabChange(next.id);
+    tablistRef.current
+      ?.querySelector<HTMLButtonElement>(`[data-tab-id="${next.id}"]`)
+      ?.focus();
+  };
+
   return (
     <div className={className}>
-      {/* Tab Headers */}
-      <div className={cn("flex gap-1 mb-8", styles.container)}>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabChange(tab.id)}
-            className={cn(
-              "relative transition-colors duration-200",
-              "focus:outline-none focus:ring-2 focus:ring-primary/50",
-              styles.tab,
-              activeTab === tab.id ? styles.active : styles.inactive
-            )}
-          >
-            {tab.label}
-          </button>
-        ))}
+      {/* Tab Headers — horizontally scrollable so many/long tabs never squish
+          or overflow their container on narrow viewports. */}
+      <div
+        ref={tablistRef}
+        role="tablist"
+        aria-orientation="horizontal"
+        onKeyDown={handleKeyDown}
+        className={cn(
+          "flex gap-1 mb-8 overflow-x-auto [scrollbar-width:thin]",
+          styles.container
+        )}
+      >
+        {tabs.map((tab) => {
+          const selected = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              data-tab-id={tab.id}
+              id={`tab-${tab.id}`}
+              aria-selected={selected}
+              aria-controls={`panel-${tab.id}`}
+              tabIndex={selected ? 0 : -1}
+              onClick={() => handleTabChange(tab.id)}
+              className={cn(
+                "relative shrink-0 whitespace-nowrap transition-colors duration-200",
+                "focus:outline-none focus:ring-2 focus:ring-primary/50",
+                styles.tab,
+                selected ? styles.active : styles.inactive
+              )}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Tab Content */}
@@ -94,17 +134,28 @@ export function TabGroup({
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            role="tabpanel"
+            id={`panel-${activeTab}`}
+            aria-labelledby={`tab-${activeTab}`}
+            tabIndex={0}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="relative"
+            className="relative focus:outline-none"
           >
             {activeContent}
           </motion.div>
         </AnimatePresence>
       ) : (
-        <div className="relative">{activeContent}</div>
+        <div
+          role="tabpanel"
+          id={`panel-${activeTab}`}
+          aria-labelledby={`tab-${activeTab}`}
+          className="relative"
+        >
+          {activeContent}
+        </div>
       )}
     </div>
   );

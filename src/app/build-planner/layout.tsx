@@ -33,7 +33,7 @@ export default function BuildPlannerLayout({ children }: { children: React.React
             <div className="h-full flex items-center justify-start gap-6 px-4 sm:px-6 lg:px-8 overflow-x-auto no-scrollbar">
               {subNavLinks.map(({ href, label }) => {
                 const isActive =
-                  pathname === href || (href !== "/build-planner" && pathname?.startsWith(href));
+                  pathname === href || (pathname?.startsWith(href + "/") ?? false);
                 return (
                   <Link
                     key={href}

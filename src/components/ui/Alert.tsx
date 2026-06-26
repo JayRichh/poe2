@@ -8,10 +8,12 @@ interface AlertProps {
   className?: string;
 }
 
+// Driven by the theme tokens (--error/--success/--primary) so the one shared
+// status primitive tracks the gilded/grimdark palette instead of fixed hues.
 const variantStyles = {
-  error: "bg-red-950/50 text-red-300 border-red-900/50",
-  success: "bg-emerald-950/50 text-emerald-300 border-emerald-900/50",
-  info: "bg-blue-950/50 text-blue-300 border-blue-900/50",
+  error: "bg-error/10 text-error border-error/30",
+  success: "bg-success/10 text-success border-success/30",
+  info: "bg-primary/10 text-primary border-primary/30",
 };
 
 const variantIcons = {

@@ -40,3 +40,9 @@ export interface SharedBuild {
   poeClass?: string;
   data: PlannerBuildData;
 }
+
+/** Narrow an unknown value to a plain (non-array) object. Used to validate
+ *  untrusted payloads from share tokens and localStorage before we trust them. */
+export function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}

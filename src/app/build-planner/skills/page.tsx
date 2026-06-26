@@ -52,7 +52,20 @@ export default function SkillsPage() {
     []
   );
 
-  const { save, saved } = useBuildSection<Record<string, GemSlot[]>>("skills", setGemSlots);
+  // Hydrate by overlaying stored sockets onto the default skeleton, so a build
+  // shared from another version (or one missing a slot GEM_SLOTS later added)
+  // can't leave `gemSlots[name]` undefined and crash the render below.
+  const { save, saved } = useBuildSection<Record<string, GemSlot[]>>("skills", (stored) =>
+    setGemSlots((current) => {
+      if (typeof stored !== "object" || stored === null) return current;
+      const merged: Record<string, GemSlot[]> = { ...current };
+      for (const item of GEM_SLOTS) {
+        const slots = (stored as Record<string, GemSlot[]>)[item.name];
+        if (Array.isArray(slots)) merged[item.name] = slots;
+      }
+      return merged;
+    })
+  );
 
   const handleSave = () => save(gemSlots);
 
@@ -163,7 +176,7 @@ export default function SkillsPage() {
             <div key={item.name} className="p-4 rounded-lg border border-border/50 space-y-4">
               <Text className="font-medium">{item.name}</Text>
               <div className="grid grid-cols-2 gap-4">
-                {gemSlots[item.name].map((socket, i) => (
+                {(gemSlots[item.name] ?? []).map((socket, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedSocket({ item: item.name, slot: i })}

@@ -112,7 +112,7 @@ export default function NotesPage() {
           {feedback && (
             <div
               className={`flex items-center gap-2 ${
-                feedback.type === "success" ? "text-emerald-500" : "text-red-500"
+                feedback.type === "success" ? "text-success" : "text-error"
               }`}
             >
               {feedback.type === "success" ? (

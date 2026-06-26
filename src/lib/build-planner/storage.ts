@@ -2,6 +2,7 @@
 
 import {
   BUILD_SCHEMA_VERSION,
+  isPlainObject,
   type PlannerBuild,
   type PlannerBuildData,
 } from "./types";
@@ -23,28 +24,62 @@ function generateId(): string {
   return `build_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
 }
 
+/** Shape guard for a single stored build. Drops corrupt/legacy entries so the
+ *  UI never renders an `undefined` name or sorts on an `Invalid Date`. */
+function isValidBuild(value: unknown): value is PlannerBuild {
+  return (
+    isPlainObject(value) &&
+    typeof value.id === "string" &&
+    typeof value.name === "string" &&
+    typeof value.updatedAt === "string" &&
+    isPlainObject(value.data)
+  );
+}
+
 function readMap(): BuildMap {
   if (!isBrowser()) return {};
   try {
     const raw = window.localStorage.getItem(BUILDS_KEY);
     if (!raw) return {};
-    const parsed = JSON.parse(raw) as BuildMap;
-    return parsed && typeof parsed === "object" ? parsed : {};
+    const parsed = JSON.parse(raw) as unknown;
+    if (!isPlainObject(parsed)) return {};
+    // Quarantine malformed entries (other-tab writes, manual tampering, older
+    // half-written schemas) instead of trusting the blob wholesale.
+    const clean: BuildMap = {};
+    for (const [id, build] of Object.entries(parsed)) {
+      if (isValidBuild(build)) clean[id] = build;
+    }
+    return clean;
   } catch {
     return {};
   }
 }
 
+// Tracks whether the most recent persistence write actually hit storage, so
+// callers can avoid claiming success after a silent quota/private-mode failure.
+let lastWriteOk = true;
+
 function writeMap(map: BuildMap): boolean {
   if (!isBrowser()) return false;
   try {
     window.localStorage.setItem(BUILDS_KEY, JSON.stringify(map));
+    lastWriteOk = true;
     return true;
   } catch (error) {
     // Quota exceeded / Safari private mode / storage disabled — fail soft.
+    lastWriteOk = false;
     console.warn("Could not save builds (storage full or unavailable):", error);
     return false;
   }
+}
+
+/**
+ * Did the most recent create/save/delete write succeed? The mutators return the
+ * in-memory build for ergonomics, so callers that need to surface a real "Saved!"
+ * affordance should check this immediately after the call.
+ */
+export function didLastWriteSucceed(): boolean {
+  return lastWriteOk;
 }
 
 /** List all saved builds, newest-updated first. */
@@ -76,7 +111,9 @@ export function createBuild(
     version: BUILD_SCHEMA_VERSION,
     createdAt: now,
     updatedAt: now,
-    data,
+    // Never let a non-object slip into storage — every section page assumes
+    // `data` is indexable.
+    data: isPlainObject(data) ? data : {},
   };
   const map = readMap();
   map[build.id] = build;
@@ -142,6 +179,22 @@ export function deleteBuild(id: string): void {
   if (getActiveBuildId() === id) {
     setActiveBuildId(null);
   }
+}
+
+/** Rename a build in place. Returns the saved build, or null if id is unknown. */
+export function renameBuild(id: string, name: string): PlannerBuild | null {
+  return saveBuild(id, { name });
+}
+
+/**
+ * Fork an existing build into a new "(copy)" saved + active build. Section data
+ * is deep-cloned so the copy can never alias the original's nested state.
+ */
+export function duplicateBuild(id: string): PlannerBuild | null {
+  const existing = getBuild(id);
+  if (!existing) return null;
+  const data = JSON.parse(JSON.stringify(existing.data)) as PlannerBuildData;
+  return createBuild(`${existing.name} (copy)`, data, existing.poeClass);
 }
 
 /** Import a build (e.g. from JSON/URL) as a brand-new saved + active build. */

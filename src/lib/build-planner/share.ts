@@ -1,9 +1,23 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from "lz-string";
 
-import { BUILD_SCHEMA_VERSION, type PlannerBuild, type SharedBuild } from "./types";
+import {
+  BUILD_SCHEMA_VERSION,
+  isPlainObject,
+  type PlannerBuild,
+  type SharedBuild,
+} from "./types";
 
 /** Query/hash param key used for shared builds. */
 export const SHARE_PARAM = "b";
+
+/**
+ * Upper bound on a share token (compressed) and its decompressed JSON. A real
+ * build is a few KB; anything past this is corruption or a hostile payload, so
+ * we reject it before allocating / parsing rather than risk a main-thread stall
+ * or a localStorage quota blow-up on import.
+ */
+export const MAX_SHARE_TOKEN_LENGTH = 32_768;
+const MAX_DECOMPRESSED_LENGTH = MAX_SHARE_TOKEN_LENGTH * 8;
 
 /**
  * Encode a build into a URL-safe, lz-string-compressed token. Only the portable
@@ -22,14 +36,24 @@ export function encodeBuildToToken(build: Pick<PlannerBuild, "name" | "poeClass"
 
 /** Decode a share token back into a SharedBuild, or null if invalid. */
 export function decodeTokenToBuild(token: string): SharedBuild | null {
-  if (!token) return null;
+  if (!token || token.length > MAX_SHARE_TOKEN_LENGTH) return null;
   try {
     const json = decompressFromEncodedURIComponent(token);
-    if (!json) return null;
+    if (!json || json.length > MAX_DECOMPRESSED_LENGTH) return null;
     const parsed = JSON.parse(json) as SharedBuild;
-    if (!parsed || typeof parsed !== "object" || typeof parsed.name !== "string") {
+    // Validate the full shape — `data` especially, since a null/array/scalar
+    // here would white-screen every section page on `data[section]` access.
+    if (
+      !isPlainObject(parsed) ||
+      typeof parsed.name !== "string" ||
+      (parsed.poeClass !== undefined && typeof parsed.poeClass !== "string") ||
+      !isPlainObject(parsed.data)
+    ) {
       return null;
     }
+    // Reject builds authored by a newer schema we don't understand. Older
+    // versions are accepted and re-stamped to the current version on import.
+    if (typeof parsed.v === "number" && parsed.v > BUILD_SCHEMA_VERSION) return null;
     return parsed;
   } catch {
     return null;
@@ -46,6 +70,13 @@ export function buildShareUrl(
   origin?: string
 ): string {
   const token = encodeBuildToToken(build);
+  if (token.length > MAX_SHARE_TOKEN_LENGTH) {
+    // The link is too large to reliably round-trip through a URL; the caller
+    // should fall back to JSON export. Warn rather than silently ship a dud.
+    console.warn(
+      `Share token is ${token.length} chars (> ${MAX_SHARE_TOKEN_LENGTH}); use JSON export instead.`
+    );
+  }
   const base =
     origin ?? (typeof window !== "undefined" ? window.location.origin : "https://poe2.dev");
   return `${base}/build-planner/import-export#${SHARE_PARAM}=${token}`;

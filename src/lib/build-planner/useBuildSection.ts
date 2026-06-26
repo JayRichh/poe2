@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { getActiveBuild, upsertActiveBuild } from "./storage";
+import { didLastWriteSucceed, getActiveBuild, upsertActiveBuild } from "./storage";
 import type { PlannerBuildData } from "./types";
 
 /**
@@ -33,6 +33,12 @@ export function useBuildSection<T>(
   const save = useCallback(
     (value: T) => {
       upsertActiveBuild(section, value);
+      // Don't flash "Saved!" if the write was silently dropped (quota exceeded,
+      // private mode, storage disabled) — that would be a lie to the user.
+      if (!didLastWriteSucceed()) {
+        setSaved(false);
+        return;
+      }
       setSaved(true);
       clearTimeout(flashTimer.current);
       flashTimer.current = setTimeout(() => setSaved(false), 2000);
