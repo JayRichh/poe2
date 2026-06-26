@@ -96,7 +96,7 @@ export default async function RootLayout({
         <Script
           nonce={nonce}
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3287461191996714"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6508832218947221"
           crossOrigin="anonymous"
         />
 
