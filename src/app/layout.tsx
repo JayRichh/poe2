@@ -94,8 +94,9 @@ export default async function RootLayout({
         <meta name="google-adsense-account" content="ca-pub-6508832218947221" />
 
         <Script
+          id="adsbygoogle-init"
           nonce={nonce}
-          async
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6508832218947221"
           crossOrigin="anonymous"
         />

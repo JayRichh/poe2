@@ -196,12 +196,21 @@ const nextConfig = {
       {
         source: "/:path*",
         headers: [
-          { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+          // Strong HSTS (2y + preload) — Lighthouse "strong HSTS policy".
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
           { key: "X-Content-Type-Options", value: "nosniff" },
-          { 
+          // Clickjacking + origin isolation (Lighthouse Best Practices: XFO/CSP, COOP).
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; frame-src 'self' https://vercel.live/; connect-src 'self' https:;"
-          }
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; frame-src 'self' https://vercel.live/ https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; object-src 'none';",
+          },
         ],
       },
       {

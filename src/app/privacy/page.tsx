@@ -14,29 +14,36 @@ export default function PrivacyPolicy() {
             Overview
           </Text>
           <Text className="text-muted-foreground">
-            POE2 Tools is a community-driven, non-commercial project. We collect minimal data
-            necessary for basic functionality and user authentication.
+            POE2 Tools is a community-driven, non-commercial project. It has no user accounts and
+            no sign-in. The tools run entirely in your browser — we do not operate a database of
+            your activity.
           </Text>
         </section>
 
         <section>
           <Text variant="h2" className="text-2xl font-semibold mb-4">
-            Data Collection
+            What is stored
           </Text>
           <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-            <li>Authentication data (managed by Supabase)</li>
-            <li>Build configurations you create</li>
-            <li>Basic usage analytics (page views)</li>
+            <li>
+              Builds you create are saved in your browser&apos;s local storage on your device only.
+              Clearing your browser data removes them.
+            </li>
+            <li>
+              Shared builds are encoded into the link itself — nothing is uploaded to a server.
+            </li>
+            <li>Aggregate, anonymous usage analytics (e.g. page views).</li>
           </ul>
         </section>
 
         <section>
           <Text variant="h2" className="text-2xl font-semibold mb-4">
-            Cookies
+            Cookies &amp; advertising
           </Text>
           <Text className="text-muted-foreground">
-            We use essential cookies for authentication purposes only. These cookies are necessary
-            for the website to function and cannot be switched off.
+            We do not use authentication cookies (there are no accounts). This site displays ads via
+            Google AdSense, which may set cookies and use device identifiers to serve and measure
+            ads. You can manage ad personalisation through Google&apos;s Ads Settings.
           </Text>
         </section>
 
@@ -45,8 +52,8 @@ export default function PrivacyPolicy() {
             Data Usage
           </Text>
           <Text className="text-muted-foreground">
-            Your data is used solely for providing the service functionality. We do not sell or
-            share your data with third parties.
+            We do not sell your data. Build data never leaves your device unless you choose to share
+            a link or export it yourself.
           </Text>
         </section>
 

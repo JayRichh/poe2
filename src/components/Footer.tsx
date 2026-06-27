@@ -145,7 +145,7 @@ export function Footer() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <motion.div
-                      className="absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-pink-600 to-purple-600 blur"
+                      className="absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary to-accent blur"
                       initial={false}
                       animate={{ opacity: 0 }}
                       whileHover={{ opacity: 0.5 }}

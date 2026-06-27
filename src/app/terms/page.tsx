@@ -26,7 +26,7 @@ export default function TermsOfService() {
           <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
             <li>The service is provided as-is, without any warranties</li>
             <li>We reserve the right to modify or discontinue the service at any time</li>
-            <li>You are responsible for maintaining the security of your account</li>
+            <li>There are no accounts — builds you create are stored locally in your browser</li>
           </ul>
         </section>
 
@@ -35,8 +35,8 @@ export default function TermsOfService() {
             User Content
           </Text>
           <Text className="text-muted-foreground">
-            When creating builds or sharing content, you retain ownership of your content while
-            granting us the right to display and store it as part of the service.
+            Builds you create are saved only on your device and shared via self-contained links. You
+            retain full ownership of your content; we do not store or host it on a server.
           </Text>
         </section>
 

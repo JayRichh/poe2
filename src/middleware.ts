@@ -3,9 +3,6 @@ import { type NextRequest, NextResponse } from "next/server";
 /* ─────────────────────────  CONFIG  ────────────────────────── */
 
 const RATE_LIMITS: Record<string, number> = {
-  "/api/builds/": 300,
-  "/api/search/": 200,
-  "/api/webhooks/": 1000,
   "/api/revalidate/": 50,
   "/api/": 500,
   "/*": 2000,
@@ -87,7 +84,7 @@ function handleCORS(request: NextRequest, res: NextResponse) {
 
 export async function middleware(request: NextRequest) {
   // Edge-compatible nonce (no Node import!)
-  const nonce = crypto.randomUUID(); // v4 UUID, 122 bits random :contentReference[oaicite:1]{index=1}
+  const nonce = crypto.randomUUID(); // v4 UUID, 122 bits of randomness
 
   let response = NextResponse.next();
 
