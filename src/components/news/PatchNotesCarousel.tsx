@@ -8,6 +8,8 @@ import Link from "next/link";
 import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 
+import { sanitizeHtml } from "~/utils/sanitizeHtml";
+
 import type { PatchNote } from "~/types/news";
 
 interface PatchNotesCarouselProps {
@@ -144,7 +146,7 @@ export function PatchNotesCarousel({ patchNotes }: PatchNotesCarouselProps) {
                 {mounted ? (
                   <div
                     className="prose prose-invert max-w-none prose-sm"
-                    dangerouslySetInnerHTML={{ __html: previewContent || "" }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(previewContent) }}
                   />
                 ) : (
                   <div className="prose prose-invert max-w-none prose-sm">

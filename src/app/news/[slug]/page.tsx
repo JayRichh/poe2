@@ -11,6 +11,8 @@ import { Text } from "~/components/ui/Text";
 
 import { NewsService } from "~/services/news-service";
 
+import { sanitizeHtml } from "~/utils/sanitizeHtml";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -111,7 +113,9 @@ export default async function NewsItemPage({ params }: PageProps) {
 
                 <div
                   className="mt-8 prose prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: news.fullContent || news.content }}
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizeHtml(news.fullContent || news.content),
+                  }}
                 />
 
                 {/* Back to News Link */}

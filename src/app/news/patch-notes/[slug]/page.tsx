@@ -11,6 +11,8 @@ import { Text } from "~/components/ui/Text";
 
 import { NewsService } from "~/services/news-service";
 
+import { sanitizeHtml } from "~/utils/sanitizeHtml";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -108,7 +110,7 @@ export default async function PatchNotePage({ params }: PageProps) {
 
                 <div
                   className="mt-8 prose prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: news.content }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(news.content) }}
                 />
 
                 {/* Back to Patch Notes Link */}

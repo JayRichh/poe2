@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { cn } from "~/utils/cn";
+import { sanitizeHtml } from "~/utils/sanitizeHtml";
 
 import { NewsService } from "~/services/news-service";
 import type { NewsPost } from "~/types/news";
@@ -72,11 +73,13 @@ function PatchNoteContent({ content }: { content: string }) {
       <div
         className="prose prose-sm max-w-none prose-invert prose-headings:mt-6 prose-headings:mb-4 prose-p:my-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-2 [&_br]:content-[''] [&_br]:block [&_br]:my-4"
         dangerouslySetInnerHTML={{
-          __html: (isClient && expanded ? content : initialContent)
-            .replace(/\n/g, "<br/>")
-            .replace(/<br\/?>\s*<br\/?>/g, "</p><p>")
-            .replace(/<br\/?>\s*<(h[1-6]|ul|ol|li)/g, "<$1")
-            .replace(/<\/(h[1-6]|ul|ol|li)>\s*<br\/?>/g, "</$1>"),
+          __html: sanitizeHtml(
+            (isClient && expanded ? content : initialContent)
+              .replace(/\n/g, "<br/>")
+              .replace(/<br\/?>\s*<br\/?>/g, "</p><p>")
+              .replace(/<br\/?>\s*<(h[1-6]|ul|ol|li)/g, "<$1")
+              .replace(/<\/(h[1-6]|ul|ol|li)>\s*<br\/?>/g, "</$1>")
+          ),
         }}
       />
       {hasMore && isClient && (
