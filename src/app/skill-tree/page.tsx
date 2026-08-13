@@ -39,6 +39,7 @@ export default function SkillTreePage() {
     setSearchTerm,
     isRegexSearch,
     setIsRegexSearch,
+    importStatus,
 
     // Filter state
     highlightKeystones,
@@ -184,16 +185,29 @@ export default function SkillTreePage() {
 
         {/* Tree Viewer Container */}
         <div className="flex-1 min-w-0 relative">
-          {/* Data staleness badge */}
+          {/* Data version badge */}
           <div className="absolute top-4 left-4 z-50">
             <span
               className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm"
-              title="Skill tree data reflects an early-access beta snapshot and may be out of date."
+              title="Official-ID passive tree snapshot for Return of the Ancients"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gem-ruby" />
-              Data: 0.5.x (beta tree)
+              Data: 0.5.2 tree · compatible through 0.5.4c
             </span>
           </div>
+
+          {importStatus && (
+            <div
+              role="status"
+              className={`absolute top-4 left-1/2 z-50 -translate-x-1/2 rounded-lg border px-3 py-1.5 text-sm font-medium backdrop-blur-sm ${
+                importStatus.type === "success"
+                  ? "border-emerald-500/50 bg-emerald-950/85 text-emerald-100"
+                  : "border-destructive/50 bg-destructive/90 text-destructive-foreground"
+              }`}
+            >
+              {importStatus.message}
+            </div>
+          )}
 
           {/* Tree Viewer */}
           <TreeViewer
@@ -278,7 +292,7 @@ export default function SkillTreePage() {
                       <Upload className="w-4 h-4" />
                       <input
                         type="file"
-                        accept=".json"
+                        accept=".build,.json,.txt,application/json,text/plain"
                         className="hidden"
                         onChange={(e) => {
                           const file = e.target.files?.[0];

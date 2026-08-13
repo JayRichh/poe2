@@ -1,0 +1,378 @@
+{
+  "name": "Gemling Legionnaire \u2014 Untether Physical/Bleed Mana \u2014 123 Passives",
+  "author": "ChatGPT theorycraft",
+  "description": "123 normal passive allocations. Pure physical/bleed Untether mana-stacker. Includes Raw Mana, Arcane Intensity, Eldritch Battery, Mind Over Matter, and the Rupturing Pins bleed branch. Projectile/meta-elemental/Pain Attunement side branches from the ladder scaffold were removed. No ascendancy, anoint, or weapon-set-specialised passives are counted. Generic +5 Attribute nodes are intentionally left without a selected attribute.",
+  "ascendancy": "Mercenary3",
+  "passives": [
+    {
+      "id": "attributes107"
+    },
+    {
+      "id": "dexterity46"
+    },
+    {
+      "id": "remnant14"
+    },
+    {
+      "id": "jewel_slot1974"
+    },
+    {
+      "id": "dexterity51"
+    },
+    {
+      "id": "strength81"
+    },
+    {
+      "id": "cast_speed30"
+    },
+    {
+      "id": "attributes1"
+    },
+    {
+      "id": "strength70"
+    },
+    {
+      "id": "mana38"
+    },
+    {
+      "id": "attributes3"
+    },
+    {
+      "id": "mana30"
+    },
+    {
+      "id": "intelligence57"
+    },
+    {
+      "id": "attributes115"
+    },
+    {
+      "id": "attributes104"
+    },
+    {
+      "id": "dexterity26"
+    },
+    {
+      "id": "jewel_slot1969"
+    },
+    {
+      "id": "attributes7"
+    },
+    {
+      "id": "physical36"
+    },
+    {
+      "id": "intelligence60"
+    },
+    {
+      "id": "mana29"
+    },
+    {
+      "id": "intelligence74"
+    },
+    {
+      "id": "dexterity12_"
+    },
+    {
+      "id": "dexterity48"
+    },
+    {
+      "id": "attributes102"
+    },
+    {
+      "id": "intelligence68"
+    },
+    {
+      "id": "dexterity47"
+    },
+    {
+      "id": "cast_speed38"
+    },
+    {
+      "id": "cast_speed35"
+    },
+    {
+      "id": "cast_speed2"
+    },
+    {
+      "id": "dexterity75"
+    },
+    {
+      "id": "mana37"
+    },
+    {
+      "id": "strength67"
+    },
+    {
+      "id": "dexterity13"
+    },
+    {
+      "id": "jewel_slot1979"
+    },
+    {
+      "id": "intelligence41__"
+    },
+    {
+      "id": "dexterity82_"
+    },
+    {
+      "id": "dexterity81"
+    },
+    {
+      "id": "mana31"
+    },
+    {
+      "id": "jewel_slot1977"
+    },
+    {
+      "id": "jewel_slot1956"
+    },
+    {
+      "id": "strength69"
+    },
+    {
+      "id": "attributes10"
+    },
+    {
+      "id": "strength85"
+    },
+    {
+      "id": "cast_speed1"
+    },
+    {
+      "id": "strength48"
+    },
+    {
+      "id": "intelligence56"
+    },
+    {
+      "id": "attributes61"
+    },
+    {
+      "id": "strength46"
+    },
+    {
+      "id": "attributes9"
+    },
+    {
+      "id": "attributes11"
+    },
+    {
+      "id": "dexterity7"
+    },
+    {
+      "id": "mana34"
+    },
+    {
+      "id": "attributes111_"
+    },
+    {
+      "id": "attributes4"
+    },
+    {
+      "id": "jewel_slot1976"
+    },
+    {
+      "id": "duration6"
+    },
+    {
+      "id": "attributes100_"
+    },
+    {
+      "id": "intelligence72"
+    },
+    {
+      "id": "dexterity55"
+    },
+    {
+      "id": "attributes108"
+    },
+    {
+      "id": "mana32"
+    },
+    {
+      "id": "dexterity80"
+    },
+    {
+      "id": "strength44"
+    },
+    {
+      "id": "duration10"
+    },
+    {
+      "id": "intelligence101_"
+    },
+    {
+      "id": "strength47"
+    },
+    {
+      "id": "dexterity27"
+    },
+    {
+      "id": "duration12"
+    },
+    {
+      "id": "intelligence54"
+    },
+    {
+      "id": "intelligence59"
+    },
+    {
+      "id": "jewel_slot1970"
+    },
+    {
+      "id": "intelligence52"
+    },
+    {
+      "id": "intelligence8"
+    },
+    {
+      "id": "attributes12"
+    },
+    {
+      "id": "dexterity52"
+    },
+    {
+      "id": "attributes30_"
+    },
+    {
+      "id": "dexterity50"
+    },
+    {
+      "id": "dexterity30_"
+    },
+    {
+      "id": "mana23"
+    },
+    {
+      "id": "intelligence51"
+    },
+    {
+      "id": "intelligence103"
+    },
+    {
+      "id": "dexterity76"
+    },
+    {
+      "id": "strength71"
+    },
+    {
+      "id": "intelligence25"
+    },
+    {
+      "id": "mana19"
+    },
+    {
+      "id": "dexterity79"
+    },
+    {
+      "id": "attributes71"
+    },
+    {
+      "id": "strength83"
+    },
+    {
+      "id": "jewel_slot1975"
+    },
+    {
+      "id": "strength82"
+    },
+    {
+      "id": "dexterity29"
+    },
+    {
+      "id": "intelligence53_"
+    },
+    {
+      "id": "dexterity54"
+    },
+    {
+      "id": "jewel_slot1971"
+    },
+    {
+      "id": "dexterity77"
+    },
+    {
+      "id": "all_attributes6"
+    },
+    {
+      "id": "passive_keystone_eldritch_battery__"
+    },
+    {
+      "id": "dexterity9"
+    },
+    {
+      "id": "attributes8_"
+    },
+    {
+      "id": "intelligence71"
+    },
+    {
+      "id": "intelligence45"
+    },
+    {
+      "id": "intelligence67"
+    },
+    {
+      "id": "dexterity28"
+    },
+    {
+      "id": "jewel_slot1960"
+    },
+    {
+      "id": "intelligence69"
+    },
+    {
+      "id": "jewel_slot1972"
+    },
+    {
+      "id": "jewel_slot1961"
+    },
+    {
+      "id": "attributes6"
+    },
+    {
+      "id": "attributes110"
+    },
+    {
+      "id": "intelligence58"
+    },
+    {
+      "id": "mana14"
+    },
+    {
+      "id": "strength68"
+    },
+    {
+      "id": "strength37"
+    },
+    {
+      "id": "strength84"
+    },
+    {
+      "id": "physical_witch5_"
+    },
+    {
+      "id": "physical_witch6"
+    },
+    {
+      "id": "physical_witch8"
+    },
+    {
+      "id": "physical_witch9"
+    },
+    {
+      "id": "physical_witch10"
+    },
+    {
+      "id": "attributes13"
+    },
+    {
+      "id": "attributes14"
+    },
+    {
+      "id": "passive_keystone_mind_over_matter"
+    }
+  ],
+  "skills": []
+}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import Image from "next/image";
 
+import { ascendancyImageSlug, hasAscendancyImage } from "../../utils/buildImport";
 import { TreeNodeData } from "../TreeViewer/data";
 import { SearchResults } from "./SearchResults";
 
@@ -84,7 +85,8 @@ export function Filters({
   onNodeHover,
 }: FiltersProps) {
   const [activeTab, setActiveTab] = useState<"filters" | "search">("filters");
-  const ascendancyList = ascendancies && ascendancies.length > 0 ? ascendancies : DEFAULT_ASCENDANCIES;
+  const ascendancyList =
+    ascendancies && ascendancies.length > 0 ? ascendancies : DEFAULT_ASCENDANCIES;
 
   return (
     <div className="h-full flex flex-col">
@@ -131,14 +133,23 @@ export function Filters({
                         : "bg-accent hover:bg-accent/80"
                     }`}
                 >
-                  {ascendancy !== "None" && (
+                  {ascendancy !== "None" && hasAscendancyImage(ascendancy) && (
                     <div className="relative w-12 h-12 mb-1">
                       <Image
-                        src={`/ascendancies/${ascendancy.toLowerCase()}.webp`}
+                        src={`/ascendancies/${ascendancyImageSlug(ascendancy)}.webp`}
                         alt={ascendancy}
                         fill
                         className="object-contain"
                       />
+                    </div>
+                  )}
+                  {ascendancy !== "None" && !hasAscendancyImage(ascendancy) && (
+                    <div className="mb-1 flex h-12 w-12 items-center justify-center rounded-full border border-primary/30 bg-primary/10 font-display text-sm text-primary">
+                      {ascendancy
+                        .split(/\s+/)
+                        .map((word) => word[0])
+                        .join("")
+                        .slice(0, 3)}
                     </div>
                   )}
                   <span className="text-sm">{ascendancy}</span>

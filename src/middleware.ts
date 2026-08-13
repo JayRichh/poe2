@@ -20,10 +20,7 @@ const requestCounts = new Map<string, { count: number; timestamp: number }>();
 /* ─────────────────────  HELPERS (unchanged)  ─────────────────── */
 
 function getRateLimit(path: string) {
-  return (
-    Object.entries(RATE_LIMITS).find(([p]) => path.startsWith(p))?.[1] ??
-    RATE_LIMITS["/*"]
-  );
+  return Object.entries(RATE_LIMITS).find(([p]) => path.startsWith(p))?.[1] ?? RATE_LIMITS["/*"];
 }
 
 function checkRateLimit(request: NextRequest) {
@@ -67,14 +64,8 @@ function handleCORS(request: NextRequest, res: NextResponse) {
     res.headers.set("Access-Control-Allow-Origin", origin);
 
   if (request.method === "OPTIONS") {
-    res.headers.set(
-      "Access-Control-Allow-Methods",
-      "GET,POST,PUT,DELETE,OPTIONS"
-    );
-    res.headers.set(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, X-CSRF-Token"
-    );
+    res.headers.set("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-CSRF-Token");
     res.headers.set("Access-Control-Max-Age", "86400");
   }
   res.headers.set("Access-Control-Allow-Credentials", "true");
@@ -85,8 +76,18 @@ function handleCORS(request: NextRequest, res: NextResponse) {
 export async function middleware(request: NextRequest) {
   // Edge-compatible nonce (no Node import!)
   const nonce = crypto.randomUUID(); // v4 UUID, 122 bits of randomness
+  const csp = [
+    "object-src 'none'",
+    `script-src 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:`,
+    "base-uri 'none'",
+  ].join("; ");
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", csp);
 
-  let response = NextResponse.next();
+  // Forward the nonce and CSP to the App Router so Next can apply the nonce to
+  // its own bootstrap scripts, not just third-party scripts in the root layout.
+  let response = NextResponse.next({ request: { headers: requestHeaders } });
 
   // CORS pre-flight
   handleCORS(request, response);
@@ -104,16 +105,11 @@ export async function middleware(request: NextRequest) {
   // Apply rate-limit headers
   Object.entries(headers).forEach(([k, v]) => response.headers.set(k, v));
 
-  // Expose nonce for App Router
+  // Expose nonce for diagnostics and apply CSP to the browser response.
   response.headers.set("x-nonce", nonce);
 
   // CSP for HTML
   if (request.headers.get("accept")?.includes("text/html")) {
-    const csp = [
-      "object-src 'none'",
-      `script-src 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:`,
-      "base-uri 'none'",
-    ].join("; ");
     response.headers.set("Content-Security-Policy", csp);
   }
 

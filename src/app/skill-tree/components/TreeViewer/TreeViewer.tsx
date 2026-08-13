@@ -11,6 +11,7 @@ import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
 
 import { shimmer, toBase64 } from "~/utils/image";
 
+import { ascendancyImageSlug } from "../../utils/buildImport";
 import {
   calculateInitialPanOffset,
   calculateZoomPanOffset,
@@ -75,32 +76,24 @@ export function TreeViewer({
   const [hoveredNode, setHoveredNode] = useState<TreeNodeData | null>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const [scale, setScale] = useState(() => {
-    try {
-      const saved = localStorage.getItem("skill-tree-scale");
-      return saved ? parseFloat(saved) : 0.75;
-    } catch {
-      return 0.75;
-    }
-  });
-  const [panOffset, setPanOffset] = useState(() => {
-    try {
-      const saved = localStorage.getItem("skill-tree-pan");
-      return saved ? JSON.parse(saved) : { x: 0, y: 0 };
-    } catch {
-      return { x: 0, y: 0 };
-    }
-  });
+  // Keep the server and first client render deterministic. Reading localStorage
+  // in these initializers caused a hydration mismatch after the first visit.
+  const [scale, setScale] = useState(0.75);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [startPan, setStartPan] = useState({ x: 0, y: 0 });
-  const [imageSize, setImageSize] = useState(() => {
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
     try {
-      const saved = localStorage.getItem("skill-tree-image-size");
-      return saved ? JSON.parse(saved) : { width: 0, height: 0 };
+      const savedScale = localStorage.getItem("skill-tree-scale");
+      const savedPan = localStorage.getItem("skill-tree-pan");
+      if (savedScale) setScale(parseFloat(savedScale));
+      if (savedPan) setPanOffset(JSON.parse(savedPan));
     } catch {
-      return { width: 0, height: 0 };
+      // Storage may be unavailable in private browsing; defaults remain usable.
     }
-  });
+  }, []);
 
   // Persist view state
   useEffect(() => {
@@ -115,8 +108,10 @@ export function TreeViewer({
   const imageRef = useRef<HTMLImageElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>();
+  const hydratedRef = useRef(false);
+  const pendingImageLoadRef = useRef(false);
 
-  const handleImageLoad = useCallback(() => {
+  const initializeImage = useCallback(() => {
     if (!containerRef.current || !imageRef.current) return;
     const container = containerRef.current;
     const image = imageRef.current;
@@ -138,6 +133,26 @@ export function TreeViewer({
 
     setHasLoaded(true);
   }, [scale]);
+
+  const handleImageLoad = useCallback(() => {
+    // A cached image can emit its load event while React is still hydrating a
+    // production page. Defer the stateful tree initialization until the mount
+    // effect has run so the first client render always matches the server.
+    if (!hydratedRef.current) {
+      pendingImageLoadRef.current = true;
+      return;
+    }
+    initializeImage();
+  }, [initializeImage]);
+
+  useEffect(() => {
+    hydratedRef.current = true;
+    const image = imageRef.current;
+    if (pendingImageLoadRef.current || (image?.complete && image.naturalWidth > 0)) {
+      pendingImageLoadRef.current = false;
+      initializeImage();
+    }
+  }, [initializeImage]);
 
   const handleZoom = useCallback(
     (newScale: number, center?: { x: number; y: number }) => {
@@ -294,6 +309,26 @@ export function TreeViewer({
     );
   }, [filteredNodes, scale, panOffset, hasLoaded, imageSize, containerSize]);
 
+  const allocatedConnections = useMemo(() => {
+    if (!treeData) return [];
+    const seen = new Set<string>();
+    const result: Array<[TreeNodeData, TreeNodeData]> = [];
+    for (const id of allocatedNodes) {
+      const from = treeData.nodes[id];
+      if (!from) continue;
+      for (const connectedId of from.connections) {
+        if (!allocatedNodes.has(connectedId)) continue;
+        const to = treeData.nodes[connectedId];
+        if (!to) continue;
+        const key = id < connectedId ? `${id}\u0000${connectedId}` : `${connectedId}\u0000${id}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        result.push([from, to]);
+      }
+    }
+    return result;
+  }, [allocatedNodes, treeData]);
+
   if (!treeData) return null;
 
   return (
@@ -374,7 +409,7 @@ export function TreeViewer({
 
         {selectedAscendancy !== "None" && (
           <ProgressiveImage
-            src={`/ascendancies/${selectedAscendancy.toLowerCase()}.webp`}
+            src={`/ascendancies/${ascendancyImageSlug(selectedAscendancy)}.webp`}
             alt={selectedAscendancy}
             width={320}
             height={320}
@@ -385,7 +420,7 @@ export function TreeViewer({
               transform: "translate3d(-50%, -50%, 0)",
               willChange: "transform",
             }}
-            fallback={`/ascendancies/${selectedAscendancy.toLowerCase()}.png`}
+            fallback={`/ascendancies/${ascendancyImageSlug(selectedAscendancy)}.png`}
             onError={(error) => {
               console.error("Failed to load ascendancy image:", error);
             }}
@@ -395,6 +430,29 @@ export function TreeViewer({
             sizes="320px"
             crossOrigin="anonymous"
           />
+        )}
+
+        {hasLoaded && allocatedConnections.length > 0 && (
+          <svg
+            className="absolute inset-0 pointer-events-none overflow-visible"
+            width={imageSize.width}
+            height={imageSize.height}
+            aria-label={`${allocatedConnections.length} allocated passive connections`}
+          >
+            {allocatedConnections.map(([from, to]) => (
+              <line
+                key={`${from.id}-${to.id}`}
+                x1={from.position.x * imageSize.width}
+                y1={from.position.y * imageSize.height}
+                x2={to.position.x * imageSize.width}
+                y2={to.position.y * imageSize.height}
+                stroke="#63b3ed"
+                strokeWidth={5}
+                strokeLinecap="round"
+                opacity={0.9}
+              />
+            ))}
+          </svg>
         )}
 
         {hasLoaded &&

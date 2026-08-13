@@ -4,7 +4,7 @@ import LZString from "lz-string";
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 interface UseUrlStateProps {
   onNodesLoad?: (nodes: string[]) => void;
@@ -13,7 +13,6 @@ interface UseUrlStateProps {
 
 export function useUrlState({ onNodesLoad, onAscendancyLoad }: UseUrlStateProps = {}) {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const isInitialLoad = useRef(true);
 
   // Load state from URL on mount
@@ -76,10 +75,13 @@ export function useUrlState({ onNodesLoad, onAscendancyLoad }: UseUrlStateProps 
       // Only update URL if there are actual changes
       if (hasChanges) {
         const newUrl = `${window.location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
-        router.replace(newUrl, { scroll: false });
+        // This is client-only visualization state. Updating history directly
+        // avoids an unnecessary App Router/RSC round trip (and a fresh CSP
+        // nonce) for every allocation change.
+        window.history.replaceState(window.history.state, "", newUrl);
       }
     },
-    [searchParams, router]
+    [searchParams]
   );
 
   return {

@@ -33,14 +33,7 @@ const plexMono = IBM_Plex_Mono({
   display: "optional",
   preload: true,
   adjustFontFallback: true,
-  fallback: [
-    "ui-monospace",
-    "SFMono-Regular",
-    "Menlo",
-    "Monaco",
-    "Consolas",
-    "monospace",
-  ],
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
 });
 
 // Carved, Trajan-esque display face — PoE2's gothic/arcane lineage.
@@ -53,13 +46,8 @@ const cinzel = Cinzel({
   fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const nonce =
-    (await headers()).get("x-nonce")?.toString() ?? "";
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = (await headers()).get("x-nonce")?.toString() ?? "";
 
   const jsonLd = getSiteJsonLd();
 
@@ -73,20 +61,13 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://poe2.dev" />
         <link rel="dns-prefetch" href="https://poe2.dev" />
 
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
         />
-        <meta
-          name="msvalidate.01"
-          content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION}
-        />
+        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
         <meta
           name="yandex-verification"
           content={process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION}
@@ -105,11 +86,12 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           nonce={nonce}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="bg-background text-foreground font-sans antialiased min-h-full flex flex-col">
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout nonce={nonce}>{children}</ClientLayout>
       </body>
     </html>
   );

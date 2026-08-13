@@ -1,7 +1,12 @@
 export const NAME_MIN_LENGTH = 2;
 export const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-export const ALLOWED_FILE_TYPES = ["application/json", "text/plain"];
-export const ALLOWED_FILE_EXTENSIONS = [".json", ".txt"];
+export const ALLOWED_FILE_TYPES = [
+  "",
+  "application/json",
+  "text/plain",
+  "application/octet-stream",
+];
+export const ALLOWED_FILE_EXTENSIONS = [".build", ".json", ".txt"];
 export const NAME_MAX_LENGTH = 50;
 export const NAME_PATTERN = /^[a-zA-Z0-9\s_-]+$/;
 

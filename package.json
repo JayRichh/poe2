@@ -18,6 +18,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "build:fix": "next lint --fix && prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "test": "vitest run",
+    "test:e2e:passive-tree": "node scripts/e2e-passive-tree.mjs",
     "test:watch": "vitest"
   },
   "dependencies": {

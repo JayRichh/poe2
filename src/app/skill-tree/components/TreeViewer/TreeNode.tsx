@@ -83,6 +83,10 @@ const TreeNode = React.memo(function TreeNode({
 
   return (
     <div
+      role="button"
+      aria-label={`${node.name}${isAllocated ? " (allocated)" : ""}`}
+      data-node-id={node.id}
+      data-allocated={isAllocated ? "true" : "false"}
       className={`absolute cursor-pointer
         ${isSelected ? "z-50" : isHighlighted ? "z-40" : isPath ? "z-35" : "z-30"}`}
       style={positionStyle}
