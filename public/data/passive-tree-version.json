@@ -1,0 +1,8 @@
+{
+  "gameVersion": "0.5.2",
+  "compatibleThrough": "0.5.4c",
+  "source": "poe2-tools/poe2-build-planner Skill Trees/0.5.2/data.json",
+  "nodeCount": 4912,
+  "connectionCount": 5830,
+  "generatedAt": "2026-08-13"
+}
