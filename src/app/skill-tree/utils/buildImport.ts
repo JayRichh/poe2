@@ -55,10 +55,19 @@ function readNodeIds(value: unknown): string[] | null {
   return nodes.every((node): node is string => node !== null) ? nodes : null;
 }
 
+// Own-property lookup: guards against inherited keys like "constructor" or
+// "__proto__" (a raw record[key] returns a Function for those, which then
+// crashes string callers downstream — a reflected client-side DoS via ?a=).
+function ownLookup(record: Record<string, string>, key: string): string | undefined {
+  return Object.prototype.hasOwnProperty.call(record, key) ? record[key] : undefined;
+}
+
 export function normalizeAscendancy(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "None";
   const trimmed = value.trim();
-  return ASCENDANCY_NAMES[trimmed] ?? ASCENDANCY_ALIASES.get(trimmed.toLowerCase()) ?? trimmed;
+  return (
+    ownLookup(ASCENDANCY_NAMES, trimmed) ?? ASCENDANCY_ALIASES.get(trimmed.toLowerCase()) ?? trimmed
+  );
 }
 
 export function ascendancyImageSlug(value: string): string {
@@ -68,7 +77,7 @@ export function ascendancyImageSlug(value: string): string {
     "Blood Mage": "bloodmage",
     "Gemling Legionnaire": "gemling",
   };
-  return known[name] ?? name.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  return ownLookup(known, name) ?? name.toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
 const ASCENDANCY_IMAGE_SLUGS = new Set([

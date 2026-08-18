@@ -48,4 +48,18 @@ describe("normalizeAscendancy", () => {
   it("maps the GGG class slot identifier", () => {
     expect(normalizeAscendancy("Mercenary3")).toBe("Gemling Legionnaire");
   });
+
+  it("returns a plain string for prototype-chain keys (no reflected DoS)", () => {
+    for (const key of ["constructor", "__proto__", "toString", "hasOwnProperty"]) {
+      const result = normalizeAscendancy(key);
+      expect(typeof result).toBe("string");
+      expect(result).toBe(key);
+    }
+  });
+
+  it("falls back to 'None' for empty or non-string input", () => {
+    expect(normalizeAscendancy("")).toBe("None");
+    expect(normalizeAscendancy(undefined)).toBe("None");
+    expect(normalizeAscendancy(42)).toBe("None");
+  });
 });

@@ -303,7 +303,25 @@ export function useSkillTree() {
     if (!treeDataRef || !buildUrl || autoBuildLoaded.current) return;
     autoBuildLoaded.current = true;
 
-    void fetch(buildUrl)
+    // Only auto-load builds hosted on this origin (e.g. /builds/foo.build). Reject
+    // absolute/cross-origin URLs so a crafted ?build=https://evil/x link can't make
+    // a visitor's browser fetch and render attacker-controlled content.
+    let sameOriginBuildUrl: string;
+    try {
+      const resolved = new URL(buildUrl, window.location.origin);
+      if (resolved.origin !== window.location.origin) {
+        throw new Error("Build links must be same-origin");
+      }
+      sameOriginBuildUrl = resolved.toString();
+    } catch (error) {
+      setImportStatus({
+        type: "error",
+        message: error instanceof Error ? error.message : "Invalid build link",
+      });
+      return;
+    }
+
+    void fetch(sameOriginBuildUrl)
       .then((response) => {
         if (!response.ok) throw new Error(`Could not load ${buildUrl} (${response.status})`);
         return response.text();
