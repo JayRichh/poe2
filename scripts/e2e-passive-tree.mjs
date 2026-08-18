@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const baseUrl = process.env.POE2_DEV_URL ?? "http://localhost:3100";
+const baseUrl = process.env.POE2_DEV_URL ?? "http://localhost:3000";
 const buildPath = path.join(repositoryRoot, "public", "builds", "untether_gemling_123.build");
 const screenshotDirectory = path.join(repositoryRoot, "qa");
 
