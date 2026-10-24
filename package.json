@@ -2,6 +2,9 @@
   "name": "poe2-tools",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "scrape": "npm run scrape:notes && npm run scrape:ladder",
     "scrape:notes": "ts-node --project scripts/tsconfig.json src/scripts/scrape-patch-notes.ts",
@@ -39,7 +42,7 @@
     "lodash.throttle": "^4.1.1",
     "lucide-react": "^0.460.0",
     "lz-string": "^1.5.0",
-    "next": "15.1.11",
+    "next": "15.5.28",
     "next-themes": "^0.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -64,16 +67,17 @@
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^8",
-    "eslint-config-next": "^15.1.3",
+    "eslint-config-next": "^15.5.28",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "node-fetch": "^3.3.2",
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "puppeteer": "^23.11.1",
+    "puppeteer": "^25.16.0",
     "supabase": "^2.0.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "vitest": "^2.1.8"
+    "vitest": "^4.1.12"
   }
 }
