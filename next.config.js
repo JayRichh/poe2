@@ -220,7 +220,7 @@ const nextConfig = {
         ],
       },
       {
-        source: "/:path*((?!data/).)*",
+        source: "/:path((?!data/).*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000" },
         ],
