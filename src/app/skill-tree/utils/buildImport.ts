@@ -68,6 +68,12 @@ export function filterKnownNodeIds(ids: readonly string[], nodes: object): strin
   return ids.filter((id) => Object.hasOwn(nodes, id));
 }
 
+// Returns the same Set when every id is known, so a state update can bail out.
+export function pruneUnknownNodes(ids: ReadonlySet<string>, nodes: object): ReadonlySet<string> {
+  const known = filterKnownNodeIds([...ids], nodes);
+  return known.length === ids.size ? ids : new Set(known);
+}
+
 export function normalizeAscendancy(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "None";
   const trimmed = value.trim();

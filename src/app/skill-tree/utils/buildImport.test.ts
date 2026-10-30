@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { filterKnownNodeIds, normalizeAscendancy, parseTreeBuild } from "./buildImport";
+import {
+  filterKnownNodeIds,
+  normalizeAscendancy,
+  parseTreeBuild,
+  pruneUnknownNodes,
+} from "./buildImport";
 
 describe("parseTreeBuild", () => {
   it("imports official .build passives and Gemling Legionnaire", () => {
@@ -82,5 +87,19 @@ describe("filterKnownNodeIds", () => {
 describe("Abyssal Lich", () => {
   it("maps Witch3b", () => {
     expect(normalizeAscendancy("Witch3b")).toBe("Abyssal Lich");
+  });
+});
+
+describe("pruneUnknownNodes", () => {
+  const nodes = { a: 1, b: 2 };
+
+  it("drops junk ids that arrived before the tree loaded", () => {
+    const pruned = pruneUnknownNodes(new Set(["__proto__", "constructor", "toString", "a"]), nodes);
+    expect([...pruned]).toEqual(["a"]);
+  });
+
+  it("returns the same set when all ids are known", () => {
+    const ids = new Set(["a", "b"]);
+    expect(pruneUnknownNodes(ids, nodes)).toBe(ids);
   });
 });

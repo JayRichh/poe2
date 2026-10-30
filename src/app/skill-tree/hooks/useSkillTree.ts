@@ -8,10 +8,11 @@ import { useSearchParams } from "next/navigation";
 
 import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
 import {
-  filterKnownNodeIds,
   type ImportedTreeBuild,
+  filterKnownNodeIds,
   normalizeAscendancy,
   parseTreeBuildJson,
+  pruneUnknownNodes,
 } from "../utils/buildImport";
 import { useTreeData } from "./useTreeData";
 import { useTreeHistory } from "./useTreeHistory";
@@ -100,6 +101,12 @@ export function useSkillTree() {
     onNodesLoad: handleNodesLoad,
     onAscendancyLoad: handleAscendancyLoad,
   });
+
+  // ?p= ids can arrive before the tree data; drop unknown ones once it loads.
+  useEffect(() => {
+    if (!treeDataRef) return;
+    setAllocatedNodes((prev) => pruneUnknownNodes(prev, treeDataRef.nodes) as Set<NodeId>);
+  }, [treeDataRef]);
 
   // Update URL when state changes
   useEffect(() => {

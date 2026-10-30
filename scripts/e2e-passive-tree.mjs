@@ -112,6 +112,30 @@ try {
     { timeout: 10_000 }
   );
 
+  // Junk ?p= ids must be dropped, leaving the tree allocatable by keyboard.
+  phase = "junk ?p= ids";
+  const junkPage = await browser.newPage();
+  await junkPage.setViewport({ width: 1600, height: 1000, deviceScaleFactor: 1 });
+  await junkPage.goto(`${baseUrl}/skill-tree?p=PrAOCcHsBdJAaAxpAdgZ2uAro256wDKmAligOZA`, {
+    waitUntil: "networkidle0",
+  });
+  await (await junkPage.waitForSelector('button[title="Fit to view"]')).click();
+  await junkPage.waitForSelector('[role="button"][data-node-id]');
+  const pressed = await junkPage.evaluate(async () => {
+    const nodes = Array.from(document.querySelectorAll('[role="button"][data-node-id]')).slice(
+      0,
+      80
+    );
+    for (const node of nodes) {
+      node.focus();
+      node.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      if (node.getAttribute("aria-pressed") === "true") return node.getAttribute("data-node-id");
+    }
+    return null;
+  });
+  assert.ok(pressed, "no node became aria-pressed after Enter with junk ?p= ids");
+
   const relevantErrors = errors.filter(
     (error) => !error.includes("Failed to load resource") && !error.includes("favicon")
   );
@@ -126,6 +150,7 @@ try {
         allocatedConnections: autoLoadState.connections,
         ascendancy: "Gemling Legionnaire",
         search: "passed",
+        junkParamKeyboard: pressed,
         screenshot: "qa/untether-auto-loaded.png",
       },
       null,
