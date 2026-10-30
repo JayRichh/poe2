@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { ReactNode } from "react";
 
+import { useSelectedLayoutSegment } from "next/navigation";
+
 import { Button } from "~/components/ui/Button";
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
@@ -26,6 +28,8 @@ export function ContentLayout({
   sidebar,
 }: ContentLayoutProps) {
   const sidebarState = useSidebarWidth();
+  // Detail pages provide their own h1; the layout owns the index heading.
+  const segment = useSelectedLayoutSegment();
 
   return (
     <div className="flex flex-col mt-11">
@@ -35,7 +39,12 @@ export function ContentLayout({
           <div className="px-6 sm:px-8 py-6">
             <div className="flex justify-between gap-8">
               <div className="flex flex-col max-w-2xl">
-                <Text className="text-3xl font-bold tracking-tight">{title}</Text>
+                <Text
+                  as={segment === null ? "h1" : "div"}
+                  className="text-3xl font-bold tracking-tight"
+                >
+                  {title}
+                </Text>
                 {description && (
                   <Text className="text-lg text-foreground/80 mt-3">{description}</Text>
                 )}

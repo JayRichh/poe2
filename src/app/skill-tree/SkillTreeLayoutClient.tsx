@@ -4,6 +4,8 @@ import { HydrationBoundary, dehydrate, useQueryClient } from "@tanstack/react-qu
 
 import { useEffect } from "react";
 
+import { Text } from "~/components/ui/Text";
+
 import { TreeDataPrefetcher } from "./components/TreeDataPrefetcher";
 
 export function SkillTreeLayoutClient({ children }: { children: React.ReactNode }) {
@@ -24,6 +26,9 @@ export function SkillTreeLayoutClient({ children }: { children: React.ReactNode 
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
+      <Text as="h1" className="sr-only">
+        Passive Skill Tree Planner
+      </Text>
       <TreeDataPrefetcher />
       <div
         className="flex flex-col w-full overflow-hidden bg-background"

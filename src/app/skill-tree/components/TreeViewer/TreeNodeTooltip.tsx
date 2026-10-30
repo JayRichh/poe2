@@ -37,12 +37,12 @@ export const TreeNodeTooltip = memo(function TreeNodeTooltip({
             height={52}
             priority
           />
-          <h1
-            className="whitespace-nowrap relative z-20 text-center px-12 font-medium"
+          <h2
+            className="mb-6 text-4xl whitespace-nowrap relative z-20 text-center px-12 font-medium"
             aria-label={`Node: ${node.name}`}
           >
             {node.name}
-          </h1>
+          </h2>
         </header>
         <div className="p-4 pb-2 space-y-2">
           <div className="grid" role="list">
@@ -85,9 +85,9 @@ const SkillList = memo(function SkillList({ skills }: { skills: TreeNodeData["sk
           aria-label={`Skill: ${skill.name}`}
         >
           <header className="relative text-2xl rounded-xl grid items-center">
-            <h1 className="whitespace-nowrap relative z-20 text-center px-12">
+            <h2 className="mb-6 text-4xl font-bold whitespace-nowrap relative z-20 text-center px-12">
               {skill.name} <span className="text-cyan-200 text-sm font-medium"></span>
-            </h1>
+            </h2>
           </header>
           <p
             className="m-0 font-light text-[#7d7aad]"
@@ -117,9 +117,9 @@ const KeywordList = memo(function KeywordList({
           aria-label={`Keyword: ${keyword.name}`}
         >
           <header className="relative text-2xl rounded-xl grid items-center">
-            <h1 className="whitespace-nowrap relative z-20 text-center px-12">
+            <h2 className="mb-6 text-4xl font-bold whitespace-nowrap relative z-20 text-center px-12">
               {keyword.name} <span className="text-orange-200 text-sm font-medium"></span>
-            </h1>
+            </h2>
           </header>
           <p
             className="m-0 font-light text-[#7d7aad]"
