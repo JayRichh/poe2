@@ -223,34 +223,37 @@ export async function scrapePatchNotes(): Promise<NewsPost[]> {
   }
 }
 
-export async function savePatchNotes(posts: NewsPost[]): Promise<void> {
-  const projectRoot = path.resolve(__dirname, "..");
-  const dataDir = path.join(projectRoot, "public", "data");
-
-  // Ensure data directory exists
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-
-  // Filter and save patch notes
-  const patchNotes = posts.filter((post) => post.type === "patch-note");
-  const patchNotesPath = path.join(dataDir, "patch-notes.json");
-  await fs.promises.writeFile(patchNotesPath, JSON.stringify(patchNotes, null, 2));
+/** Union by id (incoming wins on a shared id), newest first. Curated entries survive. */
+export function mergeById(existing: NewsPost[], incoming: NewsPost[]): NewsPost[] {
+  const byId = new Map(existing.map((p) => [p.id, p]));
+  for (const p of incoming) byId.set(p.id, p);
+  return [...byId.values()].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export async function saveAnnouncements(posts: NewsPost[]): Promise<void> {
-  const projectRoot = path.resolve(__dirname, "..");
-  const dataDir = path.join(projectRoot, "public", "data");
+async function saveMerged(file: string, posts: NewsPost[]): Promise<void> {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  let existing: NewsPost[] = [];
+  if (fs.existsSync(file)) existing = JSON.parse(await fs.promises.readFile(file, "utf8"));
+  await fs.promises.writeFile(file, JSON.stringify(mergeById(existing, posts), null, 2));
+}
 
-  // Ensure data directory exists
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
+const defaultDataDir = () => path.join(path.resolve(__dirname, ".."), "public", "data");
 
-  // Filter and save announcements
-  const announcements = posts.filter((post) => post.type === "announcement");
-  const announcementsPath = path.join(dataDir, "announcements.json");
-  await fs.promises.writeFile(announcementsPath, JSON.stringify(announcements, null, 2));
+export async function savePatchNotes(posts: NewsPost[], dataDir = defaultDataDir()): Promise<void> {
+  await saveMerged(
+    path.join(dataDir, "patch-notes.json"),
+    posts.filter((post) => post.type === "patch-note")
+  );
+}
+
+export async function saveAnnouncements(
+  posts: NewsPost[],
+  dataDir = defaultDataDir()
+): Promise<void> {
+  await saveMerged(
+    path.join(dataDir, "announcements.json"),
+    posts.filter((post) => post.type === "announcement")
+  );
 }
 
 export type { NewsPost, PatchNote };
