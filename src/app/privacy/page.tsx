@@ -13,7 +13,7 @@ import { Text } from "~/components/ui/Text";
 export default function PrivacyPolicy() {
   return (
     <Container size="md" className="py-16">
-      <Text variant="h1" className="text-4xl font-bold mb-8">
+      <Text as="h1" variant="h1" className="text-4xl font-bold mb-8">
         Privacy Policy
       </Text>
 

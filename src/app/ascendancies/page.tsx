@@ -81,7 +81,7 @@ export default function AscendanciesPage() {
       <div className="space-y-8">
         <div className="max-w-3xl">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <Text variant="h1" className="text-4xl font-bold">
+            <Text as="h1" variant="h1" className="text-4xl font-bold">
               Ascendancy Classes
             </Text>
             <span className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90">

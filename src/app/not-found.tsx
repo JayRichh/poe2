@@ -17,7 +17,7 @@ export default function NotFound() {
       <Container className="min-h-screen flex items-center justify-center">
         <div className="max-w-md w-full space-y-6 text-center">
           <div className="space-y-2">
-            <Text variant="h1" className="text-8xl font-bold mb-4">
+            <Text as="h1" variant="h1" className="text-8xl font-bold mb-4">
               404
             </Text>
             <Text variant="h2" className="text-2xl font-semibold">

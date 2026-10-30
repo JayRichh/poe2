@@ -18,7 +18,7 @@ export default function AscendancyClassError({
   return (
     <Container className="py-8">
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <Text variant="h1" className="text-4xl font-bold mb-4">
+        <Text as="h1" variant="h1" className="text-4xl font-bold mb-4">
           Ascendancy Class Error
         </Text>
         <Text className="text-lg text-foreground/80 mb-8 max-w-2xl">

@@ -8,6 +8,8 @@ type TextVariant = "h1" | "h2" | "h3" | "h4" | "body-lg" | "body" | "body-sm" | 
 type TextGradient = "none" | "primary" | "accent" | "secondary" | "amber";
 
 interface TextProps extends HTMLAttributes<HTMLDivElement> {
+  /** Semantic element; defaults to div. Does not change appearance. */
+  as?: "h1" | "h2" | "h3" | "h4" | "div";
   variant?: TextVariant;
   color?: "default" | "primary" | "secondary" | "success" | "error";
   weight?: "normal" | "medium" | "semibold" | "bold";
@@ -64,6 +66,7 @@ const gradientClasses: Record<TextGradient, string> = {
 export const Text = forwardRef<HTMLDivElement, TextProps>(
   (
     {
+      as,
       variant = "body",
       color = "default",
       weight,
@@ -81,12 +84,15 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
     const defaultWeight = variant.startsWith("h") ? "bold" : "normal";
     const finalWeight = weight || defaultWeight;
 
-    const Tag = (variant.startsWith("h") ? variant : "div") as "div"; // real headings for the document outline
+    // Element is chosen by `as`, never by the visual variant, so look stays page-controlled.
+    const Tag = (as ?? "div") as "div";
+    const reset = as ? "m-0 tracking-normal [text-shadow:none]" : ""; // undo base h1-h4 rules
 
     return (
       <Tag
         ref={ref}
         className={cn(
+          reset,
           variantClasses[variant],
           gradient === "none" ? colorClasses[color] : "",
           weightClasses[finalWeight],

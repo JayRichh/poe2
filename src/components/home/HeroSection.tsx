@@ -71,6 +71,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
       </div>
 
       <Text
+        as="h1"
         variant="h1"
         align="center"
         className="font-display tracking-tight text-gilded"

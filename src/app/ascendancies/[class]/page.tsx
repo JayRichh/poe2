@@ -93,7 +93,7 @@ export default async function AscendancyPage({ params }: PageProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute bottom-0 left-0 p-8">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <Text variant="h1" className="text-4xl font-bold">
+              <Text as="h1" variant="h1" className="text-4xl font-bold">
                 {ascendancy.title}
               </Text>
               <span className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90">

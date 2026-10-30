@@ -35,6 +35,7 @@ export default async function GuidePage({ params }: PageProps) {
       )}
     />
     <Container size="xl" noPadding>
+      <h1 className="sr-only">{guide.title}</h1>
       <div className="px-4 sm:px-6 lg:px-8 py-8">
         <ContentRenderer sections={guide.sections} relatedContent={guide.relatedContent} />
       </div>
@@ -56,7 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: guide.title,
-    description: `${guide.description.replace(/[.\s]+$/, "")}. Covers formulas, tables and links to related Path of Exile 2 calculators and guides.`,
+    description: `${guide.description.replace(/[.\s]+$/, "")}. A Path of Exile 2 guide from PoE2 Tools.`,
     alternates: {
       canonical: `/guides/${category}`,
     },
