@@ -2,7 +2,7 @@
 
 Free, open-source Path of Exile 2 tools: build planner, DPS calculators, passive skill tree, guides and patch notes.
 
-**Live: [poe2.dev](https://poe2.dev)**
+**Live: [www.poe2.dev](https://www.poe2.dev)**
 
 ![Home](docs/screenshots/home.png)
 
