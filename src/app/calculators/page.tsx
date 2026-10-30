@@ -77,9 +77,9 @@ export default function CalculatorsPage() {
                 <div className="p-2 rounded-lg bg-background/80">
                   <Calculator className={`w-5 h-5 ${calc.textColor}`} />
                 </div>
-                <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                <h2 className="font-sans mb-3 tracking-tight [text-shadow:none] text-lg font-semibold group-hover:text-primary transition-colors">
                   {calc.name}
-                </h3>
+                </h2>
               </div>
 
               <p className="text-foreground/70 mb-6">{calc.description}</p>
