@@ -53,7 +53,7 @@ export default function CalculatorsPage() {
       <div className="mx-auto space-y-12">
         {/* Header */}
         <div className="mx-auto">
-          <Text className="text-4xl font-bold tracking-tight mb-6">POE2 Calculators</Text>
+          <Text as="h1" className="text-4xl font-bold tracking-tight mb-6">POE2 Calculators</Text>
           <Text className="text-xl text-muted-foreground leading-relaxed">
             A suite of calculators for Path of Exile 2. Analyze damage, speed, and currency with
             detailed breakdowns and real-time calculations.
@@ -77,9 +77,9 @@ export default function CalculatorsPage() {
                 <div className="p-2 rounded-lg bg-background/80">
                   <Calculator className={`w-5 h-5 ${calc.textColor}`} />
                 </div>
-                <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                <h2 className="font-sans mb-3 tracking-tight [text-shadow:none] text-lg font-semibold group-hover:text-primary transition-colors">
                   {calc.name}
-                </h3>
+                </h2>
               </div>
 
               <p className="text-foreground/70 mb-6">{calc.description}</p>

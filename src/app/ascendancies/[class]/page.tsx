@@ -1,3 +1,6 @@
+import { JsonLd } from "~/components/seo/JsonLd";
+
+import { articleJsonLd } from "~/utils/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,6 +67,17 @@ export default async function AscendancyPage({ params }: PageProps) {
   const base = baseClasses[ascendancy.baseClass];
 
   return (
+    <>
+    <JsonLd
+      data={articleJsonLd(
+        { headline: `${ascendancy.title} Ascendancy`, description: ascendancy.description, path: `/ascendancies/${ascendancyClass}`, image: meta?.image ? `https://www.poe2.dev${meta.image}` : undefined },
+        [
+          { name: "Home", path: "/" },
+          { name: "Ascendancies", path: "/ascendancies" },
+          { name: ascendancy.title, path: `/ascendancies/${ascendancyClass}` },
+        ]
+      )}
+    />
     <Container className="py-8">
       <div className="space-y-8">
         <div className="relative h-64 w-full overflow-hidden rounded-xl bg-muted/40">
@@ -79,7 +93,7 @@ export default async function AscendancyPage({ params }: PageProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute bottom-0 left-0 p-8">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <Text variant="h1" className="text-4xl font-bold">
+              <Text as="h1" variant="h1" className="text-4xl font-bold">
                 {ascendancy.title}
               </Text>
               <span className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/90">
@@ -180,5 +194,6 @@ export default async function AscendancyPage({ params }: PageProps) {
         </div>
       </div>
     </Container>
+    </>
   );
 }

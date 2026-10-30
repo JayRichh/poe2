@@ -1,10 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How POE2 Tools handles data: no accounts, no database of your activity, and what the ad and analytics providers collect.",
+  alternates: { canonical: "/privacy" },
+};
+
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 
 export default function PrivacyPolicy() {
   return (
     <Container size="md" className="py-16">
-      <Text variant="h1" className="text-4xl font-bold mb-8">
+      <Text as="h1" variant="h1" className="text-4xl font-bold mb-8">
         Privacy Policy
       </Text>
 

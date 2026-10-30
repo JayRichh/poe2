@@ -18,7 +18,7 @@ export default function Error({
       <Container className="min-h-screen flex items-center justify-center">
         <div className="max-w-md w-full space-y-6 text-center">
           <div className="space-y-2">
-            <Text variant="h1" className="text-4xl font-bold">
+            <Text as="h1" variant="h1" className="text-4xl font-bold">
               Something went wrong
             </Text>
             <Text className="text-foreground/70">

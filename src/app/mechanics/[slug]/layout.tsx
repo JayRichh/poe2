@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 
+import { JsonLd } from "~/components/seo/JsonLd";
+
+import { articleJsonLd } from "~/utils/metadata";
 import { mechanics } from "~/lib/mechanics/data";
 import type { ContentCategory } from "~/lib/shared/types";
 
@@ -25,7 +28,7 @@ export async function generateMetadata({
 
   return {
     title: `${mechanic.title} · Game Mechanics`,
-    description: mechanic.description,
+    description: `${mechanic.description.replace(/[.\s]+$/, "")}. A Path of Exile 2 mechanics reference from PoE2 Tools.`,
     alternates: {
       canonical: `/mechanics/${slug}`,
     },
@@ -37,6 +40,24 @@ export async function generateMetadata({
   };
 }
 
-export default function MechanicLayout({ children }: LayoutProps) {
-  return children;
+export default async function MechanicLayout({ children, params }: LayoutProps) {
+  const { slug } = await params;
+  const mechanic = mechanics[slug as ContentCategory];
+  return (
+    <>
+      {mechanic && (
+        <JsonLd
+          data={articleJsonLd(
+            { headline: mechanic.title, description: mechanic.description, path: `/mechanics/${slug}` },
+            [
+              { name: "Home", path: "/" },
+              { name: "Mechanics", path: "/mechanics" },
+              { name: mechanic.title, path: `/mechanics/${slug}` },
+            ]
+          )}
+        />
+      )}
+      {children}
+    </>
+  );
 }

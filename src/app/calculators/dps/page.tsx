@@ -10,7 +10,7 @@ export default function DPSCalcPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <Text className="text-3xl font-bold tracking-tight mb-4 pt-4">POE2 DPS Calculator</Text>
+          <Text as="h1" className="text-3xl font-bold tracking-tight mb-4 pt-4">POE2 DPS Calculator</Text>
           <div className="space-y-2">
             <Text className="text-foreground-secondary text-balance">
               Compare weapons and calculate DPS increases with detailed breakdowns of all damage

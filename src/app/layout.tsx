@@ -58,8 +58,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${plexSans.variable} ${plexMono.variable} ${cinzel.variable} dark h-full`}
     >
       <head>
-        <link rel="preconnect" href="https://poe2.dev" />
-        <link rel="dns-prefetch" href="https://poe2.dev" />
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
@@ -85,7 +83,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* Site-wide structured data (Organization + WebSite) as real JSON-LD. */}
         <script
           type="application/ld+json"
-          nonce={nonce}
+          nonce={nonce || undefined}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

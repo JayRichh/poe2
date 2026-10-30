@@ -13,9 +13,11 @@ import type { ContentSection, RelatedContent } from "~/lib/shared/types";
 interface ContentRendererProps {
   sections: ContentSection[];
   relatedContent?: RelatedContent[];
+  /** First section title is the page title (mechanics); otherwise the page supplies its own h1. */
+  titleAsH1?: boolean;
 }
 
-export function ContentRenderer({ sections, relatedContent }: ContentRendererProps) {
+export function ContentRenderer({ sections, relatedContent, titleAsH1 }: ContentRendererProps) {
   return (
     <div className="w-full min-h-0 overflow-y-auto">
       <div className="max-w-6xl mx-auto space-y-12 pb-12">
@@ -37,7 +39,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
             >
               {/* Section Header */}
               <div className="mb-12">
-                <Text variant="h2" className="text-3xl font-bold tracking-tight">
+                <Text as={titleAsH1 && index === 0 ? "h1" : "h2"} variant="h2" className="text-3xl font-bold tracking-tight">
                   {section.title}
                 </Text>
                 <div className="mt-1 h-1 w-20 bg-primary/50 rounded-full" />

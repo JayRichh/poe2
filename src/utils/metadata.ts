@@ -9,7 +9,6 @@ import {
   generateNewsArticleSchema,
   generateProfileSchema,
   generateToolSchema,
-  generateWebsiteSchema,
 } from "./schema";
 
 export type MetadataProps = {
@@ -59,9 +58,9 @@ export interface BaseMetadata {
 }
 
 const defaultContext = {
-  siteUrl: "https://poe2.dev",
+  siteUrl: "https://www.poe2.dev",
   siteName: "POE2 Tools",
-  siteImage: "https://poe2.dev/android-chrome-512x512.png",
+  siteImage: "https://www.poe2.dev/android-chrome-512x512.png",
 };
 
 export async function generateDynamicMetadata(
@@ -69,7 +68,7 @@ export async function generateDynamicMetadata(
   parent: ResolvingMetadata,
   data: BaseMetadata
 ): Promise<Metadata> {
-  const url = `https://poe2.dev${data.path}`;
+  const url = `https://www.poe2.dev${data.path}`;
 
   // Build base OpenGraph metadata
   const baseOpenGraph = {
@@ -128,23 +127,14 @@ export async function generateDynamicMetadata(
     },
   };
 
-  // Add schema.org structured data
-  if (data.schema) {
-    const schemaData = generateSchemaData(data.schema, data);
-    metadata.other = {
-      "schema:WebApplication": JSON.stringify(schemaData),
-    };
-  }
-
   return metadata;
 }
 
-function generateSchemaData(schema: NonNullable<BaseMetadata["schema"]>, data: BaseMetadata) {
+export function generateSchemaData(schema: NonNullable<BaseMetadata["schema"]>, data: BaseMetadata) {
   const context = defaultContext;
   const schemas = [];
 
   // Always include website schema and breadcrumbs if provided
-  schemas.push(generateWebsiteSchema(context));
   if (schema?.breadcrumbs) {
     schemas.push(generateBreadcrumbSchema(context, schema.breadcrumbs));
   }
@@ -179,4 +169,54 @@ function generateSchemaData(schema: NonNullable<BaseMetadata["schema"]>, data: B
   }
 
   return combineSchemas(...schemas);
+}
+
+/** BreadcrumbList + WebApplication JSON-LD for a tool page; render with <JsonLd>. */
+export function toolJsonLd(
+  tool: { title: string; description: string; path: string; features?: string[] },
+  breadcrumbs: Array<{ name: string; path: string }>
+) {
+  return generateSchemaData(
+    { type: "tool", data: { features: tool.features }, breadcrumbs },
+    { title: tool.title, description: tool.description, path: tool.path }
+  );
+}
+
+/**
+ * BreadcrumbList + Article JSON-LD when a real publish date exists (ISO 8601 is
+ * enforced; an unparseable date is dropped). Without a valid date the page is
+ * described as a WebPage instead, since Article requires datePublished.
+ */
+export function articleJsonLd(
+  a: { headline: string; description: string; path: string; datePublished?: string; image?: string },
+  breadcrumbs: Array<{ name: string; path: string }>
+) {
+  const parsed = a.datePublished ? new Date(a.datePublished) : undefined;
+  const iso = parsed && !Number.isNaN(parsed.getTime()) ? parsed.toISOString() : undefined;
+  const url = `${defaultContext.siteUrl}${a.path}`;
+  const image = a.image ?? defaultContext.siteImage;
+  const publisher = { "@type": "Organization", name: defaultContext.siteName, url: defaultContext.siteUrl };
+  return [
+    generateBreadcrumbSchema(defaultContext, breadcrumbs),
+    iso
+      ? {
+          "@type": "Article",
+          headline: a.headline,
+          description: a.description,
+          mainEntityOfPage: url,
+          datePublished: iso,
+          dateModified: iso,
+          image,
+          author: { "@type": "Organization", name: defaultContext.siteName },
+          publisher,
+        }
+      : {
+          "@type": "WebPage",
+          name: a.headline,
+          description: a.description,
+          url,
+          primaryImageOfPage: { "@type": "ImageObject", url: image },
+          isPartOf: publisher,
+        },
+  ];
 }

@@ -20,3 +20,6 @@ export function sanitizeHtml(dirty: string | null | undefined): string {
     FORBID_TAGS: ["style", "iframe", "form"],
   });
 }
+
+/** Page already has an h1; article HTML must not add another. */
+export const demoteH1 = (html: string) => html.replace(/<(\/?)h1(?=[\s>])/gi, "<$1h2");

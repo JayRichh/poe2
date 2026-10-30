@@ -17,7 +17,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: baseUrl, lastModified: buildDate, changeFrequency: "weekly", priority: 1.0 },
 
     // Tools — static client tools; content changes only on patch/deploy.
-    { url: `${baseUrl}/build-planner`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/build-planner/equipment`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/build-planner/skills`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/build-planner/stats`, lastModified: buildDate, changeFrequency: "monthly", priority: 0.6 },
@@ -88,11 +87,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [
+  // Duplicate news ids would otherwise list the same URL twice.
+  const all = [
     ...staticRoutes,
     ...mechanicsRoutes,
     ...guideRoutes,
     ...ascendancyRoutes,
     ...newsRoutes,
   ];
+  return [...new Map(all.map((e) => [e.url, e])).values()];
 }

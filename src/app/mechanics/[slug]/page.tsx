@@ -26,6 +26,7 @@ export default function MechanicPage({ params }: PageProps) {
 
   return (
     <ContentRenderer
+      titleAsH1
       sections={[
         {
           title: mechanic.title,
