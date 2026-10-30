@@ -102,7 +102,7 @@ export default async function NewsPage({ searchParams }: PageProps) {
       : "Path of Exile 2 news and announcements";
 
     return (
-      <NewsLayout title="News" description={asOfLabel}>
+      <NewsLayout titleAs="h1" title="News" description={asOfLabel}>
         <NewsContent
           news={paginatedNews}
           featuredNews={featuredNews}

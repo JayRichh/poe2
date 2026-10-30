@@ -43,9 +43,9 @@ export default function GuidesPage() {
               <div className="p-2 rounded-lg bg-primary/10">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-semibold group-hover:text-primary transition-colors">
+              <h2 className="mb-3 font-sans text-xl tracking-[-0.01em] [text-shadow:none] font-semibold group-hover:text-primary transition-colors">
                 {guide.title}
-              </h3>
+              </h2>
             </div>
             <p className="text-sm text-foreground/70 flex-grow">{guide.description}</p>
             {guide.sections.length > 0 && (

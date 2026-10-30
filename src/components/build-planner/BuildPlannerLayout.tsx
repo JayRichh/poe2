@@ -43,7 +43,9 @@ export function BuildPlannerLayout({
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between gap-8">
               <div className="flex flex-col max-w-2xl">
-                <Text className="text-3xl font-bold tracking-tight">{title}</Text>
+                <Text as="h1" className="text-3xl font-bold tracking-tight">
+                  {title}
+                </Text>
                 {description && (
                   <Text className="text-lg text-foreground/60 mt-2">{description}</Text>
                 )}

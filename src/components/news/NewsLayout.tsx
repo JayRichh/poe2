@@ -15,11 +15,18 @@ import { NewsSidebar } from "./NewsSidebar";
 interface NewsLayoutProps {
   children: ReactNode;
   title: string;
+  titleAs?: "h1" | "div";
   description?: string;
   actions?: ReactNode;
 }
 
-export function NewsLayout({ children, title, description, actions }: NewsLayoutProps) {
+export function NewsLayout({
+  children,
+  title,
+  titleAs = "div",
+  description,
+  actions,
+}: NewsLayoutProps) {
   const sidebar = useSidebarWidth();
 
   return (
@@ -30,7 +37,9 @@ export function NewsLayout({ children, title, description, actions }: NewsLayout
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between gap-8">
               <div className="flex flex-col max-w-2xl">
-                <Text className="text-3xl font-bold tracking-tight">{title}</Text>
+                <Text as={titleAs} className="text-3xl font-bold tracking-tight">
+                  {title}
+                </Text>
                 {description && (
                   <Text className="text-lg text-foreground/60 mt-2">{description}</Text>
                 )}

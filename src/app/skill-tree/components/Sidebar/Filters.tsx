@@ -120,7 +120,9 @@ export function Filters({
         <div className="space-y-6 overflow-y-auto scrollbar-custom">
           {/* Ascendancy Selection */}
           <div>
-            <h3 className="text-lg font-bold mb-3">Ascendancy</h3>
+            <h2 className="font-sans tracking-[-0.01em] [text-shadow:none] text-lg font-bold mb-3">
+              Ascendancy
+            </h2>
             <div className="grid grid-cols-2 gap-2">
               {ascendancyList.map((ascendancy) => (
                 <button
@@ -160,7 +162,9 @@ export function Filters({
 
           {/* Highlight Options */}
           <div>
-            <h3 className="text-lg font-bold mb-3">Highlight</h3>
+            <h2 className="font-sans tracking-[-0.01em] [text-shadow:none] text-lg font-bold mb-3">
+              Highlight
+            </h2>
             <div className="grid grid-cols-2 gap-2">
               <label className="flex items-center gap-2">
                 <input
@@ -194,7 +198,9 @@ export function Filters({
 
           {/* Hide Options */}
           <div>
-            <h3 className="text-lg font-bold mb-3">Hide</h3>
+            <h2 className="font-sans tracking-[-0.01em] [text-shadow:none] text-lg font-bold mb-3">
+              Hide
+            </h2>
             <div className="grid grid-cols-2 gap-2">
               <label className="flex items-center gap-2">
                 <input
@@ -228,7 +234,9 @@ export function Filters({
 
           {/* Tooltip Options */}
           <div>
-            <h3 className="text-lg font-bold mb-3">Tooltip Details</h3>
+            <h2 className="font-sans tracking-[-0.01em] [text-shadow:none] text-lg font-bold mb-3">
+              Tooltip Details
+            </h2>
             <div className="grid grid-cols-2 gap-2">
               <label className="flex items-center gap-2">
                 <input
@@ -257,7 +265,9 @@ export function Filters({
           <div className="space-y-4 mb-4">
             <div>
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-bold">Search</h3>
+                <h2 className="font-sans tracking-[-0.01em] [text-shadow:none] text-lg font-bold mb-3">
+                  Search
+                </h2>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"

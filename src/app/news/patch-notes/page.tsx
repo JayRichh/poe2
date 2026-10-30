@@ -70,6 +70,7 @@ export default async function PatchNotesPage({ searchParams }: PageProps) {
 
     return (
       <NewsLayout
+        titleAs="h1"
         title="Patch Notes"
         description="Path of Exile 2 patch notes and major-update history"
       >
@@ -78,7 +79,7 @@ export default async function PatchNotesPage({ searchParams }: PageProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <Text variant="h2" className="!mt-0">
+                <Text as="h2" variant="h2" className="!mt-0">
                   All Patch Notes
                 </Text>
                 <Text className="text-sm text-foreground/60">

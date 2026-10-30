@@ -114,7 +114,11 @@ export function PatchNotes({ patchNotes }: PatchNotesProps) {
         >
           <Link href={NewsService.getNewsUrl(note)} className="group block">
             <div className="flex items-center justify-between">
-              <Text variant="h4" className="font-medium group-hover:text-primary transition-colors">
+              <Text
+                as="h2"
+                variant="h4"
+                className="font-medium group-hover:text-primary transition-colors"
+              >
                 {note.title}
               </Text>
               <Text className="text-sm text-foreground/60">{formatDate(note.date)}</Text>
