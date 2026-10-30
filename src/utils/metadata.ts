@@ -182,22 +182,41 @@ export function toolJsonLd(
   );
 }
 
-/** BreadcrumbList + Article JSON-LD for guides, mechanics and ascendancy pages. */
+/**
+ * BreadcrumbList + Article JSON-LD when a real publish date exists (ISO 8601 is
+ * enforced; an unparseable date is dropped). Without a valid date the page is
+ * described as a WebPage instead, since Article requires datePublished.
+ */
 export function articleJsonLd(
   a: { headline: string; description: string; path: string; datePublished?: string; image?: string },
   breadcrumbs: Array<{ name: string; path: string }>
 ) {
+  const parsed = a.datePublished ? new Date(a.datePublished) : undefined;
+  const iso = parsed && !Number.isNaN(parsed.getTime()) ? parsed.toISOString() : undefined;
+  const url = `${defaultContext.siteUrl}${a.path}`;
+  const image = a.image ?? defaultContext.siteImage;
+  const publisher = { "@type": "Organization", name: defaultContext.siteName, url: defaultContext.siteUrl };
   return [
     generateBreadcrumbSchema(defaultContext, breadcrumbs),
-    {
-      "@type": "Article",
-      headline: a.headline,
-      description: a.description,
-      mainEntityOfPage: `${defaultContext.siteUrl}${a.path}`,
-      ...(a.datePublished && { datePublished: a.datePublished, dateModified: a.datePublished }),
-      image: a.image ?? defaultContext.siteImage,
-      author: { "@type": "Organization", name: defaultContext.siteName },
-      publisher: { "@type": "Organization", name: defaultContext.siteName, url: defaultContext.siteUrl },
-    },
+    iso
+      ? {
+          "@type": "Article",
+          headline: a.headline,
+          description: a.description,
+          mainEntityOfPage: url,
+          datePublished: iso,
+          dateModified: iso,
+          image,
+          author: { "@type": "Organization", name: defaultContext.siteName },
+          publisher,
+        }
+      : {
+          "@type": "WebPage",
+          name: a.headline,
+          description: a.description,
+          url,
+          primaryImageOfPage: { "@type": "ImageObject", url: image },
+          isPartOf: publisher,
+        },
   ];
 }
