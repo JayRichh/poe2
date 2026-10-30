@@ -1,32 +1,55 @@
 # POE2 Tools
 
-A web application providing tools and utilities for Path of Exile 2.
+Free, open-source Path of Exile 2 tools: build planner, DPS calculators, passive skill tree, guides and patch notes.
 
-[poe2.dev](https://poe2.dev)
+**Live: [poe2.dev](https://poe2.dev)**
 
-![image](https://github.com/user-attachments/assets/486cb308-a49c-4b5c-8831-ed7bf2b8dcef)
+![Home](docs/screenshots/home.png)
 
-![Screenshot 2024-12-18 195400](https://github.com/user-attachments/assets/b93495a1-c1f5-4487-b2ac-412d3e2ae129)
+| Build planner | DPS calculator | Passive skill tree |
+| --- | --- | --- |
+| ![Build planner](docs/screenshots/build-planner.png) | ![DPS calculator](docs/screenshots/dps-calculator.png) | ![Passive skill tree](docs/screenshots/skill-tree.png) |
 
-![Screenshot 2024-12-18 195445](https://github.com/user-attachments/assets/9f8eec89-0f7c-42e6-8891-4949d1750905)
+## Features
+
+- Build planner with equipment, skills and passives in one place
+- DPS, attack/cast speed and currency calculators
+- Interactive passive skill tree with ascendancy selection and a stats summary
+- Ascendancy pages, mechanics reference and guides
+- Patch notes and news, with an RSS feed
+- No account needed
+
+## Tech stack
+
+Next.js 15 (App Router), React 18, TypeScript, Tailwind CSS, Supabase, Vitest.
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-GoatCounter: [poe2.dev goat counts](https://poe2.goatcounter.com/)
+## Contributing
+
+Issues and pull requests are welcome. Good places to start:
+
+- Fix a wrong number or missing entry in the game data (gems, items, mechanics pages).
+- Add or correct a guide under `src/app/guides`.
+- Improve a calculator under `src/app/calculators`.
+- Add a test: `npm test` runs Vitest.
+
+Open an issue first for anything larger so we can agree on the approach.
+
+## Support
+
+If it helps your builds, a star helps others find it.
 
 ## Credits
-
-(API not available yet from GGG ?)
 
 - [POE2DB](https://poe2db.tw/) - Items and gem data
 - [poe2-tree](https://github.com/marcoaaguiar/poe2-tree) - Skill tree knowledge and data
 - [SkillTree_TypeScript](https://github.com/EmmittJ/SkillTree_TypeScript) - Skill tree implementation
 - [Path of Exile Forums](https://www.pathofexile.com/forum) - Official patch notes and announcements
+
+Unofficial fan project, not affiliated with Grinding Gear Games.
