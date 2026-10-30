@@ -153,7 +153,8 @@ export async function loadTreeData(): Promise<TreeData> {
 
     // Create enriched data
     const enrichedData: TreeData = {
-      nodes: {},
+      // null prototype: ids like "constructor" or "__proto__" must not resolve to inherited members
+      nodes: Object.create(null) as TreeData["nodes"],
     };
 
     // Flatten and process all node types
