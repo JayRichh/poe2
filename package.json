@@ -8,7 +8,7 @@
   "scripts": {
     "scrape": "npm run scrape:notes && npm run scrape:ladder",
     "scrape:notes": "ts-node --project scripts/tsconfig.json src/scripts/scrape-patch-notes.ts",
-    "scrape:items": "ts-node --project scripts/tsconfig.json src/scripts/scrape-all-items.ts",
+    "scrape:items": "ts-node --project scripts/tsconfig.json scripts/scrape-all-items.ts",
     "scrape:ladder": "ts-node --project scripts/tsconfig.json src/scripts/scrape-ladder-stats.ts",
     "dev": "next dev --turbopack",
     "build": "next build",
