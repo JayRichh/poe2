@@ -225,6 +225,20 @@ describe("share — encode/decode round-trip", () => {
     expect(decodeTokenToBuild(token!)?.name).toBe("Linked");
   });
 
+  it("buildShareUrl falls back to the www host when no origin is available", () => {
+    const build = createBuild("Fallback", {});
+    const win = (globalThis as { window?: unknown }).window;
+    // Hide the localStorage mock so the server-side fallback is used.
+    delete (globalThis as { window?: unknown }).window;
+    try {
+      const url = buildShareUrl(build);
+      expect(url.startsWith("https://www.poe2.dev/build-planner/import-export#b=")).toBe(true);
+      expect(extractTokenFromLocation(url)).toBeTruthy();
+    } finally {
+      (globalThis as { window?: unknown }).window = win;
+    }
+  });
+
   it("extractTokenFromLocation handles bare tokens and rejects URLs without a token", () => {
     const token = encodeBuildToToken(createBuild("Bare", {}));
     expect(extractTokenFromLocation(token)).toBe(token);

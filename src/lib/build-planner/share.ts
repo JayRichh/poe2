@@ -78,7 +78,7 @@ export function buildShareUrl(
     );
   }
   const base =
-    origin ?? (typeof window !== "undefined" ? window.location.origin : "https://poe2.dev");
+    origin ?? (typeof window !== "undefined" ? window.location.origin : "https://www.poe2.dev");
   return `${base}/build-planner/import-export#${SHARE_PARAM}=${token}`;
 }
 
