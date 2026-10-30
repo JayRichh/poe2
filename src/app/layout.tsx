@@ -102,7 +102,7 @@ export default async function RootLayout({
         {/* Site-wide structured data (Organization + WebSite) as real JSON-LD. */}
         <script
           type="application/ld+json"
-          nonce={nonce}
+          nonce={nonce || undefined}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
