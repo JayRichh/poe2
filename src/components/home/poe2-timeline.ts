@@ -8,8 +8,8 @@
  * only against that doc / official patch notes.
  *
  * Live game: 0.5.5e (Forbidden Rites event league, Sep 4 2026; latest patch notes
- * Oct 6 2026, latest hotfix Oct 28 2026), still Early Access, heading to a 1.0 full
- * launch targeted late 2026 (after ExileCon, Nov 7-8 2026). Source: pathofexile.com
+ * Oct 6 2026, latest hotfix Oct 28 2026), still Early Access; Path of Exile 2 fully
+ * releases Dec 11 2026 (PST), per forum thread 3999366. Source: pathofexile.com
  * forum 2212 (Early Access Patch Notes).
  */
 
@@ -84,7 +84,7 @@ export const POE2_VERSIONS: Poe2Version[] = [
     league: "Forbidden Rites",
     current: true,
     headlines: [
-      "Campaign Rituals, Sacred Blooms and the Viridian Wildwood; Trial of Chaos reworked",
+      "Campaign Rituals; Forbidden Rites-only Sacred Blooms open the Viridian Wildwood; Trial of Chaos reworked",
       "Expeditions move into the core Atlas; 17 new Soul Cores",
     ],
   },
@@ -96,9 +96,9 @@ export const POE2_CURRENT_VERSION = POE2_VERSIONS.find((v) => v.current) ?? POE2
 export const POE2_MILESTONES = {
   dataVersion: "0.5.x",
   earlyAccess: true,
-  fullLaunchTarget: "Late 2026",
+  fullLaunchTarget: "Dec 11, 2026",
   exileCon: "ExileCon 2026 · Nov 7-8 · Auckland",
-  fullLaunchNote: "0.5.x is the final Early Access series before the 1.0 launch.",
+  fullLaunchNote: "Path of Exile 2 fully releases as a free-to-play action RPG on December 11 (PST), per the official announcement (forum thread 3999366).",
 } as const;
 
 /** Live roster counts (reference §2) — drives the GameSystems "classes" copy. */

@@ -6,7 +6,7 @@ import type {
 } from "~/lib/shared/types";
 
 // Mechanics reference for Path of Exile 2, verified against live 0.5.x
-// ("Return of the Ancients"). Source of truth: docs/poe2-2026-reference.md
+// (0.5.0 "Return of the Ancients", 0.5.5 "Forbidden Rites"). Source of truth: docs/poe2-2026-reference.md
 // (cross-checked vs maxroll, poe2db, official patch notes, poewiki/poe2wiki).
 // Image fields were intentionally removed: they pointed at /public/mechanics/*
 // assets that do not exist and rendered as 404s.
@@ -500,7 +500,7 @@ export const mechanics: Record<ContentCategory, BaseContent> = {
               "The Atlas Passive Tree has 300+ nodes (around 301) and is fully allocatable in 0.5.0 with free re-allocation. It is reorganised so each league mechanic (Breach, Delirium, Abyss, Expedition, Ritual) has its own sub-tree, questline and pinnacle boss.",
               "0.5.0 added the Precursor Fortress (rises after your first Tower; its maps grant Atlas passive points and culminate in the Arbiter of Ash) and Masters of the Atlas (Doryani, Hilda, Jado), each offering 12 nodes of which 4 are selectable.",
               "Citadels are rare maps that yield Crisis Fragments toward the Burning Monolith. 0.5.0 added two new Citadel maps and bosses dropping keys to the new pinnacle, the Arbiter of Divinity.",
-              "0.5.5 moved Expeditions into the core Atlas (Standard and Forbidden Rites, from Act 4 onward; the Verisium Anvil unlocks with The Runeseeker quest), added Sacred Blooms that put the Viridian Wildwood on Atlas Map clusters, and caps Grand Mirror Delirium spread at 10 Maps.",
+              "0.5.5 made Expeditions a core Atlas mechanic, including in Standard (you can find them from Act 4 onwards in the campaign, and the Verisium Anvil unlocks with The Runeseeker quest in Act 4). In the Forbidden Rites league only, Sacred Blooms from Rituals can add the Viridian Wildwood to a cluster of Atlas Maps. A Grand Mirror's Delirium Fog now spreads to 10 Maps, reduced from 8-14 on lower-Tier Maps and 10-16 on high-Tier Maps.",
             ],
           },
         ],

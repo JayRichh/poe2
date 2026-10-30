@@ -83,7 +83,7 @@ export function computeDamageDps(params: DamagePipelineParams): number {
  * Verified PoE2 0.5.x extensions (additive — do not touch the pipeline above).
  *
  * These are independent, pure functions encoding mechanics confirmed against
- * current (mid-2026, 0.5.x "Return of the Ancients") sources:
+ * current (mid-2026, 0.5.x: 0.5.0 "Return of the Ancients", 0.5.5 "Forbidden Rites") sources:
  *   - Damaging ailments are a SEPARATE damage-over-time channel: they do NOT
  *     crit and are NOT hits. Magnitude is a % of the inflicting hit's
  *     pre-mitigation typed damage, then scaled only by ailment-magnitude / more

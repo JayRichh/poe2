@@ -153,7 +153,7 @@ export function UpdateTimeline() {
                 Full Launch
               </Text>
               <Text className="mt-2 text-sm text-foreground-secondary">
-                6-act campaign, the largest balance pass yet. {POE2_MILESTONES.fullLaunchNote}{" "}
+                {POE2_MILESTONES.fullLaunchNote}{" "}
                 <span className="text-foreground/80">{POE2_MILESTONES.exileCon}.</span>
               </Text>
             </div>
