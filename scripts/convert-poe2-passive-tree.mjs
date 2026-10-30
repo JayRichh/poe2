@@ -113,12 +113,12 @@ fs.writeFileSync(
   path.join(outputDirectory, "passive-tree-version.json"),
   `${JSON.stringify(
     {
-      gameVersion: "0.5.2",
-      compatibleThrough: "0.5.4c",
-      source: "poe2-tools/poe2-build-planner Skill Trees/0.5.2/data.json",
+      gameVersion: process.env.TREE_VERSION ?? "0.5.2",
+      compatibleThrough: process.env.TREE_COMPATIBLE_THROUGH ?? "0.5.4c",
+      source: process.env.TREE_SOURCE ?? "poe2-tools/poe2-build-planner Skill Trees/0.5.2/data.json",
       nodeCount: includedIds.size,
       connectionCount: nodes.connections.length,
-      generatedAt: "2026-08-13",
+      generatedAt: process.env.TREE_GENERATED_AT ?? "2026-08-13",
     },
     null,
     2

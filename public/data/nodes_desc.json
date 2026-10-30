@@ -15,7 +15,7 @@
   },
   "blind2": {
     "name": "Blind Chance",
-    "stats": ["5% chance to [Blind] Enemies on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Blind] Enemies on [Hit]"]
   },
   "chill_and_freeze19_": {
     "name": "Freeze Buildup",
@@ -225,7 +225,7 @@
   },
   "glory23": {
     "name": "Rage on Melee Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "criticals42": {
     "name": "Critical Damage",
@@ -448,7 +448,7 @@
     "stats": [
       "15% increased [Attack] Area Damage",
       "10% increased Area of Effect for [Attack|Attacks]",
-      "5% chance to [Daze] on [HitDamage|Hit]"
+      "5% chance to [Daze] on [Hit]"
     ]
   },
   "intelligence49": {
@@ -559,7 +559,7 @@
   },
   "blind1": {
     "name": "Blind Chance",
-    "stats": ["5% chance to [Blind] Enemies on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Blind] Enemies on [Hit]"]
   },
   "energy_shield39": {
     "name": "Illuminated Crown",
@@ -652,7 +652,7 @@
   },
   "poison21": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "mastery_energy_shield_6492": {
     "name": "Energy Shield Mastery",
@@ -767,7 +767,7 @@
   "enemies_on_low_life10": {
     "name": "Stars Aligned",
     "stats": [
-      "[HitDamage|Damage with Hits] is [Lucky|Lucky] against Enemies that are on [LowLife|Low Life]"
+      "[Hit|Damage with Hits] is [Lucky|Lucky] against Enemies that are on [LowLife|Low Life]"
     ]
   },
   "jewel_slot1974": {
@@ -776,7 +776,7 @@
   },
   "poison12": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "life_recoup5": {
     "name": "Life Recoup",
@@ -1140,10 +1140,7 @@
   },
   "unarmed1": {
     "name": "Attack Damage and Combo",
-    "stats": [
-      "5% increased [Attack] Damage",
-      "5% Chance to build an additional [Combo] on [HitDamage|Hit]"
-    ]
+    "stats": ["5% increased [Attack] Damage", "5% Chance to build an additional [Combo] on [Hit]"]
   },
   "projectiles47": {
     "name": "Projectile Speed and Physical Damage",
@@ -1151,7 +1148,7 @@
   },
   "attack_speed44": {
     "name": "Blind Chance",
-    "stats": ["8% chance to [Blind] Enemies on [HitDamage|Hit] with [Attack|Attacks]"]
+    "stats": ["8% chance to [Blind] Enemies on [Hit] with [Attack|Attacks]"]
   },
   "DeliriumAnoint_KaomsBlessing": {
     "name": "Kaom's Blessing",
@@ -1423,7 +1420,7 @@
   },
   "monkchakra8": {
     "name": "Damage vs Blinded",
-    "stats": ["15% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"]
+    "stats": ["15% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"]
   },
   "mastery_attributes255": {
     "name": "Attributes Mastery",
@@ -1488,7 +1485,7 @@
   },
   "rage9": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "cold36": {
     "name": "Climate Change",
@@ -1624,7 +1621,7 @@
     "name": "Heavy Frost",
     "stats": [
       "20% increased [Freeze|Freeze] Buildup",
-      "[HitDamage|Hits] ignore non-negative [ElementalDamage|Elemental] [Resistances] of [Frozen] Enemies"
+      "[Hit|Hits] ignore non-negative [ElementalDamage|Elemental] [Resistances] of [Frozen] Enemies"
     ]
   },
   "companions47": {
@@ -1639,7 +1636,7 @@
   },
   "daze_1": {
     "name": "Seeing Stars",
-    "stats": ["10% chance to [Daze] on [HitDamage|Hit]", "25% increased [Daze] Duration"]
+    "stats": ["10% chance to [Daze] on [Hit]", "25% increased [Daze] Duration"]
   },
   "poison40": {
     "name": "Poison Damage",
@@ -1655,7 +1652,7 @@
   },
   "deflect19": {
     "name": "Parry Area",
-    "stats": ["15% increased [Parry] [HitDamage|Hit] Area of Effect"]
+    "stats": ["15% increased [Parry] [Hit] Area of Effect"]
   },
   "ignite16": {
     "name": "Flammability Magnitude",
@@ -1700,8 +1697,8 @@
   "evasion6": {
     "name": "Escape Strategy",
     "stats": [
-      "100% increased [Evasion|Evasion Rating] if you have been [HitDamage|Hit] [Recently|Recently]",
-      "30% reduced [Evasion] Rating if you haven't been [HitDamage|Hit] [Recently]"
+      "100% increased [Evasion|Evasion Rating] if you have been [Hit] [Recently|Recently]",
+      "30% reduced [Evasion] Rating if you haven't been [Hit] [Recently]"
     ]
   },
   "cold37": {
@@ -1916,7 +1913,7 @@
   },
   "blind7": {
     "name": "Damage vs Blinded",
-    "stats": ["15% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"]
+    "stats": ["15% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"]
   },
   "energy_shield9": {
     "name": "Energy Shield",
@@ -1936,7 +1933,7 @@
   },
   "poison11": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "minion_offence45": {
     "name": "Command Skill Cooldown",
@@ -1946,7 +1943,7 @@
   },
   "poison22": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "life_recoup23": {
     "name": "Life Recoup",
@@ -1955,7 +1952,7 @@
   "oracle_poison5": {
     "name": "First Sting",
     "stats": [
-      "30% chance to [Poison] on [HitDamage|Hit] against Enemies that are not Poisoned",
+      "30% chance to [Poison] on [Hit] against Enemies that are not Poisoned",
       "80% increased [BuffMagnitude|Magnitude] of [Poison] you inflict on targets that are not Poisoned"
     ]
   },
@@ -2101,14 +2098,12 @@
   },
   "bleed13": {
     "name": "Aggravation",
-    "stats": [
-      "10% chance to [Aggravate] [Bleeding] on targets you [HitDamage|Hit] with [Attack|Attacks]"
-    ]
+    "stats": ["10% chance to [Aggravate] [Bleeding] on targets you [Hit] with [Attack|Attacks]"]
   },
   "exploiting_elemental_ailments2": {
     "name": "Damage against Ailments",
     "stats": [
-      "12% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
+      "12% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
     ]
   },
   "mana8": {
@@ -2323,7 +2318,7 @@
   "rage5": {
     "name": "Ignore Pain",
     "stats": [
-      "Gain 3 [Rage] when [HitDamage|Hit] by an Enemy",
+      "Gain 3 [Rage] when [Hit] by an Enemy",
       "Every [Rage] also grants 2% increased [StunThreshold|Stun Threshold]"
     ]
   },
@@ -2370,7 +2365,7 @@
     "name": "Splinters",
     "stats": [
       "30% increased [Stun] Buildup",
-      "[HitDamage|Hits] [ArmourBreak|Break] 50% increased [Armour|Armour] on targets with [Ailments]"
+      "[Hit|Hits] [ArmourBreak|Break] 50% increased [Armour|Armour] on targets with [Ailments]"
     ]
   },
   "criticals98": {
@@ -2402,7 +2397,7 @@
     "name": "Trusted Partner",
     "stats": [
       "[Companion|Companions] have 20% increased maximum Life",
-      "5% of Damage from [HitDamage|Hits] is taken from your Damageable [Companion]'s Life before you"
+      "5% of Damage from [Hit|Hits] is taken from your Damageable [Companion]'s Life before you"
     ]
   },
   "energy_shield_and_armour22": {
@@ -2435,7 +2430,7 @@
   "warcries14_": {
     "name": "Internal Bleeding",
     "stats": [
-      "20% chance to [Aggravate] [Bleeding] on targets you [HitDamage|Hit] with [Empowered] [Attack|Attacks]",
+      "20% chance to [Aggravate] [Bleeding] on targets you [Hit] with [Empowered] [Attack|Attacks]",
       "[Empowered|Empowered Attacks] deal 30% increased Damage"
     ]
   },
@@ -2448,7 +2443,7 @@
   },
   "rage41": {
     "name": "Rage on Ignite",
-    "stats": ["Gain 1 [Rage] when your [HitDamage|Hit] [Ignite|Ignites] a target"]
+    "stats": ["Gain 1 [Rage] when your [Hit] [Ignite|Ignites] a target"]
   },
   "marauder_brute_notable2": {
     "name": "Relentless",
@@ -2501,7 +2496,7 @@
   },
   "unarmed2": {
     "name": "Combo Gain",
-    "stats": ["10% Chance to build an additional [Combo] on [HitDamage|Hit]"]
+    "stats": ["10% Chance to build an additional [Combo] on [Hit]"]
   },
   "life_flasks22": {
     "name": "Flask Duration",
@@ -2565,7 +2560,7 @@
     "name": "Bleed Duration",
     "stats": [
       "10% increased Bleeding Duration",
-      "20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"
+      "20% chance for [Attack] [Hit|Hits] to apply [Incision]"
     ]
   },
   "accuracy34": {
@@ -2585,7 +2580,7 @@
   },
   "monkchakra7": {
     "name": "Damage vs Blinded",
-    "stats": ["15% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"]
+    "stats": ["15% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"]
   },
   "energy_shield26": {
     "name": "Intelligence",
@@ -2620,9 +2615,7 @@
   },
   "enemies_on_low_life7": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "cold41": {
     "name": "Attack Cold Damage and Freeze Buildup",
@@ -2776,7 +2769,7 @@
   },
   "melee11": {
     "name": "Melee Damage",
-    "stats": ["15% increased [Melee] Damage with [HitDamage|Hits] at [CloseRange|Close Range]"]
+    "stats": ["15% increased [Melee] Damage with [Hit|Hits] at [CloseRange|Close Range]"]
   },
   "cooldowns15": {
     "name": "Multitasking",
@@ -2850,13 +2843,13 @@
   },
   "physical_witch6": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "minion_offence28": {
     "name": "Right Hand of Darkness",
     "stats": [
       "[Minion|Minions] have 20% increased Area of Effect",
-      "[Minion|Minions] have 10% chance to inflict [Withered] on [HitDamage|Hit]",
+      "[Minion|Minions] have 10% chance to inflict [Withered] on [Hit]",
       "[Spell|Spells] [Gain] 5% of Damage as extra [Chaos|Chaos] Damage"
     ]
   },
@@ -2883,7 +2876,7 @@
   "boss_slaying10": {
     "name": "Giantslayer",
     "stats": [
-      "25% increased Damage with [HitDamage|Hits] against [Rarity|Rare and Unique] Enemies",
+      "25% increased Damage with [Hit|Hits] against [Rarity|Rare and Unique] Enemies",
       "20% increased [Accuracy] Rating against [Rarity|Rare or Unique] Enemies",
       "20% increased chance to inflict [Ailments] against [Rarity|Rare or Unique] Enemies"
     ]
@@ -2928,7 +2921,7 @@
   },
   "rage16": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "spell_suppression29": {
     "name": "Ailment Threshold",
@@ -3057,7 +3050,7 @@
   },
   "deflect18": {
     "name": "Parry Area",
-    "stats": ["15% increased [Parry] [HitDamage|Hit] Area of Effect"]
+    "stats": ["15% increased [Parry] [Hit] Area of Effect"]
   },
   "wolf12": {
     "name": "Warcry Speed",
@@ -3121,7 +3114,7 @@
   "ranged20": {
     "name": "Melee Damage if Projectile Hit",
     "stats": [
-      "15% increased [Melee] Damage if you've dealt a [Projectile] [Attack] [HitDamage|Hit] in the past eight seconds"
+      "15% increased [Melee] Damage if you've dealt a [Projectile] [Attack] [Hit] in the past eight seconds"
     ]
   },
   "life_leech28_": {
@@ -3147,7 +3140,7 @@
   "deflect66": {
     "name": "Mending Deflection",
     "stats": [
-      "15% of Damage taken from [Deflect|Deflected] [HitDamage|Hits] [Recoup|Recouped] as Life",
+      "15% of Damage taken from [Deflect|Deflected] [Hit|Hits] [Recoup|Recouped] as Life",
       "20% [FasterESRechargeStart|faster start of Energy Shield Recharge] when not on Full Life"
     ]
   },
@@ -3200,7 +3193,7 @@
   },
   "bleed15": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "armour_and_evasion53": {
     "name": "Knight of Izaro",
@@ -3253,12 +3246,12 @@
   },
   "blind17": {
     "name": "Damage vs Blinded",
-    "stats": ["15% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"]
+    "stats": ["15% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"]
   },
   "area_spells25": {
     "name": "Repulsion",
     "stats": [
-      "Area Skills have 20% chance to [Knockback|Knock Enemies Back] on [HitDamage|Hit]",
+      "Area Skills have 20% chance to [Knockback|Knock Enemies Back] on [Hit]",
       "20% increased [Spell] Area Damage"
     ]
   },
@@ -3457,9 +3450,7 @@
   },
   "shield34": {
     "name": "Dazing Blocks",
-    "stats": [
-      "100% chance to [Daze] Enemies whose [HitDamage|Hits] you [Block] with a raised [Shield]"
-    ]
+    "stats": ["100% chance to [Daze] Enemies whose [Hit|Hits] you [Block] with a raised [Shield]"]
   },
   "shield27": {
     "name": "Shield Attack Speed",
@@ -3587,7 +3578,7 @@
   "shapeshifting18": {
     "name": "Bestial Rage",
     "stats": [
-      "Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]",
+      "Gain 1 [Rage|Rage] on [Melee] [Hit]",
       "Every 10 [Rage|Rage] also grants 12% increased [Physical|Physical] Damage"
     ]
   },
@@ -3707,7 +3698,7 @@
   },
   "axe5": {
     "name": "Axe Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [Hit]"]
   },
   "armour_and_evasion1": {
     "name": "Armour and Evasion",
@@ -3746,9 +3737,7 @@
   },
   "enemies_on_low_life13": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "oracle_archon_crit4": {
     "name": "Exhaust All Power",
@@ -3813,7 +3802,7 @@
   "lightning37": {
     "name": "Spreading Shocks",
     "stats": [
-      "[Shock|Shocking] [HitDamage|Hits] have a 50% chance to also Shock enemies in a 1.5 metre radius"
+      "[Shock|Shocking] [Hit|Hits] have a 50% chance to also Shock enemies in a 1.5 metre radius"
     ]
   },
   "oracle_life_corruption5": {
@@ -3830,7 +3819,7 @@
   },
   "rage15": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "oracle_bow_movement4_": {
     "name": "Reduced Movement Penalty",
@@ -3871,8 +3860,8 @@
   "azmerianimals12": {
     "name": "The Spring Hare",
     "stats": [
-      "20% chance for Damage of Enemies [HitDamage|Hitting] you to be [Unlucky]",
-      "20% chance for Damage with [HitDamage|Hits] to be [Lucky]"
+      "20% chance for Damage of Enemies [Hit|Hitting] you to be [Unlucky]",
+      "20% chance for Damage with [Hit|Hits] to be [Lucky]"
     ]
   },
   "armour46": {
@@ -3923,7 +3912,7 @@
   },
   "blind18": {
     "name": "Blind Chance",
-    "stats": ["5% chance to [Blind] Enemies on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Blind] Enemies on [Hit]"]
   },
   "lightning51": {
     "name": "Elemental Damage and Mana Regeneration",
@@ -3977,7 +3966,7 @@
   },
   "buckler1": {
     "name": "Parry Area",
-    "stats": ["20% increased [Parry] [HitDamage|Hit] Area of Effect"]
+    "stats": ["20% increased [Parry] [Hit] Area of Effect"]
   },
   "evasion19": {
     "name": "Slow Effect on You",
@@ -4190,8 +4179,8 @@
   "ranged21": {
     "name": "Adaptable Assault",
     "stats": [
-      "+0.4 metres to [Melee] [Strike] Range if you've dealt a [Projectile] [Attack] [HitDamage|Hit] in the past eight seconds",
-      "[Projectile|Projectiles] have 25% chance to [Fork] if you've dealt a [Melee] [HitDamage|Hit] in the past eight seconds"
+      "+0.4 metres to [Melee] [Strike] Range if you've dealt a [Projectile] [Attack] [Hit] in the past eight seconds",
+      "[Projectile|Projectiles] have 25% chance to [Fork] if you've dealt a [Melee] [Hit] in the past eight seconds"
     ]
   },
   "physical6": {
@@ -4306,9 +4295,7 @@
   },
   "armour2__": {
     "name": "Armour",
-    "stats": [
-      "20% increased [Armour|Armour] if you haven't been [HitDamage|Hit] [Recently|Recently]"
-    ]
+    "stats": ["20% increased [Armour|Armour] if you haven't been [Hit] [Recently|Recently]"]
   },
   "slowed_enemies8": {
     "name": "Duration",
@@ -4383,7 +4370,7 @@
   "evasion_and_energy_shield13": {
     "name": "Shadow Dancing",
     "stats": [
-      "40% increased [Evasion|Evasion Rating] if you have been [HitDamage|Hit] [Recently|Recently]",
+      "40% increased [Evasion|Evasion Rating] if you have been [Hit] [Recently|Recently]",
       "40% [FasterESRechargeStart|faster start of Energy Shield Recharge] if you've been [Stun|Stunned] [Recently]"
     ]
   },
@@ -4543,7 +4530,7 @@
     "name": "Controlling Magic",
     "stats": [
       "25% increased [Critical|Critical Hit Chance] for [Spell|Spells]",
-      "[HitDamage|Hits] have 25% reduced [Critical|Critical Hit] Chance against you"
+      "[Hit|Hits] have 25% reduced [Critical|Critical Hit] Chance against you"
     ]
   },
   "evasion11": {
@@ -4560,7 +4547,7 @@
   },
   "rage26": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "placeholder1": {
     "name": "Armour and Energy Shield",
@@ -4673,7 +4660,7 @@
   },
   "rage42": {
     "name": "Rage on Ignite",
-    "stats": ["Gain 1 [Rage] when your [HitDamage|Hit] [Ignite|Ignites] a target"]
+    "stats": ["Gain 1 [Rage] when your [Hit] [Ignite|Ignites] a target"]
   },
   "hazards2": {
     "name": "Shredding Contraptions",
@@ -4707,7 +4694,7 @@
     "stats": ["+5 to any [Attributes|Attribute]"]
   },
   "fire85": {
-    "name": "Arsonist",
+    "name": "Pyromancer",
     "stats": [
       "20% increased [Fire] Damage",
       "10% increased Cast Speed while Ignited",
@@ -4811,7 +4798,7 @@
   },
   "glory22": {
     "name": "Rage on Melee Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "melee57": {
     "name": "Melee and Stun",
@@ -5001,7 +4988,7 @@
   },
   "oracle_duration_physical7": {
     "name": "Impale Chance",
-    "stats": ["30% chance to [Impale] on [Spell] [HitDamage|Hit]"]
+    "stats": ["30% chance to [Impale] on [Spell] [Hit]"]
   },
   "spells8": {
     "name": "Spell Hinder",
@@ -5213,7 +5200,7 @@
   "exploiting_elemental_ailments3": {
     "name": "Damage against Ailments",
     "stats": [
-      "12% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
+      "12% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
     ]
   },
   "evasion_and_energy_shield27": {
@@ -5240,7 +5227,7 @@
   },
   "physical3": {
     "name": "Daze on Hit",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "triggers27": {
     "name": "Invocation Critical Damage",
@@ -5278,7 +5265,7 @@
   },
   "physical4": {
     "name": "Daze on Hit",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "cold48": {
     "name": "Deep Freeze",
@@ -5374,7 +5361,7 @@
     "stats": ["10% increased Damage with One Handed Weapons"]
   },
   "companions24": {
-    "name": "Defenses and Companion Life",
+    "name": "Defences and Companion Life",
     "stats": [
       "[Companion|Companions] have 12% increased maximum Life",
       "10% increased [Armour], [Evasion] and [EnergyShield|Energy Shield] while your [Companion] is in your [Presence]"
@@ -5738,7 +5725,7 @@
   "duelist_minions10": {
     "name": "Thirsting Ally",
     "stats": [
-      "[LifeLeech|Leeching Life] from your [HitDamage|Hits] causes your [Companion] to also Leech the [LeechSameAmount|same amount] of Life"
+      "[LifeLeech|Leeching Life] from your [Hit|Hits] causes your [Companion] to also Leech the [LeechSameAmount|same amount] of Life"
     ]
   },
   "stun_threshold_from_energy_shield13": {
@@ -5750,7 +5737,7 @@
   },
   "shapeshifting14": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "auras1": {
     "name": "Aura Effect",
@@ -5811,7 +5798,7 @@
   },
   "oracle_spell_poison3": {
     "name": "Chance to Poison and Spell Damage",
-    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [Hit]"]
   },
   "mastery_totem_6149": {
     "name": "Totem Mastery",
@@ -5890,15 +5877,13 @@
   },
   "enemies_on_low_life2": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "evasion7_": {
     "name": "Careful Consideration",
     "stats": [
-      "30% reduced [Evasion|Evasion Rating] if you have been [HitDamage|Hit] [Recently|Recently]",
-      "100% increased [Evasion] Rating if you haven't been [HitDamage|Hit] [Recently]"
+      "30% reduced [Evasion|Evasion Rating] if you have been [Hit] [Recently|Recently]",
+      "100% increased [Evasion] Rating if you haven't been [Hit] [Recently]"
     ]
   },
   "energy_shield_recovery14": {
@@ -6367,9 +6352,7 @@
   },
   "enemies_on_low_life3": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "ranged41": {
     "name": "Projectile Damage",
@@ -6633,8 +6616,8 @@
   "area_attacks30": {
     "name": "Authority",
     "stats": [
-      "15% increased Area of Effect for [Attack|Attacks]",
-      "10% increased [CooldownRecovery|Cooldown Recovery Rate]"
+      "10% increased [CooldownRecovery|Cooldown Recovery Rate]",
+      "15% increased Area of Effect for [Attack|Attacks]"
     ]
   },
   "buckler12": {
@@ -6783,7 +6766,7 @@
     "name": "Blinding Strike",
     "stats": [
       "24% increased [Attack] Damage",
-      "10% chance to [Blind] Enemies on [HitDamage|Hit] with [Attack|Attacks]"
+      "10% chance to [Blind] Enemies on [Hit] with [Attack|Attacks]"
     ]
   },
   "oracle_slow_crits4__": {
@@ -7032,7 +7015,7 @@
   "exploiting_elemental_ailments1": {
     "name": "Damage against Ailments",
     "stats": [
-      "12% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
+      "12% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
     ]
   },
   "minion_defence32": {
@@ -7064,7 +7047,7 @@
   },
   "bleed23": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "dexterity11": {
     "name": "Attribute",
@@ -7123,12 +7106,12 @@
   },
   "daze_3": {
     "name": "Damage and Criticals vs Dazed Enemies",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "warcries2": {
     "name": "Empowered Attack Damage and Bleeding Chance",
     "stats": [
-      "5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]",
+      "5% chance to inflict [Bleeding|Bleeding] on [Hit]",
       "[Empowered|Empowered Attacks] deal 10% increased Damage"
     ]
   },
@@ -7252,7 +7235,7 @@
   },
   "poison33": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "immobilisation6": {
     "name": "Fearful Paralysis",
@@ -7314,7 +7297,7 @@
   "DeliriumAnoint_StormsRebuke_": {
     "name": "Storm's Rebuke",
     "stats": [
-      "[ArmourBreak|Fully Broken Armour] you inflict also increases [Cold] and [Lightning] Damage Taken from [HitDamage|Hits]"
+      "[ArmourBreak|Fully Broken Armour] you inflict also increases [Cold] and [Lightning] Damage Taken from [Hit|Hits]"
     ]
   },
   "minion_reservation1": {
@@ -7339,7 +7322,7 @@
   },
   "bleed31": {
     "name": "Inevitable Rupture",
-    "stats": ["10% chance for [Attack] [HitDamage|Hits] to apply ten [Incision]"]
+    "stats": ["10% chance for [Attack] [Hit|Hits] to apply ten [Incision]"]
   },
   "cold2": {
     "name": "Elemental Damage",
@@ -7381,7 +7364,7 @@
   },
   "bleed39": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "shield25": {
     "name": "Vigilance",
@@ -7401,9 +7384,7 @@
   },
   "enemies_on_low_life14": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "mastery_attack280": {
     "name": "Attack Mastery",
@@ -7526,7 +7507,7 @@
   },
   "poison10": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "intelligence41__": {
     "name": "Attribute",
@@ -7820,7 +7801,7 @@
   "exploiting_elemental_ailments5": {
     "name": "Damage against Ailments",
     "stats": [
-      "12% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
+      "12% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
     ]
   },
   "life_flasks38": {
@@ -7884,7 +7865,7 @@
     "name": "Fulmination",
     "stats": [
       "80% increased [Flammability] [BuffMagnitude|Magnitude]",
-      "40% increased Damage with [HitDamage|Hits] against [Ignite|Ignited] Enemies"
+      "40% increased Damage with [Hit|Hits] against [Ignite|Ignited] Enemies"
     ]
   },
   "strength103": {
@@ -7986,7 +7967,7 @@
     "name": "Attack Area and Combo",
     "stats": [
       "4% increased Area of Effect for [Attack|Attacks]",
-      "5% Chance to build an additional [Combo] on [HitDamage|Hit]"
+      "5% Chance to build an additional [Combo] on [Hit]"
     ]
   },
   "mastery_companion291": {
@@ -8114,7 +8095,7 @@
   },
   "oracle_poison2": {
     "name": "Poison Chance",
-    "stats": ["10% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["10% chance to [Poison|Poison] on [Hit]"]
   },
   "area_attacks57_": {
     "name": "Resolute Reach",
@@ -8152,7 +8133,7 @@
   "azmerianimals34": {
     "name": "Strength and Critical Damage Bonus on You",
     "stats": [
-      "[HitDamage|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
+      "[Hit|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
       "+5 to [Strength]"
     ]
   },
@@ -8210,7 +8191,7 @@
     "name": "Sand in the Eyes",
     "stats": [
       "10% increased [Attack] Speed",
-      "15% chance to [Blind] Enemies on [HitDamage|Hit] with [Attack|Attacks]"
+      "15% chance to [Blind] Enemies on [Hit] with [Attack|Attacks]"
     ]
   },
   "corpses10": {
@@ -8274,7 +8255,7 @@
   },
   "chaos4": {
     "name": "Daze on Hit",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "mastery_flask_6540": {
     "name": "Flask Mastery",
@@ -8387,7 +8368,7 @@
     "name": "Attack Area and Combo",
     "stats": [
       "4% increased Area of Effect for [Attack|Attacks]",
-      "5% Chance to build an additional [Combo] on [HitDamage|Hit]"
+      "5% Chance to build an additional [Combo] on [Hit]"
     ]
   },
   "DeliriumAnoint_Dominion": {
@@ -8511,7 +8492,7 @@
   },
   "physical_witch12": {
     "name": "Bone Chains",
-    "stats": ["[Physical] [Spell] [Critical] [HitDamage|Hits] build [Pinned|Pin]"]
+    "stats": ["[Physical] [Spell] [Critical] [Hit|Hits] build [Pinned|Pin]"]
   },
   "poison36": {
     "name": "Poison Duration",
@@ -8869,13 +8850,13 @@
   },
   "life_flasks36": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "deflect12": {
     "name": "Counterstancing",
     "stats": [
-      "Successfully [Parry|Parrying] a [Melee] [HitDamage|Hit] grants 40% increased Damage to your next Ranged [Attack]",
-      "Successfully [Parry|Parrying] a [Projectile] [HitDamage|Hit] grants 40% increased Damage to your next [Melee] [Attack]"
+      "Successfully [Parry|Parrying] a [Melee] [Hit] grants 40% increased Damage to your next Ranged [Attack]",
+      "Successfully [Parry|Parrying] a [Projectile] [Hit] grants 40% increased Damage to your next [Melee] [Attack]"
     ]
   },
   "DeliriumAnoint_LordOfTheSquall": {
@@ -8927,7 +8908,7 @@
   },
   "rage36": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "mastery_crossbow_6420": {
     "name": "Crossbow Mastery",
@@ -9020,7 +9001,7 @@
     "name": "Desensitisation",
     "stats": [
       "25% increased [CriticalDamageBonus|Critical Damage Bonus]",
-      "[HitDamage|Hits] against you have 25% reduced [CriticalDamageBonus|Critical Damage Bonus]"
+      "[Hit|Hits] against you have 25% reduced [CriticalDamageBonus|Critical Damage Bonus]"
     ]
   },
   "bleed38": {
@@ -9047,7 +9028,7 @@
   },
   "enemies_on_full_life4": {
     "name": "Damage vs Full Life",
-    "stats": ["20% increased Damage with [HitDamage|Hits] against Enemies that are on Full Life"]
+    "stats": ["20% increased Damage with [Hit|Hits] against Enemies that are on Full Life"]
   },
   "rage27": {
     "name": "Invigorating Hate",
@@ -9093,7 +9074,7 @@
     "name": "Total Incineration",
     "stats": [
       "10% increased Ignite Duration on Enemies",
-      "25% increased Damage with [HitDamage|Hits] against [Ignite|Ignited] Enemies"
+      "25% increased Damage with [Hit|Hits] against [Ignite|Ignited] Enemies"
     ]
   },
   "oracle_wyvern_addon1": {
@@ -9117,7 +9098,7 @@
     "stats": [
       "+10% to [Resistances|Fire Resistance]",
       "15% increased effect of [ArmourBreak|Fully Broken Armour]",
-      "[ArmourBreak|Fully Broken Armour] you inflict also increases [Fire] Damage Taken from [HitDamage|Hits]"
+      "[ArmourBreak|Fully Broken Armour] you inflict also increases [Fire] Damage Taken from [Hit|Hits]"
     ]
   },
   "strength43": {
@@ -9138,7 +9119,7 @@
   },
   "getting_hit1": {
     "name": "Armour if Hit",
-    "stats": ["20% increased [Armour] if you have been [HitDamage|Hit] [Recently]"]
+    "stats": ["20% increased [Armour] if you have been [Hit] [Recently]"]
   },
   "warcries39": {
     "name": "Roaring Cries",
@@ -9236,10 +9217,7 @@
   },
   "unarmed11": {
     "name": "Chakra of Rhythm",
-    "stats": [
-      "6% increased [Attack] Speed",
-      "20% Chance to build an additional [Combo] on [HitDamage|Hit]"
-    ]
+    "stats": ["6% increased [Attack] Speed", "20% Chance to build an additional [Combo] on [Hit]"]
   },
   "lightning29": {
     "name": "Pure Power",
@@ -9251,7 +9229,7 @@
   },
   "rage34": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "strength48": {
     "name": "Attribute",
@@ -9355,7 +9333,7 @@
   "rage19": {
     "name": "Sudden Infuriation",
     "stats": [
-      "4% chance that if you would gain [Rage] on [HitDamage|Hit], you instead gain up to your maximum Rage"
+      "4% chance that if you would gain [Rage] on [Hit], you instead gain up to your maximum Rage"
     ]
   },
   "infusion19_": {
@@ -9415,7 +9393,7 @@
     "stats": [
       "40% increased [Critical|Critical Hit Chance] against Enemies that are on Full Life",
       "Cannot be [Blind|Blinded] while on Full Life",
-      "80% increased Damage with [HitDamage|Hits] against Enemies that are on Full Life"
+      "80% increased Damage with [Hit|Hits] against Enemies that are on Full Life"
     ]
   },
   "accuracy8": {
@@ -9493,7 +9471,7 @@
   },
   "bleed36": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "criticals87": {
     "name": "Critical Damage",
@@ -9701,7 +9679,7 @@
   },
   "exploiting_elemental_ailments10": {
     "name": "Vile Wounds",
-    "stats": ["33% increased Damage with [HitDamage|Hits] against Enemies affected by [Ailments]"]
+    "stats": ["33% increased Damage with [Hit|Hits] against Enemies affected by [Ailments]"]
   },
   "projectiles41": {
     "name": "Reduced Projectile Speed",
@@ -9923,7 +9901,7 @@
     "name": "Catalysis",
     "stats": [
       "20% increased [ElementalDamage|Elemental] Damage with [Attack|Attacks]",
-      "5% of [Physical] Damage from [HitDamage|Hits] taken as Damage of a Random [ElementalDamage|Element]"
+      "5% of [Physical] Damage from [Hit|Hits] taken as Damage of a Random [ElementalDamage|Element]"
     ]
   },
   "quarterstaff13": {
@@ -10437,7 +10415,7 @@
   "companions4": {
     "name": "Captivating Companionship",
     "stats": [
-      "5% of Damage from [HitDamage|Hits] is taken from your Damageable [Companion]'s Life before you",
+      "5% of Damage from [Hit|Hits] is taken from your Damageable [Companion]'s Life before you",
       "20% increased [Armour], [Evasion] and [EnergyShield|Energy Shield] while your [Companion] is in your [Presence]"
     ]
   },
@@ -10487,7 +10465,7 @@
   },
   "poison32": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "area_attacks55": {
     "name": "Attack Area",
@@ -10589,7 +10567,7 @@
   "bleed5": {
     "name": "Deep Wounds",
     "stats": [
-      "[Attack] [HitDamage|Hits] [Aggravate] any [Bleeding] on targets which is older than 4 seconds"
+      "[Attack] [Hit|Hits] [Aggravate] any [Bleeding] on targets which is older than 4 seconds"
     ]
   },
   "mastery_cold_6390": {
@@ -10674,7 +10652,7 @@
     "name": "Reverberating Parry",
     "stats": [
       "15% increased [ParriedDebuff|Parried Debuff] [BuffMagnitude|Magnitude]",
-      "20% increased [Parry] [HitDamage|Hit] Area of Effect"
+      "20% increased [Parry] [Hit] Area of Effect"
     ]
   },
   "shield11": {
@@ -10984,7 +10962,7 @@
   "quarterstaff4": {
     "name": "One with the River",
     "stats": [
-      "10% chance to [Daze] on [HitDamage|Hit]",
+      "10% chance to [Daze] on [Hit]",
       "30% increased [Armour], [Evasion] and [EnergyShield|Energy Shield] while wielding a [Quarterstaff]",
       "30% increased [Freeze] Buildup with [Quarterstaff|Quarterstaves]",
       "30% increased [Stun] Buildup with [Quarterstaff|Quarterstaves]"
@@ -11069,7 +11047,7 @@
     "name": "Bond of the Viper",
     "stats": [
       "16% increased Skill Effect Duration",
-      "[Companion|Companions] have a 40% chance to [Poison] on [HitDamage|Hit]"
+      "[Companion|Companions] have a 40% chance to [Poison] on [Hit]"
     ]
   },
   "mastery_totem230": {
@@ -11124,7 +11102,7 @@
   },
   "spells59": {
     "name": "Emboldening Lead",
-    "stats": ["[Minion|Minions] deal 30% increased Damage if you've [HitDamage|Hit] [Recently]"]
+    "stats": ["[Minion|Minions] deal 30% increased Damage if you've [Hit] [Recently]"]
   },
   "bow11": {
     "name": "Bow Damage",
@@ -11200,7 +11178,7 @@
   "azmerianimals31": {
     "name": "Strength and Critical Damage Bonus on You",
     "stats": [
-      "[HitDamage|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
+      "[Hit|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
       "+5 to [Strength]"
     ]
   },
@@ -11210,7 +11188,7 @@
   },
   "rage35": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "azmerianimals57": {
     "name": "Aura Magnitude",
@@ -11223,8 +11201,9 @@
   "deflect53": {
     "name": "Staunch Deflection",
     "stats": [
-      "[Deflect|Deflected] [HitDamage|Hits] cannot inflict [Maim] on you",
-      "[Deflect|Deflected] [HitDamage|Hits] cannot inflict [Bleeding] on you"
+      "Gain [Deflect|Deflection Rating] equal to 8% of [Evasion|Evasion Rating]",
+      "[Deflect|Deflected] [Hit|Hits] cannot inflict [Maim] on you",
+      "[Deflect|Deflected] [Hit|Hits] cannot inflict [Bleeding] on you"
     ]
   },
   "trap3_": {
@@ -11252,7 +11231,7 @@
   },
   "oracle_poison1": {
     "name": "Poison Chance",
-    "stats": ["10% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["10% chance to [Poison|Poison] on [Hit]"]
   },
   "auras22": {
     "name": "Attack Damage with Ally",
@@ -11668,7 +11647,7 @@
   },
   "daze_6": {
     "name": "Daze on Hit",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "spells53": {
     "name": "Spell and Minion Damage",
@@ -11724,7 +11703,7 @@
   },
   "rage21": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "oracle_duration_physical6": {
     "name": "Deadly Thorns",
@@ -11782,9 +11761,7 @@
   },
   "enemies_on_low_life6": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "criticals36": {
     "name": "Critical Damage",
@@ -11858,7 +11835,7 @@
   },
   "jagged_ground2": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "marks8": {
     "name": "Mark Use Speed",
@@ -11866,7 +11843,7 @@
   },
   "attack45": {
     "name": "Concussive Attack",
-    "stats": ["25% increased [Attack] Damage", "5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["25% increased [Attack] Damage", "5% chance to [Daze] on [Hit]"]
   },
   "marks9": {
     "name": "Marked for Death",
@@ -12051,7 +12028,7 @@
   "azmerianimals35": {
     "name": "Strength and Critical Damage Bonus on You",
     "stats": [
-      "[HitDamage|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
+      "[Hit|Hits] against you have 5% reduced [CriticalDamageBonus|Critical Damage Bonus]",
       "+5 to [Strength]"
     ]
   },
@@ -12106,7 +12083,7 @@
     ]
   },
   "trap17": {
-    "name": "Devestating Devices",
+    "name": "Devastating Devices",
     "stats": ["25% increased [Trap] Damage"]
   },
   "attack24": {
@@ -12147,7 +12124,7 @@
   },
   "unarmed6": {
     "name": "Combo Gain",
-    "stats": ["10% Chance to build an additional [Combo] on [HitDamage|Hit]"]
+    "stats": ["10% Chance to build an additional [Combo] on [Hit]"]
   },
   "mastery_shield211": {
     "name": "Shield Mastery",
@@ -12165,7 +12142,7 @@
     "name": "Bastion of Light",
     "stats": [
       "[Blind] Enemies 3 metres in front of you every 0.25 seconds while your [Shield] is raised",
-      "Raise Shield inflicts [Parry|Parried] for 2 seconds on [HitDamage|Hit]"
+      "Raise Shield inflicts [Parry|Parried] for 2 seconds on [Hit]"
     ]
   },
   "rage24": {
@@ -12352,10 +12329,7 @@
   },
   "daze_2": {
     "name": "Stupefy",
-    "stats": [
-      "10% chance to [Daze] on [HitDamage|Hit]",
-      "30% increased Damage against [Daze|Dazed] Enemies"
-    ]
+    "stats": ["10% chance to [Daze] on [Hit]", "30% increased Damage against [Daze|Dazed] Enemies"]
   },
   "endurance_charges4_": {
     "name": "Recover Life on consuming Endurance Charge",
@@ -12389,7 +12363,7 @@
     "name": "Disorientation",
     "stats": [
       "25% increased [Blind] duration",
-      "25% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"
+      "25% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"
     ]
   },
   "dexterity80": {
@@ -12481,7 +12455,7 @@
   },
   "getting_hit2": {
     "name": "Armour if Hit",
-    "stats": ["20% increased [Armour] if you have been [HitDamage|Hit] [Recently]"]
+    "stats": ["20% increased [Armour] if you have been [Hit] [Recently]"]
   },
   "attack41__": {
     "name": "Attack Damage",
@@ -12618,7 +12592,7 @@
   "exploiting_elemental_ailments15": {
     "name": "Exploit",
     "stats": [
-      "25% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]",
+      "25% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]",
       "15% increased Duration of [Ignite], [Shock] and [Chill] on Enemies"
     ]
   },
@@ -12657,7 +12631,7 @@
   },
   "melee10": {
     "name": "Melee Damage",
-    "stats": ["15% increased [Melee] Damage with [HitDamage|Hits] at [CloseRange|Close Range]"]
+    "stats": ["15% increased [Melee] Damage with [Hit|Hits] at [CloseRange|Close Range]"]
   },
   "slow_mitigation1": {
     "name": "Slow Effect on You",
@@ -12830,7 +12804,7 @@
     "name": "Staggering Palm",
     "stats": [
       "20% increased [Knockback] Distance",
-      "10% chance to [Daze] on [HitDamage|Hit]",
+      "10% chance to [Daze] on [Hit]",
       "25% increased [Physical] Damage"
     ]
   },
@@ -12881,7 +12855,7 @@
   },
   "poison20": {
     "name": "Poison Chance",
-    "stats": ["8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["8% chance to [Poison|Poison] on [Hit]"]
   },
   "bleed14": {
     "name": "Bleeding Damage",
@@ -12946,7 +12920,7 @@
   },
   "physical19": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "accuracy45_": {
     "name": "Nimble Strength",
@@ -12976,7 +12950,7 @@
   },
   "bleed27": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "movement_speed6": {
     "name": "Movement Speed",
@@ -13152,7 +13126,7 @@
   "exploiting_elemental_ailments4": {
     "name": "Damage against Ailments",
     "stats": [
-      "12% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
+      "12% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]"
     ]
   },
   "spells57": {
@@ -13306,7 +13280,7 @@
     "name": "Maiming Strike",
     "stats": [
       "25% increased [Attack] Damage",
-      "[Attack|Attacks] have 25% chance to [Maim|Maim] on [HitDamage|Hit]"
+      "[Attack|Attacks] have 25% chance to [Maim|Maim] on [Hit]"
     ]
   },
   "wyvern10": {
@@ -13372,7 +13346,7 @@
     "name": "Evocational Practitioner",
     "stats": [
       "25% increased [Critical|Critical Hit] Chance if you've [Trigger|Triggered] a Skill [Recently]",
-      "[Meta] Skills gain 25% increased [Energy] if you've dealt a [Critical] [HitDamage|Hit] [Recently]"
+      "[Meta] Skills gain 25% increased [Energy] if you've dealt a [Critical] [Hit] [Recently]"
     ]
   },
   "strength47": {
@@ -13383,7 +13357,7 @@
     "name": "Parry Area and Debuff Magnitude",
     "stats": [
       "6% increased [ParriedDebuff|Parried Debuff] [BuffMagnitude|Magnitude]",
-      "8% increased [Parry] [HitDamage|Hit] Area of Effect"
+      "8% increased [Parry] [Hit] Area of Effect"
     ]
   },
   "physical30": {
@@ -13508,7 +13482,7 @@
     "name": "Enduring Deflection",
     "stats": [
       "20% increased [Evasion|Evasion Rating]",
-      "Prevent +3% of Damage from [Deflect|Deflected] [HitDamage|Hits]"
+      "Prevent +3% of Damage from [Deflect|Deflected] [Hit|Hits]"
     ]
   },
   "armour_break10": {
@@ -13572,7 +13546,7 @@
     "stats": [
       "20% increased [LightRadius|Light Radius]",
       "Cannot be [Blind|Blinded]",
-      "12% chance to [Blind] Enemies on [HitDamage|Hit]"
+      "12% chance to [Blind] Enemies on [Hit]"
     ]
   },
   "strength34": {
@@ -13733,7 +13707,7 @@
   },
   "monkchakra9": {
     "name": "Blind Chance",
-    "stats": ["5% chance to [Blind] Enemies on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Blind] Enemies on [Hit]"]
   },
   "armour_break37": {
     "name": "Cruel Methods",
@@ -13843,7 +13817,7 @@
   "shaman12": {
     "name": "Adaptive Skin",
     "stats": [
-      "+1% to [MaximumResistances|Maximum Resistances] of each [ElementalDamage|Elemental] Damage Type you have been [HitDamage|Hit] with [Recently]"
+      "+1% to [MaximumResistances|Maximum Resistances] of each [ElementalDamage|Elemental] Damage Type you have been [Hit] with [Recently]"
     ]
   },
   "deflect21": {
@@ -13882,7 +13856,7 @@
     "name": "Exposed Wounds",
     "stats": [
       "15% increased chance to inflict [Ailments]",
-      "[HitDamage|Hits] [ArmourBreak|Break] 30% increased [Armour|Armour] on targets with [Ailments]"
+      "[Hit|Hits] [ArmourBreak|Break] 30% increased [Armour|Armour] on targets with [Ailments]"
     ]
   },
   "oracle_big_family6": {
@@ -13956,7 +13930,7 @@
   },
   "attack_speed43": {
     "name": "Blind Chance",
-    "stats": ["8% chance to [Blind] Enemies on [HitDamage|Hit] with [Attack|Attacks]"]
+    "stats": ["8% chance to [Blind] Enemies on [Hit] with [Attack|Attacks]"]
   },
   "melee24_": {
     "name": "Melee Damage ",
@@ -14009,7 +13983,7 @@
   "poison18": {
     "name": "Crippling Toxins",
     "stats": [
-      "25% chance for [Attack|Attacks] to [Maim|Maim] on [HitDamage|Hit] against [Poison|Poisoned] Enemies",
+      "25% chance for [Attack|Attacks] to [Maim|Maim] on [Hit] against [Poison|Poisoned] Enemies",
       "25% increased [BuffMagnitude|Magnitude] of [Poison] you inflict"
     ]
   },
@@ -14050,7 +14024,7 @@
   },
   "jagged_ground1": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "banners13": {
     "name": "Rallying Icon",
@@ -14218,7 +14192,7 @@
     "name": "Mark Effect and Blind Chance",
     "stats": [
       "8% increased Effect of your [Mark] Skills",
-      "5% chance to [Blind] Enemies on [HitDamage|Hit] with [Attack|Attacks]"
+      "5% chance to [Blind] Enemies on [Hit] with [Attack|Attacks]"
     ]
   },
   "cast_speed40": {
@@ -14370,7 +14344,7 @@
   },
   "lightning_penetration28": {
     "name": "Lightning Rod",
-    "stats": ["30% chance for [Lightning] Damage with [HitDamage|Hits] to be [Lucky]"]
+    "stats": ["30% chance for [Lightning] Damage with [Hit|Hits] to be [Lucky]"]
   },
   "area_attacks59": {
     "name": "Disciplined Training",
@@ -14535,7 +14509,7 @@
   "enemies_on_low_life9_": {
     "name": "Finishing Blows",
     "stats": [
-      "60% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]",
+      "60% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]",
       "30% increased [Stun|Stun] Buildup against Enemies that are on [LowLife|Low Life]"
     ]
   },
@@ -14670,7 +14644,7 @@
   "azmerianimals36": {
     "name": "The Raging Ox",
     "stats": [
-      "[HitDamage|Hits] against you have 30% reduced [CriticalDamageBonus|Critical Damage Bonus]",
+      "[Hit|Hits] against you have 30% reduced [CriticalDamageBonus|Critical Damage Bonus]",
       "15% reduced Duration of [Ailments|Ailments] on You",
       "+10 to [Strength]"
     ]
@@ -14787,7 +14761,7 @@
   "ranged19_": {
     "name": "Melee Damage if Projectile Hit",
     "stats": [
-      "15% increased [Melee] Damage if you've dealt a [Projectile] [Attack] [HitDamage|Hit] in the past eight seconds"
+      "15% increased [Melee] Damage if you've dealt a [Projectile] [Attack] [Hit] in the past eight seconds"
     ]
   },
   "deflect1_": {
@@ -15033,7 +15007,7 @@
   },
   "glory24_": {
     "name": "Rage on Melee Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "evasion8": {
     "name": "Evasion",
@@ -15119,13 +15093,13 @@
     "name": "Impair",
     "stats": [
       "25% increased Damage with One Handed Weapons",
-      "[Attack|Attacks] have 10% chance to [Maim|Maim] on [HitDamage|Hit]"
+      "[Attack|Attacks] have 10% chance to [Maim|Maim] on [Hit]"
     ]
   },
   "ranged18": {
     "name": "Projectile Damage if Melee Hit",
     "stats": [
-      "15% increased [Projectile] Damage if you've dealt a [Melee] [HitDamage|Hit] in the past eight seconds"
+      "15% increased [Projectile] Damage if you've dealt a [Melee] [Hit] in the past eight seconds"
     ]
   },
   "stun3__": {
@@ -15300,7 +15274,7 @@
   "warcries4": {
     "name": "Empowered Attack Damage and Bleeding Chance",
     "stats": [
-      "5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]",
+      "5% chance to inflict [Bleeding|Bleeding] on [Hit]",
       "[Empowered|Empowered Attacks] deal 10% increased Damage"
     ]
   },
@@ -15365,7 +15339,7 @@
   "daze_19": {
     "name": "Dizzying Hits",
     "stats": [
-      "10% chance to [Daze] on [HitDamage|Hit]",
+      "10% chance to [Daze] on [Hit]",
       "25% increased [Critical] Hit Chance against [Daze|Dazed] Enemies"
     ]
   },
@@ -15418,7 +15392,7 @@
   },
   "bleed26": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "warcries25": {
     "name": "Warcry Damage",
@@ -15451,7 +15425,7 @@
   },
   "shapeshifting4": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "attack_speed13_": {
     "name": "Attack Speed",
@@ -15513,7 +15487,7 @@
   "melee51_": {
     "name": "Honourless",
     "stats": [
-      "25% increased [Armour] if you've [HitDamage|Hit] an Enemy with a [Melee|Melee Attack] [Recently]",
+      "25% increased [Armour] if you've [Hit] an Enemy with a [Melee|Melee Attack] [Recently]",
       "50% increased [Melee|Melee Damage] against [Immobilised] Enemies"
     ]
   },
@@ -15533,7 +15507,7 @@
     "name": "Bleed Duration",
     "stats": [
       "10% increased Bleeding Duration",
-      "20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"
+      "20% chance for [Attack] [Hit|Hits] to apply [Incision]"
     ]
   },
   "knockback18": {
@@ -15584,7 +15558,7 @@
     "stats": [
       "[Projectile|Projectiles] have 30% increased [CriticalDamageBonus|Critical Damage Bonus] against Enemies further than 6m",
       "[Projectile|Projectiles] have 20% increased [Critical] Hit Chance against Enemies further than 6m",
-      "25% chance to inflict [Daze] with [HitDamage|Hits] against Enemies further than 6m"
+      "25% chance to inflict [Daze] with [Hit|Hits] against Enemies further than 6m"
     ]
   },
   "stun_threshold10": {
@@ -15675,12 +15649,12 @@
   "exploiting_elemental_ailments16": {
     "name": "Exploit the Elements",
     "stats": [
-      "24% increased Damage with [HitDamage|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]",
+      "24% increased Damage with [Hit|Hits] against Enemies affected by [ElementalAilments|Elemental Ailments]",
       "30% increased chance to inflict [Ailments] against [Rarity|Rare or Unique] Enemies"
     ]
   },
   "life_leech2": {
-    "name": "Life Leech. Armour and Evasion while Leeching",
+    "name": "Life Leech, Armour and Evasion while Leeching",
     "stats": [
       "6% increased amount of Life [LifeLeech|Leeched]",
       "8% increased [Armour] and [Evasion] Rating while Leeching"
@@ -16014,7 +15988,7 @@
   },
   "bleed42": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "azmerianimals47": {
     "name": "Dexterity",
@@ -16099,7 +16073,7 @@
   },
   "oracle_beast_corruption15_": {
     "name": "Corruption Endures",
-    "stats": ["7% chance to Avoid Death from [HitDamage|Hits]"]
+    "stats": ["7% chance to Avoid Death from [Hit|Hits]"]
   },
   "mana_flasks5": {
     "name": "Mana Flask Recovery",
@@ -16367,7 +16341,7 @@
   "deflect42": {
     "name": "Avoiding Deflection",
     "stats": [
-      "-5% to amount of [HitDamage|Damage] Prevented by [Deflect|Deflection]",
+      "-5% to amount of [Hit|Damage] Prevented by [Deflect|Deflection]",
       "20% increased [Deflect|Deflection Rating]"
     ]
   },
@@ -16517,7 +16491,7 @@
     "name": "Wasting",
     "stats": [
       "15% increased Duration of [DamagingAilments|Damaging Ailments] on Enemies",
-      "30% increased Damage with [HitDamage|Hits] against Enemies affected by [Ailments]"
+      "30% increased Damage with [Hit|Hits] against Enemies affected by [Ailments]"
     ]
   },
   "lightning56": {
@@ -16562,7 +16536,7 @@
   },
   "fire10": {
     "name": "Damage against Burning Enemies",
-    "stats": ["14% increased Damage with [HitDamage|Hits] against [Burning|Burning] Enemies"]
+    "stats": ["14% increased Damage with [Hit|Hits] against [Burning|Burning] Enemies"]
   },
   "duration_spells4": {
     "name": "Unimpeded",
@@ -16761,7 +16735,7 @@
   "enemies_on_low_life11": {
     "name": "Finality",
     "stats": [
-      "120% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]",
+      "120% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]",
       "5% increased Damage taken while on [LowLife|Low Life]"
     ]
   },
@@ -16856,7 +16830,7 @@
   },
   "deflect58": {
     "name": "Trained Deflection",
-    "stats": ["Prevent +6% of Damage from [Deflect|Deflected] [HitDamage|Hits]"]
+    "stats": ["Prevent +6% of Damage from [Deflect|Deflected] [Hit|Hits]"]
   },
   "chaos33_": {
     "name": "Event Horizon",
@@ -16918,7 +16892,7 @@
   },
   "axe12": {
     "name": "Axe Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [Hit]"]
   },
   "strength5": {
     "name": "Attribute",
@@ -17140,7 +17114,7 @@
   },
   "physical8": {
     "name": "Impale Chance",
-    "stats": ["15% chance to [Impale] on [Spell] [HitDamage|Hit]"]
+    "stats": ["15% chance to [Impale] on [Spell] [Hit]"]
   },
   "evasion_and_energy_shield1": {
     "name": "Evasion and Energy Shield",
@@ -17306,7 +17280,7 @@
   },
   "axe10": {
     "name": "Axe Rage on Hit",
-    "stats": ["Gain 2 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [HitDamage|Hit]"]
+    "stats": ["Gain 2 [Rage|Rage] on [Melee|Melee] [Axe|Axe] [Hit]"]
   },
   "area_attacks24": {
     "name": "Area Damage",
@@ -17337,7 +17311,7 @@
   "ranged17": {
     "name": "Projectile Damage if Melee Hit",
     "stats": [
-      "15% increased [Projectile] Damage if you've dealt a [Melee] [HitDamage|Hit] in the past eight seconds"
+      "15% increased [Projectile] Damage if you've dealt a [Melee] [Hit] in the past eight seconds"
     ]
   },
   "shock1": {
@@ -17418,7 +17392,7 @@
   },
   "rage17": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "block14": {
     "name": "Towering Shield",
@@ -17431,8 +17405,8 @@
     "name": "Backup Plan",
     "stats": [
       "20% increased [Armour] and [Evasion] Rating",
-      "40% increased [Evasion|Evasion Rating] if you have been [HitDamage|Hit] [Recently|Recently]",
-      "40% increased [Armour|Armour] if you haven't been [HitDamage|Hit] [Recently|Recently]"
+      "40% increased [Evasion|Evasion Rating] if you have been [Hit] [Recently|Recently]",
+      "40% increased [Armour|Armour] if you haven't been [Hit] [Recently|Recently]"
     ]
   },
   "companions26": {
@@ -17480,7 +17454,7 @@
     "name": "Shimmering",
     "stats": [
       "10% [FasterESRechargeStart|faster start of Energy Shield Recharge]",
-      "20% increased [Evasion] Rating if you haven't been [HitDamage|Hit] [Recently]",
+      "20% increased [Evasion] Rating if you haven't been [Hit] [Recently]",
       "3% increased Movement Speed while you have [EnergyShield|Energy Shield]"
     ]
   },
@@ -17502,7 +17476,7 @@
   },
   "rage20": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "melee21": {
     "name": "Melee Damage",
@@ -17622,7 +17596,7 @@
   },
   "armour3": {
     "name": "Armour",
-    "stats": ["20% increased [Armour] if you have been [HitDamage|Hit] [Recently]"]
+    "stats": ["20% increased [Armour] if you have been [Hit] [Recently]"]
   },
   "dexterity29": {
     "name": "Attribute",
@@ -17727,7 +17701,7 @@
   "slowed_enemies15": {
     "name": "Hindered Capabilities",
     "stats": [
-      "30% increased Damage with [HitDamage|Hits] against [Hinder|Hindered] Enemies",
+      "30% increased Damage with [Hit|Hits] against [Hinder|Hindered] Enemies",
       "[Debuff|Debuffs] you inflict have 10% increased [SlowMagnitudeModifier|Slow Magnitude]"
     ]
   },
@@ -17781,7 +17755,7 @@
   "rage18": {
     "name": "Vengeful Fury",
     "stats": [
-      "Gain 5 [Rage] when [HitDamage|Hit] by an Enemy",
+      "Gain 5 [Rage] when [Hit] by an Enemy",
       "Every [Rage] also grants 1% increased [Armour]"
     ]
   },
@@ -17818,7 +17792,7 @@
   "bleed6": {
     "name": "Bloodletting",
     "stats": [
-      "10% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]",
+      "10% chance to inflict [Bleeding|Bleeding] on [Hit]",
       "15% increased [BuffMagnitude|Magnitude] of [Bleeding|Bleeding] you inflict"
     ]
   },
@@ -17932,7 +17906,7 @@
   },
   "bleed21_": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "mastery_mark_6606": {
     "name": "Mark Mastery",
@@ -17992,7 +17966,7 @@
     "name": "Attack Area and Combo",
     "stats": [
       "4% increased Area of Effect for [Attack|Attacks]",
-      "5% Chance to build an additional [Combo] on [HitDamage|Hit]"
+      "5% Chance to build an additional [Combo] on [Hit]"
     ]
   },
   "flasks22": {
@@ -18129,11 +18103,11 @@
   },
   "bleed43": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "rage8": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "criticals71": {
     "name": "Critical Damage",
@@ -18234,7 +18208,7 @@
   },
   "fire16": {
     "name": "Damage against Burning Enemies",
-    "stats": ["14% increased Damage with [HitDamage|Hits] against [Burning|Burning] Enemies"]
+    "stats": ["14% increased Damage with [Hit|Hits] against [Burning|Burning] Enemies"]
   },
   "chaos37": {
     "name": "Lingering Horror",
@@ -18242,7 +18216,7 @@
   },
   "oracle_spell_poison1_": {
     "name": "Chance to Poison and Spell Damage",
-    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [Hit]"]
   },
   "armour_break27": {
     "name": "Armour Break",
@@ -18254,9 +18228,7 @@
   },
   "enemies_on_low_life4": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "oracle_crab_claw2": {
     "name": "Armour",
@@ -18319,7 +18291,7 @@
   },
   "rage4": {
     "name": "Rage when Hit",
-    "stats": ["Gain 2 [Rage] when [HitDamage|Hit] by an Enemy"]
+    "stats": ["Gain 2 [Rage] when [Hit] by an Enemy"]
   },
   "passive_keystone_chaos_inoculation": {
     "name": "Chaos Inoculation",
@@ -18397,7 +18369,7 @@
   "passive_keystone_bulwark": {
     "name": "Bulwark",
     "stats": [
-      "Dodge Roll cannot Avoid Damage\nTake 30% less [HitDamage|Damage from Hits] while Dodge Rolling"
+      "Dodge Roll cannot Avoid Damage\nTake 30% less [Hit|Damage from Hits] while Dodge Rolling"
     ]
   },
   "life_regeneration8_": {
@@ -18460,7 +18432,7 @@
   "daze_18": {
     "name": "Electrifying Daze",
     "stats": [
-      "5% chance to [Daze] on [HitDamage|Hit]",
+      "5% chance to [Daze] on [Hit]",
       "[Gain] 12% of [Physical] Damage as Extra [Lightning] Damage against [Daze|Dazed] Enemies"
     ]
   },
@@ -18532,7 +18504,7 @@
   "duelist_mercenary_notable1": {
     "name": "Battle-hardened",
     "stats": [
-      "[HitDamage|Hits] against you have 20% reduced [CriticalDamageBonus|Critical Damage Bonus]",
+      "[Hit|Hits] against you have 20% reduced [CriticalDamageBonus|Critical Damage Bonus]",
       "20% increased [Armour] and [Evasion] Rating",
       "+5 to [Strength|Strength] and [Dexterity|Dexterity]"
     ]
@@ -18681,7 +18653,7 @@
   },
   "melee33": {
     "name": "In Your Face",
-    "stats": ["40% increased [Melee] Damage with [HitDamage|Hits] at [CloseRange|Close Range]"]
+    "stats": ["40% increased [Melee] Damage with [Hit|Hits] at [CloseRange|Close Range]"]
   },
   "oracle_beast_corruption6": {
     "name": "Elemental Threshold",
@@ -18708,7 +18680,7 @@
     "stats": [
       "Recover 20 Life when you [Block]",
       "+2% to maximum [Block] chance",
-      "80% less [Knockback] Distance for [Block|Blocked] [HitDamage|Hits]"
+      "80% less [Knockback] Distance for [Block|Blocked] [Hit|Hits]"
     ]
   },
   "passive_keystone_eldritch_battery__": {
@@ -18733,7 +18705,7 @@
   },
   "physical7": {
     "name": "Impale Chance",
-    "stats": ["15% chance to [Impale] on [Spell] [HitDamage|Hit]"]
+    "stats": ["15% chance to [Impale] on [Spell] [Hit]"]
   },
   "fire_penetration4": {
     "name": "Flammability Magnitude",
@@ -18804,7 +18776,7 @@
     "name": "Clear Space",
     "stats": [
       "20% increased [Knockback] Distance",
-      "20% chance to [Knockback|Knock Enemies Back] with [HitDamage|Hits] at [CloseRange|Close Range]"
+      "20% chance to [Knockback|Knock Enemies Back] with [Hit|Hits] at [CloseRange|Close Range]"
     ]
   },
   "shock13": {
@@ -19076,7 +19048,7 @@
     ]
   },
   "life_leech1": {
-    "name": "Life Leech. Armour and Evasion while Leeching",
+    "name": "Life Leech, Armour and Evasion while Leeching",
     "stats": [
       "6% increased amount of Life [LifeLeech|Leeched]",
       "8% increased [Armour] and [Evasion] Rating while Leeching"
@@ -19106,7 +19078,7 @@
   },
   "bleed40": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "mastery_armour_6293": {
     "name": "Armour Mastery",
@@ -19121,8 +19093,8 @@
     "stats": [
       "+8% of [Armour|Armour] also applies to [ElementalDamage|Elemental Damage]",
       "10% [FasterESRechargeStart|faster start of Energy Shield Recharge]",
-      "Immune to [Exposure]",
-      "Unaffected by [ElementalWeakness|Elemental Weakness]"
+      "30% reduced [BuffEffect|effect] of [Curse|Curses] on you",
+      "Immune to [Exposure]"
     ]
   },
   "chill_and_freeze27": {
@@ -19186,7 +19158,7 @@
   },
   "oracle_spell_poison2": {
     "name": "Chance to Poison and Spell Damage",
-    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [HitDamage|Hit]"]
+    "stats": ["12% increased [Spell] Damage", "8% chance to [Poison|Poison] on [Hit]"]
   },
   "glory3": {
     "name": "Attack Damage",
@@ -19485,7 +19457,7 @@
     "stats": [
       "3% increased Movement Speed",
       "20% increased Bleeding Duration",
-      "40% chance for [Attack] [HitDamage|Hits] to apply [Incision]"
+      "40% chance for [Attack] [Hit|Hits] to apply [Incision]"
     ]
   },
   "accuracy20": {
@@ -19501,7 +19473,7 @@
   },
   "rage22": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "pin10": {
     "name": "Pin and Run",
@@ -19525,7 +19497,7 @@
   "chaos35": {
     "name": "Stylebender",
     "stats": [
-      "[HitDamage|Hits] [ArmourBreak|Break] 30% increased [Armour|Armour] on targets with [Ailments]",
+      "[Hit|Hits] [ArmourBreak|Break] 30% increased [Armour|Armour] on targets with [Ailments]",
       "+10 to [Strength]",
       "25% increased [Physical] Damage"
     ]
@@ -19563,7 +19535,7 @@
   },
   "physical16": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "area_spells24": {
     "name": "Roil",
@@ -19607,7 +19579,7 @@
     "name": "Perfect Opportunity",
     "stats": [
       "30% increased [Stun] Buildup",
-      "[HitDamage|Damage with Hits] is [Lucky|Lucky] against [HeavyStun|Heavy Stunned] Enemies"
+      "[Hit|Damage with Hits] is [Lucky|Lucky] against [HeavyStun|Heavy Stunned] Enemies"
     ]
   },
   "spell_suppression23": {
@@ -19643,7 +19615,7 @@
   },
   "enemies_on_full_life7": {
     "name": "Damage vs Full Life",
-    "stats": ["20% increased Damage with [HitDamage|Hits] against Enemies that are on Full Life"]
+    "stats": ["20% increased Damage with [Hit|Hits] against Enemies that are on Full Life"]
   },
   "totems25": {
     "name": "Totem Placement Speed",
@@ -19703,7 +19675,7 @@
   },
   "bleed35": {
     "name": "Incision Chance",
-    "stats": ["20% chance for [Attack] [HitDamage|Hits] to apply [Incision]"]
+    "stats": ["20% chance for [Attack] [Hit|Hits] to apply [Incision]"]
   },
   "lightning69_": {
     "name": "Lightning Storm",
@@ -19766,7 +19738,7 @@
   },
   "bleed34": {
     "name": "Staggering Wounds",
-    "stats": ["50% chance to [Knockback|Knock Back] [Bleeding] Enemies with [HitDamage|Hits]"]
+    "stats": ["50% chance to [Knockback|Knock Back] [Bleeding] Enemies with [Hit|Hits]"]
   },
   "movement_speed1": {
     "name": "Movement Speed",
@@ -19881,7 +19853,7 @@
   },
   "blind5": {
     "name": "Damage vs Blinded",
-    "stats": ["15% increased Damage with [HitDamage|Hits] against [Blind|Blinded] Enemies"]
+    "stats": ["15% increased Damage with [Hit|Hits] against [Blind|Blinded] Enemies"]
   },
   "wolf1": {
     "name": "Shapeshifted Damage",
@@ -19936,7 +19908,7 @@
   "spells30": {
     "name": "Wasting Casts",
     "stats": [
-      "25% increased Damage with [HitDamage|Hits] against [Hinder|Hindered] Enemies",
+      "25% increased Damage with [Hit|Hits] against [Hinder|Hindered] Enemies",
       "15% chance to [Hinder] Enemies on Hit with [Spell|Spells]"
     ]
   },
@@ -19950,9 +19922,7 @@
   },
   "enemies_on_low_life5": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "strength75": {
     "name": "Attribute",
@@ -19977,7 +19947,7 @@
   "quarterstaff6": {
     "name": "Quarterstaff Freeze and Daze Buildup",
     "stats": [
-      "5% chance to [Daze] on [HitDamage|Hit]",
+      "5% chance to [Daze] on [Hit]",
       "20% increased [Freeze] Buildup with [Quarterstaff|Quarterstaves]"
     ]
   },
@@ -20054,7 +20024,7 @@
   },
   "physical_witch5_": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "lightning_penetration24": {
     "name": "Storm Surge",
@@ -20083,7 +20053,7 @@
   },
   "rage7": {
     "name": "Rage on Hit",
-    "stats": ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"]
+    "stats": ["Gain 1 [Rage|Rage] on [Melee] [Hit]"]
   },
   "jagged_ground3": {
     "name": "Jagged Ground Effect",
@@ -20215,7 +20185,7 @@
     "name": "Incendiary",
     "stats": [
       "60% increased [Flammability] [BuffMagnitude|Magnitude]",
-      "30% increased Damage with [HitDamage|Hits] against [Burning|Burning] Enemies"
+      "30% increased Damage with [Hit|Hits] against [Burning|Burning] Enemies"
     ]
   },
   "maximum_resistances2": {
@@ -20445,7 +20415,7 @@
   },
   "fire31": {
     "name": "Sigil of Fire",
-    "stats": ["30% increased Damage with [HitDamage|Hits] against [Ignite|Ignited] Enemies"]
+    "stats": ["30% increased Damage with [Hit|Hits] against [Ignite|Ignited] Enemies"]
   },
   "energy_shield_recovery12": {
     "name": "Mystic Stance",
@@ -20589,7 +20559,7 @@
     "name": "Brush Off",
     "stats": [
       "15% increased [Armour]",
-      "Prevent +15% of Damage from [Deflect|Deflected] [Critical] [HitDamage|Hits]"
+      "Prevent +15% of Damage from [Deflect|Deflected] [Critical] [Hit|Hits]"
     ]
   },
   "minion_offence26": {
@@ -20658,9 +20628,7 @@
   },
   "enemies_on_low_life8": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "remnant9": {
     "name": "Vigorous Remnants",
@@ -20691,7 +20659,7 @@
   },
   "bleed4": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "ballista8": {
     "name": "Ballista Critical Strike and Damage",
@@ -20755,7 +20723,7 @@
   },
   "attack44": {
     "name": "Daze Chance",
-    "stats": ["5% chance to [Daze] on [HitDamage|Hit]"]
+    "stats": ["5% chance to [Daze] on [Hit]"]
   },
   "accuracy26": {
     "name": "Accuracy",
@@ -20860,7 +20828,7 @@
   "daze_17": {
     "name": "Shattering Daze",
     "stats": [
-      "5% chance to [Daze] on [HitDamage|Hit]",
+      "5% chance to [Daze] on [Hit]",
       "[Gain] 12% of [Physical] Damage as Extra [Cold] Damage against [Daze|Dazed] Enemies"
     ]
   },
@@ -20907,9 +20875,7 @@
   },
   "stun21": {
     "name": "Easy Target",
-    "stats": [
-      "Your [HitDamage|Hits] cannot be [Evasion|Evaded] by [HeavyStun|Heavy Stunned] Enemies"
-    ]
+    "stats": ["Your [Hit|Hits] cannot be [Evasion|Evaded] by [HeavyStun|Heavy Stunned] Enemies"]
   },
   "elemental30": {
     "name": "Unbound Forces",
@@ -20944,7 +20910,7 @@
   },
   "stun_threshold16_": {
     "name": "Wary Dodging",
-    "stats": ["Cannot be [LightStun|Light Stunned] if you haven't been [HitDamage|Hit] [Recently]"]
+    "stats": ["Cannot be [LightStun|Light Stunned] if you haven't been [Hit] [Recently]"]
   },
   "minion_reservation8": {
     "name": "Minion Damage",
@@ -20968,7 +20934,7 @@
   "quarterstaff15": {
     "name": "Quarterstaff Freeze and Daze Buildup",
     "stats": [
-      "5% chance to [Daze] on [HitDamage|Hit]",
+      "5% chance to [Daze] on [Hit]",
       "20% increased [Freeze] Buildup with [Quarterstaff|Quarterstaves]"
     ]
   },
@@ -21050,13 +21016,11 @@
   },
   "enemies_on_low_life1": {
     "name": "Damage against Enemies on Low Life",
-    "stats": [
-      "30% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["30% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "physical_witch9": {
     "name": "Bleed Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "dexterity36": {
     "name": "Attribute",
@@ -21064,12 +21028,12 @@
   },
   "fire35": {
     "name": "Intense Flames",
-    "stats": ["35% increased Damage with [HitDamage|Hits] against [Burning|Burning] Enemies"]
+    "stats": ["35% increased Damage with [Hit|Hits] against [Burning|Burning] Enemies"]
   },
   "armour36": {
     "name": "Impenetrable Shell",
     "stats": [
-      "Defend with 150% of [Armour] against [HitDamage|Hits] from Enemies that are further than 6m away"
+      "Defend with 150% of [Armour] against [Hit|Hits] from Enemies that are further than 6m away"
     ]
   },
   "mastery_rage_6669": {
@@ -21183,7 +21147,7 @@
   },
   "bleed10": {
     "name": "Bleeding Chance",
-    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [HitDamage|Hit]"]
+    "stats": ["5% chance to inflict [Bleeding|Bleeding] on [Hit]"]
   },
   "armour_and_evasion50": {
     "name": "Armour applies to Elemental Damage and Deflection",
@@ -21245,7 +21209,7 @@
   },
   "AscendancyRanger1Notable3": {
     "name": "Gathering Winds",
-    "stats": ["Gain [Tailwind] on Skill use", "Lose all [Tailwind] when [HitDamage|Hit]"]
+    "stats": ["Gain [Tailwind] on Skill use", "Lose all [Tailwind] when [Hit]"]
   },
   "AscendancyRanger3Notable5": {
     "name": "Sustainable Practices",
@@ -21267,7 +21231,7 @@
   "AscendancyWarrior3Notable6_10": {
     "name": "Internal Layer",
     "stats": [
-      "Body Armour grants [HitDamage|Hits] against you have 100% reduced [CriticalDamageBonus|Critical Damage Bonus]"
+      "Body Armour grants [Hit|Hits] against you have 100% reduced [CriticalDamageBonus|Critical Damage Bonus]"
     ]
   },
   "AscendancyDruid1Small8": {
@@ -21389,7 +21353,7 @@
     "name": "Witchbane",
     "stats": [
       "Enemies have Maximum [Concentration] equal to 30% of their Maximum Life",
-      "Break enemy [Concentration] on [HitDamage|Hit] equal to 100% of Damage Dealt",
+      "Break enemy [Concentration] on [Hit] equal to 100% of Damage Dealt",
       "Enemies regain 10% of [Concentration] every second if they haven't lost [Concentration] in the past 5 seconds"
     ]
   },
@@ -21462,9 +21426,7 @@
   },
   "AscendancyMercenary2Notable6": {
     "name": "Ceremonial Ablution",
-    "stats": [
-      "Sorcery Ward's Barrier can also take [Physical] and [Chaos] Damage from [HitDamage|Hits]"
-    ]
+    "stats": ["Sorcery Ward's Barrier can also take [Physical] and [Chaos] Damage from [Hit|Hits]"]
   },
   "AscendancyHuntress3Notable1_": {
     "name": "Mystic Attunement",
@@ -21544,7 +21506,7 @@
   "AscendancyHuntress1Notable1": {
     "name": "Critical Strike",
     "stats": [
-      "Chance to [HitDamage|Hit] with [Attack|Attacks] can [ExceedChance|exceed 100%]\nGain additional [Critical|Critical Hit] Chance equal to 25% of excess chance to [HitDamage|Hit] with [Attack|Attacks]"
+      "Chance to [Hit] with [Attack|Attacks] can [ExceedChance|exceed 100%]\nGain additional [Critical|Critical Hit] Chance equal to 25% of excess chance to [Hit] with [Attack|Attacks]"
     ]
   },
   "AscendancyRanger3Notable7_5": {
@@ -21572,9 +21534,7 @@
   },
   "AscendancyWarrior3Notable6_9": {
     "name": "Molten Symbol",
-    "stats": [
-      "Body Armour grants 25% of [Physical] Damage from [HitDamage|Hits] taken as [Fire] Damage"
-    ]
+    "stats": ["Body Armour grants 25% of [Physical] Damage from [Hit|Hits] taken as [Fire] Damage"]
   },
   "AscendancyWarrior2Small9": {
     "name": "Block Chance",
@@ -21822,7 +21782,7 @@
   "AscendancySorceress1Notable8": {
     "name": "Shaper of Winter",
     "stats": [
-      "[DamageTypes|All Damage] from [HitDamage|Hits] [Contributes|Contributes] to [Chill] Magnitude"
+      "[DamageTypes|All Damage] from [Hit|Hits] [Contributes|Contributes] to [Chill] Magnitude"
     ]
   },
   "AscendancyRanger3Notable7_2": {
@@ -21986,9 +21946,7 @@
   },
   "AscendancyDruid1Small7": {
     "name": "Critical Damage Bonus on You",
-    "stats": [
-      "[HitDamage|Hits] against you have 12% reduced [CriticalDamageBonus|Critical Damage Bonus]"
-    ]
+    "stats": ["[Hit|Hits] against you have 12% reduced [CriticalDamageBonus|Critical Damage Bonus]"]
   },
   "AscendancyMercenary2Small3": {
     "name": "Cooldown Recovery Rate",
@@ -22109,7 +22067,7 @@
     "name": "Phased Form",
     "stats": [
       "Take 30% less Damage",
-      "4 seconds after being Damaged by an Enemy [HitDamage|Hit], take Damage equal to 30% of that [HitDamage|Hit]'s Damage"
+      "4 seconds after being Damaged by an Enemy [Hit], take Damage equal to 30% of that [Hit]'s Damage"
     ]
   },
   "AscendancyHuntress2Notable9": {
@@ -22182,7 +22140,7 @@
   "AscendancyDruid1Notable3": {
     "name": "Harmony Within",
     "stats": [
-      "[HitDamage|Hit] damage is taken from Mana before Life if your current Mana is higher than your current Life",
+      "[Hit] damage is taken from Mana before Life if your current Mana is higher than your current Life",
       "15% less maximum Life",
       "15% less maximum Mana"
     ]
@@ -22190,7 +22148,7 @@
   "AscendancyMercenary3Notable3": {
     "name": "Gem Studded",
     "stats": [
-      "For each colour of Socketed Support Gem that is most numerous, gain:\n•Red: [HitDamage|Hits] against you have no [CriticalDamageBonus|Critical Damage Bonus]\n•Blue: Skills have 30% less cost\n•Green: 40% less Movement Speed Penalty from using Skills while Moving"
+      "For each colour of Socketed Support Gem that is most numerous, gain:\n•Red: [Hit|Hits] against you have no [CriticalDamageBonus|Critical Damage Bonus]\n•Blue: Skills have 30% less cost\n•Green: 40% less Movement Speed Penalty from using Skills while Moving"
     ]
   },
   "AscendancyMonk3Notable8": {
@@ -22286,7 +22244,7 @@
     "name": "The Lesser Harm",
     "stats": [
       "Enemy [Critical|Critical Hit Chance] against you is [Unlucky]",
-      "Damage of Enemies [HitDamage|Hitting] you is [Unlucky]"
+      "Damage of Enemies [Hit|Hitting] you is [Unlucky]"
     ]
   },
   "AscendancyWitch1Notable9": {
@@ -22382,7 +22340,7 @@
   "AscendancyWarrior2Notable2": {
     "name": "Imploding Impacts",
     "stats": [
-      "[ArmourBreak|Fully Broken Armour] you inflict increases all Damage Taken from [HitDamage|Hits] instead",
+      "[ArmourBreak|Fully Broken Armour] you inflict increases all Damage Taken from [Hit|Hits] instead",
       "You can [ArmourOverbreak|Break Enemy Armour to below 0]"
     ]
   },
@@ -22555,9 +22513,7 @@
   },
   "AscendancyMercenary2Small2": {
     "name": "Damage vs Low Life Enemies",
-    "stats": [
-      "35% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["35% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "AscendancySorceress1Start_": {
     "name": "Stormweaver",
@@ -22566,7 +22522,7 @@
   "AscendancyWarrior2Notable7": {
     "name": "Wooden Wall",
     "stats": [
-      "20% of Damage from [HitDamage|Hits] is taken from your nearest [Totem|Totem's] Life before you"
+      "20% of Damage from [Hit|Hits] is taken from your nearest [Totem|Totem's] Life before you"
     ]
   },
   "AscendancyHuntress1Notable2": {
@@ -22614,7 +22570,7 @@
   "AscendancyRanger1Notable2_2": {
     "name": "Point Blank",
     "stats": [
-      "[Projectile|Projectiles] deal 20% more [HitDamage|Hit] damage to targets in the first 3.5 metres of their movement, scaling down with distance travelled to reach 0% after 7 metres"
+      "[Projectile|Projectiles] deal 20% more [Hit] damage to targets in the first 3.5 metres of their movement, scaling down with distance travelled to reach 0% after 7 metres"
     ]
   },
   "AscendancyHuntress3Small1_2_": {
@@ -22671,9 +22627,7 @@
   },
   "AscendancyMercenary2Small1": {
     "name": "Damage vs Low Life Enemies",
-    "stats": [
-      "35% increased Damage with [HitDamage|Hits] against Enemies that are on [LowLife|Low Life]"
-    ]
+    "stats": ["35% increased Damage with [Hit|Hits] against Enemies that are on [LowLife|Low Life]"]
   },
   "AscendancySorceress3Notable11": {
     "name": "Navira's Well",
@@ -22860,7 +22814,7 @@
   "AscendancyMonk1Notable6": {
     "name": "Way of the Mountain",
     "stats": [
-      "100% [SurpassChance|Surpassing] chance per enemy [Power] to gain [MountainsTeachings|Mountain's Teachings] on [Immobilised|Immobilising] an enemy, up to a maximum of 30\nLose a [MountainsTeachings|Mountain's Teaching] when you are [HitDamage|Hit], or when you use or [Sustained|Sustain] an [Attack] that benefits from [MountainsTeachings|Mountain's Teachings]"
+      "100% [SurpassChance|Surpassing] chance per enemy [Power] to gain [MountainsTeachings|Mountain's Teachings] on [Immobilised|Immobilising] an enemy, up to a maximum of 30\nLose a [MountainsTeachings|Mountain's Teaching] when you are [Hit], or when you use or [Sustained|Sustain] an [Attack] that benefits from [MountainsTeachings|Mountain's Teachings]"
     ]
   },
   "AscendancyWarrior1Small7": {
@@ -22874,7 +22828,7 @@
   "AscendancyWarrior2Notable9": {
     "name": "Turtle Charm",
     "stats": [
-      "You take 20% of damage from [Block|Blocked] [HitDamage|Hits]",
+      "You take 20% of damage from [Block|Blocked] [Hit|Hits]",
       "Maximum [Block] chance is 75%"
     ]
   },
@@ -22963,7 +22917,7 @@
   "AscendancyWitch2Notable7": {
     "name": "Grasping Wounds",
     "stats": [
-      "25% of Life Loss from [HitDamage|Hits] is prevented, then that much Life is lost over 4 seconds instead"
+      "25% of Life Loss from [Hit|Hits] is prevented, then that much Life is lost over 4 seconds instead"
     ]
   },
   "AscendancyMonk3Notable6_3": {
@@ -23061,13 +23015,13 @@
     "name": "Reactive Growth",
     "stats": [
       "10% less [ElementalDamage|Elemental Damage] taken",
-      "[Adaptation|Adapt] to the highest [ElementalDamage|Elemental Damage Type] of each [HitDamage|Hit] you take",
+      "[Adaptation|Adapt] to the highest [ElementalDamage|Elemental Damage Type] of each [Hit] you take",
       "10% less Damage taken of each [ElementalDamage|Elemental Damage Type] per matching [Adaptation]"
     ]
   },
   "AscendancyWarrior2Notable1": {
     "name": "Anvil's Weight",
-    "stats": ["[ArmourBreak|Break Armour] equal to 10% of [HitDamage|Hit Damage] dealt"]
+    "stats": ["[ArmourBreak|Break Armour] equal to 10% of [Hit|Hit Damage] dealt"]
   },
   "AscendancySorceress2Notable2": {
     "name": "Ultimate Command",
@@ -23092,7 +23046,7 @@
     "name": "Crushing Impacts",
     "stats": [
       "25% more Damage against [HeavyStun|Heavy Stunned] Enemies",
-      "Your [HitDamage|Hits] are [CrushingBlow|Crushing Blows]"
+      "Your [Hit|Hits] are [CrushingBlow|Crushing Blows]"
     ]
   },
   "AscendancyWarrior1Notable3": {
@@ -23104,7 +23058,7 @@
   "AscendancyRanger1Notable2_1": {
     "name": "Far Shot",
     "stats": [
-      "[Projectile|Projectiles] deal 0% more [HitDamage|Hit] damage to targets in the first 3.5 metres of their movement, scaling up with distance travelled to reach 20% after 7 metres"
+      "[Projectile|Projectiles] deal 0% more [Hit] damage to targets in the first 3.5 metres of their movement, scaling up with distance travelled to reach 20% after 7 metres"
     ]
   },
   "AscendancyMonk3Notable4": {
@@ -23166,7 +23120,7 @@
     "name": "Martial Master",
     "stats": [
       "Skills can build and retain [Combo] regardless of [WeaponSets|Weapon Set]",
-      "Gain [Combo] from all [Attack] [HitDamage|Hits]"
+      "Gain [Combo] from all [Attack] [Hit|Hits]"
     ]
   },
   "AscendancyDruid2Small4_": {
@@ -23325,7 +23279,7 @@
     "stats": [
       "[Flask|Flasks] do not recover Life",
       "Gain 1 Life [Flask] Charge per 2% Life spent",
-      "On [HitDamage|Hitting] an Enemy while a Life [Flask] is at full Charges, 40% of its Charges are consumed\n[Gain] 1% of damage as [Physical] damage for 5 seconds per Charge consumed this way"
+      "On [Hit|Hitting] an Enemy while a Life [Flask] is at full Charges, 40% of its Charges are consumed\n[Gain] 1% of damage as [Physical] damage for 5 seconds per Charge consumed this way"
     ]
   }
 }
