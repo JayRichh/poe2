@@ -212,7 +212,7 @@ export const mechanics: Record<ContentCategory, BaseContent> = {
             title: "Tiers & Newer Currency",
             content: [
               "Since 0.3.0 many orbs come in regular -> Greater -> Perfect tiers, each forcing a higher minimum modifier level. Essences were re-tiered to four (Lesser/Normal/Greater/Perfect) and add a specific mod by tier.",
-              "Newer crafting items include Hinekora's Lock (foresee the next currency outcome), Soul Cores (socketable augments), Bones / Desecration crafting from Abyss (0.3.0), and Verisium plus 13 Alloy currencies from 0.5.0.",
+              "Newer crafting items include Hinekora's Lock (foresee the next currency outcome), Soul Cores (socketable augments), Bones / Desecration crafting from Abyss (0.3.0), and Verisium plus 13 Alloy currencies from 0.5.0. 0.5.5 added 17 Soul Cores (13 Jiquani, 4 Atziri); Atmohua's, Cholotl's and Zantipi's Soul Cores now convert 40% of requirements (previously 20%).",
               "Verisium also powers Runeforging, which adds Runic Ward to armour at the Runeforging bench.",
             ],
           },
@@ -337,6 +337,7 @@ export const mechanics: Record<ContentCategory, BaseContent> = {
           "PoE2 bosses use telegraphed attacks, phases and arena hazards that test both your build and your mechanical execution.",
           "Bosses have very high ailment thresholds, so freezing or shocking them reliably requires large hits or heavy investment.",
           "Endgame culminates in pinnacle bosses: the original Arbiter of Ash and the new Arbiter of Divinity added in 0.5.0, plus each league mechanic's own pinnacle boss.",
+          "As of 0.5.5, Arbiter of Ash has Fire Resistance and Cold Vulnerability, and Arbiter of Divinity has Lightning Resistance and Fire Vulnerability, instead of All Elemental Resistances.",
         ],
         subsections: [
           {
@@ -483,7 +484,7 @@ export const mechanics: Record<ContentCategory, BaseContent> = {
 
   mapping: {
     title: "Endgame & Atlas",
-    description: "Waystones, the Atlas tree and PoE2's 0.5.0 endgame",
+    description: "Waystones, the Atlas tree and PoE2's 0.5.x endgame",
     sections: [
       {
         title: "Atlas & Waystones",
@@ -499,6 +500,7 @@ export const mechanics: Record<ContentCategory, BaseContent> = {
               "The Atlas Passive Tree has 300+ nodes (around 301) and is fully allocatable in 0.5.0 with free re-allocation. It is reorganised so each league mechanic (Breach, Delirium, Abyss, Expedition, Ritual) has its own sub-tree, questline and pinnacle boss.",
               "0.5.0 added the Precursor Fortress (rises after your first Tower; its maps grant Atlas passive points and culminate in the Arbiter of Ash) and Masters of the Atlas (Doryani, Hilda, Jado), each offering 12 nodes of which 4 are selectable.",
               "Citadels are rare maps that yield Crisis Fragments toward the Burning Monolith. 0.5.0 added two new Citadel maps and bosses dropping keys to the new pinnacle, the Arbiter of Divinity.",
+              "0.5.5 moved Expeditions into the core Atlas (Standard and Forbidden Rites, from Act 4 onward; the Verisium Anvil unlocks with The Runeseeker quest), added Sacred Blooms that put the Viridian Wildwood on Atlas Map clusters, and caps Grand Mirror Delirium spread at 10 Maps.",
             ],
           },
         ],

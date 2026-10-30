@@ -115,7 +115,7 @@ export function UpdateTimeline() {
         <Text variant="body-lg" color="secondary" className="mt-3 max-w-2xl leading-relaxed">
           From the December 2024 Early Access launch to{" "}
           <span className="font-semibold text-foreground">
-            0.5.0 &ldquo;Return of the Ancients&rdquo;
+            0.5.5 &ldquo;Forbidden Rites&rdquo;
           </span>{" "}
           — every major patch that reshaped Path of Exile 2 on the road to its 1.0 launch.
         </Text>

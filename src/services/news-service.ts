@@ -17,7 +17,7 @@ export interface MajorVersionGroup {
  * Sourced from docs/poe2-2026-reference.md section 1.
  */
 const VERSION_CODENAMES: Record<string, string> = {
-  "0.5": "Return of the Ancients",
+  "0.5": "Return of the Ancients / Forbidden Rites",
   "0.4": "The Last of the Druids",
   "0.3": "The Third Edict",
   "0.2": "Dawn of the Hunt",

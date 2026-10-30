@@ -7,8 +7,10 @@
  * Roster) — the verified 2026 reference. Do NOT invent values here; update
  * only against that doc / official patch notes.
  *
- * Live game: 0.5.0 "Return of the Ancients" (May 29 2026), still Early Access,
- * heading to a 1.0 full launch targeted late 2026 (after ExileCon, Nov 7-8 2026).
+ * Live game: 0.5.5e (Forbidden Rites event league, Sep 4 2026; latest patch notes
+ * Oct 6 2026, latest hotfix Oct 28 2026), still Early Access, heading to a 1.0 full
+ * launch targeted late 2026 (after ExileCon, Nov 7-8 2026). Source: pathofexile.com
+ * forum 2212 (Early Access Patch Notes).
  */
 
 export interface Poe2Version {
@@ -70,10 +72,20 @@ export const POE2_VERSIONS: Poe2Version[] = [
     date: "May 29, 2026",
     codename: "Return of the Ancients",
     league: "Runes of Aldur",
-    current: true,
     headlines: [
       "Martial Artist (Monk) + Spirit Walker (Huntress) ascendancies",
       "Massive endgame overhaul: 300+ node Atlas, Precursor Fortress, Arbiter of Divinity",
+    ],
+  },
+  {
+    version: "0.5.5",
+    date: "Sep 4, 2026",
+    codename: "Forbidden Rites",
+    league: "Forbidden Rites",
+    current: true,
+    headlines: [
+      "Campaign Rituals, Sacred Blooms and the Viridian Wildwood; Trial of Chaos reworked",
+      "Expeditions move into the core Atlas; 17 new Soul Cores",
     ],
   },
 ];
@@ -86,7 +98,7 @@ export const POE2_MILESTONES = {
   earlyAccess: true,
   fullLaunchTarget: "Late 2026",
   exileCon: "ExileCon 2026 · Nov 7-8 · Auckland",
-  fullLaunchNote: "0.5.0 is the final Early Access update before the 1.0 launch.",
+  fullLaunchNote: "0.5.x is the final Early Access series before the 1.0 launch.",
 } as const;
 
 /** Live roster counts (reference §2) — drives the GameSystems "classes" copy. */
