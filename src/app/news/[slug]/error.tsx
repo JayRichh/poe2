@@ -27,7 +27,7 @@ export default function NewsError({
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-6">
-          <Text variant="h1" className="!mt-0">
+          <Text as="h1" variant="h1" className="!mt-0">
             Error Loading News
           </Text>
           <Text variant="body" color="secondary" className="text-lg">

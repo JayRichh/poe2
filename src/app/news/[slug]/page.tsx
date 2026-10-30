@@ -14,7 +14,7 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { articleJsonLd } from "~/utils/metadata";
 import { NewsService } from "~/services/news-service";
 
-import { sanitizeHtml } from "~/utils/sanitizeHtml";
+import { demoteH1, sanitizeHtml } from "~/utils/sanitizeHtml";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -118,7 +118,7 @@ export default async function NewsItemPage({ params }: PageProps) {
               </div>
 
               <div className="space-y-6">
-                <Text variant="h1" className="!mt-0">
+                <Text as="h1" variant="h1" className="!mt-0">
                   {news.title}
                 </Text>
                 {news.imageUrl && (
@@ -134,7 +134,7 @@ export default async function NewsItemPage({ params }: PageProps) {
                 <div
                   className="mt-8 prose prose-invert max-w-none"
                   dangerouslySetInnerHTML={{
-                    __html: sanitizeHtml(news.fullContent || news.content),
+                    __html: demoteH1(sanitizeHtml(news.fullContent || news.content)),
                   }}
                 />
 

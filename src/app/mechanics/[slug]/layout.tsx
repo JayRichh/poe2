@@ -28,7 +28,7 @@ export async function generateMetadata({
 
   return {
     title: `${mechanic.title} · Game Mechanics`,
-    description: `${mechanic.description.replace(/[.\s]+$/, "")}. Covers formulas, tables and links to related Path of Exile 2 calculators and guides.`,
+    description: `${mechanic.description.replace(/[.\s]+$/, "")}. A Path of Exile 2 mechanics reference from PoE2 Tools.`,
     alternates: {
       canonical: `/mechanics/${slug}`,
     },
