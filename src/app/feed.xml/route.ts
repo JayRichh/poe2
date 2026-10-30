@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { NewsService } from "~/services/news-service";
 
 export async function GET(request: Request) {
-  const baseUrl = "https://poe2.dev";
+  const baseUrl = "https://www.poe2.dev";
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type");
 

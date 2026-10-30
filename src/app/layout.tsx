@@ -70,8 +70,6 @@ export default async function RootLayout({
       className={`${plexSans.variable} ${plexMono.variable} ${cinzel.variable} dark h-full`}
     >
       <head>
-        <link rel="preconnect" href="https://poe2.dev" />
-        <link rel="dns-prefetch" href="https://poe2.dev" />
 
         <link
           rel="preconnect"

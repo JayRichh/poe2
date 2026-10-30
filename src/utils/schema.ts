@@ -19,7 +19,7 @@ type SiteIdentity = {
 function resolveIdentity(site: SiteIdentity) {
   return {
     name: site.name ?? site.siteName ?? "PoE2 Tools",
-    url: site.url ?? site.siteUrl ?? "https://poe2.dev",
+    url: site.url ?? site.siteUrl ?? "https://www.poe2.dev",
   };
 }
 
@@ -80,23 +80,11 @@ export function generateBuildPlannerSchema(context: SchemaContext, buildData: an
     datePublished: buildData.createdAt,
     description:
       buildData.description || `Path of Exile 2 build configuration for ${buildData.name}`,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      ratingCount: "500",
-      bestRating: "5",
-      worstRating: "1",
-    },
-    interactionStatistic: {
-      "@type": "InteractionCounter",
-      interactionType: "https://schema.org/UseAction",
-      userInteractionCount: "5000",
-    },
     gameItem: {
       "@type": "Thing",
       name: buildData.name,
       description: buildData.description,
-      additionalType: "https://poe2.dev/builds",
+      additionalType: "https://www.poe2.dev/builds",
       ...(buildData.class && {
         character: {
           "@type": "GameCharacter",
@@ -206,18 +194,6 @@ export function generateToolSchema(
         description: f.description,
       })),
     }),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1000",
-      bestRating: "5",
-      worstRating: "1",
-    },
-    interactionStatistic: {
-      "@type": "InteractionCounter",
-      interactionType: "https://schema.org/UseAction",
-      userInteractionCount: "10000",
-    },
   };
 }
 
@@ -238,7 +214,7 @@ export function generateMechanicsSchema(
     "@type": "GamePlayMode",
     name: mechanic.name,
     description: mechanic.description,
-    additionalType: `https://poe2.dev/mechanics/${mechanic.type.toLowerCase()}`,
+    additionalType: `https://www.poe2.dev/mechanics/${mechanic.type.toLowerCase()}`,
     gameItem: {
       "@type": "Thing",
       name: mechanic.name,
@@ -291,7 +267,7 @@ export function generateAscendancySchema(
     "@type": "GamePlayMode",
     name: ascendancy.name,
     description: ascendancy.description,
-    additionalType: "https://poe2.dev/ascendancies",
+    additionalType: "https://www.poe2.dev/ascendancies",
     gameItem: {
       "@type": "Thing",
       name: ascendancy.name,
@@ -380,7 +356,7 @@ export function generateGameFeatureSchema(
         })),
       }),
     },
-    additionalType: `https://poe2.dev/features/${feature.type.toLowerCase()}`,
+    additionalType: `https://www.poe2.dev/features/${feature.type.toLowerCase()}`,
     ...(feature.relatedFeatures && {
       associatedMedia: feature.relatedFeatures.map((f) => ({
         "@type": "Thing",
