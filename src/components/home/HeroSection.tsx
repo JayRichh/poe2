@@ -75,7 +75,7 @@ export function HeroSection({ opacity, scale, y }: HeroSectionProps) {
         align="center"
         className="font-display tracking-tight text-gilded"
       >
-        Track every update on the road to 1.0
+        Path of Exile 2 Build Planner, Skill Tree &amp; DPS Calculator
       </Text>
 
       <Text

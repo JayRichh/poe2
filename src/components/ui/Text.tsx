@@ -81,8 +81,10 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
     const defaultWeight = variant.startsWith("h") ? "bold" : "normal";
     const finalWeight = weight || defaultWeight;
 
+    const Tag = (variant.startsWith("h") ? variant : "div") as "div"; // real headings for the document outline
+
     return (
-      <div
+      <Tag
         ref={ref}
         className={cn(
           variantClasses[variant],
@@ -99,7 +101,7 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(
         {...props}
       >
         {children}
-      </div>
+      </Tag>
     );
   }
 );

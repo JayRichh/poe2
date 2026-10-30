@@ -1,3 +1,6 @@
+import { JsonLd } from "~/components/seo/JsonLd";
+
+import { articleJsonLd } from "~/utils/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,6 +67,17 @@ export default async function AscendancyPage({ params }: PageProps) {
   const base = baseClasses[ascendancy.baseClass];
 
   return (
+    <>
+    <JsonLd
+      data={articleJsonLd(
+        { headline: `${ascendancy.title} Ascendancy`, description: ascendancy.description, path: `/ascendancies/${ascendancyClass}`, image: meta?.image ? `https://www.poe2.dev${meta.image}` : undefined },
+        [
+          { name: "Home", path: "/" },
+          { name: "Ascendancies", path: "/ascendancies" },
+          { name: ascendancy.title, path: `/ascendancies/${ascendancyClass}` },
+        ]
+      )}
+    />
     <Container className="py-8">
       <div className="space-y-8">
         <div className="relative h-64 w-full overflow-hidden rounded-xl bg-muted/40">
@@ -180,5 +194,6 @@ export default async function AscendancyPage({ params }: PageProps) {
         </div>
       </div>
     </Container>
+    </>
   );
 }

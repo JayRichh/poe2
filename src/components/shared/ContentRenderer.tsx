@@ -37,7 +37,7 @@ export function ContentRenderer({ sections, relatedContent }: ContentRendererPro
             >
               {/* Section Header */}
               <div className="mb-12">
-                <Text variant="h2" className="text-3xl font-bold tracking-tight">
+                <Text variant={index === 0 ? "h1" : "h2"} className="text-3xl font-bold tracking-tight">
                   {section.title}
                 </Text>
                 <div className="mt-1 h-1 w-20 bg-primary/50 rounded-full" />
