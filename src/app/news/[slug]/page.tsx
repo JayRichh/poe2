@@ -9,6 +9,9 @@ import { notFound, redirect } from "next/navigation";
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
 
+import { JsonLd } from "~/components/seo/JsonLd";
+
+import { articleJsonLd } from "~/utils/metadata";
 import { NewsService } from "~/services/news-service";
 
 import { sanitizeHtml } from "~/utils/sanitizeHtml";
@@ -16,6 +19,12 @@ import { sanitizeHtml } from "~/utils/sanitizeHtml";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+// Meta descriptions over ~160 chars are truncated by search engines.
+const summarize = (t: string) => {
+  const plain = t.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return plain.length > 160 ? plain.slice(0, 157).trimEnd() + "..." : plain;
+};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
@@ -25,13 +34,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
       title: news.title,
-      description: news.processedContent || news.title,
+      description: summarize(news.processedContent || news.title),
       alternates: {
         canonical: `/news/${news.slug || news.id}`,
       },
       openGraph: {
         title: news.title,
-        description: news.processedContent || news.title,
+        description: summarize(news.processedContent || news.title),
         type: "article",
         publishedTime: news.date,
         modifiedTime: news.date,
@@ -70,6 +79,17 @@ export default async function NewsItemPage({ params }: PageProps) {
     };
 
     return (
+      <>
+      <JsonLd
+        data={articleJsonLd(
+          { headline: news.title, description: summarize(news.processedContent || news.title), path: `/news/${news.slug || news.id}`, datePublished: news.date, image: news.imageUrl },
+          [
+            { name: "Home", path: "/" },
+            { name: "News", path: "/news" },
+            { name: news.title, path: `/news/${news.slug || news.id}` },
+          ]
+        )}
+      />
       <NewsLayout title={news.title}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
@@ -133,6 +153,7 @@ export default async function NewsItemPage({ params }: PageProps) {
           </Suspense>
         </div>
       </NewsLayout>
+      </>
     );
   } catch (error) {
     console.error("Error loading news item:", error);

@@ -9,6 +9,9 @@ import { notFound } from "next/navigation";
 import { NewsLayout } from "~/components/news/NewsLayout";
 import { Text } from "~/components/ui/Text";
 
+import { JsonLd } from "~/components/seo/JsonLd";
+
+import { articleJsonLd } from "~/utils/metadata";
 import { NewsService } from "~/services/news-service";
 
 import { sanitizeHtml } from "~/utils/sanitizeHtml";
@@ -23,7 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const news = await NewsService.getNewsById(slug);
     if (!news) return {};
 
-    const description = news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "") || news.title;
+    const first = news.content.split("<br>")[0]?.replace(/<[^>]*>/g, "").trim() ?? "";
+    // First line of a patch note is often just "Hotfix 2"; pad to a useful snippet.
+    const description =
+      first.length >= 80
+        ? first.slice(0, 160)
+        : `${news.title} for Path of Exile 2: the full official patch notes with balance changes, bug fixes and new content.`;
     return {
       title: news.title,
       description,
@@ -66,6 +74,17 @@ export default async function PatchNotePage({ params }: PageProps) {
     };
 
     return (
+      <>
+      <JsonLd
+        data={articleJsonLd(
+          { headline: news.title, description: `${news.title} for Path of Exile 2: official patch notes.`, path: `/news/patch-notes/${news.slug || news.id}`, datePublished: news.date },
+          [
+            { name: "Home", path: "/" },
+            { name: "Patch Notes", path: "/news/patch-notes" },
+            { name: news.title, path: `/news/patch-notes/${news.slug || news.id}` },
+          ]
+        )}
+      />
       <NewsLayout title={news.title}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Suspense
@@ -128,6 +147,7 @@ export default async function PatchNotePage({ params }: PageProps) {
           </Suspense>
         </div>
       </NewsLayout>
+      </>
     );
   } catch (error) {
     console.error("Error loading patch note:", error);

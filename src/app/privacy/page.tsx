@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How POE2 Tools handles data: no accounts, no database of your activity, and what the ad and analytics providers collect.",
+  alternates: { canonical: "/privacy" },
+};
+
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 

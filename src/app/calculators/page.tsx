@@ -53,7 +53,7 @@ export default function CalculatorsPage() {
       <div className="mx-auto space-y-12">
         {/* Header */}
         <div className="mx-auto">
-          <Text className="text-4xl font-bold tracking-tight mb-6">POE2 Calculators</Text>
+          <Text variant="h1" className="text-4xl font-bold tracking-tight mb-6">POE2 Calculators</Text>
           <Text className="text-xl text-muted-foreground leading-relaxed">
             A suite of calculators for Path of Exile 2. Analyze damage, speed, and currency with
             detailed breakdowns and real-time calculations.

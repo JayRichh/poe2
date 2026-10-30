@@ -17,7 +17,7 @@ export default function BuildsPage() {
             transition={{ duration: 0.5 }}
           >
             <Text 
-              variant="h2" 
+              variant="h1" 
               className="tracking-tight mb-2 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
             >
               POE2 Meta Builds & Class Statistics

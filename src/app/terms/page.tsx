@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Terms of use for POE2 Tools, a community-run, non-commercial Path of Exile 2 toolkit that is not affiliated with Grinding Gear Games.",
+  alternates: { canonical: "/terms" },
+};
+
 import { Container } from "~/components/ui/Container";
 import { Text } from "~/components/ui/Text";
 

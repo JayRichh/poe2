@@ -11,7 +11,7 @@ export default function CurrencyCalcPage() {
       <div className="mx-auto">
         {/* Header */}
         <div className="mx-auto mb-12 mt-12">
-          <Text className="text-4xl font-bold tracking-tight mb-6">PoE2 Currency Calculator</Text>
+          <Text variant="h1" className="text-4xl font-bold tracking-tight mb-6">PoE2 Currency Calculator</Text>
           <Text className="text-xl text-foreground-secondary leading-relaxed">
             Convert between Path of Exile 2 currencies using chaos-denominated reference ratios.
             Compare values, keep a conversion history, and browse the full currency reference below.

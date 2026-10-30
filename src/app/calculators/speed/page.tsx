@@ -11,7 +11,7 @@ export default function SpeedCalcPage() {
         {/* Header */}
         <div>
           <div className="flex flex-wrap items-center gap-3 mb-4 pt-4">
-            <Text className="text-3xl font-bold tracking-tight">POE2 Speed Calculator</Text>
+            <Text variant="h1" className="text-3xl font-bold tracking-tight">POE2 Speed Calculator</Text>
             <span className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
               Data: 0.5.x
             </span>
