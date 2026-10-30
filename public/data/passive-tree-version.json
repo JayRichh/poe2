@@ -1,0 +1,8 @@
+{
+  "gameVersion": "0.5.5",
+  "compatibleThrough": "0.5.5",
+  "source": "grindinggear/poe2-skilltree-export data.json @ bd87e65 (0.5.5, 2026-09-04)",
+  "nodeCount": 4912,
+  "connectionCount": 5830,
+  "generatedAt": "2026-10-30"
+}

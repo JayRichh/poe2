@@ -48,7 +48,13 @@ function MainContentLoading() {
   );
 }
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+  nonce,
+}: {
+  children: React.ReactNode;
+  nonce: string;
+}) {
   useDefaultDarkMode();
   const isVisible = useHeaderScroll();
   const pathname = usePathname();
@@ -58,12 +64,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     window.goatcounter = {
       no_onload: true,
       allow_local: true,
-      path: pathname,
+      path: window.location.pathname,
     };
 
     // Load GoatCounter script
     const script = document.createElement("script");
     script.async = true;
+    script.nonce = nonce;
     script.src = "//gc.zgo.at/count.js";
     script.dataset.goatcounter = "https://poe2.goatcounter.com/count";
     document.head.appendChild(script);
@@ -71,10 +78,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     // Track initial page view
     if (window.goatcounter && window.goatcounter.count) {
       window.goatcounter.count({
-        path: pathname,
+        path: window.location.pathname,
       });
     }
-  }, []);
+  }, [nonce]);
 
   // Track client-side navigation
   useEffect(() => {
@@ -98,6 +105,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <SearchProvider>
       <ThemeProvider
+        nonce={nonce}
         attribute="class"
         defaultTheme="dark"
         enableSystem={false}

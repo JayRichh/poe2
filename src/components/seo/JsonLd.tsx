@@ -9,6 +9,7 @@ export async function JsonLd({ data }: { data: object | object[] }) {
     <script
       type="application/ld+json"
       nonce={nonce}
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );

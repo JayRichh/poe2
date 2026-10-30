@@ -4,7 +4,16 @@ import LZString from "lz-string";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { useSearchParams } from "next/navigation";
+
 import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
+import {
+  type ImportedTreeBuild,
+  filterKnownNodeIds,
+  normalizeAscendancy,
+  parseTreeBuildJson,
+  pruneUnknownNodes,
+} from "../utils/buildImport";
 import { useTreeData } from "./useTreeData";
 import { useTreeHistory } from "./useTreeHistory";
 import { useUrlState } from "./useUrlState";
@@ -18,10 +27,16 @@ interface BuildState {
   timestamp: string;
 }
 
+export interface ImportStatus {
+  type: "success" | "error";
+  message: string;
+}
+
 export function useSkillTree() {
   // Use React Query for tree data
   const { data: treeData, error } = useTreeData();
   const treeDataRef = treeData || null; // Convert undefined to null for compatibility
+  const searchParams = useSearchParams();
 
   // Core state
   const [selectedNode, setSelectedNode] = useState<TreeNodeData | null>(null);
@@ -29,6 +44,7 @@ export function useSkillTree() {
   const [allocatedNodes, setAllocatedNodes] = useState<Set<NodeId>>(new Set());
   const [searchTerm, setSearchTerm] = useState("");
   const [isRegexSearch, setIsRegexSearch] = useState(false);
+  const [importStatus, setImportStatus] = useState<ImportStatus | null>(null);
 
   // Filter states
   const [highlightKeystones, setHighlightKeystones] = useState(false);
@@ -61,20 +77,21 @@ export function useSkillTree() {
   // URL state handling
   const handleNodesLoad = useCallback(
     (nodes: NodeId[]) => {
-      const nodeSet = new Set(nodes);
+      const nodeSet = new Set(treeDataRef ? filterKnownNodeIds(nodes, treeDataRef.nodes) : nodes);
       setAllocatedNodes(nodeSet);
       if (!isInitialLoad.current) {
         pushState(nodeSet, selectedAscendancy);
       }
     },
-    [selectedAscendancy, pushState]
+    [selectedAscendancy, pushState, treeDataRef]
   );
 
   const handleAscendancyLoad = useCallback(
     (ascendancy: string) => {
-      setSelectedAscendancy(ascendancy);
+      const normalized = normalizeAscendancy(ascendancy);
+      setSelectedAscendancy(normalized);
       if (!isInitialLoad.current) {
-        pushState(allocatedNodes, ascendancy);
+        pushState(allocatedNodes, normalized);
       }
     },
     [allocatedNodes, pushState]
@@ -84,6 +101,12 @@ export function useSkillTree() {
     onNodesLoad: handleNodesLoad,
     onAscendancyLoad: handleAscendancyLoad,
   });
+
+  // ?p= ids can arrive before the tree data; drop unknown ones once it loads.
+  useEffect(() => {
+    if (!treeDataRef) return;
+    setAllocatedNodes((prev) => pruneUnknownNodes(prev, treeDataRef.nodes) as Set<NodeId>);
+  }, [treeDataRef]);
 
   // Update URL when state changes
   useEffect(() => {
@@ -241,25 +264,87 @@ export function useSkillTree() {
     URL.revokeObjectURL(url);
   }, [allocatedNodes, selectedAscendancy]);
 
+  const applyImportedBuild = useCallback(
+    (build: ImportedTreeBuild, sourceName: string): void => {
+      if (!treeDataRef) throw new Error("Passive tree data is still loading");
+
+      const validNodes = filterKnownNodeIds(build.nodes, treeDataRef.nodes);
+      const ignoredCount = build.nodes.length - validNodes.length;
+      if (validNodes.length === 0) {
+        throw new Error("None of the passive IDs exist in the current tree dataset");
+      }
+
+      const nodeSet = new Set(validNodes);
+      const ascendancy = normalizeAscendancy(build.ascendancy);
+      setAllocatedNodes(nodeSet);
+      setSelectedAscendancy(ascendancy);
+      pushState(nodeSet, ascendancy);
+      setImportStatus({
+        type: "success",
+        message: `Loaded ${validNodes.length} passives from ${build.name || sourceName}${
+          ignoredCount ? ` (${ignoredCount} unknown IDs ignored)` : ""
+        }`,
+      });
+    },
+    [pushState, treeDataRef]
+  );
+
   const handleImport = useCallback(
     async (file: File): Promise<void> => {
       try {
         const text = await file.text();
-        const data = JSON.parse(text) as BuildState;
-        if (!data.nodes || !data.ascendancy) {
-          throw new Error("Invalid build file format");
-        }
-        const newNodes = new Set(data.nodes);
-        setAllocatedNodes(newNodes);
-        setSelectedAscendancy(data.ascendancy);
-        // Push imported state to history
-        pushState(newNodes, data.ascendancy);
+        applyImportedBuild(parseTreeBuildJson(text), file.name);
       } catch (error) {
         console.error("Failed to import build:", error);
+        setImportStatus({
+          type: "error",
+          message: error instanceof Error ? error.message : "Failed to import build",
+        });
       }
     },
-    [pushState]
+    [applyImportedBuild]
   );
+
+  const autoBuildLoaded = useRef(false);
+  useEffect(() => {
+    const buildUrl = searchParams.get("build");
+    if (!treeDataRef || !buildUrl || autoBuildLoaded.current) return;
+    autoBuildLoaded.current = true;
+
+    // Only auto-load builds hosted on this origin (e.g. /builds/foo.build). Reject
+    // absolute/cross-origin URLs so a crafted ?build=https://evil/x link can't make
+    // a visitor's browser fetch and render attacker-controlled content.
+    let sameOriginBuildUrl: string;
+    try {
+      const resolved = new URL(buildUrl, window.location.origin);
+      if (resolved.origin !== window.location.origin) {
+        throw new Error("Build links must be same-origin");
+      }
+      sameOriginBuildUrl = resolved.toString();
+    } catch (error) {
+      setImportStatus({
+        type: "error",
+        message: error instanceof Error ? error.message : "Invalid build link",
+      });
+      return;
+    }
+
+    void fetch(sameOriginBuildUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Could not load ${buildUrl} (${response.status})`);
+        return response.text();
+      })
+      .then((text) =>
+        applyImportedBuild(parseTreeBuildJson(text), buildUrl.split("/").pop() ?? buildUrl)
+      )
+      .catch((error: unknown) => {
+        console.error("Failed to auto-load build:", error);
+        setImportStatus({
+          type: "error",
+          message: "Failed to auto-load build",
+        });
+      });
+  }, [applyImportedBuild, searchParams, treeDataRef]);
 
   const getShareLink = useCallback((): string => {
     const params = new URLSearchParams();
@@ -291,6 +376,7 @@ export function useSkillTree() {
     setSearchTerm,
     isRegexSearch,
     setIsRegexSearch,
+    importStatus,
 
     // Filter state
     highlightKeystones,
