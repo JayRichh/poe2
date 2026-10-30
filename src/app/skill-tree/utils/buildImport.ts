@@ -9,6 +9,7 @@ const ASCENDANCY_NAMES: Record<string, string> = {
   Witch1: "Infernalist",
   Witch2: "Blood Mage",
   Witch3: "Lich",
+  Witch3b: "Abyssal Lich",
   Ranger1: "Deadeye",
   Ranger3: "Pathfinder",
   Warrior1: "Titan",
@@ -60,6 +61,11 @@ function readNodeIds(value: unknown): string[] | null {
 // crashes string callers downstream — a reflected client-side DoS via ?a=).
 function ownLookup(record: Record<string, string>, key: string): string | undefined {
   return Object.prototype.hasOwnProperty.call(record, key) ? record[key] : undefined;
+}
+
+// Keeps only ids that are own keys of the tree map (drops "__proto__", "constructor", unknown ids).
+export function filterKnownNodeIds(ids: readonly string[], nodes: object): string[] {
+  return ids.filter((id) => Object.hasOwn(nodes, id));
 }
 
 export function normalizeAscendancy(value: unknown): string {

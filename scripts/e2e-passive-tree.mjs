@@ -61,7 +61,17 @@ try {
   assert.equal(autoLoadState.allocated, 123);
   assert.equal(autoLoadState.connections, 117);
   assert.match(autoLoadState.text, /Ascendancy:\s*Gemling Legionnaire/);
-  assert.match(autoLoadState.text, /Data: 0\.5\.2 tree · compatible through 0\.5\.4c/);
+  const treeVersion = JSON.parse(
+    fs.readFileSync(
+      path.join(repositoryRoot, "public", "data", "passive-tree-version.json"),
+      "utf8"
+    )
+  );
+  assert.ok(
+    autoLoadState.text.includes(
+      `Data: ${treeVersion.gameVersion} tree · compatible through ${treeVersion.compatibleThrough}`
+    )
+  );
   await page.screenshot({
     path: path.join(screenshotDirectory, "untether-auto-loaded.png"),
     fullPage: true,

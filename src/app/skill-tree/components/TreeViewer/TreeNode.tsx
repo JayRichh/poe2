@@ -84,6 +84,15 @@ const TreeNode = React.memo(function TreeNode({
   return (
     <div
       role="button"
+      tabIndex={0}
+      aria-pressed={isAllocated}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          onClick(node);
+        }
+      }}
       aria-label={`${node.name}${isAllocated ? " (allocated)" : ""}`}
       data-node-id={node.id}
       data-allocated={isAllocated ? "true" : "false"}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { normalizeAscendancy, parseTreeBuild } from "./buildImport";
+import { filterKnownNodeIds, normalizeAscendancy, parseTreeBuild } from "./buildImport";
 
 describe("parseTreeBuild", () => {
   it("imports official .build passives and Gemling Legionnaire", () => {
@@ -61,5 +61,26 @@ describe("normalizeAscendancy", () => {
     expect(normalizeAscendancy("")).toBe("None");
     expect(normalizeAscendancy(undefined)).toBe("None");
     expect(normalizeAscendancy(42)).toBe("None");
+  });
+});
+
+describe("filterKnownNodeIds", () => {
+  const nodes = Object.assign(Object.create(null), { a: 1, b: 2 }) as object;
+  const plain = { a: 1 } as object;
+
+  it("drops __proto__, constructor and unknown ids", () => {
+    expect(
+      filterKnownNodeIds(["a", "__proto__", "constructor", "toString", "zzz", "b"], nodes)
+    ).toEqual(["a", "b"]);
+  });
+
+  it("does not see inherited members on a plain object", () => {
+    expect(filterKnownNodeIds(["__proto__", "constructor", "a"], plain)).toEqual(["a"]);
+  });
+});
+
+describe("Abyssal Lich", () => {
+  it("maps Witch3b", () => {
+    expect(normalizeAscendancy("Witch3b")).toBe("Abyssal Lich");
   });
 });

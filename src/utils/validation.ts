@@ -1,12 +1,10 @@
 export const NAME_MIN_LENGTH = 2;
 export const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-export const ALLOWED_FILE_TYPES = [
-  "",
-  "application/json",
-  "text/plain",
-  "application/octet-stream",
-];
-export const ALLOWED_FILE_EXTENSIONS = [".build", ".json", ".txt"];
+export const ALLOWED_FILE_TYPES = ["application/json", "text/plain"];
+export const ALLOWED_FILE_EXTENSIONS = [".json", ".txt"];
+// Looser set for the skill-tree .build importer only (browsers report "" or octet-stream for .build).
+export const BUILD_FILE_TYPES = ["", "application/json", "text/plain", "application/octet-stream"];
+export const BUILD_FILE_EXTENSIONS = [".build", ".json", ".txt"];
 export const NAME_MAX_LENGTH = 50;
 export const NAME_PATTERN = /^[a-zA-Z0-9\s_-]+$/;
 
@@ -15,7 +13,11 @@ export interface ValidationResult {
   error?: string;
 }
 
-export function validateFile(file: File): ValidationResult {
+export function validateFile(
+  file: File,
+  allowedTypes: string[] = ALLOWED_FILE_TYPES,
+  allowedExtensions: string[] = ALLOWED_FILE_EXTENSIONS
+): ValidationResult {
   if (!file) {
     return { valid: false, error: "File is required" };
   }
@@ -25,17 +27,17 @@ export function validateFile(file: File): ValidationResult {
   }
 
   const fileExtension = `.${file.name.split(".").pop()?.toLowerCase()}`;
-  if (!ALLOWED_FILE_EXTENSIONS.includes(fileExtension)) {
+  if (!allowedExtensions.includes(fileExtension)) {
     return {
       valid: false,
-      error: `Invalid file type. Allowed types: ${ALLOWED_FILE_EXTENSIONS.join(", ")}`,
+      error: `Invalid file type. Allowed types: ${allowedExtensions.join(", ")}`,
     };
   }
 
-  if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+  if (!allowedTypes.includes(file.type)) {
     return {
       valid: false,
-      error: `Invalid content type. Allowed types: ${ALLOWED_FILE_TYPES.join(", ")}`,
+      error: `Invalid content type. Allowed types: ${allowedTypes.join(", ")}`,
     };
   }
 

@@ -11,7 +11,7 @@ import { ProgressiveImage } from "~/components/ui/ProgressiveImage";
 
 import { shimmer, toBase64 } from "~/utils/image";
 
-import { ascendancyImageSlug } from "../../utils/buildImport";
+import { ascendancyImageSlug, hasAscendancyImage } from "../../utils/buildImport";
 import {
   calculateInitialPanOffset,
   calculateZoomPanOffset,
@@ -407,7 +407,7 @@ export function TreeViewer({
           />
         </div>
 
-        {selectedAscendancy !== "None" && (
+        {selectedAscendancy !== "None" && hasAscendancyImage(selectedAscendancy) && (
           <ProgressiveImage
             src={`/ascendancies/${ascendancyImageSlug(selectedAscendancy)}.webp`}
             alt={selectedAscendancy}
@@ -437,6 +437,7 @@ export function TreeViewer({
             className="absolute inset-0 pointer-events-none overflow-visible"
             width={imageSize.width}
             height={imageSize.height}
+            role="img"
             aria-label={`${allocatedConnections.length} allocated passive connections`}
           >
             {allocatedConnections.map(([from, to]) => (

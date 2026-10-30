@@ -15,8 +15,9 @@ import {
 
 import { useMemo } from "react";
 
-import { validateFile } from "~/utils/validation";
+import { BUILD_FILE_EXTENSIONS, BUILD_FILE_TYPES, validateFile } from "~/utils/validation";
 
+import treeVersion from "../../../public/data/passive-tree-version.json";
 import { Filters } from "./components/Sidebar/Filters";
 import { NodeDetails } from "./components/Sidebar/NodeDetails";
 import { StatsPanel } from "./components/Sidebar/StatsPanel";
@@ -189,10 +190,11 @@ export default function SkillTreePage() {
           <div className="absolute top-4 left-4 z-50">
             <span
               className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm"
-              title="Official-ID passive tree snapshot for Return of the Ancients"
+              title={`Official passive tree export ${treeVersion.gameVersion} (patch 0.5, Return of the Ancients)`}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gem-ruby" />
-              Data: 0.5.2 tree · compatible through 0.5.4c
+              Data: {treeVersion.gameVersion} tree · compatible through{" "}
+              {treeVersion.compatibleThrough}
             </span>
           </div>
 
@@ -297,7 +299,11 @@ export default function SkillTreePage() {
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
-                            const validation = validateFile(file);
+                            const validation = validateFile(
+                              file,
+                              BUILD_FILE_TYPES,
+                              BUILD_FILE_EXTENSIONS
+                            );
                             if (!validation.valid) {
                               alert(validation.error);
                               return;

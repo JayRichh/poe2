@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 
 import { TreeData, TreeNodeData } from "../components/TreeViewer/data";
 import {
+  filterKnownNodeIds,
   type ImportedTreeBuild,
   normalizeAscendancy,
   parseTreeBuildJson,
@@ -75,13 +76,13 @@ export function useSkillTree() {
   // URL state handling
   const handleNodesLoad = useCallback(
     (nodes: NodeId[]) => {
-      const nodeSet = new Set(nodes);
+      const nodeSet = new Set(treeDataRef ? filterKnownNodeIds(nodes, treeDataRef.nodes) : nodes);
       setAllocatedNodes(nodeSet);
       if (!isInitialLoad.current) {
         pushState(nodeSet, selectedAscendancy);
       }
     },
-    [selectedAscendancy, pushState]
+    [selectedAscendancy, pushState, treeDataRef]
   );
 
   const handleAscendancyLoad = useCallback(
@@ -260,7 +261,7 @@ export function useSkillTree() {
     (build: ImportedTreeBuild, sourceName: string): void => {
       if (!treeDataRef) throw new Error("Passive tree data is still loading");
 
-      const validNodes = build.nodes.filter((id) => Boolean(treeDataRef.nodes[id]));
+      const validNodes = filterKnownNodeIds(build.nodes, treeDataRef.nodes);
       const ignoredCount = build.nodes.length - validNodes.length;
       if (validNodes.length === 0) {
         throw new Error("None of the passive IDs exist in the current tree dataset");
@@ -333,7 +334,7 @@ export function useSkillTree() {
         console.error("Failed to auto-load build:", error);
         setImportStatus({
           type: "error",
-          message: error instanceof Error ? error.message : "Failed to auto-load build",
+          message: "Failed to auto-load build",
         });
       });
   }, [applyImportedBuild, searchParams, treeDataRef]);
