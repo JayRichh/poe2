@@ -9,7 +9,6 @@ const RATE_LIMITS: Record<string, number> = {
 };
 
 const ALLOWED_ORIGINS = [
-  "https://poe2.dev",
   "https://www.poe2.dev",
   process.env.NEXT_PUBLIC_SITE_URL,
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : null,
