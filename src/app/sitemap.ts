@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // News index pages change whenever a new article is published, so follow the
   // newest entry instead of a fixed date.
-  const dateOverrides = new Map<string, Date>([
+  const dateOverrides = new Map<string, Date | undefined>([
     ["/news", latestDate(allNews) ?? getContentLastModified("/news")],
     [
       "/news/patch-notes",
@@ -101,7 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const newsFallback = dateOverrides.get("/news") ?? getContentLastModified("/news");
   const newsRoutes: Entry[] = allNews.map((news) => {
     const parsed = news.date ? new Date(news.date) : newsFallback;
-    const lastModified = Number.isNaN(parsed.getTime()) ? newsFallback : parsed;
+    const lastModified = !parsed || Number.isNaN(parsed.getTime()) ? newsFallback : parsed;
 
     const path =
       news.type === "patch-note"
@@ -125,5 +125,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...ascendancyRoutes,
     ...newsRoutes,
   ];
-  return [...new Map(all.map((e) => [e.url, e])).values()];
+  return [
+    ...new Map(
+      all.map(({ lastModified, ...entry }) => [
+        entry.url,
+        lastModified === undefined ? entry : { ...entry, lastModified },
+      ])
+    ).values(),
+  ];
 }

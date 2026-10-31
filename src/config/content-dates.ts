@@ -5,7 +5,7 @@
  * it from the build clock makes every deploy look like a site-wide content
  * update, so keep these dates explicit instead. Bump the matching entry when
  * you change that page's content, and add an entry when you add a route — the
- * sitemap build fails loudly for a route without a date.
+ * content-dates tests catch missing or invalid dates in CI.
  *
  * News routes are resolved from the article publish dates in the sitemap; the
  * dates below are only their fallback when the feed is empty.
@@ -42,26 +42,25 @@ export const COLLECTION_LAST_MODIFIED = {
   "/ascendancies/": "2026-06-25",
 } as const;
 
-/** Parse an ISO date at UTC midnight, failing loudly on bad configuration. */
-function toUtcDate(value: string, path: string): Date {
+/** Parse a calendar date at UTC midnight; omit invalid configuration. */
+function toUtcDate(value: string): Date | undefined {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return undefined;
   const date = new Date(`${value}T00:00:00.000Z`);
-  if (Number.isNaN(date.getTime())) {
-    throw new Error(`Invalid content date "${value}" for sitemap route "${path}"`);
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+    return undefined;
   }
   return date;
 }
 
 /** Resolve a route path to its real last-content-change date (UTC midnight). */
-export function getContentLastModified(path: string): Date {
+export function getContentLastModified(path: string): Date | undefined {
   const pageDate = PAGE_LAST_MODIFIED[path as keyof typeof PAGE_LAST_MODIFIED];
-  if (pageDate) return toUtcDate(pageDate, path);
+  if (pageDate) return toUtcDate(pageDate);
 
   const collection = Object.entries(COLLECTION_LAST_MODIFIED).find(([prefix]) =>
     path.startsWith(prefix)
   );
-  if (collection) return toUtcDate(collection[1], path);
+  if (collection) return toUtcDate(collection[1]);
 
-  throw new Error(
-    `No content date configured for sitemap route "${path}". Add it to src/config/content-dates.ts.`
-  );
+  return undefined;
 }
