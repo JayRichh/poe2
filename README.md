@@ -39,6 +39,8 @@ Issues and pull requests are welcome. Good places to start:
 - Improve a calculator under `src/app/calculators`.
 - Add a test: `npm test` runs Vitest.
 
+If you change a page's content, bump its date in `src/config/content-dates.ts` so the sitemap's `lastmod` stays accurate.
+
 Open an issue first for anything larger so we can agree on the approach.
 
 ## Support
